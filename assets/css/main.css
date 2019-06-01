@@ -288,6 +288,10 @@ header .navbar-header{
     color: #fff;
 }
 
+.row{
+	width:100%;
+}
+
 
 #slide-navbar-collapse{
     display: block;
