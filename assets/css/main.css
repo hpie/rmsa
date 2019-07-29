@@ -9,8 +9,27 @@ body{
     font-size: 14px;
     font-family: 'Roboto Condensed', sans-serif;
 }
+.row{
+    width: 100%;
+    margin: auto;
+}
+#side-menu-btn {
+    width: 32px;
+    height: 32px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    background: #0000;
+    color: #ccc;
+    font-size: 18px;
 
-
+} 
+.primary_btn{
+    background: #e4a93d;
+    color: #fff;
+}
+#side-menu-btn span i{
+    font-size: 27px;
+}
 .main-wapper{
     max-width: 1170px;
     margin: auto;
@@ -93,6 +112,7 @@ header .nav-bar .nav-link:hover::after{
 }
 header .navbar{
     padding: 0px;
+    margin: 0px 15px;
 }
 header .navbar-nav .nav-link.active{
     background: #bc2832;
@@ -235,6 +255,11 @@ header .navbar-header{
   .middle-area p{
       margin-bottom: 10px;
   }
+  .contact_us  td, 
+  .contact_us th{
+      white-space: nowrap;
+  }
+  
   .middle-area .heading{
     font-size: 22px;
     margin-bottom: 10px;
@@ -243,6 +268,18 @@ header .navbar-header{
     padding: 5px;
     color: #fff;
   }
+  .middle-area .second-heading{
+    font-size: 18px;
+    margin-bottom: 10px;
+    background: #73abe3;
+    border-radius: 3px;
+    padding: 5px;
+    color: #fff;
+  }
+  .bg-light-blue{
+      background: lightblue;
+  }
+  .bg-light-blue
   .middle-area>ul.list-item{
       margin: 10px 0 0 0 ;
     list-style-type: decimal;
@@ -265,7 +302,7 @@ header .navbar-header{
   .right-side-area h1>a{
     font-size: 17px;
     display: block;
-    padding: 10px 13px;
+    padding: 8px 13px;
     background: #008000;
     color: #fff;
     border-radius: 3px;
@@ -286,10 +323,6 @@ header .navbar-header{
 }
 .marque ul li a{
     color: #fff;
-}
-
-.row{
-	width:100%;
 }
 
 
@@ -322,6 +355,7 @@ footer img{
   border: 2px solid #ccc;
 }
 @media(max-width:992px){
+
     .navbar-toggler i {
         font-size: 28px;
         color: #ccc;
@@ -329,6 +363,7 @@ footer img{
 header .navbar{
     width: 100%;
     padding: 5px 0px;
+    margin: 0px auto;
 }
 
 }
@@ -378,3 +413,9 @@ header .navbar{
     }
   }
   
+@media (max-width:567px){
+    .right-side-area h1{
+        margin: 8px 0px;
+
+    }
+}
