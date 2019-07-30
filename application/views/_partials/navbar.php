@@ -1,7 +1,7 @@
     <!-- NavBar Start -->
         <header>
             <div class="top_header">
-                <img src="assets/img/header.png" alt="" srcset="">
+                <img src="<?php echo BASE_URL; ?>assets/img/header.png" alt="" srcset="">
             </div>
             <div class=" nav-main">
                 <div class="wapper">

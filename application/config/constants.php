@@ -88,6 +88,6 @@ defined('EXIT__AUTO_MAX') OR define('EXIT__AUTO_MAX', 125); // highest automatic
 $protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off') ? 'https' : 'http';
 $base_url = $protocol . '://' . $_SERVER['HTTP_HOST'];
 $base_url .= dirname($_SERVER['SCRIPT_NAME']);
-define('BASE_URL', $base_url);
+define('BASE_URL', $base_url.'/');
 define('IMG_URL', BASE_URL . 'uploads/');
 define('ASSETS', BASE_URL."assets/");

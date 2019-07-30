@@ -8,7 +8,7 @@
                         only. Neither Education Department nor H.P.I.E is responsible for any inadvertent errors. For any query 
                         related to this website, please contact the Web Information Manager, Ms. Anima Sharma, Ph. No.
                         0177-2807105, animasharma3004@gmail.com.</p>
-                    <img src="assets/img/nic.png" alt="nic" title="nic">
+                    <img src="<?php echo BASE_URL; ?>assets/img/nic.png" alt="nic" title="nic">
                 </div>
             </div>
         </footer>
