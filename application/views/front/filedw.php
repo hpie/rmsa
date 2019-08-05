@@ -1,31 +1,34 @@
 
       <div class="col-md-6 col-sm-8  col-12">
-        <div class="middle-area">
-            <h3 class="heading">View Information Uploaded on the Portal</h3>
-            <p class="card-text">View Information</p>
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label for="sel1">Class:</label>
-                    <select class="form-control" id="sel1">
-                        <option>Select Class</option>
-                        <option>Class IX</option>
-                        <option>Class X</option>
-                        <option>Class XI</option>
-                        <option>Class XII</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="sel1">Subject:</label>
-                    <select class="form-control" id="sel1">
-                        <option>Select Subject</option>
-                        <option>English</option>
-                        <option>Hindi</option>
-                        <option>Maths</option>
-                        <option>Sanskrit</option>
-                        <option>Social-Science</option>
-                        <option>Science</option>
-                    </select>
-                </div>
-            </form>
-        </div>
-    </div>
+          <div class="middle-area">
+              <h1 class="heading">View Information Uploaded on the Portal</h1>
+              <form class="form-horizontal border p-2" action="#">
+                  <h2 class="second-heading">View Information</h2>
+
+                  <div class="form-group">
+                      <div class="row">
+                          <label class="control-label col-sm-4 col-xs-12" for="distt">Class:</label>
+                          <div class="col-sm-8 col-xs-12">
+                              <select class="form-control">
+                                  <option>Select Class</option>
+                                  <option>Class IX</option>
+                                  <option>Class X</option>
+                                  <option>Class XI</option>
+                                  <option>Class XII</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="row">
+                          <label class="control-label col-sm-4 col-xs-12" for="tehsil">Subject:</label>
+                          <div class="col-sm-8 col-xs-12">
+                              <select class="form-control">
+                                  <option value="0">---Select---</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
