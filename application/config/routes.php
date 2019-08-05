@@ -64,3 +64,4 @@ $route['registered-students']='RegisteredStudents';
 $route['circulars']='Circulars';
 $route['annual-Reports']='AnnualReports';
 $route['contact-us']='ContactUs';
+$route['file-dw']='FileDw';
