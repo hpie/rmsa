@@ -1,15 +1,13 @@
-    <!-- Footer Start -->   
-        <footer>
-            <div class="wapper">
-                <div>
-                    <p> <strong style="color:red;">Disclaimer : </strong> The website has been designed and developed by
-                        <a href="http://hpie.in"> H.P.I.E </a> and the content on this website is published and managed by the HP 
-                        Education Department, who is responsible for updating website content. The content provided is informative
-                        only. Neither Education Department nor H.P.I.E is responsible for any inadvertent errors. For any query 
-                        related to this website, please contact the Web Information Manager, Ms. Anima Sharma, Ph. No.
-                        0177-2807105, animasharma3004@gmail.com.</p>
-                    <img src="<?php echo BASE_URL; ?>assets/img/nic.png" alt="nic" title="nic">
-                </div>
-            </div>
-        </footer>
-    <!-- Footer End -->
+<div class="footer">
+	<div class="container">
+		<?php if (ENVIRONMENT=='development'): ?>
+			<p class="pull-right text-muted">
+				CI Bootstrap Version: <strong><?php echo CI_BOOTSTRAP_VERSION; ?></strong>, 
+				CI Version: <strong><?php echo CI_VERSION; ?></strong>, 
+				Elapsed Time: <strong>{elapsed_time}</strong> seconds, 
+				Memory Usage: <strong>{memory_usage}</strong>
+			</p>
+		<?php endif; ?>
+		<p class="text-muted">&copy; <strong><?php echo date('Y'); ?></strong> All rights reserved.</p>
+	</div>
+</div>

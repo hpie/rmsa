@@ -1,13 +1,13 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+/**
+ * Home page
+ */
+class Home extends MY_Controller {
 
-    public function __construct() {
-        parent::__construct();
-    }    
-    public function index() {
-        $this->load->viewFront('front/index');
-    }   
+	public function index()
+	{
+		$this->render('home', 'full_width');
+	}
 }

@@ -1,38 +1,52 @@
-    <!-- NavBar Start -->
-        <header>
-            <div class="top_header">
-                <a href="<?php echo BASE_URL; ?>home"><img src="<?php echo BASE_URL; ?>assets/img/header.png" alt="" srcset=""></a>
-            </div>
-            <div class="nav-main">
-                <div class="wapper">
-                    <nav class="navbar-expand-lg navbar  navbar-dark default-color">
-                        <div class="navbar-header">
-                            <div class="menu_btn_group">
-                                <button type="button" class="navbar-toggle collapsed" id="side-menu-btn"
-                                    data-toggle="slide-collapse" data-target="#slide-navbar-collapse"
-                                    aria-expanded="false">
-                                    <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i>
-                                </button>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i>
-                                    </span>
-                                </button>
-                            </div>
-                            <div class="nav-bar collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item"><a href="<?php echo BASE_URL; ?>home" class="nav-link active">Home</a></li>
-                                    <li class="nav-item"><a href="<?php echo BASE_URL; ?>about-us" class="nav-link">About Us</a></li>
-                                    <li class="nav-item"><a href="<?php echo BASE_URL; ?>organization" class="nav-link">Organisation</a></li>
-                                    <li class="nav-item"><a href="<?php echo BASE_URL; ?>circulars" class="nav-link">Circulars & Orders</a></li>
-                                    <li class="nav-item"><a href="<?php echo BASE_URL; ?>annual-Reports" class="nav-link">Annual Report</a></li>
-                                    <li class="nav-item"><a href="<?php echo BASE_URL; ?>contact-us" class="nav-link">Contact Us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
-    <!-- NavBar End -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container">
+
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href=""><?php echo $site_name; ?></a>
+	</div>
+
+	<div class="navbar-collapse collapse">
+
+		<ul class="nav navbar-nav">
+			<?php foreach ($menu as $parent => $parent_params): ?>
+
+				<?php if (empty($parent_params['children'])): ?>
+
+					<?php $active = ($current_uri==$parent_params['url'] || $ctrler==$parent); ?>
+					<li <?php if ($active) echo 'class="active"'; ?>>
+						<a href='<?php echo $parent_params['url']; ?>'>
+							<?php echo $parent_params['name']; ?>
+						</a>
+					</li>
+
+				<?php else: ?>
+
+					<?php $parent_active = ($ctrler==$parent); ?>
+					<li class='dropdown <?php if ($parent_active) echo 'active'; ?>'>
+						<a data-toggle='dropdown' class='dropdown-toggle' href='#'>
+							<?php echo $parent_params['name']; ?> <span class='caret'></span>
+						</a>
+						<ul role='menu' class='dropdown-menu'>
+							<?php foreach ($parent_params['children'] as $name => $url): ?>
+								<li><a href='<?php echo $url; ?>'><?php echo $name; ?></a></li>
+							<?php endforeach; ?>
+						</ul>
+					</li>
+
+				<?php endif; ?>
+
+			<?php endforeach; ?>
+		</ul>
+
+		<?php $this->load->view('_partials/language_switcher'); ?>
+		
+	</div>
+
+</div>
+</nav>

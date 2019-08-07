@@ -39,7 +39,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');
 |
 */
-$autoload['packages'] = array();
+$autoload['packages'] = array(
+	APPPATH.'third_party/ion_auth',
+	APPPATH.'third_party/grocery_crud',
+	APPPATH.'third_party/image_crud',
+	APPPATH.'third_party/rest_server'
+);
 
 /*
 | -------------------------------------------------------------------
@@ -58,7 +63,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array();
+$autoload['libraries'] = array('database', 'ion_auth', 'form_validation');
 
 /*
 | -------------------------------------------------------------------
@@ -72,12 +77,6 @@ $autoload['libraries'] = array();
 | Prototype:
 |
 |	$autoload['drivers'] = array('cache');
-|
-| You can also supply an alternative property name to be assigned in
-| the controller:
-|
-|	$autoload['drivers'] = array('cache' => 'cch');
-|
 */
 $autoload['drivers'] = array();
 
@@ -89,7 +88,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array();
+$autoload['helper'] = array('array', 'inflector', 'string', 'url');
 
 /*
 | -------------------------------------------------------------------
@@ -103,7 +102,7 @@ $autoload['helper'] = array();
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$autoload['config'] = array('ci_bootstrap');
 
 /*
 | -------------------------------------------------------------------
