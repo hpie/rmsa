@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html" table-class="stripe" order="8">
+
+<css lib="datatables" />
+<js lib="jquery datatables"><![CDATA[
+$(document).ready(function() {
+	$('#example').DataTable();
+} );
+]]></js>
+
+<title>Base style - stripe</title>
+
+<info><![CDATA[
+
+This example shows DataTables with just the `stripe` class specified.
+
+]]></info>
+
+</dt-example>

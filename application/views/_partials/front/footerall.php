@@ -37,7 +37,16 @@ $this->load->view('_partials/front/scripts');
         $('.navbar-nav > li > a').removeClass('active');
         $('.navbar-nav > li > a[href="'+ pathname +'"]').addClass('active');
     });
-</script>        
+</script> 
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": "<?php echo BASE_URL.'/assets/front/DataTablesSrc-master/examples/server_side/scripts/server_processing.php' ?>"
+    } );
+} );
+</script>
 
 </body>
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html-wide" table-class="display nowrap" order="15">
+
+<css lib="datatables" />
+<css>
+	div.dataTables_wrapper {
+		width: 800px;
+		margin: 0 auto;
+	}
+</css>
+<js lib="jquery" />
+<js lib="datatables" />
+
+<title>Scroll - horizontal and vertical</title>
+<js><![CDATA[
+$(document).ready(function() {
+	$('#example').DataTable( {
+		"scrollY": 200,
+		"scrollX": true
+	} );
+} );
+]]></js>
+
+<info><![CDATA[
+
+In this example you can see DataTables doing both horizontal and vertical scrolling at the same time. Note also that pagination is enabled in this example, and the scrolling accounts for this.
+
+]]></info>
+
+</dt-example>

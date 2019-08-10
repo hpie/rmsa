@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html" order="7">
+
+<css lib="datatables" />
+<js lib="jquery" />
+<js lib="datatables" />
+
+<title>Row selection and deletion (single row)</title>
+<js><![CDATA[
+
+$(document).ready(function() {
+	var table = $('#example').DataTable();
+
+	$('#example tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		}
+		else {
+			table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	} );
+
+	$('#button').click( function () {
+		table.row('.selected').remove().draw( false );
+	} );
+} );
+
+]]></js>
+
+<info><![CDATA[
+
+This example modifies the multiple row selection example by only allowing the selection of a single row. This is done by checking to see if the row already has a selected class, and if so removing it, but if not then the class is removed from all other rows in the table and then applied to the row being selected.
+
+Also shown is the `dt-api row().remove()` method which deletes a row from a table, and the `dt-api draw()` method with `false ` as its first parameter. This will redraw the table keeping the current paging (without the `false` parameter the paging would be reset to the first page).
+
+If you are looking for a more complete and easier to use row selection option, the [Select extension](https://datatables.net/extras/select) provides an API that is fully integrated with DataTables for selecting rows and acting upon that selection.
+
+]]></info>
+
+<demo-html>
+	<button id="button">Delete selected row</button>
+</demo-html>
+
+</dt-example>
