@@ -21,6 +21,13 @@ class Login_model extends CI_Model{
         if(count($result)){
             // If there is a user, then create session data
 
+            $data = array(
+                'id' => $result[0]['id'],
+                'username' => $result[0]['username'],
+                'validated' => true
+            );
+            $this->session->set_userdata($data);
+
             return true;
         }
 
