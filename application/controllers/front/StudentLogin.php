@@ -20,6 +20,10 @@ class StudentLogin extends MY_Controller{
             // if user did not validate, then show the login page again
             $this->index();
         }
+
+        //if student did validate then send them to home page
+        redirect('home');
+
     }
 
 }
