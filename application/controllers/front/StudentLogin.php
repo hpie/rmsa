@@ -9,5 +9,18 @@ class StudentLogin extends MY_Controller{
         $this->renderFront('front/studentlogin');
     }
 
+    public function process(){
+        //load the login model
+        $this->load->model('login_model');
+
+        //validate the user can login
+        $result = $this->login_model->validate();
+
+        if(!$result){
+            // if user did not validate, then show the login page again
+            $this->index();
+        }
+    }
+
 }
 ?>
