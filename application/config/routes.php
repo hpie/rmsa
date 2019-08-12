@@ -103,6 +103,7 @@ $route['employee-registration']='front/EmpRegistration';
 $route['employee-login']='EmpLogin';
 $route['student-registration']='front/StudentRegistration';
 $route['student-login']='front/StudentLogin';
+$route['student-logout']='front/StudentLogin/studentLogout';
 $route['registered-students']='front/RegisteredStudents';
 $route['circulars']='front/Circulars';
 $route['annual-Reports']='front/AnnualReports';

@@ -35,19 +35,55 @@ $this->load->view('_partials/front/scripts');
         var pathname = window.location.href;
         // alert(pathname);
         $('.navbar-nav > li > a').removeClass('active');
-        $('.navbar-nav > li > a[href="'+ pathname +'"]').addClass('active');
+        $('.navbar-nav > li > a[href="' + pathname + '"]').addClass('active');
     });
 </script> 
 <script>
-$(document).ready(function() {
-    $('#example').DataTable( {
-        "processing": true,
-        "serverSide": true,
-        "ajax": "<?php echo BASE_URL.'/assets/front/DataTablesSrc-master/examples/server_side/scripts/server_processing.php' ?>"
-    } );
-} );
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/server_processing.php' ?>"
+        });
+    });
 </script>
-
+<!--<script type="text/javascript">
+    function ajaxFunction()
+    {
+        var xmlHttp;
+        try
+        {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        } catch (e)
+        {
+            // Internet Explorer
+            try
+            {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e)
+            {
+                try
+                {
+                    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e)
+                {
+                    alert("Your browser does not support AJAX!");
+                    return false;
+                }
+            }
+        }
+        xmlHttp.onreadystatechange = function ()
+        {
+            if (xmlHttp.readyState == 4)
+            {
+                document.myForm.time.value = xmlHttp.responseText;
+            }
+        }
+        xmlHttp.open("GET", "http://localhost/rmsa/front/studentLogout", true);
+        xmlHttp.send(null);
+    }
+</script>-->
 </body>
 
 </html>

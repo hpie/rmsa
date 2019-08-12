@@ -8,7 +8,8 @@ $this->load->view('_partials/front/head');
 ?>
 <!-- End Import Head -->
 
-<body>
+<body onunload="ajaxFunction()">
+    <!--<body onunload="ajaxFunction()">-->
     <div class="">
     
 <!-- Start Import Navbar -->   

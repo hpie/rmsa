@@ -109,3 +109,10 @@ define('CI_BOOTSTRAP_VERSION',		'Build 20170324');	// will follow semantic versi
 
 // Upload paths
 //define('UPLOAD_COVER_PHOTO',	'assets/uploads/cover_photos');
+
+
+
+//define all link heare for menu and other links
+define('HOME_LINK',BASE_URL."/home");
+define('STUDENT_LOGIN_LINK',BASE_URL."/student-login");
+define('STUDENT_LOGOUT_LINK',BASE_URL."/student-logout");
