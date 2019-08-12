@@ -2,14 +2,14 @@
 <div class="col-md-6 col-sm-8  col-12">
     <div class="middle-area">
         <h1 class="heading">Registration of Students in the RMSA Portal</h1>
-        <form class="form-horizontal border p-2" action="#">
+        <form method="post" class="form-horizontal border p-2" action="<?= STUDENT_REGISTER_LINK ?>">
             <h2 class="second-heading">General Information</h2>
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="name">Student's
                         Name:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" id="name" placeholder="Enter Name ">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name ">
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                     <label class="control-label col-sm-4 col-xs-12" for="nickname">Student's
                         NickName: </label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" id="nickName"
+                        <input type="text" class="form-control" name="nickname" id="nickName"
                                placeholder="Enter Nick Name ">
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="Dob">Date of Birth:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="date" class="form-control" id="dob">
+                        <input type="date" class="form-control" name="dob" id="dob">
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     <label class="control-label col-sm-4 col-xs-12" for="fathername">Father's
                         Name:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" id="fathername"
+                        <input type="text" class="form-control" name="fathername" id="fathername"
                                placeholder="Enter Father Name">
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="distt">Distt:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control">
+                        <select class="form-control" name="dist">
                             <option> ---Select---</option>
                             <option> Bilaspur</option>
                             <option> Chamba</option>
@@ -83,7 +83,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="tehsil">Tehsil:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control">
+                        <select class="form-control" name="tehsil">
                             <option value="0">---Select---</option>
                         </select>
                     </div>
@@ -94,7 +94,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="school">School:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control">
+                        <select class="form-control" name="schoole">
                             <option value="0">---Select---</option>
                         </select>
                     </div>
@@ -106,7 +106,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="class">Class:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control">
+                        <select class="form-control" name="class">
                             <option value="ix">Class IX</option>
                             <option value="x">Class X</option>
                             <option value="xi">Class XI</option>
@@ -121,7 +121,7 @@
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp">Permission to Submit
                         Post:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="checkbox" class="from-control">
+                        <input type="checkbox" class="from-control" name="permission">
                         &nbsp;
                         <span>Check if Required </span>
                     </div>
