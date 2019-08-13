@@ -8,7 +8,7 @@ $this->load->view('_partials/front/head');
 ?>
 <!-- End Import Head -->
 
-<body onunload="ajaxFunction()">
+<body>
     <!--<body onunload="ajaxFunction()">-->
     <div class="">
     

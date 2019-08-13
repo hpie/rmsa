@@ -84,6 +84,14 @@ $this->load->view('_partials/front/scripts');
         xmlHttp.send(null);
     }
 </script>-->
+<script>
+    $('#fileupload').fileupload({
+        url: '<?php echo BASE_URL; ?>/assets/front/fileupload/server/php/index.php'
+    }).on('fileuploadsubmit', function (e, data) {
+        data.formData = data.context.find(':input').serializeArray();
+    });
+</script>       
+
 </body>
 
 </html>

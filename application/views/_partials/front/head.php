@@ -1,4 +1,4 @@
-<?php 
+<?php
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
     // request 30 minates ago
     session_destroy();
@@ -20,5 +20,18 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <script src="<?php echo BASE_URL; ?>/assets/front/js/jquery.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/assets/front/js/bootstrap.min.js"></script>
     <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <!-- Generic page styles -->        
+    <!-- blueimp Gallery styles -->
+    <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css"/>
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload.css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-ui.css" />
+    <!-- CSS adjustments for browsers with JavaScript disabled -->
+    <noscript><link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-noscript.css"/></noscript>
+    <noscript><link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-ui-noscript.css"/></noscript>
+
+
 </head>
 <!-- Head Section End -->

@@ -75,7 +75,6 @@ class FileDw extends MY_Controller {
 //                SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
 //        );
 //    }
-
 }
 
 ?>

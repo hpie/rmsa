@@ -109,4 +109,5 @@ $route['circulars']='front/Circulars';
 $route['annual-Reports']='front/AnnualReports';
 $route['contact-us']='front/ContactUs';
 $route['file-dw']='front/FileDw';
+$route['file-upload']='front/FileUpload';
 //$route['file-dw-data']='front/FileDw/FileDwData';
