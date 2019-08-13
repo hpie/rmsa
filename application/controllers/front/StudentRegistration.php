@@ -6,7 +6,14 @@ class StudentRegistration extends MY_Controller{
         parent::__construct();
     }
     public function index(){
-        $this->renderFront('front/studentregistration');
+
+        $this->load->model('register_model');
+
+        $data = array(
+            'distict' => $this->register_model->load_distict()
+        );
+
+        $this->renderFront('front/studentregistration',$data);
     }
     public function register(){
         //load the register model

@@ -20,5 +20,10 @@
 
         }
 
+        public function load_distict(){
+            $distict = $this->db->query("SELECT * FROM rmsa_districts WHERE rmsa_district_status='ACTIVE'");
+            return $distict->result_array();
+        }
+
     }
 ?>
