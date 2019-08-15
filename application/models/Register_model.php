@@ -4,26 +4,18 @@
             parent::__construct();
         }
 
-        public function register_student(){
-//            TODO
-//             Fetch all the information of the student
-//            actual schema is require for perfom the student register
-            $data = array(
-                'username' => $_POST['nickname'],
-                'first_name' =>$_POST['name']
-            );
-
-            $result = $this->db->insert('users',$data);
+        public function register_student($params){
+            $result = $this->db->insert('rmsa_student_users',$params);
             $insert_id = $this->db->insert_id();// get last insert id
-
-            return $result; //it will be return boolean value (true/false)
-
+            if(!empty($insert_id)){
+                return $insert_id;
+            }
+            return FALSE;
+             //it will be return boolean value (true/false)
         }
-
         public function load_distict(){
-            $distict = $this->db->query("SELECT * FROM rmsa_districts WHERE rmsa_district_status='ACTIVE'");
-            return $distict->result_array();
+            $distict = $this->db->query("SELECT * FROM rmsa_districts WHERE rmsa_district_status='ACTIVE'");           
+            return $distict->result_array();            
         }
-
     }
 ?>

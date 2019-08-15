@@ -12,9 +12,7 @@
 
 class UploadHandler
 {
-
     protected $options;
-
     // PHP File Upload error message codes:
     // https://php.net/manual/en/features.file-upload.errors.php
     protected $error_messages = array(

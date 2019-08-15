@@ -197,7 +197,6 @@ class MY_Controller extends MX_Controller {
 			else
 				$this->mPageTitle = humanize($this->mAction);
 		}
-
 		$this->mViewData['module'] = $this->mModule;
 		$this->mViewData['ctrler'] = $this->mCtrler;
 		$this->mViewData['action'] = $this->mAction;

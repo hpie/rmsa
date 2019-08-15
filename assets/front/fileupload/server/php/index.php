@@ -28,12 +28,12 @@ class CustomUploadHandler extends UploadHandler {
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) {
         $file = parent::handle_file_upload(
         	$uploaded_file, $name, $size, $type, $error, $index, $content_range
-        );
+        );       
         $filetitle=$file->title;
         $filetype=$file->type;
         $filedescription=$file->description;
         if (empty($file->error)) {
-		$sql = 'INSERT INTO `'.$this->options['db_table'].'` (`uploaded_file_type`, `uploaded_file_title`, `uploaded_file_desc`)'.' VALUES (?,?,?)';                
+		$sql = 'INSERT INTO `'.$this->options['db_table'].'` (`uploaded_file_type`, `uploaded_file_title`, `uploaded_file_desc`)'.' VALUES (?,?,?)';                 
 	        $query = $this->db->prepare($sql);              
 	        $query->bind_param(
                         'sss',                         
@@ -42,7 +42,7 @@ class CustomUploadHandler extends UploadHandler {
 	        	$filedescription
 	        );                
 	        $query->execute();               
-	        $file->id = $this->db->insert_id;
+	        $file->id = $this->db->insert_id;               
         }
         return $file;
     }
@@ -52,7 +52,7 @@ class CustomUploadHandler extends UploadHandler {
         	$sql = 'SELECT `rmsa_uploaded_file_id`, `uploaded_file_type`, `uploaded_file_title`, `uploaded_file_desc` FROM `'
         		.$this->options['db_table'].'` WHERE `rmsa_uploaded_file_id`=?';
         	$query = $this->db->prepare($sql);
- 	        $query->bind_param('s', $file->id);
+ 	        $query->bind_param('i', $file->id);
 	        $query->execute();
 	        $query->bind_result(
 	        	$id,

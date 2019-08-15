@@ -94,15 +94,14 @@
             <span>Cancel</span>
             </button>
             {% } %}
-                     <label class="title">
-                            <span>Title:</span><br>
-                            <input name="title[]" class="form-control">
-                        </label>
-                        <label class="description">
-                            <span>Description:</span><br>
-                            <input name="description[]" class="form-control">
-                        </label>
-                        
+            <label class="title">
+                <span>Title:</span><br>
+                <input name="title[]" class="form-control">
+            </label>
+            <label class="description">
+                <span>Description:</span><br>
+                <input name="description[]" class="form-control">
+            </label>                        
             </td>
             </tr>
             {% } %}
