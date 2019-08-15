@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class StudentRegistration extends MY_Controller{
     public function __construct(){
         parent::__construct();
@@ -15,6 +14,6 @@ class StudentRegistration extends MY_Controller{
         }        
         $this->mViewData['distResult'] =  $this->register_model->load_distict();           
         $this->renderFront('front/studentregistration');
-    }
+    }    
 }
-?>
+?>  

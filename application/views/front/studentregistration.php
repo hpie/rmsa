@@ -67,7 +67,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Distt:</label>
@@ -107,8 +106,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_class">Class:</label>
