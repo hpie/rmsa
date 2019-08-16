@@ -40,13 +40,14 @@ $this->load->view('_partials/front/scripts');
 </script> 
 <script>
     $(document).ready(function () {
-        $('#example').DataTable({
+        $('#example').DataTable({           
             "processing": true,
             "serverSide": true,
+            "paginationType": "full_numbers",
+            "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
             "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/server_processing.php' ?>"
         });
     });
 </script>
 </body>
-
 </html>

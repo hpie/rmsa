@@ -1,7 +1,7 @@
-<script src="<?php echo BASE_URL; ?>/assets/front/js/jquery-3.3.1.js"></script>
-<script src="<?php echo BASE_URL; ?>/assets/front/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/front/js/jquery-3.3.1.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL; ?>/assets/front/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 <script src="<?php echo BASE_URL; ?>/assets/front/js/main.js"></script>
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 <script src="<?php echo BASE_URL ?>/assets/front/fileupload/js/vendor/jquery.ui.widget.js"></script>
 <!-- The Templates plugin is included to render the upload/download listings -->
