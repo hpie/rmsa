@@ -3,7 +3,6 @@
         <h1 class="heading">View Information Uploaded on the Portal</h1>
         <form class="form-horizontal border p-2" action="#">
             <h2 class="second-heading">View Information</h2>
-
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="distt">Class:</label>
@@ -34,18 +33,20 @@
 <table id="example" class="display" style="width:100%">
     <thead>
         <tr>
-            <th>username</th>
-            <th>password</th>
-            <th>salt</th>
-            <th>email</th>            
+            <th>ID</th>
+            <th>First Name</th>
+            <th>DOB</th>
+            <th>Mobile No</th>
+            <th>Email</th>            
         </tr>
     </thead>
     <tfoot>
         <tr>
-            <th>username</th>
-            <th>password</th>
-            <th>salt</th>
-            <th>email</th> 
+            <th>ID</th>
+             <th>First Name</th>
+            <th>DOB</th>
+            <th>Mobile No</th>
+            <th>Email</th> 
         </tr>
     </tfoot>
 </table>
