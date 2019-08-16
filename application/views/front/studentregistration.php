@@ -71,7 +71,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Distt:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" name="rmsa_district_id">
+                        <select class="form-control" id="rmsa_district" name="rmsa_district_id">
                             <option class="" value="" disabled selected>------ Select ------</option>
                             <?php                            
                             if(!empty($distResult)){
@@ -90,7 +90,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_sub_district_id">Tehsil:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" name="rmsa_sub_district_id">
+                        <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
                             <option value="0">---Select---</option>
                         </select>
                     </div>
@@ -148,3 +148,24 @@
 
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+       $('#rmsa_district').on('change',function () {
+           var districtId = $(this).val();
+
+           $.ajax({
+               type : "POST",
+               url  : "<?php echo LOAD_TEHSIL ?>",
+               data : {'districtId' : districtId},
+               success:function (res) {
+                   var data =  jQuery.parseJSON(res);
+                   $("#sub_district").empty();
+                   $.each(data, function(index, value) {
+                       $("#sub_district").append(new Option(value.rmsa_town_name, value.rmsa_town_id));
+                   });
+               }
+           })
+       });
+    });
+</script>

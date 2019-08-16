@@ -117,3 +117,4 @@ define('HOME_LINK',BASE_URL."/home");
 define('STUDENT_LOGIN_LINK',BASE_URL."/student-login");
 define('STUDENT_LOGOUT_LINK',BASE_URL."/student-logout");
 define('STUDENT_REGISTER_LINK',BASE_URL."/student-registration");
+define('LOAD_TEHSIL',BASE_URL."/load-tehsil");

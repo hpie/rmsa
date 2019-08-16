@@ -14,6 +14,15 @@ class StudentRegistration extends MY_Controller{
         }        
         $this->mViewData['distResult'] =  $this->register_model->load_distict();           
         $this->renderFront('front/studentregistration');
-    }    
+    }
+
+    public function load_tehsil(){
+        if($_REQUEST['districtId']){
+            $tehsil = $this->register_model->load_tehsil($_POST);
+
+            echo json_encode($tehsil);
+        }
+
+    }
 }
 ?>  
