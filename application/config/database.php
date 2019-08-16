@@ -73,12 +73,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+
+define('USERNAME','root');
+define('PASSWORD','');
+define('DATABASE','rmsa');
+
+
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'rmsa',
+	'username' => USERNAME,
+	'password' => PASSWORD,
+	'database' => DATABASE,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

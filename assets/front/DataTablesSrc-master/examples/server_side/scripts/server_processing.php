@@ -38,9 +38,9 @@ $columns = array(
 
 // SQL server connection information
 $sql_details = array(
-    'user' => 'root',
-    'pass' => '',
-    'db' => 'rmsa',
+    'user' => USERNAME,
+    'pass' => PASSWORD,
+    'db' => DATABASE,
     'host' => 'localhost'
 );
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
