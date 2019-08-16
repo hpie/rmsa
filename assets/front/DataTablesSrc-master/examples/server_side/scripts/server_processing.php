@@ -28,19 +28,16 @@ $primaryKey = 'rmsa_user_id';
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
-$columns = array(
-    array('db' => 'rmsa_user_id', 'dt' => 0),
+$columns = array(       
+    array('db' => 'rmsa_user_DOB', 'dt' => 0),
     array('db' => 'rmsa_user_first_name', 'dt' => 1),
-    array('db' => 'rmsa_user_DOB', 'dt' => 2),
-    array('db' => 'rmsa_user_mobile_no', 'dt' => 3),
-    array('db' => 'rmsa_user_email_id', 'dt' => 4)
+    array('db' => 'rmsa_user_email_id', 'dt' => 2)
 );
-
 // SQL server connection information
 $sql_details = array(
-    'user' => USERNAME,
-    'pass' => PASSWORD,
-    'db' => DATABASE,
+    'user' => 'root',
+    'pass' => '',
+    'db' => 'rmsa',
     'host' => 'localhost'
 );
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

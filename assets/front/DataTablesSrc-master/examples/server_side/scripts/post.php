@@ -19,53 +19,38 @@
  */
 
 // DB table to use
-$table = 'datatables_demo';
+$table = 'rmsa_student_users';
 
 // Table's primary key
-$primaryKey = 'id';
+$primaryKey = 'rmsa_user_id';
 
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
-// parameter represents the DataTables column identifier. In this case object
-// parameter names
-$columns = array(
-	array( 'db' => 'first_name', 'dt' => 'first_name' ),
-	array( 'db' => 'last_name',  'dt' => 'last_name' ),
-	array( 'db' => 'position',   'dt' => 'position' ),
-	array( 'db' => 'office',     'dt' => 'office' ),
-	array(
-		'db'        => 'start_date',
-		'dt'        => 'start_date',
-		'formatter' => function( $d, $row ) {
-			return date( 'jS M y', strtotime($d));
-		}
-	),
-	array(
-		'db'        => 'salary',
-		'dt'        => 'salary',
-		'formatter' => function( $d, $row ) {
-			return '$'.number_format($d);
-		}
-	)
+// parameter represents the DataTables column identifier. In this case simple
+// indexes
+$columns = array(       
+    array('db' => 'rmsa_user_first_name', 'dt' => 0),
+    array('db' => 'rmsa_user_gender', 'dt' => 1),
+    array('db' => 'rmsa_user_DOB', 'dt' => 2),
+    array('db' => 'rmsa_user_class', 'dt' => 3),
+    array('db' => 'rmsa_user_mobile_no', 'dt' => 4),
+    array('db' => 'rmsa_user_email_id', 'dt' => 5)
 );
 
 // SQL server connection information
 $sql_details = array(
-	'user' => '',
-	'pass' => '',
-	'db'   => '',
-	'host' => ''
+    'user' => 'root',
+    'pass' => '',
+    'db' => 'rmsa',
+    'host' => 'localhost'
 );
-
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.
  */
-
 require( 'ssp.class.php' );
-
 echo json_encode(
-	SSP::simple( $_POST, $sql_details, $table, $primaryKey, $columns )
+        SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns)
 );
+
 

@@ -45,13 +45,7 @@ $this->load->view('_partials/front/scripts');
             "serverSide": true,
             "paginationType": "full_numbers",
             "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-            "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/server_processing.php' ?>",
-            columns: [
-                {"data": "rmsa_user_first_name"},
-                {"data": "rmsa_user_DOB"},
-                {"data": "rmsa_user_mobile_no"},
-                {"data": "rmsa_user_email_id"}
-          ]
+            "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/server_processing.php' ?>"
         });
     });
 </script>

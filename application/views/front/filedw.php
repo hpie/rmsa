@@ -33,19 +33,21 @@
 <table id="example" class="display" style="width:100%">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>DOB</th>
-            <th>Mobile No</th>
-            <th>Email</th>            
+            <th>Name</th>   
+            <th>Gender</th>
+<!--            <th>DOB</th>
+            <th>Class</th>   
+            <th>Mobile No</th> -->
+            <th>Email</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
-            <th>ID</th>
-             <th>First Name</th>
-            <th>DOB</th>
-            <th>Mobile No</th>
+            <th>Name</th>   
+            <th>Gender</th>
+<!--            <th>DOB</th>
+            <th>Class</th>   
+            <th>Mobile No</th> -->
             <th>Email</th> 
         </tr>
     </tfoot>

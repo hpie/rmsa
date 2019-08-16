@@ -2,9 +2,9 @@
 $options = array(
     'delete_type' => 'POST',
     'db_host' => 'localhost',
-    'db_user' => USERNAME,
-    'db_pass' => PASSWORD,
-    'db_name' => DATABASE,
+    'db_user' => 'root',
+    'db_pass' => '',
+    'db_name' => 'rmsa',
     'db_table' => 'rmsa_uploaded_files'
 );
 error_reporting(E_ALL | E_STRICT);
