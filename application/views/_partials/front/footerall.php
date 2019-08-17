@@ -76,7 +76,7 @@ $this->load->view('_partials/front/allnotify');
                         var data = jQuery.parseJSON(res);
                         $("#sub_district").empty();
                         $.each(data, function (index, value) {
-                            $("#sub_district").append(new Option(value.rmsa_town_name, value.rmsa_town_id));
+                            $("#sub_district").append(new Option(value.rmsa_sub_district_name, value.rmsa_sub_district_id));
                         });
                     }
                 })

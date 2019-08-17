@@ -19,7 +19,7 @@
         }
         public function load_tehsil($params){
             $districtId = $params['districtId'];
-            $tehsil = $this->db->query("SELECT * FROM rmsa_towns WHERE rmsa_district_id = {$districtId} AND rmsa_town_status = 'ACTIVE'");
+            $tehsil = $this->db->query("SELECT * FROM rmsa_sub_districts WHERE rmsa_district_id = {$districtId} AND rmsa_sub_district_status = 'ACTIVE'");
             return $tehsil->result_array();
         }
     }
