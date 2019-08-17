@@ -6,6 +6,7 @@ class EmpLogin extends MY_Controller{
         parent::__construct();
     }
     public function index(){
+        $this->mViewData['title']=' - Employee Login';
         $this->renderFront('front/emplogin');
     }
 

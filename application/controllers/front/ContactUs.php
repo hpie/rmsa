@@ -6,6 +6,7 @@ class ContactUs extends MY_Controller{
         parent::__construct();
     }
     public function index(){
+        $this->mViewData['title']=' - Contact Us';
         $this->renderFront('front/contactus');
     }
 

@@ -9,6 +9,7 @@ class FileDw extends MY_Controller {
     }
 
     public function index() {
+        $this->mViewData['title']=' - FileDw';
         $this->renderFront('front/filedw');
     }
 }

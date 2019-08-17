@@ -28,7 +28,6 @@ $this->load->view('_partials/front/scripts');
 <!-- End Import Scripts -->
 
 </div>
-
 <script>
     $(document).ready(function () {
         // get current URL path and assign 'active' class
@@ -37,17 +36,54 @@ $this->load->view('_partials/front/scripts');
         $('.navbar-nav > li > a').removeClass('active');
         $('.navbar-nav > li > a[href="' + pathname + '"]').addClass('active');
     });
-</script> 
+</script>
+<?php
+//all notification include
+$this->load->view('_partials/front/allnotify');
+?>
+<?php if ($title == ' - FileDw') {
+    ?> 
 <script>
     $(document).ready(function () {
-        $('#example').DataTable({           
+        $('#example').DataTable({            
             "processing": true,
             "serverSide": true,
             "paginationType": "full_numbers",
             "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-            "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/server_processing.php' ?>"
+            "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/server_processing.php' ?>",
+            "columns": [
+                {"data": "rmsa_user_id"},
+                {"data": "rmsa_user_first_name"},
+                {"data": "rmsa_user_gender"},
+                {"data": "rmsa_user_DOB"},
+                {"data": "rmsa_user_email_id"}
+            ]
         });
     });
 </script>
+<?php } ?>
+<?php if ($title == ' - Student Registration') {
+    ?>          
+    <script>
+        $(document).ready(function () {
+            $('#rmsa_district').on('change', function () {
+                var districtId = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo LOAD_TEHSIL ?>",
+                    data: {'districtId': districtId},
+                    success: function (res) {
+                        var data = jQuery.parseJSON(res);
+                        $("#sub_district").empty();
+                        $.each(data, function (index, value) {
+                            $("#sub_district").append(new Option(value.rmsa_town_name, value.rmsa_town_id));
+                        });
+                    }
+                })
+            });
+        });
+    </script>
+    <?php }
+?>
 </body>
 </html>

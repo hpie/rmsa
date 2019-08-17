@@ -17,7 +17,8 @@ class StudentLogin extends MY_Controller{
                 $_SESSION['invalid_login'] = 1;
             }
         }
-            $this->renderFront('front/studentlogin');       
+        $this->mViewData['title']=' - Student Login';
+        $this->renderFront('front/studentlogin');       
     }
     public function studentLogout() {
         $this->session->sessionDestroy();

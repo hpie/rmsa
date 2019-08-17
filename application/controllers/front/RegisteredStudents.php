@@ -6,6 +6,7 @@ class RegisteredStudents  extends MY_Controller{
         parent::__construct();
     }
     public function index(){
+        $this->mViewData['title']=' - Registered Students';
         $this->renderFront('front/registeredstudents');
     }
 }

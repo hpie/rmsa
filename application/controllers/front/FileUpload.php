@@ -6,6 +6,7 @@ class FileUpload extends MY_Controller{
         parent::__construct();
     }
     public function index(){
+        $this->mViewData['title']=' - File Upload';
         $this->renderFront('front/file_upload');
     }
 }

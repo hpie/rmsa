@@ -6,6 +6,7 @@ class Organization extends MY_Controller{
         parent::__construct();
     }
     public function index(){
+        $this->mViewData['title']=' - Organization';
         $this->renderFront('front/organization');
     }
 

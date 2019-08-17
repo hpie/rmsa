@@ -8,6 +8,7 @@ class Home extends MY_Controller {
         parent::__construct();
     }    
     public function index() {
+        $this->mViewData['title']=' - Home';
         $this->renderFront('front/index');
     }   
 }

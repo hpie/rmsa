@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/font-awesome.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/main.css">
-
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/main.css">    
     <script src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
 </head>

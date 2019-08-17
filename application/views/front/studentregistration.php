@@ -148,24 +148,3 @@
 
     </div>
 </div>
-
-<script>
-    $(document).ready(function(){
-       $('#rmsa_district').on('change',function () {
-           var districtId = $(this).val();
-
-           $.ajax({
-               type : "POST",
-               url  : "<?php echo LOAD_TEHSIL ?>",
-               data : {'districtId' : districtId},
-               success:function (res) {
-                   var data =  jQuery.parseJSON(res);
-                   $("#sub_district").empty();
-                   $.each(data, function(index, value) {
-                       $("#sub_district").append(new Option(value.rmsa_town_name, value.rmsa_town_id));
-                   });
-               }
-           })
-       });
-    });
-</script>

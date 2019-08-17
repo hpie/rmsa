@@ -12,17 +12,16 @@ class StudentRegistration extends MY_Controller{
                 redirect(HOME_LINK);
             }
         }        
-        $this->mViewData['distResult'] =  $this->register_model->load_distict();           
+        $this->mViewData['distResult'] =  $this->register_model->load_distict();  
+        $this->mViewData['title']=' - Student Registration';
         $this->renderFront('front/studentregistration');
     }
 
     public function load_tehsil(){
         if($_REQUEST['districtId']){
             $tehsil = $this->register_model->load_tehsil($_POST);
-
             echo json_encode($tehsil);
         }
-
     }
 }
 ?>  
