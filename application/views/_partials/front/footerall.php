@@ -81,6 +81,23 @@ $this->load->view('_partials/front/allnotify');
                     }
                 })
             });
+
+            $('#sub_district').on('change',function () {
+               var subDistrictId = $(this).val();
+
+               $.ajax({
+                  type : "POST",
+                  url  : "<?php echo LOAD_SCHOOL ?>",
+                  data : {'subDistrictId' : subDistrictId},
+                  success : function (res) {
+                        var school = $.parseJSON(res);
+                        $("#rmsa_school").empty();
+                        $.each(school,function (index,value) {
+                           $("#rmsa_school").append(new Option(value.rmsa_school_title,value.rmsa_school_id));
+                        });
+                  }
+               });
+            });
         });
     </script>
     <?php }

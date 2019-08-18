@@ -100,7 +100,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" name="rmsa_school_id">
+                        <select class="form-control" id="rmsa_school" name="rmsa_school_id">
                             <option value="0">---Select---</option>
                         </select>
                     </div>

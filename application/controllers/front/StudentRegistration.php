@@ -23,5 +23,11 @@ class StudentRegistration extends MY_Controller{
             echo json_encode($tehsil);
         }
     }
+    public function load_school(){
+        if($_REQUEST['subDistrictId']){
+            $school = $this->register_model->load_school($_POST);
+            echo json_encode($school);
+        }
+    }
 }
 ?>  
