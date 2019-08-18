@@ -51,9 +51,9 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="Gender">Gender:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="radio" name="rmsa_user_gender" value="Male">&nbsp;<span>Male</span>
-                        <input type="radio" name="rmsa_user_gender" value="Female">&nbsp;<span>Female</span>
-                        <input type="radio" name="rmsa_user_gender" value="Other">&nbsp;<span>Other</span>
+                        <input type="radio" name="rmsa_user_gender" value="M">&nbsp;<span>Male</span>
+                        <input type="radio" name="rmsa_user_gender" value="F">&nbsp;<span>Female</span>
+                        <input type="radio" name="rmsa_user_gender" value="O">&nbsp;<span>Other</span>
                     </div>
                 </div>
             </div>
