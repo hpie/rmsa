@@ -6,7 +6,9 @@
             <th>Name</th>
             <th>Gender</th>
             <th>DOB</th>
-            <th>Email</th>           >
+            <th>Email</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tfoot>
@@ -15,6 +17,9 @@
             <th>Name</th>
             <th>Gender</th>
             <th>DOB</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
         </tr>
         </tfoot>
     </table>

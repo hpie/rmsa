@@ -77,7 +77,23 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_first_name"},
                     {"data": "rmsa_user_gender"},
                     {"data": "rmsa_user_DOB"},
-                    {"data": "rmsa_user_email_id"}
+                    {"data": "rmsa_user_email_id"},
+                    {
+                        "render": function (data, type, row, meta) {
+                            return $('<button></button>',{
+                                'class': 'btn btn-success',
+                                'text': 'Approve'
+                            }).prop("outerHTML");
+                        }
+                    },
+                    {
+                        "render": function (data, type, row, meta) {
+                            return $('<button></button>',{
+                                'class': 'btn btn-danger',
+                                'text': 'Reject'
+                            }).prop("outerHTML");
+                        }
+                    }
                 ]
             });
         });
