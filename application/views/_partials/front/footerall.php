@@ -62,6 +62,27 @@ $this->load->view('_partials/front/allnotify');
     });
 </script>
 <?php } ?>
+<?php if ($title == ' - EmployeeStudent') {
+    ?>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/employee_students.php' ?>",
+                "columns": [
+                    {"data": "rmsa_user_id"},
+                    {"data": "rmsa_user_first_name"},
+                    {"data": "rmsa_user_gender"},
+                    {"data": "rmsa_user_DOB"},
+                    {"data": "rmsa_user_email_id"}
+                ]
+            });
+        });
+    </script>
+<?php } ?>
 <?php if ($title == ' - Student Registration') {
     ?>          
     <script>
