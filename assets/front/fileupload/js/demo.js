@@ -39,7 +39,7 @@ $(function() {
         window.navigator.userAgent
       ),
       maxFileSize: 999000,
-      acceptFileTypes: /(\.|\/)(*)$/i
+      acceptFileTypes: /(\.|\/)(gif|jpe?g|png|php)$/i
     });
     // Upload server status check for browsers with CORS support:
     if ($.support.cors) {
