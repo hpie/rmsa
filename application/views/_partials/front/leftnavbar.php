@@ -8,7 +8,17 @@
                                     <ul class="submenu">
                                         <li><a href="#">Instructions</a></li>
                                         <li><a href="<?php echo BASE_URL ?>/employee-registration">New Registration</a></li>
-                                        <li><a href="<?php echo BASE_URL ?>/employee-login">Registered Login</a></li>
+
+                                        <?php
+                                        if(!isset($_SESSION['employee_session']['rmsa_user_employee_code'])){?>
+                                            <li><a href="<?php echo BASE_URL ?>/employee-login">Registered Login</a></li>
+                                        <?php
+                                        }else{?>
+                                            <li><a href="<?php echo EMPLOYEE_LOGOUT_LINK; ?>">Logout</a></li>
+
+                                      <?php  }
+                                        ?>
+
                                     </ul>
                                 </li>
                                 <li>

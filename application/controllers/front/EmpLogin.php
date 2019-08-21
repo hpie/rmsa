@@ -21,5 +21,10 @@ class EmpLogin extends MY_Controller{
         $this->renderFront('front/emplogin');
     }
 
+    public function employeeLogout() {
+        unset($_SESSION['employee_session']);
+        redirect(EMPLOYEE_LOGIN_LINK);
+    }
+
 }
 ?>

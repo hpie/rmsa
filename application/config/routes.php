@@ -101,6 +101,7 @@ $route['about-us']='front/About';
 $route['organization']='front/Organization';
 $route['employee-registration']='front/EmpRegistration';
 $route['employee-login']='front/EmpLogin';
+$route['employee-logout']='front/EmpLogin/employeeLogout';
 $route['student-registration']='front/StudentRegistration';
 $route['load-tehsil']='front/StudentRegistration/load_tehsil';
 $route['load-school']='front/StudentRegistration/load_school';

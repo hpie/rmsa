@@ -14,7 +14,7 @@ class Emp_Login extends CI_Model{
 
         if (isset($emp_data)){
             if ($username == $emp_data['rmsa_user_email_id'] && $password == $emp_data['rmsa_user_email_password']) {
-                $this->session->sessionAdmin($emp_data);
+                $this->session->sessionEmployee($emp_data);
                 return true;
             }
         }
