@@ -71,7 +71,14 @@ $this->load->view('_partials/front/allnotify');
                 "serverSide": true,
                 "paginationType": "full_numbers",
                 "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-                "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/employee_students.php' ?>",
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/employee_students.php' ?>",
+                    'data': {
+                        rmsa_school_id: <?php echo $_SESSION['employee_session']['rmsa_school_id'] ?>,
+                        // etc..
+                    }
+                },
                 "columns": [
                     {"data": "rmsa_user_id"},
                     {"data": "rmsa_user_first_name"},
