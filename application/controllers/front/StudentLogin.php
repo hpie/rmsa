@@ -24,5 +24,17 @@ class StudentLogin extends MY_Controller{
         $this->session->sessionDestroy();
         redirect(STUDENT_LOGIN_LINK);
     }
+    public function approveStudent(){
+        if(isset($_REQUEST['rmsa_user_id'])){
+            $res = $this->login_model->approve_student($_REQUEST['rmsa_user_id']);
+
+            if($res){
+                 $data = array(
+                     'suceess' => true
+                 );
+            }
+            echo json_encode($data);
+        }
+    }
 }
 ?>

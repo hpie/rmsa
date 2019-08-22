@@ -88,8 +88,9 @@ $this->load->view('_partials/front/allnotify');
                     {
                         "render": function (data, type, row, meta) {
                             return $('<button></button>',{
-                                'class': 'btn btn-success',
-                                'text': 'Approve'
+                                'class': 'btn btn-success btn_approve',
+                                'text': 'Approve',
+                                 'data-id' : row.rmsa_user_id
                             }).prop("outerHTML");
                         }
                     },
@@ -103,6 +104,24 @@ $this->load->view('_partials/front/allnotify');
                     }
                 ]
             });
+            $(document).on('click','.btn_approve',function () {
+                var rmsa_user_id = $(this).data('id');
+
+                $.ajax({
+                   type : "POST",
+                   url  : "<?php echo STUDENT_APPROVE ?>",
+                   data : {'rmsa_user_id':rmsa_user_id},
+                   success : function(res){
+
+                      var res = $.parseJSON(res);
+                      if(res.suceess){
+                          alert('Approved');
+                      }
+                   }
+                });
+            });
+
+
         });
     </script>
 <?php } ?>

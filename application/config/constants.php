@@ -120,3 +120,4 @@ define('EMPLOYEE_LOGIN_LINK',BASE_URL."/employee-login");
 define('EMPLOYEE_LOGOUT_LINK',BASE_URL."/employee-logout");
 define('LOAD_TEHSIL',BASE_URL."/load-tehsil");
 define('LOAD_SCHOOL',BASE_URL."/load-school");
+define('STUDENT_APPROVE',BASE_URL."/student-approve");
