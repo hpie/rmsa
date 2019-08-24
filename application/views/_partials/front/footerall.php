@@ -170,5 +170,33 @@ $this->load->view('_partials/front/allnotify');
     </script>
     <?php }
 ?>
+<!--//this script will be run for all pages-->
+<?php
+if($_SESSION['rmsa_student_login_active']==1) {
+    //student will be logout if admin logout them from to backend
+
+//    TODO
+//    please run this sql on backend
+//    ALTER TABLE `rmsa_student_users` ADD `rmsa_student_login_active` INT(1) NOT NULL AFTER `modified_dt`;
+    ?>
+    <script>
+        $(document).ready(function () {
+            window.setInterval(function(){
+                $.ajax({
+                    type : "POST",
+                    url  : "<?php echo IS_STUDENT_ACTIVE ?>",
+                    success:function (res) {
+                        var check = $.parseJSON(res);
+                        if(!check.isactive){
+                            location.href = "<?php echo STUDENT_LOGOUT_LINK ?>"
+                        }
+                    }
+                });
+            }, 5000);
+        });
+    </script>
+    <?php
+}
+?>
 </body>
 </html>

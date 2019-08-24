@@ -108,6 +108,7 @@ $route['load-school']='front/StudentRegistration/load_school';
 $route['student-login']='front/StudentLogin';
 $route['student-logout']='front/StudentLogin/studentLogout';
 $route['student-approve']='front/StudentLogin/approveStudent';
+$route['is-student-active']='front/StudentLogin/isStudentActive';
 $route['registered-students']='front/RegisteredStudents';
 $route['circulars']='front/Circulars';
 $route['annual-Reports']='front/AnnualReports';
