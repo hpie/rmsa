@@ -652,27 +652,44 @@ class CI_Session {
      * @return	void
      */
     public function set_userdata($data, $value = NULL) {
-        print_r($data);
-        die;
+//        print_r($data);
+//        die;
         if (is_array($data)) {
             foreach ($data as $key => &$value) {
                 $_SESSION[$key] = $value;
             }
-
             return;
         }
-
         $_SESSION[$data] = $value;
     }
-
-    public function sessionAdmin($row) {
+    public function sessionStudent($row) {
         foreach ($row as $key => &$value) {
-            $_SESSION[$key] = $value;
+            $_SESSION['st_'.$key] = $value;
         }
         return;
     }
-
-    function sessionDestroy() {
+    public function sessionEmployee($row) {
+        foreach ($row as $key => &$value) {
+            $_SESSION['emp_'.$key] = $value;
+        }
+        return;
+    } 
+    public function sessionCheckStudent() {
+        if (!isset($_SESSION['st_rmsa_user_id'])) {
+            redirect(STUDENT_LOGIN_LINK);
+            return false;
+        }
+        return true;
+    }
+    public function sessionCheckEmployee() {
+        if (!isset($_SESSION['emp_rmsa_user_id'])) {
+            redirect(EMPLOYEE_LOGIN_LINK);
+            return false;
+        }
+        return true;
+    }
+    
+    public function sessionDestroy() {
         session_destroy();
     }
         

@@ -50,7 +50,7 @@ $this->load->view('_partials/front/allnotify');
             "serverSide": true,
             "paginationType": "full_numbers",
             "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-            "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/server_processing.php' ?>",
+             "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/server_processing.php' ?>",
             "columns": [
                 {"data": "rmsa_user_id"},
                 {"data": "rmsa_user_first_name"},

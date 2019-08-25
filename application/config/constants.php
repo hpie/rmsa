@@ -116,6 +116,7 @@ define('HOME_LINK',BASE_URL."/home");
 define('STUDENT_LOGIN_LINK',BASE_URL."/student-login");
 define('STUDENT_LOGOUT_LINK',BASE_URL."/student-logout");
 define('STUDENT_REGISTER_LINK',BASE_URL."/student-registration");
+define('EMPLOYEE_LOGOUT_LINK',BASE_URL."/employee-logout");
 define('EMPLOYEE_LOGIN_LINK',BASE_URL."/employee-login");
 define('LOAD_TEHSIL',BASE_URL."/load-tehsil");
 define('LOAD_SCHOOL',BASE_URL."/load-school");

@@ -1,5 +1,4 @@
 <?php
-
 /*
  * DataTables example server-side processing script.
  *

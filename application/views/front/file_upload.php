@@ -1,7 +1,7 @@
 <!-- content -->
 <div class="col-md-9 col-sm-9  col-12">
-    <div class="middle-area">
-        <div class="container">
+    <div class="middle-area container">
+        <div class="">
             <h1>File Upload</h1>         
             <!-- The file upload form used as target for the file upload widget -->
             <form id="fileupload" action="https://jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
@@ -75,29 +75,36 @@
             <p class="size">Processing...</p>
             <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
             </td>
-            <td>
-            {% if (!o.options.autoUpload && o.options.edit && o.options.loadImageFileTypes.test(file.type)) { %}
-            <button class="btn btn-success edit" data-index="{%=i%}" disabled>
-            <i class="glyphicon glyphicon-edit"></i>
-            <span>Edit</span>
-            </button>
-            {% } %}
+            <td>           
             {% if (!i && !o.options.autoUpload) { %}
-            <button class="btn btn-primary start" disabled>
+            <br>
+            <button class="btn btn-primary start form-control" disabled>
             <i class="glyphicon glyphicon-upload"></i>
             <span>Start</span>
             </button>
-            {% } %}
-            {% if (!i) { %}
-            {% } %}
+            <td>
+            {% } %}                       
             <label class="title">
                 <span>Title:</span><br>
                 <input name="title[]" class="form-control">
             </label>
+            </td>
+            <td>
             <label class="description">
                 <span>Description:</span><br>
                 <input name="description[]" class="form-control">
-            </label>                        
+            </label> 
+            </td>
+            <td>
+            <label class="description">
+                <span>File Type:</span><br>
+                <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </label>
             </td>
             </tr>
             {% } %}

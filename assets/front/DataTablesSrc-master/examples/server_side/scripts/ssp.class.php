@@ -233,7 +233,7 @@ class SSP {
 	 *  @return array          Server-side processing response array
 	 */
 	static function simple ( $request, $conn, $table, $primaryKey, $columns )
-	{
+	{            
 		$bindings = array();
 		$db = self::db( $conn );
 

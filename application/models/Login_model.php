@@ -11,7 +11,7 @@ class Login_model extends CI_Model{
         if (isset($row))
         {
             if ($username == $row['rmsa_user_email_id'] && $password == $row['rmsa_user_email_password']) {               
-                $this->session->sessionAdmin($row);
+                $this->session->sessionStudent($row);
                 return true;
             }
         }
