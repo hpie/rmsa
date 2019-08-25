@@ -668,6 +668,7 @@ class CI_Session {
         }
         return;
     }
+<<<<<<< HEAD
     public function sessionEmployee($row) {
         foreach ($row as $key => &$value) {
             $_SESSION['emp_'.$key] = $value;
@@ -690,6 +691,19 @@ class CI_Session {
     }
     
     public function sessionDestroy() {
+=======
+
+    public function sessionEmployee($row) {
+        $emp_data = array();
+        foreach ($row as $key => &$value) {
+            $emp_data [$key] = $value;
+        }
+        $_SESSION['employee_session'] = $emp_data;
+        return;
+    }
+
+    function sessionDestroy() {
+>>>>>>> d43abd0d428ba7d06cd3a8a11bac94d097164eba
         session_destroy();
     }
         

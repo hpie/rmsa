@@ -20,9 +20,18 @@ class EmpLogin extends MY_Controller{
         $this->mViewData['title']=' - Employee Login';
         $this->renderFront('front/emplogin');
     }
+<<<<<<< HEAD
     public function employeeLogout() {
         $this->session->sessionDestroy();
         redirect(EMPLOYEE_LOGIN_LINK);
     }
+=======
+
+    public function employeeLogout() {
+        unset($_SESSION['employee_session']);
+        redirect(EMPLOYEE_LOGIN_LINK);
+    }
+
+>>>>>>> d43abd0d428ba7d06cd3a8a11bac94d097164eba
 }
 ?>

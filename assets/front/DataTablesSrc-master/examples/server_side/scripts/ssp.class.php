@@ -232,8 +232,13 @@ class SSP {
 	 *  @param  array $columns Column information array
 	 *  @return array          Server-side processing response array
 	 */
+<<<<<<< HEAD
 	static function simple ( $request, $conn, $table, $primaryKey, $columns )
 	{            
+=======
+	static function simple ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	{
+>>>>>>> d43abd0d428ba7d06cd3a8a11bac94d097164eba
 		$bindings = array();
 		$db = self::db( $conn );
 
@@ -241,6 +246,14 @@ class SSP {
 		$limit = self::limit( $request, $columns );
 		$order = self::order( $request, $columns );
 		$where = self::filter( $request, $columns, $bindings );
+
+        if ($where_custom) {
+            if ($where) {
+                $where .= ' AND ' . $where_custom;
+            } else {
+                $where .= 'WHERE ' . $where_custom;
+            }
+        }
 
 		// Main query to actually get the data
 		$data = self::sql_exec( $db, $bindings,

@@ -71,7 +71,14 @@ $this->load->view('_partials/front/allnotify');
                 "serverSide": true,
                 "paginationType": "full_numbers",
                 "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-                "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/employee_students.php' ?>",
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/examples/server_side/scripts/employee_students.php' ?>",
+                    'data': {
+                        rmsa_school_id: <?php echo $_SESSION['employee_session']['rmsa_school_id'] ?>,
+                        // etc..
+                    }
+                },
                 "columns": [
                     {"data": "rmsa_user_id"},
                     {"data": "rmsa_user_first_name"},
@@ -81,8 +88,9 @@ $this->load->view('_partials/front/allnotify');
                     {
                         "render": function (data, type, row, meta) {
                             return $('<button></button>',{
-                                'class': 'btn btn-success',
-                                'text': 'Approve'
+                                'class': 'btn btn-success btn_approve',
+                                'text': 'Approve',
+                                 'data-id' : row.rmsa_user_id
                             }).prop("outerHTML");
                         }
                     },
@@ -96,6 +104,24 @@ $this->load->view('_partials/front/allnotify');
                     }
                 ]
             });
+            $(document).on('click','.btn_approve',function () {
+                var rmsa_user_id = $(this).data('id');
+
+                $.ajax({
+                   type : "POST",
+                   url  : "<?php echo STUDENT_APPROVE ?>",
+                   data : {'rmsa_user_id':rmsa_user_id},
+                   success : function(res){
+
+                      var res = $.parseJSON(res);
+                      if(res.suceess){
+                          alert('Approved');
+                      }
+                   }
+                });
+            });
+
+
         });
     </script>
 <?php } ?>
@@ -143,6 +169,34 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
     <?php }
+?>
+<!--//this script will be run for all pages-->
+<?php
+if($_SESSION['rmsa_student_login_active']==1) {
+    //student will be logout if admin logout them from to backend
+
+//    TODO
+//    please run this sql on backend
+//    ALTER TABLE `rmsa_student_users` ADD `rmsa_student_login_active` INT(1) NOT NULL AFTER `modified_dt`;
+    ?>
+    <script>
+        $(document).ready(function () {
+            window.setInterval(function(){
+                $.ajax({
+                    type : "POST",
+                    url  : "<?php echo IS_STUDENT_ACTIVE ?>",
+                    success:function (res) {
+                        var check = $.parseJSON(res);
+                        if(!check.isactive){
+                            location.href = "<?php echo STUDENT_LOGOUT_LINK ?>"
+                        }
+                    }
+                });
+            }, 5000);
+        });
+    </script>
+    <?php
+}
 ?>
 </body>
 </html>
