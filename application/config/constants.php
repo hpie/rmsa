@@ -122,3 +122,4 @@ define('LOAD_TEHSIL',BASE_URL."/load-tehsil");
 define('LOAD_SCHOOL',BASE_URL."/load-school");
 define('STUDENT_APPROVE',BASE_URL."/student-approve");
 define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
+define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
