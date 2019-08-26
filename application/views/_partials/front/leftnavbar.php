@@ -1,4 +1,4 @@
-			<!-- LeftNavbar Start -->  
+			<!-- LeftNavbar Start -->
 
                     <div class="col-md-3 col-sm-3  collapse navbar-collapse" id="slide-navbar-collapse">
                         <div class="left-side-area">
@@ -10,7 +10,7 @@
                                         <li><a href="<?php echo BASE_URL ?>/employee-registration">New Registration</a></li>
 
                                         <?php
-                                        if(!isset($_SESSION['employee_session']['rmsa_user_employee_code'])){?>
+                                        if(!isset($_SESSION['emp_rmsa_user_id'])){?>
                                             <li><a href="<?php echo BASE_URL ?>/employee-login">Registered Login</a></li>
                                         <?php
                                         }else{?>
