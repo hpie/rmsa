@@ -21,8 +21,6 @@ $file = $_SERVER['DOCUMENT_ROOT'].'/datatables/pdo.php';
 if ( is_file( $file ) ) {
 	include( $file );
 }
-
-
 class SSP {
 	/**
 	 * Create the data output array for the DataTables rows
@@ -232,13 +230,9 @@ class SSP {
 	 *  @param  array $columns Column information array
 	 *  @return array          Server-side processing response array
 	 */
-<<<<<<< HEAD
-	static function simple ( $request, $conn, $table, $primaryKey, $columns )
-	{            
-=======
 	static function simple ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{
->>>>>>> d43abd0d428ba7d06cd3a8a11bac94d097164eba
+
 		$bindings = array();
 		$db = self::db( $conn );
 

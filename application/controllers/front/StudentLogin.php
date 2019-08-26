@@ -27,7 +27,6 @@ class StudentLogin extends MY_Controller{
     public function approveStudent(){
         if(isset($_REQUEST['rmsa_user_id'])){
             $res = $this->login_model->approve_student($_REQUEST['rmsa_user_id']);
-
             if($res){
                  $data = array(
                      'suceess' => true
@@ -36,11 +35,9 @@ class StudentLogin extends MY_Controller{
             echo json_encode($data);
         }
     }
-
     public function isStudentActive(){
-        if($_SESSION['rmsa_student_login_active']==1){
-            $res = $this->login_model->isStudentActive($_SESSION['rmsa_user_id']);
-
+        if($_SESSION['st_rmsa_student_login_active']==1){
+            $res = $this->login_model->isStudentActive($_SESSION['st_rmsa_user_id']);
             echo json_encode($res);
         }
     }

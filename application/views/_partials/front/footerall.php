@@ -41,6 +41,7 @@ $this->load->view('_partials/front/scripts');
 //all notification include
 $this->load->view('_partials/front/allnotify');
 ?>
+ 
 <?php if ($title == ' - FileDw') {
     ?> 
 <script>
@@ -125,6 +126,9 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>
+    
+
+    
 <?php if ($title == ' - Student Registration') {
     ?>          
     <script>
@@ -170,18 +174,18 @@ $this->load->view('_partials/front/allnotify');
     </script>
     <?php }
 ?>
-<!--//this script will be run for all pages-->
-<?php
-if($_SESSION['rmsa_student_login_active']==1) {
+    
+           <?php
+if(isset($_SESSION['st_rmsa_student_login_active'])) {
+    if($_SESSION['st_rmsa_student_login_active'] == 1){
     //student will be logout if admin logout them from to backend
-
 //    TODO
 //    please run this sql on backend
 //    ALTER TABLE `rmsa_student_users` ADD `rmsa_student_login_active` INT(1) NOT NULL AFTER `modified_dt`;
     ?>
     <script>
-        $(document).ready(function () {
-            window.setInterval(function(){
+        $(document).ready(function () {            
+            window.setInterval(function(){               
                 $.ajax({
                     type : "POST",
                     url  : "<?php echo IS_STUDENT_ACTIVE ?>",
@@ -192,11 +196,13 @@ if($_SESSION['rmsa_student_login_active']==1) {
                         }
                     }
                 });
-            }, 5000);
+            },5000);
         });
     </script>
     <?php
+    }
 }
 ?>
+<!--//this script will be run for all pages-->
 </body>
 </html>
