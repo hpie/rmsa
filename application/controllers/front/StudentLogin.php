@@ -36,7 +36,7 @@ class StudentLogin extends MY_Controller{
         }
     }
     public function isStudentActive(){
-        if($_SESSION['st_rmsa_student_login_active']==1){
+        if($_SESSION['rmsa_student_login_active']==1){
             $res = $this->login_model->isStudentActive($_SESSION['st_rmsa_user_id']);
             echo json_encode($res);
         }
