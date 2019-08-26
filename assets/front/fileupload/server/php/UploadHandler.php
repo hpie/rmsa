@@ -98,7 +98,7 @@ class UploadHandler
             // e.g. PHP scripts, nor executed by the browser when downloaded,
             // e.g. HTML files with embedded JavaScript code.
             // Please also read the SECURITY.md document in this repository.
-            'accept_file_types' => '/\.(gif|jpe?g|png|php)$/i',
+            'accept_file_types' => '/\.(gif|jpe?g|png|pdf|doc|docx|ppt|xlsx|xls|mp4)$/i',
             // Replaces dots in filenames with the given string.
             // Can be disabled by setting it to false or an empty string.
             // Note that this is a security feature for servers that support
@@ -1131,6 +1131,7 @@ class UploadHandler
         $file->name = $NewImageName;        
         $file->size = $this->fix_integer_overflow((int)$size);
         $file->type = $type;
+        $file->path=date("Y-m-d").'/'.$file->name;        
         if ($this->validate($uploaded_file, $file, $error, $index)) {
             $this->handle_form_data($file, $index);
             $upload_dir = $this->get_upload_path();
@@ -1138,7 +1139,7 @@ class UploadHandler
             if (!is_dir($upload_dir)) {
                 mkdir($upload_dir,$this->options['mkdir_mode'], true);
             }            
-            $file_path = $upload_dir.'/'.$file->name;               
+            $file_path = $upload_dir.'/'.$file->name;              
             $append_file = $content_range && is_file($file_path) && $file->size > $this->get_file_size($file_path);
             if ($uploaded_file && is_uploaded_file($uploaded_file)) {
                 // multipart/formdata uploads (POST method uploads)
@@ -1168,8 +1169,7 @@ class UploadHandler
 //                    $file->error = $this->get_error_message('abort');
 //                }
 //            }
-//            $this->set_additional_file_properties($file);
-            $file->path=$file_path;
+//            $this->set_additional_file_properties($file);            
         }
         return $file;
     }

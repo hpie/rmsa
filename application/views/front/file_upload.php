@@ -49,7 +49,7 @@
             </form>            
         </div>
         <!-- The blueimp Gallery widget -->
-        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even" >
+<!--        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even" >
             <div class="slides"></div>
             <h3 class="title"></h3>
             <a class="prev">‹</a>
@@ -57,7 +57,7 @@
             <a class="close">×</a>
             <a class="play-pause"></a>
             <ol class="indicator"></ol>
-        </div>
+        </div>-->
         <!-- The template to display files available for upload -->
         <script id="template-upload" type="text/x-tmpl">
             {% for (var i=0, file; file=o.files[i]; i++) { %}
@@ -81,28 +81,51 @@
             <button class="btn btn-primary start form-control" disabled>
             <i class="glyphicon glyphicon-upload"></i>
             <span>Start</span>
-            </button>
+            </button>            
+            {% } %} 
+            </td>
             <td>
-            {% } %}                       
             <label class="title">
                 <span>Title:</span><br>
-                <input name="title[]" class="form-control">
-            </label>
-            </td>
-            <td>
+                <input name="uploaded_file_title[]" class="form-control">
+            </label>           
             <label class="description">
                 <span>Description:</span><br>
-                <input name="description[]" class="form-control">
-            </label> 
-            </td>
-            <td>
+                <input name="uploaded_file_desc[]" class="form-control">
+            </label>            
             <label class="description">
                 <span>File Type:</span><br>
-                <select class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <select class="form-control" name="uploaded_file_type[]">
+                <?php if(!empty($result)){
+                foreach ($result as $row){
+                    if($row['category_type']=="UPFILE_TYP"){
+                    ?>
+                    <option><?php echo $row['category_code'] ?></option>
+                    <?php
+                }
+     }
+                }?>
+              </select>
+            </label>
+            <label class="description">
+                <span>File Type:</span><br>
+                <select class="form-control" name="uploaded_file_category[]">
+                <?php if(!empty($result)){
+                foreach ($result as $row){
+                    if($row['category_type']=="UPFILE_CAT"){
+                    ?>
+                    <option><?php echo $row['category_code'] ?></option>
+                    <?php
+                }
+     }
+                }?>
+              </select>
+            </label>
+            <label class="description">
+                <span>Have child (hasvol):</span><br>
+                <select class="form-control" name="uploaded_file_hasvol[]">
+                    <option>NO</option>
+                    <option>YES</option>                    
               </select>
             </label>
             </td>
