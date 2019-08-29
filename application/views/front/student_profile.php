@@ -1,8 +1,14 @@
+<?php
+echo "<pre>";
+print_r($_SESSION);
+exit;
+?>
+
 <!-- content -->
 <div class="col-md-6 col-sm-8  col-12">
     <div class="middle-area">
         <h1 class="heading">Update Profile of Students in the RMSA Portal</h1>
-        <form method="post" class="form-horizontal border p-2" action="#">
+        <form method="post" class="form-horizontal border p-2" action="<?php echo STUDENT_UPDATE_PROFILE_LINK ?>">
             <h2 class="second-heading">General Information</h2>
             <div class="form-group">
                 <div class="row">
