@@ -1,8 +1,3 @@
-<?php
-echo "<pre>";
-print_r($_SESSION);
-exit;
-?>
 
 <!-- content -->
 <div class="col-md-6 col-sm-8  col-12">
