@@ -4,7 +4,7 @@
     <div class="middle-area">
         <h1 class="heading">Update Profile of Students in the RMSA Portal</h1>
         <form method="post" class="form-horizontal border p-2" action="<?php echo STUDENT_UPDATE_PROFILE_LINK ?>">
-            <h2 class="second-heading">General Information</h2>
+            <h2 class="second-heading">Change password</h2>
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_first_name">Current Password:</label>
