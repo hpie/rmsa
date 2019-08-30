@@ -25,13 +25,14 @@
                                     <div class="link"><i class="fa fa-code"></i>Student's Corner<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
                                         <li><a href="#">Instructions</a></li>
-                                        <?php if(!isset($_SESSION['username'])){ ?>
+                                        <?php if(!isset($_SESSION['st_rmsa_user_id'])){ ?>
                                         <li><a href="<?php echo BASE_URL ?>/student-registration">New Registration</a></li>
                                         <li><a href="<?php echo BASE_URL ?>/student-login">Registered Login</a></li>
                                         <?php }
                                         else{
                                             ?>
                                         <li><a href="<?php echo STUDENT_LOGOUT_LINK; ?>">Logout</a></li>
+                                        <li><a href="<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>">Update Profile</a></li>
                                         <?php
                                         }
                                         ?>
