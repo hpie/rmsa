@@ -12,13 +12,18 @@ class Student extends MY_Controller{
         if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){
 
             if($this->student_model->check_current_password($_POST['rmsa_user_current_password'])){
-                $res = $this->student_model->update_profile($_POST);
+                $res = $this->student_model->update_password($_POST);
                 if($res){
                     redirect(HOME_LINK);
                 }
             }else{
                 //current password does not matched
             }
+        }
+        elseif (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){
+            //update student
+            $this->student_model->update_profile($_POST);
+
         }
         $this->mViewData['student_data'] =  $this->student_model->student_details();
         $this->mViewData['title']=' - Student Profile';
