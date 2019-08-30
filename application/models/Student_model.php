@@ -5,15 +5,12 @@
         }
         public function student_details(){
             $rmsa_user_id = $_SESSION['st_rmsa_user_id'];
-            $data = $this->db->query("SELECT * FROM rmsa_student_users
-                                      WHERE rmsa_user_id = '".$rmsa_user_id."'");
+            $data = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_id = '".$rmsa_user_id."'");
             $student_data = $data->row_array();
-
             if(isset($student_data)){
                 return $student_data;
             }
         }
-
         public function check_current_password($current_password){
             $rmsa_user_id = $_SESSION['st_rmsa_user_id'];
             $check = $this->db->query("SELECT * FROM rmsa_student_users

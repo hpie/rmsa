@@ -11,18 +11,17 @@ class Emp_Login extends CI_Model{
         $emp_data = $employee->row_array();
         if (isset($emp_data)){
             if ($username == $emp_data['rmsa_user_email_id'] && $password == $emp_data['rmsa_user_email_password']) {
-                $this->db->query("UPDATE rmsa_employee_users SET rmsa_employee_login_active = 1 WHERE rmsa_user_id='".$emp_data['rmsa_user_id']."' ");
+                $this->db->query("UPDATE rmsa_employee_users SET rmsa_user_status = 'ACTIVE' WHERE rmsa_user_id='".$emp_data['rmsa_user_id']."' ");
                 $this->session->sessionEmployee($emp_data);
                 return true;
             }
         }
         return false;
     }
-
     public function isEmployeeActive($rmsa_user_id){
-        $check = $this->db->query("SELECT * FROM rmsa_employee_users WHERE rmsa_user_id = '{$rmsa_user_id}' AND rmsa_employee_login_active = 1");
+        $check = $this->db->query("SELECT * FROM rmsa_employee_users WHERE rmsa_user_id = '{$rmsa_user_id}' AND rmsa_user_status = 'ACTIVE'");
         $issctive = $check->row_array();
-        if($issctive['rmsa_employee_login_active']){
+        if($issctive['rmsa_user_status']=='ACTIVE'){
             return array(
                 'isactive' => true
             );

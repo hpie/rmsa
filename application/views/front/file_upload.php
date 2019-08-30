@@ -92,23 +92,9 @@
             <label class="description">
                 <span>Description:</span><br>
                 <input name="uploaded_file_desc[]" class="form-control">
-            </label>            
+            </label>             
             <label class="description">
-                <span>File Type:</span><br>
-                <select class="form-control" name="uploaded_file_type[]">
-                <?php if(!empty($result)){
-                foreach ($result as $row){
-                    if($row['category_type']=="UPFILE_TYP"){
-                    ?>
-                    <option><?php echo $row['category_code'] ?></option>
-                    <?php
-                }
-     }
-                }?>
-              </select>
-            </label>
-            <label class="description">
-                <span>File Type:</span><br>
+                <span>Category Type:</span><br>
                 <select class="form-control" name="uploaded_file_category[]">
                 <?php if(!empty($result)){
                 foreach ($result as $row){
