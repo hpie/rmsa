@@ -11,7 +11,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_first_name">First Name:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" name="rmsa_user_first_name" id="rmsa_user_first_name" placeholder="Enter First Name ">
+                        <input type="text" class="form-control" value="<?=$student_data['rmsa_user_first_name']?>" name="rmsa_user_first_name" id="rmsa_user_first_name" placeholder="Enter First Name ">
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_middle_name">Middle Name:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" name="rmsa_user_middle_name" id="rmsa_user_middle_name" placeholder="Enter Middle Name ">
+                        <input type="text" class="form-control" value="<?=$student_data['rmsa_user_middle_name']?>" name="rmsa_user_middle_name" id="rmsa_user_middle_name" placeholder="Enter Middle Name ">
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_last_name">Last Name: </label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" name="rmsa_user_last_name" id="rmsa_user_last_name" placeholder="Enter Last Name ">
+                        <input type="text" class="form-control" value="<?=$student_data['rmsa_user_last_name']?>" name="rmsa_user_last_name" id="rmsa_user_last_name" placeholder="Enter Last Name ">
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_nick_name">Nick Name: </label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" name="rmsa_user_nick_name" id="rmsa_user_last_name" placeholder="Enter Nick Name ">
+                        <input type="text" class="form-control" value="<?=$student_data['rmsa_user_nick_name']?>" name="rmsa_user_nick_name" id="rmsa_user_last_name" placeholder="Enter Nick Name ">
                     </div>
                 </div>
             </div>

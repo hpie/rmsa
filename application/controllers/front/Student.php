@@ -20,6 +20,7 @@ class Student extends MY_Controller{
                 //current password does not matched
             }
         }
+        $this->mViewData['student_data'] =  $this->student_model->student_details();
         $this->mViewData['title']=' - Student Profile';
         $this->renderFront('front/student_profile');
     }
