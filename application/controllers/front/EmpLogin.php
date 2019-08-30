@@ -24,5 +24,11 @@ class EmpLogin extends MY_Controller{
         $this->session->sessionDestroy();
         redirect(EMPLOYEE_LOGIN_LINK);
     }
+    public function isActiveEmployee(){
+        if($_SESSION['emp_rmsa_employee_login_active']==1){
+            $res = $this->emp_login->isEmployeeActive($_SESSION['emp_rmsa_user_id']);
+            echo json_encode($res);
+        }
+    }
 }
 ?>

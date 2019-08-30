@@ -201,6 +201,35 @@ if(isset($_SESSION['st_rmsa_student_login_active'])) {
     }
 }
 ?>
+
+<?php
+if(isset($_SESSION['emp_rmsa_employee_login_active'])) {
+    if($_SESSION['emp_rmsa_employee_login_active'] == 1){
+        //student will be logout if admin logout them from to backend
+//    TODO
+//    please run this sql on backend
+//     ALTER TABLE `rmsa_employee_users` ADD `rmsa_employee_login_active` INT(1) NOT NULL AFTER `modified_dt`;
+        ?>
+        <script>
+            $(document).ready(function () {
+                window.setInterval(function(){
+                    $.ajax({
+                        type : "POST",
+                        url  : "<?php echo IS_EMPLOYEE_ACTIVE ?>",
+                        success:function (res) {
+                            var check = $.parseJSON(res);
+                            if(!check.isactive){
+                                location.href = "<?php echo EMPLOYEE_LOGOUT_LINK ?>"
+                            }
+                        }
+                    });
+                },5000);
+            });
+        </script>
+        <?php
+    }
+}
+?>
 <!--//this script will be run for all pages-->
 </body>
 </html>
