@@ -2,7 +2,7 @@
 <div class="col-md-6 col-sm-8  col-12">
     <div class="middle-area">
         <h1 class="heading">Registration of Students in the RMSA Portal</h1>
-        <form method="post" class="form-horizontal border p-2" action="<?php echo STUDENT_REGISTER_LINK; ?>">
+        <form method="post" id="student_register" class="form-horizontal border p-2" action="<?php echo STUDENT_REGISTER_LINK; ?>">
             <h2 class="second-heading">General Information</h2>
             <div class="form-group">
                 <div class="row">
@@ -33,7 +33,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_nick_name">Nick Name: </label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" name="rmsa_user_nick_name" id="rmsa_user_last_name" placeholder="Enter Nick Name ">
+                        <input type="text" class="form-control" name="rmsa_user_nick_name" id="rmsa_user_nick_name" placeholder="Enter Nick Name ">
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="Gender">Gender:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="radio" name="rmsa_user_gender" value="M">&nbsp;<span>Male</span>
+                        <input type="radio" checked name="rmsa_user_gender" value="M">&nbsp;<span>Male</span>
                         <input type="radio" name="rmsa_user_gender" value="F">&nbsp;<span>Female</span>
                         <input type="radio" name="rmsa_user_gender" value="O">&nbsp;<span>Other</span>
                     </div>

@@ -132,6 +132,71 @@ $this->load->view('_partials/front/allnotify');
     ?>          
     <script>
         $(document).ready(function () {
+
+            var studentRegister = $('#student_register');
+            var firstName       = $("#rmsa_user_first_name");
+            var middleNname     = $("#rmsa_user_middle_name");
+            var lastNname       = $("#rmsa_user_last_name");
+            var nickNname       = $("#rmsa_user_nick_name");
+            var userDOB         = $("#rmsa_user_DOB");
+            var fatherName      = $("#rmsa_user_father_name");
+            var district        = $("#rmsa_district");
+            var subDistrict     = $("#sub_district");
+            var school          = $("#rmsa_school");
+
+
+
+            studentRegister.on('submit',validate);
+
+            function validate(e){
+
+
+                if (!firstName.val().trim()) {
+                    e.preventDefault();
+                    return alert('Please enter FirstName');
+                }
+
+                if (!middleNname.val().trim()) {
+                    e.preventDefault();
+                    return alert('Please enter MiddleName');
+                }
+
+                if (!lastNname.val().trim()) {
+                    e.preventDefault();
+                    return alert('Please enter LastName');
+                }
+
+                if (!nickNname.val().trim()) {
+                    e.preventDefault();
+                    return alert('Please enter NickName');
+                }
+
+                if (!userDOB.val().trim()) {
+                    e.preventDefault();
+                    return alert('Please enter Date of birth');
+                }
+
+                if (!fatherName.val().trim()) {
+                    e.preventDefault();
+                    return alert('Please enter FatherName');
+                }
+
+                if (district.val() == null) {
+                    e.preventDefault();
+                    return alert('Please select district');
+                }
+
+                if (subDistrict.val() ==  0) {
+                    e.preventDefault();
+                    return alert('Please select sub district');
+                }
+
+                if (school.val() ==  0) {
+                    e.preventDefault();
+                    return alert('Please select school');
+                }
+            }
+
             $('#rmsa_district').on('change', function () {
                 var districtId = $(this).val();
                 $.ajax({
