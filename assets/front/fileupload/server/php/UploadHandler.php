@@ -98,7 +98,7 @@ class UploadHandler
             // e.g. PHP scripts, nor executed by the browser when downloaded,
             // e.g. HTML files with embedded JavaScript code.
             // Please also read the SECURITY.md document in this repository.
-            'accept_file_types' => '/\.(gif|jpe?g|png|pdf|doc|docx|ppt|xlsx|xls|mp4)$/i',
+            'accept_file_types' => '/\.(gif|jpe?g|png|pdf|doc|docx|ppt|pptx|xlsx|xls|mp4)$/i',
             // Replaces dots in filenames with the given string.
             // Can be disabled by setting it to false or an empty string.
             // Note that this is a security feature for servers that support
@@ -1126,6 +1126,7 @@ class UploadHandler
         $ImageExt = str_replace('.', '', $ImageExt);
         $ImageName = preg_replace("/\.[^.\s]{3,4}$/", "", $ImageName);
         $NewImageName = 'uploads-' . rand(111, 999) . rand(11, 99) . '-' . $RandomNum . '.' . $ImageExt;                        
+        $file->filetypeext=$ImageExt;
         
 //        $file->name = $this->get_file_name($uploaded_file, $name, $size, $type, $error,$index, $content_range);   
         $file->name = $NewImageName;        

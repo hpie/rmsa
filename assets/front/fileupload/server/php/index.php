@@ -22,7 +22,7 @@ class CustomUploadHandler extends UploadHandler {
     }
     protected function handle_form_data($file, $index) {
     	$file->uploaded_file_title = @$_REQUEST['uploaded_file_title'][$index];
-        $file->uploaded_file_type = @$_REQUEST['uploaded_file_type'][$index];       
+//        $file->uploaded_file_type = @$_REQUEST['uploaded_file_type'][$index];       
     	$file->uploaded_file_desc = @$_REQUEST['uploaded_file_desc'][$index];        
         $file->uploaded_file_category = @$_REQUEST['uploaded_file_category'][$index];
         $file->uploaded_file_hasvol = @$_REQUEST['uploaded_file_hasvol'][$index];
@@ -30,7 +30,7 @@ class CustomUploadHandler extends UploadHandler {
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) {            
         $file = parent::handle_file_upload($uploaded_file, $name, $size, $type, $error, $index, $content_range); 
         $uploaded_file_title=$file->uploaded_file_title;
-        $uploaded_file_type=$file->uploaded_file_type;    
+        $uploaded_file_type=$file->filetypeext;    
         $uploaded_file_category=$file->uploaded_file_category; 
         $uploaded_file_desc=$file->uploaded_file_desc;                 
         $uploaded_file_path=$file->path;  

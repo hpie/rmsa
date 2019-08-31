@@ -15,6 +15,29 @@
  * @license MIT - http://datatables.net/license_mit
  */
 
+//$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
+//$base_url = $protocol.'://'.$_SERVER['HTTP_HOST'];
+$base_url= $_SERVER['SERVER_NAME'];
+$url='';
+if($base_url=='localhost'){
+    $url.='/rmsa';
+}
+define('IMG_URL',$url); 
+
+$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
+$r = $_SERVER['SCRIPT_NAME'];
+$subdomain = explode('/', $r);
+array_pop($subdomain);
+$urllink=$protocol.'/'.$_SERVER['HTTP_HOST'];
+if($urllink=="http/localhost"){  
+    $url.='/rmsa';
+}
+define('BASE_URL', $urllink);
+$filepath="/assets/front/fileupload/server/php/files/";
+define('FILE_URL', $filepath);
+
+//define('BASE_URL', $url);
+
 
 // REMOVE THIS BLOCK - used for DataTables test environment only!
 $file = $_SERVER['DOCUMENT_ROOT'].'/datatables/pdo.php';
@@ -274,12 +297,72 @@ class SSP {
 		 * Output
 		 */
 		return array(
-			"draw"            => isset ( $request['draw'] ) ?
-				intval( $request['draw'] ) :
-				0,
-			"recordsTotal"    => intval( $recordsTotal ),
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
 			"recordsFiltered" => intval( $recordsFiltered ),
-			"data"            => self::data_output( $columns, $data )
+			"data" => self::data_output( $columns, $data )
+		);
+	}
+        
+        static function file_list ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	{
+            echo BASE_URL;die;
+
+		$bindings = array();
+		$db = self::db( $conn );
+
+		// Build the SQL query string from the request
+		$limit = self::limit( $request, $columns );
+		$order = self::order( $request, $columns );
+		$where = self::filter( $request, $columns, $bindings );
+
+        if ($where_custom) {
+            if ($where) {
+                $where .= ' AND ' . $where_custom;
+            } else {
+                $where .= 'WHERE ' . $where_custom;
+            }
+        }
+
+		// Main query to actually get the data
+		$data = self::sql_exec( $db, $bindings,
+			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
+			 FROM `$table`
+			 $where
+			 $order
+			 $limit"
+		);                                                             
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT(`{$primaryKey}`)
+			 FROM   `$table`
+			 $where"
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT(`{$primaryKey}`)
+			 FROM   `$table`"
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output( $columns,$data);
+                $resData=array();
+                if(!empty($result)){
+                    foreach ($result as $row){
+                        $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
+                        $row['ext']="<a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'></a>";
+                        array_push($resData, $row);
+                    }  
+                }
+//                print_r($resData);die;
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
 		);
 	}
 

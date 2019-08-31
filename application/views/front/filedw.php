@@ -34,20 +34,22 @@
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>No</th>   
-                <th>Name</th>
-                <th>Gender</th>
-                <th>DOB</th>
-                <th>Email</th>
+                <th>Title</th>   
+                <th>Type</th>
+                <th>Group</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>File</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <th>No</th>   
-                <th>Name</th>
-                <th>Gender</th>
-                <th>DOB</th>
-                <th>Email</th>
+                <th>Title</th>   
+                <th>Type</th>
+                <th>Group</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>File</th>
             </tr>
         </tfoot>
     </table>

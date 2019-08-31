@@ -51,13 +51,14 @@ $this->load->view('_partials/front/allnotify');
             "serverSide": true,
             "paginationType": "full_numbers",
             "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-            "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/server_processing.php' ?>",
+            "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list.php' ?>",
             "columns": [
-                {"data": "rmsa_user_id"},
-                {"data": "rmsa_user_first_name"},
-                {"data": "rmsa_user_gender"},
-                {"data": "rmsa_user_DOB"},
-                {"data": "rmsa_user_email_id"}
+                {"data": "uploaded_file_title"},
+                {"data": "uploaded_file_type"},
+                {"data": "uploaded_file_group"},
+                {"data": "uploaded_file_category"},
+                {"data": "uploaded_file_desc"},
+                {"data": "ext"}                                
             ]
         });
     });

@@ -17,23 +17,21 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Easy set variables
  */
-
 // DB table to use
-$table = 'rmsa_student_users';
-
+$table = 'rmsa_uploaded_files';
 // Table's primary key
-$primaryKey = 'rmsa_user_id';
-
+$primaryKey = 'rmsa_uploaded_file_id';
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(       
-    array('db' => 'rmsa_user_id', 'dt' =>'rmsa_user_id'),
-    array('db' => 'rmsa_user_first_name', 'dt' => 'rmsa_user_first_name'),
-    array('db' => 'rmsa_user_gender', 'dt' =>'rmsa_user_gender'),
-    array('db' => 'rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),
-    array('db' => 'rmsa_user_email_id', 'dt' =>'rmsa_user_email_id')
+    array('db' => 'uploaded_file_title', 'dt' =>'uploaded_file_title'),
+    array('db' => 'uploaded_file_type', 'dt' => 'uploaded_file_type'),
+    array('db' => 'uploaded_file_group', 'dt' =>'uploaded_file_group'),
+    array('db' => 'uploaded_file_category', 'dt' =>'uploaded_file_category'),
+    array('db' => 'uploaded_file_desc', 'dt' =>'uploaded_file_desc'),
+    array('db' => 'uploaded_file_path', 'dt' =>'uploaded_file_path')
 );
 // SQL server connection information
 $sql_details = array(
@@ -48,7 +46,7 @@ $sql_details = array(
  */
 require('ssp.class.php' );
 echo json_encode(
-        SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
+       SSP::file_list($_GET, $sql_details, $table, $primaryKey, $columns)
 );
 
 
