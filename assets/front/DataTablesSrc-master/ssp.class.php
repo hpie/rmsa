@@ -306,7 +306,7 @@ class SSP {
         
         static function file_list ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{
-            echo BASE_URL;die;
+//            echo BASE_URL;die;
 
 		$bindings = array();
 		$db = self::db( $conn );
