@@ -129,73 +129,97 @@ $this->load->view('_partials/front/allnotify');
 
     
 <?php if ($title == ' - Student Registration') {
-    ?>          
+    ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
     <script>
+
         $(document).ready(function () {
 
-            var studentRegister = $('#student_register');
-            var firstName       = $("#rmsa_user_first_name");
-            var middleNname     = $("#rmsa_user_middle_name");
-            var lastNname       = $("#rmsa_user_last_name");
-            var nickNname       = $("#rmsa_user_nick_name");
-            var userDOB         = $("#rmsa_user_DOB");
-            var fatherName      = $("#rmsa_user_father_name");
-            var district        = $("#rmsa_district");
-            var subDistrict     = $("#sub_district");
-            var school          = $("#rmsa_school");
-
-
-
-            studentRegister.on('submit',validate);
-
-            function validate(e){
-
-
-                if (!firstName.val().trim()) {
-                    e.preventDefault();
-                    return alert('Please enter FirstName');
+            $('#student_register').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    rmsa_user_middle_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your middle name'
+                            }
+                        }
+                    },
+                    rmsa_user_last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    },
+                    rmsa_user_nick_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your nick name'
+                            }
+                        }
+                    },
+                    rmsa_user_DOB: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your date of birth'
+                            }
+                        }
+                    },
+                    rmsa_user_father_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your father name'
+                            }
+                        }
+                    }
                 }
+            }).on('success.form.bv', function(e) {
+                $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+                $('#contact_form').data('bootstrapValidator').resetForm();
 
-                if (!middleNname.val().trim()) {
-                    e.preventDefault();
-                    return alert('Please enter MiddleName');
-                }
+                // Prevent form submission
+                e.preventDefault();
 
-                if (!lastNname.val().trim()) {
-                    e.preventDefault();
-                    return alert('Please enter LastName');
-                }
+                // Get the form instance
+                var $form = $(e.target);
 
-                if (!nickNname.val().trim()) {
-                    e.preventDefault();
-                    return alert('Please enter NickName');
-                }
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
 
-                if (!userDOB.val().trim()) {
-                    e.preventDefault();
-                    return alert('Please enter Date of birth');
-                }
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function(result) {
+                    console.log(result);
+                }, 'json');
+            });
 
-                if (!fatherName.val().trim()) {
-                    e.preventDefault();
-                    return alert('Please enter FatherName');
-                }
-
-                if (district.val() == null) {
-                    e.preventDefault();
-                    return alert('Please select district');
-                }
-
-                if (subDistrict.val() ==  0) {
-                    e.preventDefault();
-                    return alert('Please select sub district');
-                }
-
-                if (school.val() ==  0) {
-                    e.preventDefault();
-                    return alert('Please select school');
-                }
-            }
 
             $('#rmsa_district').on('change', function () {
                 var districtId = $(this).val();
