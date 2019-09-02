@@ -64,6 +64,32 @@ $this->load->view('_partials/front/allnotify');
     });
 </script>
 <?php } ?>
+
+
+
+<?php if ($title == ' - Student Resources') {
+    ?>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/student_resources.php' ?>",
+                "columns": [
+                    {"data": "uploaded_file_title"},
+                    {"data": "uploaded_file_type"},
+                    {"data": "uploaded_file_group"},
+                    {"data": "uploaded_file_category"},
+                    {"data": "uploaded_file_desc"},
+                    {"data": "ext"}
+                ]
+            });
+        });
+    </script>
+<?php } ?>
+
 <?php if ($title == ' - EmployeeStudent') {
     ?>
     <script>       

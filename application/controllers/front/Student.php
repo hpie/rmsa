@@ -24,7 +24,7 @@ class Student extends MY_Controller{
         $this->renderFront('front/student_profile');
     }
     public function resources(){
-        $this->mViewData['title']=' - Student Resources ';
+        $this->mViewData['title']=' - Student Resources';
         $this->renderFront('front/student_resources.php');
     }
 }
