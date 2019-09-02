@@ -104,6 +104,7 @@ $route['employee-login']='front/EmpLogin';
 $route['employee-logout']='front/EmpLogin/employeeLogout';
 $route['student-registration']='front/StudentRegistration';
 $route['update-profile']='front/Student/update_profile';
+$route['student-resources']='front/Student/resources';
 $route['load-tehsil']='front/StudentRegistration/load_tehsil';
 $route['load-school']='front/StudentRegistration/load_school';
 $route['student-login']='front/StudentLogin';

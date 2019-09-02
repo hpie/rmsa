@@ -33,6 +33,7 @@
                                             ?>
                                         <li><a href="<?php echo STUDENT_LOGOUT_LINK; ?>">Logout</a></li>
                                         <li><a href="<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>">Update Profile</a></li>
+                                        <li><a href="<?php echo STUDENT_RESOURCES_LINK; ?>">Resources</a></li>
                                         <?php
                                         }
                                         ?>
