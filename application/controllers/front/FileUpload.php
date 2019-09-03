@@ -14,6 +14,11 @@ class FileUpload extends MY_Controller {
         $this->mViewData['title'] = ' - File Upload';
         $this->renderFront('front/file_upload');
     }
+    public function childFileUpload($fileId) {        
+        $this->mViewData['result'] = $this->File_upload->getCategory(); 
+        $this->mViewData['title'] = ' - File Upload';
+        $this->renderFront('front/file_upload_child');
+    }
 }
 
 ?>

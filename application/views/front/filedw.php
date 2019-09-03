@@ -40,6 +40,7 @@
                 <th>Category</th>
                 <th>Description</th>
                 <th>File</th>
+                <th>Child</th>
             </tr>
         </thead>
         <tfoot>
@@ -50,6 +51,7 @@
                 <th>Category</th>
                 <th>Description</th>
                 <th>File</th>
+                <th>Child</th>
             </tr>
         </tfoot>
     </table>

@@ -25,13 +25,15 @@ $primaryKey = 'rmsa_uploaded_file_id';
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
-$columns = array(       
+$columns = array(      
+    array('db' => 'rmsa_uploaded_file_id', 'dt' =>'rmsa_uploaded_file_id'),
     array('db' => 'uploaded_file_title', 'dt' =>'uploaded_file_title'),
     array('db' => 'uploaded_file_type', 'dt' => 'uploaded_file_type'),
     array('db' => 'uploaded_file_group', 'dt' =>'uploaded_file_group'),
     array('db' => 'uploaded_file_category', 'dt' =>'uploaded_file_category'),
     array('db' => 'uploaded_file_desc', 'dt' =>'uploaded_file_desc'),
-    array('db' => 'uploaded_file_path', 'dt' =>'uploaded_file_path')
+    array('db' => 'uploaded_file_path', 'dt' =>'uploaded_file_path'),
+    array('db' => 'uploaded_file_hasvol', 'dt' =>'uploaded_file_hasvol')
 );
 // SQL server connection information
 $sql_details = array(
@@ -46,7 +48,7 @@ $sql_details = array(
  */
 require('ssp.class.php' );
 echo json_encode(
-       SSP::file_list($_GET, $sql_details, $table, $primaryKey, $columns)
+       SSP::emp_file_list($_GET, $sql_details, $table, $primaryKey, $columns)
 );
 
 

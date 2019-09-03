@@ -304,7 +304,7 @@ class SSP {
 		);
 	}
         
-        static function file_list ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+        static function emp_file_list ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{
 //            echo BASE_URL;die;
 
@@ -350,6 +350,12 @@ class SSP {
                     foreach ($result as $row){
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
                         $row['ext']="<a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'></a>";
+                        if($row['uploaded_file_hasvol']=="YES"){
+                            $row['child']="<a class='btn btn-success btn_approve' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";
+                        }
+                        else{
+                            $row['child']="-----No Hasvol-----";
+                        }
                         array_push($resData, $row);
                     }  
                 }

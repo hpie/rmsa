@@ -26,6 +26,7 @@ class CustomUploadHandler extends UploadHandler {
     	$file->uploaded_file_desc = @$_REQUEST['uploaded_file_desc'][$index];        
         $file->uploaded_file_category = @$_REQUEST['uploaded_file_category'][$index];
         $file->uploaded_file_hasvol = @$_REQUEST['uploaded_file_hasvol'][$index];
+        $file->rmsa_employee_users_id = @$_REQUEST['rmsa_employee_users_id'][$index];
     }
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) {            
         $file = parent::handle_file_upload($uploaded_file, $name, $size, $type, $error, $index, $content_range); 
@@ -35,10 +36,11 @@ class CustomUploadHandler extends UploadHandler {
         $uploaded_file_desc=$file->uploaded_file_desc;                 
         $uploaded_file_path=$file->path;  
         $uploaded_file_hasvol=$file->uploaded_file_hasvol;
-        
+        $rmsa_employee_users_id=$file->rmsa_employee_users_id;
+//        echo $rmsa_employee_users_id;die;
         if (empty($file->error)) {
-		$sql = "INSERT INTO `".$this->options['db_table']."` (`uploaded_file_title`,`uploaded_file_type`,`uploaded_file_category`,`uploaded_file_desc`,`uploaded_file_path`,`uploaded_file_hasvol`)"
-                        ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_path','$uploaded_file_hasvol')";                   
+		$sql = "INSERT INTO `".$this->options['db_table']."` (`uploaded_file_title`,`uploaded_file_type`,`uploaded_file_category`,`uploaded_file_desc`,`uploaded_file_path`,`uploaded_file_hasvol`,`rmsa_employee_users_id`)"
+                        ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id')";                   
 	        $query = $this->db->query($sql);                
 	        $file->id = $this->db->insert_id;                  
         }

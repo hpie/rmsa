@@ -120,8 +120,15 @@ define('STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/update-profile");
 define('STUDENT_RESOURCES_LINK',BASE_URL."/student-resources");
 define('EMPLOYEE_LOGIN_LINK',BASE_URL."/employee-login");
 define('EMPLOYEE_LOGOUT_LINK',BASE_URL."/employee-logout");
+define('EMPLOYEE_UPLOAD_FILE_LINK',BASE_URL."/employee-uploadresource");
+define('EMPLOYEE_UPLOAD_CHILD_FILE_LINK',BASE_URL."/employee-uploadresource-child/");
+define('EMPLOYEE_RESOURCES_LIST_LINK',BASE_URL."/employee-resources");
 define('LOAD_TEHSIL',BASE_URL."/load-tehsil");
 define('LOAD_SCHOOL',BASE_URL."/load-school");
 define('STUDENT_APPROVE',BASE_URL."/student-approve");
 define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
 define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
+
+
+//define all title heare for page
+
