@@ -323,7 +323,6 @@ class SSP {
                 $where .= 'WHERE ' . $where_custom;
             }
         }
-
 		// Main query to actually get the data
 		$data = self::sql_exec( $db, $bindings,
 			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`

@@ -317,7 +317,6 @@ if(isset($_SESSION['st_rmsa_student_login_active'])) {
     }
 }
 ?>
-
 <?php
 if(isset($_SESSION['emp_rmsa_employee_login_active'])) {
     if($_SESSION['emp_rmsa_employee_login_active'] == 1){
