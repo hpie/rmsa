@@ -50,7 +50,7 @@
         </form>
 
 
-        <form method="post" class="form-horizontal border p-2" action="<?php echo STUDENT_UPDATE_PROFILE_LINK ?>">
+        <form method="post" id="frm_change_password" class="form-horizontal border p-2" action="<?php echo STUDENT_UPDATE_PROFILE_LINK ?>">
             <h2 class="second-heading">Change password</h2>
             <div class="form-group">
                 <div class="row">
