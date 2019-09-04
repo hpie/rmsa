@@ -29,7 +29,7 @@ $this->load->view('_partials/front/scripts');
 
 </div>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function () {       
         // get current URL path and assign 'active' class
         var pathname = window.location.href;
         // alert(pathname);

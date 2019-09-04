@@ -103,22 +103,16 @@
                     <option><?php echo $row['category_code'] ?></option>
                     <?php
                 }
-     }
+            }
                 }?>
               </select>
-            </label>
-            <label class="description">
-                <span>Have child (hasvol):</span><br>
-                <select class="form-control" name="uploaded_file_hasvol[]">
-                    <option>NO</option>
-                    <option>YES</option>                    
-              </select>
-            </label>
-            <input type="hidden" name="rmsa_employee_users_id[]" value="<?php echo $_SESSION['emp_rmsa_user_id']; ?>"> 
+            </label>           
+            <input type="hidden" name="rmsa_employee_users_id[]" value="<?php echo $_SESSION['emp_rmsa_user_id']; ?>">
+            <input type="hidden" name="uploaded_file_volroot[]" value="<?php echo $rmsa_uploaded_file_id; ?>">
             </td>
             </tr>
             {% } %}
-        </script>
+        </script> 
         <!-- The template to display files available for download -->
         <script id="template-download" type="text/x-tmpl">
             {% for (var i=0, file; file=o.files[i]; i++) { %}

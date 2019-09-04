@@ -13,12 +13,17 @@
 
 $(function() {
   'use strict';
-
+   var urllink=window.location.host;
+   var urlstr='/assets/front/fileupload/server/php/index.php';
+   if(urllink=="localhost"){
+       urlstr='/rmsa/assets/front/fileupload/server/php/index.php';
+   }
   // Initialize the jQuery File Upload widget:
-  $('#fileupload').fileupload({
+  $('#fileupload').fileupload({   
+    
     // Uncomment the following to send cross-domain cookies:
-    //xhrFields: {withCredentials: true},
-    url: 'assets/front/fileupload/server/php/index.php'
+    xhrFields: {withCredentials: true},
+    url: urlstr
   });
 
   // Enable iframe cross-domain access via redirect option:
@@ -30,7 +35,7 @@ $(function() {
 
   if (window.location.hostname === 'blueimp.github.io') {
     // Demo settings:
-    $('#fileupload').fileupload('option', {
+    $('#fileupload').fileupload('option', {       
       url: '//jquery-file-upload.appspot.com/',
       // Enable image resizing, except for Android and Opera,
       // which actually support image resizing, but fail to

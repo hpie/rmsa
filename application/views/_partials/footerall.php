@@ -19,7 +19,6 @@ $this->load->view('_partials/footer');
 ?>
 <!-- End Import Navbar -->         
 
-
 <!-- Start Import Scripts -->
 <?php
 $this->load->view('_partials/scripts');

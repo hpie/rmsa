@@ -671,7 +671,7 @@ class CI_Session {
     public function sessionEmployee($row) {
         foreach ($row as $key => &$value) {
             $_SESSION['emp_'.$key] = $value;
-        }
+        }        
         return;
     } 
     public function sessionCheckStudent() {
