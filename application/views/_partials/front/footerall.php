@@ -28,6 +28,7 @@ $this->load->view('_partials/front/scripts');
 <!-- End Import Scripts -->
 
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 <script>
     $(document).ready(function () {       
         // get current URL path and assign 'active' class
@@ -66,7 +67,80 @@ $this->load->view('_partials/front/allnotify');
 </script>
 <?php } ?>
 
+<?php if ($title == ' - Student Profile') {
+    ?>
+    <script>
+        $(document).ready(function () {
+            $('#frm_general_info').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    rmsa_user_middle_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your middle name'
+                            }
+                        }
+                    },
+                    rmsa_user_last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    },
+                    rmsa_user_nick_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your nick name'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function(e) {
+                $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+                $('#frm_general_info').data('bootstrapValidator').resetForm();
 
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function(result) {
+                    console.log(result);
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>
 
 <?php if ($title == ' - Student Resources') {
     ?>
@@ -157,7 +231,7 @@ $this->load->view('_partials/front/allnotify');
     
 <?php if ($title == ' - Student Registration') {
     ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+
     <script>
 
         $(document).ready(function () {
@@ -230,7 +304,7 @@ $this->load->view('_partials/front/allnotify');
                 }
             }).on('success.form.bv', function(e) {
                 $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                $('#contact_form').data('bootstrapValidator').resetForm();
+                $('#student_register').data('bootstrapValidator').resetForm();
 
                 // Prevent form submission
                 e.preventDefault();

@@ -4,7 +4,7 @@
     <div class="middle-area">
         <h1 class="heading">Update Profile of Students in the RMSA Portal</h1>
 
-        <form method="post" class="form-horizontal border p-2" action="<?php echo STUDENT_UPDATE_PROFILE_LINK ?>">
+        <form method="post" id="frm_general_info" class="form-horizontal border p-2" action="<?php echo STUDENT_UPDATE_PROFILE_LINK ?>">
             <h2 class="second-heading">General Information</h2>
 
             <div class="form-group">
@@ -36,7 +36,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_nick_name">Nick Name: </label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" value="<?=$student_data['rmsa_user_nick_name']?>" name="rmsa_user_nick_name" id="rmsa_user_last_name" placeholder="Enter Nick Name ">
+                        <input type="text" class="form-control" value="<?=$student_data['rmsa_user_nick_name']?>" name="rmsa_user_nick_name" id="rmsa_user_nick_name" placeholder="Enter Nick Name ">
                     </div>
                 </div>
             </div>
