@@ -106,7 +106,19 @@
             }
                 }?>
               </select>
-            </label>           
+            </label>  
+            <label class="description">
+                <span>File Order:</span><br>
+                <select class="form-control" name="uploaded_file_volorder[]">
+                <?php
+                for($i=1;$i<=99;$i++){
+                    ?>
+                    <option><?php echo $i; ?></option>
+                    <?php                
+                }
+            ?>
+              </select>
+            </label>
             <input type="hidden" name="rmsa_employee_users_id[]" value="<?php echo $_SESSION['emp_rmsa_user_id']; ?>">
             <input type="hidden" name="uploaded_file_volroot[]" value="<?php echo $rmsa_uploaded_file_id; ?>">
             </td>

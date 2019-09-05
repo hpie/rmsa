@@ -26,6 +26,8 @@ class CustomUploadHandler extends UploadHandler {
         $file->uploaded_file_category = @$_REQUEST['uploaded_file_category'][$index];
         $file->rmsa_employee_users_id = @$_REQUEST['rmsa_employee_users_id'][$index];
         $file->uploaded_file_volroot = @$_REQUEST['uploaded_file_volroot'][$index];
+        $file->uploaded_file_volorder = @$_REQUEST['uploaded_file_volorder'][$index];
+        
     }
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) {            
         $file = parent::handle_file_upload($uploaded_file, $name, $size, $type, $error, $index, $content_range); 
@@ -37,9 +39,10 @@ class CustomUploadHandler extends UploadHandler {
         $uploaded_file_hasvol='NO';
         $rmsa_employee_users_id=$file->rmsa_employee_users_id;
         $uploaded_file_volroot=$file->uploaded_file_volroot;
+        $uploaded_file_volorder=$file->uploaded_file_volorder;
         if (empty($file->error)) {
-		$sql = "INSERT INTO `".$this->options['db_table']."` (`uploaded_file_title`,`uploaded_file_type`,`uploaded_file_category`,`uploaded_file_desc`,`uploaded_file_path`,`uploaded_file_hasvol`,`rmsa_employee_users_id`,`uploaded_file_volroot`)"
-                        ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id','$uploaded_file_volroot')";                   
+		$sql = "INSERT INTO `".$this->options['db_table']."` (`uploaded_file_title`,`uploaded_file_type`,`uploaded_file_category`,`uploaded_file_desc`,`uploaded_file_path`,`uploaded_file_hasvol`,`rmsa_employee_users_id`,`uploaded_file_volroot`,`uploaded_file_volorder`)"
+                        ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id','$uploaded_file_volroot','$uploaded_file_volorder')";                   
 	        $query = $this->db->query($sql);                
 	        $file->id = $this->db->insert_id;                  
         }

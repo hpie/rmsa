@@ -33,7 +33,8 @@ $columns = array(
     array('db' => 'uploaded_file_category', 'dt' =>'uploaded_file_category'),
     array('db' => 'uploaded_file_desc', 'dt' =>'uploaded_file_desc'),
     array('db' => 'uploaded_file_path', 'dt' =>'uploaded_file_path'),
-    array('db' => 'uploaded_file_hasvol', 'dt' =>'uploaded_file_hasvol')
+    array('db' => 'uploaded_file_hasvol', 'dt' =>'uploaded_file_hasvol'),
+    array('db' => 'uploaded_file_volorder', 'dt' =>'uploaded_file_volorder')
 );
 // SQL server connection information
 $sql_details = array(
