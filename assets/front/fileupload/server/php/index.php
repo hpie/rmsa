@@ -1,4 +1,5 @@
 <?php
+
 $options = array(
     'delete_type' => 'POST',
     'db_host' => 'localhost',
@@ -9,42 +10,41 @@ $options = array(
 );
 error_reporting(E_ALL | E_STRICT);
 require('UploadHandler.php');
-class CustomUploadHandler extends UploadHandler {
-    protected function initialize() {
-    	$this->db = new mysqli(
-    		$this->options['db_host'],
-    		$this->options['db_user'],
-    		$this->options['db_pass'],
-    		$this->options['db_name']
-    	);
+
+class CustomUploadHandler extends UploadHandler {    
+    protected function initialize() {         
+        $this->db = new mysqli(
+                $this->options['db_host'], $this->options['db_user'], $this->options['db_pass'], $this->options['db_name']
+        );
         parent::initialize();
         $this->db->close();
     }
-    protected function handle_form_data($file, $index) {
-    	$file->uploaded_file_title = @$_REQUEST['uploaded_file_title'][$index];  
-    	$file->uploaded_file_desc = @$_REQUEST['uploaded_file_desc'][$index];        
+
+    protected function handle_form_data($file, $index) {                
+        $file->uploaded_file_title = @$_REQUEST['uploaded_file_title'][$index];
+        $file->uploaded_file_desc = @$_REQUEST['uploaded_file_desc'][$index];
         $file->uploaded_file_category = @$_REQUEST['uploaded_file_category'][$index];
         $file->uploaded_file_hasvol = @$_REQUEST['uploaded_file_hasvol'][$index];
-        $file->rmsa_employee_users_id = @$_REQUEST['rmsa_employee_users_id'][$index];
+        $file->rmsa_employee_users_id = @$_REQUEST['rmsa_employee_users_id'][$index];          
     }
-    protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) {            
-        $file = parent::handle_file_upload($uploaded_file, $name, $size, $type, $error, $index, $content_range); 
+    protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) {        
+        $file = parent::handle_file_upload($uploaded_file, $name, $size, $type, $error, $index, $content_range);        
         $uploaded_file_title=$file->uploaded_file_title;
         $uploaded_file_type=$file->filetypeext;    
         $uploaded_file_category=$file->uploaded_file_category; 
         $uploaded_file_desc=$file->uploaded_file_desc;                 
         $uploaded_file_path=$file->path;  
         $uploaded_file_hasvol=$file->uploaded_file_hasvol;
-        $rmsa_employee_users_id=$file->rmsa_employee_users_id;
-//        echo $rmsa_employee_users_id;die;
+        $rmsa_employee_users_id=$file->rmsa_employee_users_id;           
         if (empty($file->error)) {
         $sql = "INSERT INTO `".$this->options['db_table']."` (`uploaded_file_title`,`uploaded_file_type`,`uploaded_file_category`,`uploaded_file_desc`,`uploaded_file_path`,`uploaded_file_hasvol`,`rmsa_employee_users_id`)"
-                        ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id')";                   
+                ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id')";                   
 	        $query = $this->db->query($sql);                
 	        $file->id = $this->db->insert_id;                  
-        }
-        return $file;
+        }        
+        return $file;         
     }
+
 //    protected function set_additional_file_properties($file) {
 //        parent::set_additional_file_properties($file);
 //        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -74,4 +74,5 @@ class CustomUploadHandler extends UploadHandler {
 //        return $this->generate_response($response, $print_response);
 //    }
 }
+
 $upload_handler = new CustomUploadHandler($options);

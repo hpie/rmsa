@@ -4,7 +4,7 @@
         <div class="">
             <h1>File Upload</h1>         
             <!-- The file upload form used as target for the file upload widget -->
-            <form id="fileupload" action="https://jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
+            <form id="fileupload" action="http://localhost/rmsa/assets/front/fileupload/server/php/index.php" method="POST" enctype="multipart/form-data">
                 <!-- Redirect browsers with JavaScript disabled to the origin page -->
                 <noscript><input type="hidden" name="redirect" value="https://blueimp.github.io/jQuery-File-Upload/" /></noscript>
                 <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -60,47 +60,53 @@
         </div>-->
         <!-- The template to display files available for upload -->
         <script id="template-upload" type="text/x-tmpl">
-            {% for (var i=0, file; file=o.files[i]; i++) { %}
-            <tr class="template-upload fade">
-            <td>
-            <span class="preview"></span>
-            </td>
-            <td>
-            {% if (window.innerWidth > 480 || !o.options.loadImageFileTypes.test(file.type)) { %}
-            <p class="name">{%=file.name%}</p>
-            {% } %}
-            <strong class="error text-danger"></strong>
-            </td>
-            <td>
-            <p class="size">Processing...</p>
-            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
-            </td>
-            <td>           
-            {% if (!i && !o.options.autoUpload) { %}
-            <br>
-            <button class="btn btn-primary start form-control" disabled>
-            <i class="glyphicon glyphicon-upload"></i>
-            <span>Start</span>
-            </button>            
-            {% } %} 
-            </td>
-            <td>
+            
+      {% for (var i=0, file; file=o.files[i]; i++) { %}
+          <tr class="template-upload fade">
+              <td>
+                  <span class="preview"></span>
+              </td>
+              <td>
+                  {% if (window.innerWidth > 480 || !o.options.loadImageFileTypes.test(file.type)) { %}
+                      <p class="name">{%=file.name%}</p>
+                  {% } %}
+                  <strong class="error text-danger"></strong>
+              </td>
+              <td>
+                  <p class="size">Processing...</p>
+                  <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+              </td>
+              <td>                  
+                  {% if (!i && !o.options.autoUpload) { %}  
+                      <button class="btn btn-primary start" disabled>
+                          <i class="glyphicon glyphicon-upload"></i>
+                          <span>Start</span>
+                      </button>
+                  {% } %}
+                  {% if (!i) { %}
+                      <button class="btn btn-warning cancel">
+                          <i class="glyphicon glyphicon-ban-circle"></i>
+                          <span>Cancel</span>
+                      </button>
+                  {% } %}
+              </td>
+              <td>
             <label class="title">
                 <span>Title:</span><br>
-                <input name="uploaded_file_title[]" class="form-control">
+                <input type="text" name="uploaded_file_title[]" class="form-control" required>
             </label>           
             <label class="description">
                 <span>Description:</span><br>
-                <input name="uploaded_file_desc[]" class="form-control">
+                <input type="text"  name="uploaded_file_desc[]" class="form-control">
             </label>             
             <label class="description">
                 <span>Category Type:</span><br>
-                <select class="form-control" name="uploaded_file_category[]">
+                <select class="form-control" name="uploaded_file_category[]" required>
                 <?php if(!empty($result)){
                 foreach ($result as $row){
                     if($row['category_type']=="UPFILE_CAT"){
                     ?>
-                    <option><?php echo $row['category_code'] ?></option>
+                    <option value="<?php echo $row['category_code'] ?>"><?php echo $row['category_code'] ?></option>
                     <?php
                 }
      }
@@ -109,19 +115,20 @@
             </label>
             <label class="description">
                 <span>Have child (hasvol):</span><br>
-                <select class="form-control" name="uploaded_file_hasvol[]">
-                    <option>NO</option>
-                    <option>YES</option>                    
+                <select class="form-control" name="uploaded_file_hasvol[]" required>
+                    <option value="NO">NO</option>
+                    <option value="YES">YES</option>                    
               </select>
             </label>
             <input type="hidden" name="rmsa_employee_users_id[]" value="<?php echo $_SESSION['emp_rmsa_user_id']; ?>"> 
             </td>
-            </tr>
-            {% } %}
-        </script>
+          </tr>
+      {% } %}
+    </script>
         <!-- The template to display files available for download -->
         <script id="template-download" type="text/x-tmpl">
             {% for (var i=0, file; file=o.files[i]; i++) { %}
+                
             <tr class="template-download fade">
             <td>
             <span class="preview">

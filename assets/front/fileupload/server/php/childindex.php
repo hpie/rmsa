@@ -9,7 +9,7 @@ $options = array(
 );
 error_reporting(E_ALL | E_STRICT);
 require('UploadHandler.php');
-class CustomUploadHandler extends UploadHandler {
+class CustomUploadHandler1 extends UploadHandler {
     protected function initialize() {
     	$this->db = new mysqli(
     		$this->options['db_host'],
@@ -26,8 +26,7 @@ class CustomUploadHandler extends UploadHandler {
         $file->uploaded_file_category = @$_REQUEST['uploaded_file_category'][$index];
         $file->rmsa_employee_users_id = @$_REQUEST['rmsa_employee_users_id'][$index];
         $file->uploaded_file_volroot = @$_REQUEST['uploaded_file_volroot'][$index];
-        $file->uploaded_file_volorder = @$_REQUEST['uploaded_file_volorder'][$index];
-        
+        $file->uploaded_file_volorder = @$_REQUEST['uploaded_file_volorder'][$index];        
     }
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) {            
         $file = parent::handle_file_upload($uploaded_file, $name, $size, $type, $error, $index, $content_range); 
@@ -77,4 +76,4 @@ class CustomUploadHandler extends UploadHandler {
 //        return $this->generate_response($response, $print_response);
 //    }
 }
-$upload_handler = new CustomUploadHandler($options);
+$upload_handler = new CustomUploadHandler1($options);

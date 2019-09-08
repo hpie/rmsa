@@ -19,19 +19,16 @@ $(function() {
        urlstr='/rmsa/assets/front/fileupload/server/php/index.php';
    }
   // Initialize the jQuery File Upload widget:
-  $('#fileupload').fileupload({   
-    
+  $('#fileupload').fileupload({       
     // Uncomment the following to send cross-domain cookies:
     xhrFields: {withCredentials: true},
     url: urlstr
+  }).on('fileuploadsubmit', function (e, data) {
+        data.formData = data.context.find(':input,:select').serializeArray();
   });
 
   // Enable iframe cross-domain access via redirect option:
-  $('#fileupload').fileupload(
-    'option',
-    'redirect',
-    window.location.href.replace(/\/[^/]*$/, '/cors/result.html?%s')
-  );
+  $('#fileupload').fileupload('option','redirect',window.location.href.replace(/\/[^/]*$/, '/cors/result.html?%s'));
 
   if (window.location.hostname === 'blueimp.github.io') {
     // Demo settings:

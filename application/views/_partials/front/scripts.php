@@ -6,4 +6,13 @@
 
 <?php if($title==" - File Upload"){
      $this->load->view('_partials/front/fileuploadjs');
+     ?>
+<script>
+      $('#fileupload').fileupload({
+            url: 'server/php/'
+        }).on('fileuploadsubmit', function (e, data) {
+            data.formData = data.context.find(':input').serializeArray();
+        });
+    </script>
+<?php
 } ?> 

@@ -1118,7 +1118,8 @@ class UploadHandler
         $this->destroy_image_object($file_path);
     }
 
-    protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) {                                
+    protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) { 
+//        $length=count($_POST['uploaded_file_title']);                      
         $file = new \stdClass();                
         $RandomNum = time() . date("-Ymd-hisa");
         $ImageName = str_replace(' ', '-', strtolower($name));
@@ -1126,8 +1127,7 @@ class UploadHandler
         $ImageExt = str_replace('.', '', $ImageExt);
         $ImageName = preg_replace("/\.[^.\s]{3,4}$/", "", $ImageName);
         $NewImageName = 'uploads-' . rand(111, 999) . rand(11, 99) . '-' . $RandomNum . '.' . $ImageExt;                        
-        $file->filetypeext=$ImageExt;
-        
+        $file->filetypeext=$ImageExt;                
 //        $file->name = $this->get_file_name($uploaded_file, $name, $size, $type, $error,$index, $content_range);   
         $file->name = $NewImageName;        
         $file->size = $this->fix_integer_overflow((int)$size);
@@ -1170,8 +1170,8 @@ class UploadHandler
 //                    $file->error = $this->get_error_message('abort');
 //                }
 //            }
-//            $this->set_additional_file_properties($file);            
-        }
+            $this->set_additional_file_properties($file);            
+        }        
         return $file;
     }
 
