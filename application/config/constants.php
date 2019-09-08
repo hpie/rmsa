@@ -112,22 +112,34 @@ define('CI_BOOTSTRAP_VERSION',		'Build 20170324');	// will follow semantic versi
 
 
 //define all link heare for menu and other links
-define('HOME_LINK',BASE_URL."/home");
+
+//All student constant
 define('STUDENT_LOGIN_LINK',BASE_URL."/student-login");
 define('STUDENT_LOGOUT_LINK',BASE_URL."/student-logout");
 define('STUDENT_REGISTER_LINK',BASE_URL."/student-registration");
 define('STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/update-profile");
 define('STUDENT_RESOURCES_LINK',BASE_URL."/student-resources");
+define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
+define('STUDENT_APPROVE',BASE_URL."/student-approve");
+
+
+
+//All employee constant
 define('EMPLOYEE_LOGIN_LINK',BASE_URL."/employee-login");
 define('EMPLOYEE_LOGOUT_LINK',BASE_URL."/employee-logout");
 define('EMPLOYEE_UPLOAD_FILE_LINK',BASE_URL."/employee-uploadresource");
 define('EMPLOYEE_UPLOAD_CHILD_FILE_LINK',BASE_URL."/employee-uploadresource-child/");
 define('EMPLOYEE_RESOURCES_LIST_LINK',BASE_URL."/employee-resources");
+define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
+
+
+//other constant
+define('HOME_LINK',BASE_URL."/home");
 define('LOAD_TEHSIL',BASE_URL."/load-tehsil");
 define('LOAD_SCHOOL',BASE_URL."/load-school");
-define('STUDENT_APPROVE',BASE_URL."/student-approve");
-define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
-define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
+
+
+
 
 
 //define all title heare for page

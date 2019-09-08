@@ -96,30 +96,38 @@ $route['api/v1/(:any)/(:num)/(:any)']	= "api_v1/$1/$3/$2";
 $route['api/v1/(:any)/(:any)']			= "api_v1/$1/$2";
 */
 
-$route['home']='front/Home';
-$route['about-us']='front/About';
-$route['organization']='front/Organization';
-$route['employee-registration']='front/EmpRegistration';
-$route['employee-login']='front/EmpLogin';
-$route['employee-logout']='front/EmpLogin/employeeLogout';
-$route['employee-uploadresource']='front/FileUpload';
-$route['employee-uploadresource-child/(:any)']='front/FileUpload/childFileUpload/$1';
-$route['employee-resources']='front/FileDw';
-$route['student-registration']='front/StudentRegistration';
-$route['update-profile']='front/Student/update_profile';
-$route['student-resources']='front/Student/resources';
-$route['load-tehsil']='front/StudentRegistration/load_tehsil';
-$route['load-school']='front/StudentRegistration/load_school';
-$route['student-login']='front/StudentLogin';
-$route['student-logout']='front/Student/logout';
-$route['student-approve']='front/Student/approve';
-$route['is-student-active']='front/Student/is_active';
-$route['is-employee-active']='front/EmpLogin/isActiveEmployee';
-$route['registered-students']='front/RegisteredStudents';
-$route['circulars']='front/Circulars';
-$route['annual-Reports']='front/AnnualReports';
-$route['contact-us']='front/ContactUs';
+
+//all employee routes
+$route['employee-registration']    = 'front/EmpRegistration';
+$route['employee-login']           = 'front/EmpLogin';
+$route['employee-logout']          = 'front/EmpLogin/employeeLogout';
+$route['employee-uploadresource']  = 'front/FileUpload';
+$route['employee-uploadresource-child/(:any)'] = 'front/FileUpload/childFileUpload/$1';
+$route['employee-resources']       = 'front/FileDw';
+$route['is-employee-active']       = 'front/EmpLogin/isActiveEmployee';
+$route['employee-student']         = 'front/EmployeeStudent';
+
+
+//all student routes
+$route['student-registration']    = 'front/StudentRegistration';
+$route['update-profile']          = 'front/Student/update_profile';
+$route['student-resources']       = 'front/Student/resources';
+$route['load-tehsil']             = 'front/StudentRegistration/load_tehsil';
+$route['load-school']             = 'front/StudentRegistration/load_school';
+$route['student-login']           = 'front/StudentLogin';
+$route['student-logout']          = 'front/Student/logout';
+$route['student-approve']         = 'front/Student/approve';
+$route['is-student-active']       = 'front/Student/is_active';
+$route['registered-students']     = 'front/RegisteredStudents';
+
+
+//others routes
+$route['circulars']              = 'front/Circulars';
+$route['annual-Reports']         = 'front/AnnualReports';
+$route['contact-us']             = 'front/ContactUs';
+$route['home']                   = 'front/Home';
+$route['about-us']               = 'front/About';
+$route['organization']           = 'front/Organization';
 //$route['file-dw']='front/FileDw';
-$route['employee-student']='front/EmployeeStudent';
 //$route['file-upload']='front/FileUpload';
 //$route['file-dw-data']='front/FileDw/FileDwData';
