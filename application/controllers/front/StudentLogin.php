@@ -20,17 +20,6 @@ class StudentLogin extends MY_Controller{
         $this->mViewData['title']=' - Student Login';
         $this->renderFront('front/studentlogin');       
     }
-    public function approveStudent(){
-        if(isset($_REQUEST['rmsa_user_id'])){
-            $res = $this->login_model->approve_student($_REQUEST['rmsa_user_id']);
-            if($res){
-                 $data = array(
-                     'suceess' => true
-                 );
-            }
-            echo json_encode($data);
-        }
-    }
     public function isStudentActive(){
         if($_SESSION['st_rmsa_student_login_active']==1){
             $res = $this->login_model->isStudentActive($_SESSION['st_rmsa_user_id']);

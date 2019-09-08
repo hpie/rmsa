@@ -23,6 +23,19 @@ class Student extends MY_Controller{
         $this->mViewData['title']=' - Student Profile';
         $this->renderFront('front/student_profile');
     }
+
+    public function approve(){
+        if(isset($_REQUEST['rmsa_user_id'])){
+            $res = $this->student_model->approve_student($_REQUEST['rmsa_user_id']);
+            if($res){
+                $data = array(
+                    'suceess' => true
+                );
+            }
+            echo json_encode($data);
+        }
+    }
+
     public function resources(){
         $this->mViewData['title']=' - Student Resources';
         $this->renderFront('front/student_resources.php');
