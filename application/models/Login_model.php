@@ -18,21 +18,6 @@ class Login_model extends CI_Model{
         return false;
     }
     }
-
-    public function isStudentActive($rmsa_user_id){
-        $check = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_id = '{$rmsa_user_id}' AND rmsa_student_login_active = 1");
-        $issctive = $check->row_array();
-        if($issctive['rmsa_student_login_active']){
-            return array(
-                'isactive' => true
-            );
-        }
-        else{
-            return array(
-                'isactive' => false
-            );
-        }
-    }
   
 }
 ?>

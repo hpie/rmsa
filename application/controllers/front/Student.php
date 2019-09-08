@@ -36,6 +36,13 @@ class Student extends MY_Controller{
         }
     }
 
+    public function is_active(){
+        if($_SESSION['st_rmsa_student_login_active']==1){
+            $res = $this->student_model->is_active($_SESSION['st_rmsa_user_id']);
+            echo json_encode($res);
+        }
+    }
+
     public function resources(){
         $this->mViewData['title']=' - Student Resources';
         $this->renderFront('front/student_resources.php');
