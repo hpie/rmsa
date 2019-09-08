@@ -27,5 +27,9 @@ class Student extends MY_Controller{
         $this->mViewData['title']=' - Student Resources';
         $this->renderFront('front/student_resources.php');
     }
+    public function logout() {
+        $this->session->sessionDestroy();
+        redirect(STUDENT_LOGIN_LINK);
+    }
 }
 ?>

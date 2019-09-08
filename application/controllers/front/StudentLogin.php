@@ -20,10 +20,6 @@ class StudentLogin extends MY_Controller{
         $this->mViewData['title']=' - Student Login';
         $this->renderFront('front/studentlogin');       
     }
-    public function studentLogout() {
-        $this->session->sessionDestroy();
-        redirect(STUDENT_LOGIN_LINK);
-    }
     public function approveStudent(){
         if(isset($_REQUEST['rmsa_user_id'])){
             $res = $this->login_model->approve_student($_REQUEST['rmsa_user_id']);
