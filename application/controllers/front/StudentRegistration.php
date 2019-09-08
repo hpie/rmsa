@@ -4,6 +4,7 @@ class StudentRegistration extends MY_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model('register_model');
+        $this->load->model('helper_model');
     }
     public function index(){  
         if(isset($_POST['rmsa_user_first_name'])){                        
@@ -12,21 +13,9 @@ class StudentRegistration extends MY_Controller{
                 redirect(HOME_LINK);
             }
         }        
-        $this->mViewData['distResult'] =  $this->register_model->load_distict();  
+        $this->mViewData['distResult'] =  $this->helper_model->load_distict();
         $this->mViewData['title']=' - Student Registration';
         $this->renderFront('front/studentregistration');
-    }
-    public function load_tehsil(){
-        if($_REQUEST['districtId']){
-            $tehsil = $this->register_model->load_tehsil($_POST);
-            echo json_encode($tehsil);
-        }
-    }
-    public function load_school(){
-        if($_REQUEST['subDistrictId']){
-            $school = $this->register_model->load_school($_POST);
-            echo json_encode($school);
-        }
     }
 }
 ?>  

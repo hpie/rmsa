@@ -112,13 +112,15 @@ $route['employee-student']         = 'front/EmployeeStudent';
 $route['student-registration']    = 'front/StudentRegistration';
 $route['update-profile']          = 'front/Student/update_profile';
 $route['student-resources']       = 'front/Student/resources';
-$route['load-tehsil']             = 'front/StudentRegistration/load_tehsil';
-$route['load-school']             = 'front/StudentRegistration/load_school';
 $route['student-login']           = 'front/StudentLogin';
 $route['student-logout']          = 'front/Student/logout';
 $route['student-approve']         = 'front/Student/approve';
 $route['is-student-active']       = 'front/Student/is_active';
 $route['registered-students']     = 'front/RegisteredStudents';
+
+//helper routes
+$route['load-tehsil']             = 'front/helper/load_tehsil';
+$route['load-school']             = 'front/helper/load_school';
 
 
 //others routes
