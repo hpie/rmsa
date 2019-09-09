@@ -116,6 +116,7 @@ $route['student-login']           = 'front/StudentLogin';
 $route['student-logout']          = 'front/Student/logout';
 $route['student-approve']         = 'front/Student/approve';
 $route['is-student-active']       = 'front/Student/is_active';
+$route['total-fileview']          = 'front/Student/file_viewcount';
 $route['registered-students']     = 'front/RegisteredStudents';
 
 //helper routes

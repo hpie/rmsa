@@ -75,5 +75,15 @@
                 );
             }
         }
+
+        public function file_viewcount($rmsa_uploaded_file_id){
+            $query_res = $this->db->query("UPDATE  rmsa_uploaded_files SET uploaded_file_viewcount = uploaded_file_viewcount + 1 WHERE 	rmsa_uploaded_file_id='{$rmsa_uploaded_file_id}'");
+
+            if($query_res){
+                return array(
+                    'count_added' => true
+                );
+            }
+        }
     }
 ?>

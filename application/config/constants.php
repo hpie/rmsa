@@ -137,6 +137,7 @@ define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
 define('HOME_LINK',BASE_URL."/home");
 define('LOAD_TEHSIL',BASE_URL."/load-tehsil");
 define('LOAD_SCHOOL',BASE_URL."/load-school");
+define('FILE_VIEW_COUNT',BASE_URL."/total-fileview");
 
 
 

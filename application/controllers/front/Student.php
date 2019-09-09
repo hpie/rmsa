@@ -47,6 +47,13 @@ class Student extends MY_Controller{
         $this->mViewData['title']=' - Student Resources';
         $this->renderFront('front/student_resources.php');
     }
+
+    public function file_viewcount(){
+        if($_REQUEST['rmsa_uploaded_file_id']){
+            $res = $this->student_model->file_viewcount($_REQUEST['rmsa_uploaded_file_id']);
+            echo json_encode($res);
+        }
+    }
     public function logout() {
         $this->session->sessionDestroy();
         redirect(STUDENT_LOGIN_LINK);

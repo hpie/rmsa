@@ -201,6 +201,22 @@ $this->load->view('_partials/front/allnotify');
 <?php if ($title == ' - Student Resources') {
     ?>
     <script>
+        $(document).on('click','.view_count',function (e) {
+
+            e.preventDefault();
+            var rmsa_uploaded_file_id = $(this).data('id');
+            var self = this;
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo FILE_VIEW_COUNT ?>",
+                data : {'rmsa_uploaded_file_id':rmsa_uploaded_file_id},
+                success : function(res){
+                    if(res){
+                        location.href = self.href;
+                    }
+                }
+            });
+        });
         $(document).ready(function () {
             $('#example').DataTable({
                 "processing": true,
