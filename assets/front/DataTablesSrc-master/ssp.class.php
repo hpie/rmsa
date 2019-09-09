@@ -386,6 +386,86 @@ class SSP {
 			"data" => $resData
 		);
 	}
+    static function student_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+    {
+        $bindings = array();
+        $db = self::db( $conn );
+
+        // Build the SQL query string from the request
+        $limit = self::limit( $request, $columns );
+        $order = self::order( $request, $columns );
+        $where = self::filter( $request, $columns, $bindings );
+
+        if ($where_custom) {
+            if ($where) {
+                $where .= ' AND ' . $where_custom;
+            } else {
+                $where .= 'WHERE ' . $where_custom;
+            }
+        }
+        // Main query to actually get the data
+        $data = self::sql_exec($db, $bindings,
+            "SELECT `".implode("`, `", self::pluck($columns, 'db'))."` FROM `$table` WHERE uploaded_file_volroot=0  $order $limit"
+        );
+        // Data set length after filtering
+        $resFilterLength = self::sql_exec( $db, $bindings,
+            "SELECT COUNT(`{$primaryKey}`)
+			 FROM   `$table`
+			 $where"
+        );
+        $recordsFiltered = $resFilterLength[0][0];
+        // Total data set length
+        $resTotalLength = self::sql_exec( $db,
+            "SELECT COUNT(`{$primaryKey}`)
+			 FROM   `$table`"
+        );
+        $recordsTotal = $resTotalLength[0][0];
+        $result=self::data_output($columns,$data);
+        $resData=array();
+        if(!empty($result)){
+            foreach ($result as $row){
+                $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
+                $row['ext']="<td style='padding: 2px 5px;'><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></td>";
+                if($row['uploaded_file_hasvol']=="YES"){
+                    $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
+                    $dataChild = self::sql_exec( $db, $bindings,
+                        "SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
+                                     FROM `$table`
+                                     WHERE uploaded_file_volroot=".$row['rmsa_uploaded_file_id']." ORDER BY uploaded_file_volorder ASC"
+                    );
+                    $resultChild=self::data_output($columns,$dataChild);
+//                            print_r($resultChild);die;
+//                            $str='<table><tr>';
+                    $strTd='';
+                    $str='';
+                    foreach ($resultChild as $rowChild){
+                        $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true";
+                        $strTd.="<td style='padding: 0px 0px;'><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a></td>";
+                    }
+                    $str.=$strTd."</tr></table>";
+//                            $row['extChild']=$str;
+                    $row['ext'].=$str;
+//                            $resChild=self::data_output($columns,$dataChild);
+                    $row['child']="<a class='btn btn-success btn_approve' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";
+                }
+                else{
+                    $row['ext']="<table><tr>".$row['ext']."</tr></table>";
+                    $row['child']="-----No Hasvol-----";
+                }
+                array_push($resData, $row);
+            }
+        }
+//                print_r($resData);die;
+        /*
+         * Output
+         */
+        return array(
+            "draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+            "recordsTotal" => intval( $recordsTotal ),
+            "recordsFiltered" => intval( $recordsFiltered ),
+            "data" => $resData
+        );
+    }
 
 
 	/**
