@@ -28,6 +28,12 @@
                                     <li class="nav-item"><a href="<?php echo BASE_URL; ?>/circulars" class="nav-link">Circulars & Orders</a></li>
                                     <li class="nav-item"><a href="<?php echo BASE_URL; ?>/annual-Reports" class="nav-link">Annual Report</a></li>
                                     <li class="nav-item"><a href="<?php echo BASE_URL; ?>/contact-us" class="nav-link">Contact Us</a></li>
+                                    <?php if(isset($_SESSION['st_rmsa_user_id'])){ ?>
+                                    <li class="nav-item"><a href="<?php echo STUDENT_LOGOUT_LINK; ?>" class="nav-link">Logout</a></li>
+                                    <?php } ?>
+                                    <?php if(isset($_SESSION['emp_rmsa_user_id'])){ ?>
+                                    <li class="nav-item"><a href="<?php echo EMPLOYEE_LOGOUT_LINK; ?>" class="nav-link">Logout</a></li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
