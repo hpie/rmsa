@@ -8,10 +8,9 @@ class FileDw extends MY_Controller {
         $this->session->sessionCheckEmployee();
         parent::__construct();
     }
-    public function index() {
+    public function index() {       
         $this->mViewData['title']=' - FileDw';
         $this->renderFront('front/filedw');
     }
 }
-
 ?>
