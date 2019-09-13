@@ -351,8 +351,6 @@ class SSP {
                                      WHERE uploaded_file_volroot=".$row['rmsa_uploaded_file_id']." ORDER BY uploaded_file_volorder ASC"
                             );
                             $resultChild=self::data_output($columns,$dataChild);
-//                            print_r($resultChild);die;
-//                            $str='<table><tr>';
                             $strTd='';
                             $str='';
                             foreach ($resultChild as $rowChild){
