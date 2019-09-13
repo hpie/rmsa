@@ -435,7 +435,7 @@ class SSP {
                     $str='';
                     foreach ($resultChild as $rowChild){
                         $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true";
-                        $strTd.="<td style='padding: 0px 0px;'><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a></td>";
+                        $strTd.="<td style='padding: 0px 0px;'><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a></td>";
                     }
                     $str.=$strTd."</tr></table>";
 //                            $row['extChild']=$str;
