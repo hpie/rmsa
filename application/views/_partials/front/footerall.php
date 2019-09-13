@@ -52,7 +52,14 @@ $this->load->view('_partials/front/allnotify');
             "serverSide": true,
             "paginationType": "full_numbers",
             "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-            "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list.php' ?>",
+            "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list.php' ?>",
+                    'data': {
+                        emp_rmsa_user_id: <?php if(isset($_SESSION['emp_rmsa_user_id'])){echo $_SESSION['emp_rmsa_user_id']; } ?>,                        
+                    }
+                },
+//            "ajax": "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list.php' ?>",
             "columns": [
                 {"data": "uploaded_file_title"},
                 {"data": "uploaded_file_type"},

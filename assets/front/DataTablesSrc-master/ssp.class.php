@@ -14,7 +14,6 @@
  *
  * @license MIT - http://datatables.net/license_mit
  */
-
 //$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
 //$base_url = $protocol.'://'.$_SERVER['HTTP_HOST'];
 $base_url= $_SERVER['SERVER_NAME'];
@@ -23,7 +22,6 @@ if($base_url=='localhost'){
     $url.='/rmsa';
 }
 define('IMG_URL',$url); 
-
 $protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
 $r = $_SERVER['SCRIPT_NAME'];
 $subdomain = explode('/', $r);
@@ -37,7 +35,6 @@ $filepath="/assets/front/fileupload/server/php/files/";
 define('FILE_URL', $filepath);
 
 //define('BASE_URL', $url);
-
 
 // REMOVE THIS BLOCK - used for DataTables test environment only!
 $file = $_SERVER['DOCUMENT_ROOT'].'/datatables/pdo.php';
@@ -304,7 +301,7 @@ class SSP {
 		);
 	}
         
-        static function emp_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+        static function emp_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$emp_rmsa_user_id)
 	{
 //            echo BASE_URL;die;
                 
@@ -325,7 +322,7 @@ class SSP {
                 }
 		// Main query to actually get the data
 		$data = self::sql_exec($db, $bindings,
-			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."` FROM `$table` WHERE uploaded_file_volroot=0  $order $limit"
+			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."` FROM `$table` WHERE uploaded_file_volroot=0 AND rmsa_employee_users_id='$emp_rmsa_user_id'  $order $limit"
 		);
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,

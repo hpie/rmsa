@@ -43,13 +43,14 @@ $sql_details = array(
     'db' => 'rmsa',
     'host' => 'localhost'
 );
+$emp_rmsa_user_id = $_REQUEST['emp_rmsa_user_id'];
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.
  */
 require('ssp.class.php' );
 echo json_encode(
-       SSP::emp_file_list($_GET, $sql_details, $table, $primaryKey, $columns)
+       SSP::emp_file_list($_GET, $sql_details, $table, $primaryKey, $columns,'',$emp_rmsa_user_id)
 );
 
 
