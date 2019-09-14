@@ -208,6 +208,48 @@ $this->load->view('_partials/front/allnotify');
 <?php if ($title == ' - Student Resources') {
     ?>
     <script>
+        var uploaded_file_id;
+        var review_modal = $("#review-modal");
+        function openreview(file_id){
+            uploaded_file_id = file_id;
+            review_modal.modal();
+        }
+
+        function resetRating() {
+            if ($('#review_rating').val() != 0) {
+                $('.review i').each(function(index) {
+                    $(this).attr('class', 'fa fa-star')
+                    if (index + 1 == $('#review_rating').val()) {
+                        return false
+                    }
+                })
+            }
+        }
+        function highlightStar(obj) {
+            removeHighlight()
+            $('.review i').each(function(index) {
+                $(this).attr('class', 'fa fa-star')
+                if (index == $('.review i').index(obj)) {
+                    return false
+                }
+            })
+        }
+
+        function removeHighlight() {
+            $('.review i').attr('class', 'fa fa-star-o')
+        }
+
+        function addRating(obj) {
+            $('.review i').each(function(index) {
+                $(this).attr('class', 'fa fa-star')
+                $('#review_rating').val(index + 1)
+                if (index == $('.review i').index(obj)) {
+                    return false
+                }
+            })
+        }
+
+
         $(document).on('click','.view_count',function (e) {
 
             e.preventDefault();
