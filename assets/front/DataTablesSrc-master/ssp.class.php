@@ -419,8 +419,15 @@ class SSP {
         $resData=array();
         if(!empty($result)){
             foreach ($result as $row){
+
+                $rmsa_file_id = $row['rmsa_uploaded_file_id'];
                 $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                $row['ext']="<td style='padding: 2px 5px;'><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></td>";
+                $row['ext']="<td style='padding: 2px 5px;'><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                              
+                             </br>
+                             <span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'>review/comment</span>   
+                                
+                             </td>";
                 if($row['uploaded_file_hasvol']=="YES"){
                     $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
                     $dataChild = self::sql_exec( $db, $bindings,
