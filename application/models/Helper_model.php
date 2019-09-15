@@ -47,9 +47,6 @@ class Helper_model extends CI_Model
                                   VALUES('".$last_insert_id."','".$comment."')  ");
             }
 
-            //TODO
-            // need Add comments for that review on separate table
-
             if(!$result){
                 return Array(
                     'success' => false
