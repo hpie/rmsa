@@ -38,13 +38,13 @@ class Helper_model extends CI_Model
             $result = $this->db->query("INSERT INTO rmsa_file_reviews(rmsa_user_id,rmsa_uploaded_file_id,rmsa_file_rating,rmsa_review_status)
                            VALUES('".$userId."','".$fileId."','".$rating."',1) ");
 
-           $last_insert_id = $this->db->insert_id();
+           $rmsa_review_id = $this->db->insert_id();
 
 
             if(!empty($comment)){
                 //add comment for that
                 $this->db->query("INSERT INTO rmsa_review_comments(rmsa_review_id,rmsa_review_text)
-                                  VALUES('".$last_insert_id."','".$comment."')  ");
+                                  VALUES('".$rmsa_review_id."','".$comment."')  ");
             }
 
             if(!$result){
@@ -58,7 +58,19 @@ class Helper_model extends CI_Model
             );
         }
         else{
+
+            $rmsa_review_id = $check_record[0]['rmsa_review_id'];
             //other wise they can only write comment for it.
+            if(!empty($comment)){
+                //add comment for that
+                $this->db->query("INSERT INTO rmsa_review_comments(rmsa_review_id,rmsa_review_text)
+                                  VALUES('".$rmsa_review_id."','".$comment."')  ");
+            }
+
+            return Array(
+                'success' => true
+            );
+
         }
 
 

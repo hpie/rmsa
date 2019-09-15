@@ -270,6 +270,7 @@ $this->load->view('_partials/front/allnotify');
                     var res = $.parseJSON(res);
                     if(res.success){
                         alert('Thank you, your post has been submitted for review.')
+                        review_modal.modal('toggle');
                     }
                 }
             });
