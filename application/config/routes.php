@@ -122,6 +122,7 @@ $route['registered-students']     = 'front/RegisteredStudents';
 //helper routes
 $route['load-tehsil']             = 'front/helper/load_tehsil';
 $route['load-school']             = 'front/helper/load_school';
+$route['post-review']             = 'front/helper/post_review';
 
 
 //others routes

@@ -249,6 +249,29 @@ $this->load->view('_partials/front/allnotify');
             })
         }
 
+        $(document).on('click','.btn_post_review',function (e) {
+            var review_rating = $("#review_rating");
+            if (review_rating.val() == '') {
+                return alert('Please enter at least one rating.')
+            }
+
+            var data = {
+                'file_id' : uploaded_file_id,
+                'rating'  : review_rating.val()
+            }
+
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo POST_REVIEW ?>",
+                data : data,
+                success : function(res){
+                    var res = $.parseJSON(res);
+                    if(res.success){
+                        alert('Thank you, your post has been submitted for review.')
+                    }
+                }
+            });
+        })
 
         $(document).on('click','.view_count',function (e) {
 

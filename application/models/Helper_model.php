@@ -20,4 +20,27 @@ class Helper_model extends CI_Model
         $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_sub_district_id = {$subDistrictId} AND rmsa_school_status = 'ACTIVE'");
         return $school->result_array();
     }
+
+    public function post_review($params){
+
+        $userId = $_SESSION['st_rmsa_user_id'];
+        $fileId = $params['file_id'];
+        $rating = $params['rating'];
+
+        $result = $this->db->query("INSERT INTO rmsa_file_reviews(rmsa_user_id,rmsa_uploaded_file_id,rmsa_file_rating,rmsa_review_status)
+                           VALUES('".$userId."','".$fileId."','".$rating."',1) ");
+
+        if(!$result){
+            return Array(
+                'success' => false
+            );
+        }
+
+        return Array(
+            'success' => true
+        );
+
+
+
+    }
 }

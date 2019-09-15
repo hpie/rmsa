@@ -21,4 +21,11 @@ class Helper extends MY_Controller {
             echo json_encode($school);
         }
     }
+
+    public function post_review(){
+        if($_REQUEST['file_id'] && $_REQUEST['rating']){
+            $reviews = $this->helper_model->post_review($_POST);
+            echo json_encode($reviews);
+        }
+    }
 }
