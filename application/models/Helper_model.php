@@ -27,18 +27,32 @@ class Helper_model extends CI_Model
         $fileId = $params['file_id'];
         $rating = $params['rating'];
 
-        $result = $this->db->query("INSERT INTO rmsa_file_reviews(rmsa_user_id,rmsa_uploaded_file_id,rmsa_file_rating,rmsa_review_status)
+        //check user has already rating for this post or not
+
+        $check = $this->db->query("SELECT * FROM rmsa_file_reviews WHERE rmsa_file_rating IS NOT NULL AND rmsa_user_id = '".$userId."'");
+
+        $check_record = $check->result_array();
+
+        if(count($check_record)<=0){
+            $result = $this->db->query("INSERT INTO rmsa_file_reviews(rmsa_user_id,rmsa_uploaded_file_id,rmsa_file_rating,rmsa_review_status)
                            VALUES('".$userId."','".$fileId."','".$rating."',1) ");
 
-        if(!$result){
+            //TODO
+            // need Add comments for that review on separate table
+
+            if(!$result){
+                return Array(
+                    'success' => false
+                );
+            }
+
             return Array(
-                'success' => false
+                'success' => true
             );
         }
-
-        return Array(
-            'success' => true
-        );
+        else{
+            //other wise they can only write comment for it.
+        }
 
 
 
