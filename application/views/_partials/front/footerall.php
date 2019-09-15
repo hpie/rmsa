@@ -251,13 +251,15 @@ $this->load->view('_partials/front/allnotify');
 
         $(document).on('click','.btn_post_review',function (e) {
             var review_rating = $("#review_rating");
+            var comment       = $(".review-comment");
             if (review_rating.val() == '') {
                 return alert('Please enter at least one rating.')
             }
 
             var data = {
                 'file_id' : uploaded_file_id,
-                'rating'  : review_rating.val()
+                'rating'  : review_rating.val(),
+                'comment'  : comment.val()
             }
 
             $.ajax({

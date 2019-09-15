@@ -23,9 +23,10 @@ class Helper_model extends CI_Model
 
     public function post_review($params){
 
-        $userId = $_SESSION['st_rmsa_user_id'];
-        $fileId = $params['file_id'];
-        $rating = $params['rating'];
+        $userId  = $_SESSION['st_rmsa_user_id'];
+        $fileId  = $params['file_id'];
+        $rating  = $params['rating'];
+        $comment = trim($params['comment']);
 
         //check user has already rating for this post or not
 
@@ -36,6 +37,15 @@ class Helper_model extends CI_Model
         if(count($check_record)<=0){
             $result = $this->db->query("INSERT INTO rmsa_file_reviews(rmsa_user_id,rmsa_uploaded_file_id,rmsa_file_rating,rmsa_review_status)
                            VALUES('".$userId."','".$fileId."','".$rating."',1) ");
+
+           $last_insert_id = $this->db->insert_id();
+
+
+            if(!empty($comment)){
+                //add comment for that
+                $this->db->query("INSERT INTO rmsa_review_comments(rmsa_review_id,rmsa_review_text)
+                                  VALUES('".$last_insert_id."','".$comment."')  ");
+            }
 
             //TODO
             // need Add comments for that review on separate table

@@ -73,6 +73,10 @@
                     <?php } ?>
                     <input type="hidden" name="review_rating" id="review_rating" value=""/>
                 </div>
+                <div class="form-group">
+                    <label>Comment:</label>
+                    <textarea  class=" form-control review-comment"></textarea>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button"  class="btn btn-primary btn_post_review">Submit</button>
