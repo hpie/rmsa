@@ -424,8 +424,38 @@ class SSP {
 //                             </td>
                 
                 $rmsa_file_id = $row['rmsa_uploaded_file_id'];
+
+                $reviews = self::sql_exec( $db,
+                    "SELECT AVG(rmsa_file_rating) as overall_rating FROM rmsa_file_reviews
+                            WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}' AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");
+
+
+                $star = '';
+                if(count($reviews)){
+                    $rating = $reviews[0]['overall_rating'];
+                    $starNumber = rtrim(rtrim(number_format($rating, 1, ".", ""), '0'), '.');
+
+                    for ($x = 0; $x < 5; $x++) {
+                        if (floor($starNumber)-$x >= 1) {
+                            $star.= '<i class="fa fa-star" style="color:#ffc000;"></i>';
+                        }
+                        elseif ($starNumber-$x > 0) {
+                            $star.= '<i class="fa fa-star-half-o" style="color:#ffc000;"></i>';
+                        }
+                        else {
+                            $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
+                        }
+                    }
+
+                }
+
                 $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                $row['ext']="<td style='padding: 2px 5px;'><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>                                                           
+                $row['ext']="<br style='padding: 2px 5px;'>
+
+<a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+
+                </br> <span>$star</span>                
+                                                 
                              </td>";
                 $row['review']="<td><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></td>";
 //                        . "<span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'></span>";

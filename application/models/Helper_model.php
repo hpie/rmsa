@@ -30,7 +30,7 @@ class Helper_model extends CI_Model
 
         //check user has already rating for this post or not
 
-        $check = $this->db->query("SELECT * FROM rmsa_file_reviews WHERE rmsa_file_rating IS NOT NULL AND rmsa_user_id = '".$userId."'");
+        $check = $this->db->query("SELECT * FROM rmsa_file_reviews WHERE rmsa_file_rating IS NOT NULL AND rmsa_user_id = '".$userId."' AND rmsa_uploaded_file_id = '".$fileId."'");
 
         $check_record = $check->result_array();
 
