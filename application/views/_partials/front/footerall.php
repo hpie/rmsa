@@ -305,7 +305,8 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "uploaded_file_group"},
                     {"data": "uploaded_file_category"},
                     {"data": "uploaded_file_desc"},
-                    {"data": "ext"}                  
+                    {"data": "ext"}, 
+                    {"data": "review"} 
                 ]
             });
         });

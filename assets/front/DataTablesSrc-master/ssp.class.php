@@ -418,16 +418,17 @@ class SSP {
         $result=self::data_output($columns,$data);
         $resData=array();
         if(!empty($result)){
-            foreach ($result as $row){
-
+            foreach ($result as $row){                
+//                <td>
+//                             <span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'>review/comment</span>
+//                             </td>
+                
                 $rmsa_file_id = $row['rmsa_uploaded_file_id'];
                 $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                $row['ext']="<td style='padding: 2px 5px;'><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
-                              
-                             </br>
-                             <span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'>review/comment</span>   
-                                
+                $row['ext']="<td style='padding: 2px 5px;'><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>                                                           
                              </td>";
+                $row['review']="<td><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></td>";
+//                        . "<span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'></span>";
                 if($row['uploaded_file_hasvol']=="YES"){
                     $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
                     $dataChild = self::sql_exec( $db, $bindings,
@@ -448,7 +449,7 @@ class SSP {
 //                            $row['extChild']=$str;
                     $row['ext'].=$str;
 //                            $resChild=self::data_output($columns,$dataChild);
-                    $row['child']="<a class='btn btn-success btn_approve' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";
+                    $row['child']="<a class='btn btn-success btn_approve' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";                    
                 }
                 else{
                     $row['ext']="<table><tr>".$row['ext']."</tr></table>";
