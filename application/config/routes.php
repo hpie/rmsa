@@ -123,6 +123,7 @@ $route['registered-students']     = 'front/RegisteredStudents';
 $route['load-tehsil']             = 'front/helper/load_tehsil';
 $route['load-school']             = 'front/helper/load_school';
 $route['post-review']             = 'front/helper/post_review';
+$route['display-review']             = 'front/helper/display_review';
 
 
 //others routes
