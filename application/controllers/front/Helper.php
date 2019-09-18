@@ -72,4 +72,9 @@ class Helper extends MY_Controller {
         echo $review_comments;
 
     }
+
+    public  function view_review(){
+        $this->mViewData['title']=' - File Reviews';
+        $this->renderFront('front/file_reviews');
+    }
 }

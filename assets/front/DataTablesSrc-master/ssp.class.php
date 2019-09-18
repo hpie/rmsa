@@ -454,7 +454,9 @@ class SSP {
 
 <a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
 
-                </br> <span>$star</span>                
+                </br> <span>$star</span> 
+                </br>
+                <a href='/rmsa/file-reviews'>View Reviews</a>               
                                                  
                              </td>";
                 $row['review']="<td><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></td>";
