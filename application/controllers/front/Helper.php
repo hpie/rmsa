@@ -74,6 +74,27 @@ class Helper extends MY_Controller {
     }
 
     public  function view_review(){
+
+        $reviews_arr = Array();
+
+        $reviews = $this->helper_model->display_review(11);
+
+        if (count($reviews)) {
+            foreach ($reviews AS $key1 => $review) {
+                $reviews_arr [] = $review;
+
+                $comments = $this->helper_model->get_comments($review['rmsa_review_id']);
+
+                $comments_arr = Array();
+                if (count($comments)) {
+                    foreach ($comments AS $key => $comment) {
+                        $comments_arr [] =  $comment['rmsa_review_text'];
+                    }
+                }
+                $reviews_arr[$key1]['comments'] = $comments_arr;
+            }
+        }
+        $this->mViewData['review_comments'] = $reviews_arr;
         $this->mViewData['title']=' - File Reviews';
         $this->renderFront('front/file_reviews');
     }
