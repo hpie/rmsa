@@ -75,7 +75,11 @@ class Helper_model extends CI_Model
     }
 
     public function display_review($file_id){
-        $comments = $this->db->query("SELECT * FROM rmsa_file_reviews WHERE rmsa_uploaded_file_id = '".$file_id."'");
+        $comments = $this->db->query("SELECT fr.*,CONCAT(su.rmsa_user_first_name,' ',su.rmsa_user_last_name) AS username
+                                      FROM rmsa_file_reviews fr
+                                      INNER JOIN rmsa_student_users su ON su.rmsa_user_id = fr.rmsa_user_id
+                                      WHERE fr.rmsa_uploaded_file_id = '".$file_id."'
+                                      ORDER BY fr.rmsa_review_id DESC");
 
         return $comments->result_array();
 
