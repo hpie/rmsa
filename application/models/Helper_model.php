@@ -89,4 +89,9 @@ class Helper_model extends CI_Model
         return $comments->result_array();
     }
 
+    public function get_file_title($fileId){
+        $title = $this->db->query("SELECT uploaded_file_title FROM  rmsa_uploaded_files WHERE rmsa_uploaded_file_id = '".$fileId."'");
+        return $title->result_array();
+    }
+
 }

@@ -1,6 +1,6 @@
 <!-- content -->
 <div class="col-md-6 col-sm-8  col-12">
-    <h2 class="text-center">This is the title of the file</h2>
+    <h2 class="text-center"><?= $file_title ?></h2>
 
     <div class="card">
         <div class="card-body">

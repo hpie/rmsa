@@ -94,6 +94,8 @@ class Helper extends MY_Controller {
                 $reviews_arr[$key1]['comments'] = $comments_arr;
             }
         }
+        $get_title = $this->helper_model->get_file_title($fileId);
+        $this->mViewData['file_title'] = $get_title[0]['uploaded_file_title'];
         $this->mViewData['review_comments'] = $reviews_arr;
         $this->mViewData['title']=' - File Reviews';
         $this->renderFront('front/file_reviews');
