@@ -72,8 +72,17 @@ class Helper_model extends CI_Model
             );
 
         }
+    }
 
+    public function display_review($file_id){
+        $comments = $this->db->query("SELECT * FROM rmsa_file_reviews WHERE rmsa_uploaded_file_id = '".$file_id."'");
 
+        return $comments->result_array();
 
     }
+    public function get_comments($review_id){
+        $comments = $this->db->query("SELECT * FROM  rmsa_review_comments WHERE rmsa_review_id = '".$review_id."'");
+        return $comments->result_array();
+    }
+
 }
