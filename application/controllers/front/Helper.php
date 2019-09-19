@@ -73,11 +73,11 @@ class Helper extends MY_Controller {
 
     }
 
-    public  function view_review(){
+    public  function view_review($fileId){
 
         $reviews_arr = Array();
 
-        $reviews = $this->helper_model->display_review(11);
+        $reviews = $this->helper_model->display_review($fileId);
 
         if (count($reviews)) {
             foreach ($reviews AS $key1 => $review) {
