@@ -299,7 +299,7 @@ class SSP {
                 if(!empty($result)){
                     foreach ($result as $row){
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                        $row['ext']="<td style='padding: 2px 5px;'><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></td>";                        
+                        $row['ext']="<td style='padding: 2px 5px;'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></center></td>";                        
                         if($row['uploaded_file_hasvol']=="YES"){
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
                             $dataChild = self::sql_exec( $db, $bindings,
@@ -312,7 +312,7 @@ class SSP {
                             $str='';
                             foreach ($resultChild as $rowChild){
                                $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true"; 
-                               $strTd.="<td style='padding: 0px 0px;'><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a></td>";
+                               $strTd.="<td style='padding: 0px 0px;'><center><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a></center></td>";
                             }
                             $str.=$strTd."</tr></table>";
 //                            $row['extChild']=$str;
@@ -385,7 +385,8 @@ class SSP {
                 $star = '';
                 if(count($reviews)){
                     $rating = $reviews[0]['overall_rating'];
-                    $starNumber = rtrim(rtrim(number_format($rating, 1, ".", ""), '0'), '.');
+                    $starNumber = rtrim(rtrim(number_format($rating, 1, ".", ""), '0'), '.');                    
+                    echo $starNumber;                    
                     for ($x = 0; $x < 5; $x++) {
                         if (floor($starNumber)-$x >= 1) {
                             $star.= '<i class="fa fa-star" style="color:#ffc000;"></i>';
@@ -397,11 +398,12 @@ class SSP {
                             $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
                         }
                     }
-                }
+                }                
+//                                
                 $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                $row['ext']="<br style='padding: 2px 5px;'><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
-                </br> <span>$star</span><a href='/rmsa/file-reviews/".$row['rmsa_uploaded_file_id']."'>View Reviews</a></td>";
-                $row['review']="<td><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></td>";
+                $row['ext']="<td style='padding: 0px 0px;'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></center></td>";
+                $row['review']="<td><center><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></center></td>";
+                $row['ratting']="<td>$star<br><a href='/rmsa/file-reviews/".$row['rmsa_uploaded_file_id']."'>View Reviews</a></td>";
 //                        . "<span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'></span>";
                 if($row['uploaded_file_hasvol']=="YES"){
                     $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
@@ -417,7 +419,7 @@ class SSP {
                     $str='';
                     foreach ($resultChild as $rowChild){
                         $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true";
-                        $strTd.="<td style='padding: 0px 0px;'><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a></td>";
+                        $strTd.="<td style='padding: 0px 0px;'><center><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a></center></td>";
                     }
                     $str.=$strTd."</tr></table>";
 //                            $row['extChild']=$str;
