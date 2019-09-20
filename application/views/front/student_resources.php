@@ -41,6 +41,7 @@
             <th>Description</th>
             <th>File</th>
             <th>Comment / Review</th>
+            <th>Ratting</th>
         </tr>
         </thead>
         <tfoot>
@@ -52,6 +53,7 @@
             <th>Description</th>
             <th>File</th>
             <th>Comment / Review</th>
+            <th>Ratting</th>
         </tr>
         </tfoot>
     </table>
