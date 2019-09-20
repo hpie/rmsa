@@ -75,7 +75,11 @@ class Helper_model extends CI_Model
     }
 
     public function display_review($file_id){
-        $comments = $this->db->query("SELECT * FROM rmsa_file_reviews WHERE rmsa_uploaded_file_id = '".$file_id."'");
+        $comments = $this->db->query("SELECT fr.*,CONCAT(su.rmsa_user_first_name,' ',su.rmsa_user_last_name) AS username
+                                      FROM rmsa_file_reviews fr
+                                      INNER JOIN rmsa_student_users su ON su.rmsa_user_id = fr.rmsa_user_id
+                                      WHERE fr.rmsa_uploaded_file_id = '".$file_id."'
+                                      ORDER BY fr.rmsa_review_id DESC");
 
         return $comments->result_array();
 
@@ -83,6 +87,11 @@ class Helper_model extends CI_Model
     public function get_comments($review_id){
         $comments = $this->db->query("SELECT * FROM  rmsa_review_comments WHERE rmsa_review_id = '".$review_id."'");
         return $comments->result_array();
+    }
+
+    public function get_file_title($fileId){
+        $title = $this->db->query("SELECT uploaded_file_title FROM  rmsa_uploaded_files WHERE rmsa_uploaded_file_id = '".$fileId."'");
+        return $title->result_array();
     }
 
 }
