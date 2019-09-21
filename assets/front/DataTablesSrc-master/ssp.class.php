@@ -385,8 +385,7 @@ class SSP {
                 $star = '';
                 if(count($reviews)){
                     $rating = $reviews[0]['overall_rating'];
-                    $starNumber = rtrim(rtrim(number_format($rating, 1, ".", ""), '0'), '.');                    
-                    echo $starNumber;                    
+                    $starNumber = rtrim(rtrim(number_format($rating, 1, ".", ""), '0'), '.');
                     for ($x = 0; $x < 5; $x++) {
                         if (floor($starNumber)-$x >= 1) {
                             $star.= '<i class="fa fa-star" style="color:#ffc000;"></i>';
