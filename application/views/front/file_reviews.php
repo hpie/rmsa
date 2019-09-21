@@ -7,8 +7,13 @@
 
             <?php foreach ($review_comments AS $key=> $review){
                 $star = '';
-                for ($i = 1; $i < $review['rmsa_file_rating']; $i++) {
-                    $star .= ' <span class="float-right"><i class="text-warning fa fa-star"></i></span>';
+                for ($i = 1; $i <= 5; $i++) {
+                    if($i >= $review['rmsa_file_rating']){
+                        $star .= ' <span class="float-right"><i class="text-warning fa fa-star"></i></span>';
+                    }
+                    else{
+                        $star .= ' <span class="float-right"><i class="text-warning fa fa-star-o"></i></span>';
+                    }
                 }
 
                 $comments =$review['comments'];
