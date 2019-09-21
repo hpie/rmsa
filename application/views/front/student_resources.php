@@ -69,14 +69,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="form-group review" onMouseOut="resetRating();">
-                    <?php
-                    for($i=1;$i<=5;$i++) {
-                        ?>
-                        <i class="fa fa-star-o" style="color:#ffc000;font-size:24px;cursor:pointer;" onmouseover="highlightStar(this);" onmouseout="removeHighlight();" onClick="addRating(this);"></i>
-                    <?php } ?>
-                    <input type="hidden" name="review_rating" id="review_rating" value=""/>
-                </div>
+                <div id="add_rating">
+               </div>
                 <div class="form-group">
                     <label>Comment:</label>
                     <textarea  class=" form-control review-comment"></textarea>

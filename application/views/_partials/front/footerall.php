@@ -213,8 +213,21 @@ $this->load->view('_partials/front/allnotify');
         function openreview(file_id){
             uploaded_file_id = file_id;
             review_modal.modal();
+            $('.review-comment').val('');
+            show_rating(file_id);
             show_comments(file_id);
+        }
 
+        function show_rating(file_id) {
+            $("#add_rating").empty();
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo DISPLAY_RATING ?>",
+                data : {'file_id':file_id},
+                success : function(res){
+                    $('#add_rating').append(res);
+                }
+            });
         }
 
         function show_comments(file_id) {

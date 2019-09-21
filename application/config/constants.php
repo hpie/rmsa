@@ -139,6 +139,7 @@ define('LOAD_TEHSIL',BASE_URL."/load-tehsil");
 define('LOAD_SCHOOL',BASE_URL."/load-school");
 define('POST_REVIEW',BASE_URL."/post-review");
 define('DISPLAY_REVIEW',BASE_URL."/display-review");
+define('DISPLAY_RATING',BASE_URL."/display-rating");
 
 define('FILE_VIEW_COUNT',BASE_URL."/total-fileview");
 

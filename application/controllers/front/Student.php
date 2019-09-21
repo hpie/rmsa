@@ -96,7 +96,7 @@ class Student extends MY_Controller{
                                             </div>
                                             <div class="col-md-10">     
                                                  <p>
-                                                    <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>User</strong></a>                                            
+                                                    <a class="float-left" href="#"><strong>'.$review['username'].'</strong></a>                                            
                                                     ' . $star . '                    
                                                 </p>               
                                                 <div class="clearfix"></div>
@@ -110,6 +110,38 @@ class Student extends MY_Controller{
 
         echo $review_comments;
 
+    }
+
+    public function display_rating(){
+        $star = '';
+        if($_REQUEST['file_id']) {
+            $student_has_rating = $this->student_model->student_has_file_rating($_REQUEST['file_id']);
+            $rating = '';
+            if(is_array($student_has_rating)){
+
+                $rating = $student_has_rating['rmsa_file_rating'];
+                $star.='<div class="form-group">';
+                for ($i = 1; $i <= 5; $i++) {
+
+                    if($i > $rating){
+                        $star .= '<i class="text-warning fa fa-star-o" style="color:#ffc000;font-size:24px;"></i>';
+                    }
+                    else{
+                        $star .= '<i class="text-warning fa fa-star" style="color:#ffc000;font-size:24px;"></i>';
+                    }
+                }
+                $star .='</div>';
+            }
+            else{
+                $star .= '<div class="form-group review" onMouseOut="resetRating();">';
+                for($i=1;$i<=5;$i++) {
+                    $star .= '<i class="fa fa-star-o" style="color:#ffc000;font-size:24px;cursor:pointer;" onmouseover="highlightStar(this);" onmouseout="removeHighlight();" onClick="addRating(this);"></i>';
+                }
+                $star .= '</div>';
+            }
+            $star.='<input type="hidden" name="review_rating" id="review_rating" value="'.$rating.'"/>';
+        }
+        echo $star;
     }
 
     public  function view_review($fileId){

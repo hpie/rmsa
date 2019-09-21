@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-md-10">
                     <p>
-                        <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong><?= $review['username'] ?></strong></a>
+                        <a class="float-left" href="#"><strong><?= $review['username'] ?></strong></a>
                         <?= $star ?>
 
                     </p>

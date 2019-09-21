@@ -158,5 +158,13 @@
             $title = $this->db->query("SELECT uploaded_file_title FROM  rmsa_uploaded_files WHERE rmsa_uploaded_file_id = '".$fileId."'");
             return $title->result_array();
         }
+
+        public function student_has_file_rating($fileId){
+            $check_rating = $this->db->query("SELECT * FROM rmsa_file_reviews
+                                              WHERE rmsa_user_id = '".$_SESSION['st_rmsa_user_id']."'
+                                              AND rmsa_uploaded_file_id='".$fileId."'");
+            $res = $check_rating->result_array();
+            return current($res);
+        }
     }
 ?>
