@@ -85,5 +85,78 @@
                 );
             }
         }
+
+        public function post_review($params){
+
+            $userId  = $_SESSION['st_rmsa_user_id'];
+            $fileId  = $params['file_id'];
+            $rating  = $params['rating'];
+            $comment = trim($params['comment']);
+
+            //check user has already rating for this post or not
+
+            $check = $this->db->query("SELECT * FROM rmsa_file_reviews WHERE rmsa_file_rating IS NOT NULL AND rmsa_user_id = '".$userId."' AND rmsa_uploaded_file_id = '".$fileId."'");
+
+            $check_record = $check->result_array();
+
+            if(count($check_record)<=0){
+                $result = $this->db->query("INSERT INTO rmsa_file_reviews(rmsa_user_id,rmsa_uploaded_file_id,rmsa_file_rating,rmsa_review_status)
+                           VALUES('".$userId."','".$fileId."','".$rating."',1) ");
+
+                $rmsa_review_id = $this->db->insert_id();
+
+
+                if(!empty($comment)){
+                    //add comment for that
+                    $this->db->query("INSERT INTO rmsa_review_comments(rmsa_review_id,rmsa_review_text)
+                                  VALUES('".$rmsa_review_id."','".$comment."')  ");
+                }
+
+                if(!$result){
+                    return Array(
+                        'success' => false
+                    );
+                }
+
+                return Array(
+                    'success' => true
+                );
+            }
+            else{
+
+                $rmsa_review_id = $check_record[0]['rmsa_review_id'];
+                //other wise they can only write comment for it.
+                if(!empty($comment)){
+                    //add comment for that
+                    $this->db->query("INSERT INTO rmsa_review_comments(rmsa_review_id,rmsa_review_text)
+                                  VALUES('".$rmsa_review_id."','".$comment."')  ");
+                }
+
+                return Array(
+                    'success' => true
+                );
+
+            }
+        }
+
+        public function display_review($file_id){
+            $comments = $this->db->query("SELECT fr.*,CONCAT(su.rmsa_user_first_name,' ',su.rmsa_user_last_name) AS username
+                                      FROM rmsa_file_reviews fr
+                                      INNER JOIN rmsa_student_users su ON su.rmsa_user_id = fr.rmsa_user_id
+                                      WHERE fr.rmsa_uploaded_file_id = '".$file_id."'
+                                      ORDER BY fr.rmsa_review_id DESC");
+
+            return $comments->result_array();
+
+        }
+        public function get_comments($review_id){
+            $comments = $this->db->query("SELECT * FROM  rmsa_review_comments WHERE rmsa_review_id = '".$review_id."'");
+            return $comments->result_array();
+        }
+
+        public function get_file_title($fileId){
+            $title = $this->db->query("SELECT uploaded_file_title FROM  rmsa_uploaded_files WHERE rmsa_uploaded_file_id = '".$fileId."'");
+            return $title->result_array();
+        }
     }
 ?>

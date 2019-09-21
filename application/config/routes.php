@@ -118,13 +118,14 @@ $route['student-approve']         = 'front/Student/approve';
 $route['is-student-active']       = 'front/Student/is_active';
 $route['total-fileview']          = 'front/Student/file_viewcount';
 $route['registered-students']     = 'front/RegisteredStudents';
+$route['post-review']             = 'front/Student/post_review';
+$route['display-review']          = 'front/Student/display_review';
+$route['file-reviews/(:any)']     = 'front/Student/view_review/$1';
 
 //helper routes
 $route['load-tehsil']             = 'front/helper/load_tehsil';
 $route['load-school']             = 'front/helper/load_school';
-$route['post-review']             = 'front/helper/post_review';
-$route['display-review']          = 'front/helper/display_review';
-$route['file-reviews/(:any)']     = 'front/helper/view_review/$1';
+
 
 
 //others routes
