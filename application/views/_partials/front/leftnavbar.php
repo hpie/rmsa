@@ -31,29 +31,37 @@
                                         ?>                                                                                
                                     </ul>
                                 </li>
+                                
+                                <?php if(isset($_SESSION['st_rmsa_user_id'])){ ?>
                                 <li>
                                     <div class="link"><i class="fa fa-mobile"></i>Resource Material<i class="fa fa-chevron-down"></i></div>
-                                    <ul class="submenu">
-                                        <?php if(isset($_SESSION['st_rmsa_user_id'])){ ?>
+                                    <ul class="submenu">                                       
                                         <li><a href="#">Student User Manual</a></li>
                                         <li><a href="<?php echo STUDENT_RESOURCES_LINK; ?>">View Resource Material</a></li>                                       
                                         <li><a href="#">Download EBooks</a></li>                                                                          
                                         <li><a href="#">Download Question Papers</a></li>
                                         <li><a href="#">Download Syllabus</a></li>
                                         <li><a href="#">Post Queries</a></li>
-                                        <li><a href="#">Online Exam</a></li>
-                                        <?php }
-                                            if(isset($_SESSION['emp_rmsa_user_id'])){ ?>
+                                        <li><a href="#">Online Exam</a></li>                                                                                                                       
+                                    </ul>
+                                </li>
+                                <?php } ?>
+                                <?php if(isset($_SESSION['emp_rmsa_user_id'])){ ?>
+                                <li>
+                                    <div class="link"><i class="fa fa-mobile"></i>Resource Material<i class="fa fa-chevron-down"></i></div>
+                                    <ul class="submenu">
+                                       
                                         <li><a href="#">Employee User Manual</a></li>
                                         <li><a href="#">Enroll Students</a></li>
                                         <li><a href="<?php echo EMPLOYEE_UPLOAD_FILE_LINK; ?>">Upload Resource Material</a></li>
                                         <li><a href="<?php echo EMPLOYEE_RESOURCES_LIST_LINK; ?>">Manage Resource Material</a></li>
                                         <li><a href="#">Post Queries</a></li>
                                         <li><a href="#">Online Exam</a></li>
-                                            <?php } ?>
+                                       
                                         
                                     </ul>
                                 </li>
+                                 <?php } ?>
                                 <li>
                                     <div class="link"><i class="fa fa-mobile"></i>Other Links<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
