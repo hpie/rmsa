@@ -166,5 +166,14 @@
             $res = $check_rating->result_array();
             return current($res);
         }
+        public function get_file_avg_rating($fileId){
+           $avg_rating = $this->db->query("SELECT AVG(rmsa_file_rating) as overall_rating
+                                           FROM rmsa_file_reviews
+                                           WHERE rmsa_uploaded_file_id = '{$fileId}'
+                                           AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");
+           $avg = $avg_rating->result_array();
+
+           return current($avg);
+        }
     }
 ?>

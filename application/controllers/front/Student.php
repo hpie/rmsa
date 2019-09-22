@@ -166,8 +166,16 @@ class Student extends MY_Controller{
             }
         }
         $get_title = $this->student_model->get_file_title($fileId);
-        $this->mViewData['file_title'] = $get_title[0]['uploaded_file_title'];
-        $this->mViewData['review_comments'] = $reviews_arr;
+        $avg       = $this->student_model->get_file_avg_rating($fileId);
+
+        $data = array(
+            'file_title' => $get_title[0]['uploaded_file_title'],
+            'comments'   => $reviews_arr,
+            'avg_rating' => $avg,
+        );
+
+
+        $this->mViewData['reviews'] = $data;
         $this->mViewData['title']=' - File Reviews';
         $this->renderFront('front/file_reviews');
     }

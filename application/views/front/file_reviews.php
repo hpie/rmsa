@@ -1,11 +1,39 @@
 <!-- content -->
 <div class="col-md-6 col-sm-8  col-12">
-    <h2 class="text-center"><?= $file_title ?></h2>
+    <span class="pull-right">
+        <?php
+        $star = '';
+        if(count($reviews['avg_rating'])){
+            $rating = $reviews['avg_rating']['overall_rating'];
+            $starNumber = rtrim(rtrim(number_format($rating, 1, ".", ""), '0'), '.');
+            for ($x = 0; $x < 5; $x++) {
+                if (floor($starNumber)-$x >= 1) {
+                    $star.= '<i class="fa fa-star" style="color:#ffc000;"></i>';
+                }
+                elseif ($starNumber-$x > 0) {
+                    $star.= '<i class="fa fa-star-half-o" style="color:#ffc000;"></i>';
+                }
+                else {
+                    $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
+                }
+            }
+        }
+        else{
+            for ($x = 0; $x < 5; $x++) {
+                $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
+            }
+        }
+
+        echo $star;
+        ?>
+
+    </span>
+    <h2 class="text-center"><?= $reviews['file_title'] ?></h2>
 
     <div class="card">
         <div class="card-body">
 
-            <?php foreach ($review_comments AS $key=> $review){
+            <?php foreach ($reviews['comments'] AS $key=> $review){
                 $star = '';
                 for ($i = 1; $i <= 5; $i++) {
                     if($i >= $review['rmsa_file_rating']){
@@ -16,7 +44,7 @@
                     }
                 }
 
-                $comments =$review['comments'];
+                $comments = $review['comments'];
 
 
                 $all_comment = '';
