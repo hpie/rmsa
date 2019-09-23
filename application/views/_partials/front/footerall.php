@@ -313,7 +313,8 @@ $this->load->view('_partials/front/allnotify');
                 url  : "<?php echo FILE_VIEW_COUNT ?>",
                 data : {'rmsa_uploaded_file_id':rmsa_uploaded_file_id},
                 success : function(res){
-                    if(res){
+                    var res = $.parseJSON(res);
+                    if(res.count_added){
                         location.href = self.href;
                     }
                 }

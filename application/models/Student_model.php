@@ -80,6 +80,15 @@
             $query_res = $this->db->query("UPDATE  rmsa_uploaded_files SET uploaded_file_viewcount = uploaded_file_viewcount + 1 WHERE 	rmsa_uploaded_file_id='{$rmsa_uploaded_file_id}'");
 
             if($query_res){
+
+                $view_check = $this->db->query("SELECT * FROM rmsa_user_file_views WHERE rmsa_user_id ='".$_SESSION['st_rmsa_user_id']."'
+                                                AND rmsa_uploaded_file_id = '".$rmsa_uploaded_file_id."'");
+
+                if(!is_array($view_check->row_array())){
+                    //insert student view  file
+                    $this->db->query("INSERT INTO  rmsa_user_file_views(rmsa_user_id,rmsa_uploaded_file_id)
+                                  VALUES('".$_SESSION['st_rmsa_user_id']."',$rmsa_uploaded_file_id)");
+                }
                 return array(
                     'count_added' => true
                 );
