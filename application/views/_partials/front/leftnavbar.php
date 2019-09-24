@@ -14,7 +14,7 @@
                                         <?php } ?>
                                     </ul>
                                 </li>
-                                <?php if(!$_SESSION['emp_rmsa_user_id']){ ?>
+                                <?php if(!isset($_SESSION['emp_rmsa_user_id'])){ ?>
                                 <li>
                                     <div class="link"><i class="fa fa-code"></i>Student's Corner<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
