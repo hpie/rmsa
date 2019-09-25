@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class StudentRegistration extends MY_Controller{
     public function __construct(){
+        if(isset($_SESSION['emp_rmsa_user_id'])){
+            redirect(HOME_LINK);
+        }
         parent::__construct();
         $this->load->model('register_model');
         $this->load->model('helper_model');
