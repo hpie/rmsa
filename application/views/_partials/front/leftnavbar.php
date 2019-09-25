@@ -3,6 +3,7 @@
                     <div class="col-md-3 col-sm-3  collapse navbar-collapse" id="slide-navbar-collapse">
                         <div class="left-side-area">
                             <ul id="accordion" class="accordion">
+                                <?php if(!isset($_SESSION['st_rmsa_user_id'])){ ?>
                                 <li>
                                     <div class="link"><i class="fa fa-database"></i>Employee’s Corner<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
@@ -14,6 +15,7 @@
                                         <?php } ?>
                                     </ul>
                                 </li>
+                                <?php }?>
                                 <?php if(!isset($_SESSION['emp_rmsa_user_id'])){ ?>
                                 <li>
                                     <div class="link"><i class="fa fa-code"></i>Student's Corner<i class="fa fa-chevron-down"></i></div>

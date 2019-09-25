@@ -2,7 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class EmpLogin extends MY_Controller{
-    public function __construct(){        
+    public function __construct(){
+        if(isset($_SESSION['st_rmsa_user_id'])){
+            redirect(HOME_LINK);
+        }
         parent::__construct();
         $this->load->model('emp_login');
     }
