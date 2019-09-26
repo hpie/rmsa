@@ -109,43 +109,35 @@
             $check_record = $check->result_array();
 
             if(count($check_record)<=0){
-                $result = $this->db->query("INSERT INTO rmsa_file_reviews(rmsa_user_id,rmsa_uploaded_file_id,rmsa_file_rating,rmsa_review_status)
+              $this->db->query("INSERT INTO rmsa_file_reviews(rmsa_user_id,rmsa_uploaded_file_id,rmsa_file_rating,rmsa_review_status)
                            VALUES('".$userId."','".$fileId."','".$rating."',1) ");
 
-                $rmsa_review_id = $this->db->insert_id();
-
-
-                if(!empty($comment)){
-                    //add comment for that
-                    $this->db->query("INSERT INTO rmsa_review_comments(rmsa_review_id,rmsa_review_text)
-                                  VALUES('".$rmsa_review_id."','".$comment."')  ");
-                }
-
-                if(!$result){
-                    return Array(
-                        'success' => false
-                    );
-                }
-
-                return Array(
-                    'success' => true
-                );
             }
-            else{
+            if(!empty($comment)){
+                //add comment for that
 
-                $rmsa_review_id = $check_record[0]['rmsa_review_id'];
-                //other wise they can only write comment for it.
-                if(!empty($comment)){
-                    //add comment for that
-                    $this->db->query("INSERT INTO rmsa_review_comments(rmsa_review_id,rmsa_review_text)
-                                  VALUES('".$rmsa_review_id."','".$comment."')  ");
-                }
-
-                return Array(
-                    'success' => true
+                $comments = array(
+                    'fileId' => $fileId,
+                    'comment'=> $comment
                 );
-
+                self::add_comments($comments);
             }
+
+            return Array(
+                'success' => true
+            );
+
+        }
+
+        public function add_comments($comments = array()){
+            $userId    = $_SESSION['st_rmsa_user_id'];
+            $userType  = 1;
+            $fileId    = $comments['fileId'];
+            $comment   = $comments['comment'];
+            $commentType = 1;
+
+            $this->db->query("INSERT INTO rmsa_review_comments(rmsa_user_id,rmsa_user_type,rmsa_uploaded_file_id,rmsa_file_comment,comment_type)
+                              VALUES('".$userId."','".$userType."','".$fileId."','".$comment."','".$commentType."') ");
         }
 
         public function display_review($file_id){
@@ -158,8 +150,8 @@
             return $comments->result_array();
 
         }
-        public function get_comments($review_id){
-            $comments = $this->db->query("SELECT * FROM  rmsa_review_comments WHERE rmsa_review_id = '".$review_id."'");
+        public function get_comments($file_id){
+            $comments = $this->db->query("SELECT * FROM  rmsa_review_comments WHERE rmsa_uploaded_file_id = '".$file_id."' AND comment_type = 1");
             return $comments->result_array();
         }
 

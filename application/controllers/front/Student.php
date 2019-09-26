@@ -76,18 +76,18 @@ class Student extends MY_Controller{
                     for ($i = 1; $i <= 5; $i++) {
 
                         if($i >= $review['rmsa_file_rating']){
-                            $star .= ' <span class="float-right"><i class="text-warning fa fa-star"></i></span>';
+                            $star .= '<span class="float-right"><i class="text-warning fa fa-star"></i></span>';
                         }
                         else{
-                            $star .= ' <span class="float-right"><i class="text-warning fa fa-star-o"></i></span>';
+                            $star .= '<span class="float-right"><i class="text-warning fa fa-star-o"></i></span>';
                         }
                     }
 
-                    $comments = $this->student_model->get_comments($review['rmsa_review_id']);
+                    $comments = $this->student_model->get_comments($_REQUEST['file_id']);
                     $all_comment = '';
                     if (count($comments)) {
                         foreach ($comments AS $key => $comment) {
-                            $all_comment .= ' <p>' . $comment['rmsa_review_text'] . '</p>';
+                            $all_comment .= ' <p>' . $comment['rmsa_file_comment'] . '</p>';
                         }
                     }
                     $review_comments .= '<div class="row">
@@ -154,12 +154,12 @@ class Student extends MY_Controller{
             foreach ($reviews AS $key1 => $review) {
                 $reviews_arr [] = $review;
 
-                $comments = $this->student_model->get_comments($review['rmsa_review_id']);
+                $comments = $this->student_model->get_comments($fileId);
 
                 $comments_arr = Array();
                 if (count($comments)) {
                     foreach ($comments AS $key => $comment) {
-                        $comments_arr [] =  $comment['rmsa_review_text'];
+                        $comments_arr [] =  $comment['rmsa_file_comment'];
                     }
                 }
                 $reviews_arr[$key1]['comments'] = $comments_arr;
