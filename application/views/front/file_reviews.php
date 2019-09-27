@@ -48,9 +48,17 @@
 
 
                 $all_comment = '';
-                if (count($comments)) {
-                    foreach ($comments AS $key => $comment) {
+                if (is_array($comments)) {
+                    foreach ($comments AS $commentId => $comment) {
                         $all_comment .= ' <p>' . $comment . '</p>';
+
+                        if(isset($_SESSION['emp_rmsa_user_id'])) {
+                            $all_comment .= '<p>
+                                            <a class="float-right btn btn-outline-primary ml-2" onclick="comment_reply('.$commentId.')">
+                                                <i class="fa fa-reply"></i> Reply
+                                            </a>        	            
+        	                              </p>';
+                        }
                     }
                 }
                 ?>
@@ -71,6 +79,29 @@
                 </div>
             </div>
             <?php }?>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="reply-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Leave your reply:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Comment:</label>
+                    <textarea  class=" form-control reply-comment"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button"  class="btn btn-primary btn_post_reply">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

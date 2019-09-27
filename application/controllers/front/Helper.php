@@ -37,7 +37,7 @@ class Helper extends MY_Controller {
                 $comments_arr = Array();
                 if (count($comments)) {
                     foreach ($comments AS $key => $comment) {
-                        $comments_arr [] =  $comment['rmsa_file_comment'];
+                        $comments_arr [$comment['rmsa_review_comment_id']] =  $comment['rmsa_file_comment'];
                     }
                 }
                 $reviews_arr[$key1]['comments'] = $comments_arr;

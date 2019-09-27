@@ -205,6 +205,21 @@ $this->load->view('_partials/front/allnotify');
     </script>
 <?php } ?>
 
+<?php
+if ($title == ' - File Reviews') {
+    ?>
+    <script>
+        var reply_modal = $("#reply-modal");
+        var uploaded_file_id
+        function comment_reply(file_id) {
+          uploaded_file_id = file_id;
+          reply_modal.modal();
+        }
+    </script>
+
+<?php }
+?>
+
 <?php if ($title == ' - Student Resources') {
     ?>
     <script>
