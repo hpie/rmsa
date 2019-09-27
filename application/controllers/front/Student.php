@@ -6,7 +6,8 @@ class Student extends MY_Controller{
         $this->session->sessionCheckStudent();
         parent::__construct();        
         $this->load->model('student_model');
-    }    
+        $this->load->model('helper_model');
+    }
     public function update_profile(){
         if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){
             if($this->student_model->check_current_password($_POST['rmsa_user_current_password'])){
@@ -66,7 +67,7 @@ class Student extends MY_Controller{
         $review_comments = '';
         if($_REQUEST['file_id']) {
 
-            $reviews = $this->student_model->display_review($_REQUEST['file_id']);
+            $reviews = $this->helper_model->display_review($_REQUEST['file_id']);
 
             if (count($reviews)) {
 
@@ -83,7 +84,7 @@ class Student extends MY_Controller{
                         }
                     }
 
-                    $comments = $this->student_model->get_comments($_REQUEST['file_id']);
+                    $comments = $this->helper_model->get_comments($_REQUEST['file_id']);
                     $all_comment = '';
                     if (count($comments)) {
                         foreach ($comments AS $key => $comment) {
@@ -142,42 +143,6 @@ class Student extends MY_Controller{
             $star.='<input type="hidden" name="review_rating" id="review_rating" value="'.$rating.'"/>';
         }
         echo $star;
-    }
-
-    public  function view_review($fileId){
-
-        $reviews_arr = Array();
-
-        $reviews = $this->student_model->display_review($fileId);
-
-        if (count($reviews)) {
-            foreach ($reviews AS $key1 => $review) {
-                $reviews_arr [] = $review;
-
-                $comments = $this->student_model->get_comments($fileId);
-
-                $comments_arr = Array();
-                if (count($comments)) {
-                    foreach ($comments AS $key => $comment) {
-                        $comments_arr [] =  $comment['rmsa_file_comment'];
-                    }
-                }
-                $reviews_arr[$key1]['comments'] = $comments_arr;
-            }
-        }
-        $get_title = $this->student_model->get_file_title($fileId);
-        $avg       = $this->student_model->get_file_avg_rating($fileId);
-
-        $data = array(
-            'file_title' => $get_title[0]['uploaded_file_title'],
-            'comments'   => $reviews_arr,
-            'avg_rating' => $avg,
-        );
-
-
-        $this->mViewData['reviews'] = $data;
-        $this->mViewData['title']=' - File Reviews';
-        $this->renderFront('front/file_reviews');
     }
 
 

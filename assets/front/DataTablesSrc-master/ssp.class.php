@@ -299,7 +299,8 @@ class SSP {
                 if(!empty($result)){
                     foreach ($result as $row){
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                        $row['ext']="<td style='padding: 2px 5px;'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></center></td>";                        
+                        $row['ext']="<td style='padding: 2px 5px;'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></center>
+                                     <br><a href='/rmsa/file-reviews/".$row['rmsa_uploaded_file_id']."'>View Reviews</a> </td>";
                         if($row['uploaded_file_hasvol']=="YES"){
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
                             $dataChild = self::sql_exec( $db, $bindings,

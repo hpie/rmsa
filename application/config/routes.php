@@ -122,7 +122,7 @@ $route['post-review']             = 'front/Student/post_review';
 $route['display-review']          = 'front/Student/display_review';
 $route['display-rating']          = 'front/Student/display_rating';
 
-$route['file-reviews/(:any)']     = 'front/Student/view_review/$1';
+$route['file-reviews/(:any)']     = 'front/Helper/view_review/$1';
 
 //helper routes
 $route['load-tehsil']             = 'front/helper/load_tehsil';
