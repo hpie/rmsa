@@ -3,7 +3,7 @@
     <span class="pull-right">
         <?php
         $star = '';
-        if(count($reviews['avg_rating'])){
+        if(is_array($reviews['avg_rating'])){
             $rating = $reviews['avg_rating']['overall_rating'];
             $starNumber = rtrim(rtrim(number_format($rating, 1, ".", ""), '0'), '.');
             for ($x = 0; $x < 5; $x++) {
