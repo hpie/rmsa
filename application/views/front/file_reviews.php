@@ -33,51 +33,38 @@
     <div class="card">
         <div class="card-body">
 
-            <?php foreach ($reviews['comments'] AS $key=> $review){
-                $star = '';
-                for ($i = 1; $i <= 5; $i++) {
-                    if($i >= $review['rmsa_file_rating']){
-                        $star .= ' <span class="float-right"><i class="text-warning fa fa-star"></i></span>';
-                    }
-                    else{
-                        $star .= ' <span class="float-right"><i class="text-warning fa fa-star-o"></i></span>';
-                    }
-                }
-
-                $comments = $review['comments'];
-
+            <?php
+                $comments = $reviews['comments'];
 
                 $all_comment = '';
                 if (is_array($comments)) {
-                    foreach ($comments AS $commentId => $comment) {
-                        $all_comment .= ' <p>' . $comment . '</p>';
+                    foreach ($comments AS $key => $comment) {
+                        $all_comment .= '<div class="row">
+                                            <div class="col-md-2">
+                                                <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                                                <p class="text-secondary text-center">15 Minutes Ago</p>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p>
+                                                    <a class="float-left" href="#"><strong>'.$comment['username'].'</strong></a>                      
+                            
+                                                </p>
+                                                <div class="clearfix"></div>
+                                                '.$comment['rmsa_file_comment'].'
+                                            </div>
+                                        </div>';
 
                         if(isset($_SESSION['emp_rmsa_user_id'])) {
                             $all_comment .= '<p>
-                                            <a class="float-right btn btn-outline-primary ml-2" onclick="comment_reply('.$commentId.')">
+                                            <a class="float-right btn btn-outline-primary ml-2" onclick="comment_reply('.$comment['rmsa_review_comment_id'].')">
                                                 <i class="fa fa-reply"></i> Reply
                                             </a>        	            
         	                              </p>';
                         }
                     }
-                }
+
+                echo $all_comment;
                 ?>
-
-            <div class="row">
-                <div class="col-md-2">
-                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
-                    <p class="text-secondary text-center">15 Minutes Ago</p>
-                </div>
-                <div class="col-md-10">
-                    <p>
-                        <a class="float-left" href="#"><strong><?= $review['username'] ?></strong></a>
-                        <?= $star ?>
-
-                    </p>
-                    <div class="clearfix"></div>
-                    <?= $all_comment ?>
-                </div>
-            </div>
             <?php }?>
         </div>
     </div>

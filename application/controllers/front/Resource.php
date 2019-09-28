@@ -36,46 +36,26 @@ class Resource extends MY_Controller{
     public function display_review(){
         $review_comments = '';
         if($_REQUEST['file_id']) {
+            $comments = $this->resource_model->get_comments($_REQUEST['file_id']);
+            if (count($comments)) {
+                foreach ($comments AS $key => $comment) {
 
-            $reviews = $this->resource_model->display_review($_REQUEST['file_id']);
+                    $comment_username = $this->resource_model->get_username($comment['rmsa_user_id'],$comment['rmsa_user_type']);
 
-            if (count($reviews)) {
-
-                foreach ($reviews AS $key => $review) {
-                    $star = '';
-
-                    for ($i = 1; $i <= 5; $i++) {
-
-                        if($i >= $review['rmsa_file_rating']){
-                            $star .= '<span class="float-right"><i class="text-warning fa fa-star"></i></span>';
-                        }
-                        else{
-                            $star .= '<span class="float-right"><i class="text-warning fa fa-star-o"></i></span>';
-                        }
-                    }
-
-                    $comments = $this->resource_model->get_comments($_REQUEST['file_id']);
-                    $all_comment = '';
-                    if (count($comments)) {
-                        foreach ($comments AS $key => $comment) {
-                            $all_comment .= ' <p>' . $comment['rmsa_file_comment'] . '</p>';
-                        }
-                    }
                     $review_comments .= '<div class="row">
-                                            <div class="col-md-2">
-                                                <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>                   
-                                            </div>
-                                            <div class="col-md-10">     
-                                                 <p>
-                                                    <a class="float-left" href="#"><strong>'.$review['username'].'</strong></a>                                            
-                                                    ' . $star . '                    
-                                                </p>               
-                                                <div class="clearfix"></div>
-                                                ' . $all_comment . '           
-                                            </div>
-                                         </div>';
-                }
+                                    <div class="col-md-2">
+                                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>                   
+                                    </div>
+                                    <div class="col-md-10">     
+                                         <p>
+                                            <a class="float-left" href="#"><strong>'.$comment_username.'</strong></a>
+                                        </p>               
+                                        <div class="clearfix"></div>
+                                        ' . $comment['rmsa_file_comment'] . '           
+                                    </div>
+                                 </div>';
 
+                }
             }
         }
 
@@ -116,33 +96,25 @@ class Resource extends MY_Controller{
     }
 
     public  function view_review($fileId){
+        $comments = $this->resource_model->get_comments($fileId);
+        $comments_arr = Array();
+        if (count($comments)) {
+            foreach ($comments AS $key => $comment) {
 
-        $reviews_arr = Array();
+                $comment_username = $this->resource_model->get_username($comment['rmsa_user_id'],$comment['rmsa_user_type']);
 
-        $reviews = $this->resource_model->display_review($fileId);
-
-        if (count($reviews)) {
-            foreach ($reviews AS $key1 => $review) {
-                $reviews_arr [] = $review;
-
-                $comments = $this->resource_model->get_comments($fileId);
-
-                $comments_arr = Array();
-                if (count($comments)) {
-                    foreach ($comments AS $key => $comment) {
-                        $comments_arr [$comment['rmsa_review_comment_id']] =  $comment['rmsa_file_comment'];
-                    }
-                }
-                $reviews_arr[$key1]['comments'] = $comments_arr;
+                $comments_arr [] =  $comment;
+                $comments_arr [$key]['username'] =  $comment_username;
             }
         }
+
         $get_title = $this->resource_model->get_file_title($fileId);
         $avg       = $this->resource_model->get_file_avg_rating($fileId);
 
         $data = array(
             'file_title' => $get_title[0]['uploaded_file_title'],
             'fileId' => $fileId,
-            'comments'   => $reviews_arr,
+            'comments'   => $comments_arr,
             'avg_rating' => $avg,
         );
 

@@ -127,4 +127,23 @@ class Resource_model extends CI_Model{
             'success' => true
         );
     }
+
+    public function get_username($userId,$userType){
+
+        if($userType == 1){
+            $user = $this->db->query("SELECT CONCAT(rmsa_user_first_name,' ',rmsa_user_last_name) AS username
+                                      FROM  rmsa_student_users WHERE rmsa_user_id ='".$userId."' ");
+
+        }
+
+        if($userType == 2){
+            $user = $this->db->query("SELECT CONCAT(rmsa_user_first_name,' ',rmsa_user_last_name) AS username
+                                      FROM  rmsa_employee_users WHERE rmsa_user_id ='".$userId."' ");
+        }
+
+        $res = $user->result_array();
+
+        return $res[0]['username'];
+
+    }
 }
