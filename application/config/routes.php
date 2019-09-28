@@ -111,18 +111,20 @@ $route['employee-student']         = 'front/EmployeeStudent';
 //all student routes
 $route['student-registration']    = 'front/StudentRegistration';
 $route['update-profile']          = 'front/Student/update_profile';
-$route['student-resources']       = 'front/Student/resources';
 $route['student-login']           = 'front/StudentLogin';
 $route['student-logout']          = 'front/Student/logout';
 $route['student-approve']         = 'front/Student/approve';
 $route['is-student-active']       = 'front/Student/is_active';
-$route['total-fileview']          = 'front/Student/file_viewcount';
 $route['registered-students']     = 'front/RegisteredStudents';
-$route['post-review']             = 'front/Student/post_review';
-$route['display-review']          = 'front/Student/display_review';
-$route['display-rating']          = 'front/Student/display_rating';
 
-$route['file-reviews/(:any)']     = 'front/Helper/view_review/$1';
+
+//All filr resources route
+$route['student-resources']       = 'front/Resource/resources';
+$route['total-fileview']          = 'front/Resource/file_viewcount';
+$route['post-review']             = 'front/Resource/post_review';
+$route['display-review']          = 'front/Resource/display_review';
+$route['display-rating']          = 'front/Resource/display_rating';
+$route['file-reviews/(:any)']     = 'front/Resource/view_review/$1';
 
 //helper routes
 $route['load-tehsil']             = 'front/helper/load_tehsil';
