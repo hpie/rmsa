@@ -210,11 +210,37 @@ if ($title == ' - File Reviews') {
     ?>
     <script>
         var reply_modal = $("#reply-modal");
-        var uploaded_file_id
-        function comment_reply(file_id) {
-          uploaded_file_id = file_id;
+        var fileId      = "<?php echo $reviews['fileId']; ?>";
+        var commentId;
+
+        function comment_reply(comment_id) {
+            commentId = comment_id;
           reply_modal.modal();
         }
+
+        $(document).on('click','.btn_post_reply',function (e) {
+            var reply       = $(".reply-comment");
+
+            var data = {
+                'file_id': fileId,
+                'comment_id' : commentId,
+                'reply'  : reply.val(),
+            };
+
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo COMMENT_REPLY ?>",
+                data : data,
+                success : function(res){
+                    var res = $.parseJSON(res);
+                    if(res.success){
+                        alert('Thank you, your reply has been submitted for review.')
+                        reply_modal.modal('toggle');
+                    }
+                }
+            });
+        })
+
     </script>
 
 <?php }

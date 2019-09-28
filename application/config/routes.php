@@ -125,6 +125,7 @@ $route['post-review']             = 'front/Resource/post_review';
 $route['display-review']          = 'front/Resource/display_review';
 $route['display-rating']          = 'front/Resource/display_rating';
 $route['file-reviews/(:any)']     = 'front/Resource/view_review/$1';
+$route['comment-reply']           = 'front/Resource/comment_reply';
 
 //helper routes
 $route['load-tehsil']             = 'front/helper/load_tehsil';

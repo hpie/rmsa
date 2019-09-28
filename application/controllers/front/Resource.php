@@ -26,6 +26,13 @@ class Resource extends MY_Controller{
         }
     }
 
+    public function comment_reply(){
+        if($_POST['comment_id'] && $_POST['comment_id'] !=''){
+            $reply = $this->resource_model->comment_reply($_POST);
+            echo json_encode($reply);
+        }
+    }
+
     public function display_review(){
         $review_comments = '';
         if($_REQUEST['file_id']) {
@@ -134,6 +141,7 @@ class Resource extends MY_Controller{
 
         $data = array(
             'file_title' => $get_title[0]['uploaded_file_title'],
+            'fileId' => $fileId,
             'comments'   => $reviews_arr,
             'avg_rating' => $avg,
         );

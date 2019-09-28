@@ -105,4 +105,26 @@ class Resource_model extends CI_Model{
 
         return current($avg);
     }
+
+    public function comment_reply($params){
+
+        if(isset($_SESSION['st_rmsa_user_id'])){//student user
+            $userId    = $_SESSION['st_rmsa_user_id'];
+            $userType  = 1;
+        }else if(isset($_SESSION['emp_rmsa_user_id'])){ // employee user
+            $userId    = $_SESSION['emp_rmsa_user_id'];
+            $userType  = 2;
+        }
+
+        $fileId       = $params['file_id'];
+        $commentId    = $params['comment_id'];
+        $reply        = $params['reply'];
+        $commentType  = 2; //reply of the comments
+
+        $this->db->query("INSERT INTO rmsa_review_comments(rmsa_user_id,rmsa_user_type,rmsa_uploaded_file_id,rmsa_file_comment,reply_on,comment_type)
+                          VALUES('".$userId."','".$userType."','".$fileId."','".$reply."','".$commentId."','".$commentType."')  ");
+        return Array(
+            'success' => true
+        );
+    }
 }

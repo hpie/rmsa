@@ -138,6 +138,7 @@ define('HOME_LINK',BASE_URL."/home");
 define('LOAD_TEHSIL',BASE_URL."/load-tehsil");
 define('LOAD_SCHOOL',BASE_URL."/load-school");
 define('POST_REVIEW',BASE_URL."/post-review");
+define('COMMENT_REPLY',BASE_URL."/comment-reply");
 define('DISPLAY_REVIEW',BASE_URL."/display-review");
 define('DISPLAY_RATING',BASE_URL."/display-rating");
 
