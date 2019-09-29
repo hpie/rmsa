@@ -7,7 +7,7 @@ class EmpLogin extends MY_Controller{
             redirect(HOME_LINK);
         }
         parent::__construct();
-        $this->load->model('emp_login');
+        $this->load->model('Emp_Login');
     }
     public function index(){
         $_SESSION['invalid_login'] = 0;

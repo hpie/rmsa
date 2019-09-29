@@ -37,13 +37,14 @@ $columns = array(
     array('db' => 'uploaded_file_volorder', 'dt' =>'uploaded_file_volorder'),
     array('db' => 'uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount')
 );
+include 'conn.php';
 // SQL server connection information
-$sql_details = array(
-    'user' => 'root',
-    'pass' => '',
-    'db' => 'rmsa',
-    'host' => 'localhost'
-);
+//$sql_details = array(
+//    'user' => 'root',
+//    'pass' => '',
+//    'db' => 'rmsa',
+//    'host' => 'localhost'
+//);
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.

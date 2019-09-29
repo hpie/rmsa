@@ -6,7 +6,7 @@ class StudentRegistration extends MY_Controller{
             redirect(HOME_LINK);
         }
         parent::__construct();
-        $this->load->model('register_model');
+        $this->load->model('Register_model');
         $this->load->model('helper_model');
     }
     public function index(){  

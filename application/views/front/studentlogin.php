@@ -12,7 +12,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="password">Password:</label>
@@ -34,9 +33,6 @@
                     <button type="submit" class="btn primary_btn">Login</button>
                 </div>
             </div>
-
-
-
         </form>
         <div class="form-group">
             <a href="#">New Registration</a>

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Resource extends MY_Controller{
     public function __construct(){
         parent::__construct();
-        $this->load->model('resource_model');
+        $this->load->model('Resource_model');
     }
 
     public function resources(){

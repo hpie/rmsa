@@ -7,7 +7,7 @@ class StudentLogin extends MY_Controller{
             redirect(HOME_LINK);
         }
         parent::__construct();        
-        $this->load->model('login_model');
+        $this->load->model('Login_model');
     }
     public function index(){            
         $_SESSION['invalid_login'] = 0;

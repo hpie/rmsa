@@ -36,13 +36,14 @@ $columns = array(
     array('db' => 'uploaded_file_hasvol', 'dt' =>'uploaded_file_hasvol'),
     array('db' => 'uploaded_file_volorder', 'dt' =>'uploaded_file_volorder')
 );
-// SQL server connection information
-$sql_details = array(
-    'user' => 'root',
-    'pass' => '',
-    'db' => 'rmsa',
-    'host' => 'localhost'
-);
+include 'conn.php';
+//// SQL server connection information
+//$sql_details = array(
+//    'user' => 'root',
+//    'pass' => '',
+//    'db' => 'rmsa',
+//    'host' => 'localhost'
+//);
 $emp_rmsa_user_id = $_REQUEST['emp_rmsa_user_id'];
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP

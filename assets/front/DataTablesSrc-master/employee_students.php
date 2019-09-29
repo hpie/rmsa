@@ -34,13 +34,15 @@ $columns = array(
     array('db' => 'rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),
     array('db' => 'rmsa_user_email_id', 'dt' =>'rmsa_user_email_id')
 );
-// SQL server connection information
-$sql_details = array(
-    'user' => 'root',
-    'pass' => '',
-    'db' => 'rmsa',
-    'host' => 'localhost'
-);
+
+include 'conn.php';
+//// SQL server connection information
+//$sql_details = array(
+//    'user' => 'root',
+//    'pass' => '',
+//    'db' => 'rmsa',
+//    'host' => 'localhost'
+//);
 
 $where = 'rmsa_school_id = '.$_REQUEST['rmsa_school_id'];
 
