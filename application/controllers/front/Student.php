@@ -24,17 +24,17 @@ class Student extends MY_Controller{
         $this->renderFront('front/student_profile');
     }
 
-    public function approve(){
-        if(isset($_REQUEST['rmsa_user_id'])){
-            $res = $this->Student_model->approve_student($_REQUEST['rmsa_user_id']);
-            if($res){
-                $data = array(
-                    'suceess' => true
-                );
-            }
-            echo json_encode($data);
-        }
-    }
+//    public function approve(){
+//        if(isset($_REQUEST['rmsa_user_id'])){
+//            $res = $this->Student_model->approve_student($_REQUEST['rmsa_user_id']);
+//            if($res){
+//                $data = array(
+//                    'suceess' => true
+//                );
+//            }
+//            echo json_encode($data);
+//        }
+//    }
 
     public function is_active(){
         if($_SESSION['st_rmsa_student_login_active']==1){

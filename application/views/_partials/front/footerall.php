@@ -434,8 +434,7 @@ if ($title == ' - File Reviews') {
                 ]
             });
             $(document).on('click','.btn_approve',function () {
-                var rmsa_user_id = $(this).data('id');
-
+                var rmsa_user_id = $(this).data('id');               
                 $.ajax({
                    type : "POST",
                    url  : "<?php echo STUDENT_APPROVE ?>",

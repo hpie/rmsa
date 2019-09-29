@@ -120,7 +120,6 @@ define('STUDENT_REGISTER_LINK',BASE_URL."/student-registration");
 define('STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/update-profile");
 define('STUDENT_RESOURCES_LINK',BASE_URL."/student-resources");
 define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
-define('STUDENT_APPROVE',BASE_URL."/student-approve");
 
 
 
@@ -131,6 +130,8 @@ define('EMPLOYEE_UPLOAD_FILE_LINK',BASE_URL."/employee-uploadresource");
 define('EMPLOYEE_UPLOAD_CHILD_FILE_LINK',BASE_URL."/employee-uploadresource-child/");
 define('EMPLOYEE_RESOURCES_LIST_LINK',BASE_URL."/employee-resources");
 define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
+define('EMPLOYEE_STUDENT_LIST_LINK',BASE_URL."/employee-student");
+define('STUDENT_APPROVE',BASE_URL."/student-approve");
 
 
 //other constant

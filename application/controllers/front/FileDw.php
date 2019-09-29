@@ -12,5 +12,6 @@ class FileDw extends MY_Controller {
         $this->mViewData['title']=' - FileDw';
         $this->renderFront('front/filedw');
     }
+    
 }
 ?>

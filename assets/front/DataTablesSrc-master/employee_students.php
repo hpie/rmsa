@@ -46,6 +46,7 @@ include 'conn.php';
 
 $where = 'rmsa_school_id = '.$_REQUEST['rmsa_school_id'];
 
+//echo $where;die;
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP

@@ -106,6 +106,7 @@ $route['employee-uploadresource-child/(:any)'] = 'front/FileUpload/childFileUplo
 $route['employee-resources']       = 'front/FileDw';
 $route['is-employee-active']       = 'front/EmpLogin/isActiveEmployee';
 $route['employee-student']         = 'front/EmployeeStudent';
+$route['student-approve']          = 'front/EmployeeStudent/approve';
 
 
 //all student routes
@@ -113,7 +114,6 @@ $route['student-registration']    = 'front/StudentRegistration';
 $route['update-profile']          = 'front/Student/update_profile';
 $route['student-login']           = 'front/StudentLogin';
 $route['student-logout']          = 'front/Student/logout';
-$route['student-approve']         = 'front/Student/approve';
 $route['is-student-active']       = 'front/Student/is_active';
 $route['registered-students']     = 'front/RegisteredStudents';
 

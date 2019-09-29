@@ -56,7 +56,7 @@
                                     <ul class="submenu">
                                        
                                         <li><a href="#">Employee User Manual</a></li>
-                                        <li><a href="#">Enroll Students</a></li>
+                                        <li><a href="<?php echo EMPLOYEE_STUDENT_LIST_LINK; ?>">Enroll Students</a></li>
                                         <li><a href="<?php echo EMPLOYEE_UPLOAD_FILE_LINK; ?>">Upload Resource Material</a></li>
                                         <li><a href="<?php echo EMPLOYEE_RESOURCES_LIST_LINK; ?>">Manage Resource Material</a></li>
                                         <li><a href="#">Post Queries</a></li>

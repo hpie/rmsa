@@ -256,8 +256,7 @@ class SSP {
 			"recordsFiltered" => intval( $recordsFiltered ),
 			"data" => self::data_output( $columns, $data )
 		);
-	}
-        
+	}        
         static function emp_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$emp_rmsa_user_id)
 	{
 //            echo BASE_URL;die;
