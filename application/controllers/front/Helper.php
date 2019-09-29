@@ -6,18 +6,18 @@ class Helper extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('helper_model');
+        $this->load->model('Helper_model');
     }
 
     public function load_tehsil(){
         if($_REQUEST['districtId']){
-            $tehsil = $this->helper_model->load_tehsil($_POST);
+            $tehsil = $this->Helper_model->load_tehsil($_POST);
             echo json_encode($tehsil);
         }
     }
     public function load_school(){
         if($_REQUEST['subDistrictId']){
-            $school = $this->helper_model->load_school($_POST);
+            $school = $this->Helper_model->load_school($_POST);
             echo json_encode($school);
         }
     }

@@ -14,21 +14,21 @@ class Resource extends MY_Controller{
 
     public function file_viewcount(){
         if($_REQUEST['rmsa_uploaded_file_id']){
-            $res = $this->resource_model->file_viewcount($_REQUEST['rmsa_uploaded_file_id']);
+            $res = $this->Resource_model->file_viewcount($_REQUEST['rmsa_uploaded_file_id']);
             echo json_encode($res);
         }
     }
 
     public function post_review(){
         if($_REQUEST['file_id'] && $_REQUEST['rating']){
-            $reviews = $this->resource_model->post_review($_POST);
+            $reviews = $this->Resource_model->post_review($_POST);
             echo json_encode($reviews);
         }
     }
 
     public function comment_reply(){
         if($_POST['comment_id'] && $_POST['comment_id'] !=''){
-            $reply = $this->resource_model->comment_reply($_POST);
+            $reply = $this->Resource_model->comment_reply($_POST);
             echo json_encode($reply);
         }
     }
@@ -36,11 +36,11 @@ class Resource extends MY_Controller{
     public function display_review(){
         $review_comments = '';
         if($_REQUEST['file_id']) {
-            $comments = $this->resource_model->get_comments($_REQUEST['file_id']);
+            $comments = $this->Resource_model->get_comments($_REQUEST['file_id']);
             if (count($comments)) {
                 foreach ($comments AS $key => $comment) {
 
-                    $comment_username = $this->resource_model->get_username($comment['rmsa_user_id'],$comment['rmsa_user_type']);
+                    $comment_username = $this->Resource_model->get_username($comment['rmsa_user_id'],$comment['rmsa_user_type']);
 
                     $review_comments .= '<div class="row">
                                     <div class="col-md-2">
@@ -66,7 +66,7 @@ class Resource extends MY_Controller{
     public function display_rating(){
         $star = '';
         if($_REQUEST['file_id']) {
-            $student_has_rating = $this->resource_model->student_has_file_rating($_REQUEST['file_id']);
+            $student_has_rating = $this->Resource_model->student_has_file_rating($_REQUEST['file_id']);
             $rating = '';
             if(is_array($student_has_rating)){
 
@@ -96,20 +96,20 @@ class Resource extends MY_Controller{
     }
 
     public  function view_review($fileId){
-        $comments = $this->resource_model->get_comments($fileId);
+        $comments = $this->Resource_model->get_comments($fileId);
         $comments_arr = Array();
         if (count($comments)) {
             foreach ($comments AS $key => $comment) {
 
-                $comment_username = $this->resource_model->get_username($comment['rmsa_user_id'],$comment['rmsa_user_type']);
+                $comment_username = $this->Resource_model->get_username($comment['rmsa_user_id'],$comment['rmsa_user_type']);
 
                 $comments_arr [] =  $comment;
                 $comments_arr [$key]['username'] =  $comment_username;
             }
         }
 
-        $get_title = $this->resource_model->get_file_title($fileId);
-        $avg       = $this->resource_model->get_file_avg_rating($fileId);
+        $get_title = $this->Resource_model->get_file_title($fileId);
+        $avg       = $this->Resource_model->get_file_avg_rating($fileId);
 
         $data = array(
             'file_title' => $get_title[0]['uploaded_file_title'],

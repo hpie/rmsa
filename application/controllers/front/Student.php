@@ -9,24 +9,24 @@ class Student extends MY_Controller{
     }
     public function update_profile(){
         if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){
-            if($this->student_model->check_current_password($_POST['rmsa_user_current_password'])){
-                $res = $this->student_model->update_password($_POST);
+            if($this->Student_model->check_current_password($_POST['rmsa_user_current_password'])){
+                $res = $this->Student_model->update_password($_POST);
                 if($res){
                     redirect(HOME_LINK);
                 }
             }
         }
         elseif (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){            
-            $this->student_model->update_profile($_POST);
+            $this->Student_model->update_profile($_POST);
         }
-        $this->mViewData['student_data'] =  $this->student_model->student_details();
+        $this->mViewData['student_data'] =  $this->Student_model->student_details();
         $this->mViewData['title']=' - Student Profile';
         $this->renderFront('front/student_profile');
     }
 
     public function approve(){
         if(isset($_REQUEST['rmsa_user_id'])){
-            $res = $this->student_model->approve_student($_REQUEST['rmsa_user_id']);
+            $res = $this->Student_model->approve_student($_REQUEST['rmsa_user_id']);
             if($res){
                 $data = array(
                     'suceess' => true
@@ -38,7 +38,7 @@ class Student extends MY_Controller{
 
     public function is_active(){
         if($_SESSION['st_rmsa_student_login_active']==1){
-            $res = $this->student_model->is_active($_SESSION['st_rmsa_user_id']);
+            $res = $this->Student_model->is_active($_SESSION['st_rmsa_user_id']);
             echo json_encode($res);
         }
     }

@@ -12,7 +12,7 @@ class StudentLogin extends MY_Controller{
     public function index(){            
         $_SESSION['invalid_login'] = 0;
         if (isset($_POST['username']) && isset($_POST['password'])) {
-            $result = $this->login_model->login_select($_POST['username'], $_POST['password']);           
+            $result = $this->Login_model->login_select($_POST['username'], $_POST['password']);           
             if ($result == true) {
                 redirect(HOME_LINK);               
             }
