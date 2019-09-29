@@ -298,9 +298,36 @@ class SSP {
                 $resData=array();
                 if(!empty($result)){
                     foreach ($result as $row){
+                        
+                        
+                         $rmsa_file_id = $row['rmsa_uploaded_file_id'];
+                        $reviews = self::sql_exec( $db,
+                            "SELECT AVG(rmsa_file_rating) as overall_rating FROM rmsa_file_reviews
+                                    WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}' AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");
+                        $star = '';
+                        if(count($reviews)){
+                            $rating = $reviews[0]['overall_rating'];
+                            $starNumber = rtrim(rtrim(number_format($rating, 1, ".", ""), '0'), '.');
+                            for ($x = 0; $x < 5; $x++) {
+                                if (floor($starNumber)-$x >= 1) {
+                                    $star.= '<i class="fa fa-star" style="color:#ffc000;"></i>';
+                                }
+                                elseif ($starNumber-$x > 0) {
+                                    $star.= '<i class="fa fa-star-half-o" style="color:#ffc000;"></i>';
+                                }
+                                else {
+                                    $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
+                                }
+                            }
+                        }
+                        else{
+                            for ($x = 0; $x < 5; $x++) {
+                                $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
+                            }
+                        }                       
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                        $row['ext']="<td style='padding: 2px 5px;'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></center>
-                                     <br><a href='/rmsa/file-reviews/".$row['rmsa_uploaded_file_id']."'>View Reviews</a> </td>";
+                        $row['ext']="<td style='padding: 0px 0px;'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></center></td>";
+                        $row['ratting']="<td>$star<br><a href='/rmsa/file-reviews/".$row['rmsa_uploaded_file_id']."'>View Reviews</a></td>";                        
                         if($row['uploaded_file_hasvol']=="YES"){
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
                             $dataChild = self::sql_exec( $db, $bindings,
@@ -410,9 +437,7 @@ class SSP {
                 $row['review']="<td>
 <span><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>".$row['uploaded_file_viewcount']."</span>
 <center><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></center></td>";
-                $row['ratting']="<td>$star<br><a href='/rmsa/file-reviews/".$row['rmsa_uploaded_file_id']."'>View Reviews</a>
-                
-                </td>";
+                $row['ratting']="<td>$star<br><a href='/rmsa/file-reviews/".$row['rmsa_uploaded_file_id']."'>View Reviews</a></td>";
 //                        . "<span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'></span>";
                 if($row['uploaded_file_hasvol']=="YES"){
                     $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];

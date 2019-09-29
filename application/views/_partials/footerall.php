@@ -27,14 +27,13 @@ $this->load->view('_partials/scripts');
 <!-- End Import Scripts -->
 
 </div>
-
 <script>
     $(document).ready(function () {
         // get current URL path and assign 'active' class
         var pathname = window.location.href;
         // alert(pathname);
         $('.navbar-nav > li > a').removeClass('active');
-        $('.navbar-nav > li > a[href="'+ pathname +'"]').addClass('active');
+        $('.navbar-nav > li > a[href="'+ pathname +'"]').addClass('active');       
     });
 </script>        
 

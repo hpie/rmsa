@@ -32,10 +32,16 @@ $this->load->view('_partials/front/scripts');
 <script>
     $(document).ready(function () {       
         // get current URL path and assign 'active' class
-        var pathname = window.location.href;
-        // alert(pathname);
-        $('.navbar-nav > li > a').removeClass('active');
-        $('.navbar-nav > li > a[href="' + pathname + '"]').addClass('active');
+        
+        
+        var activeurl = window.location;
+        $('a[href="'+activeurl+'"]').parent('ul').css( "display", "block");
+        
+//        $('.navbar-nav > li > a[href="'+pathname+'"]').parent().css( "background-color", "red" );
+//        
+//        var pathname = window.location.href;        
+//        $('.navbar-nav > li > a').removeClass('active');
+//        $('.navbar-nav > li > a[href="' + pathname + '"]').addClass('active');        
     });
 </script>
 <?php
@@ -67,7 +73,8 @@ $this->load->view('_partials/front/allnotify');
                 {"data": "uploaded_file_category"},
                 {"data": "uploaded_file_desc"},
                 {"data": "ext"},
-                {"data": "child"}
+                {"data": "child"},
+                {"data": "ratting"}
             ]
         });
     });
