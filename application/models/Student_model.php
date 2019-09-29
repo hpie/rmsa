@@ -75,6 +75,13 @@
                 );
             }
         }
+        
+        public function update_logout_status($rmsa_user_id){
+            $query_res=$this->db->query("UPDATE rmsa_student_users SET rmsa_student_login_active = 0 WHERE rmsa_user_id='".$rmsa_user_id."' ");
+            if($query_res){
+                return true;
+            }
+        }
 
 
     }

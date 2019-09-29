@@ -42,11 +42,12 @@ class Student extends MY_Controller{
             echo json_encode($res);
         }
     }
-
-
     public function logout() {
-        $this->session->sessionDestroy();
-        redirect(STUDENT_LOGIN_LINK);
+        $res = $this->Student_model->update_logout_status($_SESSION['st_rmsa_user_id']);
+        $this->session->sessionDestroy();        
+        if($res){
+            redirect(STUDENT_LOGIN_LINK);
+        }        
     }
 }
 ?>

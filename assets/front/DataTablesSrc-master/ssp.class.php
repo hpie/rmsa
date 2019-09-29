@@ -25,12 +25,12 @@ $protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off'
 $r = $_SERVER['SCRIPT_NAME'];
 $subdomain = explode('/', $r);
 array_pop($subdomain);
-$urllink=$protocol.'/'.$_SERVER['HTTP_HOST'];
-if($urllink=="http/localhost"){  
+$urllink=$protocol.'://'.$_SERVER['HTTP_HOST'];
+if($urllink=="http://localhost"){  
     $url.='/rmsa';
 }
 define('BASE_URL', $urllink);
-$filepath="/assets/front/fileupload/server/php/files/";
+$filepath="/assets/front/fileupload/server/php/files";
 define('FILE_URL', $filepath);
 //define('BASE_URL', $url);
 // REMOVE THIS BLOCK - used for DataTables test environment only!

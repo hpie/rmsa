@@ -1,12 +1,5 @@
 <?php
-$options = array(
-    'delete_type' => 'POST',
-    'db_host' => 'localhost',
-    'db_user' => 'root',
-    'db_pass' => '',
-    'db_name' => 'rmsa',
-    'db_table' => 'rmsa_uploaded_files'
-);
+include 'conn.php';
 error_reporting(E_ALL | E_STRICT);
 require('UploadHandler.php');
 class CustomUploadHandler1 extends UploadHandler {

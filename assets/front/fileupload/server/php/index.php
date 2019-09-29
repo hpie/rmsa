@@ -1,16 +1,7 @@
 <?php
-
-$options = array(
-    'delete_type' => 'POST',
-    'db_host' => 'localhost',
-    'db_user' => 'root',
-    'db_pass' => '',
-    'db_name' => 'rmsa',
-    'db_table' => 'rmsa_uploaded_files'
-);
+include 'conn.php';
 error_reporting(E_ALL | E_STRICT);
 require('UploadHandler.php');
-
 class CustomUploadHandler extends UploadHandler {    
     protected function initialize() {         
         $this->db = new mysqli(
@@ -19,7 +10,6 @@ class CustomUploadHandler extends UploadHandler {
         parent::initialize();
         $this->db->close();
     }
-
     protected function handle_form_data($file, $index) {                
         $file->uploaded_file_title = @$_REQUEST['uploaded_file_title'][$index];
         $file->uploaded_file_desc = @$_REQUEST['uploaded_file_desc'][$index];
