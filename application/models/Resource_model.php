@@ -84,6 +84,11 @@ class Resource_model extends CI_Model{
         return $comments->result_array();
     }
 
+    public function get_comments_reply($commentId){
+        $reply = $this->db->query("SELECT * FROM rmsa_review_comments WHERE reply_on = '{$commentId}' AND comment_type = 2");
+        return $reply->result_array();
+    }
+
     public function student_has_file_rating($fileId){
         $check_rating = $this->db->query("SELECT * FROM rmsa_file_reviews
                                               WHERE rmsa_user_id = '".$_SESSION['st_rmsa_user_id']."'

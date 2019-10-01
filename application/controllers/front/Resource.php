@@ -107,6 +107,7 @@ class Resource extends MY_Controller{
 
                 $comments_arr [] =  $comment;
                 $comments_arr [$key]['username'] =  $comment_username;
+                $comments_arr [$key]['replies'] = $this->Resource_model->get_comments_reply($comment['rmsa_review_comment_id']);
             }
         }
 
