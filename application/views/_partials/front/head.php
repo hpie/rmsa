@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
     <!-- Generic page styles -->  
     
-    <?php if($title==" - File Upload"){ ?>    
+    <?php if($title == " - File Upload"){ ?>    
     <!-- blueimp Gallery styles -->
     <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css"/>
     <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->

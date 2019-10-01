@@ -19,23 +19,19 @@ $this->load->view('_partials/front/footer');
 ?>
 <!-- End Import Navbar -->         
 
-
+</div>
 <!-- Start Import Scripts -->
 <?php
 $this->load->view('_partials/front/scripts');
 //	include('_partials/scripts.php'); // Includes Scripts Script
 ?>
 <!-- End Import Scripts -->
-
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 <script>
     $(document).ready(function () {       
-        // get current URL path and assign 'active' class
-        
-        
-        var activeurl = window.location;
-        $('a[href="'+activeurl+'"]').parent('ul').css( "display", "block");
+        // get current URL path and assign 'active' class                
+//        var activeurl = window.location;
+//        $('a[href="'+activeurl+'"]').parent('ul').css( "display", "block");
         
 //        $('.navbar-nav > li > a[href="'+pathname+'"]').parent().css( "background-color", "red" );
 //        
@@ -352,7 +348,6 @@ if ($title == ' - File Reviews') {
         })
 
         $(document).on('click','.view_count',function (e) {
-
             e.preventDefault();
             var rmsa_uploaded_file_id = $(this).data('id');
             var self = this;
@@ -590,8 +585,7 @@ if ($title == ' - File Reviews') {
 ?>
     
            <?php
-if(isset($_SESSION['st_rmsa_student_login_active'])) {
-    if($_SESSION['st_rmsa_student_login_active'] == 1){
+if(isset($_SESSION['st_rmsa_student_login_active'])) { if($_SESSION['st_rmsa_student_login_active'] == 1){
     //student will be logout if admin logout them from to backend
 //    TODO
 //    please run this sql on backend

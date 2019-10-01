@@ -28,7 +28,7 @@ class EmpLogin extends MY_Controller{
             $_SESSION['invalid_login'] = 1;
            }           
         }
-        $this->mViewData['title']=' - Employee Login';
+        $this->mViewData['title'] = ' - Employee Login';
         $this->renderFront('front/emplogin');
     }
     public function employeeLogout() {       
@@ -39,7 +39,7 @@ class EmpLogin extends MY_Controller{
         }        
     }
     public function isActiveEmployee(){
-        if($_SESSION['emp_rmsa_employee_login_active']==1){
+        if(($_SESSION['emp_rmsa_employee_login_active']) == 1){
             $res = $this->Emp_Login->isEmployeeActive($_SESSION['emp_rmsa_user_id']);
             echo json_encode($res);
         }

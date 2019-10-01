@@ -4,7 +4,8 @@ class Login_model extends CI_Model{
     function __construct(){
         parent::__construct();
     }
-    public function login_select($username, $password) {      
+    public function login_select($username, $password) {
+        $password= md5($password);      
         $q = "SELECT * FROM rmsa_student_users WHERE rmsa_user_email_id='$username' and rmsa_user_email_password='$password' AND rmsa_user_status='ACTIVE'";
         $query = $this->db->query($q);
         $row = $query->row_array(); 
@@ -25,8 +26,6 @@ class Login_model extends CI_Model{
                     //insert new log for user
                     $this->db->query("INSERT INTO rmsa_student_users_log(rmsa_user_id,failed_password_attempt_count,is_logged_in)VALUES('".$row['rmsa_user_id']."',0,1) ");
                 }
-
-
                 $this->db->query("UPDATE rmsa_student_users SET rmsa_student_login_active = 1 WHERE rmsa_user_id='".$row['rmsa_user_id']."' ");
                 $this->session->sessionStudent($row);
                 return true;

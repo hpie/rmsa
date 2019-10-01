@@ -4,6 +4,7 @@ class Emp_Login extends CI_Model{
         parent::__construct();
     }
     public function emp_login_select($username, $password) {
+        $password= md5($password); 
         $employee = $this->db->query("SELECT * FROM `rmsa_employee_users` WHERE rmsa_user_email_id = '$username'
                                       AND rmsa_user_email_password = '$password' AND rmsa_user_status = 'ACTIVE'");
         $emp_data = $employee->row_array();
