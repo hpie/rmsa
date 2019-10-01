@@ -372,18 +372,26 @@ class SSP {
         // Build the SQL query string from the request
         $limit = self::limit( $request, $columns );
         $order = self::order( $request, $columns );
-        $where = self::filter( $request, $columns, $bindings );
+        $where = self::filter( $request, $columns, $bindings );                        
         if ($where_custom) {
             if ($where) {
                 $where .= ' AND ' . $where_custom;
             } else {
                 $where .= 'WHERE ' . $where_custom;
             }
-        }
+        }        
         // Main query to actually get the data
-        $data = self::sql_exec($db, $bindings,
-            "SELECT `".implode("`, `", self::pluck($columns, 'db'))."` FROM `$table` WHERE uploaded_file_volroot=0  $order $limit"
-        );
+                        
+        $data = self::sql_exec( $db, $bindings,
+			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
+			 FROM `$table`
+			 $where
+			 $order
+			 $limit"
+		); 
+//        $data = self::sql_exec($db, $bindings,
+//            "SELECT `".implode("`, `", self::pluck($columns, 'db'))."` FROM `$table` WHERE uploaded_file_volroot=0  $order $limit"
+//        );
         // Data set length after filtering
         $resFilterLength = self::sql_exec( $db, $bindings,
             "SELECT COUNT(`{$primaryKey}`)
@@ -430,11 +438,9 @@ class SSP {
                         $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
                     }
                 }
-
                 //get number of student view count
                 $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
                 $total_student_view = $student_view_count[0]['total_Student_views'];
-
                 $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
                 $row['ext']="<td style='padding: 0px 0px;'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></center></td>";
                 $row['review']="<td>

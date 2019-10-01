@@ -3,11 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Resource extends MY_Controller{
     public function __construct(){
+        $this->session->sessionCheckStudent();
         parent::__construct();
         $this->load->model('Resource_model');
     }
-
-    public function resources(){
+    
+    public function resources($uploaded_file_category){       
+        $this->mViewData['uploaded_file_category'] = $uploaded_file_category;
         $this->mViewData['title']=' - Student Resources';
         $this->renderFront('front/student_resources.php');
     }

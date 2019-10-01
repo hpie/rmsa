@@ -119,7 +119,7 @@ $route['registered-students']     = 'front/RegisteredStudents';
 
 
 //All filr resources route
-$route['student-resources']       = 'front/Resource/resources';
+$route['student-resources/(:any)']       = 'front/Resource/resources/$1';
 $route['total-fileview']          = 'front/Resource/file_viewcount';
 $route['post-review']             = 'front/Resource/post_review';
 $route['display-review']          = 'front/Resource/display_review';

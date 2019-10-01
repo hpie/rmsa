@@ -38,6 +38,9 @@ $columns = array(
     array('db' => 'uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount')
 );
 include 'conn.php';
+//echo $_REQUEST['uploaded_file_category'];die;
+$uploaded_file_category=$_REQUEST['uploaded_file_category'];
+$where ="uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot=0";
 // SQL server connection information
 //$sql_details = array(
 //    'user' => 'root',
@@ -51,7 +54,7 @@ include 'conn.php';
  */
 require('ssp.class.php' );
 echo json_encode(
-    SSP::student_file_list($_GET, $sql_details, $table, $primaryKey, $columns)
+    SSP::student_file_list($_GET, $sql_details, $table, $primaryKey, $columns,$where)
 );
 
 

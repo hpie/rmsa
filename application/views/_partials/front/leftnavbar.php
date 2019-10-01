@@ -41,10 +41,10 @@
                                     <div class="link"><i class="fa fa-mobile"></i>Resource Material<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">                                       
                                         <li><a href="#">Student User Manual</a></li>
-                                        <li><a href="<?php echo STUDENT_RESOURCES_LINK; ?>">View Resource Material</a></li>                                       
-                                        <li><a href="#">Download EBooks</a></li>                                                                          
-                                        <li><a href="#">Download Question Papers</a></li>
-                                        <li><a href="#">Download Syllabus</a></li>
+                                        <li><a href="<?php echo STUDENT_RESOURCES_LINK.'/NONE'; ?>">View Resource Material</a></li>                                       
+                                        <li><a href="<?php echo STUDENT_RESOURCES_LINK.'/EBOOKS'; ?>">Download EBooks</a></li>                                                                          
+                                        <li><a href="<?php echo STUDENT_RESOURCES_LINK.'/Q-PAPERS'; ?>">Download Question Papers</a></li>
+                                        <li><a href="<?php echo STUDENT_RESOURCES_LINK.'/SYLLABUS'; ?>">Download Syllabus</a></li>
                                         <li><a href="#">Post Queries</a></li>
                                         <li><a href="#">Online Exam</a></li>                                                                                                                       
                                     </ul>

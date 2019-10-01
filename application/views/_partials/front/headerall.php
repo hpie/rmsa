@@ -6,6 +6,13 @@
 $this->load->view('_partials/front/head');
 //	include('_partials/head.php'); // Includes Header Script
 ?>
+<style>
+    tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
+</style>
 <!-- End Import Head -->
 
 <body>
