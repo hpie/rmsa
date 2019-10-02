@@ -97,6 +97,21 @@ class Resource extends MY_Controller{
         echo $star;
     }
 
+    public function get_comments_reply($commentId){
+        $replies = array();
+        $res = $this->Resource_model->get_comments_reply($commentId);
+
+        foreach ($res as $key=> $reply){
+            $replies [] = $reply;
+
+            $reply_username = $this->Resource_model->get_username($reply['rmsa_user_id'],$reply['rmsa_user_type']);
+
+            $replies [$key]['time'] = $this->time_elapsed_string($reply['comment_dt']);
+            $replies [$key]['username'] =  $reply_username;
+        }
+        return $replies;
+    }
+
     public  function view_review($fileId){
         $comments = $this->Resource_model->get_comments($fileId);
         $comments_arr = Array();
@@ -108,7 +123,7 @@ class Resource extends MY_Controller{
                 $comments_arr [] =  $comment;
                 $comments_arr [$key]['username'] =  $comment_username;
                 $comments_arr [$key]['time'] =  $this->time_elapsed_string($comment['comment_dt']);
-                $comments_arr [$key]['replies'] = $this->Resource_model->get_comments_reply($comment['rmsa_review_comment_id']);
+                $comments_arr [$key]['replies'] = $this->get_comments_reply($comment['rmsa_review_comment_id']);
             }
         }
 

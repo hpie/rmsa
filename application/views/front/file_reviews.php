@@ -71,10 +71,10 @@
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
-                                                        <p class="text-secondary text-center">15 Minutes Ago</p>
+                                                        <p class="text-secondary text-center">'.$reply['time'].'</p>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Vishal patel</strong></a></p>
+                                                        <p><a href="#"><strong>'.$reply['username'].'</strong></a></p>
                                                         <p>'.$reply['rmsa_file_comment'].'</p>
                                                         <p>                                                                                                                       
                                                        </p>
