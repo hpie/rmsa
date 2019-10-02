@@ -7,6 +7,24 @@ $this->load->view('_partials/front/head');
 //	include('_partials/head.php'); // Includes Header Script
 ?>
 <style>
+.tooltip1 .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+.tooltip1:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+<style>
     tfoot input {
         width: 100%;
         padding: 3px;

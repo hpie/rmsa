@@ -27,8 +27,10 @@ $this->load->view('_partials/front/scripts');
 ?>
 <!-- End Import Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
-<script>
-    $(document).ready(function () {
+<script>   
+    
+    $(document).ready(function () {       
+//       $("[data-toggle='tooltip']").tooltip(); 
         // get current URL path and assign 'active' class                
 //        var activeurl = window.location;
 //        $('a[href="'+activeurl+'"]').parent('ul').css( "display", "block");
@@ -386,7 +388,7 @@ if ($title == ' - File Reviews') {
                 "columns": [
                     {"data": "uploaded_file_title"},
                     {"data": "uploaded_file_type"},
-                    {"data": "uploaded_file_group"},
+//                    {"data": "uploaded_file_group"},
                     {"data": "uploaded_file_category"},
                     {"data": "uploaded_file_desc"},
                     {"data": "ext"},
