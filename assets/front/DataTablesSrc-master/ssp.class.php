@@ -452,12 +452,9 @@ class SSP {
                 $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
                 $total_student_view = $student_view_count[0]['total_Student_views'];
                 $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                $row['ext']="<td style='padding: 0px 0px;'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a></center></td>";
-                $row['review']="<td>
-<span>Total hit count<i class=\"fa fa-eye\" aria-hidden=\"true\"></i>".$row['uploaded_file_viewcount']."</span>
-<br>
-<span>Total student view count<i class=\"fa fa-eye\" aria-hidden=\"true\"></i>".$total_student_view."</span>
-<center><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></center></td>";
+                $row['ext']="<td style='padding: 0px 0px;'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                        <br><span style='font-size:10px'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."</span><br><span style='font-size:10px'>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
+                $row['review']="<td><center><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></center></td>";
                 $row['ratting']="<td>$star<br><a href='/rmsa/file-reviews/".$row['rmsa_uploaded_file_id']."'>View Reviews</a></td>";
 //                        . "<span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'></span>";
                 if($row['uploaded_file_hasvol']=="YES"){
@@ -473,9 +470,11 @@ class SSP {
                     $strTd='';
                     $str='';
                     foreach ($resultChild as $rowChild){
+                        $student_view_count_child = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rowChild['rmsa_uploaded_file_id']}'");
+                        $total_student_view_child = $student_view_count_child[0]['total_Student_views'];
                         $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true";
                         $strTd.="<td style='padding: 0px 0px;'><center><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a></center>
-                                   <span>Total hit count<i class=\"fa fa-eye\" aria-hidden=\"true\"></i>".$rowChild['uploaded_file_viewcount']."</span>         
+                                   <br><span style='font-size:10px'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."</span><br><span style='font-size:10px'>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span>         
                                 </td>";
                     }
                     $str.=$strTd."</tr></table>";
