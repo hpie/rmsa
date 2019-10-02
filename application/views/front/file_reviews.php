@@ -39,6 +39,15 @@
                 $all_comment = '';
                 if (is_array($comments)) {
                     foreach ($comments AS $key => $comment) {
+
+                        if(isset($_SESSION['emp_rmsa_user_id'])) {
+                            $reply_button = '<p>
+                                                <a class="float-right btn btn-outline-primary ml-2" onclick="comment_reply('.$comment['rmsa_review_comment_id'].')">
+                                                    <i class="fa fa-reply"></i> Reply
+                                                </a>        	            
+        	                               </p>';
+                        }
+
                         $all_comment .= '<div class="row">
                                             <div class="col-md-2">
                                                 <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
@@ -50,16 +59,29 @@
                             
                                                 </p>
                                                 <div class="clearfix"></div>
-                                                '.$comment['rmsa_file_comment'].'
+                                                <p>'.$comment['rmsa_file_comment'].'</p>
+                                                '.$reply_button.'
                                             </div>
                                         </div>';
 
-                        if(isset($_SESSION['emp_rmsa_user_id'])) {
-                            $all_comment .= '<p>
-                                            <a class="float-right btn btn-outline-primary ml-2" onclick="comment_reply('.$comment['rmsa_review_comment_id'].')">
-                                                <i class="fa fa-reply"></i> Reply
-                                            </a>        	            
-        	                              </p>';
+
+                        foreach ($comment['replies'] AS $key=> $reply){
+                            $all_comment .= '<div class="card card-inner">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                                                        <p class="text-secondary text-center">15 Minutes Ago</p>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Vishal patel</strong></a></p>
+                                                        <p>'.$reply['rmsa_file_comment'].'</p>
+                                                        <p>                                                                                                                       
+                                                       </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
                         }
                     }
 
