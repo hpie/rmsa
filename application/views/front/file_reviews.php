@@ -51,7 +51,7 @@
                         $all_comment .= '<div class="row">
                                             <div class="col-md-2">
                                                 <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
-                                                <p class="text-secondary text-center">15 Minutes Ago</p>
+                                                <p class="text-secondary text-center">'.$comment['time'].'</p>
                                             </div>
                                             <div class="col-md-10">
                                                 <p>
