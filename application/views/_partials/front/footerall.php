@@ -29,10 +29,22 @@ $this->load->view('_partials/front/scripts');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 <script>   
     
-    $(document).ready(function () {       
-//       $("[data-toggle='tooltip']").tooltip(); 
-        // get current URL path and assign 'active' class                
-//        var activeurl = window.location;
+    $(document).ready(function () { 
+        
+        $("#accordion a").each(function() {   
+            if (this.href == window.location.href) {
+                $(this).css("background","#bc2832");
+                $(this).parents('.submenu').css("display","block");
+                $(this).parents('.submenu').parents('li').addClass('open');
+            }
+        });
+        
+//        $('#accordion').find('a.current').parent().prop('className');
+//        
+////       $("[data-toggle='tooltip']").tooltip(); 
+//        // get current URL path and assign 'active' class                
+//        var activeurl = window.location;   
+////        $('a[href="'+activeurl+'"]').parent('.submenu').parent('li').addClass('open');
 //        $('a[href="'+activeurl+'"]').parent('ul').css( "display", "block");
 
 //        $('.navbar-nav > li > a[href="'+pathname+'"]').parent().css( "background-color", "red" );

@@ -1,5 +1,4 @@
 			<!-- LeftNavbar Start -->
-
                     <div class="col-md-3 col-sm-3  collapse navbar-collapse" id="slide-navbar-collapse">
                         <div class="left-side-area">
                             <ul id="accordion" class="accordion">
