@@ -45,7 +45,10 @@ include 'conn.php';
 //);
 
 $where = 'rmsa_school_id = '.$_REQUEST['rmsa_school_id'];
-
+if(!empty($_REQUEST['search']['value'])){
+    $value=$_REQUEST['search']['value'];
+    $where.=" AND (rmsa_user_first_name LIKE '%$value%' OR rmsa_user_gender LIKE '%$value%' OR rmsa_user_DOB LIKE '%$value%' OR rmsa_user_email_id LIKE '%$value%') ";
+}
 //echo $where;die;
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

@@ -41,6 +41,11 @@ include 'conn.php';
 //echo $_REQUEST['uploaded_file_category'];die;
 $uploaded_file_category=$_REQUEST['uploaded_file_category'];
 $where ="uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot=0";
+
+if(!empty($_REQUEST['search']['value'])){
+    $value=$_REQUEST['search']['value'];
+    $where.=" AND (uploaded_file_title LIKE '%$value%' OR uploaded_file_type LIKE '%$value%' OR uploaded_file_category LIKE '%$value%' OR uploaded_file_desc LIKE '%$value%' OR uploaded_file_group LIKE '%$value%') ";
+}
 // SQL server connection information
 //$sql_details = array(
 //    'user' => 'root',

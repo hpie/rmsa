@@ -225,7 +225,7 @@ class SSP {
             } else {
                 $where .= 'WHERE ' . $where_custom;
             }
-        }
+        }       
 		// Main query to actually get the data
 		$data = self::sql_exec( $db, $bindings,
 			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
@@ -259,8 +259,6 @@ class SSP {
 	}        
         static function emp_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$emp_rmsa_user_id)
 	{
-//            echo BASE_URL;die;
-                
 		$bindings = array();
 		$db = self::db( $conn );
                 
@@ -275,11 +273,18 @@ class SSP {
                     } else {
                         $where .= 'WHERE ' . $where_custom;
                     }
-                }
+                }                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
+			 FROM `$table`
+			 $where
+			 $order
+			 $limit"
+		); 
 		// Main query to actually get the data
-		$data = self::sql_exec($db, $bindings,
-			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."` FROM `$table` WHERE uploaded_file_volroot=0 AND rmsa_employee_users_id='$emp_rmsa_user_id'  $order $limit"
-		);
+//		$data = self::sql_exec($db, $bindings,
+//			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."` FROM `$table` WHERE uploaded_file_volroot=0 AND rmsa_employee_users_id='$emp_rmsa_user_id'  $order $limit"
+//		);
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
 			"SELECT COUNT(`{$primaryKey}`)
