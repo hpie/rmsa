@@ -32,6 +32,26 @@ class Emp_Login extends CI_Model{
                 return true;
             }
         }
+        else{
+
+            $get_user = $this->db->query("SELECT * FROM rmsa_employee_users WHERE rmsa_user_email_id = '$username' ");
+
+            $check = $get_user->row_array();
+            if(is_array($check)){
+                $has_already_log = $this->db->query("SELECT * FROM rmsa_employee_users_log WHERE rmsa_user_id = '{$check['rmsa_user_id']}'");
+
+                $log = $has_already_log->row_array();
+
+                if(is_array($log)){ //update
+                    $this->db->query("UPDATE rmsa_employee_users_log SET failed_password_attempt_count = failed_password_attempt_count + 1 WHERE rmsa_user_id = '{$check['rmsa_user_id']}'");
+                }else{
+                    //insert new log for user
+                    $this->db->query("INSERT INTO rmsa_employee_users_log(rmsa_user_id,failed_password_attempt_count)VALUES('".$check['rmsa_user_id']."',1) ");
+                }
+            }
+
+
+        }
         return false;
     }
     public function isEmployeeActive($rmsa_user_id){
