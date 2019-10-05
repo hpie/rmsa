@@ -13,6 +13,20 @@ class Emp_Login extends CI_Model{
                 if($emp_data['rmsa_employee_login_active']==1){                    
                     return 2;
                 }
+
+                //Add or update Employee user log
+                $has_already_log = $this->db->query("SELECT * FROM  rmsa_employee_users_log WHERE rmsa_user_id = '{$emp_data['rmsa_user_id']}'");
+
+                $log = $has_already_log->row_array();
+
+                if(is_array($log)){                    //update
+                    $date = date("Y-m-d h:i:s");
+                    $this->db->query("UPDATE rmsa_employee_users_log SET last_login_dt = '{$date}',	is_logged_in = 1 WHERE rmsa_user_id = '{$emp_data['rmsa_user_id']}'");
+                }else{
+                    //insert new log for user
+                    $this->db->query("INSERT INTO rmsa_employee_users_log(rmsa_user_id,failed_password_attempt_count,is_logged_in)VALUES('".$emp_data['rmsa_user_id']."',0,1) ");
+                }
+
                 $this->db->query("UPDATE rmsa_employee_users SET rmsa_employee_login_active = 1 WHERE rmsa_user_id='".$emp_data['rmsa_user_id']."' ");
                 $this->session->sessionEmployee($emp_data);
                 return true;
