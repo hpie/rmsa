@@ -49,6 +49,23 @@
 
             <div class="form-group">
                 <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_email_password">New Password:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="password" class="form-control" name="rmsa_user_email_password" id="rmsa_user_email_password" placeholder="Enter New Password">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_confirm_password">Confirm Password: </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="password" class="form-control" name="rmsa_user_confirm_password" id="rmsa_user_confirm_password" placeholder="Enter Confirm Password">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_DOB">Date of Birth:</label>
                     <div class="col-sm-8 col-xs-12">
                         <input type="date" class="form-control" name="rmsa_user_DOB" id="rmsa_user_DOB">

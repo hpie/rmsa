@@ -537,6 +537,34 @@ if ($title == ' - File Reviews') {
                             }
                         }
                     },
+                    rmsa_user_email_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6,
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6,
+                            },
+                            identical: {
+                                field: 'rmsa_user_email_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    },
                     rmsa_user_DOB: {
                         validators: {
                             notEmpty: {

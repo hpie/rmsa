@@ -62,17 +62,17 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_middle_name">New Password:</label>
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_new_password">New Password:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" name="rmsa_user_new_password" id="rmsa_user_new_password" placeholder="Enter New Password">
+                        <input type="password" class="form-control" name="rmsa_user_new_password" id="rmsa_user_new_password" placeholder="Enter New Password">
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_last_name">Confirm Password: </label>
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_confirm_password">Confirm Password: </label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" name="rmsa_user_confirm_password" id="rmsa_user_confirm_password" placeholder="Enter Confirm Password">
+                        <input type="password" class="form-control" name="rmsa_user_confirm_password" id="rmsa_user_confirm_password" placeholder="Enter Confirm Password">
                     </div>
                 </div>
             </div>

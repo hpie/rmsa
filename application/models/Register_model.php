@@ -15,6 +15,10 @@
                     'email_exist' => true
                 );
             }
+
+            $params['rmsa_user_email_password'] = md5($params['rmsa_user_email_password']);
+            unset($params['rmsa_user_confirm_password']);
+
             $result = $this->db->insert('rmsa_student_users',$params);
             $insert_id = $this->db->insert_id();// get last insert id
             if(!empty($insert_id)){
