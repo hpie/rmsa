@@ -37,9 +37,9 @@
                 $comments = $reviews['comments'];
 
                 $all_comment = '';
-                if (is_array($comments)) {
+                if (is_array($comments) && sizeof($comments)) {
                     foreach ($comments AS $key => $comment) {
-
+                        $reply_button ='';
                         if(isset($_SESSION['emp_rmsa_user_id'])) {
                             $reply_button = '<p>
                                                 <a class="float-right btn btn-outline-primary ml-2" onclick="comment_reply('.$comment['rmsa_review_comment_id'].')">
@@ -87,7 +87,10 @@
 
                 echo $all_comment;
                 ?>
-            <?php }?>
+            <?php }else{
+                    echo "No comments yet";
+                }
+                ?>
         </div>
     </div>
 </div>
