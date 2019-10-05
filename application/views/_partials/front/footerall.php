@@ -527,6 +527,16 @@ if ($title == ' - File Reviews') {
                             }
                         }
                     },
+                    rmsa_user_email_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },
                     rmsa_user_DOB: {
                         validators: {
                             notEmpty: {
