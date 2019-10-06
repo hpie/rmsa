@@ -110,7 +110,7 @@ $route['student-approve']          = 'front/Employee/approve_student';
 
 
 //all student routes
-$route['student-registration']    = 'front/StudentRegistration';
+$route['student-registration']    = 'front/Helper/create_student';
 $route['update-profile']          = 'front/Student/update_profile';
 $route['student-login']           = 'front/StudentLogin';
 $route['student-logout']          = 'front/Student/logout';

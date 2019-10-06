@@ -18,4 +18,39 @@ class Helper_model extends CI_Model
         $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_sub_district_id = {$subDistrictId} AND rmsa_school_status = 'ACTIVE'");
         return $school->result_array();
     }
+
+    public function register_student($params){
+
+        $email_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_email_id = '".$params['rmsa_user_email_id']."' ");
+        $res = $email_exist->row_array();
+
+        if($res){
+            return Array(
+                'success' => false,
+                'email_exist' => true
+            );
+        }
+
+        $params['rmsa_user_email_password'] = md5($params['rmsa_user_email_password']);
+        unset($params['rmsa_user_confirm_password']);
+
+        if(isset($_SESSION['emp_rmsa_user_id'])){
+            $params['user_create_by'] = $_SESSION['emp_rmsa_user_id'];
+        }
+        else{
+            unset($params['user_create_by']);
+        }
+
+        $result = $this->db->insert('rmsa_student_users',$params);
+        $insert_id = $this->db->insert_id();// get last insert id
+        if(!empty($insert_id)){
+
+            return Array(
+                'success' => true
+            );
+//                return $insert_id;
+        }
+        return FALSE;
+        //it will be return boolean value (true/false)
+    }
 }

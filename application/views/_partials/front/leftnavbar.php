@@ -6,11 +6,16 @@
                                 <li>
                                     <div class="link"><i class="fa fa-database"></i>Employee’s Corner<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
-                                        <li><a href="#">Instructions</a></li>                                        
+                                        <li><a href="#">Instructions</a></li>
                                         <?php
                                         if(!isset($_SESSION['emp_rmsa_user_id'])){?>
                                             <li><a href="#">New Registration</a></li>
                                             <li><a href="<?php echo EMPLOYEE_LOGIN_LINK; ?>">Registered Login</a></li>
+                                        <?php } ?>
+
+                                        <?php
+                                        if(isset($_SESSION['emp_rmsa_user_id'])){?>
+                                            <li><a href="<?php echo STUDENT_REGISTER_LINK; ?>">Create Student</a></li>
                                         <?php } ?>
                                     </ul>
                                 </li>

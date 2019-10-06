@@ -22,4 +22,22 @@ class Helper extends MY_Controller {
         }
     }
 
+    public function create_student(){
+        $_SESSION['exist_email'] = 0;
+        if(isset($_POST['rmsa_user_first_name'])){
+            $res =  $this->Helper_model->register_student($_POST);
+
+            if($res['success'] == true){
+                redirect(HOME_LINK);
+            }
+
+            if($res['email_exist'] == true){
+                $_SESSION['exist_email'] = 1;
+            }
+        }
+        $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
+        $this->mViewData['title']=' - Student Registration';
+        $this->renderFront('front/studentregistration');
+    }
+
 }
