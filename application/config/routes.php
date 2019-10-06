@@ -105,8 +105,8 @@ $route['employee-uploadresource']  = 'front/FileUpload';
 $route['employee-uploadresource-child/(:any)'] = 'front/FileUpload/childFileUpload/$1';
 $route['employee-resources']       = 'front/FileDw';
 $route['is-employee-active']       = 'front/EmpLogin/isActiveEmployee';
-$route['employee-student']         = 'front/EmployeeStudent';
-$route['student-approve']          = 'front/EmployeeStudent/approve';
+$route['employee-student']         = 'front/Employee/view_student';
+$route['student-approve']          = 'front/Employee/approve_student';
 
 
 //all student routes

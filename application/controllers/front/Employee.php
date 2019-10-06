@@ -1,21 +1,22 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class EmployeeStudent extends MY_Controller {
-
-    public function __construct() {        
+class Employee extends MY_Controller
+{
+    public function __construct(){
+        parent::__construct();
         $this->session->sessionCheckEmployee();
-        parent::__construct(); 
-        $this->load->model('Student_model');
+        $this->load->model('Employee_model');
     }
-    public function index() {
+
+    public function view_student(){
         $this->mViewData['title']=' - EmployeeStudent';
         $this->renderFront('front/employee_student');
     }
-    public function approve(){
+
+    public function approve_student(){
         if(isset($_REQUEST['rmsa_user_id'])){
-            $res = $this->Student_model->approve_student($_REQUEST['rmsa_user_id']);
+            $res = $this->Employee_model->approve_student($_REQUEST['rmsa_user_id']);
             if($res){
                 $data = array(
                     'suceess' => true
@@ -25,5 +26,3 @@ class EmployeeStudent extends MY_Controller {
         }
     }
 }
-
-?>
