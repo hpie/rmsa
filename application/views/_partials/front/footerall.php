@@ -27,8 +27,8 @@ $this->load->view('_partials/front/scripts');
 ?>
 <!-- End Import Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
-<script>     
-    $(document).ready(function () {         
+<script>
+    $(document).ready(function () {   
         $("#accordion a").each(function() {   
             if (this.href == window.location.href) {
                 $(this).css("background","#bc2832");
@@ -47,9 +47,9 @@ $this->load->view('_partials/front/scripts');
 
 //        $('.navbar-nav > li > a[href="'+pathname+'"]').parent().css( "background-color", "red" );
 //        
-//        var pathname = window.location.href;        
-//        $('.navbar-nav > li > a').removeClass('active');
-//        $('.navbar-nav > li > a[href="' + pathname + '"]').addClass('active');        
+        var pathname = window.location.href;        
+        $('.navbar-nav > li > a').removeClass('active');
+        $('.navbar-nav > li > a[href="' + pathname + '"]').addClass('active');        
     });
 </script>
 <?php
