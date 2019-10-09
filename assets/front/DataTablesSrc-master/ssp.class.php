@@ -247,6 +247,30 @@ class SSP {
 			 FROM   `$table`"
 		);
 		$recordsTotal = $resTotalLength[0][0];
+
+        $result=self::data_output($columns,$data);
+
+        $resData=array();
+
+        if(!empty($result)){
+            foreach ($result as $row){
+
+                $title = 'Click to deactivate student';
+                $class = 'btn_approve_reject btn btn-success';
+                $text = 'Active';
+                $isactive = 1;
+
+                if($row['rmsa_user_status'] == 'REMOVED'){
+                    $title = 'Click to active student';
+                    $class = 'btn_approve_reject btn btn-danger';
+                    $text  = 'Inactive';
+                    $isactive = 0;
+                }
+
+                $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class."'>".$text."</button>";
+                array_push($resData, $row);
+            }
+        }
 		/*
 		 * Output
 		 */
@@ -254,7 +278,7 @@ class SSP {
 			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
 			"recordsTotal" => intval( $recordsTotal ),
 			"recordsFiltered" => intval( $recordsFiltered ),
-			"data" => self::data_output( $columns, $data )
+			"data" => $resData
 		);
 	}        
         static function emp_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$emp_rmsa_user_id)

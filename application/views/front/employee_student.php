@@ -7,8 +7,7 @@
             <th>Gender</th>
             <th>DOB</th>
             <th>Email</th>
-            <th></th>
-            <th></th>
+            <th>Status</th>
         </tr>
         </thead>
         <tfoot>
@@ -18,8 +17,7 @@
             <th>Gender</th>
             <th>DOB</th>
             <th>Email</th>
-            <th></th>
-            <th></th>
+            <th>Status</th>
         </tr>
         </tfoot>
     </table>

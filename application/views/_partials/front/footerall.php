@@ -432,36 +432,55 @@ if ($title == ' - File Reviews') {
                     {"data": "rmsa_user_gender"},
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
-                    {
-                        "render": function (data, type, row, meta) {
-                            return $('<button></button>', {
-                                'class': 'btn btn-success btn_approve',
-                                'text': 'Approve',
-                                'data-id': row.rmsa_user_id
-                            }).prop("outerHTML");
-                        }
-                    },
-                    {
-                        "render": function (data, type, row, meta) {
-                            return $('<button></button>', {
-                                'class': 'btn btn-danger',
-                                'text': 'Reject'
-                            }).prop("outerHTML");
-                        }
-                    }
+                    {"data": "rmsa_user_status"}
                 ]
             });
-            $(document).on('click', '.btn_approve', function () {
-                var rmsa_user_id = $(this).data('id');
+            $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+                var status = self.attr('data-status');
+
+                self.attr('disabled','disabled');
+
+                console.log('status',status);
+
+                var user_status = 'ACTIVE';
+
+                if(status == 1)
+                    user_status = 'REMOVED';
+
+                var data = {
+                    'rmsa_user_id' : self.data('id'),
+                    'user_status'  : user_status
+                }
+
                 $.ajax({
                     type: "POST",
                     url: "<?php echo STUDENT_APPROVE ?>",
-                    data: {'rmsa_user_id': rmsa_user_id},
+                    data: data,
                     success: function (res) {
 
                         var res = $.parseJSON(res);
                         if (res.suceess) {
-                            alert('Approved');
+
+                            var title = 'Click to deactivate student';
+                            var class_ = 'btn_approve_reject btn btn-success';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if(status == 1){
+                                title = 'Click to active student';
+                                class_ = 'btn_approve_reject btn btn-danger';
+                                text  = 'Inactive';
+                                isactive = 0;
+                            }
+
+                            self.removeClass().addClass(class_);
+                           self.attr({
+                               'data-status' :isactive,
+                               'title':title
+                           });
+                           self.removeAttr('disabled');
+                           self.html(text);
                         }
                     }
                 });

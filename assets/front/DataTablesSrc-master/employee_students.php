@@ -32,7 +32,8 @@ $columns = array(
     array('db' => 'rmsa_user_first_name', 'dt' => 'rmsa_user_first_name'),
     array('db' => 'rmsa_user_gender', 'dt' =>'rmsa_user_gender'),
     array('db' => 'rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),
-    array('db' => 'rmsa_user_email_id', 'dt' =>'rmsa_user_email_id')
+    array('db' => 'rmsa_user_email_id', 'dt' =>'rmsa_user_email_id'),
+    array('db' => 'rmsa_user_status', 'dt' =>'rmsa_user_status')
 );
 
 include 'conn.php';

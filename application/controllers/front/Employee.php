@@ -16,7 +16,7 @@ class Employee extends MY_Controller
 
     public function approve_student(){
         if(isset($_REQUEST['rmsa_user_id'])){
-            $res = $this->Employee_model->approve_student($_REQUEST['rmsa_user_id']);
+            $res = $this->Employee_model->approve_student($_REQUEST);
             if($res){
                 $data = array(
                     'suceess' => true
