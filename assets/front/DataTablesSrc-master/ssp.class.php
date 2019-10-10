@@ -327,9 +327,7 @@ class SSP {
                 $resData=array();
                 if(!empty($result)){
                     foreach ($result as $row){
-                        
-                        
-                         $rmsa_file_id = $row['rmsa_uploaded_file_id'];
+                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];
                         $reviews = self::sql_exec( $db,
                             "SELECT AVG(rmsa_file_rating) as overall_rating FROM rmsa_file_reviews
                                     WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}' AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");

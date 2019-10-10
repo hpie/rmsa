@@ -36,7 +36,7 @@
         <tr>
             <th>Title</th>
             <th>Type</th>
-<!--            <th>Group</th>-->
+            <th>Group</th>
             <th>Category</th>
             <th>Description</th>
             <th>File</th>
@@ -48,7 +48,7 @@
         <tr>
             <th>Title</th>
             <th>Type</th>
-            <!--<th>Group</th>-->
+            <th>Group</th>
             <th>Category</th>
             <th>Description</th>
             <th>File</th>

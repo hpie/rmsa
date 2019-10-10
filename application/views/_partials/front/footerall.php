@@ -382,7 +382,7 @@ if ($title == ' - File Reviews') {
                 "columns": [
                     {"data": "uploaded_file_title"},
                     {"data": "uploaded_file_type"},
-//                    {"data": "uploaded_file_group"},
+                    {"data": "uploaded_file_group"},
                     {"data": "uploaded_file_category"},
                     {"data": "uploaded_file_desc"},
                     {"data": "ext"},
