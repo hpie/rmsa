@@ -122,16 +122,6 @@ $this->load->view('_partials/front/allnotify');
                             }
                         }
                     },
-                    rmsa_user_middle_name: {
-                        validators: {
-                            stringLength: {
-                                min: 2,
-                            },
-                            notEmpty: {
-                                message: 'Please supply your middle name'
-                            }
-                        }
-                    },
                     rmsa_user_last_name: {
                         validators: {
                             stringLength: {
@@ -139,16 +129,6 @@ $this->load->view('_partials/front/allnotify');
                             },
                             notEmpty: {
                                 message: 'Please supply your last name'
-                            }
-                        }
-                    },
-                    rmsa_user_nick_name: {
-                        validators: {
-                            stringLength: {
-                                min: 2,
-                            },
-                            notEmpty: {
-                                message: 'Please supply your nick name'
                             }
                         }
                     }
@@ -524,16 +504,6 @@ if ($title == ' - File Reviews') {
                             }
                         }
                     },
-                    rmsa_user_middle_name: {
-                        validators: {
-                            stringLength: {
-                                min: 2,
-                            },
-                            notEmpty: {
-                                message: 'Please supply your middle name'
-                            }
-                        }
-                    },
                     rmsa_user_last_name: {
                         validators: {
                             stringLength: {
@@ -541,16 +511,6 @@ if ($title == ' - File Reviews') {
                             },
                             notEmpty: {
                                 message: 'Please supply your last name'
-                            }
-                        }
-                    },
-                    rmsa_user_nick_name: {
-                        validators: {
-                            stringLength: {
-                                min: 2,
-                            },
-                            notEmpty: {
-                                message: 'Please supply your nick name'
                             }
                         }
                     },
