@@ -136,7 +136,6 @@ class Resource extends MY_Controller{
             'comments'   => $comments_arr,
             'avg_rating' => $avg,
         );
-
         $this->mViewData['reviews'] = $data;
         $this->mViewData['title']=' - File Reviews';
         $this->renderFront('front/file_reviews');

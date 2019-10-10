@@ -27,7 +27,7 @@ $subdomain = explode('/', $r);
 array_pop($subdomain);
 $urllink=$protocol.'://'.$_SERVER['HTTP_HOST'];
 if($urllink=="http://localhost"){  
-    $url.='/rmsa';
+    $urllink.='/rmsa';
 }
 define('BASE_URL', $urllink);
 $filepath="/assets/front/fileupload/server/php/files";
@@ -287,7 +287,8 @@ class SSP {
 		$db = self::db( $conn );
                 
 		// Build the SQL query string from the request
-		$limit = self::limit( $request, $columns );
+                
+		$limit = self::limit( $request, $columns );                
 		$order = self::order( $request, $columns );
 		$where = self::filter( $request, $columns, $bindings );
                 
@@ -359,7 +360,7 @@ class SSP {
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
                         $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
-                        $row['ratting']="<td>$star<br><a href='/rmsa/file-reviews/".$row['rmsa_uploaded_file_id']."'>View Reviews</a></td>";                        
+                        $row['ratting']="<td>$star<br><a href=".BASE_URL."/file-reviews/".$row['rmsa_uploaded_file_id'].">View Reviews</a></td>";                        
                         if($row['uploaded_file_hasvol']=="YES"){
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
                             $dataChild = self::sql_exec( $db, $bindings,
@@ -481,7 +482,7 @@ class SSP {
                 $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
                         <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                 $row['review']="<td><center><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></center></td>";
-                $row['ratting']="<td>$star<br><a href='/rmsa/file-reviews/".$row['rmsa_uploaded_file_id']."'>View Reviews</a></td>";
+                $row['ratting']="<td>$star<br><a href=".BASE_URL."/file-reviews/".$row['rmsa_uploaded_file_id'].">View Reviews</a></td>";
 //                        . "<span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'></span>";
                 if($row['uploaded_file_hasvol']=="YES"){
                     $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];

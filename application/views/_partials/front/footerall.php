@@ -64,6 +64,7 @@ $this->load->view('_partials/front/allnotify');
             $('#example').DataTable({
                 "processing": true,
                 "serverSide": true,
+                "pageLength": 10,
                 "paginationType": "full_numbers",
                 "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                 "ajax": {

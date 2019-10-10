@@ -1,6 +1,6 @@
 <!-- content -->
 <div class="col-md-9 col-sm-9  col-12">
-    <div class="middle-area container">
+    <div class="middle-area">
         <div class="">
             <h1>File Upload</h1>         
             <!-- The file upload form used as target for the file upload widget -->
@@ -83,6 +83,8 @@
                           <span>Start</span>
                       </button>
                   {% } %}
+                  </td>
+                  <td>
                   {% if (!i) { %}
                       <button class="btn btn-warning cancel">
                           <i class="glyphicon glyphicon-ban-circle"></i>
@@ -113,13 +115,31 @@
                 }?>
               </select>
             </label>
+            <label class="title">
+                <span>Tag:</span><br>
+                <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control" required>
+            </label>
             <label class="description">
-                <span>Have child (hasvol):</span><br>
+                <span>File Group:</span><br>
+                <select class="form-control" name="uploaded_file_group[]" required>
+                <?php if(!empty($result)){
+                    foreach ($result as $row){
+                        if($row['category_type']=="UPFILE_GRP"){
+                        ?>
+                        <option value="<?php echo $row['category_code'] ?>"><?php echo $row['category_code'] ?></option>
+                        <?php
+                    }
+                }
+                }?>
+              </select>
+            </label>
+            <label class="description">
+                <span>Have child:</span><br>
                 <select class="form-control" name="uploaded_file_hasvol[]" required>
                     <option value="NO">NO</option>
                     <option value="YES">YES</option>                    
               </select>
-            </label>
+            </label>                       
             <input type="hidden" name="rmsa_employee_users_id[]" value="<?php echo $_SESSION['emp_rmsa_user_id']; ?>"> 
             </td>
           </tr>

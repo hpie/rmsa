@@ -25,5 +25,10 @@
     <noscript><link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-noscript.css"/></noscript>
     <noscript><link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-ui-noscript.css"/></noscript> 
     <?php } ?>
+    <style>
+        .form-control {
+            height: 34px !important;
+        }
+    </style>
 </head>
 <!-- Head Section End -->

@@ -11,7 +11,7 @@ class File_Upload extends CI_Model{
                 return $data;
             }        
         return false;
-    }
+    }  
     public function getExistFileId($fileId) {
         $query = $this->db->query("SELECT * FROM `rmsa_uploaded_files` WHERE rmsa_uploaded_file_id = '$fileId' AND uploaded_file_hasvol='YES'");
         $row = $query->row_array();        

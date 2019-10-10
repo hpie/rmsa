@@ -1,6 +1,6 @@
 <!-- content -->
 <div class="col-md-9 col-sm-9  col-12">
-    <div class="middle-area container">
+    <div class="middle-area">
         <div class="">
             <h1>File Upload</h1>         
             <!-- The file upload form used as target for the file upload widget -->
@@ -106,7 +106,11 @@
             }
                 }?>
               </select>
-            </label>  
+            </label>
+<!--            <label class="title">
+                <span>Tag:</span><br>
+                <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control" required>
+            </label>-->
             <label class="description">
                 <span>File Order:</span><br>
                 <select class="form-control" name="uploaded_file_volorder[]">
