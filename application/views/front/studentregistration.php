@@ -171,8 +171,19 @@
             </div>
 
             <div class="form-group">
+                <div class="row">
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <script>function enableRegister() { document.getElementById("btnRegister").disabled = false; }</script>
+                    <label class="control-label col-sm-4 col-xs-12" for="ptsp"></label>
+                    <div class="col-sm-8 col-xs-12">
+                        <div class="g-recaptcha" style="" data-sitekey="6Lc1MAYTAAAAAOdhZ0qvGMUFuBD-J6fJIP3DvX-b" data-callback="enableRegister"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <div class="m-auto text-center">
-                    <button type="submit" class="btn primary_btn">Register</button>
+                    <button type="submit" class="btn primary_btn" disabled="true" id="btnRegister">Register</button>
                 </div>
             </div>
         </form>
