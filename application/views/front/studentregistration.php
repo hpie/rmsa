@@ -93,45 +93,50 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
+
+            <?php
+            if(!isset($_SESSION['emp_rmsa_user_id'])){?>
+                 <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Distt:</label>
                     <div class="col-sm-8 col-xs-12">
                         <select class="form-control" id="rmsa_district" name="rmsa_district_id">
                             <option class="" value="" disabled selected>------ Select ------</option>
-                            <?php                            
-                            if(!empty($distResult)){
-                                foreach ($distResult as $row){  
-                                    ?>
-                            <option value="<?php echo $row['rmsa_district_id']; ?>"><?php echo $row['rmsa_district_name']; ?></option>
                             <?php
-                                }                                
-                            }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_sub_district_id">Tehsil:</label>
-                    <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
-                            <option value="0">---Select---</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
-                    <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="rmsa_school" name="rmsa_school_id">
-                            <option value="0">---Select---</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+                            if(!empty($distResult)){
+                                foreach ($distResult as $row){
+                                    ?>
+            <option value="<?php echo $row['rmsa_district_id']; ?>"><?php echo $row['rmsa_district_name']; ?></option>
+            <?php
+            }
+            }
+            ?>
+            </select>
+    </div>
+</div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <label class="control-label col-sm-4 col-xs-12" for="rmsa_sub_district_id">Tehsil:</label>
+        <div class="col-sm-8 col-xs-12">
+            <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
+                <option value="0">---Select---</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
+        <div class="col-sm-8 col-xs-12">
+            <select class="form-control" id="rmsa_school" name="rmsa_school_id">
+                <option value="0">---Select---</option>
+            </select>
+        </div>
+    </div>
+</div>
+           <?php }
+            ?>
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_class">Class:</label>

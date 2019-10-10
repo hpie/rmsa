@@ -36,6 +36,9 @@ class Helper_model extends CI_Model
 
         if(isset($_SESSION['emp_rmsa_user_id'])){
             $params['user_create_by'] = $_SESSION['emp_rmsa_user_id'];
+            $params['rmsa_school_id'] = $_SESSION['emp_rmsa_school_id'];
+            $params['rmsa_sub_district_id'] = $_SESSION['emp_rmsa_sub_district_id'];
+            $params['rmsa_district_id'] = $_SESSION['emp_rmsa_district_id'];
         }
         else{
             unset($params['user_create_by']);
