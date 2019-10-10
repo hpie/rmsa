@@ -46,7 +46,8 @@ class Helper_model extends CI_Model
         if(!empty($insert_id)){
 
             return Array(
-                'success' => true
+                'success' => true,
+                'email_exist' => false
             );
 //                return $insert_id;
         }

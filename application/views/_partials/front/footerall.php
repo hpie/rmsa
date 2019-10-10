@@ -20,6 +20,7 @@ $this->load->view('_partials/front/footer');
 <!-- End Import Navbar -->         
 
 </div>
+
 <!-- Start Import Scripts -->
 <?php
 $this->load->view('_partials/front/scripts');
@@ -27,8 +28,15 @@ $this->load->view('_partials/front/scripts');
 ?>
 <!-- End Import Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
-<script>
-    $(document).ready(function () {   
+<script>    
+//    function myFunction() {       
+//        myVar = setTimeout(showPage, 3000);
+//    }
+//    function showPage() {
+//        document.getElementById("loader").style.display = "none";
+//        document.getElementById("myDiv").style.display = "block";
+//    }    
+    $(document).ready(function () {                                                       
         $("#accordion a").each(function() {   
             if (this.href == window.location.href) {
                 $(this).css("background","#bc2832");
@@ -230,7 +238,6 @@ if ($title == ' - File Reviews') {
         var reply_modal = $("#reply-modal");
         var fileId = "<?php echo $reviews['fileId']; ?>";
         var commentId;
-
         function comment_reply(comment_id) {
             commentId = comment_id;
             reply_modal.modal();
@@ -266,7 +273,7 @@ if ($title == ' - File Reviews') {
 
 <?php if ($title == ' - Student Resources') {
     ?>
-    <script>
+    <script>                                
         var uploaded_file_id;
         var review_modal = $("#review-modal");
         function openreview(file_id) {
@@ -606,19 +613,24 @@ if ($title == ' - File Reviews') {
             }).on('success.form.bv', function (e) {
                 $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
                 $('#student_register').data('bootstrapValidator').resetForm();
-
                 // Prevent form submission
                 e.preventDefault();
-
                 // Get the form instance
                 var $form = $(e.target);
-
                 // Get the BootstrapValidator instance
                 var bv = $form.data('bootstrapValidator');
-
                 // Use Ajax to submit form data
-                $.post($form.attr('action'), $form.serialize(), function (result) {
-                    console.log(result);
+                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
+                    if(result['success']=="success"){
+                        location.href = "<?php echo HOME_LINK ?>";                    
+                    }
+                    if(result['success']=="fail"){                    
+                        var d = new PNotify({
+                            title: 'Invalid Username & Password',
+                            type: 'error',
+                            styling: 'bootstrap3',
+                        });                          
+                    }
                 }, 'json');
             });
 

@@ -388,6 +388,27 @@ class SSP {
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";
                             $row['child']="-----No Hasvol-----";
                         }
+                        
+                        $row['ext']='
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal'.$row['rmsa_uploaded_file_id'].'">Open File List</button>
+                    <div class="modal" id="myModal'.$row['rmsa_uploaded_file_id'].'" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">File List</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    '.$row['ext'].'
+                                    </div>
+                                    <div class="modal-footer">                
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>';
                         array_push($resData, $row);
                     }  
                 }
@@ -510,7 +531,27 @@ class SSP {
                 else{
                     $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";
                     $row['child']="-----No Hasvol-----";
-                }
+                }                
+                $row['ext']='
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal'.$row['rmsa_uploaded_file_id'].'">Open File List</button>
+                    <div class="modal" id="myModal'.$row['rmsa_uploaded_file_id'].'" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">File List</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    '.$row['ext'].'
+                                    </div>
+                                    <div class="modal-footer">                
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>';
                 array_push($resData, $row);
             }
         }

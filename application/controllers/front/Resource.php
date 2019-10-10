@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Resource extends MY_Controller{
     public function __construct(){
-        //$this->session->sessionCheckStudent();
+        $this->session->sessionCheckStudent();
         parent::__construct();
         $this->load->model('Resource_model');
     }
@@ -111,7 +111,6 @@ class Resource extends MY_Controller{
         }
         return $replies;
     }
-
     public  function view_review($fileId){
         $comments = $this->Resource_model->get_comments($fileId);
         $comments_arr = Array();
@@ -165,7 +164,6 @@ class Resource extends MY_Controller{
                 unset($string[$k]);
             }
         }
-
         if (!$full) $string = array_slice($string, 0, 1);
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }

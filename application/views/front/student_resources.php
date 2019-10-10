@@ -81,9 +81,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
             <div class="show_comments">
-
             </div>
         </div>
     </div>
 </div>
-

@@ -32,8 +32,10 @@ $this->load->view('_partials/front/head');
     }
 </style>
 <!-- End Import Head -->
-
 <body>
+    
+<!--<body onload="myFunction()">-->
+    <!--<div id="loader"></div>-->
     <!--<body onunload="ajaxFunction()">-->
     <div class="">
     

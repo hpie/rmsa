@@ -26,19 +26,18 @@ if (isset($_SESSION['existParentFileHasvol']) && isset($_SESSION['existParentFil
                 });
                 <?php echo $_SESSION['existParentFileHasvol'] = 0; ?>;
             }
-
-    if (<?php
-        if (isset($_SESSION['exist_email']) && isset($_SESSION['exist_email'])) {
-            echo $_SESSION['exist_email'];
-        }
-        ?> == 1) {
-        var d = new PNotify({
-            title: 'This email id is exist!',
-            type: 'error',
-            styling: 'bootstrap3',
-        });
-        <?php echo $_SESSION['exist_email'] = 0; ?>;
-    }
-
+            
+                        if (<?php
+if (isset($_SESSION['registration']) && isset($_SESSION['registration'])) {
+    echo $_SESSION['registration'];
+}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'Registration successfully chek your mail',
+                    type: 'success',
+                    styling: 'bootstrap3',
+                });
+                <?php echo $_SESSION['registration'] = 0; ?>;
+            }  
 });   
 </script>
