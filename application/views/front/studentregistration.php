@@ -1,4 +1,12 @@
 <!-- content -->
+<style>
+    .btn_disabled{
+        pointer-events: none;
+        background-color: #c3bdbd;
+        opacity: 15.9;
+    }
+</style>
+
 <div class="col-md-6 col-sm-8  col-12">
     <div class="middle-area">
         <h1 class="heading">Registration of Students in the RMSA Portal</h1>
@@ -173,7 +181,10 @@
             <div class="form-group">
                 <div class="row">
                     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                    <script>function enableRegister() { document.getElementById("btnRegister").disabled = false; }</script>
+                    <script>function enableRegister() {
+                        $("#btnRegister").removeClass('btn_disabled');
+                        document.getElementById("btnRegister").disabled = false;
+                    }</script>
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp"></label>
                     <div class="col-sm-8 col-xs-12">
                         <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableRegister"></div>
@@ -183,7 +194,7 @@
 
             <div class="form-group">
                 <div class="m-auto text-center">
-                    <button type="submit" class="btn primary_btn" disabled="true" id="btnRegister">Register</button>
+                    <button type="submit" class="btn primary_btn btn_disabled"  disabled="true" id="btnRegister">Register</button>
                 </div>
             </div>
         </form>
