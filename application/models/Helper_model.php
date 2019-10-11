@@ -33,6 +33,7 @@ class Helper_model extends CI_Model
 
         $params['rmsa_user_email_password'] = md5($params['rmsa_user_email_password']);
         unset($params['rmsa_user_confirm_password']);
+        unset($params['g-recaptcha-response']);
 
         if(isset($_SESSION['emp_rmsa_user_id'])){
             $params['user_create_by'] = $_SESSION['emp_rmsa_user_id'];
