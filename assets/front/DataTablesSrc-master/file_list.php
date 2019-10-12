@@ -52,6 +52,10 @@ if(!empty($_REQUEST['search']['value'])){
     $value=$_REQUEST['search']['value'];
     $where.=" AND (uploaded_file_title LIKE '%$value%' OR uploaded_file_type LIKE '%$value%' OR uploaded_file_category LIKE '%$value%' OR uploaded_file_desc LIKE '%$value%' OR uploaded_file_group LIKE '%$value%') ";
 }
+if($_REQUEST["length"] != 1)
+{
+ $where .= ' LIMIT ' . $_REQUEST['start'] . ', ' . $_REQUEST['length'];
+}
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.

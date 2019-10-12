@@ -41,10 +41,21 @@ include 'conn.php';
 //echo $_REQUEST['uploaded_file_category'];die;
 $uploaded_file_category=$_REQUEST['uploaded_file_category'];
 $where ="uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot=0";
+//echo '<pre>';print_r($_REQUEST);die;
+
+
+//if(isset($_REQUEST["order"]))
+//{
+// $query .= 'ORDER BY '.$column[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].' ';
+//}
 
 if(!empty($_REQUEST['search']['value'])){
     $value=$_REQUEST['search']['value'];
     $where.=" AND (uploaded_file_title LIKE '%$value%' OR uploaded_file_type LIKE '%$value%' OR uploaded_file_category LIKE '%$value%' OR uploaded_file_desc LIKE '%$value%' OR uploaded_file_group LIKE '%$value%') ";
+}
+if($_REQUEST["length"] != 1)
+{
+ $where .= ' LIMIT ' . $_REQUEST['start'] . ', ' . $_REQUEST['length'];
 }
 // SQL server connection information
 //$sql_details = array(

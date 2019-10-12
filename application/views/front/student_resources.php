@@ -5,25 +5,17 @@
             <h2 class="second-heading">View Information</h2>
             <div class="form-group">
                 <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="distt">Class:</label>
+                    <label class="control-label col-sm-4 col-xs-12" for="distt">Tag</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control">
-                            <option>Select Class</option>
-                            <option>Class IX</option>
-                            <option>Class X</option>
-                            <option>Class XI</option>
-                            <option>Class XII</option>
-                        </select>
+                        <input type="text" class="form-control" placeholder="Search data by tag">
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="tehsil">Subject:</label>
+                <div class="row"> 
+                    <label class="control-label col-sm-4 col-xs-12" for="distt"></label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control">
-                            <option value="0">---Select---</option>
-                        </select>
+                        <button class="btn">Search</button>
                     </div>
                 </div>
             </div>
