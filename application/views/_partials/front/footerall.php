@@ -514,6 +514,16 @@ if ($title == ' - File Reviews') {
                             }
                         }
                     },
+                    rmsa_user_roll_number: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your roll number'
+                            }
+                        }
+                    },
                     rmsa_user_email_id: {
                         validators: {
                             notEmpty: {
