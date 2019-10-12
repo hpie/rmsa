@@ -6,13 +6,13 @@
 | -------------------------------------------------------------------
 | Configuration of outgoing mail server.
 | */
-
-$config['protocol'] = 'smtp';
-$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+$config=array();
+$config['protocol'] = 'sendmail';
+$config['smtp_host'] = 'mail.codexives.com';
 $config['smtp_port'] = '465';
-$config['smtp_timeout'] = '30';
-$config['smtp_user'] = 'postmaster@yourdomain.com';
-$config['smtp_pass'] = 'password';
+$config['smtp_timeout'] = '4';
+$config['smtp_user'] = 'info@codexives.com';
+$config['smtp_pass'] = 'info@123CDX';
 $config['charset'] = 'utf-8';
 $config['mailtype'] = 'html';
 $config['wordwrap'] = TRUE;

@@ -1727,7 +1727,6 @@ class CI_Email {
 		{
 			$this->clear();
 		}
-
 		return $result;
 	}
 

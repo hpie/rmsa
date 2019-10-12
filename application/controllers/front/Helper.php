@@ -43,31 +43,35 @@ class Helper extends MY_Controller {
     public function create_student(){
         $_SESSION['exist_email'] = 0;
         if(isset($_POST['rmsa_user_first_name'])){
-            $res =  $this->Helper_model->register_student($_POST);
+            $res =  $this->Helper_model->register_student($_POST);            
             $result=array();
             if($res['success'] == true){
                 $_SESSION['registration'] = 1;
                 $result['success']='success';
-
                 $this->load->config('email');
                 $this->load->library('email');
 
                 $from = $this->config->item('smtp_user');
-                $to = $res['email'];
+                $to = $res['email'];                
                 $subject = 'Welcome RMSA';
-                $message = 'Welcome to RMSA portal';
+//                $message = 'Welcome to RMSA portal';
 
                 $this->email->set_newline("\r\n");
                 $this->email->from($from);
+                
+                $data = array(
+                    'userName'=> $res['email'],
+                    'password'=> $_POST['rmsa_user_email_password']
+                );
+                
                 $this->email->to($to);
                 $this->email->subject($subject);
-                $this->email->message($message);
-
-//                if ($this->email->send()) {
-//                    echo 'Your Email has successfully been sent.';
-//                } else {
-//                    show_error($this->email->print_debugger());
-//                }
+                $body = $this->load->view('front/mailtemplate.php',$data,TRUE);
+                $this->email->message($body);
+                if ($this->email->send()) {                   
+                } else {
+                    show_error($this->email->print_debugger());
+                }
             }            
             if($res['email_exist'] == true){                
                 $_SESSION['exist_email'] = 1;
