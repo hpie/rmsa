@@ -51,7 +51,8 @@ class Helper_model extends CI_Model
 
             return Array(
                 'success' => true,
-                'email_exist' => false
+                'email_exist' => false,
+                'email' => $params['rmsa_user_email_id'],
             );
 //                return $insert_id;
         }

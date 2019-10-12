@@ -8,8 +8,8 @@
 | */
 
 $config['protocol'] = 'smtp';
-$config['smtp_host'] = 'smtp.mailgun.org';
-$config['smtp_port'] = '587';
+$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+$config['smtp_port'] = '465';
 $config['smtp_timeout'] = '30';
 $config['smtp_user'] = 'postmaster@yourdomain.com';
 $config['smtp_pass'] = 'password';

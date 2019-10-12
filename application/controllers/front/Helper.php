@@ -48,6 +48,26 @@ class Helper extends MY_Controller {
             if($res['success'] == true){
                 $_SESSION['registration'] = 1;
                 $result['success']='success';
+
+                $this->load->config('email');
+                $this->load->library('email');
+
+                $from = $this->config->item('smtp_user');
+                $to = $res['email'];
+                $subject = 'Welcome RMSA';
+                $message = 'Welcome to RMSA portal';
+
+                $this->email->set_newline("\r\n");
+                $this->email->from($from);
+                $this->email->to($to);
+                $this->email->subject($subject);
+                $this->email->message($message);
+
+//                if ($this->email->send()) {
+//                    echo 'Your Email has successfully been sent.';
+//                } else {
+//                    show_error($this->email->print_debugger());
+//                }
             }            
             if($res['email_exist'] == true){                
                 $_SESSION['exist_email'] = 1;
