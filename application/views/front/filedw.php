@@ -1,33 +1,25 @@
 <div class="col-md-6 col-sm-8  col-12">
     <div class="middle-area">
         <h1 class="heading">View Information Uploaded on the Portal</h1>
-        <form class="form-horizontal border p-2" action="#">
+        <div class="form-horizontal border p-2">
             <h2 class="second-heading">View Information</h2>
             <div class="form-group">
                 <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="distt">Class:</label>
+                    <label class="control-label col-sm-4 col-xs-12" for="distt">Tag</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control">
-                            <option>Select Class</option>
-                            <option>Class IX</option>
-                            <option>Class X</option>
-                            <option>Class XI</option>
-                            <option>Class XII</option>
-                        </select>
+                        <input type="text" class="form-control" placeholder="Search data by tag" id="uploaded_file_tag">
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="tehsil">Subject:</label>
+                <div class="row"> 
+                    <label class="control-label col-sm-4 col-xs-12" for="distt"></label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control">
-                            <option value="0">---Select---</option>
-                        </select>
+                        <button class="btn" id="searchTag">Search</button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 <div class="col-md-12 col-sm-12  col-12">
