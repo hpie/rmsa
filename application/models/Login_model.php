@@ -6,20 +6,20 @@ class Login_model extends CI_Model{
     }
     public function login_select($username, $password) {
         $password= md5($password);      
-        $q = "SELECT * FROM rmsa_student_users WHERE rmsa_user_email_id='$username' and rmsa_user_email_password='$password' AND rmsa_user_status='ACTIVE'";
+        $q = "SELECT * FROM rmsa_student_users WHERE (rmsa_user_email_id='$username' OR rmsa_user_roll_number='$username') and rmsa_user_email_password='$password' AND rmsa_user_status='ACTIVE'";
         $query = $this->db->query($q);
         $row = $query->row_array(); 
         if (isset($row))
         {
-            if (($username == $row['rmsa_user_email_id']) && ($password == $row['rmsa_user_email_password'])) {
+            if ((($username == $row['rmsa_user_email_id']) || ($username == $row['rmsa_user_roll_number'])) && ($password == $row['rmsa_user_email_password'])) {
 
                 //Add or update student user log
 
                 $has_already_log = $this->db->query("SELECT * FROM rmsa_student_users_log WHERE rmsa_user_id = '{$row['rmsa_user_id']}'");
 
                 $log = $has_already_log->row_array();
-
-                if(is_array($log)){                    //update
+                
+                if(is_array($log)){
                     $date = date("Y-m-d h:i:s");
                     $this->db->query("UPDATE rmsa_student_users_log SET last_login_dt = '{$date}',is_logged_in = 1 WHERE rmsa_user_id = '{$row['rmsa_user_id']}'");
                 }else{

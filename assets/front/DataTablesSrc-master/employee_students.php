@@ -45,7 +45,7 @@ include 'conn.php';
 //    'host' => 'localhost'
 //);
 
-$where = 'rmsa_school_id = '.$_REQUEST['rmsa_school_id'];
+$where = 'rmsa_school_id = '.$_REQUEST['rmsa_school_id']; 
 if(!empty($_REQUEST['search']['value'])){
     $value=$_REQUEST['search']['value'];
     $where.=" AND (rmsa_user_first_name LIKE '%$value%' OR rmsa_user_gender LIKE '%$value%' OR rmsa_user_DOB LIKE '%$value%' OR rmsa_user_email_id LIKE '%$value%') ";
@@ -58,7 +58,7 @@ if(!empty($_REQUEST['search']['value'])){
  */
 require( 'ssp.class.php' );
 echo json_encode(
-    SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns,$where)
+    SSP::simple($_REQUEST, $sql_details, $table, $primaryKey, $columns,$where)
 );
 
 

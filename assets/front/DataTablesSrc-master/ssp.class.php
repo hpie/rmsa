@@ -288,7 +288,7 @@ class SSP {
                 
 		// Build the SQL query string from the request
                 
-		$limit = self::limit( $request, $columns );                
+		$limit = self::limit( $request, $columns );                                               
 		$order = self::order( $request, $columns );
 		$where = self::filter( $request, $columns, $bindings );
                 

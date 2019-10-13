@@ -39,30 +39,21 @@ $columns = array(
     array('db' => 'uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount')
 );
 include 'conn.php';
-//// SQL server connection information
-//$sql_details = array(
-//    'user' => 'root',
-//    'pass' => '',
-//    'db' => 'rmsa',
-//    'host' => 'localhost'
-//);
+
 $emp_rmsa_user_id = $_REQUEST['emp_rmsa_user_id'];
 $where=" uploaded_file_volroot=0 AND rmsa_employee_users_id=$emp_rmsa_user_id ";
 if(!empty($_REQUEST['search']['value'])){
     $value=$_REQUEST['search']['value'];
     $where.=" AND (uploaded_file_title LIKE '%$value%' OR uploaded_file_type LIKE '%$value%' OR uploaded_file_category LIKE '%$value%' OR uploaded_file_desc LIKE '%$value%' OR uploaded_file_group LIKE '%$value%') ";
 }
-if($_REQUEST["length"] != 1)
-{
- $where .= ' LIMIT ' . $_REQUEST['start'] . ', ' . $_REQUEST['length'];
-}
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.
  */
 require('ssp.class.php' );
 echo json_encode(
-       SSP::emp_file_list($_GET, $sql_details, $table, $primaryKey, $columns,$where,$emp_rmsa_user_id)
+       SSP::emp_file_list($_REQUEST, $sql_details, $table, $primaryKey, $columns,$where,$emp_rmsa_user_id)
 );
 
 

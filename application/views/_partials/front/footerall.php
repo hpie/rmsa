@@ -68,8 +68,16 @@ $this->load->view('_partials/front/allnotify');
 <?php if ($title == ' - FileDw') {
     ?> 
     <script>
+        
         $(document).ready(function () {
-            $('#example').DataTable({
+            $('#example tfoot th').each( function () {                
+                var title = $('#example thead th').eq($(this).index()).text();                
+                if((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")){
+                    $(this).html( '<input type="text" placeholder="'+title+'" />' ); 
+                }
+            });
+            
+            var table = $('#example').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "pageLength": 10,
@@ -96,7 +104,10 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "ratting"}
                 ]
             });
+            table.columns().eq(0).each( function ( colIdx ) { $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () { table .column( colIdx ) .search( this.value ) .draw(); } ); } );
         });
+              
+        
     </script>
 <?php } ?>
 
@@ -366,7 +377,16 @@ if ($title == ' - File Reviews') {
             });
         });
         $(document).ready(function () {
-            $('#example').DataTable({               
+        fill_datatable();
+        function fill_datatable(uploaded_file_tag = '')
+        {        
+            $('#example tfoot th').each( function () {                
+                var title = $('#example thead th').eq($(this).index()).text();                
+                if((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")){
+                    $(this).html( '<input type="text" placeholder="'+title+'" />' ); 
+                }
+            });
+            var table = $('#example').DataTable({               
                 "processing": true,
                 "serverSide": true,
                 "paginationType": "full_numbers",
@@ -376,6 +396,7 @@ if ($title == ' - File Reviews') {
                     'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/student_resources.php'; ?>",
                     'data': {
                         uploaded_file_category: "<?php echo $uploaded_file_category; ?>",
+                        uploaded_file_tag:uploaded_file_tag
                         // etc..
                     }
                 },
@@ -391,6 +412,34 @@ if ($title == ' - File Reviews') {
 
                 ]
             });
+            table.columns().eq(0).each( function ( colIdx ) {
+            $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
+                    table .column( colIdx ) .search( this.value ) .draw(); 
+                }); 
+            });
+        }
+        
+        
+        $('#searchTag').click(function(){
+            var uploaded_file_tag = $('#uploaded_file_tag').val();            
+            if(uploaded_file_tag != '')
+            {
+                $('#example').DataTable().destroy();
+                fill_datatable(uploaded_file_tag);
+            }
+            else
+            {
+                alert('Select Both filter option');
+                $('#example').DataTable().destroy();
+                fill_datatable();
+            }
+        });
+        
+        
+        
+        
+        
+        
         });
     </script>
 <?php } ?>
