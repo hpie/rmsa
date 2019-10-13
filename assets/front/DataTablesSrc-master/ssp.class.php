@@ -373,7 +373,7 @@ class SSP {
                                $student_view_count_child = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rowChild['rmsa_uploaded_file_id']}'");
                                $total_student_view_child = $student_view_count_child[0]['total_Student_views'];
                                $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true"; 
-                               $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                               $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
                                         <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
                             }
                             $str.=$strTd."</tr></table>";
