@@ -79,8 +79,12 @@ class Resource_model extends CI_Model{
 
     }
 
-    public function get_comments($file_id){
-        $comments = $this->db->query("SELECT * FROM  rmsa_review_comments WHERE rmsa_uploaded_file_id = '".$file_id."' AND comment_type = 1");
+    public function get_comments($file_id ,$limit = ''){
+
+        $limit_sql = '';
+        if($limit != '')
+            $limit_sql = "LIMIT ".$limit;
+        $comments = $this->db->query("SELECT * FROM  rmsa_review_comments WHERE rmsa_uploaded_file_id = '".$file_id."' AND comment_type = 1 {$limit_sql}");
         return $comments->result_array();
     }
 
