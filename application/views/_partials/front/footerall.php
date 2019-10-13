@@ -379,7 +379,7 @@ if ($title == ' - File Reviews') {
                 success: function (res) {
                     var res = $.parseJSON(res);
                     if (res.count_added) {
-                        location.href = self.href;
+                        window.open(self.href,'documents','width=600,height=400');
                     }
                 }
             });
