@@ -356,7 +356,7 @@ class SSP {
                         $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
                         $total_student_view = $student_view_count[0]['total_Student_views'];
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         $row['ratting']="<td>$star<br><a href=".BASE_URL."/file-reviews/".$row['rmsa_uploaded_file_id'].">View Reviews</a></td>";                        
                         if($row['uploaded_file_hasvol']=="YES"){

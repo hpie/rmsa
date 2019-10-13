@@ -67,10 +67,8 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == ' - FileDw') {
     ?> 
-    <script>
-        
-        $(document).ready(function () {
-            
+    <script>        
+        $(document).ready(function () {            
         fill_datatable1();
         function fill_datatable1(uploaded_file_tag = '')
         {                         
@@ -95,7 +93,6 @@ $this->load->view('_partials/front/allnotify');
                         uploaded_file_tag:uploaded_file_tag
                     }
                 },
-    //            "ajax": "<?php //echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list.php'  ?>",
                 "columns": [
                     {"data": "uploaded_file_title"},
                     {"data": "uploaded_file_type"},
@@ -126,11 +123,14 @@ $this->load->view('_partials/front/allnotify');
                 $('#example').DataTable().destroy();
                 fill_datatable1();
             }
-        });
-        });
-              
-        
-    </script>
+        });                
+        $(document).on('click', '.viewFile', function (e) {
+            e.preventDefault();
+            var self = this;           
+            window.open(self.href,'documents','width=600,height=400');                    
+        });        
+    });                      
+</script>
 <?php } ?>
     
     <?php if ($title == ' - Student Resources') {
