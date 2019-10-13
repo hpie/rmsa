@@ -267,6 +267,7 @@ if ($title == ' - File Reviews') {
     <script>                                
         var uploaded_file_id;
         var review_modal = $("#review-modal");
+        var view_reviews_modal = $("#view-reviews");
         function openreview(file_id) {
             uploaded_file_id = file_id;
             review_modal.modal();
@@ -292,7 +293,7 @@ if ($title == ' - File Reviews') {
             $.ajax({
                 type: "POST",
                 url: "<?php echo DISPLAY_REVIEW ?>",
-                data: {'file_id': file_id},
+                data: {'file_id': file_id,'limit':10},
                 success: function (res) {
                     $('.show_comments').append(res);
                 }
@@ -331,6 +332,13 @@ if ($title == ' - File Reviews') {
                     return false
                 }
             })
+        }
+
+        function display_comments(fileId,e){
+            e.preventDefault();
+            view_reviews_modal.modal();
+            show_comments(fileId);
+
         }
 
         $(document).on('click', '.btn_post_review', function (e) {

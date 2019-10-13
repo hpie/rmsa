@@ -38,8 +38,10 @@ class Resource extends MY_Controller{
     public function display_review(){
         $review_comments = '';
         if($_REQUEST['file_id']) {
-            $comments = $this->Resource_model->get_comments($_REQUEST['file_id']);
+            $limit = $_REQUEST['limit'];
+            $comments = $this->Resource_model->get_comments($_REQUEST['file_id'],$limit);
             if (count($comments)) {
+                $i = 0;
                 foreach ($comments AS $key => $comment) {
 
                     $comment_username = $this->Resource_model->get_username($comment['rmsa_user_id'],$comment['rmsa_user_type']);
@@ -56,6 +58,12 @@ class Resource extends MY_Controller{
                                         ' . $comment['rmsa_file_comment'] . '           
                                     </div>
                                  </div>';
+                    $i++;
+                    if($i >= 10){
+                     $base = BASE_URL;
+                      $review_comments .= '<div class="pull-right"><a href='.$base.'/file-reviews/'.$_REQUEST['file_id'].'>View More</a></div>';
+                    }
+
 
                 }
             }
