@@ -1,7 +1,7 @@
 <div class="col-md-6 col-sm-8  col-12">
     <div class="middle-area">
         <h1 class="heading">View Information Uploaded on the Portal</h1>
-        <!--<form class="form-horizontal border p-2" action="#">-->
+        <div class="form-horizontal border p-2">
             <h2 class="second-heading">View Information</h2>
             <div class="form-group">
                 <div class="row">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-        <!--</form>-->
+        </div>
     </div>
 </div>
 <div class="col-md-12 col-sm-12  col-12">

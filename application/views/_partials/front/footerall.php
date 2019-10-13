@@ -70,6 +70,10 @@ $this->load->view('_partials/front/allnotify');
     <script>
         
         $(document).ready(function () {
+            
+        fill_datatable1();
+        function fill_datatable1(uploaded_file_tag = '')
+        {                         
             $('#example tfoot th').each( function () {                
                 var title = $('#example thead th').eq($(this).index()).text();                
                 if((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")){
@@ -87,9 +91,8 @@ $this->load->view('_partials/front/allnotify');
                     'type': 'POST',
                     'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list.php' ?>",
                     'data': {
-                        emp_rmsa_user_id: <?php if (isset($_SESSION['emp_rmsa_user_id'])) {
-        echo $_SESSION['emp_rmsa_user_id'];
-    } ?>,
+                        emp_rmsa_user_id: <?php if (isset($_SESSION['emp_rmsa_user_id'])) { echo $_SESSION['emp_rmsa_user_id'];} ?>,
+                        uploaded_file_tag:uploaded_file_tag
                     }
                 },
     //            "ajax": "<?php //echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list.php'  ?>",
@@ -104,165 +107,33 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "ratting"}
                 ]
             });
-            table.columns().eq(0).each( function ( colIdx ) { $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () { table .column( colIdx ) .search( this.value ) .draw(); } ); } );
+            table.columns().eq(0).each( function ( colIdx ) { 
+                $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
+                    table .column( colIdx ) .search( this.value ) .draw(); 
+                }); 
+            });
+        }
+        $('#searchTag').click(function(){
+            var uploaded_file_tag = $('#uploaded_file_tag').val();            
+            if(uploaded_file_tag != '')
+            {
+                $('#example').DataTable().destroy();
+                fill_datatable1(uploaded_file_tag);
+            }
+            else
+            {
+                alert('Enter tag in textbox');  
+                $('#example').DataTable().destroy();
+                fill_datatable1();
+            }
+        });
         });
               
         
     </script>
 <?php } ?>
-
-<?php if ($title == ' - Student Profile') {
-    ?>
-    <script>
-        $(document).ready(function () {
-            $('#frm_general_info').bootstrapValidator({
-                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-                feedbackIcons: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
-                fields: {
-                    rmsa_user_first_name: {
-                        validators: {
-                            stringLength: {
-                                min: 2,
-                            },
-                            notEmpty: {
-                                message: 'Please supply your first name'
-                            }
-                        }
-                    },
-                    rmsa_user_last_name: {
-                        validators: {
-                            stringLength: {
-                                min: 2,
-                            },
-                            notEmpty: {
-                                message: 'Please supply your last name'
-                            }
-                        }
-                    }
-                }
-            }).on('success.form.bv', function (e) {
-                $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
-                $('#frm_general_info').data('bootstrapValidator').resetForm();
-
-                // Prevent form submission
-                e.preventDefault();
-
-                // Get the form instance
-                var $form = $(e.target);
-
-                // Get the BootstrapValidator instance
-                var bv = $form.data('bootstrapValidator');
-
-                // Use Ajax to submit form data
-                $.post($form.attr('action'), $form.serialize(), function (result) {
-                    console.log(result);
-                }, 'json');
-            });
-
-            $('#frm_change_password').bootstrapValidator({
-                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-                feedbackIcons: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
-                fields: {
-                    rmsa_user_new_password: {
-                        validators: {
-                            stringLength: {
-                                min: 6,
-                            },
-                            identical: {
-                                field: 'rmsa_user_confirm_password',
-                                message: 'The password and its confirm are not the same'
-                            },
-                            notEmpty: {
-                                message: 'Please supply your new password'
-                            }
-                        }
-                    },
-                    rmsa_user_confirm_password: {
-                        validators: {
-                            stringLength: {
-                                min: 6,
-                            },
-                            identical: {
-                                field: 'rmsa_user_new_password',
-                                message: 'The password and its confirm are not the same'
-                            },
-                            notEmpty: {
-                                message: 'Please supply your confirm password'
-                            }
-                        }
-                    }
-                }
-            }).on('success.form.bv', function (e) {
-                $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
-                $('#frm_change_password').data('bootstrapValidator').resetForm();
-
-                // Prevent form submission
-                e.preventDefault();
-
-                // Get the form instance
-                var $form = $(e.target);
-
-                // Get the BootstrapValidator instance
-                var bv = $form.data('bootstrapValidator');
-
-                // Use Ajax to submit form data
-                $.post($form.attr('action'), $form.serialize(), function (result) {
-                    console.log(result);
-                }, 'json');
-            });
-        });
-    </script>
-<?php } ?>
-
-<?php
-if ($title == ' - File Reviews') {
-    ?>
-    <script>
-        var reply_modal = $("#reply-modal");
-        var fileId = "<?php echo $reviews['fileId']; ?>";
-        var commentId;
-        function comment_reply(comment_id) {
-            commentId = comment_id;
-            reply_modal.modal();
-        }
-
-        $(document).on('click', '.btn_post_reply', function (e) {
-            var reply = $(".reply-comment");
-
-            var data = {
-                'file_id': fileId,
-                'comment_id': commentId,
-                'reply': reply.val(),
-            };
-
-            $.ajax({
-                type: "POST",
-                url: "<?php echo COMMENT_REPLY ?>",
-                data: data,
-                success: function (res) {
-                    var res = $.parseJSON(res);
-                    if (res.success) {
-                        alert('Thank you, your reply has been submitted for review.')
-                        reply_modal.modal('toggle');
-                    }
-                }
-            });
-        })
-
-    </script>
-
-<?php }
-?>
-
-<?php if ($title == ' - Student Resources') {
+    
+    <?php if ($title == ' - Student Resources') {
     ?>
     <script>                                
         var uploaded_file_id;
@@ -417,9 +288,7 @@ if ($title == ' - File Reviews') {
                     table .column( colIdx ) .search( this.value ) .draw(); 
                 }); 
             });
-        }
-        
-        
+        }                 
         $('#searchTag').click(function(){
             var uploaded_file_tag = $('#uploaded_file_tag').val();            
             if(uploaded_file_tag != '')
@@ -429,17 +298,11 @@ if ($title == ' - File Reviews') {
             }
             else
             {
-                alert('Select Both filter option');
+                alert('Enter tag in textbox');  
                 $('#example').DataTable().destroy();
                 fill_datatable();
             }
         });
-        
-        
-        
-        
-        
-        
         });
     </script>
 <?php } ?>
@@ -525,6 +388,159 @@ if ($title == ' - File Reviews') {
         });
     </script>
 <?php } ?>
+
+<?php if ($title == ' - Student Profile') {
+    ?>
+    <script>
+        $(document).ready(function () {
+            $('#frm_general_info').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    rmsa_user_last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
+                $('#frm_general_info').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    console.log(result);
+                }, 'json');
+            });
+
+            $('#frm_change_password').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_new_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6,
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6,
+                            },
+                            identical: {
+                                field: 'rmsa_user_new_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
+                $('#frm_change_password').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    console.log(result);
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>
+
+<?php
+if ($title == ' - File Reviews') {
+    ?>
+    <script>
+        var reply_modal = $("#reply-modal");
+        var fileId = "<?php echo $reviews['fileId']; ?>";
+        var commentId;
+        function comment_reply(comment_id) {
+            commentId = comment_id;
+            reply_modal.modal();
+        }
+
+        $(document).on('click', '.btn_post_reply', function (e) {
+            var reply = $(".reply-comment");
+
+            var data = {
+                'file_id': fileId,
+                'comment_id': commentId,
+                'reply': reply.val(),
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "<?php echo COMMENT_REPLY ?>",
+                data: data,
+                success: function (res) {
+                    var res = $.parseJSON(res);
+                    if (res.success) {
+                        alert('Thank you, your reply has been submitted for review.')
+                        reply_modal.modal('toggle');
+                    }
+                }
+            });
+        })
+
+    </script>
+
+<?php }
+?>
+
+
 
 
 
