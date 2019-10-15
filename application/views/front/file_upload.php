@@ -1,5 +1,5 @@
 <!-- content -->
-<div class="col-md-9 col-sm-9  col-12">
+<div class="col-md-9 col-sm-9">
     <div class="middle-area">
         <div class="">
             <h1>File Upload</h1>         

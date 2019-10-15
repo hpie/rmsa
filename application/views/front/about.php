@@ -1,5 +1,5 @@
 <!-- content -->
-<div class="col-md-6 col-sm-8  col-12">
+<div class="col-md-9 col-sm-9">
     <div class="middle-area">
         <h2 class="heading">About Us</h2>
         <p>Rashtriya Madhyamik Siksha Abhijan (RMSA) is a centrally sponsored scheme of the Ministry

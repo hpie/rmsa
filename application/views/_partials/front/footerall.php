@@ -2,7 +2,7 @@
 
 <!-- Start Import RightNavbar -->   
 <?php
-$this->load->view('_partials/front/rightnavbar');
+//$this->load->view('_partials/front/rightnavbar');
 //	include('_partials/rightnavbar.php'); // Includes Right Navbar Script
 ?>        
 <!-- End Import RightNavbar -->                  
@@ -77,9 +77,20 @@ $this->load->view('_partials/front/allnotify');
                 if((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")){
                     $(this).html( '<input type="text" placeholder="'+title+'" />' ); 
                 }
-            });
-            
+            });            
             var table = $('#example').DataTable({
+                
+                responsive: {
+                    details: {
+                        renderer: function ( api, rowIdx ) {
+                        var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
+                            var header = $( api.column( cell.column ).header() );                            
+                            return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
+                        } ).toArray().join('');
+                        return data ?    $('</table>').append( data ) :    false;
+                        }
+                    }
+                },                                    
                 "processing": true,
                 "serverSide": true,
                 "pageLength": 10,
@@ -95,11 +106,11 @@ $this->load->view('_partials/front/allnotify');
                 },
                 "columns": [
                     {"data": "uploaded_file_title"},
+                    {"data": "ext"},
                     {"data": "uploaded_file_type"},
                     {"data": "uploaded_file_group"},
                     {"data": "uploaded_file_category"},
-                    {"data": "uploaded_file_desc"},
-                    {"data": "ext"},
+                    {"data": "uploaded_file_desc"},                   
                     {"data": "child"},
                     {"data": "ratting"}
                 ]
@@ -265,7 +276,21 @@ $this->load->view('_partials/front/allnotify');
                     $(this).html( '<input type="text" placeholder="'+title+'" />' ); 
                 }
             });
-            var table = $('#example').DataTable({               
+            var table = $('#example').DataTable({ 
+            
+                responsive: {
+                details: {
+                    renderer: function ( api, rowIdx ) {
+                    var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
+                        var header = $( api.column( cell.column ).header() );
+                        return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
+                    } ).toArray().join('');
+
+                    return data ?    $('<table/>').append( data ) :    false;
+                    }
+                }
+                },
+            
                 "processing": true,
                 "serverSide": true,
                 "paginationType": "full_numbers",
@@ -281,11 +306,11 @@ $this->load->view('_partials/front/allnotify');
                 },
                 "columns": [
                     {"data": "uploaded_file_title"},
+                    {"data": "ext"},
                     {"data": "uploaded_file_type"},
                     {"data": "uploaded_file_group"},
                     {"data": "uploaded_file_category"},
-                    {"data": "uploaded_file_desc"},
-                    {"data": "ext"},
+                    {"data": "uploaded_file_desc"},                    
                     {"data": "review"},
                     {"data": "ratting"}
 
@@ -320,6 +345,19 @@ $this->load->view('_partials/front/allnotify');
     <script>
         $(document).ready(function () {
             $('#example').DataTable({
+                
+                responsive: {
+                details: {
+                    renderer: function ( api, rowIdx ) {
+                    var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
+                        var header = $( api.column( cell.column ).header() );
+                        return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
+                    } ).toArray().join('');
+
+                    return data ?    $('<table/>').append( data ) :    false;
+                    }
+                }
+                },                                
                 "processing": true,
                 "serverSide": true,
                 "paginationType": "full_numbers",

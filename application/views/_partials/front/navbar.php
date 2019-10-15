@@ -34,6 +34,9 @@
                                     <?php if(isset($_SESSION['emp_rmsa_user_id'])){ ?>
                                     <li class="nav-item"><a href="<?php echo EMPLOYEE_LOGOUT_LINK; ?>" class="nav-link">Logout</a></li>
                                     <?php } ?>
+                                    <?php if(isset($_SESSION['rm_rmsa_user_id'])){ ?>
+                                    <li class="nav-item"><a href="<?php echo RMSA_LOGOUT_LINK; ?>" class="nav-link">Logout</a></li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>

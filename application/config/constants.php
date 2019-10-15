@@ -122,6 +122,9 @@ define('STUDENT_RESOURCES_LINK',BASE_URL."/student-resources");
 define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
 
 
+//All Rmsa users constant
+define('RMSA_LOGIN_LINK',BASE_URL."/rmsa-login");
+define('RMSA_LOGOUT_LINK',BASE_URL."/rmsa-logout");
 
 //All employee constant
 define('EMPLOYEE_LOGIN_LINK',BASE_URL."/employee-login");
@@ -150,4 +153,5 @@ define('FILE_VIEW_COUNT',BASE_URL."/total-fileview");
 
 
 //define all title heare for page
+
 

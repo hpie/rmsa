@@ -359,6 +359,7 @@ class SSP {
                         $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         $row['ratting']="<td>$star<br><a href=".BASE_URL."/file-reviews/".$row['rmsa_uploaded_file_id'].">View Reviews</a></td>";                        
+                        $i=0;
                         if($row['uploaded_file_hasvol']=="YES"){
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
                             $dataChild = self::sql_exec( $db, $bindings,
@@ -368,45 +369,56 @@ class SSP {
                             );
                             $resultChild=self::data_output($columns,$dataChild);
                             $strTd='';
-                            $str='';
+                            $strTdAmodel='';
+                            $strModel=''; 
+                            $str='';                             
                             foreach ($resultChild as $rowChild){
-                               $student_view_count_child = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rowChild['rmsa_uploaded_file_id']}'");
-                               $total_student_view_child = $student_view_count_child[0]['total_Student_views'];
-                               $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true"; 
-                               $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
-                                        <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
+                                $student_view_count_child = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rowChild['rmsa_uploaded_file_id']}'");
+                                $total_student_view_child = $student_view_count_child[0]['total_Student_views'];
+                                $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true"; 
+                                if($i<=1){                                
+                                    $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                          <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
+                                    }                                    
+                                    $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                             <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";                                                                       
+                                $i=$i+1;                               
                             }
                             $str.=$strTd."</tr></table>";
-//                            $row['extChild']=$str;
+                            $strModel.=$strTdAmodel."</tr></table>";
+
+                            $row['extModel']=$row['ext'].$strModel;
+                                                     
                             $row['ext'].=$str;
 //                            $resChild=self::data_output($columns,$dataChild);
                             $row['child']="<a class='btn btn-success btn_approve' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";
                         }
                         else{ 
-                            $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";
+                            $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
+                            $row['extModel']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";
                             $row['child']="-----No Hasvol-----";
-                        }
-                        
-//                        $row['ext']='
-//                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal'.$row['rmsa_uploaded_file_id'].'">Open File List</button>
-//                    <div class="modal" id="myModal'.$row['rmsa_uploaded_file_id'].'" tabindex="-1" role="dialog">
-//                            <div class="modal-dialog" role="document">
-//                                <div class="modal-content">
-//                                    <div class="modal-header">
-//                                        <h5 class="modal-title">File List</h5>
-//                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//                                            <span aria-hidden="true">&times;</span>
-//                                        </button>
-//                                    </div>
-//                                    <div class="modal-body">
-//                                    '.$row['ext'].'
-//                                    </div>
-//                                    <div class="modal-footer">                
-//                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-//                                    </div>            
-//                                </div>
-//                            </div>
-//                        </div>';
+                        } 
+                        if($i>1){
+                        $row['ext'].='<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal'.$row['rmsa_uploaded_file_id'].'">View More</button>
+                        <div class="modal" id="myModal'.$row['rmsa_uploaded_file_id'].'" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">File List</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        '.$row['extModel'].'
+                                        </div>
+                                        <div class="modal-footer">                
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>            
+                                    </div>
+                                </div>
+                            </div>';
+                            }
                         array_push($resData, $row);
                     }  
                 }
@@ -503,6 +515,7 @@ class SSP {
                 $row['review']="<td><center><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></center></td>";
                 $row['ratting']="<td>$star<br><a href='#'  onclick='display_comments($rmsa_file_id,event)'>View Reviews</a></td>";
 //                        . "<span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'></span>";
+                 $i=0;
                 if($row['uploaded_file_hasvol']=="YES"){
                     $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
                     $dataChild = self::sql_exec( $db, $bindings,
@@ -511,45 +524,54 @@ class SSP {
                                      WHERE uploaded_file_volroot=".$row['rmsa_uploaded_file_id']." ORDER BY uploaded_file_volorder ASC"
                     );
                     $resultChild=self::data_output($columns,$dataChild);
+                    $strTdAmodel='';
+                    $strModel=''; 
                     $strTd='';
                     $str='';
                     foreach ($resultChild as $rowChild){
                         $student_view_count_child = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rowChild['rmsa_uploaded_file_id']}'");
                         $total_student_view_child = $student_view_count_child[0]['total_Student_views'];
                         $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true";
+                        if($i<=1){
                         $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
                                  <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
+                        }
+                        $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                 <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
+                        $i=$i+1; 
                     }
                     $str.=$strTd."</tr></table>";
-//                            $row['extChild']=$str;
+                    $strModel.=$strTdAmodel."</tr></table>";
+                    $row['extModel']=$row['ext'].$strModel;
                     $row['ext'].=$str;
-//                            $resChild=self::data_output($columns,$dataChild);
                     $row['child']="<a class='btn btn-success btn_approve' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";                    
                 }
                 else{
                     $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";
+                     $row['extModel']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";
                     $row['child']="-----No Hasvol-----";
                 }                
-//                $row['ext']='
-//                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal'.$row['rmsa_uploaded_file_id'].'">Open File List</button>
-//                    <div class="modal" id="myModal'.$row['rmsa_uploaded_file_id'].'" tabindex="-1" role="dialog">
-//                            <div class="modal-dialog" role="document">
-//                                <div class="modal-content">
-//                                    <div class="modal-header">
-//                                        <h5 class="modal-title">File List</h5>
-//                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//                                            <span aria-hidden="true">&times;</span>
-//                                        </button>
-//                                    </div>
-//                                    <div class="modal-body">
-//                                    '.$row['ext'].'
-//                                    </div>
-//                                    <div class="modal-footer">                
-//                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-//                                    </div>            
-//                                </div>
-//                            </div>
-//                        </div>';
+                if($i>1){
+                        $row['ext'].='<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal'.$row['rmsa_uploaded_file_id'].'">View More</button>
+                        <div class="modal" id="myModal'.$row['rmsa_uploaded_file_id'].'" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">File List</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        '.$row['extModel'].'
+                                        </div>
+                                        <div class="modal-footer">                
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>            
+                                    </div>
+                                </div>
+                            </div>';
+                            }
                 array_push($resData, $row);
             }
         }

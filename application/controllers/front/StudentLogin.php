@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class StudentLogin extends MY_Controller{
     public function __construct(){
-        if(isset($_SESSION['emp_rmsa_user_id'])){
+        if(isset($_SESSION['emp_rmsa_user_id']) OR isset($_SESSION['rm_rmsa_user_id'])){
             redirect(HOME_LINK);
         }
         parent::__construct();        

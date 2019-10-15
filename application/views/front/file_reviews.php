@@ -1,5 +1,5 @@
 <!-- content -->
-<div class="col-md-6 col-sm-8  col-12">
+<div class="col-md-9 col-sm-9">
     <span class="pull-right">
         <?php
         $star = '';

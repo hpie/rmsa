@@ -673,6 +673,12 @@ class CI_Session {
             $_SESSION['emp_'.$key] = $value;
         }        
         return;
+    }
+    public function sessionRmsa($row) {
+        foreach ($row as $key => &$value) {
+            $_SESSION['rm_'.$key] = $value;
+        }        
+        return;
     } 
     public function sessionCheckStudent() {
         if (!isset($_SESSION['st_rmsa_user_id'])) {
@@ -687,7 +693,14 @@ class CI_Session {
             return false;
         }
         return true;
-    }    
+    } 
+    public function sessionCheckRmsa() {
+        if (!isset($_SESSION['rm_rmsa_user_id'])) {
+            redirect(RMSA_LOGIN_LINK);
+            return false;
+        }
+        return true;
+    } 
     public function sessionDestroy() {
         session_destroy();
     }
