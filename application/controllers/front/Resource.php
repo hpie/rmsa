@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Resource extends MY_Controller{
     public function __construct(){
-        $this->session->sessionCheckStudent();
+       // $this->session->sessionCheckStudent();
         parent::__construct();
         $this->load->model('Resource_model');
     }
