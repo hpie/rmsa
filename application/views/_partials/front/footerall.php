@@ -82,15 +82,28 @@ $this->load->view('_partials/front/allnotify');
                 
                 responsive: {
                     details: {
-                        renderer: function ( api, rowIdx ) {
-                        var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
-                            var header = $( api.column( cell.column ).header() );                            
-                            return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
-                        } ).toArray().join('');
-                        return data ?    $('</table>').append( data ) :    false;
-                        }
+                        type: 'column',
+                        target: 'tr'
                     }
-                },                                    
+                },
+                columnDefs: [ {
+		        className: 'control',
+		        orderable: false,
+		        targets: 0
+		    } ],
+                
+                
+//                responsive: {
+//                    details: {
+//                        renderer: function ( api, rowIdx ) {
+//                        var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
+//                            var header = $( api.column( cell.column ).header() );                            
+//                            return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
+//                        } ).toArray().join('');
+//                        return data ?    $('</table>').append( data ) :    false;
+//                        }
+//                    }
+//                },                                    
                 "processing": true,
                 "serverSide": true,
                 "pageLength": 10,
@@ -105,14 +118,15 @@ $this->load->view('_partials/front/allnotify');
                     }
                 },
                 "columns": [
+                    {"data": "index"},
                     {"data": "uploaded_file_title"},
                     {"data": "ext"},
                     {"data": "uploaded_file_type"},
                     {"data": "uploaded_file_group"},
-                    {"data": "uploaded_file_category"},
-                    {"data": "uploaded_file_desc"},                   
+                    {"data": "uploaded_file_category"},                                     
                     {"data": "child"},
-                    {"data": "ratting"}
+                    {"data": "ratting"},
+                    {"data": "uploaded_file_desc"}
                 ]
             });
             table.columns().eq(0).each( function ( colIdx ) { 
@@ -279,17 +293,29 @@ $this->load->view('_partials/front/allnotify');
             var table = $('#example').DataTable({ 
             
                 responsive: {
-                details: {
-                    renderer: function ( api, rowIdx ) {
-                    var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
-                        var header = $( api.column( cell.column ).header() );
-                        return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
-                    } ).toArray().join('');
-
-                    return data ?    $('<table/>').append( data ) :    false;
+                    details: {
+                        type: 'column',
+                        target: 'tr'
                     }
-                }
                 },
+                columnDefs: [ {
+                    className: 'control',
+                    orderable: false,
+                    targets: 0
+                } ],
+            
+//                responsive: {
+//                details: {
+//                    renderer: function ( api, rowIdx ) {
+//                    var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
+//                        var header = $( api.column( cell.column ).header() );
+//                        return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
+//                    } ).toArray().join('');
+//
+//                    return data ?    $('<table/>').append( data ) :    false;
+//                    }
+//                }
+//                },
             
                 "processing": true,
                 "serverSide": true,
@@ -305,14 +331,15 @@ $this->load->view('_partials/front/allnotify');
                     }
                 },
                 "columns": [
+                    {"data": "index"},
                     {"data": "uploaded_file_title"},
                     {"data": "ext"},
                     {"data": "uploaded_file_type"},
                     {"data": "uploaded_file_group"},
-                    {"data": "uploaded_file_category"},
-                    {"data": "uploaded_file_desc"},                    
+                    {"data": "uploaded_file_category"},                                    
                     {"data": "review"},
-                    {"data": "ratting"}
+                    {"data": "ratting"},
+                    {"data": "uploaded_file_desc"}
 
                 ]
             });
@@ -346,18 +373,29 @@ $this->load->view('_partials/front/allnotify');
         $(document).ready(function () {
             $('#example').DataTable({
                 
-                responsive: {
-                details: {
-                    renderer: function ( api, rowIdx ) {
-                    var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
-                        var header = $( api.column( cell.column ).header() );
-                        return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
-                    } ).toArray().join('');
-
-                    return data ?    $('<table/>').append( data ) :    false;
+                 responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
                     }
-                }
-                },                                
+                },
+                columnDefs: [ {
+                    className: 'control',
+                    orderable: false,
+                    targets: 0
+                } ],
+//                responsive: {
+//                details: {
+//                    renderer: function ( api, rowIdx ) {
+//                    var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
+//                        var header = $( api.column( cell.column ).header() );
+//                        return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
+//                    } ).toArray().join('');
+//
+//                    return data ?    $('<table/>').append( data ) :    false;
+//                    }
+//                }
+//                },                                
                 "processing": true,
                 "serverSide": true,
                 "paginationType": "full_numbers",
@@ -372,7 +410,8 @@ $this->load->view('_partials/front/allnotify');
                         // etc..
                     }
                 },
-                "columns": [
+                    "columns": [
+                    {"data": "index"},
                     {"data": "rmsa_user_id"},
                     {"data": "rmsa_user_first_name"},
                     {"data": "rmsa_user_gender"},

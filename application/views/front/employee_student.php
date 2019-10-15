@@ -15,6 +15,7 @@
     <table id="example" class="display" style="width:100%">
         <thead>
         <tr>
+            <th>Index</th>
             <th>No</th>
             <th>Name</th>
             <th>Gender</th>
@@ -25,6 +26,7 @@
         </thead>
         <tfoot>
         <tr>
+            <th>Index</th>
             <th>No</th>
             <th>Name</th>
             <th>Gender</th>

@@ -268,7 +268,8 @@ class SSP {
                 }
 
                 $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class."'>".$text."</button>";
-                array_push($resData, $row);
+                $row['index']='';
+                array_push($resData, $row); 
             }
         }
 		/*
@@ -419,6 +420,7 @@ class SSP {
                                 </div>
                             </div>';
                             }
+                        $row['index']='';
                         array_push($resData, $row);
                     }  
                 }
@@ -572,6 +574,7 @@ class SSP {
                                 </div>
                             </div>';
                             }
+                $row['index']='';
                 array_push($resData, $row);
             }
         }
