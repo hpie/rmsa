@@ -68,7 +68,7 @@ $this->load->view('_partials/front/allnotify');
 <?php if ($title == ' - FileDw') {
     ?> 
     <script>        
-        $(document).ready(function () {            
+        $(document).ready(function () {
         fill_datatable1();
         function fill_datatable1(uploaded_file_tag = '')
         {                         
@@ -139,8 +139,21 @@ $this->load->view('_partials/front/allnotify');
             e.preventDefault();
             var self = this;           
             window.open(self.href,'documents','width=600,height=400');                    
-        });        
-    });                      
+        });
+    });
+    function show_review_comments(file_id,e) {
+        e.preventDefault();
+        $('.show_comments').empty();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo DISPLAY_REVIEW ?>",
+            data: {'file_id': file_id,'limit':10},
+            success: function (res) {
+                $('.show_comments').append(res);
+            }
+        });
+        $("#view-reviews").modal();
+    }
 </script>
 <?php } ?>
     
