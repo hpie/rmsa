@@ -688,7 +688,7 @@ class CI_Session {
         return true;
     }
     public function sessionCheckEmployee() {
-        if (!isset($_SESSION['emp_rmsa_user_id'])) {
+        if (!isset($_SESSION['emp_rmsa_user_id'])) { 
             redirect(EMPLOYEE_LOGIN_LINK);
             return false;
         }
@@ -710,7 +710,7 @@ class CI_Session {
     /**
      * Unset userdata
      *
-     * Legacy CI_Session compatibility method
+     * Legacy CI_Session compatibility method 
      *
      * @param	mixed	$key	Session data key(s)
      * @return	void

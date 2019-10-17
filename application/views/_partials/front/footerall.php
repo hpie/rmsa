@@ -486,6 +486,183 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>
+    
+<?php if ($title == RMSAE_STUDENT_LIST_TITLE) {
+    ?>
+    <script>        
+        $(document).ready(function () {
+            $('#example').DataTable({
+                
+                 responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [ {
+                    className: 'control',
+                    orderable: false,
+                    targets: 0
+                } ],                                
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_students.php' ?>",               
+                },
+                    "columns": [
+                    {"data": "index"},
+                    {"data": "rmsa_user_id"},
+                    {"data": "rmsa_user_first_name"},
+                    {"data": "rmsa_user_gender"},
+                    {"data": "rmsa_user_DOB"},
+                    {"data": "rmsa_user_email_id"},
+                    {"data": "rmsa_user_status"}
+                ]
+            });
+            $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+                var status = self.attr('data-status');
+
+                self.attr('disabled','disabled');
+
+                console.log('status',status);
+
+                var user_status = 'ACTIVE';
+
+                if(status == 1)
+                    user_status = 'REMOVED';
+
+                var data = {
+                    'rmsa_user_id' : self.data('id'),
+                    'user_status'  : user_status
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo STUDENT_APPROVE ?>",
+                    data: data,
+                    success: function (res) {
+
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+
+                            var title = 'Click to deactivate student';
+                            var class_ = 'btn_approve_reject btn btn-success';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if(status == 1){
+                                title = 'Click to active student';
+                                class_ = 'btn_approve_reject btn btn-danger';
+                                text  = 'Inactive';
+                                isactive = 0;
+                            }
+
+                            self.removeClass().addClass(class_);
+                           self.attr({
+                               'data-status' :isactive,
+                               'title':title
+                           });
+                           self.removeAttr('disabled');
+                           self.html(text);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+<?php } ?>
+<?php if ($title == RMSAE_EMPLOYEE_LIST_TITLE) {
+    ?>
+    <script>        
+        $(document).ready(function () {
+            $('#example').DataTable({
+                
+                 responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [ {
+                    className: 'control',
+                    orderable: false,
+                    targets: 0
+                } ],                                
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_employee.php' ?>",               
+                },
+                    "columns": [
+                    {"data": "index"},
+                    {"data": "rmsa_user_id"},
+                    {"data": "rmsa_user_first_name"},
+                    {"data": "rmsa_user_gender"},
+                    {"data": "rmsa_user_DOB"},
+                    {"data": "rmsa_user_email_id"},
+                    {"data": "rmsa_user_status"}
+                ]
+            });
+            $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+                var status = self.attr('data-status');
+
+                self.attr('disabled','disabled');
+
+                console.log('status',status);
+
+                var user_status = 'ACTIVE';
+
+                if(status == 1)
+                    user_status = 'REMOVED';
+
+                var data = {
+                    'rmsa_user_id' : self.data('id'),
+                    'user_status'  : user_status
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo STUDENT_APPROVE ?>",
+                    data: data,
+                    success: function (res) {
+
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+
+                            var title = 'Click to deactivate student';
+                            var class_ = 'btn_approve_reject btn btn-success';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if(status == 1){
+                                title = 'Click to active student';
+                                class_ = 'btn_approve_reject btn btn-danger';
+                                text  = 'Inactive';
+                                isactive = 0;
+                            }
+
+                            self.removeClass().addClass(class_);
+                           self.attr({
+                               'data-status' :isactive,
+                               'title':title
+                           });
+                           self.removeAttr('disabled');
+                           self.html(text);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+<?php } ?>
 
 <?php if ($title == STUDENT_PROFILE_TITLE) {
     ?>

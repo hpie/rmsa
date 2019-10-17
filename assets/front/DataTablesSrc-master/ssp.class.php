@@ -281,7 +281,74 @@ class SSP {
 			"recordsFiltered" => intval( $recordsFiltered ),
 			"data" => $resData
 		);
-	}        
+	}   
+        static function rmsa_student_list ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	{
+		$bindings = array();
+		$db = self::db( $conn );
+		// Build the SQL query string from the request
+		$limit = self::limit( $request, $columns );
+		$order = self::order( $request, $columns );
+		$where = self::filter( $request, $columns, $bindings );
+        if ($where_custom) {
+            if ($where) {
+                $where .= ' AND ' . $where_custom;
+            } else {
+                $where .= 'WHERE ' . $where_custom;
+            }
+        }       
+		// Main query to actually get the data
+		$data = self::sql_exec( $db, $bindings,
+			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
+			 FROM `$table`
+			 $where
+			 $order
+			 $limit"
+		);                                                             
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT(`{$primaryKey}`)
+			 FROM   `$table`
+			 $where"
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT(`{$primaryKey}`)
+			 FROM   `$table`"
+		);
+		$recordsTotal = $resTotalLength[0][0];
+
+        $result=self::data_output($columns,$data);
+
+        $resData=array();
+
+        if(!empty($result)){
+            foreach ($result as $row){
+//                $title = 'Click to deactivate student';
+//                $class = 'btn_approve_reject btn btn-success';
+//                $text = 'Active';
+//                $isactive = 1;
+//
+//                if($row['rmsa_user_status'] == 'REMOVED'){
+//                    $title = 'Click to active student';
+//                    $class = 'btn_approve_reject btn btn-danger';
+//                    $text  = 'Inactive';
+//                    $isactive = 0;
+//                }
+//                
+//                $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
+                $row['index']='';
+                array_push($resData, $row); 
+            }
+        }
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	} 
         static function emp_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$emp_rmsa_user_id)
 	{
 		$bindings = array();

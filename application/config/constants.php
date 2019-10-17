@@ -125,6 +125,8 @@ define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
 //All Rmsa users constant
 define('RMSA_LOGIN_LINK',BASE_URL."/rmsa-login");
 define('RMSA_LOGOUT_LINK',BASE_URL."/rmsa-logout");
+define('RMSA_STUDENT_LIST_LINK',BASE_URL."/rmsa-student");
+define('RMSA_EMPLOYEE_LIST_LINK',BASE_URL."/rmsa-employee");
 
 //All employee constant
 define('EMPLOYEE_LOGIN_LINK',BASE_URL."/employee-login");
@@ -135,6 +137,8 @@ define('EMPLOYEE_RESOURCES_LIST_LINK',BASE_URL."/employee-resources");
 define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
 define('EMPLOYEE_STUDENT_LIST_LINK',BASE_URL."/employee-student");
 define('STUDENT_APPROVE',BASE_URL."/student-approve");
+
+
 
 
 //other constant
@@ -149,9 +153,6 @@ define('DISPLAY_RATING',BASE_URL."/display-rating");
 define('FILE_VIEW_COUNT',BASE_URL."/total-fileview");
 
 
-
-
-
 //define all title heare for page
 define('HOME_TITLE',"Welcome to rmsahimachal.nic.in - Home");
 define('ABOUT_TITLE',"Welcome to rmsahimachal.nic.in - About");
@@ -163,13 +164,15 @@ define('EMPLOYEE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - EmployeeS
 define('EMPLOYEE_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - FileDw");
 define('EMPLOYEE_FILE_UPLOAD_TITLE',"Welcome to rmsahimachal.nic.in - File Upload"); 
 
+define('RMSAE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaStudent");
+define('RMSAE_EMPLOYEE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaEmployee");
+
 define('STUDENT_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Student Registration");
 define('REGISTERED_STUDENT_TITLE',"Welcome to rmsahimachal.nic.in - Registered Students");
 define('STUDENT_RESOURCES_TITLE',"Welcome to rmsahimachal.nic.in - Student Resources");
 define('STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Student Profile");
 define('ORGANIZATION_TITLE',"Welcome to rmsahimachal.nic.in - Organization");
 define('FILE_REVIEWS_TITLE',"Welcome to rmsahimachal.nic.in - File Reviews");
-
 define('RMSA_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Login");
 define('STUDENT_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Student Login");
 

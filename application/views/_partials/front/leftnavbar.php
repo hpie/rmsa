@@ -80,8 +80,8 @@
                                 <li>
                                     <div class="link"><i class="fa fa-mobile"></i>Resource Material<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">                                                                               
-                                        <li><a href="<?php echo EMPLOYEE_STUDENT_LIST_LINK; ?>">Enroll Students</a></li>                                        
-                                        <li><a href="<?php echo EMPLOYEE_RESOURCES_LIST_LINK; ?>">View Resource Material</a></li>                                                                                                                      
+                                        <li><a href="<?php echo RMSA_STUDENT_LIST_LINK; ?>">Student List</a></li>                                        
+                                        <li><a href="<?php echo RMSA_EMPLOYEE_LIST_LINK; ?>">Employee List</a></li>                                                                                                                      
                                     </ul>
                                 </li>
                                  <?php } ?>                                                                
