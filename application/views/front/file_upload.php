@@ -11,24 +11,24 @@
                 <div class="row fileupload-buttonbar">
                     <div class="col-lg-7">
                         <!-- The fileinput-button span is used to style the file input field as button -->
-                        <span class="btn btn-success fileinput-button">
+                        <span class="btn btn-success btn-sm fileinput-button">
                             <i class="glyphicon glyphicon-plus"></i>
                             <span>Add files...</span>
                             <input type="file" name="files[]" multiple />
                         </span>                                                               
-                        <button type="submit" class="btn btn-primary start">
+                        <button type="submit" class="btn btn-sm btn-primary start">
                             <i class="glyphicon glyphicon-upload"></i>
                             <span>Start upload</span>
                         </button>
-                        <button type="reset" class="btn btn-warning cancel">
+                        <button type="reset" class="btn btn-sm btn-warning cancel">
                             <i class="glyphicon glyphicon-ban-circle"></i>
                             <span>Cancel upload</span>
                         </button>
-<!--                        <button type="button" class="btn btn-danger delete">
+<!--                        <button type="button" class="btn btn-sm btn-danger delete">
                             <i class="glyphicon glyphicon-trash"></i>
                             <span>Delete selected</span>
                         </button>-->
-                        <input type="checkbox" class="toggle" />
+                        <!--<input type="checkbox" class="toggle" />-->
                         <!-- The global file processing state -->
                         <span class="fileupload-process"></span>
                     </div>
@@ -78,7 +78,7 @@
               </td>
               <td>                  
                   {% if (!i && !o.options.autoUpload) { %}  
-                      <button class="btn btn-primary start" disabled>
+                      <button class="btn btn-sm btn-primary start" disabled>
                           <i class="glyphicon glyphicon-upload"></i>
                           <span>Start</span>
                       </button>
@@ -86,7 +86,7 @@
                   </td>
                   <td>
                   {% if (!i) { %}
-                      <button class="btn btn-warning cancel">
+                      <button class="btn btn-sm btn-warning cancel">
                           <i class="glyphicon glyphicon-ban-circle"></i>
                           <span>Cancel</span>
                       </button>

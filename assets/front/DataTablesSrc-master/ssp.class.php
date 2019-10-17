@@ -266,8 +266,8 @@ class SSP {
                     $text  = 'Inactive';
                     $isactive = 0;
                 }
-
-                $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class."'>".$text."</button>";
+                
+                $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
                 $row['index']='';
                 array_push($resData, $row); 
             }
@@ -393,7 +393,7 @@ class SSP {
                                                      
                             $row['ext'].=$str;
 //                            $resChild=self::data_output($columns,$dataChild);
-                            $row['child']="<a class='btn btn-success btn_approve' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";
+                            $row['child']="<a class='btn btn-success btn_approve btn-xs' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";
                         }
                         else{ 
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            

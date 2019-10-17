@@ -29,8 +29,8 @@ class CustomUploadHandler extends UploadHandler {
         $uploaded_file_hasvol=$file->uploaded_file_hasvol;
         $uploaded_file_tag=$file->uploaded_file_tag;
         $uploaded_file_group=$file->uploaded_file_group;
-        $rmsa_employee_users_id=$file->rmsa_employee_users_id;           
-        if (empty($file->error)) {
+        $rmsa_employee_users_id=$file->rmsa_employee_users_id;        
+        if (empty($file->error)) {            
         $sql = "INSERT INTO `".$this->options['db_table']."` (`uploaded_file_title`,`uploaded_file_type`,`uploaded_file_group`,`uploaded_file_category`,`uploaded_file_desc`,`uploaded_file_tag`,`uploaded_file_path`,`uploaded_file_hasvol`,`rmsa_employee_users_id`)"
                 ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_group','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_tag','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id')";                   
 	        $query = $this->db->query($sql);                
