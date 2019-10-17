@@ -10,7 +10,7 @@ class Resource extends MY_Controller{
     
     public function resources($uploaded_file_category){       
         $this->mViewData['uploaded_file_category'] = $uploaded_file_category;
-        $this->mViewData['title']=' - Student Resources';
+        $this->mViewData['title']=STUDENT_RESOURCES_TITLE;
         $this->renderFront('front/student_resources.php');
     }
 
@@ -144,7 +144,7 @@ class Resource extends MY_Controller{
             'avg_rating' => $avg,
         );
         $this->mViewData['reviews'] = $data;
-        $this->mViewData['title']=' - File Reviews';
+        $this->mViewData['title']=FILE_REVIEWS_TITLE;
         $this->renderFront('front/file_reviews');
     }
 

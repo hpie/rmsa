@@ -10,10 +10,9 @@ class Employee extends MY_Controller
     }
 
     public function view_student(){
-        $this->mViewData['title']=' - EmployeeStudent';
+        $this->mViewData['title']=EMPLOYEE_STUDENT_LIST_TITLE;
         $this->renderFront('front/employee_student');
     }
-
     public function approve_student(){
         if(isset($_REQUEST['rmsa_user_id'])){
             $res = $this->Employee_model->approve_student($_REQUEST);

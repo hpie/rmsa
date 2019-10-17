@@ -9,7 +9,7 @@ class EmpRegistration extends MY_Controller{
         parent::__construct();
     }
     public function index(){
-        $this->mViewData['title']=' - Employee Registration';
+        $this->mViewData['title']=EMPLOYEE_REGISTRATION_TITLE;
         $this->renderFront('front/empregistration');
     }
 }

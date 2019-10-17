@@ -153,5 +153,25 @@ define('FILE_VIEW_COUNT',BASE_URL."/total-fileview");
 
 
 //define all title heare for page
+define('HOME_TITLE',"Welcome to rmsahimachal.nic.in - Home");
+define('ABOUT_TITLE',"Welcome to rmsahimachal.nic.in - About");
+define('ANNUAL_REPORTS_TITLE',"Welcome to rmsahimachal.nic.in - AnnualReports");
+define('CIRCULARS_TITLE',"Welcome to rmsahimachal.nic.in - Circulars");
+define('EMPLOYEE_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Employee Login");
+define('EMPLOYEE_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Employee Registration");
+define('EMPLOYEE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - EmployeeStudent");
+define('EMPLOYEE_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - FileDw");
+define('EMPLOYEE_FILE_UPLOAD_TITLE',"Welcome to rmsahimachal.nic.in - File Upload"); 
+
+define('STUDENT_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Student Registration");
+define('REGISTERED_STUDENT_TITLE',"Welcome to rmsahimachal.nic.in - Registered Students");
+define('STUDENT_RESOURCES_TITLE',"Welcome to rmsahimachal.nic.in - Student Resources");
+define('STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Student Profile");
+define('ORGANIZATION_TITLE',"Welcome to rmsahimachal.nic.in - Organization");
+define('FILE_REVIEWS_TITLE',"Welcome to rmsahimachal.nic.in - File Reviews");
+
+define('RMSA_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Login");
+define('STUDENT_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Student Login");
+
 
 

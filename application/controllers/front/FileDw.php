@@ -9,7 +9,7 @@ class FileDw extends MY_Controller {
         parent::__construct();
     }
     public function index() {       
-        $this->mViewData['title']=' - FileDw';
+        $this->mViewData['title']=EMPLOYEE_FILE_LIST_TITLE;
         $this->renderFront('front/filedw');
     }
     

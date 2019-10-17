@@ -6,7 +6,7 @@ class About extends MY_Controller{
         parent::__construct();
     }
     public function index(){
-        $this->mViewData['title']=' - About';
+        $this->mViewData['title']=ABOUT_TITLE;
         $this->renderFront('front/about');
     }
 }

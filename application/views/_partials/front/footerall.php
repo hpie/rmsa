@@ -65,7 +65,7 @@ $this->load->view('_partials/front/scripts');
 $this->load->view('_partials/front/allnotify');
 ?>
 
-<?php if ($title == ' - FileDw') {
+<?php if ($title == EMPLOYEE_FILE_LIST_TITLE) {
     ?> 
     <script>        
         $(document).ready(function () {
@@ -171,7 +171,7 @@ $this->load->view('_partials/front/allnotify');
 </script>
 <?php } ?>
     
-    <?php if ($title == ' - Student Resources') {
+    <?php if ($title == STUDENT_RESOURCES_TITLE) {
     ?>
     <script>                                
         var uploaded_file_id;
@@ -380,7 +380,7 @@ $this->load->view('_partials/front/allnotify');
     </script>
 <?php } ?>
 
-<?php if ($title == ' - EmployeeStudent') {
+<?php if ($title == EMPLOYEE_STUDENT_LIST_TITLE) {
     ?>
     <script>
         $(document).ready(function () {
@@ -487,7 +487,7 @@ $this->load->view('_partials/front/allnotify');
     </script>
 <?php } ?>
 
-<?php if ($title == ' - Student Profile') {
+<?php if ($title == STUDENT_PROFILE_TITLE) {
     ?>
     <script>
         $(document).ready(function () {
@@ -599,7 +599,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 
 <?php
-if ($title == ' - File Reviews') {
+if ($title == FILE_REVIEWS_TITLE) {
     ?>
     <script>
         var reply_modal = $("#reply-modal");
@@ -642,7 +642,7 @@ if ($title == ' - File Reviews') {
 
 
 
-<?php if ($title == ' - Student Registration') {
+<?php if ($title == STUDENT_REGISTRATION_TITLE) {
     ?>
 
     <script>

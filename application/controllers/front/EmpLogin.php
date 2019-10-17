@@ -28,7 +28,7 @@ class EmpLogin extends MY_Controller{
             $_SESSION['invalid_login'] = 1;
            }           
         }
-        $this->mViewData['title'] = ' - Employee Login';
+        $this->mViewData['title'] =EMPLOYEE_LOGIN_TITLE;
         $this->renderFront('front/emplogin');
     }
     public function employeeLogout() {       

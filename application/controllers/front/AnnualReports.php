@@ -6,7 +6,7 @@ class AnnualReports extends MY_Controller{
         parent::__construct();
     }
     public function index(){
-        $this->mViewData['title']=' - AnnualReports';
+        $this->mViewData['title']=ANNUAL_REPORTS_TITLE;
         $this->renderFront('front/annualreports');
     }
 

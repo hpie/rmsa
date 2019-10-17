@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class RmsaLogin extends MY_Controller{
     public function __construct(){
         parent::__construct();
@@ -25,7 +24,7 @@ class RmsaLogin extends MY_Controller{
             $_SESSION['invalid_login'] = 1;
            }           
         }
-        $this->mViewData['title'] = ' - Rmsa Login';
+        $this->mViewData['title'] =RMSA_LOGIN_TITLE;
         $this->renderFront('front/rmsalogin');
     }
     public function rmsaLogout() {       

@@ -6,7 +6,7 @@ class Circulars extends MY_Controller{
         parent::__construct();
     }
     public function index(){
-        $this->mViewData['title']=' - Circulars';
+        $this->mViewData['title']=CIRCULARS_TITLE;
         $this->renderFront('front/circular');
     }
 

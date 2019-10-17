@@ -12,7 +12,7 @@ class FileUpload extends MY_Controller {
     public function index() {
         $_SESSION['filepage']='index.php';
         $this->mViewData['result'] = $this->File_upload->getCategory(); 
-        $this->mViewData['title'] = ' - File Upload';
+        $this->mViewData['title'] =EMPLOYEE_FILE_UPLOAD_TITLE;
         $this->renderFront('front/file_upload');
     }
     public function childFileUpload($fileId) {
@@ -21,7 +21,7 @@ class FileUpload extends MY_Controller {
             $_SESSION['filepage']='childindex.php';
             $this->mViewData['rmsa_uploaded_file_id']=$fileId;
             $this->mViewData['result']=$existFile;
-            $this->mViewData['title'] = ' - File Upload';
+            $this->mViewData['title'] =EMPLOYEE_FILE_UPLOAD_TITLE;
             $this->renderFront('front/file_upload_child');
         }else{
             $_SESSION['existParentFileHasvol']=1;

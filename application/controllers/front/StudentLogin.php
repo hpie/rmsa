@@ -25,7 +25,7 @@ class StudentLogin extends MY_Controller{
                 $_SESSION['invalid_login'] = 1;
             }
         }
-        $this->mViewData['title']=' - Student Login';
+        $this->mViewData['title']=STUDENT_LOGIN_TITLE;
         $this->renderFront('front/studentlogin');       
     }
 

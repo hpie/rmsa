@@ -20,22 +20,9 @@ class Student extends MY_Controller{
             $this->Student_model->update_profile($_POST);
         }
         $this->mViewData['student_data'] =  $this->Student_model->student_details();
-        $this->mViewData['title']=' - Student Profile';
+        $this->mViewData['title']=STUDENT_PROFILE_TITLE;
         $this->renderFront('front/student_profile');
     }
-
-//    public function approve(){
-//        if(isset($_REQUEST['rmsa_user_id'])){
-//            $res = $this->Student_model->approve_student($_REQUEST['rmsa_user_id']);
-//            if($res){
-//                $data = array(
-//                    'suceess' => true
-//                );
-//            }
-//            echo json_encode($data);
-//        }
-//    }
-
     public function is_active(){
         if($_SESSION['st_rmsa_student_login_active']==1){
             $res = $this->Student_model->is_active($_SESSION['st_rmsa_user_id']);
