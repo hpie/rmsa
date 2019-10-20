@@ -102,9 +102,12 @@ $route['rmsa-login']           = 'front/RmsaLogin';
 $route['rmsa-logout']          = 'front/RmsaLogin/rmsaLogout';
 $route['rmsa-student']          ='front/Rmsa/view_student';
 $route['rmsa-employee']          ='front/Rmsa/view_employee';
+$route['rmsa-resources']       = 'front/RmsaResource';
+$route['rmsa-student-registration']    = 'front/Helper/create_student';
+$route['employee-registration']    = 'front/Rmsa/create_employee';
 
 //all employee routes
-$route['employee-registration']    = 'front/EmpRegistration';
+//$route['employee-registration']    = 'front/EmpRegistration';
 $route['employee-login']           = 'front/EmpLogin';
 $route['employee-logout']          = 'front/EmpLogin/employeeLogout';
 $route['employee-uploadresource']  = 'front/FileUpload';

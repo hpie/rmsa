@@ -127,6 +127,9 @@ define('RMSA_LOGIN_LINK',BASE_URL."/rmsa-login");
 define('RMSA_LOGOUT_LINK',BASE_URL."/rmsa-logout");
 define('RMSA_STUDENT_LIST_LINK',BASE_URL."/rmsa-student");
 define('RMSA_EMPLOYEE_LIST_LINK',BASE_URL."/rmsa-employee");
+define('RMSA_RESOURCES_LIST_LINK',BASE_URL."/rmsa-resources");
+define('RMSA_STUDENT_REGISTER_LINK',BASE_URL."/rmsa-student-registration");
+define('RMSA_EMPLOYEE_REGISTER_LINK',BASE_URL."/employee-registration");
 
 //All employee constant
 define('EMPLOYEE_LOGIN_LINK',BASE_URL."/employee-login");
@@ -156,6 +159,7 @@ define('FILE_VIEW_COUNT',BASE_URL."/total-fileview");
 //define all title heare for page
 define('HOME_TITLE',"Welcome to rmsahimachal.nic.in - Home");
 define('ABOUT_TITLE',"Welcome to rmsahimachal.nic.in - About");
+define('CONTACT_US_TITLE',"Welcome to rmsahimachal.nic.in - Contact Us");
 define('ANNUAL_REPORTS_TITLE',"Welcome to rmsahimachal.nic.in - AnnualReports");
 define('CIRCULARS_TITLE',"Welcome to rmsahimachal.nic.in - Circulars");
 define('EMPLOYEE_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Employee Login");
@@ -166,8 +170,11 @@ define('EMPLOYEE_FILE_UPLOAD_TITLE',"Welcome to rmsahimachal.nic.in - File Uploa
 
 define('RMSAE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaStudent");
 define('RMSAE_EMPLOYEE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaEmployee");
+define('RMSA_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaResource");
+define('RMSA_EMPLOYEE_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Employee Registration");
 
 define('STUDENT_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Student Registration");
+
 define('REGISTERED_STUDENT_TITLE',"Welcome to rmsahimachal.nic.in - Registered Students");
 define('STUDENT_RESOURCES_TITLE',"Welcome to rmsahimachal.nic.in - Student Resources");
 define('STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Student Profile");

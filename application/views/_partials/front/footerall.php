@@ -64,6 +64,97 @@ $this->load->view('_partials/front/scripts');
 //all notification include
 $this->load->view('_partials/front/allnotify');
 ?>
+<?php if ($title == RMSA_FILE_LIST_TITLE) {
+    ?> 
+    <script>        
+        $(document).ready(function () {
+        fill_datatable1();
+        function fill_datatable1(uploaded_file_tag = '')
+        {                         
+            $('#example tfoot th').each( function () {                
+                var title = $('#example thead th').eq($(this).index()).text();                
+                if((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")){
+                    $(this).html( '<input type="text" placeholder="'+title+'" />' ); 
+                }
+            });            
+            var table = $('#example').DataTable({
+                
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [ {
+		        className: 'control',
+		        orderable: false,
+		        targets: 0
+		    } ],                                   
+                "processing": true,
+                "serverSide": true,
+                "pageLength": 10,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_resource.php' ?>",
+                    'data': {                        
+                        uploaded_file_tag:uploaded_file_tag
+                    }
+                },
+                "columns": [
+                    {"data": "index"},
+                    {"data": "uploaded_file_title"},
+                    {"data": "ext"},
+                    {"data": "uploaded_file_type"},
+                    {"data": "uploaded_file_group"},
+                    {"data": "uploaded_file_category"},                                     
+                    {"data": "child"},
+                    {"data": "ratting"},
+                    {"data": "uploaded_file_desc"}
+                ]
+            });
+            table.columns().eq(0).each( function ( colIdx ) { 
+                $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
+                    table .column( colIdx ) .search( this.value ) .draw(); 
+                }); 
+            });
+        }
+        $('#searchTag').click(function(){
+            var uploaded_file_tag = $('#uploaded_file_tag').val();            
+            if(uploaded_file_tag != '')
+            {
+                $('#example').DataTable().destroy();
+                fill_datatable1(uploaded_file_tag);
+            }
+            else
+            {
+                alert('Enter tag in textbox');  
+                $('#example').DataTable().destroy();
+                fill_datatable1();
+            }
+        });                
+        $(document).on('click', '.viewFile', function (e) {
+            e.preventDefault();
+            var self = this;           
+            window.open(self.href,'documents','width=600,height=400');                    
+        });
+    });
+    function show_review_comments(file_id,e) {
+        e.preventDefault();
+        $('.show_comments').empty();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo DISPLAY_REVIEW ?>",
+            data: {'file_id': file_id,'limit':10},
+            success: function (res) {
+                $('.show_comments').append(res);
+            }
+        });
+        $("#view-reviews").modal();
+    }
+</script>
+<?php } ?>
 
 <?php if ($title == EMPLOYEE_FILE_LIST_TITLE) {
     ?> 
@@ -90,20 +181,7 @@ $this->load->view('_partials/front/allnotify');
 		        className: 'control',
 		        orderable: false,
 		        targets: 0
-		    } ],
-                
-                
-//                responsive: {
-//                    details: {
-//                        renderer: function ( api, rowIdx ) {
-//                        var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
-//                            var header = $( api.column( cell.column ).header() );                            
-//                            return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
-//                        } ).toArray().join('');
-//                        return data ?    $('</table>').append( data ) :    false;
-//                        }
-//                    }
-//                },                                    
+		    } ],                                  
                 "processing": true,
                 "serverSide": true,
                 "pageLength": 10,
@@ -316,20 +394,6 @@ $this->load->view('_partials/front/allnotify');
                     orderable: false,
                     targets: 0
                 } ],
-            
-//                responsive: {
-//                details: {
-//                    renderer: function ( api, rowIdx ) {
-//                    var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
-//                        var header = $( api.column( cell.column ).header() );
-//                        return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
-//                    } ).toArray().join('');
-//
-//                    return data ?    $('<table/>').append( data ) :    false;
-//                    }
-//                }
-//                },
-            
                 "processing": true,
                 "serverSide": true,
                 "paginationType": "full_numbers",
@@ -396,19 +460,7 @@ $this->load->view('_partials/front/allnotify');
                     className: 'control',
                     orderable: false,
                     targets: 0
-                } ],
-//                responsive: {
-//                details: {
-//                    renderer: function ( api, rowIdx ) {
-//                    var data = api.cells( rowIdx, ':hidden' ).eq(0).map( function ( cell ) {
-//                        var header = $( api.column( cell.column ).header() );
-//                        return  '<p style="color:#00A">'+header.text()+' : '+api.cell( cell ).data()+'</p>';  // changing details mark up.
-//                    } ).toArray().join('');
-//
-//                    return data ?    $('<table/>').append( data ) :    false;
-//                    }
-//                }
-//                },                                
+                } ],                             
                 "processing": true,
                 "serverSide": true,
                 "paginationType": "full_numbers",
@@ -449,7 +501,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'rmsa_user_id' : self.data('id'),
                     'user_status'  : user_status
-                }
+                };
 
                 $.ajax({
                     type: "POST",
@@ -711,8 +763,10 @@ $this->load->view('_partials/front/allnotify');
                 var bv = $form.data('bootstrapValidator');
 
                 // Use Ajax to submit form data
-                $.post($form.attr('action'), $form.serialize(), function (result) {
-                    console.log(result);
+                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
+                    if(result['success']=="success"){                        
+                            location.href = "<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>";                                           
+                    }
                 }, 'json');
             });
 
@@ -768,7 +822,16 @@ $this->load->view('_partials/front/allnotify');
 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
-                    console.log(result);
+                    if(result['success']=="success"){                        
+                            location.href = "<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>";                                           
+                    }
+                    if(result['success']=="fail"){                    
+                        var d = new PNotify({
+                            title: 'Old Password not match',
+                            type: 'error',
+                            styling: 'bootstrap3',
+                        });                          
+                    }
                 }, 'json');
             });
         });
@@ -816,12 +879,175 @@ if ($title == FILE_REVIEWS_TITLE) {
 ?>
 
 
+<?php if ($title == RMSA_EMPLOYEE_REGISTRATION_TITLE) {
+    ?>
+    <script>
+        $(document).ready(function () {
 
+            $('#employee_register').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    rmsa_user_last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    },
+                    rmsa_user_employee_code: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your roll number'
+                            }
+                        }
+                    },
+                    rmsa_user_email_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },
+                    rmsa_user_email_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6,
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6,
+                            },
+                            identical: {
+                                field: 'rmsa_user_email_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    },
+                    rmsa_user_DOB: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your date of birth'
+                            }
+                        }
+                    },
+                    rmsa_user_father_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your father name'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
+                $('#employee_register').data('bootstrapValidator').resetForm();
+                // Prevent form submission
+                e.preventDefault();
+                // Get the form instance
+                var $form = $(e.target);
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
+                    if(result['success']=="success"){
+                        if('<?php if(isset($_SESSION['rm_rmsa_user_id'])){ echo '1'; }else{echo '0';} ?>' === '1'){
+                            location.href = "<?php echo RMSA_EMPLOYEE_LIST_LINK ?>";
+                        }                   
+                    }
+                    if(result['success']=="fail"){                    
+                        var d = new PNotify({
+                            title: 'Invalid Username & Password',
+                            type: 'error',
+                            styling: 'bootstrap3',
+                        });                          
+                    }
+                }, 'json');
+            });
+
+
+            $('#rmsa_district').on('change', function () {
+                var districtId = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo LOAD_TEHSIL ?>",
+                    data: {'districtId': districtId},
+                    success: function (res) {
+                        var data = jQuery.parseJSON(res);
+                        $("#sub_district").empty();
+                        $("#rmsa_school").empty();
+
+                        $("#sub_district").append(new Option('---Select---', 0));
+                        $("#rmsa_school").append(new Option('---Select---', 0));
+                        $.each(data, function (index, value) {
+                            $("#sub_district").append(new Option(value.rmsa_sub_district_name, value.rmsa_sub_district_id));
+                        });
+                    }
+                });
+            });
+            $('#sub_district').on('change', function () {
+                var subDistrictId = $(this).val();                
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo LOAD_SCHOOL ?>",
+                    data: {'subDistrictId': subDistrictId},
+                    success: function (res) {
+                        var school = $.parseJSON(res);
+                        $("#rmsa_school").empty();
+                        $("#rmsa_school").append(new Option('---Select---', 0));
+                        $.each(school, function (index, value) {
+                            $("#rmsa_school").append(new Option(value.rmsa_school_title, value.rmsa_school_id));
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+<?php }
+?>
 
 
 <?php if ($title == STUDENT_REGISTRATION_TITLE) {
     ?>
-
     <script>
 
         $(document).ready(function () {
@@ -932,6 +1158,12 @@ if ($title == FILE_REVIEWS_TITLE) {
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {                                        
                     if(result['success']=="success"){
+                        if('<?php if(isset($_SESSION['rm_rmsa_user_id'])){ echo '1'; }else{echo '0';} ?>' === '1'){
+                            location.href = "<?php echo RMSA_STUDENT_LIST_LINK; ?>";
+                        }
+                        if('<?php if(isset($_SESSION['emp_rmsa_user_id'])){ echo '1'; }else{echo '0';} ?>' === '1'){
+                            location.href = "<?php echo EMPLOYEE_STUDENT_LIST_LINK ?>";
+                        }
                         location.href = "<?php echo HOME_LINK ?>";                    
                     }
                     if(result['success']=="fail"){                    

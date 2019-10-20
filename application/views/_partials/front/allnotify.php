@@ -38,6 +38,19 @@ if (isset($_SESSION['registration']) && isset($_SESSION['registration'])) {
                     styling: 'bootstrap3',
                 });
                 <?php echo $_SESSION['registration'] = 0; ?>;
-            }  
+            } 
+            
+             if (<?php
+if (isset($_SESSION['updatedata']) && isset($_SESSION['updatedata'])) {
+    echo $_SESSION['updatedata'];
+}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'Data updated successfully',
+                    type: 'success',
+                    styling: 'bootstrap3',
+                });
+                <?php echo $_SESSION['updatedata'] = 0; ?>;
+            }
 });   
 </script>

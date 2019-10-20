@@ -5,14 +5,11 @@ class Emp_Login extends CI_Model{
     }
     public function emp_login_select($username, $password) {
         $password= md5($password); 
-        $employee = $this->db->query("SELECT * FROM `rmsa_employee_users` WHERE rmsa_user_email_id = '$username'
+        $employee = $this->db->query("SELECT * FROM `rmsa_employee_users` WHERE ( rmsa_user_email_id = '$username' OR rmsa_user_employee_code= '$username')
                                       AND rmsa_user_email_password = '$password' AND rmsa_user_status = 'ACTIVE'");
         $emp_data = $employee->row_array();
         if (isset($emp_data)){            
-            if ($username == $emp_data['rmsa_user_email_id'] && $password == $emp_data['rmsa_user_email_password']) {
-//                if($emp_data['rmsa_employee_login_active']==1){                    
-//                    return 2;
-//                }
+            if ( ($username == $emp_data['rmsa_user_email_id'] || $username == $emp_data['rmsa_user_employee_code'])  && $password == $emp_data['rmsa_user_email_password']) {
                 //Add or update Employee user log
                 $has_already_log = $this->db->query("SELECT * FROM  rmsa_employee_users_log WHERE rmsa_user_id = '{$emp_data['rmsa_user_id']}'");
 
@@ -33,7 +30,7 @@ class Emp_Login extends CI_Model{
         }
         else{
 
-            $get_user = $this->db->query("SELECT * FROM rmsa_employee_users WHERE rmsa_user_email_id = '$username' ");
+            $get_user = $this->db->query("SELECT * FROM rmsa_employee_users WHERE (rmsa_user_email_id = '$username' OR rmsa_user_employee_code= '$username') ");
 
             $check = $get_user->row_array();
             if(is_array($check)){

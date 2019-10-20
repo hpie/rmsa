@@ -44,7 +44,7 @@ class Helper_model extends CI_Model
         else{
             unset($params['user_create_by']);
         }
-
+        
         $result = $this->db->insert('rmsa_student_users',$params);
         $insert_id = $this->db->insert_id();// get last insert id
         if(!empty($insert_id)){

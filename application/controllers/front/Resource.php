@@ -36,6 +36,7 @@ class Resource extends MY_Controller{
     }
 
     public function display_review(){
+//        print_r($_REQUEST);die;
         $review_comments = '';
         if($_REQUEST['file_id']) {
             $limit = $_REQUEST['limit'];
@@ -43,9 +44,7 @@ class Resource extends MY_Controller{
             if (count($comments)) {
                 $i = 0;
                 foreach ($comments AS $key => $comment) {
-
                     $comment_username = $this->Resource_model->get_username($comment['rmsa_user_id'],$comment['rmsa_user_type']);
-
                     $review_comments .= '<div class="row">
                                     <div class="col-md-2">
                                         <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>                   

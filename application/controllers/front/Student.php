@@ -8,19 +8,28 @@ class Student extends MY_Controller{
         $this->load->model('Student_model');
     }
     public function update_profile(){
-        if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){
-            if($this->Student_model->check_current_password($_POST['rmsa_user_current_password'])){
-                $res = $this->Student_model->update_password($_POST);
+        $result=array();               
+        if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){            
+            if($this->Student_model->check_current_password($_POST['rmsa_user_current_password'])){                
+                $res = $this->Student_model->update_password($_POST);                    
                 if($res){
-                    redirect(HOME_LINK);
-                }
+                    $_SESSION['updatedata']=1;
+                    $result['success']="success";                   
+                }                
             }
-        }
-        elseif (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){            
+            else{
+                $result['success']="fail";
+            }
+            echo json_encode($result);die;            
+        }        
+        if (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){            
             $this->Student_model->update_profile($_POST);
-        }
+            $_SESSION['updatedata']=1;
+            $result['success']="success";
+            echo json_encode($result);die;
+        }        
         $this->mViewData['student_data'] =  $this->Student_model->student_details();
-        $this->mViewData['title']=STUDENT_PROFILE_TITLE;
+        $this->mViewData['title']=STUDENT_PROFILE_TITLE;        
         $this->renderFront('front/student_profile');
     }
     public function is_active(){

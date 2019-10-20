@@ -35,13 +35,22 @@ $columns = array(
     array('db' => 'uploaded_file_path', 'dt' =>'uploaded_file_path'),
     array('db' => 'uploaded_file_hasvol', 'dt' =>'uploaded_file_hasvol'),
     array('db' => 'uploaded_file_volorder', 'dt' =>'uploaded_file_volorder'),
+    array('db' => 'uploaded_file_volroot', 'dt' =>'uploaded_file_volroot'),
     array('db' => 'uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount')
 );
 include 'conn.php';
 //echo $_REQUEST['uploaded_file_category'];die;
 $uploaded_file_category=$_REQUEST['uploaded_file_category'];
 $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
-$where =" uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot=0 AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+
+
+if(empty($uploaded_file_tag)){
+    $where =" uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot=0 AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";    
+}
+else{
+    $where =" uploaded_file_category = '$uploaded_file_category' AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+}
+
 
 //if(!empty($_REQUEST['search']['value'])){
 //    $value=$_REQUEST['search']['value'];

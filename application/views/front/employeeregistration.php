@@ -6,11 +6,10 @@
         opacity: 15.9;
     }
 </style>
-
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
         <h1 class="heading">Registration of Students in the RMSA Portal</h1>
-        <form method="post" id="student_register" class="form-horizontal border p-2" action="<?php echo STUDENT_REGISTER_LINK; ?>">
+        <form method="post" id="employee_register" class="form-horizontal border p-2" action="<?php echo RMSA_EMPLOYEE_REGISTER_LINK; ?>">
             <h2 class="second-heading">General Information</h2>
             <div class="form-group">
                 <div class="row">
@@ -36,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_nick_name">Nick Name: </label>
@@ -47,9 +46,9 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_roll_number">Roll Number: </label>
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_employee_code">Employee Code: </label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" name="rmsa_user_roll_number" id="rmsa_user_roll_number" placeholder="Enter Roll Number">
+                        <input type="text" class="form-control" name="rmsa_user_employee_code" id="rmsa_user_employee_code" placeholder="Enter Employee Code">
                     </div>
                 </div>
             </div>
@@ -110,49 +109,46 @@
                 </div>
             </div>
 
-            <?php
-            if(!isset($_SESSION['emp_rmsa_user_id'])){?>
-                 <div class="form-group">
+
+            <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Distt:</label>
                     <div class="col-sm-8 col-xs-12">
                         <select class="form-control" id="rmsa_district" name="rmsa_district_id">
                             <option class="" value="" disabled selected>------ Select ------</option>
                             <?php
-                            if(!empty($distResult)){
-                                foreach ($distResult as $row){
+                            if (!empty($distResult)) {
+                                foreach ($distResult as $row) {
                                     ?>
-            <option value="<?php echo $row['rmsa_district_id']; ?>"><?php echo $row['rmsa_district_name']; ?></option>
-            <?php
-            }
-            }
-            ?>
-            </select>
-    </div>
-</div>
-</div>
-<div class="form-group">
-    <div class="row">
-        <label class="control-label col-sm-4 col-xs-12" for="rmsa_sub_district_id">Tehsil:</label>
-        <div class="col-sm-8 col-xs-12">
-            <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
-                <option value="0">---Select---</option>
-            </select>
-        </div>
-    </div>
-</div>
-<div class="form-group">
-    <div class="row">
-        <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
-        <div class="col-sm-8 col-xs-12">
-            <select class="form-control" id="rmsa_school" name="rmsa_school_id">
-                <option value="0">---Select---</option>
-            </select>
-        </div>
-    </div>
-</div>
-           <?php }
-            ?>
+                                    <option value="<?php echo $row['rmsa_district_id']; ?>"><?php echo $row['rmsa_district_name']; ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_sub_district_id">Tehsil:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
+                            <option value="0">---Select---</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control" id="rmsa_school" name="rmsa_school_id">
+                            <option value="0">---Select---</option>
+                        </select>
+                    </div>
+                </div>
+            </div>          
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_class">Class:</label>
@@ -185,22 +181,22 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
+<!--            <div class="form-group">
                 <div class="row">
                     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                     <script>function enableRegister() {
-                        $("#btnRegister").removeClass('btn_disabled');
-                        document.getElementById("btnRegister").disabled = false;
-                    }</script>
+                            $("#btnRegister").removeClass('btn_disabled');
+                            document.getElementById("btnRegister").disabled = false;
+                        }</script>
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp"></label>
                     <div class="col-sm-8 col-xs-12">
                         <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableRegister"></div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="form-group">
                 <div class="m-auto text-center">    
-                    <button type="submit" class="btn primary_btn btn_disabled"  disabled="true" id="btnRegister">Register</button>
+                    <button type="submit" class="btn primary_btn"  id="btnRegister">Register</button>
                 </div>
             </div>
         </form>
