@@ -254,7 +254,7 @@ class SSP {
 
         if(!empty($result)){
             foreach ($result as $row){
-
+                $stud_id=$row['rmsa_user_id'];
                 $title = 'Click to deactivate student';
                 $class = 'btn_approve_reject btn btn-success';
                 $text = 'Active';
@@ -268,6 +268,7 @@ class SSP {
                 }
                 
                 $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
+                $row['rmsa_user_edit'] = "<a href='".BASE_URL."/employee-update-student-profile/$stud_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";
                 $row['index']='';
                 array_push($resData, $row); 
             }

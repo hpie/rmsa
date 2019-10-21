@@ -116,6 +116,7 @@ $route['employee-resources']       = 'front/FileDw';
 $route['is-employee-active']       = 'front/EmpLogin/isActiveEmployee';
 $route['employee-student']         = 'front/Employee/view_student';
 $route['student-approve']          = 'front/Employee/approve_student';
+$route['employee-update-student-profile/(:any)'] = 'front/Employee/update_student_profile/$1';
 
 
 //all student routes

@@ -482,7 +482,8 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_gender"},
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
-                    {"data": "rmsa_user_status"}
+                    {"data": "rmsa_user_status"},
+                    {"data": "rmsa_user_edit"}
                 ]
             });
             $(document).on('click', '.btn_approve_reject', function () {
@@ -672,13 +673,13 @@ $this->load->view('_partials/front/allnotify');
 
                 var user_status = 'ACTIVE';
 
-                if(status == 1)
+                if(status === 1)
                     user_status = 'REMOVED';
 
                 var data = {
                     'rmsa_user_id' : self.data('id'),
                     'user_status'  : user_status
-                }
+                };
 
                 $.ajax({
                     type: "POST",
@@ -694,7 +695,7 @@ $this->load->view('_partials/front/allnotify');
                             var text = 'Active';
                             var isactive = 1;
 
-                            if(status == 1){
+                            if(status === 1){
                                 title = 'Click to active student';
                                 class_ = 'btn_approve_reject btn btn-danger';
                                 text  = 'Inactive';
@@ -830,6 +831,128 @@ $this->load->view('_partials/front/allnotify');
                             title: 'Old Password not match',
                             type: 'error',
                             styling: 'bootstrap3',
+                        });                          
+                    }
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>
+    
+<?php if ($title == EMPLOYEE_STUDENT_PROFILE_TITLE) {
+    ?>
+    <script>
+        $(document).ready(function () {
+            $('#frm_general_info').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    rmsa_user_last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_general_info').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
+                    if(result['success']==="success"){                        
+                            location.reload();                                        
+                    }
+                }, 'json');
+            });
+
+            $('#frm_change_password').bootstrapValidator({               
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_new_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6
+                            },
+                            identical: {
+                                field: 'rmsa_user_new_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_change_password').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if(result['success']==="success"){                        
+                            location.reload();                                           
+                    }
+                    if(result['success']==="fail"){                    
+                        var d = new PNotify({
+                            title: 'Old Password not match',
+                            type: 'error',
+                            styling: 'bootstrap3'
                         });                          
                     }
                 }, 'json');
