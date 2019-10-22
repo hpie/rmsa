@@ -22,9 +22,9 @@
                 <th>Group</th>
                 <th>Category</th>                                
                 <th>Child</th>
-                <th>Reviews</th>
-                <th>Description</th>
+                <th>Reviews</th>                
                 <th>Action</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tfoot>
@@ -36,8 +36,9 @@
                 <th>Group</th>
                 <th>Category</th>                               
                 <th>Child</th>
-                <th>Reviews</th>
+                <th>Reviews</th>                
                 <th>Action</th>
+                <th>Description</th>
             </tr>
         </tfoot>
     </table> 
