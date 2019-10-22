@@ -4,7 +4,7 @@
     <div class="middle-area">
         <h1 class="heading">Update Uploaded Files in the RMSA Portal</h1>
 
-        <form method="post" id="frm_general_info" class="form-horizontal border p-2" action="<?php echo STUDENT_UPDATE_PROFILE_LINK ?>">
+        <form method="post" id="frm_general_info" class="form-horizontal border p-2" action="#">
             <h2 class="second-heading">File Information</h2>
 
             <div class="form-group">
