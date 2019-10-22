@@ -481,7 +481,7 @@ class SSP {
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
                             $row['extModel']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";
                             $row['child']="-----No Hasvol-----";
-                        } 
+                        }
                         if($i>1){
                         $row['ext'].='<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal'.$row['rmsa_uploaded_file_id'].'">View More</button>
                         <div class="modal" id="myModal'.$row['rmsa_uploaded_file_id'].'" tabindex="-1" role="dialog">
@@ -504,6 +504,9 @@ class SSP {
                             </div>';
                             }
                         $row['index']='';
+                        $fileId = $row['rmsa_uploaded_file_id'];
+                        $row['action'] = "<a href='".BASE_URL."/view-file/$fileId' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";
+
                         array_push($resData, $row);
                     }  
                 }

@@ -204,7 +204,8 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "uploaded_file_category"},                                     
                     {"data": "child"},
                     {"data": "ratting"},
-                    {"data": "uploaded_file_desc"}
+                    {"data": "uploaded_file_desc"},
+                    {"data": "action"},
                 ]
             });
             table.columns().eq(0).each( function ( colIdx ) { 

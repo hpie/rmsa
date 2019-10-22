@@ -24,6 +24,7 @@
                 <th>Child</th>
                 <th>Reviews</th>
                 <th>Description</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tfoot>
@@ -36,7 +37,7 @@
                 <th>Category</th>                               
                 <th>Child</th>
                 <th>Reviews</th>
-                <th>Description</th>
+                <th>Action</th>
             </tr>
         </tfoot>
     </table> 
