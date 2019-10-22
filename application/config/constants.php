@@ -113,6 +113,10 @@ define('CI_BOOTSTRAP_VERSION',		'Build 20170324');	// will follow semantic versi
 
 //define all link heare for menu and other links
 
+//All uploaded file constant
+define('FILE_UPDATE_LINK',BASE_URL."/update-file");
+
+
 //All student constant
 define('STUDENT_LOGIN_LINK',BASE_URL."/student-login");
 define('STUDENT_LOGOUT_LINK',BASE_URL."/student-logout");
