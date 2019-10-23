@@ -32,7 +32,7 @@
                                         <?php }
                                         else{
                                             ?>                                       
-                                        <li><a href="<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>">Update Profile</a></li>                                        
+                                        <li><a href="<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>">Change Password</a></li>
                                         <?php
                                         }
                                         ?>                                                                                
