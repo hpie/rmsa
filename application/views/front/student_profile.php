@@ -4,6 +4,7 @@
     <div class="middle-area">
         <h1 class="heading">Update Profile of Students in the RMSA Portal</h1>
 
+        <?php if(!isset($_SESSION['st_rmsa_user_id'])){ ?>
         <form method="post" id="frm_general_info" class="form-horizontal border p-2" action="<?php echo STUDENT_UPDATE_PROFILE_LINK ?>">
             <h2 class="second-heading">General Information</h2>
 
@@ -48,6 +49,7 @@
                 </div>
             </div>
         </form>
+        <?php }?>
 
 
         <form method="post" id="frm_change_password" class="form-horizontal border p-2" action="<?php echo STUDENT_UPDATE_PROFILE_LINK ?>">
