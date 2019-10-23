@@ -29,5 +29,20 @@ class File_Upload extends CI_Model{
         }
         return false;
     }
+
+    public function update_file($fileId,$params){
+
+        $uploaded_file_title   = $params['uploaded_file_title'];
+        $uploaded_file_desc    = $params['uploaded_file_desc'];
+        $uploaded_file_tag     = $params['uploaded_file_tag'];
+
+
+        $result = $this->db->query("UPDATE rmsa_uploaded_files
+                              SET uploaded_file_title  = '".$uploaded_file_title."',
+                                  uploaded_file_desc = '".$uploaded_file_desc."',  
+                                  uploaded_file_tag   = '".$uploaded_file_tag."'  
+                              WHERE rmsa_uploaded_file_id = '".$fileId."'");
+        return $result;//return true/false
+    }
 }
 ?>

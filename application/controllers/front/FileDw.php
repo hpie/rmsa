@@ -16,8 +16,20 @@ class FileDw extends MY_Controller {
 
     public function view_file($fileId){
         $this->mViewData['title']='- View File';
+        $this->mViewData['fileId']=$fileId;
         $this->mViewData['file_data'] =$this->File_upload->getFileDetails($fileId);
         $this->renderFront('front/file_edit');
+    }
+
+    public function update_file($fileId){
+        if($_REQUEST['uploaded_file_title']){
+            $res = $this->File_upload->update_file($fileId,$_POST);
+            if($res){
+                $_SESSION['update_file']=1;
+                $result['success']="success";
+            }
+        }
+        $this->view_file($fileId);
     }
 }
 ?>

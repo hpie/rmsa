@@ -52,5 +52,18 @@ if (isset($_SESSION['updatedata']) && isset($_SESSION['updatedata'])) {
                 });
                 <?php echo $_SESSION['updatedata'] = 0; ?>;
             }
+
+    if (<?php
+        if (isset($_SESSION['update_file']) && isset($_SESSION['update_file'])) {
+            echo $_SESSION['update_file'];
+        }
+        ?> == 1) {
+        var d = new PNotify({
+            title: 'File updated successfully',
+            type: 'success',
+            styling: 'bootstrap3',
+        });
+        <?php echo $_SESSION['update_file'] = 0; ?>;
+    }
 });   
 </script>
