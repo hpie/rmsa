@@ -49,6 +49,15 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_DOB">DOB: </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="date" class="form-control" name="rmsa_user_DOB" id="rmsa_user_DOB" value="<?=$student_data['rmsa_user_DOB']?>">
+                    </div>
+                </div>
+            </div>
+
 
             <div class="form-group">
                 <div class="m-auto text-center">
