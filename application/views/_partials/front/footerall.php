@@ -1147,6 +1147,33 @@ $this->load->view('_partials/front/allnotify');
                                 message: 'Please supply your last name'
                             }
                         }
+                    },
+                    rmsa_user_employee_code: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your Employee code'
+                            }
+                        }
+                    },
+                    rmsa_user_email_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },
+                    rmsa_user_DOB: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your date of birth'
+                            }
+                        }
                     }
                 }
             }).on('success.form.bv', function (e) {
