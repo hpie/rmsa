@@ -1083,6 +1083,43 @@ $this->load->view('_partials/front/allnotify');
     ?>
     <script>
         $(document).ready(function () {
+
+            $('#rmsa_district').on('change', function () {
+                var districtId = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo LOAD_TEHSIL ?>",
+                    data: {'districtId': districtId},
+                    success: function (res) {
+                        var data = jQuery.parseJSON(res);
+                        $("#sub_district").empty();
+                        $("#rmsa_school").empty();
+
+                        $("#sub_district").append(new Option('---Select---', 0));
+                        $("#rmsa_school").append(new Option('---Select---', 0));
+                        $.each(data, function (index, value) {
+                            $("#sub_district").append(new Option(value.rmsa_sub_district_name, value.rmsa_sub_district_id));
+                        });
+                    }
+                });
+            });
+            $('#sub_district').on('change', function () {
+                var subDistrictId = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo LOAD_SCHOOL ?>",
+                    data: {'subDistrictId': subDistrictId},
+                    success: function (res) {
+                        var school = $.parseJSON(res);
+                        $("#rmsa_school").empty();
+                        $("#rmsa_school").append(new Option('---Select---', 0));
+                        $.each(school, function (index, value) {
+                            $("#rmsa_school").append(new Option(value.rmsa_school_title, value.rmsa_school_id));
+                        });
+                    }
+                });
+            });
+
             $('#frm_general_info').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
