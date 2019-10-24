@@ -77,12 +77,14 @@ class Employee_model extends CI_Model {
         $middle_name = $params['rmsa_user_middle_name'];
         $last_name = $params['rmsa_user_last_name'];
         $rmsa_user_employee_code = $params['rmsa_user_employee_code'];
+        $rmsa_user_email_id = $params['rmsa_user_email_id'];
 
         $result = $this->db->query("UPDATE rmsa_employee_users
                               SET rmsa_user_first_name  = '" . $first_name . "',
                                   rmsa_user_middle_name = '" . $middle_name . "',  
                                   rmsa_user_last_name   = '" . $last_name . "',  
-                                  rmsa_user_employee_code   = '" . $rmsa_user_employee_code . "'  
+                                  rmsa_user_employee_code   = '" . $rmsa_user_employee_code . "' , 
+                                  rmsa_user_email_id   = '" . $rmsa_user_email_id . "' 
                               WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
         return $result; //return true/false
     }

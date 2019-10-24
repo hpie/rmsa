@@ -40,6 +40,15 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_email_id">Email: </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" value="<?=$student_data['rmsa_user_email_id']?>" name="rmsa_user_email_id" id="rmsa_user_email_id" placeholder="Enter Employee Email">
+                    </div>
+                </div>
+            </div>
+
 
             <div class="form-group">
                 <div class="m-auto text-center">
