@@ -114,10 +114,13 @@ class Rmsa extends MY_Controller
             $_SESSION['updatedata']=1;
             $result['success']="success";
             echo json_encode($result);die;
-        }       
-        $this->mViewData['student_data'] = $this->Employee_model->employee_details($emp_id);
+        }
+
+        $employee_result =  $this->Employee_model->employee_details($emp_id);
+        $this->mViewData['student_data'] = $employee_result;
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
-        $this->mViewData['title']=RMSA_EMPLOYEE_PROFILE_TITLE;        
+        $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$employee_result['rmsa_district_id']));
+        $this->mViewData['title']=RMSA_EMPLOYEE_PROFILE_TITLE;
         $this->renderFront('front/rmsa_employee_profile');
     }
     

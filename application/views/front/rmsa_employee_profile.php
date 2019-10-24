@@ -1,4 +1,5 @@
 
+
 <!-- content -->
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
@@ -75,6 +76,31 @@
                                     ?>
 
                                     <option value="<?php echo $row['rmsa_district_id']; ?>" <?=$selected ?>><?php echo $row['rmsa_district_name']; ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Tehsil:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
+                            <option value="0">---Select---</option>
+                            <?php
+                            if(!empty($tehsilResult)){
+                                foreach ($tehsilResult as $row){
+
+                                    $selected = '';
+                                    if($student_data['rmsa_sub_district_id'] == $row['rmsa_sub_district_id'] ){
+                                        $selected = 'selected';
+                                    }
+                                    ?>
+
+                                    <option value="<?php echo $row['rmsa_sub_district_id']; ?>" <?=$selected ?>><?php echo $row['rmsa_sub_district_name']; ?></option>
                                     <?php
                                 }
                             }
