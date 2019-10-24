@@ -108,8 +108,7 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "ext"},
                     {"data": "uploaded_file_type"},
                     {"data": "uploaded_file_group"},
-                    {"data": "uploaded_file_category"},                                     
-                    {"data": "child"},
+                    {"data": "uploaded_file_category"},                                                         
                     {"data": "ratting"},
                     {"data": "uploaded_file_desc"}
                 ]
@@ -510,7 +509,6 @@ $this->load->view('_partials/front/allnotify');
                     url: "<?php echo STUDENT_APPROVE ?>",
                     data: data,
                     success: function (res) {
-
                         var res = $.parseJSON(res);
                         if (res.suceess) {
 
@@ -544,7 +542,7 @@ $this->load->view('_partials/front/allnotify');
 <?php if ($title == RMSAE_STUDENT_LIST_TITLE) {
     ?>
     <script>        
-        $(document).ready(function () {
+        $(document).ready(function () {           
             $('#example').DataTable({
                 
                  responsive: {
@@ -573,7 +571,8 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_gender"},
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
-                    {"data": "rmsa_user_status"}
+                    {"data": "rmsa_user_status"},
+                    {"data": "rmsa_user_edit"}
                 ]
             });
             $(document).on('click', '.btn_approve_reject', function () {
@@ -586,8 +585,9 @@ $this->load->view('_partials/front/allnotify');
 
                 var user_status = 'ACTIVE';
 
-                if(status == 1)
+                if(status == 1){
                     user_status = 'REMOVED';
+                }
 
                 var data = {
                     'rmsa_user_id' : self.data('id'),
@@ -596,7 +596,7 @@ $this->load->view('_partials/front/allnotify');
 
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo STUDENT_APPROVE ?>",
+                    url: "<?php echo RMSA_STUDENT_ACTIVE ?>",
                     data: data,
                     success: function (res) {
 
@@ -604,13 +604,13 @@ $this->load->view('_partials/front/allnotify');
                         if (res.suceess) {
 
                             var title = 'Click to deactivate student';
-                            var class_ = 'btn_approve_reject btn btn-success';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
                             var text = 'Active';
                             var isactive = 1;
 
                             if(status == 1){
                                 title = 'Click to active student';
-                                class_ = 'btn_approve_reject btn btn-danger';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
                                 text  = 'Inactive';
                                 isactive = 0;
                             }
@@ -661,22 +661,23 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_gender"},
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
-                    {"data": "rmsa_user_status"}
+                    {"data": "rmsa_user_status"},
+                    {"data": "rmsa_user_edit"}
                 ]
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-                var status = self.attr('data-status');
-
+                var status = self.attr('data-status');                
                 self.attr('disabled','disabled');
 
                 console.log('status',status);
 
                 var user_status = 'ACTIVE';
 
-                if(status === 1)
-                    user_status = 'REMOVED';
-
+                if(status == 1){
+                    user_status = 'REMOVED';   
+                }
+                alert(user_status);
                 var data = {
                     'rmsa_user_id' : self.data('id'),
                     'user_status'  : user_status
@@ -684,26 +685,22 @@ $this->load->view('_partials/front/allnotify');
 
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo STUDENT_APPROVE ?>",
+                    url: "<?php echo RMSA_EMPLOYEE_ACTIVE ?>",
                     data: data,
                     success: function (res) {
-
                         var res = $.parseJSON(res);
                         if (res.suceess) {
-
                             var title = 'Click to deactivate student';
-                            var class_ = 'btn_approve_reject btn btn-success';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
                             var text = 'Active';
                             var isactive = 1;
-
-                            if(status === 1){
+                            if(status == 1){
                                 title = 'Click to active student';
-                                class_ = 'btn_approve_reject btn btn-danger';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
                                 text  = 'Inactive';
                                 isactive = 0;
                             }
-
-                            self.removeClass().addClass(class_);
+                           self.removeClass().addClass(class_);
                            self.attr({
                                'data-status' :isactive,
                                'title':title
@@ -841,6 +838,248 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
     
 <?php if ($title == EMPLOYEE_STUDENT_PROFILE_TITLE) {
+    ?>
+    <script>
+        $(document).ready(function () {
+            $('#frm_general_info').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    rmsa_user_last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_general_info').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
+                    if(result['success']==="success"){                        
+                            location.reload();                                        
+                    }
+                }, 'json');
+            });
+
+            $('#frm_change_password').bootstrapValidator({               
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_new_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6
+                            },
+                            identical: {
+                                field: 'rmsa_user_new_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_change_password').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if(result['success']==="success"){                        
+                            location.reload();                                           
+                    }
+                    if(result['success']==="fail"){                    
+                        var d = new PNotify({
+                            title: 'Old Password not match',
+                            type: 'error',
+                            styling: 'bootstrap3'
+                        });                          
+                    }
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>
+    <?php if ($title == RMSA_STUDENT_PROFILE_TITLE) {
+    ?>
+    <script>
+        $(document).ready(function () {
+            $('#frm_general_info').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    rmsa_user_last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_general_info').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
+                    if(result['success']==="success"){                        
+                            location.reload();                                        
+                    }
+                }, 'json');
+            });
+
+            $('#frm_change_password').bootstrapValidator({               
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_new_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6
+                            },
+                            identical: {
+                                field: 'rmsa_user_new_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_change_password').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if(result['success']==="success"){                        
+                            location.reload();                                           
+                    }
+                    if(result['success']==="fail"){                    
+                        var d = new PNotify({
+                            title: 'Old Password not match',
+                            type: 'error',
+                            styling: 'bootstrap3'
+                        });                          
+                    }
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>
+    <?php if ($title == RMSA_EMPLOYEE_PROFILE_TITLE) {
     ?>
     <script>
         $(document).ready(function () {

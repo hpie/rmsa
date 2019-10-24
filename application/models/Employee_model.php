@@ -14,7 +14,7 @@ class Employee_model extends CI_Model {
         }
     }
 
-    public function check_current_password($current_password,$stud_id) {
+    public function check_current_password($current_password, $stud_id) {
         $current_password = md5($current_password);
         $rmsa_user_id = $stud_id;
         $check = $this->db->query("SELECT * FROM rmsa_student_users
@@ -29,7 +29,7 @@ class Employee_model extends CI_Model {
         return false; //not matched
     }
 
-    public function update_password($params,$stud_id) {
+    public function update_password($params, $stud_id) {
         $new_password = md5($params['rmsa_user_new_password']);
         $rmsa_user_id = $stud_id;
         $result = $this->db->query("UPDATE rmsa_student_users
@@ -38,7 +38,7 @@ class Employee_model extends CI_Model {
         return $result; //return true/false
     }
 
-    public function update_profile($params,$stud_id) {
+    public function update_profile($params, $stud_id) {
         $rmsa_user_id = $stud_id;
         $first_name = $params['rmsa_user_first_name'];
         $middle_name = $params['rmsa_user_middle_name'];
@@ -53,13 +53,46 @@ class Employee_model extends CI_Model {
                               WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
         return $result; //return true/false
     }
-     public function student_details($stud_id){
-            $rmsa_user_id = $stud_id;
-            $data = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_id = '".$rmsa_user_id."'");
-            $student_data = $data->row_array();
-            if(isset($student_data)){
-                return $student_data;
-            }
+
+    public function student_details($stud_id) {
+        $rmsa_user_id = $stud_id;
+        $data = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
+        $student_data = $data->row_array();
+        if (isset($student_data)) {
+            return $student_data;
         }
+    }
+
+    public function update_password_employee($params, $emp_id) {
+        $new_password = md5($params['rmsa_user_new_password']);
+        $rmsa_user_id = $emp_id;
+        $result = $this->db->query("UPDATE rmsa_employee_users
+                          SET rmsa_user_email_password = '" . $new_password . "'
+                          WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
+        return $result; //return true/false
+    }
+    public function update_profile_employee($params, $emp_id) {
+        $rmsa_user_id = $emp_id;
+        $first_name = $params['rmsa_user_first_name'];
+        $middle_name = $params['rmsa_user_middle_name'];
+        $last_name = $params['rmsa_user_last_name'];
+        $nick_name = $params['rmsa_user_nick_name'];
+
+        $result = $this->db->query("UPDATE rmsa_employee_users
+                              SET rmsa_user_first_name  = '" . $first_name . "',
+                                  rmsa_user_middle_name = '" . $middle_name . "',  
+                                  rmsa_user_last_name   = '" . $last_name . "',  
+                                  rmsa_user_nick_name   = '" . $nick_name . "'  
+                              WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
+        return $result; //return true/false
+    }
+    public function employee_details($stud_id) {
+        $rmsa_user_id = $stud_id;
+        $data = $this->db->query("SELECT * FROM rmsa_employee_users WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
+        $student_data = $data->row_array();
+        if (isset($student_data)) {
+            return $student_data;
+        }
+    }
 
 }

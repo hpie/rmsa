@@ -134,6 +134,10 @@ define('RMSA_EMPLOYEE_LIST_LINK',BASE_URL."/rmsa-employee");
 define('RMSA_RESOURCES_LIST_LINK',BASE_URL."/rmsa-resources");
 define('RMSA_STUDENT_REGISTER_LINK',BASE_URL."/rmsa-student-registration");
 define('RMSA_EMPLOYEE_REGISTER_LINK',BASE_URL."/employee-registration");
+define('RMSA_EMPLOYEE_ACTIVE',BASE_URL."/rmsa-employee-active");
+define('RMSA_STUDENT_ACTIVE',BASE_URL."/rmsa-student-active");
+define('RMSA_STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-student-profile/");
+define('RMSA_EMPLOYEE_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-employee-profile/");
 
 
 //All employee constant
@@ -179,6 +183,8 @@ define('RMSAE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaStudent"
 define('RMSAE_EMPLOYEE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaEmployee");
 define('RMSA_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaResource");
 define('RMSA_EMPLOYEE_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Employee Registration");
+define('RMSA_STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Student Profile");
+define('RMSA_EMPLOYEE_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Employee Profile");
 
 define('STUDENT_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Student Registration");
 

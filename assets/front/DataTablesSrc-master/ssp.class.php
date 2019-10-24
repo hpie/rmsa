@@ -254,7 +254,7 @@ class SSP {
 
         if(!empty($result)){
             foreach ($result as $row){
-                $stud_id=$row['rmsa_user_id'];
+                $stud_id=$row['rmsa_user_id'];                
                 $title = 'Click to deactivate student';
                 $class = 'btn_approve_reject btn btn-success';
                 $text = 'Active';
@@ -282,8 +282,8 @@ class SSP {
 			"recordsFiltered" => intval( $recordsFiltered ),
 			"data" => $resData
 		);
-	}   
-        static function rmsa_student_list ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	}  
+         static function rmsa_student_list ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{
 		$bindings = array();
 		$db = self::db( $conn );
@@ -326,19 +326,86 @@ class SSP {
 
         if(!empty($result)){
             foreach ($result as $row){
-//                $title = 'Click to deactivate student';
-//                $class = 'btn_approve_reject btn btn-success';
-//                $text = 'Active';
-//                $isactive = 1;
-//
-//                if($row['rmsa_user_status'] == 'REMOVED'){
-//                    $title = 'Click to active student';
-//                    $class = 'btn_approve_reject btn btn-danger';
-//                    $text  = 'Inactive';
-//                    $isactive = 0;
-//                }
-//                
-//                $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
+                $stud_id=$row['rmsa_user_id'];  
+                $title = 'Click to deactivate student';
+                $class = 'btn_approve_reject btn btn-success btn-xs';
+                $text = 'Active';
+                $isactive = 1;
+                if($row['rmsa_user_status'] == 'REMOVED'){
+                    $title = 'Click to active student';
+                    $class = 'btn_approve_reject btn btn-danger btn-xs';
+                    $text  = 'Inactive';
+                    $isactive = 0;
+                }                
+                $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
+                $row['rmsa_user_edit'] = "<a href='".BASE_URL."/rmsa-update-student-profile/$stud_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";
+                $row['index']='';
+                array_push($resData, $row); 
+            }
+        }
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	} 
+        static function rmsa_employee_list ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	{
+		$bindings = array();
+		$db = self::db( $conn );
+		// Build the SQL query string from the request
+		$limit = self::limit( $request, $columns );
+		$order = self::order( $request, $columns );
+		$where = self::filter( $request, $columns, $bindings );
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                }       
+		// Main query to actually get the data
+		$data = self::sql_exec( $db, $bindings,
+			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
+			 FROM `$table`
+			 $where
+			 $order
+			 $limit"
+		);                                                             
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT(`{$primaryKey}`)
+			 FROM   `$table`
+			 $where"
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT(`{$primaryKey}`)
+			 FROM   `$table`"
+		);
+		$recordsTotal = $resTotalLength[0][0];
+
+        $result=self::data_output($columns,$data);
+
+        $resData=array();
+
+        if(!empty($result)){
+            foreach ($result as $row){
+                $stud_id=$row['rmsa_user_id']; 
+                $title = 'Click to deactivate employee';
+                $class = 'btn_approve_reject btn btn-success btn-xs';
+                $text = 'Active';
+                $isactive = 1;
+                if($row['rmsa_user_status'] == 'REMOVED'){
+                    $title = 'Click to active employee';
+                    $class = 'btn_approve_reject btn btn-danger btn-cs';
+                    $text  = 'Inactive';
+                    $isactive = 0; 
+                }                
+                $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
+                $row['rmsa_user_edit'] = "<a href='".BASE_URL."/rmsa-update-employee-profile/$stud_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";
                 $row['index']='';
                 array_push($resData, $row); 
             }
@@ -647,12 +714,12 @@ class SSP {
                                                      
                             $row['ext'].=$str;
 //                            $resChild=self::data_output($columns,$dataChild);
-                            $row['child']="<a class='btn btn-success btn_approve btn-xs' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";
+//                            $row['child']="<a class='btn btn-success btn_approve btn-xs' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";
                         }
                         else{ 
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
                             $row['extModel']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";
-                            $row['child']="-----No Hasvol-----";
+//                            $row['child']="-----No Hasvol-----";
                         } 
                         if($i>1){
                         $row['ext'].='<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal'.$row['rmsa_uploaded_file_id'].'">View More</button>
@@ -737,12 +804,11 @@ class SSP {
                     if(!empty($request['uploaded_file_tag'])){                           
                         if(!empty($row['uploaded_file_volroot'])){                               
                             $volrootid=$row['uploaded_file_volroot'];     
-
                             $data = self::sql_exec( $db, $bindings,
                                     "SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
                                      FROM `rmsa_uploaded_files`
                                      WHERE rmsa_uploaded_file_id = '$volrootid'
-                                    "
+                                     AND uploaded_file_status='ACTIVE'"
                             ); 
                             $row=$data[0];                               
                         }
@@ -750,7 +816,7 @@ class SSP {
                 $rmsa_file_id = $row['rmsa_uploaded_file_id'];
                 $reviews = self::sql_exec( $db,
                     "SELECT AVG(rmsa_file_rating) as overall_rating FROM rmsa_file_reviews
-                            WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}' AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");
+                    WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}' AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");
                 $star = '';
                 if(count($reviews)){
                     $rating = $reviews[0]['overall_rating'];
@@ -787,7 +853,7 @@ class SSP {
                     $dataChild = self::sql_exec( $db, $bindings,
                         "SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
                                      FROM `$table`
-                                     WHERE uploaded_file_volroot=".$row['rmsa_uploaded_file_id']." ORDER BY uploaded_file_volorder ASC"
+                                     WHERE uploaded_file_volroot=".$row['rmsa_uploaded_file_id']." AND uploaded_file_status='ACTIVE' ORDER BY uploaded_file_volorder ASC"
                     );
                     $resultChild=self::data_output($columns,$dataChild);
                     $strTdAmodel='';

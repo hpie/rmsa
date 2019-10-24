@@ -14,6 +14,7 @@
             <th>DOB</th>
             <th>Email</th>
             <th>Status</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tfoot>
@@ -25,6 +26,7 @@
             <th>DOB</th>
             <th>Email</th>
             <th>Status</th>
+            <th>Action</th>
         </tr>
         </tfoot>
     </table>

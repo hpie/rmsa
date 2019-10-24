@@ -26,14 +26,12 @@ class Employee extends MY_Controller
     }
     public function update_student_profile($stud_id){
         $result=array();               
-        if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){            
-            if($this->Employee_model->check_current_password($_POST['rmsa_user_current_password'],$stud_id)){                
-                $res = $this->Employee_model->update_password($_POST,$stud_id);                    
-                if($res){
-                    $_SESSION['updatedata']=1;
-                    $result['success']="success";                   
-                }                
-            }
+        if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
+            $res = $this->Employee_model->update_password($_POST,$stud_id);                    
+            if($res){
+                $_SESSION['updatedata']=1;
+                $result['success']="success";                   
+            }                            
             else{
                 $result['success']="fail";
             }

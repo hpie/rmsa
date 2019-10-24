@@ -58,7 +58,7 @@ include 'conn.php';
  */
 require( 'ssp.class.php' );
 echo json_encode(
-    SSP::rmsa_student_list($_REQUEST, $sql_details, $table, $primaryKey, $columns)
+    SSP::rmsa_employee_list($_REQUEST, $sql_details, $table, $primaryKey, $columns)
 );
 
 

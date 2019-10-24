@@ -21,7 +21,7 @@
                 <th>Type</th>
                 <th>Group</th>
                 <th>Category</th>                                
-                <th>Child</th>
+<!--                <th>Child</th>-->
                 <th>Reviews</th>
                 <th>Description</th>
             </tr>
@@ -34,7 +34,7 @@
                 <th>Type</th>
                 <th>Group</th>
                 <th>Category</th>                               
-                <th>Child</th>
+                <!--<th>Child</th>-->
                 <th>Reviews</th>
                 <th>Description</th>
             </tr>

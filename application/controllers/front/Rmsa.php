@@ -8,6 +8,7 @@ class Rmsa extends MY_Controller
         $this->session->sessionCheckRmsa();
         $this->load->model('Rmsa_model');
         $this->load->model('Helper_model');
+        $this->load->model('Employee_model');
     }
     public function view_student(){       
         $this->mViewData['title']= RMSAE_STUDENT_LIST_TITLE;
@@ -16,7 +17,7 @@ class Rmsa extends MY_Controller
     public function view_employee(){       
         $this->mViewData['title']= RMSAE_EMPLOYEE_LIST_TITLE;
         $this->renderFront('front/rmsa_employee');
-    }
+    }    
     public function create_employee(){
         $_SESSION['exist_email'] = 0;
         if(isset($_POST['rmsa_user_first_name'])){
@@ -58,5 +59,76 @@ class Rmsa extends MY_Controller
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['title']=RMSA_EMPLOYEE_REGISTRATION_TITLE;
         $this->renderFront('front/employeeregistration');
+    }
+    public function active_employee(){
+        if(isset($_REQUEST['rmsa_user_id'])){
+            $res = $this->Rmsa_model->active_employee($_REQUEST);
+            if($res){
+                $data = array(
+                    'suceess' => true
+                );
+            }
+            echo json_encode($data);
+        }
+    }
+    
+    public function update_student_profile($stud_id){
+        $result=array();               
+        if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
+            $res = $this->Employee_model->update_password($_POST,$stud_id);                    
+            if($res){
+                $_SESSION['updatedata']=1;
+                $result['success']="success";                   
+            }                            
+            else{
+                $result['success']="fail";
+            }
+            echo json_encode($result);die;            
+        }        
+        if (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){            
+            $this->Employee_model->update_profile($_POST,$stud_id);
+            $_SESSION['updatedata']=1;
+            $result['success']="success";
+            echo json_encode($result);die;
+        }       
+        $this->mViewData['student_data'] = $this->Employee_model->student_details($stud_id);
+        $this->mViewData['title']=RMSA_STUDENT_PROFILE_TITLE;        
+        $this->renderFront('front/rmsa_student_profile');
+    }
+    
+    public function update_employee_profile($emp_id){
+        $result=array();               
+        if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
+            $res = $this->Employee_model->update_password_employee($_POST,$emp_id);                    
+            if($res){
+                $_SESSION['updatedata']=1;
+                $result['success']="success";                   
+            }                            
+            else{
+                $result['success']="fail";
+            }
+            echo json_encode($result);die;            
+        }        
+        if (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){            
+            $this->Employee_model->update_profile_employee($_POST,$emp_id);
+            $_SESSION['updatedata']=1;
+            $result['success']="success";
+            echo json_encode($result);die;
+        }       
+        $this->mViewData['student_data'] = $this->Employee_model->employee_details($emp_id);
+        $this->mViewData['title']=RMSA_EMPLOYEE_PROFILE_TITLE;        
+        $this->renderFront('front/rmsa_employee_profile');
+    }
+    
+    public function active_student(){
+        if(isset($_REQUEST['rmsa_user_id'])){
+            $res = $this->Rmsa_model->active_student($_REQUEST);
+            if($res){
+                $data = array(
+                    'suceess' => true
+                );
+            }
+            echo json_encode($data);
+        }
     }
 }

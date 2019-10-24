@@ -4,7 +4,7 @@
     <div class="middle-area">
         <h1 class="heading">Update Profile of Students in the RMSA Portal</h1>
 
-        <form method="post" id="frm_general_info" class="form-horizontal border p-2" action="<?php echo EMPLOYEE_STUDENT_UPDATE_PROFILE_LINK.$student_data['rmsa_user_id']; ?>">
+        <form method="post" id="frm_general_info" class="form-horizontal border p-2" action="<?php echo RMSA_STUDENT_UPDATE_PROFILE_LINK.$student_data['rmsa_user_id']; ?>">
             <h2 class="second-heading">General Information</h2>
             <div class="form-group">
                 <div class="row">
@@ -49,7 +49,7 @@
         </form>
 
 
-        <form method="post" id="frm_change_password" class="form-horizontal border p-2" action="<?php echo EMPLOYEE_STUDENT_UPDATE_PROFILE_LINK.$student_data['rmsa_user_id']; ?>">
+        <form method="post" id="frm_change_password" class="form-horizontal border p-2" action="<?php echo RMSA_STUDENT_UPDATE_PROFILE_LINK.$student_data['rmsa_user_id']; ?>">
             <h2 class="second-heading">Change password</h2>
 <!--            <div class="form-group">
                 <div class="row">
@@ -75,14 +75,11 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="form-group">
                 <div class="m-auto text-center">
                     <button type="submit" class="btn primary_btn">Update</button>
                 </div>
             </div>
         </form>
-
     </div>
 </div>
