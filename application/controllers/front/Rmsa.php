@@ -116,6 +116,7 @@ class Rmsa extends MY_Controller
             echo json_encode($result);die;
         }       
         $this->mViewData['student_data'] = $this->Employee_model->employee_details($emp_id);
+        $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['title']=RMSA_EMPLOYEE_PROFILE_TITLE;        
         $this->renderFront('front/rmsa_employee_profile');
     }

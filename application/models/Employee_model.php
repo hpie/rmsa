@@ -79,6 +79,7 @@ class Employee_model extends CI_Model {
         $rmsa_user_employee_code = $params['rmsa_user_employee_code'];
         $rmsa_user_email_id = $params['rmsa_user_email_id'];
         $rmsa_user_DOB = $params['rmsa_user_DOB'];
+        $rmsa_district_id = $params['rmsa_district_id'];
 
         $result = $this->db->query("UPDATE rmsa_employee_users
                               SET rmsa_user_first_name  = '" . $first_name . "',
@@ -86,7 +87,8 @@ class Employee_model extends CI_Model {
                                   rmsa_user_last_name   = '" . $last_name . "',  
                                   rmsa_user_employee_code   = '" . $rmsa_user_employee_code . "' , 
                                   rmsa_user_email_id   = '" . $rmsa_user_email_id . "', 
-                                  rmsa_user_DOB   = '" . $rmsa_user_DOB . "' 
+                                  rmsa_user_DOB   = '" . $rmsa_user_DOB . "', 
+                                  rmsa_district_id   = '" . $rmsa_district_id . "' 
                               WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
         return $result; //return true/false
     }
