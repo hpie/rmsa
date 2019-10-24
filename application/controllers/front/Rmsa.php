@@ -120,6 +120,7 @@ class Rmsa extends MY_Controller
         $this->mViewData['student_data'] = $employee_result;
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$employee_result['rmsa_district_id']));
+        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school(array('subDistrictId'=>$employee_result['rmsa_sub_district_id']));
         $this->mViewData['title']=RMSA_EMPLOYEE_PROFILE_TITLE;
         $this->renderFront('front/rmsa_employee_profile');
     }

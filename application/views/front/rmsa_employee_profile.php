@@ -110,6 +110,32 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control" id="rmsa_school" name="rmsa_school_id">
+                            <option value="0">---Select---</option>
+                            <?php
+                            if(!empty($schoolResult)){
+                                foreach ($schoolResult as $row){
+
+                                    $selected = '';
+                                    if($student_data['rmsa_school_id'] == $row['rmsa_school_id'] ){
+                                        $selected = 'selected';
+                                    }
+                                    ?>
+
+                                    <option value="<?php echo $row['rmsa_school_id']; ?>" <?=$selected ?>><?php echo $row['rmsa_school_title']; ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div
+
 
             <div class="form-group">
                 <div class="m-auto text-center">
