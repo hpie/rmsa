@@ -181,22 +181,22 @@
                     </div>
                 </div>
             </div>
-<!--            <div class="form-group">
+            <div class="form-group">
                 <div class="row">
                     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                     <script>function enableRegister() {
-                            $("#btnRegister").removeClass('btn_disabled');
-                            document.getElementById("btnRegister").disabled = false;
-                        }</script>
+                        $("#btnRegister").removeClass('btn_disabled');
+                        document.getElementById("btnRegister").disabled = false;
+                    }</script>
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp"></label>
                     <div class="col-sm-8 col-xs-12">
                         <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableRegister"></div>
                     </div>
                 </div>
-            </div>-->
+            </div>
             <div class="form-group">
                 <div class="m-auto text-center">    
-                    <button type="submit" class="btn primary_btn"  id="btnRegister">Register</button>
+                    <button type="submit" class="btn primary_btn btn_disabled"  disabled="true" id="btnRegister">Register</button>
                 </div>
             </div>
         </form>

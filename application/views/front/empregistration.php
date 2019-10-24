@@ -18,7 +18,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="GenPMIS">GenPMIS
@@ -37,8 +36,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12"
