@@ -1026,6 +1026,23 @@ $this->load->view('_partials/front/allnotify');
                                 message: 'Please supply your last name'
                             }
                         }
+                    },
+                    rmsa_user_email_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },
+                    rmsa_user_DOB: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your date of birth'
+                            }
+                        }
                     }
                 }
             }).on('success.form.bv', function (e) {
