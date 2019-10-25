@@ -44,6 +44,7 @@ class Employee_model extends CI_Model {
         $middle_name = $params['rmsa_user_middle_name'];
         $last_name = $params['rmsa_user_last_name'];
         $nick_name = $params['rmsa_user_nick_name'];
+        $rmsa_user_roll_number = $params['rmsa_user_roll_number'];
         $rmsa_user_email_id = $params['rmsa_user_email_id'];
         $rmsa_user_DOB = $params['rmsa_user_DOB'];
         $rmsa_district_id = $params['rmsa_district_id'];
@@ -55,6 +56,7 @@ class Employee_model extends CI_Model {
                                   rmsa_user_middle_name = '" . $middle_name . "',  
                                   rmsa_user_last_name   = '" . $last_name . "',  
                                   rmsa_user_nick_name   = '" . $nick_name . "' , 
+                                  rmsa_user_roll_number   = '" . $rmsa_user_roll_number . "' , 
                                   rmsa_user_email_id   = '" . $rmsa_user_email_id . "' , 
                                   rmsa_user_DOB   = '" . $rmsa_user_DOB . "' , 
                                   rmsa_district_id   = '" . $rmsa_district_id . "' , 
