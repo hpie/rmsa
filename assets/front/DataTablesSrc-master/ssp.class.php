@@ -265,8 +265,7 @@ class SSP {
                     $class = 'btn_approve_reject btn btn-danger';
                     $text  = 'Inactive';
                     $isactive = 0;
-                }
-                
+                }                
                 $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
                 $row['rmsa_user_edit'] = "<a href='".BASE_URL."/employee-update-student-profile/$stud_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";
                 $row['index']='';
