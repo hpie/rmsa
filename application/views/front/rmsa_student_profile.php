@@ -40,6 +40,101 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_email_id">Email: </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" value="<?=$student_data['rmsa_user_email_id']?>" name="rmsa_user_email_id" id="rmsa_user_email_id" placeholder="Enter Employee Email">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_DOB">DOB: </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="date" class="form-control" name="rmsa_user_DOB" id="rmsa_user_DOB" value="<?=$student_data['rmsa_user_DOB']?>">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Distt:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control" id="rmsa_district" name="rmsa_district_id">
+                            <option class="" value="" disabled selected>------ Select ------</option>
+                            <?php
+                            if(!empty($distResult)){
+                                foreach ($distResult as $row){
+
+                                    $selected = '';
+                                    if($student_data['rmsa_district_id'] == $row['rmsa_district_id'] ){
+                                        $selected = 'selected';
+                                    }
+                                    ?>
+
+                                    <option value="<?php echo $row['rmsa_district_id']; ?>" <?=$selected ?>><?php echo $row['rmsa_district_name']; ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Tehsil:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
+                            <option value="0">---Select---</option>
+                            <?php
+                            if(!empty($tehsilResult)){
+                                foreach ($tehsilResult as $row){
+
+                                    $selected = '';
+                                    if($student_data['rmsa_sub_district_id'] == $row['rmsa_sub_district_id'] ){
+                                        $selected = 'selected';
+                                    }
+                                    ?>
+
+                                    <option value="<?php echo $row['rmsa_sub_district_id']; ?>" <?=$selected ?>><?php echo $row['rmsa_sub_district_name']; ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control" id="rmsa_school" name="rmsa_school_id">
+                            <option value="0">---Select---</option>
+                            <?php
+                            if(!empty($schoolResult)){
+                                foreach ($schoolResult as $row){
+
+                                    $selected = '';
+                                    if($student_data['rmsa_school_id'] == $row['rmsa_school_id'] ){
+                                        $selected = 'selected';
+                                    }
+                                    ?>
+
+                                    <option value="<?php echo $row['rmsa_school_id']; ?>" <?=$selected ?>><?php echo $row['rmsa_school_title']; ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div
+
 
             <div class="form-group">
                 <div class="m-auto text-center">
