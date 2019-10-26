@@ -69,6 +69,41 @@
 
             <div class="form-group">
                 <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="Gender">Gender:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="radio" <?php echo ($student_data['rmsa_user_gender'] == 'M') ? 'checked' : '' ?> name="rmsa_user_gender" value="M">&nbsp;<span>Male</span>
+                        <input type="radio" <?php echo ($student_data['rmsa_user_gender'] == 'F') ? 'checked' : '' ?> name="rmsa_user_gender" value="F">&nbsp;<span>Female</span>
+                        <input type="radio" <?php echo ($student_data['rmsa_user_gender'] == 'O') ? 'checked' : '' ?> name="rmsa_user_gender" value="O">&nbsp;<span>Other</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_father_name">Father's
+                        Name:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" name="rmsa_user_father_name" value="<?=$student_data['rmsa_user_father_name']?>" id="rmsa_user_father_name" placeholder="Enter Father Name">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_class">Class:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control" name="rmsa_user_class">
+                            <option <?php echo ($student_data['rmsa_user_class'] == 'ix') ? 'selected' : '' ?> value="ix">Class IX</option>
+                            <option <?php echo ($student_data['rmsa_user_class'] == 'x') ? 'selected' : '' ?> value="x">Class X</option>
+                            <option <?php echo ($student_data['rmsa_user_class'] == 'xi') ? 'selected' : '' ?> value="xi">Class XI</option>
+                            <option <?php echo ($student_data['rmsa_user_class'] == 'xii') ? 'selected' : '' ?> value="xii">Class XII</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Distt:</label>
                     <div class="col-sm-8 col-xs-12">
                         <select class="form-control" id="rmsa_district" name="rmsa_district_id">
