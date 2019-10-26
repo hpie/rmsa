@@ -51,6 +51,12 @@ class Employee_model extends CI_Model {
         $rmsa_sub_district_id = $params['rmsa_sub_district_id'];
         $rmsa_school_id = $params['rmsa_school_id'];
 
+        if(isset($_SESSION['emp_rmsa_user_id'])){
+            $rmsa_district_id = $_SESSION['emp_rmsa_district_id'];
+            $rmsa_sub_district_id = $_SESSION['emp_rmsa_sub_district_id'];
+            $rmsa_school_id = $_SESSION['emp_rmsa_school_id'];
+        }
+
         $result = $this->db->query("UPDATE rmsa_student_users
                               SET rmsa_user_first_name  = '" . $first_name . "',
                                   rmsa_user_middle_name = '" . $middle_name . "',  
