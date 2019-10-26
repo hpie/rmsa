@@ -47,6 +47,10 @@ class Employee_model extends CI_Model {
         $rmsa_user_roll_number = $params['rmsa_user_roll_number'];
         $rmsa_user_email_id = $params['rmsa_user_email_id'];
         $rmsa_user_DOB = $params['rmsa_user_DOB'];
+        $rmsa_user_gender = $params['rmsa_user_gender'];
+        $rmsa_user_father_name = $params['rmsa_user_father_name'];
+        $rmsa_user_class = $params['rmsa_user_class'];
+
         $rmsa_district_id = $params['rmsa_district_id'];
         $rmsa_sub_district_id = $params['rmsa_sub_district_id'];
         $rmsa_school_id = $params['rmsa_school_id'];
@@ -65,6 +69,9 @@ class Employee_model extends CI_Model {
                                   rmsa_user_roll_number   = '" . $rmsa_user_roll_number . "' , 
                                   rmsa_user_email_id   = '" . $rmsa_user_email_id . "' , 
                                   rmsa_user_DOB   = '" . $rmsa_user_DOB . "' , 
+                                  rmsa_user_gender   = '" . $rmsa_user_gender . "' , 
+                                  rmsa_user_father_name   = '" . $rmsa_user_father_name . "' , 
+                                  rmsa_user_class   = '" . $rmsa_user_class . "',                                  
                                   rmsa_district_id   = '" . $rmsa_district_id . "' , 
                                   rmsa_sub_district_id   = '" . $rmsa_sub_district_id . "', 
                                   rmsa_school_id   = '" . $rmsa_school_id . "'
