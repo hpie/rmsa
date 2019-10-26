@@ -22,15 +22,19 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="verification">Verification:</label>
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <script>function enableLogin() {
+                            document.getElementById("btnLogin").disabled = false;
+                        }</script>
+                    <label class="control-label col-sm-4 col-xs-12" for="ptsp"></label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="password" class="form-control" placeholder="">
+                        <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableLogin"></div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="m-auto text-center">
-                    <button type="submit" class="btn primary_btn">Login</button>
+                    <button type="submit" class="btn primary_btn" disabled="true" id="btnLogin">Login</button>
                 </div>
             </div>
         </form>
