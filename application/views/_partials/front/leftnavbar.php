@@ -28,7 +28,6 @@
                                         <?php if(!isset($_SESSION['st_rmsa_user_id'])){ ?>
                                         <li><a href="<?php echo STUDENT_REGISTER_LINK; ?>">New Registration</a></li>
                                         <li><a href="<?php echo STUDENT_LOGIN_LINK; ?>">Registered Login</a></li>
-                                        <li><a href="#">Registered Students</a></li>
                                         <?php }
                                         else{
                                             ?>                                       
@@ -41,7 +40,7 @@
                                 <?php }?>                               
                                 <?php if(!isset($_SESSION['emp_rmsa_user_id']) AND !isset($_SESSION['st_rmsa_user_id'])){ ?>
                                 <li>
-                                    <div class="link"><i class="fa fa-user"></i>Rmsa User Corner<i class="fa fa-chevron-down"></i></div>
+                                    <div class="link"><i class="fa fa-user"></i>RMSA User’s Corner<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">                                        
                                         <?php if(!isset($_SESSION['rm_rmsa_user_id'])){ ?>                                       
                                         <li><a href="<?php echo RMSA_LOGIN_LINK; ?>">Rmsa Login</a></li>                                       
@@ -68,7 +67,7 @@
                                     <div class="link"><i class="fa fa-mobile"></i>Resource Material<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">                                       
                                         <li><a href="#">Employee User Manual</a></li>
-                                        <li><a href="<?php echo EMPLOYEE_STUDENT_LIST_LINK; ?>">Enroll Students</a></li>
+                                        <li><a href="<?php echo EMPLOYEE_STUDENT_LIST_LINK; ?>">Manage Students</a></li>
                                         <li><a href="<?php echo EMPLOYEE_UPLOAD_FILE_LINK; ?>">Upload Resource Material</a></li>
                                         <li><a href="<?php echo EMPLOYEE_RESOURCES_LIST_LINK; ?>">Manage Resource Material</a></li>
                                         <li><a href="#">Post Queries</a></li>
