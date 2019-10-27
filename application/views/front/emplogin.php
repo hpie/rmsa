@@ -38,7 +38,7 @@
                 <div class="m-auto text-center">
                     <button type="submit" class="btn primary_btn" disabled="true" id="btnLogin">Login</button>
                 </div>
-            </div>
+            </div>            
         </form>
         <div class="form-group">
             <a href="#">New Registration</a>

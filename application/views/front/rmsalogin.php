@@ -38,7 +38,7 @@
                 <div class="m-auto text-center">
                     <button type="submit" class="btn primary_btn" disabled="true" id="btnLogin">Login</button>
                 </div>
-            </div>
+            </div>        
         </form>
         <div class="form-group">
             <a href="#">New Registration</a>
@@ -46,6 +46,5 @@
         <p class="bg-light-blue  p-2">Please enter your Registration No. as your User Name and your
             Date of Birth in YYYYMMDD format as your Password.
         </p>
-
     </div>
 </div>

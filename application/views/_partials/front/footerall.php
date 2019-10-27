@@ -513,13 +513,13 @@ $this->load->view('_partials/front/allnotify');
                         if (res.suceess) {
 
                             var title = 'Click to deactivate student';
-                            var class_ = 'btn_approve_reject btn btn-success';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
                             var text = 'Active';
                             var isactive = 1;
 
                             if(status == 1){
                                 title = 'Click to active student';
-                                class_ = 'btn_approve_reject btn btn-danger';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
                                 text  = 'Inactive';
                                 isactive = 0;
                             }

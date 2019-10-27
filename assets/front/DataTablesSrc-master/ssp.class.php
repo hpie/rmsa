@@ -256,13 +256,13 @@ class SSP {
             foreach ($result as $row){
                 $stud_id=$row['rmsa_user_id'];                
                 $title = 'Click to deactivate student';
-                $class = 'btn_approve_reject btn btn-success';
+                $class = 'btn_approve_reject btn btn-success btn-xs';
                 $text = 'Active';
                 $isactive = 1;
 
                 if($row['rmsa_user_status'] == 'REMOVED'){
                     $title = 'Click to active student';
-                    $class = 'btn_approve_reject btn btn-danger';
+                    $class = 'btn_approve_reject btn btn-danger btn-xs';
                     $text  = 'Inactive';
                     $isactive = 0;
                 }                
@@ -399,7 +399,7 @@ class SSP {
                 $isactive = 1;
                 if($row['rmsa_user_status'] == 'REMOVED'){
                     $title = 'Click to active employee';
-                    $class = 'btn_approve_reject btn btn-danger btn-cs';
+                    $class = 'btn_approve_reject btn btn-danger btn-xs';
                     $text  = 'Inactive';
                     $isactive = 0; 
                 }                
@@ -875,7 +875,7 @@ class SSP {
                     $strModel.=$strTdAmodel."</tr></table>";
                     $row['extModel']=$row['ext'].$strModel;
                     $row['ext'].=$str;
-                    $row['child']="<a class='btn btn-success btn_approve' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";                    
+                    $row['child']="<a class='btn btn-success btn_approve btn-xs' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";                    
                 }
                 else{
                     $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";
