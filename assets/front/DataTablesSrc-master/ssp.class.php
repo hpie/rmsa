@@ -502,7 +502,19 @@ class SSP {
                             }
                         }
                         //get number of student view count
-                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];
+                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];                                                 
+                        $title = 'Click to deactivate file';
+                        $class = 'btn_approve_reject btn btn-success btn-xs';
+                        $text = 'Active';
+                        $isactive = 1;
+                        if($row['uploaded_file_status'] == 'REMOVED'){
+                            $title = 'Click to active file';
+                            $class = 'btn_approve_reject btn btn-danger btn-xs';
+                            $text  = 'Inactive';
+                            $isactive = 0; 
+                        }                
+                        $row['uploaded_file_status'] = "<button type='button' data-id='".$rmsa_file_id."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
+                        
                         $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
                         $total_student_view = $student_view_count[0]['total_Student_views'];
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
@@ -674,7 +686,21 @@ class SSP {
                             }
                         }
                         //get number of student view count
-                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];
+//                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];                        
+                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];                                                 
+                        $title = 'Click to deactivate file';
+                        $class = 'btn_approve_reject btn btn-success btn-xs';
+                        $text = 'Active';
+                        $isactive = 1;
+                        if($row['uploaded_file_status'] == 'REMOVED'){
+                            $title = 'Click to active file';
+                            $class = 'btn_approve_reject btn btn-danger btn-xs';
+                            $text  = 'Inactive';
+                            $isactive = 0; 
+                        }                
+                        $row['uploaded_file_status'] = "<button type='button' data-id='".$rmsa_file_id."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
+                        
+                        
                         $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
                         $total_student_view = $student_view_count[0]['total_Student_views'];
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";

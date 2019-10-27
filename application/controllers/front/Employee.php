@@ -24,6 +24,17 @@ class Employee extends MY_Controller
             echo json_encode($data);
         }
     }
+    public function active_file(){
+        if(isset($_REQUEST['rmsa_uploaded_file_id'])){
+            $res = $this->Employee_model->active_file($_REQUEST);
+            if($res){
+                $data = array(
+                    'suceess' => true
+                );
+            }
+            echo json_encode($data);
+        }
+    }
     public function update_student_profile($stud_id){
         $result=array();               
         if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      

@@ -106,6 +106,7 @@ $route['rmsa-resources']       = 'front/RmsaResource';
 $route['rmsa-student-registration']    = 'front/Helper/create_student';
 $route['rmsa-employee-active']          = 'front/Rmsa/active_employee';
 $route['rmsa-student-active']          = 'front/Rmsa/active_student';
+$route['rmsa-file-active']          = 'front/Rmsa/active_file';
 $route['rmsa-update-student-profile/(:any)'] = 'front/Rmsa/update_student_profile/$1';
 $route['rmsa-update-employee-profile/(:any)'] = 'front/Rmsa/update_employee_profile/$1';
 $route['employee-registration']    = 'front/Rmsa/create_employee';
@@ -122,6 +123,7 @@ $route['employee-resources']       = 'front/FileDw';
 $route['is-employee-active']       = 'front/EmpLogin/isActiveEmployee';
 $route['employee-student']         = 'front/Employee/view_student';
 $route['student-approve']          = 'front/Employee/approve_student';
+$route['employee-file-active']          = 'front/Employee/active_file';
 $route['employee-update-student-profile/(:any)'] = 'front/Employee/update_student_profile/$1';
 
 

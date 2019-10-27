@@ -138,6 +138,7 @@ define('RMSA_EMPLOYEE_ACTIVE',BASE_URL."/rmsa-employee-active");
 define('RMSA_STUDENT_ACTIVE',BASE_URL."/rmsa-student-active");
 define('RMSA_STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-student-profile/");
 define('RMSA_EMPLOYEE_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-employee-profile/");
+define('RMSA_FILE_ACTIVE',BASE_URL."/rmsa-file-active");
 
 
 //All employee constant
@@ -149,6 +150,7 @@ define('EMPLOYEE_RESOURCES_LIST_LINK',BASE_URL."/employee-resources");
 define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
 define('EMPLOYEE_STUDENT_LIST_LINK',BASE_URL."/employee-student");
 define('STUDENT_APPROVE',BASE_URL."/student-approve");
+define('EMPLOYEE_FILE_ACTIVE',BASE_URL."/employee-file-active");
 define('EMPLOYEE_STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/employee-update-student-profile/");
 
 

@@ -71,6 +71,17 @@ class Rmsa extends MY_Controller
             echo json_encode($data);
         }
     }
+    public function active_file(){
+        if(isset($_REQUEST['rmsa_uploaded_file_id'])){
+            $res = $this->Rmsa_model->active_file($_REQUEST);
+            if($res){
+                $data = array(
+                    'suceess' => true
+                );
+            }
+            echo json_encode($data);
+        }
+    }
     
     public function update_student_profile($stud_id){
         $result=array();               

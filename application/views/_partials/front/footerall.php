@@ -108,7 +108,8 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "ext"},
                     {"data": "uploaded_file_type"},
                     {"data": "uploaded_file_group"},
-                    {"data": "uploaded_file_category"},                                                         
+                    {"data": "uploaded_file_category"},
+                    {"data": "uploaded_file_status"},
                     {"data": "ratting"},
                     {"data": "uploaded_file_desc"}
                 ]
@@ -119,6 +120,58 @@ $this->load->view('_partials/front/allnotify');
                 }); 
             });
         }
+        
+         $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+                var status = self.attr('data-status');
+
+                var uploaded_file_status = 'ACTIVE';
+
+                if(status == 1){
+                    uploaded_file_status = 'REMOVED';
+                }
+
+                if(!confirm('Are you sure want to '+uploaded_file_status.toLocaleLowerCase()+' file?')) return;
+
+                self.attr('disabled','disabled');
+
+                var data = {
+                    'rmsa_uploaded_file_id' : self.data('id'),
+                    'uploaded_file_status'  : uploaded_file_status
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo RMSA_FILE_ACTIVE ?>",
+                    data: data,
+                    success: function (res) {
+
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+
+                            var title = 'Click to deactivate file';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if(status == 1){
+                                title = 'Click to active file';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
+                                text  = 'Inactive';
+                                isactive = 0;
+                            }
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                               'data-status' :isactive,
+                               'title':title
+                           });
+                           self.removeAttr('disabled');
+                           self.html(text);
+                        }
+                    }
+                });
+            });
+        
         $('#searchTag').click(function(){
             var uploaded_file_tag = $('#uploaded_file_tag').val();            
             if(uploaded_file_tag != '')
@@ -202,7 +255,8 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "uploaded_file_group"},
                     {"data": "uploaded_file_category"},                                     
                     {"data": "child"},
-                    {"data": "ratting"},                    
+                    {"data": "ratting"},
+                    {"data": "uploaded_file_status"},
                     {"data": "action"},
                     {"data": "uploaded_file_desc"}
                 ]
@@ -213,6 +267,59 @@ $this->load->view('_partials/front/allnotify');
                 }); 
             });
         }
+        
+        $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+                var status = self.attr('data-status');
+
+                var uploaded_file_status = 'ACTIVE';
+
+                if(status == 1){
+                    uploaded_file_status = 'REMOVED';
+                }
+
+                if(!confirm('Are you sure want to '+uploaded_file_status.toLocaleLowerCase()+' file?')) return;
+
+                self.attr('disabled','disabled');
+
+                var data = {
+                    'rmsa_uploaded_file_id' : self.data('id'),
+                    'uploaded_file_status'  : uploaded_file_status
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo EMPLOYEE_FILE_ACTIVE ?>",
+                    data: data,
+                    success: function (res) {
+
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+
+                            var title = 'Click to deactivate file';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if(status == 1){
+                                title = 'Click to active file';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
+                                text  = 'Inactive';
+                                isactive = 0;
+                            }
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                               'data-status' :isactive,
+                               'title':title
+                           });
+                           self.removeAttr('disabled');
+                           self.html(text);
+                        }
+                    }
+                });
+            });
+        
+        
         $('#searchTag').click(function(){
             var uploaded_file_tag = $('#uploaded_file_tag').val();            
             if(uploaded_file_tag != '')

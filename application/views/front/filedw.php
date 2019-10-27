@@ -22,7 +22,8 @@
                 <th>Group</th>
                 <th>Category</th>                                
                 <th>Child</th>
-                <th>Reviews</th>                
+                <th>Reviews</th> 
+                <th>Status</th>
                 <th>Action</th>
                 <th>Description</th>
             </tr>
@@ -36,7 +37,8 @@
                 <th>Group</th>
                 <th>Category</th>                               
                 <th>Child</th>
-                <th>Reviews</th>                
+                <th>Reviews</th>  
+                <th>Status</th>
                 <th>Action</th>
                 <th>Description</th>
             </tr>

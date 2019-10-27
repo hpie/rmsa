@@ -13,7 +13,13 @@ class Employee_model extends CI_Model {
             return true;
         }
     }
-
+    public function active_file($params) {
+        $query_res = $this->db->query("UPDATE  rmsa_uploaded_files SET uploaded_file_status = '{$params['uploaded_file_status']}'
+                                       WHERE rmsa_uploaded_file_id='{$params['rmsa_uploaded_file_id']}'");
+        if ($query_res) {
+            return true;
+        }
+    }
     public function check_current_password($current_password, $stud_id) {
         $current_password = md5($current_password);
         $rmsa_user_id = $stud_id;
