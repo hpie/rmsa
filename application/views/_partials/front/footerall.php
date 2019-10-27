@@ -490,14 +490,15 @@ $this->load->view('_partials/front/allnotify');
                 var self = $(this);
                 var status = self.attr('data-status');
 
-                self.attr('disabled','disabled');
 
-                console.log('status',status);
 
                 var user_status = 'ACTIVE';
 
                 if(status == 1)
                     user_status = 'REMOVED';
+
+                if(!confirm('Are you sure want to '+user_status.toLocaleLowerCase()+' student?')) return;
+                self.attr('disabled','disabled');
 
                 var data = {
                     'rmsa_user_id' : self.data('id'),
@@ -579,15 +580,15 @@ $this->load->view('_partials/front/allnotify');
                 var self = $(this);
                 var status = self.attr('data-status');
 
-                self.attr('disabled','disabled');
-
-                console.log('status',status);
-
                 var user_status = 'ACTIVE';
 
                 if(status == 1){
                     user_status = 'REMOVED';
                 }
+
+                if(!confirm('Are you sure want to '+user_status.toLocaleLowerCase()+' student?')) return;
+
+                self.attr('disabled','disabled');
 
                 var data = {
                     'rmsa_user_id' : self.data('id'),
@@ -667,17 +668,18 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-                var status = self.attr('data-status');                
-                self.attr('disabled','disabled');
+                var status = self.attr('data-status');
 
-                console.log('status',status);
 
                 var user_status = 'ACTIVE';
 
                 if(status == 1){
                     user_status = 'REMOVED';   
                 }
-                alert(user_status);
+
+                if(!confirm('Are you sure want to '+user_status.toLocaleLowerCase()+' employee?')) return;
+                self.attr('disabled','disabled');
+
                 var data = {
                     'rmsa_user_id' : self.data('id'),
                     'user_status'  : user_status
