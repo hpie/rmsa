@@ -67,7 +67,7 @@
                                     <div class="link"><i class="fa fa-mobile"></i>Resource Material<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">                                       
                                         <li><a href="#">Employee User Manual</a></li>
-                                        <li><a href="<?php echo EMPLOYEE_STUDENT_LIST_LINK; ?>">Enroll Students</a></li>
+                                        <li><a href="<?php echo EMPLOYEE_STUDENT_LIST_LINK; ?>">Manage Students</a></li>
                                         <li><a href="<?php echo EMPLOYEE_UPLOAD_FILE_LINK; ?>">Upload Resource Material</a></li>
                                         <li><a href="<?php echo EMPLOYEE_RESOURCES_LIST_LINK; ?>">Manage Resource Material</a></li>
                                         <li><a href="#">Post Queries</a></li>
