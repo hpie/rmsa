@@ -41,7 +41,7 @@
                                 <?php }?>                               
                                 <?php if(!isset($_SESSION['emp_rmsa_user_id']) AND !isset($_SESSION['st_rmsa_user_id'])){ ?>
                                 <li>
-                                    <div class="link"><i class="fa fa-user"></i>Rmsa User Corner<i class="fa fa-chevron-down"></i></div>
+                                    <div class="link"><i class="fa fa-user"></i>RMSA User’s Corner<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">                                        
                                         <?php if(!isset($_SESSION['rm_rmsa_user_id'])){ ?>                                       
                                         <li><a href="<?php echo RMSA_LOGIN_LINK; ?>">Rmsa Login</a></li>                                       
