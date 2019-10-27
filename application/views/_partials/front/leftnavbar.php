@@ -28,7 +28,6 @@
                                         <?php if(!isset($_SESSION['st_rmsa_user_id'])){ ?>
                                         <li><a href="<?php echo STUDENT_REGISTER_LINK; ?>">New Registration</a></li>
                                         <li><a href="<?php echo STUDENT_LOGIN_LINK; ?>">Registered Login</a></li>
-                                        <li><a href="#">Registered Students</a></li>
                                         <?php }
                                         else{
                                             ?>                                       
