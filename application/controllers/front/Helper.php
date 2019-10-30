@@ -68,5 +68,9 @@ class Helper extends MY_Controller {
         $active_student = $this->Helper_model->total_active_students();
         return $active_student;
     }
+    public function total_active_employee(){
+        $active_employee = $this->Helper_model->total_active_employee();
+        return $active_employee;
+    }
 
 }

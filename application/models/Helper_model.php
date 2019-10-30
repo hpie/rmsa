@@ -65,4 +65,10 @@ class Helper_model extends CI_Model
         $online = $active->result_array();
         return current($online);
     }
+
+    public function total_active_employee(){
+        $active = $this->db->query("SELECT count(*) AS online_employee FROM  rmsa_employee_users WHERE rmsa_employee_login_active = 1");
+        $online = $active->result_array();
+        return current($online);
+    }
 }
