@@ -150,6 +150,7 @@ $route['load-tehsil']             = 'front/helper/load_tehsil';
 $route['load-school']             = 'front/helper/load_school';
 $route['active-student']          = 'front/helper/total_active_students';
 $route['active-employee']         = 'front/helper/total_active_employee';
+$route['top-content-uploaded-employee'] = 'front/helper/top_employee_with_most_uploaded_content';
 
 
 
