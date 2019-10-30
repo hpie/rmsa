@@ -148,6 +148,8 @@ $route['comment-reply']           = 'front/Resource/comment_reply';
 //helper routes
 $route['load-tehsil']             = 'front/helper/load_tehsil';
 $route['load-school']             = 'front/helper/load_school';
+$route['active-student']          = 'front/helper/total_active_students';
+$route['active-employee']         = 'front/helper/total_active_employee';
 
 
 

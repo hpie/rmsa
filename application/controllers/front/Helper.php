@@ -64,5 +64,9 @@ class Helper extends MY_Controller {
         $this->mViewData['title']=STUDENT_REGISTRATION_TITLE;
         $this->renderFront('front/studentregistration');
     }
+    public function total_active_students(){
+        $active_student = $this->Helper_model->total_active_students();
+        return $active_student;
+    }
 
 }

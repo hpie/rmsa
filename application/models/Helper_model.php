@@ -59,4 +59,10 @@ class Helper_model extends CI_Model
         return FALSE;
         //it will be return boolean value (true/false)
     }
+
+    public function total_active_students(){
+        $active = $this->db->query("SELECT count(*) AS online_student FROM  rmsa_student_users WHERE rmsa_student_login_active = 1");
+        $online = $active->result_array();
+        return current($online);
+    }
 }
