@@ -76,5 +76,9 @@ class Helper extends MY_Controller {
         $top_employee = $this->Helper_model->top_employee_with_most_uploaded_content();
         print_r($top_employee);
     }
+    public function most_rated_content(){
+        $most_rated = $this->Helper_model->most_rated_content();
+        print_r($most_rated);
+    }
 
 }

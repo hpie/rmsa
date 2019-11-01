@@ -81,4 +81,16 @@ class Helper_model extends CI_Model
         $top_employee = $employee->result_array();
         return $top_employee;
     }
+
+    public function most_rated_content(){
+        $most_rated = $this->db->query("SELECT rfr.rmsa_uploaded_file_id, ruf.uploaded_file_title, AVG(rfr.rmsa_file_rating) AS overall_rating
+                                      FROM rmsa_file_reviews rfr
+                                      INNER JOIN rmsa_uploaded_files ruf ON ruf.rmsa_uploaded_file_id = rfr.rmsa_uploaded_file_id
+                                      WHERE  rmsa_review_status = 1
+                                      GROUP BY rmsa_uploaded_file_id
+                                      ORDER BY overall_rating DESC
+                                      LIMIT 5");
+        $most_rated_content = $most_rated->result_array();
+        return $most_rated_content;
+    }
 }
