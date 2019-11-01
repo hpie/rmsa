@@ -94,6 +94,19 @@ class Helper_model extends CI_Model
         return $most_rated_content;
     }
 
+    public function top_employee_with_most_rated_content(){
+        $most_rated_employee = $this->db->query("SELECT rfr.rmsa_uploaded_file_id, ruf.uploaded_file_title,CONCAT(rmu.rmsa_user_first_name,' ',rmu.rmsa_user_last_name) AS employee_name, AVG(rfr.rmsa_file_rating) AS overall_rating
+                                        FROM rmsa_file_reviews rfr
+                                        INNER JOIN rmsa_uploaded_files ruf ON ruf.rmsa_uploaded_file_id = rfr.rmsa_uploaded_file_id
+                                        LEFT JOIN rmsa_employee_users rmu ON rmu.rmsa_user_id = ruf.rmsa_employee_users_id
+                                        WHERE  rmsa_review_status = 1
+                                        GROUP BY rmsa_uploaded_file_id
+                                        ORDER BY overall_rating DESC
+                                        LIMIT 10");
+        $most_rated_employee_ = $most_rated_employee->result_array();
+        return $most_rated_employee_;
+    }
+
     public function most_viewed_content(){
         $most_viewed = $this->db->query("SELECT uploaded_file_title,uploaded_file_viewcount FROM rmsa_uploaded_files 
                                          ORDER BY uploaded_file_viewcount DESC
@@ -101,4 +114,6 @@ class Helper_model extends CI_Model
         $most_viewed_content = $most_viewed->result_array();
         return $most_viewed_content;
     }
+
+
 }
