@@ -107,6 +107,16 @@ class Helper_model extends CI_Model
         return $most_rated_employee_;
     }
 
+    public function top_employee_with_most_viewed_content(){
+        $most_viewed_employee = $this->db->query("SELECT uploaded_file_title,uploaded_file_viewcount,CONCAT(rmu.rmsa_user_first_name,' ',rmu.rmsa_user_last_name) AS employee_name
+                                                 FROM rmsa_uploaded_files ruf
+                                                 LEFT JOIN rmsa_employee_users rmu ON rmu.rmsa_user_id = ruf.rmsa_employee_users_id
+                                                 ORDER BY uploaded_file_viewcount DESC
+                                                 LIMIT 10");
+        $most_viewed_employee_ = $most_viewed_employee->result_array();
+        return $most_viewed_employee_;
+    }
+
     public function most_viewed_content(){
         $most_viewed = $this->db->query("SELECT uploaded_file_title,uploaded_file_viewcount FROM rmsa_uploaded_files 
                                          ORDER BY uploaded_file_viewcount DESC
