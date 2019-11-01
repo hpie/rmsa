@@ -152,6 +152,7 @@ $route['active-student']          = 'front/helper/total_active_students';
 $route['active-employee']         = 'front/helper/total_active_employee';
 $route['top-content-uploaded-employee'] = 'front/helper/top_employee_with_most_uploaded_content';
 $route['most-rated-content']            = 'front/helper/most_rated_content';
+$route['most-viewed-content']            = 'front/helper/most_viewed_content';
 
 
 

@@ -80,5 +80,9 @@ class Helper extends MY_Controller {
         $most_rated = $this->Helper_model->most_rated_content();
         print_r($most_rated);
     }
+    public function most_viewed_content(){
+        $most_viewed = $this->Helper_model->most_viewed_content();
+        print_r($most_viewed);
+    }
 
 }

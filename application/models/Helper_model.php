@@ -93,4 +93,12 @@ class Helper_model extends CI_Model
         $most_rated_content = $most_rated->result_array();
         return $most_rated_content;
     }
+
+    public function most_viewed_content(){
+        $most_viewed = $this->db->query("SELECT uploaded_file_title,uploaded_file_viewcount FROM rmsa_uploaded_files 
+                                         ORDER BY uploaded_file_viewcount DESC
+                                         LIMIT 10");
+        $most_viewed_content = $most_viewed->result_array();
+        return $most_viewed_content;
+    }
 }
