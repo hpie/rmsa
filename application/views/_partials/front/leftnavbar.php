@@ -94,6 +94,7 @@
                                         <li><a href="#">Student Queries</a></li>
                                         <li><a href="<?php echo ACTIVE_STUDENTS; ?>">Total Active Student</a></li>
                                         <li><a href="<?php echo ACTIVE_EMPLOYEE; ?>">Total Active Employee</a></li>
+                                        <li><a href="<?php echo MOST_CONTENT_UPLOADED_EMPLOYEE; ?>">Top Most Content Upload Employee</a></li>
                                     </ul>
                                 </li>
                                 <li>
