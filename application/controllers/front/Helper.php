@@ -91,7 +91,11 @@ class Helper extends MY_Controller {
     }
     public function top_employee_with_most_rated_content(){
         $top_most_rated_employee = $this->Helper_model->top_employee_with_most_rated_content();
-        print_r($top_most_rated_employee);
+
+        $this->mViewData['data'] = $top_most_rated_employee;
+        $this->mViewData['title']=MOST_CONTENT_RATED_EMPLOYEE_TITLE;
+        $this->renderFront('front/most_rated_content_employee.php');
+
     }
     public function top_employee_with_most_viewed_content(){
         $top_most_viewed_employee = $this->Helper_model->top_employee_with_most_viewed_content();

@@ -170,6 +170,7 @@ define('FILE_VIEW_COUNT',BASE_URL."/total-fileview");
 define('ACTIVE_STUDENTS',BASE_URL."/active-student");
 define('ACTIVE_EMPLOYEE',BASE_URL."/active-employee");
 define('MOST_CONTENT_UPLOADED_EMPLOYEE',BASE_URL."/top-content-uploaded-employee");
+define('MOST_RATED_UPLOADED_EMPLOYEE',BASE_URL."/top-employee-most-rated");
 
 
 
@@ -200,6 +201,7 @@ define('STUDENT_RESOURCES_TITLE',"Welcome to rmsahimachal.nic.in - Student Resou
 define('STUDENT_ACTIVE_TITLE',"Welcome to rmsahimachal.nic.in - Student Active");
 define('EMPLOYEE_ACTIVE_TITLE',"Welcome to rmsahimachal.nic.in - Employee Active");
 define('MOST_CONTENT_UPLOADED_EMPLOYEE_TITLE',"Welcome to rmsahimachal.nic.in - Most Content Uploaded Employee");
+define('MOST_CONTENT_RATED_EMPLOYEE_TITLE',"Welcome to rmsahimachal.nic.in - Most Content Rated Employee");
 define('STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Student Profile");
 define('ORGANIZATION_TITLE',"Welcome to rmsahimachal.nic.in - Organization");
 define('FILE_REVIEWS_TITLE',"Welcome to rmsahimachal.nic.in - File Reviews");
