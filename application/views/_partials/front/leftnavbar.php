@@ -97,6 +97,7 @@
                                         <li><a href="<?php echo MOST_CONTENT_UPLOADED_EMPLOYEE; ?>">Top Most Content Upload Employee</a></li>
                                         <li><a href="<?php echo MOST_RATED_UPLOADED_EMPLOYEE; ?>">Top Most Content Rated Employee</a></li>
                                         <li><a href="<?php echo MOST_VIEW_CONTENT_EMPLOYEE; ?>">Top Most Content View Employee</a></li>
+                                        <li><a href="<?php echo MOST_RATED_CONTENT; ?>">Most Rated Content</a></li>
                                     </ul>
                                 </li>
                                 <li>
