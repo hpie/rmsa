@@ -66,6 +66,11 @@ class Helper extends MY_Controller {
     }
     public function total_active_students(){
         $active_student = $this->Helper_model->total_active_students();
+
+        $this->mViewData['student'] = $active_student;
+        $this->mViewData['title']=STUDENT_ACTIVE_TITLE;
+        $this->renderFront('front/total_active_student');
+
         return $active_student;
     }
     public function total_active_employee(){
