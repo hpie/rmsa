@@ -116,7 +116,11 @@ class Helper extends MY_Controller {
     }
     public function most_viewed_content(){
         $most_viewed = $this->Helper_model->most_viewed_content();
-        print_r($most_viewed);
+
+        $this->mViewData['data'] = $most_viewed;
+        $this->mViewData['title']=MOST_VIEWED_CONTENT_TITLE;
+        $this->renderFront('front/most_viewed_content');
+
     }
 
 }
