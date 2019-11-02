@@ -93,6 +93,7 @@
                                         <li><a href="#">Download Question Papers</a></li>
                                         <li><a href="#">Student Queries</a></li>
                                         <li><a href="<?php echo ACTIVE_STUDENTS; ?>">Total Active Student</a></li>
+                                        <li><a href="<?php echo ACTIVE_EMPLOYEE; ?>">Total Active Employee</a></li>
                                     </ul>
                                 </li>
                                 <li>

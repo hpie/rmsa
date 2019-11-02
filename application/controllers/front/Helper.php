@@ -75,6 +75,11 @@ class Helper extends MY_Controller {
     }
     public function total_active_employee(){
         $active_employee = $this->Helper_model->total_active_employee();
+
+        $this->mViewData['employee'] = $active_employee;
+        $this->mViewData['title']=EMPLOYEE_ACTIVE_TITLE;
+        $this->renderFront('front/total_active_employee');
+
         return $active_employee;
     }
     public function top_employee_with_most_uploaded_content(){
