@@ -125,5 +125,16 @@ class Helper_model extends CI_Model
         return $most_viewed_content;
     }
 
+    public function most_active_student_by_content_read(){
+        $most_active = $this->db->query("SELECT CONCAT(ru.rmsa_user_first_name,' ',ru.rmsa_user_last_name) AS student_name,COUNT(*) most_active 
+                                         FROM rmsa_user_file_views rf
+                                         LEFT JOIN rmsa_student_users ru ON ru.rmsa_user_id = rf.rmsa_user_id
+                                         GROUP BY rf.rmsa_user_id
+                                         ORDER BY most_active DESC
+                                         LIMIT 10");
+        $most_active_student = $most_active->result_array();
+        return $most_active_student;
+    }
+
 
 }

@@ -99,6 +99,7 @@
                                         <li><a href="<?php echo MOST_VIEW_CONTENT_EMPLOYEE; ?>">Top Most Content View Employee</a></li>
                                         <li><a href="<?php echo MOST_RATED_CONTENT; ?>">Most Rated Content</a></li>
                                         <li><a href="<?php echo MOST_VIEWED_CONTENT; ?>">Most Viewed Content</a></li>
+                                        <li><a href="<?php echo MOST_ACTIVE_STUDENT; ?>">Most Active Student</a></li>
                                     </ul>
                                 </li>
                                 <li>

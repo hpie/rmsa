@@ -122,5 +122,12 @@ class Helper extends MY_Controller {
         $this->renderFront('front/most_viewed_content');
 
     }
+    public function most_active_student_by_content_read(){
+        $most_active = $this->Helper_model->most_active_student_by_content_read();
+
+        $this->mViewData['data'] = $most_active;
+        $this->mViewData['title']=MOST_ACTIVE_STUDENT_BY_CONTENT_READ;
+        $this->renderFront('front/most_active_student_by_content_read');
+    }
 
 }

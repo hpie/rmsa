@@ -155,6 +155,7 @@ $route['top-employee-most-rated'] = 'front/helper/top_employee_with_most_rated_c
 $route['top-employee-most-viewed'] = 'front/helper/top_employee_with_most_viewed_content';
 $route['most-rated-content']            = 'front/helper/most_rated_content';
 $route['most-viewed-content']            = 'front/helper/most_viewed_content';
+$route['most-active-student']            = 'front/helper/most_active_student_by_content_read';
 
 
 

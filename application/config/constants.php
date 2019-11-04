@@ -174,6 +174,7 @@ define('MOST_RATED_UPLOADED_EMPLOYEE',BASE_URL."/top-employee-most-rated");
 define('MOST_VIEW_CONTENT_EMPLOYEE',BASE_URL."/top-employee-most-viewed");
 define('MOST_RATED_CONTENT',BASE_URL."/most-rated-content");
 define('MOST_VIEWED_CONTENT',BASE_URL."/most-viewed-content");
+define('MOST_ACTIVE_STUDENT',BASE_URL."/most-active-student");
 
 
 
@@ -208,6 +209,7 @@ define('MOST_CONTENT_RATED_EMPLOYEE_TITLE',"Welcome to rmsahimachal.nic.in - Mos
 define('MOST_CONTENT_VIEW_EMPLOYEE_TITLE',"Welcome to rmsahimachal.nic.in - Most Content View Employee");
 define('MOST_RATED_CONTENT_TITLE',"Welcome to rmsahimachal.nic.in - Most Rated Content");
 define('MOST_VIEWED_CONTENT_TITLE',"Welcome to rmsahimachal.nic.in - Most Viewed Content");
+define('MOST_ACTIVE_STUDENT_BY_CONTENT_READ',"Welcome to rmsahimachal.nic.in - Most Active Student");
 define('STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Student Profile");
 define('ORGANIZATION_TITLE',"Welcome to rmsahimachal.nic.in - Organization");
 define('FILE_REVIEWS_TITLE',"Welcome to rmsahimachal.nic.in - File Reviews");
