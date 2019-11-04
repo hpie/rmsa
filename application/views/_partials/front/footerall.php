@@ -36,8 +36,7 @@ $this->load->view('_partials/front/scripts');
 //        document.getElementById("loader").style.display = "none";
 //        document.getElementById("myDiv").style.display = "block";
 //    }    
-    $(document).ready(function () {         
-        $('.MyDatatable').DataTable();                
+    $(document).ready(function () {                                                       
         $("#accordion a").each(function() {   
             if (this.href == window.location.href) {
                 $(this).css("background","#bc2832");
