@@ -102,7 +102,7 @@ class Helper_model extends CI_Model
                                         WHERE  rmsa_review_status = 1
                                         GROUP BY rmsa_uploaded_file_id
                                         ORDER BY overall_rating DESC
-                                        LIMIT 10");
+                                        LIMIT 5");
         $most_rated_employee_ = $most_rated_employee->result_array();
         return $most_rated_employee_;
     }
@@ -112,7 +112,7 @@ class Helper_model extends CI_Model
                                                  FROM rmsa_uploaded_files ruf
                                                  LEFT JOIN rmsa_employee_users rmu ON rmu.rmsa_user_id = ruf.rmsa_employee_users_id
                                                  ORDER BY uploaded_file_viewcount DESC
-                                                 LIMIT 10");
+                                                 LIMIT 5");
         $most_viewed_employee_ = $most_viewed_employee->result_array();
         return $most_viewed_employee_;
     }

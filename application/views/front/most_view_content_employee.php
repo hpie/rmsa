@@ -22,5 +22,9 @@
 
             </tbody>
         </table>
+        <canvas id="most_content_view_employee" width="400" height="400"></canvas>
     </div>
 </div>
+<script>
+    window.most_content_view_employee = <?php echo json_encode($data)?>
+</script>
