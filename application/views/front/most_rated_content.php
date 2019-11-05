@@ -21,4 +21,9 @@
             </tbody>
         </table>
     </div>
+    <canvas id="most_rated_content" width="400" height="400"></canvas>
 </div>
+
+<script>
+    window.most_rated_content = <?php echo json_encode($data)?>
+</script>
