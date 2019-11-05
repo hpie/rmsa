@@ -131,7 +131,7 @@ class Helper_model extends CI_Model
                                          LEFT JOIN rmsa_student_users ru ON ru.rmsa_user_id = rf.rmsa_user_id
                                          GROUP BY rf.rmsa_user_id
                                          ORDER BY most_active DESC
-                                         LIMIT 10");
+                                         LIMIT 5");
         $most_active_student = $most_active->result_array();
         return $most_active_student;
     }

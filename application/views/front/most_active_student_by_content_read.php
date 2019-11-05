@@ -22,4 +22,8 @@
             </tbody>
         </table>
     </div>
+    <canvas id="most_active_student" width="400" height="400"></canvas>
 </div>
+<script>
+    window.most_active_student = <?php echo json_encode($data)?>
+</script>
