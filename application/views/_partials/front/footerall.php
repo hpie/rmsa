@@ -70,6 +70,58 @@ $this->load->view('_partials/front/scripts');
 //all notification include
 $this->load->view('_partials/front/allnotify');
 ?>
+
+<?php if ($title == MOST_CONTENT_UPLOADED_EMPLOYEE_TITLE) {
+    ?>
+    <script>
+        var employee_name = [];
+        var overall_rating = [];
+
+        $(most_upload).each(function (key,data) {
+            employee_name.push(data.employee_name);
+            overall_rating.push(data.uploaded_count);
+        });
+
+        var ctx = document.getElementById('most_content_upload_employee');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: employee_name,
+                datasets: [{
+                    label: 'Top Employee with most uploaded content',
+                    data: overall_rating,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+<?php }?>
+
 <?php if ($title == MOST_CONTENT_RATED_EMPLOYEE_TITLE) {
 ?>
     <script>

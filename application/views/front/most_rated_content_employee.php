@@ -22,9 +22,8 @@
 
             </tbody>
         </table>
-
-        <canvas id="employee_most_rated" width="400" height="400"></canvas>
     </div>
+    <canvas id="employee_most_rated" width="400" height="400"></canvas>
 </div>
 
 <script>
