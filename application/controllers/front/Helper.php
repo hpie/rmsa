@@ -94,7 +94,7 @@ class Helper extends MY_Controller {
 
         $this->mViewData['data'] = $top_most_rated_employee;
         $this->mViewData['title']=MOST_CONTENT_RATED_EMPLOYEE_TITLE;
-        $this->renderFront('front/most_rated_content_employee.php');
+        $this->renderFront('front/most_rated_content_employee');
 
     }
     public function top_employee_with_most_viewed_content(){

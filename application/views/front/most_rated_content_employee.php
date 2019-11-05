@@ -22,5 +22,11 @@
 
             </tbody>
         </table>
+
+        <canvas id="employee_most_rated" width="400" height="400"></canvas>
     </div>
 </div>
+
+<script>
+    window.most_rated = <?php echo json_encode($data)?>
+</script>
