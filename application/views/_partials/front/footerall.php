@@ -70,6 +70,18 @@ $this->load->view('_partials/front/scripts');
 //all notification include
 $this->load->view('_partials/front/allnotify');
 ?>
+<script>
+    $(document).ready(function () {
+      $(".emp_reports").on('change',function () {
+
+          var type = $(this).val();
+          if(type != 0){
+              var link = '<?= EMPLOYEE_REPORTS ?>';
+              window.location.href = link+'/'+type;
+          }
+      })
+    });
+</script>
 
 <?php if ($title == MOST_CONTENT_UPLOADED_EMPLOYEE_TITLE) {
     ?>

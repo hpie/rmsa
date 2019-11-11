@@ -176,6 +176,9 @@ define('MOST_RATED_CONTENT',BASE_URL."/most-rated-content");
 define('MOST_VIEWED_CONTENT',BASE_URL."/most-viewed-content");
 define('MOST_ACTIVE_STUDENT',BASE_URL."/most-active-student");
 
+define('EMPLOYEE_REPORTS',BASE_URL."/employee-reports");
+
+
 
 
 //define all title heare for page

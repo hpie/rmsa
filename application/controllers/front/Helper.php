@@ -130,4 +130,24 @@ class Helper extends MY_Controller {
         $this->renderFront('front/most_active_student_by_content_read');
     }
 
+    public function employee_reports($type){
+        switch ($type){
+            case 1 :
+                self::top_employee_with_most_uploaded_content();
+                break;
+            case 2 :
+                self::top_employee_with_most_rated_content();
+                break;
+            case 3 :
+                self::top_employee_with_most_viewed_content();
+                break;
+
+            default :
+                self::top_employee_with_most_uploaded_content();
+                break;
+        }
+
+
+    }
+
 }

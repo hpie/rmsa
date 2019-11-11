@@ -94,9 +94,7 @@
                                         <li><a href="#">Student Queries</a></li>
                                         <li><a href="<?php echo ACTIVE_STUDENTS; ?>">Total Active Student</a></li>
                                         <li><a href="<?php echo ACTIVE_EMPLOYEE; ?>">Total Active Employee</a></li>
-                                        <li><a href="<?php echo MOST_CONTENT_UPLOADED_EMPLOYEE; ?>">Top Most Content Upload Employee</a></li>
-                                        <li><a href="<?php echo MOST_RATED_UPLOADED_EMPLOYEE; ?>">Top Most Content Rated Employee</a></li>
-                                        <li><a href="<?php echo MOST_VIEW_CONTENT_EMPLOYEE; ?>">Top Most Content View Employee</a></li>
+                                        <li><a href="<?php echo EMPLOYEE_REPORTS; ?>/1">Employee Reports</a></li>
                                         <li><a href="<?php echo MOST_RATED_CONTENT; ?>">Most Rated Content</a></li>
                                         <li><a href="<?php echo MOST_VIEWED_CONTENT; ?>">Most Viewed Content</a></li>
                                         <li><a href="<?php echo MOST_ACTIVE_STUDENT; ?>">Most Active Student</a></li>
