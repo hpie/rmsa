@@ -138,6 +138,14 @@ class Helper extends MY_Controller {
         $this->renderFront('front/most_active_student_on_school');
     }
 
+    public function top_district_with_most_content(){
+        $top_most_content_district = $this->Helper_model->top_district_with_most_content();
+
+        $this->mViewData['data'] = $top_most_content_district;
+        $this->mViewData['title']= TOP_DISTRICT_WITH_MOST_CONTENT;
+        $this->renderFront('front/top_district_with_most_content');
+    }
+
     public function employee_reports($type){
         switch ($type){
             case 1 :
@@ -151,6 +159,9 @@ class Helper extends MY_Controller {
                 break;
             case 4 :
                 self::most_active_student_on_school();
+                break;
+            case 5 :
+                self::top_district_with_most_content();
                 break;
 
             default :

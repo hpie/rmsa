@@ -147,5 +147,16 @@ class Helper_model extends CI_Model
         return $most_active_student;
     }
 
+    public function top_district_with_most_content(){
+        $top_most_content_district = $this->db->query("SELECT rd.rmsa_district_name,count(*) as uploaded_content 
+                                                       FROM rmsa_uploaded_files ruf
+                                                       LEFT JOIN rmsa_employee_users ru ON ru.rmsa_user_id = ruf.rmsa_employee_users_id
+                                                       LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id = ru.rmsa_district_id
+                                                       GROUP BY rd.rmsa_district_id
+                                                       ORDER BY uploaded_content DESC LIMIT 5");
+        $districts = $top_most_content_district->result_array();
+        return $districts;
+    }
+
 
 }
