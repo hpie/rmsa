@@ -2,6 +2,9 @@
 <!-- content -->
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
+        <?php
+        include('employee_report.php');
+        ?>
         <h1 class="heading">Most Active Student By Content Read</h1>
         <table class="table table-borderless table-responsive contact_us">
             <thead class="bg-gray">

@@ -163,6 +163,21 @@ class Helper extends MY_Controller {
             case 5 :
                 self::top_district_with_most_content();
                 break;
+            case 6 :
+                self::most_rated_content();
+                break;
+            case 7 :
+                self::most_viewed_content();
+                break;
+            case 8 :
+                self::most_active_student_by_content_read();
+                break;
+            case 9 :
+                self::total_active_students();
+                break;
+            case 10 :
+                self::total_active_employee();
+                break;
 
             default :
                 self::top_employee_with_most_uploaded_content();
