@@ -136,5 +136,16 @@ class Helper_model extends CI_Model
         return $most_active_student;
     }
 
+    public function most_active_student_on_school(){
+        $most_active_on_school = $this->db->query("SELECT rs.rmsa_school_id,rs.rmsa_school_title,count(*) AS school_has_most_active
+                                                   FROM rmsa_student_users ru
+                                                   LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id = ru.rmsa_school_id
+                                                   WHERE ru.rmsa_student_login_active = 1
+                                                   GROUP BY rs.rmsa_school_id
+                                                   ORDER BY school_has_most_active DESC LIMIT 5");
+        $most_active_student = $most_active_on_school->result_array();
+        return $most_active_student;
+    }
+
 
 }

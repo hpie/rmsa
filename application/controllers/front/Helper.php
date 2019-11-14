@@ -130,6 +130,14 @@ class Helper extends MY_Controller {
         $this->renderFront('front/most_active_student_by_content_read');
     }
 
+    public function most_active_student_on_school(){
+        $most_active_on_school = $this->Helper_model->most_active_student_on_school();
+
+        $this->mViewData['data'] = $most_active_on_school;
+        $this->mViewData['title']= MOST_ACTIVE_STUDENT_ON_SCHOOL_TITLE;
+        $this->renderFront('front/most_active_student_on_school');
+    }
+
     public function employee_reports($type){
         switch ($type){
             case 1 :
@@ -140,6 +148,9 @@ class Helper extends MY_Controller {
                 break;
             case 3 :
                 self::top_employee_with_most_viewed_content();
+                break;
+            case 4 :
+                self::most_active_student_on_school();
                 break;
 
             default :

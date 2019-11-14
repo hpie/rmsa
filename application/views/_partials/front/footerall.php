@@ -395,6 +395,58 @@ $this->load->view('_partials/front/allnotify');
     </script>
 <?php }?>
 
+<?php if ($title == MOST_ACTIVE_STUDENT_ON_SCHOOL_TITLE) {
+    ?>
+    <script>
+        var school_name = [];
+        var most_active = [];
+
+        $(school_most_active_students).each(function (key,data) {
+            school_name.push(data.rmsa_school_title);
+            most_active.push(data.school_has_most_active);
+        });
+
+
+        var ctx = document.getElementById('school_most_active_students');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: school_name,
+                datasets: [{
+                    label: 'Top School Most Active Students',
+                    data: most_active,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+<?php }?>
+
 <?php if ($title == RMSA_FILE_LIST_TITLE) {
     ?> 
     <script>        
