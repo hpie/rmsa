@@ -73,10 +73,11 @@ class Helper_model extends CI_Model
     }
 
     public function top_employee_with_most_uploaded_content(){
-        $employee = $this->db->query("SELECT ruf.rmsa_employee_users_id, count(*) AS uploaded_count,
+        $employee = $this->db->query("SELECT rs.rmsa_school_title, ruf.rmsa_employee_users_id, count(*) AS uploaded_count,
                                           CONCAT(eu.rmsa_user_first_name,' ',eu.rmsa_user_last_name) AS employee_name
                                           FROM `rmsa_uploaded_files`  ruf
                                           INNER JOIN rmsa_employee_users eu ON eu.rmsa_user_id = ruf.rmsa_employee_users_id
+                                          LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id = eu.rmsa_school_id
                                           GROUP BY rmsa_employee_users_id ORDER BY uploaded_count DESC LIMIT 10");
         $top_employee = $employee->result_array();
         return $top_employee;

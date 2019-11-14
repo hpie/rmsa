@@ -9,6 +9,7 @@
             <thead class="bg-gray">
                 <tr>
                     <th scope="col">Employee Name</th>
+                    <th scope="col">Employee School</th>
                     <th scope="col">Total Content</th>
                 </tr>
             </thead>
@@ -16,6 +17,7 @@
                 <?php foreach ($data AS $key => $employee) { ?>
                     <tr>
                         <th scope="row"><?= $employee['employee_name'] ?></th>
+                        <th scope="row"><?= $employee['rmsa_school_title'] ?></th>
                         <td><?= $employee['uploaded_count'] ?></td>
                     </tr>
                 <?php } ?>
