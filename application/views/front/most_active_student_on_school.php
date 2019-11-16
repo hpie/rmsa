@@ -9,6 +9,8 @@
             <thead class="bg-gray">
             <tr>
                 <th scope="col">School Name</th>
+                <th scope="col">School District</th>
+                <th scope="col">School State</th>
                 <th scope="col">Total Active Students</th>
 
 
@@ -17,7 +19,9 @@
             <tbody>
             <?php foreach ($data AS $key => $school) { ?>
                 <tr>
-                    <th scope="row"><?= $school['rmsa_school_title'] ?></th>
+                    <td><?= $school['rmsa_school_title'] ?></td>
+                    <td><?= $school['rmsa_district_name'] ?></td>
+                    <td><?= $school['rmsa_state_name'] ?></td>
                     <td><?= $school['school_has_most_active'] ?></td>
                 </tr>
             <?php } ?>
