@@ -9,6 +9,7 @@
             <thead class="bg-gray">
             <tr>
                 <th scope="col">District Name</th>
+                <th scope="col">State Name</th>
                 <th scope="col">Total Uploaded Content</th>
 
 
@@ -17,7 +18,8 @@
             <tbody>
             <?php foreach ($data AS $key => $district) { ?>
                 <tr>
-                    <th scope="row"><?= $district['rmsa_district_name'] ?></th>
+                    <td><?= $district['rmsa_district_name'] ?></td>
+                    <td><?= $district['rmsa_state_name'] ?></td>
                     <td><?= $district['uploaded_content'] ?></td>
                 </tr>
             <?php } ?>
