@@ -99,14 +99,22 @@ class Helper_model extends CI_Model
     }
 
     public function top_employee_with_most_rated_content(){
-        $most_rated_employee = $this->db->query("SELECT rfr.rmsa_uploaded_file_id, ruf.uploaded_file_title,CONCAT(rmu.rmsa_user_first_name,' ',rmu.rmsa_user_last_name) AS employee_name, AVG(rfr.rmsa_file_rating) AS overall_rating
-                                        FROM rmsa_file_reviews rfr
-                                        INNER JOIN rmsa_uploaded_files ruf ON ruf.rmsa_uploaded_file_id = rfr.rmsa_uploaded_file_id
-                                        LEFT JOIN rmsa_employee_users rmu ON rmu.rmsa_user_id = ruf.rmsa_employee_users_id
-                                        WHERE  rmsa_review_status = 1
-                                        GROUP BY rmsa_uploaded_file_id
-                                        ORDER BY overall_rating DESC
-                                        LIMIT 5");
+        $most_rated_employee = $this->db->query("SELECT rst.rmsa_state_name,rd.rmsa_district_name,
+                                                 rs.rmsa_school_title,rfr.rmsa_uploaded_file_id,
+                                                 ruf.uploaded_file_title,
+                                                 rmu.rmsa_user_employee_code,rmu.rmsa_user_email_id,
+                                                 CONCAT(rmu.rmsa_user_first_name,' ',rmu.rmsa_user_last_name) AS employee_name,
+                                                 AVG(rfr.rmsa_file_rating) AS overall_rating
+                                                FROM rmsa_file_reviews rfr
+                                                INNER JOIN rmsa_uploaded_files ruf ON ruf.rmsa_uploaded_file_id = rfr.rmsa_uploaded_file_id
+                                                LEFT JOIN rmsa_employee_users rmu ON rmu.rmsa_user_id = ruf.rmsa_employee_users_id
+                                                LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id = rmu.rmsa_school_id
+                                                LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id = rs.rmsa_district_id
+                                                LEFT JOIN rmsa_states rst ON rst.rmsa_state_id =  rd.rmsa_state_id
+                                                WHERE  rmsa_review_status = 1
+                                                GROUP BY rmsa_uploaded_file_id
+                                                ORDER BY overall_rating DESC
+                                                LIMIT 5");
         $most_rated_employee_ = $most_rated_employee->result_array();
         return $most_rated_employee_;
     }

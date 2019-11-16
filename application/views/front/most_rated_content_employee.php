@@ -8,7 +8,12 @@
         <table class="table table-borderless table-responsive contact_us">
             <thead class="bg-gray">
                 <tr>
+                    <th scope="col">Employee Code</th>
                     <th scope="col">Employee Name</th>
+                    <th scope="col">Employee Email</th>
+                    <th scope="col">Employee State</th>
+                    <th scope="col">Employee District</th>
+                    <th scope="col">Employee School</th>
                     <th scope="col">File Title</th>
                     <th scope="col">Rating</th>
 
@@ -17,7 +22,12 @@
             <tbody>
                 <?php foreach ($data AS $key => $employee) { ?>
                     <tr>
-                        <th scope="row"><?= $employee['employee_name'] ?></th>
+                        <td><?= $employee['rmsa_user_employee_code'] ?></td>
+                        <td><?= $employee['employee_name'] ?></td>
+                        <td><?= $employee['rmsa_user_email_id'] ?></td>
+                        <td><?= $employee['rmsa_state_name'] ?></td>
+                        <td><?= $employee['rmsa_district_name'] ?></td>
+                        <td><?= $employee['rmsa_school_title'] ?></td>
                         <td><?= $employee['uploaded_file_title'] ?></td>
                         <td><?= $employee['overall_rating'] ?></td>
                     </tr>
