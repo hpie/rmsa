@@ -120,9 +120,14 @@ class Helper_model extends CI_Model
     }
 
     public function top_employee_with_most_viewed_content(){
-        $most_viewed_employee = $this->db->query("SELECT uploaded_file_title,uploaded_file_viewcount,CONCAT(rmu.rmsa_user_first_name,' ',rmu.rmsa_user_last_name) AS employee_name
+        $most_viewed_employee = $this->db->query("SELECT rst.rmsa_state_name,rd.rmsa_district_name,
+                                                 rs.rmsa_school_title, uploaded_file_title,uploaded_file_viewcount,
+                                                 rmu.rmsa_user_employee_code,rmu.rmsa_user_email_id,CONCAT(rmu.rmsa_user_first_name,' ',rmu.rmsa_user_last_name) AS employee_name
                                                  FROM rmsa_uploaded_files ruf
                                                  LEFT JOIN rmsa_employee_users rmu ON rmu.rmsa_user_id = ruf.rmsa_employee_users_id
+                                                 LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id = rmu.rmsa_school_id
+                                                 LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id = rs.rmsa_district_id
+                                                 LEFT JOIN rmsa_states rst ON rst.rmsa_state_id =  rd.rmsa_state_id
                                                  ORDER BY uploaded_file_viewcount DESC
                                                  LIMIT 5");
         $most_viewed_employee_ = $most_viewed_employee->result_array();
