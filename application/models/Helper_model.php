@@ -143,9 +143,13 @@ class Helper_model extends CI_Model
     }
 
     public function most_active_student_by_content_read(){
-        $most_active = $this->db->query("SELECT CONCAT(ru.rmsa_user_first_name,' ',ru.rmsa_user_last_name) AS student_name,COUNT(*) most_active 
+        $most_active = $this->db->query("SELECT ru.	rmsa_user_roll_number,ru.rmsa_user_email_id,rst.rmsa_state_name,rd.rmsa_district_name,rs.rmsa_school_title,
+                                         CONCAT(ru.rmsa_user_first_name,' ',ru.rmsa_user_last_name) AS student_name,COUNT(*) most_active 
                                          FROM rmsa_user_file_views rf
                                          LEFT JOIN rmsa_student_users ru ON ru.rmsa_user_id = rf.rmsa_user_id
+                                         LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id = ru.rmsa_school_id
+                                         LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id = ru.rmsa_district_id
+                                         LEFT JOIN rmsa_states rst ON rst.rmsa_state_id =  rd.rmsa_state_id
                                          GROUP BY rf.rmsa_user_id
                                          ORDER BY most_active DESC
                                          LIMIT 5");
