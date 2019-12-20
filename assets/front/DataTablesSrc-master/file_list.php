@@ -45,7 +45,7 @@ include 'conn.php';
 $emp_rmsa_user_id = $_REQUEST['emp_rmsa_user_id'];
 $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
 if(empty($uploaded_file_tag)){
-    $where=" uploaded_file_volroot=0 AND rmsa_employee_users_id=$emp_rmsa_user_id AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+    $where=" uploaded_file_volroot='' AND rmsa_employee_users_id=$emp_rmsa_user_id AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
 }
 else{
     $where=" rmsa_employee_users_id=$emp_rmsa_user_id AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";

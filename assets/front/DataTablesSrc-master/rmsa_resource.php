@@ -47,7 +47,7 @@ $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
 
 $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
 if(empty($uploaded_file_tag)){
-    $where=" uploaded_file_volroot=0 AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+    $where=" uploaded_file_volroot='' AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
 }
 else{
     $where=" uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
