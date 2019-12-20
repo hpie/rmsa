@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-<!--            <div class="form-group">
+            <div class="form-group">
                 <div class="row">
                     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                     <script>function enableLogin() {
@@ -33,10 +33,10 @@
                         <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableLogin"></div>
                     </div>
                 </div>
-            </div>-->
+            </div>
             <div class="form-group">
                 <div class="m-auto text-center">
-                    <button type="submit" class="btn primary_btn"  id="btnLogin">Login</button>
+                    <button type="submit" class="btn primary_btn" disabled="true" id="btnLogin">Login</button>
                 </div>
             </div>            
         </form>
@@ -46,5 +46,6 @@
         <p class="bg-light-blue  p-2">Please enter your Registration No. as your User Name and your
             Date of Birth in YYYYMMDD format as your Password.
         </p>
+
     </div>
 </div>
