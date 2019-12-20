@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <div class="m-auto text-center">
-                    <button type="submit" class="btn primary_btn" disabled="true" id="btnLogin">Login</button>
+                    <button type="submit" class="btn primary_btn" disabled="true"  id="btnLogin">Login</button>
                 </div>
             </div>
         </form>
