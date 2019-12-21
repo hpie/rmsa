@@ -45,9 +45,9 @@ $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
 
 
 if(empty($uploaded_file_tag)){   
-    $where =" uploaded_file_status='ACTIVE' AND uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot='' AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";    
+    $where =" uploaded_file_status='ACTIVE' AND uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot='' ";    
     if($uploaded_file_category == 'NONE'){
-        $where =" uploaded_file_status='ACTIVE' AND uploaded_file_volroot='' AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";    
+        $where =" uploaded_file_status='ACTIVE' AND uploaded_file_volroot=''";    
     }
 }
 else{
