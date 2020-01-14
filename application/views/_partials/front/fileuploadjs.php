@@ -1,15 +1,20 @@
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 <script src="<?php echo BASE_URL ?>/assets/front/fileupload/js/vendor/jquery.ui.widget.js"></script>
 <!-- The Templates plugin is included to render the upload/download listings -->
-<script src="https://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
+<!--<script src="https://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>-->
+<script src="<?php echo BASE_URL ?>/assets/front/js/tmpl.min.js" type="text/javascript"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-<script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+<!--<script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>-->
+<script src="<?php echo BASE_URL ?>/assets/front/js/load-image.all.min.js" type="text/javascript"></script>
 <!-- The Canvas to Blob plugin is included for image resizing functionality -->
-<script src="https://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+<!--<script src="https://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>-->
+<script src="<?php echo BASE_URL ?>/assets/front/js/canvas-to-blob.min.js" type="text/javascript"></script>
 <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<script src="<?php echo BASE_URL ?>/assets/front/js/bootstrap1.min.js" type="text/javascript"></script>
 <!-- blueimp Gallery script -->
-<script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<!--<script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>-->
+<script src="<?php echo BASE_URL ?>/assets/front/js/jquery.blueimp-gallery.min.js" type="text/javascript"></script>
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
 <script src="<?php echo BASE_URL ?>/assets/front/fileupload/js/jquery.iframe-transport.js"></script>
 <!-- The basic File Upload plugin -->
