@@ -10,5 +10,8 @@ class Home extends MY_Controller {
     public function index() {
         $this->mViewData['title']=HOME_TITLE;
         $this->renderFront('front/index');
-    }   
+    }
+    public function index1() {
+        redirect('home');
+    }
 }
