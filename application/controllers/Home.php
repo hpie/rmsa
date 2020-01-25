@@ -8,6 +8,8 @@ class Home extends MY_Controller {
 
 	public function index()
 	{
-		$this->render('home', 'full_width');
+		// $this->render('home', 'full_width');
+		$this->mViewData['title']=HOME_TITLE;
+	        $this->renderFront('front/index');
 	}
 }
