@@ -92,13 +92,22 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 |
 */
 if (!(PHP_SAPI === 'cli' OR defined('STDIN')))
-{
+{   
+        
+        if($_SERVER['HTTP_HOST']=='localhost'){
 	// Base URL with directory support
 	$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
 	$base_url = $protocol.'://'.$_SERVER['HTTP_HOST'];
 	$base_url.= dirname($_SERVER['SCRIPT_NAME']);
 	define('BASE_URL', $base_url);
-	
+        }
+        else{
+                // Base URL with directory support
+            $protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
+            $base_url = $protocol.':/'.$_SERVER['HTTP_HOST'];
+            $base_url.= dirname($_SERVER['SCRIPT_NAME']);
+            define('BASE_URL', $base_url);
+        }
 	// For API prefix in Swagger annotation (/application/modules/api/swagger/info.php)
 	define('API_PROTOCOL', $protocol);
 	define('API_HOST', $_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']));
