@@ -14,8 +14,8 @@ class EmpLogin extends MY_Controller {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
             if ($result) {                
                 $token = $result['token'];                
-                if($_SESSION['token'] != $token) {
-                    echo $_SESSION['token'];die;
+                if($_SESSION['tokencheck'] != $token) {
+//                    echo $_SESSION['tokencheck'];die;
                     session_destroy(); 
                     redirect(HOME_LINK);
                 }

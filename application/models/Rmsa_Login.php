@@ -33,7 +33,7 @@ class Rmsa_Login extends CI_Model{
                 }                
 //                print_r($emp_data);die;
                 $_SESSION['username'] =$rmsa_data['rmsa_user_id'];
-                $_SESSION['token'] = $token;
+                $_SESSION['tokencheck'] = $token;
                 $uname=$_SESSION['username'];                                                
                 $result_token = $this->db->query("select count(*) as allcount from user_token");
                 $row_token = $result_token->row_array();                

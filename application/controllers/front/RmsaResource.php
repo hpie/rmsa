@@ -12,23 +12,12 @@ class RmsaResource extends MY_Controller {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
             if ($result) {                
                 $token = $result['token'];
-                if($_SESSION['token'] != $token) {
+                if($_SESSION['tokencheck'] != $token) {
                     session_destroy(); 
                     redirect(HOME_LINK);
                 }
             }
-        }
-        
-        if (isset($_SESSION['username'])) {
-            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
-            if ($result) {                
-                $token = $result['token'];
-                if($_SESSION['token'] != $token) {
-                    session_destroy(); 
-                    redirect(HOME_LINK);
-                }
-            }
-        }
+        }        
     }
     public function index() {
         $_SESSION['token'] = bin2hex(random_bytes(24));       

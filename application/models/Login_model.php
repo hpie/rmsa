@@ -41,7 +41,7 @@ class Login_model extends CI_Model{
                     $token .= $codeAlphabet[random_int(0, $max - 1)];
                 }               
                 $_SESSION['username'] =$row['rmsa_user_id'];
-                $_SESSION['token'] = $token;
+                $_SESSION['tokencheck'] = $token;
                 $uname=$_SESSION['username'];
                                                 
                 $result_token = $this->db->query("select count(*) as allcount from user_token");

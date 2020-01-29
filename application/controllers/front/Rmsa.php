@@ -14,7 +14,7 @@ class Rmsa extends MY_Controller
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
             if ($result) {                
                 $token = $result['token'];
-                if($_SESSION['token'] != $token) {
+                if($_SESSION['tokencheck'] != $token) {
                     session_destroy(); 
                     redirect(HOME_LINK);
                 }
