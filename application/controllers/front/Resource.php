@@ -6,6 +6,17 @@ class Resource extends MY_Controller{
        // $this->session->sessionCheckStudent();
         parent::__construct();
         $this->load->model('Resource_model');
+        $this->load->model('Emp_Login');        
+        if (isset($_SESSION['username'])) {
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
+            if ($result) {                
+                $token = $result['token'];
+                if($_SESSION['token'] != $token) {
+                    session_destroy(); 
+                    redirect(HOME_LINK);
+                }
+            }
+        }
     }
     
     public function resources($uploaded_file_category){       
@@ -58,16 +69,27 @@ class Resource extends MY_Controller{
                                     </div>
                                  </div>';
                     $i++;
-                    if($i >= 10){
-                     $base = BASE_URL;
-                      $review_comments .= '<div class="pull-right"><a href='.$base.'/file-reviews/'.$_REQUEST['file_id'].'>View More</a></div>';
-                    }
+//                    if($i >= 10){
+//                     $base = BASE_URL;
+//                      $review_comments .= '<div class="pull-right"><a href='.$base.'/file-reviews/'.$_REQUEST['file_id'].'>View More</a></div>';
+//                    }
 
 
                 }
             }
+        }        
+        if(isset($_SESSION['st_rmsa_user_id'])){
+             if($i>=1){
+                $base = BASE_URL;
+                $review_comments .= '<div class="pull-right"><a href='.$base.'/file-reviews/'.$_REQUEST['file_id'].'>View More</a></div>';
+            }
         }
-
+        else{
+            if($i>=1){
+                $base = BASE_URL;
+                $review_comments .= '<div class="pull-right"><a href='.$base.'/file-reviews/'.$_REQUEST['file_id'].'>View And Reply</a></div>';
+            }
+        }
         echo $review_comments;
 
     }

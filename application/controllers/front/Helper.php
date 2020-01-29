@@ -7,6 +7,17 @@ class Helper extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Helper_model');
+        $this->load->model('Emp_Login');        
+        if (isset($_SESSION['username'])) {
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
+            if ($result) {                
+                $token = $result['token'];
+                if($_SESSION['token'] != $token) {
+                    session_destroy(); 
+                    redirect(HOME_LINK);
+                }
+            }
+        }
     }
 
     public function load_tehsil(){
@@ -24,6 +35,7 @@ class Helper extends MY_Controller {
     public function create_student(){
         $_SESSION['exist_email'] = 0;
         if(isset($_POST['rmsa_user_first_name'])){
+            $this->session->sessionCheckToken($_POST);
             $res =  $this->Helper_model->register_student($_POST);            
             $result=array();
             if($res['success'] == true){
@@ -54,7 +66,8 @@ class Helper extends MY_Controller {
                     show_error($this->email->print_debugger());
                 }
             }            
-            if($res['email_exist'] == true){                
+            if($res['email_exist'] == true){
+//                echo 'hi';die;
                 $_SESSION['exist_email'] = 1;
                 $result['success']='fail';
             }
@@ -62,6 +75,7 @@ class Helper extends MY_Controller {
         }
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['title']=STUDENT_REGISTRATION_TITLE;
+        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->renderFront('front/studentregistration');
     }
     public function total_active_students(){
@@ -145,7 +159,6 @@ class Helper extends MY_Controller {
         $this->mViewData['title']= TOP_DISTRICT_WITH_MOST_CONTENT;
         $this->renderFront('front/top_district_with_most_content');
     }
-
     public function employee_reports($type){
         switch ($type){
             case 1 :
@@ -183,8 +196,6 @@ class Helper extends MY_Controller {
                 self::top_employee_with_most_uploaded_content();
                 break;
         }
-
-
     }
 
 }

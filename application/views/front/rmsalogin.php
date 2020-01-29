@@ -4,6 +4,7 @@
         <h1 class="heading">RMSA: &nbsp;Employee Login Screen</h1>
         <form class="form-horizontal border p-2" method="post" action="<?php echo RMSA_LOGIN_LINK ?>">
             <h2 class="second-heading text-center">Authorized login</h2>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="userName">User

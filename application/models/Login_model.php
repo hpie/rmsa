@@ -6,7 +6,7 @@ class Login_model extends CI_Model{
     }
     public function login_select($username, $password) {
         $password= md5($password);      
-        $q = "SELECT * FROM rmsa_student_users WHERE (rmsa_user_email_id='$username' OR rmsa_user_roll_number='$username') and rmsa_user_email_password='$password' AND rmsa_user_status='ACTIVE'";
+        $q = "SELECT * FROM rmsa_student_users WHERE (rmsa_user_email_id='$username' OR rmsa_user_roll_number='$username') and rmsa_user_email_password='$password' AND rmsa_user_status='ACTIVE' AND rmsa_user_locked_status=0";
         $query = $this->db->query($q);
         $row = $query->row_array(); 
         if (isset($row))
@@ -14,9 +14,11 @@ class Login_model extends CI_Model{
             if ((($username == $row['rmsa_user_email_id']) || ($username == $row['rmsa_user_roll_number'])) && ($password == $row['rmsa_user_email_password'])) {
 
                 //Add or update student user log
-
+                
                 $has_already_log = $this->db->query("SELECT * FROM rmsa_student_users_log WHERE rmsa_user_id = '{$row['rmsa_user_id']}'");
 
+                $this->db->query("UPDATE rmsa_student_users SET rmsa_user_attempt =0,rmsa_user_locked_status=0 WHERE rmsa_user_id = '{$emp_data['rmsa_user_id']}'");
+                
                 $log = $has_already_log->row_array();
                 
                 if(is_array($log)){
@@ -28,6 +30,31 @@ class Login_model extends CI_Model{
                 }
                 $this->db->query("UPDATE rmsa_student_users SET rmsa_student_login_active = 1 WHERE rmsa_user_id='".$row['rmsa_user_id']."' ");
                 $this->session->sessionStudent($row);
+                
+                
+                $token = "";
+                $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
+                $codeAlphabet .= "0123456789";
+                $max = strlen($codeAlphabet); // edited
+                for ($i = 0; $i < 10; $i++) {
+                    $token .= $codeAlphabet[random_int(0, $max - 1)];
+                }               
+                $_SESSION['username'] =$row['rmsa_user_id'];
+                $_SESSION['token'] = $token;
+                $uname=$_SESSION['username'];
+                                                
+                $result_token = $this->db->query("select count(*) as allcount from user_token");
+                $row_token = $result_token->row_array();                
+                if ($row_token['allcount'] > 0) {                    
+                    $this->db->query("update user_token set token='$token' where username='$uname'");
+//                    mysqli_query($con, "update user_token set token='" . $token . "' where username='" . $uname . "'");
+                } else {
+                    $this->db->query("insert into user_token(username,token) values('$uname','$token')");
+                }
+                
+                
+                
                 return true;
             }
            return false;
@@ -38,6 +65,17 @@ class Login_model extends CI_Model{
 
             $check = $get_user->row_array();
             if(is_array($check)){
+                
+                 if($check['rmsa_user_attempt']==0 || $check['rmsa_user_attempt']==1){
+                    $this->db->query("UPDATE rmsa_student_users SET rmsa_user_attempt =rmsa_user_attempt+1 WHERE rmsa_user_id = '{$check['rmsa_user_id']}'");
+                }
+                if($check['rmsa_user_attempt']>=2){
+                    $this->db->query("UPDATE rmsa_student_users SET rmsa_user_attempt =rmsa_user_attempt+1 WHERE rmsa_user_id = '{$check['rmsa_user_id']}'");
+                    $this->db->query("UPDATE rmsa_student_users SET rmsa_user_locked_status =1 WHERE rmsa_user_id = '{$check['rmsa_user_id']}'");
+                    $_SESSION['invalidAttempt']=1;
+                }
+                
+                
                 $has_already_log = $this->db->query("SELECT * FROM rmsa_student_users_log WHERE rmsa_user_id = '{$check['rmsa_user_id']}'");
 
                 $log = $has_already_log->row_array();

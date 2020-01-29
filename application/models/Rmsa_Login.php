@@ -22,6 +22,29 @@ class Rmsa_Login extends CI_Model{
                 }
                 $this->db->query("UPDATE rmsa_employee_users SET rmsa_employee_login_active = 1 WHERE rmsa_user_id='".$rmsa_data['rmsa_user_id']."' ");
                 $this->session->sessionRmsa($rmsa_data);
+                
+                $token = "";
+                $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
+                $codeAlphabet .= "0123456789";
+                $max = strlen($codeAlphabet); // edited
+                for ($i = 0; $i < 10; $i++) {
+                    $token .= $codeAlphabet[random_int(0, $max - 1)];
+                }                
+//                print_r($emp_data);die;
+                $_SESSION['username'] =$rmsa_data['rmsa_user_id'];
+                $_SESSION['token'] = $token;
+                $uname=$_SESSION['username'];                                                
+                $result_token = $this->db->query("select count(*) as allcount from user_token");
+                $row_token = $result_token->row_array();                
+                if ($row_token['allcount'] > 0) {                    
+                    $this->db->query("update user_token set token='$token' where username='$uname'");
+//                    mysqli_query($con, "update user_token set token='" . $token . "' where username='" . $uname . "'");
+                } else {
+                    $this->db->query("insert into user_token(username,token) values('$uname','$token')");
+                }
+                
+                
                 return true;
             }
         }

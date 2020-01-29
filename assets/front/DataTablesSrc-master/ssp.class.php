@@ -46,25 +46,46 @@ class SSP {
 	 *  @param  array $data    Data from the SQL get
 	 *  @return array          Formatted data in a row based format
 	 */
-	static function data_output ( $columns, $data )
-	{
-		$out = array();
-		for ( $i=0, $ien=count($data) ; $i<$ien ; $i++ ) {
-			$row = array();
-			for ( $j=0, $jen=count($columns) ; $j<$jen ; $j++ ) {
-				$column = $columns[$j];
-				// Is there a formatter?
-				if ( isset( $column['formatter'] ) ) {
-					$row[ $column['dt'] ] = $column['formatter']( $data[$i][ $column['db'] ], $data[$i] );
-				}
-				else {
-					$row[ $column['dt'] ] = $data[$i][ $columns[$j]['db'] ];
-				}
-			}
-			$out[] = $row;
-		}
-		return $out;
-	}
+    
+        static function data_output($columns, $data) {
+//      print_r($columns);die;
+        $out = array();
+        for ($i = 0, $ien = count($data); $i < $ien; $i++) {
+            $row = array();
+            for ($j = 0, $jen = count($columns); $j < $jen; $j++) {
+                $column = $columns[$j];
+                // Is there a formatter?
+                if (isset($column['formatter'])) {
+                    $row[$column['dt']] = $column['formatter']($data[$i][$column['db']], $data[$i]);
+                } else {                  
+                    $row[$column['dt']] = $data[$i][$columns[$j]['dt']];
+                }
+            }
+            $out[] = $row;
+        }
+        return $out;
+    }
+    
+    
+//	static function data_output ( $columns, $data )
+//	{
+//		$out = array();
+//		for ( $i=0, $ien=count($data) ; $i<$ien ; $i++ ) {
+//			$row = array();
+//			for ( $j=0, $jen=count($columns) ; $j<$jen ; $j++ ) {
+//				$column = $columns[$j];
+//				// Is there a formatter?
+//				if ( isset( $column['formatter'] ) ) {
+//					$row[ $column['dt'] ] = $column['formatter']( $data[$i][ $column['db'] ], $data[$i] );
+//				}
+//				else {
+//					$row[ $column['dt'] ] = $data[$i][ $columns[$j]['db'] ];
+//				}
+//			}
+//			$out[] = $row;
+//		}
+//		return $out;
+//	}
 	/**
 	 * Database connection
 	 *
@@ -225,26 +246,41 @@ class SSP {
             } else {
                 $where .= 'WHERE ' . $where_custom;
             }
-        }       
+        }   
+        
+        
 		// Main query to actually get the data
 		$data = self::sql_exec( $db, $bindings,
-			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-			 FROM `$table`
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
+                         INNER JOIN rmsa_schools rs
+                         ON rs.rmsa_school_id=rsu.rmsa_school_id
+                         INNER JOIN rmsa_districts rd
+                         ON rd.rmsa_district_id=rsu.rmsa_district_id                             
 			 $where
 			 $order
 			 $limit"
 		);                                                             
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
+                         INNER JOIN rmsa_schools rs
+                         ON rs.rmsa_school_id=rsu.rmsa_school_id
+                         INNER JOIN rmsa_districts rd
+                         ON rd.rmsa_district_id=rsu.rmsa_district_id                         
 			 $where"
 		);
 		$recordsFiltered = $resFilterLength[0][0];
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`"
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
+                         INNER JOIN rmsa_schools rs
+                         ON rs.rmsa_school_id=rsu.rmsa_school_id
+                         INNER JOIN rmsa_districts rd
+                         ON rd.rmsa_district_id=rsu.rmsa_district_id
+                         "
 		);
 		$recordsTotal = $resTotalLength[0][0];
 
@@ -299,23 +335,37 @@ class SSP {
         }       
 		// Main query to actually get the data
 		$data = self::sql_exec( $db, $bindings,
-			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-			 FROM `$table`
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
+                         INNER JOIN rmsa_schools rs
+                         ON rs.rmsa_school_id=rsu.rmsa_school_id
+                         INNER JOIN rmsa_districts rd
+                         ON rd.rmsa_district_id=rsu.rmsa_district_id                         
 			 $where
 			 $order
 			 $limit"
 		);                                                             
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`
-			 $where"
+			"SELECT COUNT({$primaryKey})
+			FROM   $table 
+                        INNER JOIN rmsa_schools rs
+                         ON rs.rmsa_school_id=rsu.rmsa_school_id
+                         INNER JOIN rmsa_districts rd
+                         ON rd.rmsa_district_id=rsu.rmsa_district_id 
+                        
+			$where"
 		);
 		$recordsFiltered = $resFilterLength[0][0];
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`"
+			"SELECT COUNT({$primaryKey})
+			FROM   $table
+                        INNER JOIN rmsa_schools rs
+                         ON rs.rmsa_school_id=rsu.rmsa_school_id
+                         INNER JOIN rmsa_districts rd
+                         ON rd.rmsa_district_id=rsu.rmsa_district_id 
+                        "
 		);
 		$recordsTotal = $resTotalLength[0][0];
 
@@ -366,23 +416,37 @@ class SSP {
                 }       
 		// Main query to actually get the data
 		$data = self::sql_exec( $db, $bindings,
-			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-			 FROM `$table`
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
+                         INNER JOIN rmsa_schools rs
+                         ON rs.rmsa_school_id=reu.rmsa_school_id
+                         INNER JOIN rmsa_districts rd
+                         ON rd.rmsa_district_id=reu.rmsa_district_id 
 			 $where
 			 $order
 			 $limit"
 		);                                                             
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
+                             INNER JOIN rmsa_schools rs
+                         ON rs.rmsa_school_id=reu.rmsa_school_id
+                         INNER JOIN rmsa_districts rd
+                         ON rd.rmsa_district_id=reu.rmsa_district_id 
 			 $where"
 		);
 		$recordsFiltered = $resFilterLength[0][0];
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`"
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
+                         INNER JOIN rmsa_schools rs
+                         ON rs.rmsa_school_id=reu.rmsa_school_id
+                         INNER JOIN rmsa_districts rd
+                         ON rd.rmsa_district_id=reu.rmsa_district_id 
+                         "    
+                          
 		);
 		$recordsTotal = $resTotalLength[0][0];
 

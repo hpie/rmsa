@@ -9,12 +9,25 @@ class Rmsa extends MY_Controller
         $this->load->model('Rmsa_model');
         $this->load->model('Helper_model');
         $this->load->model('Employee_model');
+        $this->load->model('Emp_Login');        
+        if (isset($_SESSION['username'])) {
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
+            if ($result) {                
+                $token = $result['token'];
+                if($_SESSION['token'] != $token) {
+                    session_destroy(); 
+                    redirect(HOME_LINK);
+                }
+            }
+        }
     }
-    public function view_student(){       
+    public function view_student(){    
+        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->mViewData['title']= RMSAE_STUDENT_LIST_TITLE;
         $this->renderFront('front/rmsa_student');
     }
-    public function view_employee(){       
+    public function view_employee(){
+        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->mViewData['title']= RMSAE_EMPLOYEE_LIST_TITLE;
         $this->renderFront('front/rmsa_employee');
     }    
@@ -62,20 +75,34 @@ class Rmsa extends MY_Controller
     }
     public function active_employee(){
         if(isset($_REQUEST['rmsa_user_id'])){
+            $this->session->sessionCheckToken($_POST);
             $res = $this->Rmsa_model->active_employee($_REQUEST);
             if($res){
+               $_SESSION['token'] = bin2hex(random_bytes(24));       
                 $data = array(
+                    'token'=>$_SESSION['token'],
                     'suceess' => true
                 );
             }
+            
+//            
+//            $res = $this->Rmsa_model->active_employee($_REQUEST);
+//            if($res){
+//                $data = array(
+//                    'suceess' => true
+//                );
+//            }
             echo json_encode($data);
         }
     }
     public function active_file(){
         if(isset($_REQUEST['rmsa_uploaded_file_id'])){
+            $this->session->sessionCheckToken($_POST);
             $res = $this->Rmsa_model->active_file($_REQUEST);
             if($res){
+               $_SESSION['token'] = bin2hex(random_bytes(24));       
                 $data = array(
+                    'token'=>$_SESSION['token'],
                     'suceess' => true
                 );
             }
@@ -142,12 +169,24 @@ class Rmsa extends MY_Controller
     
     public function active_student(){
         if(isset($_REQUEST['rmsa_user_id'])){
+            
+            $this->session->sessionCheckToken($_POST);
             $res = $this->Rmsa_model->active_student($_REQUEST);
             if($res){
+               $_SESSION['token'] = bin2hex(random_bytes(24));       
                 $data = array(
+                    'token'=>$_SESSION['token'],
                     'suceess' => true
                 );
             }
+            
+//            
+//            $res = $this->Rmsa_model->active_student($_REQUEST);
+//            if($res){
+//                $data = array(
+//                    'suceess' => true
+//                );
+//            }
             echo json_encode($data);
         }
     }

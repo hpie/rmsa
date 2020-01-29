@@ -7,8 +7,20 @@ class EmpRegistration extends MY_Controller{
             redirect(HOME_LINK);
         }
         parent::__construct();
+        $this->load->model('Emp_Login');        
+        if (isset($_SESSION['username'])) {
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
+            if ($result) {                
+                $token = $result['token'];
+                if($_SESSION['token'] != $token) {
+                    session_destroy(); 
+                    redirect(HOME_LINK);
+                }
+            }
+        }
     }
     public function index(){
+        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->mViewData['title']=EMPLOYEE_REGISTRATION_TITLE;
         $this->renderFront('front/empregistration');
     }

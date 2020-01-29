@@ -18,22 +18,24 @@
  */
 
 // DB table to use
-$table = 'rmsa_student_users';
+$table = 'rmsa_student_users rsu';
 
 // Table's primary key
-$primaryKey = 'rmsa_user_id';
+$primaryKey = 'rsu.rmsa_user_id';
 
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array('db' => 'rmsa_user_id', 'dt' =>'rmsa_user_id'),
-    array('db' => 'rmsa_user_first_name', 'dt' => 'rmsa_user_first_name'),
-    array('db' => 'rmsa_user_gender', 'dt' =>'rmsa_user_gender'),
-    array('db' => 'rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),
-    array('db' => 'rmsa_user_email_id', 'dt' =>'rmsa_user_email_id'),
-    array('db' => 'rmsa_user_status', 'dt' =>'rmsa_user_status')
+    array('db' => 'rsu.rmsa_user_id', 'dt' =>'rmsa_user_id'),
+    array('db' => 'rsu.rmsa_user_first_name', 'dt' => 'rmsa_user_first_name'),
+    array('db' => 'rsu.rmsa_user_gender', 'dt' =>'rmsa_user_gender'),
+    array('db' => 'rsu.rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),
+    array('db' => 'rsu.rmsa_user_email_id', 'dt' =>'rmsa_user_email_id'),
+    array('db' => 'rsu.rmsa_user_status', 'dt' =>'rmsa_user_status'),
+    array('db' => 'rs.rmsa_school_title', 'dt' =>'rmsa_school_title'),
+    array('db' => 'rd.rmsa_district_name', 'dt' =>'rmsa_district_name')
 );
 
 include 'conn.php';
@@ -45,10 +47,13 @@ include 'conn.php';
 //    'host' => 'localhost'
 //);
 
-$where = 'rmsa_school_id = '.$_REQUEST['rmsa_school_id']; 
+$where = 'rsu.rmsa_school_id = '.$_REQUEST['rmsa_school_id'];
+
+
+
 if(!empty($_REQUEST['search']['value'])){
     $value=$_REQUEST['search']['value'];
-    $where.=" AND (rmsa_user_first_name LIKE '%$value%' OR rmsa_user_gender LIKE '%$value%' OR rmsa_user_DOB LIKE '%$value%' OR rmsa_user_email_id LIKE '%$value%') ";
+    $where.=" AND (rsu.rmsa_user_first_name LIKE '%$value%' OR rsu.rmsa_user_gender LIKE '%$value%' OR rsu.rmsa_user_DOB LIKE '%$value%' OR rsu.rmsa_user_email_id LIKE '%$value%') ";
 }
 //echo $where;die;
 

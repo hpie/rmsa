@@ -1,7 +1,8 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title><?php echo $title; ?></title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
     <link href="<?php echo BASE_URL ?>/assets/front/css/bootstrap1.min.css" rel="stylesheet" type="text/css"/>

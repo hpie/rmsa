@@ -18,22 +18,24 @@
  */
 
 // DB table to use
-$table = 'rmsa_employee_users';
+$table = 'rmsa_employee_users reu';
 
 // Table's primary key
-$primaryKey = 'rmsa_user_id';
+$primaryKey = 'reu.rmsa_user_id';
 
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array('db' => 'rmsa_user_id', 'dt' =>'rmsa_user_id'),
-    array('db' => 'rmsa_user_first_name', 'dt' => 'rmsa_user_first_name'),
-    array('db' => 'rmsa_user_gender', 'dt' =>'rmsa_user_gender'),
-    array('db' => 'rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),
-    array('db' => 'rmsa_user_email_id', 'dt' =>'rmsa_user_email_id'),
-    array('db' => 'rmsa_user_status', 'dt' =>'rmsa_user_status')
+    array('db' => 'reu.rmsa_user_id', 'dt' =>'rmsa_user_id'),
+    array('db' => 'reu.rmsa_user_first_name', 'dt' => 'rmsa_user_first_name'),
+    array('db' => 'reu.rmsa_user_gender', 'dt' =>'rmsa_user_gender'),
+    array('db' => 'reu.rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),
+    array('db' => 'reu.rmsa_user_email_id', 'dt' =>'rmsa_user_email_id'),
+    array('db' => 'reu.rmsa_user_status', 'dt' =>'rmsa_user_status'),
+    array('db' => 'rs.rmsa_school_title', 'dt' =>'rmsa_school_title'),
+    array('db' => 'rd.rmsa_district_name', 'dt' =>'rmsa_district_name')
 );
 
 include 'conn.php';

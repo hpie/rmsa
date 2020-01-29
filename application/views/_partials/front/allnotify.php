@@ -1,5 +1,25 @@
 <script>
-$(document).ready(function () {      
+$(document).ready(function () {
+<?php
+if(isset($_SESSION['invalidAttempt'])){
+    if($_SESSION['invalidAttempt']==1){
+        $_SESSION['invalid_login']=0;
+    }
+}
+?>
+if (<?php
+if (isset($_SESSION['invalidAttempt']) && isset($_SESSION['invalidAttempt'])) {
+    echo $_SESSION['invalidAttempt'];
+}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'Your account is locked',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+                <?php echo $_SESSION['invalidAttempt'] = 0; ?>;
+            }        
+        
 if (<?php
 if (isset($_SESSION['invalid_login']) && isset($_SESSION['invalid_login'])) {
     echo $_SESSION['invalid_login'];

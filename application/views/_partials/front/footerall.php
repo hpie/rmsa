@@ -18,9 +18,8 @@ $this->load->view('_partials/front/footer');
 //	include('_partials/footer.php'); // Includes Footer Script
 ?>
 <!-- End Import Navbar -->         
-
+<input type="hidden" id="token" value="<?php if(isset($_SESSION['token'])){echo $_SESSION['token'];} ?>">
 </div>
-
 <!-- Start Import Scripts -->
 <?php
 $this->load->view('_partials/front/scripts');
@@ -39,7 +38,9 @@ $this->load->view('_partials/front/scripts');
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>-->
 
 
-<script>    
+
+
+<script>
 //    function myFunction() {       
 //        myVar = setTimeout(showPage, 3000);
 //    }
@@ -47,15 +48,37 @@ $this->load->view('_partials/front/scripts');
 //        document.getElementById("loader").style.display = "none";
 //        document.getElementById("myDiv").style.display = "block";
 //    }    
-    $(document).ready(function () {                                                       
-        $("#accordion a").each(function() {   
+    $(document).ready(function () {
+
+//        document.onkeydown = function (e) {
+//            if (e.keyCode == 123) {
+//                return false;
+//            }
+//            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+//                return false;
+//            }
+//            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+//                return false;
+//            }
+//            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+//                return false;
+//            }
+//             if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+//                return false;
+//            }
+//            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+//                return false;
+//            }
+//        }
+
+        $("#accordion a").each(function () {
             if (this.href == window.location.href) {
-                $(this).css("background","#bc2832");
-                $(this).parents('.submenu').css("display","block");
+                $(this).css("background", "#bc2832");
+                $(this).parents('.submenu').css("display", "block");
                 $(this).parents('.submenu').parents('li').addClass('open');
             }
         });
-        
+
 //        $('#accordion').find('a.current').parent().prop('className');
 //        
 ////       $("[data-toggle='tooltip']").tooltip(); 
@@ -66,9 +89,9 @@ $this->load->view('_partials/front/scripts');
 
 //        $('.navbar-nav > li > a[href="'+pathname+'"]').parent().css( "background-color", "red" );
 //        
-        var pathname = window.location.href;        
+        var pathname = window.location.href;
         $('.navbar-nav > li > a').removeClass('active');
-        $('.navbar-nav > li > a[href="' + pathname + '"]').addClass('active');        
+        $('.navbar-nav > li > a[href="' + pathname + '"]').addClass('active');
     });
 </script>
 <?php
@@ -77,14 +100,14 @@ $this->load->view('_partials/front/allnotify');
 ?>
 <script>
     $(document).ready(function () {
-      $(".emp_reports").on('change',function () {
+        $(".emp_reports").on('change', function () {
 
-          var type = $(this).val();
-          if(type != 0){
-              var link = '<?= EMPLOYEE_REPORTS ?>';
-              window.location.href = link+'/'+type;
-          }
-      })
+            var type = $(this).val();
+            if (type != 0) {
+                var link = '<?= EMPLOYEE_REPORTS ?>';
+                window.location.href = link + '/' + type;
+            }
+        })
     });
 </script>
 
@@ -94,7 +117,7 @@ $this->load->view('_partials/front/allnotify');
         var employee_name = [];
         var overall_rating = [];
 
-        $(most_upload).each(function (key,data) {
+        $(most_upload).each(function (key, data) {
             employee_name.push(data.employee_name);
             overall_rating.push(data.uploaded_count);
         });
@@ -105,47 +128,47 @@ $this->load->view('_partials/front/allnotify');
             data: {
                 labels: employee_name,
                 datasets: [{
-                    label: 'Top Employee with most uploaded content',
-                    data: overall_rating,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+                        label: 'Top Employee with most uploaded content',
+                        data: overall_rating,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
             },
             options: {
                 scales: {
                     yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                 }
             }
         });
     </script>
-<?php }?>
+<?php } ?>
 
 <?php if ($title == MOST_CONTENT_RATED_EMPLOYEE_TITLE) {
-?>
+    ?>
     <script>
         var employee_name = [];
         var overall_rating = [];
 
-        $(most_rated).each(function (key,data) {
+        $(most_rated).each(function (key, data) {
             employee_name.push(data.employee_name);
             overall_rating.push(data.overall_rating);
         });
@@ -156,39 +179,39 @@ $this->load->view('_partials/front/allnotify');
             data: {
                 labels: employee_name,
                 datasets: [{
-                    label: 'Top Employee with most rated content',
-                    data: overall_rating,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+                        label: 'Top Employee with most rated content',
+                        data: overall_rating,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
             },
             options: {
                 scales: {
                     yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                 }
             }
         });
     </script>
-<?php }?>
+<?php } ?>
 
 <?php if ($title == MOST_CONTENT_VIEW_EMPLOYEE_TITLE) {
     ?>
@@ -196,7 +219,7 @@ $this->load->view('_partials/front/allnotify');
         var employee_name = [];
         var uploaded_file_viewcount = [];
 
-        $(most_content_view_employee).each(function (key,data) {
+        $(most_content_view_employee).each(function (key, data) {
             employee_name.push(data.employee_name);
             uploaded_file_viewcount.push(data.uploaded_file_viewcount);
         });
@@ -210,39 +233,39 @@ $this->load->view('_partials/front/allnotify');
             data: {
                 labels: employee_name,
                 datasets: [{
-                    label: 'Top Employee with most viewed content',
-                    data: uploaded_file_viewcount,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+                        label: 'Top Employee with most viewed content',
+                        data: uploaded_file_viewcount,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
             },
             options: {
                 scales: {
                     yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                 }
             }
         });
     </script>
-<?php }?>
+<?php } ?>
 
 <?php if ($title == MOST_RATED_CONTENT_TITLE) {
     ?>
@@ -250,7 +273,7 @@ $this->load->view('_partials/front/allnotify');
         var uploaded_file_title = [];
         var overall_rating = [];
 
-        $(most_rated_content).each(function (key,data) {
+        $(most_rated_content).each(function (key, data) {
             uploaded_file_title.push(data.uploaded_file_title);
             overall_rating.push(data.overall_rating);
         });
@@ -262,39 +285,39 @@ $this->load->view('_partials/front/allnotify');
             data: {
                 labels: uploaded_file_title,
                 datasets: [{
-                    label: 'Most Rated Content',
-                    data: overall_rating,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+                        label: 'Most Rated Content',
+                        data: overall_rating,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
             },
             options: {
                 scales: {
                     yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                 }
             }
         });
     </script>
-<?php }?>
+<?php } ?>
 
 <?php if ($title == MOST_VIEWED_CONTENT_TITLE) {
     ?>
@@ -302,7 +325,7 @@ $this->load->view('_partials/front/allnotify');
         var uploaded_file_title = [];
         var uploaded_file_viewcount = [];
 
-        $(most_viewed_content).each(function (key,data) {
+        $(most_viewed_content).each(function (key, data) {
             uploaded_file_title.push(data.uploaded_file_title);
             uploaded_file_viewcount.push(data.uploaded_file_viewcount);
         });
@@ -314,39 +337,39 @@ $this->load->view('_partials/front/allnotify');
             data: {
                 labels: uploaded_file_title,
                 datasets: [{
-                    label: 'Most Viewed Content',
-                    data: uploaded_file_viewcount,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+                        label: 'Most Viewed Content',
+                        data: uploaded_file_viewcount,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
             },
             options: {
                 scales: {
                     yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                 }
             }
         });
     </script>
-<?php }?>
+<?php } ?>
 
 <?php if ($title == MOST_ACTIVE_STUDENT_BY_CONTENT_READ) {
     ?>
@@ -354,7 +377,7 @@ $this->load->view('_partials/front/allnotify');
         var student_name = [];
         var most_active = [];
 
-        $(most_active_student).each(function (key,data) {
+        $(most_active_student).each(function (key, data) {
             student_name.push(data.student_name);
             most_active.push(data.most_active);
         });
@@ -366,39 +389,39 @@ $this->load->view('_partials/front/allnotify');
             data: {
                 labels: student_name,
                 datasets: [{
-                    label: 'Most Active Student By Content Read',
-                    data: most_active,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+                        label: 'Most Active Student By Content Read',
+                        data: most_active,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
             },
             options: {
                 scales: {
                     yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                 }
             }
         });
     </script>
-<?php }?>
+<?php } ?>
 
 <?php if ($title == MOST_ACTIVE_STUDENT_ON_SCHOOL_TITLE) {
     ?>
@@ -406,7 +429,7 @@ $this->load->view('_partials/front/allnotify');
         var school_name = [];
         var most_active = [];
 
-        $(school_most_active_students).each(function (key,data) {
+        $(school_most_active_students).each(function (key, data) {
             school_name.push(data.rmsa_school_title);
             most_active.push(data.school_has_most_active);
         });
@@ -418,39 +441,39 @@ $this->load->view('_partials/front/allnotify');
             data: {
                 labels: school_name,
                 datasets: [{
-                    label: 'Top School Most Active Students',
-                    data: most_active,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+                        label: 'Top School Most Active Students',
+                        data: most_active,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
             },
             options: {
                 scales: {
                     yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                 }
             }
         });
     </script>
-<?php }?>
+<?php } ?>
 
 <?php if ($title == TOP_DISTRICT_WITH_MOST_CONTENT) {
     ?>
@@ -458,7 +481,7 @@ $this->load->view('_partials/front/allnotify');
         var district_name = [];
         var total_upload = [];
 
-        $(top_district_upload_content).each(function (key,data) {
+        $(top_district_upload_content).each(function (key, data) {
             district_name.push(data.rmsa_district_name);
             total_upload.push(data.uploaded_content);
         });
@@ -470,114 +493,116 @@ $this->load->view('_partials/front/allnotify');
             data: {
                 labels: district_name,
                 datasets: [{
-                    label: 'Top District With Most Content',
-                    data: total_upload,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+                        label: 'Top District With Most Content',
+                        data: total_upload,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
             },
             options: {
                 scales: {
                     yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                 }
             }
         });
     </script>
-<?php }?>
+<?php } ?>
 
 <?php if ($title == RMSA_FILE_LIST_TITLE) {
     ?> 
-    <script>        
+    <script>
         $(document).ready(function () {
-        fill_datatable1();
-        function fill_datatable1(uploaded_file_tag = '')
-        {                         
-            $('#example tfoot th').each( function () {                
-                var title = $('#example thead th').eq($(this).index()).text();                
-                if((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")){
-                    $(this).html( '<input type="text" placeholder="'+title+'" />' ); 
-                }
-            });            
-            var table = $('#example').DataTable({
-                
-                responsive: {
-                    details: {
-                        type: 'column',
-                        target: 'tr'
+            fill_datatable1();
+            function fill_datatable1(uploaded_file_tag = '')
+            {
+                $('#example tfoot th').each(function () {
+                    var title = $('#example thead th').eq($(this).index()).text();
+                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
+                        $(this).html('<input type="text" placeholder="' + title + '" />');
                     }
-                },
-                columnDefs: [ {
-		        className: 'control',
-		        orderable: false,
-		        targets: 0
-		    } ],                                   
-                "processing": true,
-                "serverSide": true,
-                "pageLength": 10,
-                "paginationType": "full_numbers",
-                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-                "ajax": {
-                    'type': 'POST',
-                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_resource.php' ?>",
-                    'data': {                        
-                        uploaded_file_tag:uploaded_file_tag
-                    }
-                },
-                "columns": [
-                    {"data": "index"},
-                    {"data": "uploaded_file_title"},
-                    {"data": "ext"},
-                    {"data": "uploaded_file_type"},
-                    {"data": "uploaded_file_group"},
-                    {"data": "uploaded_file_category"},
-                    {"data": "uploaded_file_status"},
-                    {"data": "ratting"},
-                    {"data": "uploaded_file_desc"}
-                ]
-            });
-            table.columns().eq(0).each( function ( colIdx ) { 
-                $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
-                    table .column( colIdx ) .search( this.value ) .draw(); 
-                }); 
-            });
-        }
-        
-         $(document).on('click', '.btn_approve_reject', function () {
+                });
+                var table = $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_resource.php' ?>",
+                        'data': {
+                            uploaded_file_tag: uploaded_file_tag
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "uploaded_file_title"},
+                        {"data": "ext"},
+                        {"data": "uploaded_file_type"},
+                        {"data": "uploaded_file_group"},
+                        {"data": "uploaded_file_category"},
+                        {"data": "uploaded_file_status"},
+                        {"data": "ratting"},
+                        {"data": "uploaded_file_desc"}
+                    ]
+                });
+                table.columns().eq(0).each(function (colIdx) {
+                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
+                        table.column(colIdx).search(this.value).draw();
+                    });
+                });
+            }
+            $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
+                var token=$('#token').val();
                 var status = self.attr('data-status');
 
                 var uploaded_file_status = 'ACTIVE';
 
-                if(status == 1){
+                if (status == 1) {
                     uploaded_file_status = 'REMOVED';
                 }
 
-                if(!confirm('Are you sure want to '+uploaded_file_status.toLocaleLowerCase()+' file?')) return;
+                if (!confirm('Are you sure want to ' + uploaded_file_status.toLocaleLowerCase() + ' file?'))
+                    return;
 
-                self.attr('disabled','disabled');
+                self.attr('disabled', 'disabled');
 
                 var data = {
-                    'rmsa_uploaded_file_id' : self.data('id'),
-                    'uploaded_file_status'  : uploaded_file_status
+                    'rmsa_uploaded_file_id': self.data('id'),
+                    'uploaded_file_status': uploaded_file_status,
+                    'token':token
                 }
 
                 $.ajax({
@@ -594,137 +619,141 @@ $this->load->view('_partials/front/allnotify');
                             var text = 'Active';
                             var isactive = 1;
 
-                            if(status == 1){
+                            if (status == 1) {
                                 title = 'Click to active file';
                                 class_ = 'btn_approve_reject btn btn-danger btn-xs';
-                                text  = 'Inactive';
+                                text = 'Inactive';
                                 isactive = 0;
                             }
                             self.removeClass().addClass(class_);
                             self.attr({
-                               'data-status' :isactive,
-                               'title':title
-                           });
-                           self.removeAttr('disabled');
-                           self.html(text);
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                            $('#token').val(res.token);
                         }
                     }
                 });
             });
-        
-        $('#searchTag').click(function(){
-            var uploaded_file_tag = $('#uploaded_file_tag').val();            
-            if(uploaded_file_tag != '')
-            {
-                $('#example').DataTable().destroy();
-                fill_datatable1(uploaded_file_tag);
-            }
-            else
-            {
-                alert('Enter tag in textbox');  
-                $('#example').DataTable().destroy();
-                fill_datatable1();
-            }
-        });                
-        $(document).on('click', '.viewFile', function (e) {
+
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $(document).on('click', '.viewFile', function (e) {
+                e.preventDefault();
+                var self = this;
+                window.open(self.href, 'documents', 'width=600,height=400');
+            });
+        });
+        function show_review_comments(file_id, e) {
             e.preventDefault();
-            var self = this;           
-            window.open(self.href,'documents','width=600,height=400');                    
-        });
-    });
-    function show_review_comments(file_id,e) {
-        e.preventDefault();
-        $('.show_comments').empty();
-        $.ajax({
-            type: "POST",
-            url: "<?php echo DISPLAY_REVIEW ?>",
-            data: {'file_id': file_id,'limit':10},
-            success: function (res) {
-                $('.show_comments').append(res);
-            }
-        });
-        $("#view-reviews").modal();
-    }
-</script>
+            $('.show_comments').empty();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo DISPLAY_REVIEW ?>",
+                data: {'file_id': file_id, 'limit': 10},
+                success: function (res) {
+                    $('.show_comments').append(res);
+                }
+            });
+            $("#view-reviews").modal();
+        }
+    </script>
 <?php } ?>
 
 <?php if ($title == EMPLOYEE_FILE_LIST_TITLE) {
     ?> 
-    <script>        
+    <script>
         $(document).ready(function () {
-        fill_datatable1();
-        function fill_datatable1(uploaded_file_tag = '')
-        {                         
-            $('#example tfoot th').each( function () {                
-                var title = $('#example thead th').eq($(this).index()).text();                
-                if((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")){
-                    $(this).html( '<input type="text" placeholder="'+title+'" />' ); 
-                }
-            });            
-            var table = $('#example').DataTable({
-                
-                responsive: {
-                    details: {
-                        type: 'column',
-                        target: 'tr'
+            fill_datatable1();
+            function fill_datatable1(uploaded_file_tag = '')
+            {
+                $('#example tfoot th').each(function () {
+                    var title = $('#example thead th').eq($(this).index()).text();
+                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
+                        $(this).html('<input type="text" placeholder="' + title + '" />');
                     }
-                },
-                columnDefs: [ {
-		        className: 'control',
-		        orderable: false,
-		        targets: 0
-		    } ],                                  
-                "processing": true,
-                "serverSide": true,
-                "pageLength": 10,
-                "paginationType": "full_numbers",
-                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-                "ajax": {
-                    'type': 'POST',
-                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list.php' ?>",
-                    'data': {
-                        emp_rmsa_user_id: <?php if (isset($_SESSION['emp_rmsa_user_id'])) { echo $_SESSION['emp_rmsa_user_id'];} ?>,
-                        uploaded_file_tag:uploaded_file_tag
-                    }
-                },
-                "columns": [
-                    {"data": "index"},
-                    {"data": "uploaded_file_title"},
-                    {"data": "ext"},
-                    {"data": "uploaded_file_type"},
-                    {"data": "uploaded_file_group"},
-                    {"data": "uploaded_file_category"},                                     
-                    {"data": "child"},
-                    {"data": "ratting"},
-                    {"data": "uploaded_file_status"},
-                    {"data": "action"},
-                    {"data": "uploaded_file_desc"}
-                ]
-            });
-            table.columns().eq(0).each( function ( colIdx ) { 
-                $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
-                    table .column( colIdx ) .search( this.value ) .draw(); 
-                }); 
-            });
-        }
-        
-        $(document).on('click', '.btn_approve_reject', function () {
+                });
+                var table = $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list.php' ?>",
+                        'data': {
+                            emp_rmsa_user_id: <?php if (isset($_SESSION['emp_rmsa_user_id'])) {
+        echo $_SESSION['emp_rmsa_user_id'];
+    } ?>,
+                            uploaded_file_tag: uploaded_file_tag
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "uploaded_file_title"},
+                        {"data": "ext"},
+                        {"data": "uploaded_file_type"},
+                        {"data": "uploaded_file_group"},
+                        {"data": "uploaded_file_category"},
+                        {"data": "child"},
+                        {"data": "ratting"},
+                        {"data": "uploaded_file_status"},
+                        {"data": "action"},
+                        {"data": "uploaded_file_desc"}
+                    ]
+                });
+                table.columns().eq(0).each(function (colIdx) {
+                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
+                        table.column(colIdx).search(this.value).draw();
+                    });
+                });
+            }
+
+            $(document).on('click', '.btn_approve_reject', function () {            
                 var self = $(this);
                 var status = self.attr('data-status');
-
+                var token=$('#token').val();
                 var uploaded_file_status = 'ACTIVE';
 
-                if(status == 1){
+                if (status == 1) {
                     uploaded_file_status = 'REMOVED';
                 }
 
-                if(!confirm('Are you sure want to '+uploaded_file_status.toLocaleLowerCase()+' file?')) return;
+                if (!confirm('Are you sure want to ' + uploaded_file_status.toLocaleLowerCase() + ' file?'))
+                    return;
 
-                self.attr('disabled','disabled');
+                self.attr('disabled', 'disabled');
 
                 var data = {
-                    'rmsa_uploaded_file_id' : self.data('id'),
-                    'uploaded_file_status'  : uploaded_file_status
+                    'rmsa_uploaded_file_id': self.data('id'),
+                    'uploaded_file_status': uploaded_file_status,
+                    'token':token
                 }
 
                 $.ajax({
@@ -741,64 +770,64 @@ $this->load->view('_partials/front/allnotify');
                             var text = 'Active';
                             var isactive = 1;
 
-                            if(status == 1){
+                            if (status == 1) {
                                 title = 'Click to active file';
                                 class_ = 'btn_approve_reject btn btn-danger btn-xs';
-                                text  = 'Inactive';
+                                text = 'Inactive';
                                 isactive = 0;
                             }
                             self.removeClass().addClass(class_);
                             self.attr({
-                               'data-status' :isactive,
-                               'title':title
-                           });
-                           self.removeAttr('disabled');
-                           self.html(text);
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                            $('#token').val(res.token);
                         }
                     }
                 });
             });
-        
-        
-        $('#searchTag').click(function(){
-            var uploaded_file_tag = $('#uploaded_file_tag').val();            
-            if(uploaded_file_tag != '')
-            {
-                $('#example').DataTable().destroy();
-                fill_datatable1(uploaded_file_tag);
-            }
-            else
-            {
-                alert('Enter tag in textbox');  
-                $('#example').DataTable().destroy();
-                fill_datatable1();
-            }
-        });                
-        $(document).on('click', '.viewFile', function (e) {
+
+
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $(document).on('click', '.viewFile', function (e) {
+                e.preventDefault();
+                var self = this;
+                window.open(self.href, 'documents', 'width=600,height=400');
+            });
+        });
+        function show_review_comments(file_id, e) {
             e.preventDefault();
-            var self = this;           
-            window.open(self.href,'documents','width=600,height=400');                    
-        });
-    });
-    function show_review_comments(file_id,e) {
-        e.preventDefault();
-        $('.show_comments').empty();
-        $.ajax({
-            type: "POST",
-            url: "<?php echo DISPLAY_REVIEW ?>",
-            data: {'file_id': file_id,'limit':10},
-            success: function (res) {
-                $('.show_comments').append(res);
-            }
-        });
-        $("#view-reviews").modal();
-    }
-</script>
+            $('.show_comments').empty();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo DISPLAY_REVIEW ?>",
+                data: {'file_id': file_id, 'limit': 10},
+                success: function (res) {
+                    $('.show_comments').append(res);
+                }
+            });
+            $("#view-reviews").modal();
+        }
+    </script>
 <?php } ?>
-    
-    <?php if ($title == STUDENT_RESOURCES_TITLE) {
+
+<?php if ($title == STUDENT_RESOURCES_TITLE) {
     ?>
-    <script>                                
+    <script>
         var uploaded_file_id;
         var review_modal = $("#review-modal");
         var view_reviews_modal = $("#view-reviews");
@@ -821,19 +850,17 @@ $this->load->view('_partials/front/allnotify');
                 }
             });
         }
-
         function show_comments(file_id) {
-            $('.show_comments').empty();
+        $('.show_comments').empty();
             $.ajax({
                 type: "POST",
                 url: "<?php echo DISPLAY_REVIEW ?>",
-                data: {'file_id': file_id,'limit':10},
+                data: {'file_id': file_id, 'limit': 10},
                 success: function (res) {
                     $('.show_comments').append(res);
                 }
             });
         }
-
         function resetRating() {
             if ($('#review_rating').val() != 0) {
                 $('.review i').each(function (index) {
@@ -868,7 +895,7 @@ $this->load->view('_partials/front/allnotify');
             })
         }
 
-        function display_comments(fileId,e){
+        function display_comments(fileId, e) {
             e.preventDefault();
             view_reviews_modal.modal();
             show_comments(fileId);
@@ -913,80 +940,79 @@ $this->load->view('_partials/front/allnotify');
                 success: function (res) {
                     var res = $.parseJSON(res);
                     if (res.count_added) {
-                        window.open(self.href,'documents','width=600,height=400');
+                        window.open(self.href, 'documents', 'width=600,height=400');
                     }
                 }
             });
         });
         $(document).ready(function () {
-        fill_datatable();
-        function fill_datatable(uploaded_file_tag = '')
-        {        
-            $('#example tfoot th').each( function () {                
-                var title = $('#example thead th').eq($(this).index()).text();                
-                if((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")){
-                    $(this).html( '<input type="text" placeholder="'+title+'" />' ); 
+            fill_datatable();
+            function fill_datatable(uploaded_file_tag = '')
+            {
+                $('#example tfoot th').each(function () {
+                    var title = $('#example thead th').eq($(this).index()).text();
+                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
+                        $(this).html('<input type="text" placeholder="' + title + '" />');
+                    }
+                });
+                var table = $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/student_resources.php'; ?>",
+                        'data': {
+                            uploaded_file_category: "<?php echo $uploaded_file_category; ?>",
+                            uploaded_file_tag: uploaded_file_tag
+                                    // etc..
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "uploaded_file_title"},
+                        {"data": "ext"},
+                        {"data": "uploaded_file_type"},
+                        {"data": "uploaded_file_group"},
+                        {"data": "uploaded_file_category"},
+                        {"data": "review"},
+                        {"data": "ratting"},
+                        {"data": "uploaded_file_desc"}
+
+                    ]
+                });
+                table.columns().eq(0).each(function (colIdx) {
+                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
+                        table.column(colIdx).search(this.value).draw();
+                    });
+                });
+            }
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable();
                 }
             });
-            var table = $('#example').DataTable({ 
-            
-                responsive: {
-                    details: {
-                        type: 'column',
-                        target: 'tr'
-                    }
-                },
-                columnDefs: [ {
-                    className: 'control',
-                    orderable: false,
-                    targets: 0
-                } ],
-                "processing": true,
-                "serverSide": true,
-                "paginationType": "full_numbers",
-                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-                "ajax": {
-                    'type': 'POST',
-                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/student_resources.php'; ?>",
-                    'data': {
-                        uploaded_file_category: "<?php echo $uploaded_file_category; ?>",
-                        uploaded_file_tag:uploaded_file_tag
-                        // etc..
-                    }
-                },
-                "columns": [
-                    {"data": "index"},
-                    {"data": "uploaded_file_title"},
-                    {"data": "ext"},
-                    {"data": "uploaded_file_type"},
-                    {"data": "uploaded_file_group"},
-                    {"data": "uploaded_file_category"},                                    
-                    {"data": "review"},
-                    {"data": "ratting"},
-                    {"data": "uploaded_file_desc"}
-
-                ]
-            });
-            table.columns().eq(0).each( function ( colIdx ) {
-            $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
-                    table .column( colIdx ) .search( this.value ) .draw(); 
-                }); 
-            });
-        }                 
-        $('#searchTag').click(function(){
-            var uploaded_file_tag = $('#uploaded_file_tag').val();            
-            if(uploaded_file_tag != '')
-            {
-                $('#example').DataTable().destroy();
-                fill_datatable(uploaded_file_tag);
-            }
-            else
-            {
-                alert('Enter tag in textbox');  
-                $('#example').DataTable().destroy();
-                fill_datatable();
-            }
-        });
         });
     </script>
 <?php } ?>
@@ -997,17 +1023,17 @@ $this->load->view('_partials/front/allnotify');
         $(document).ready(function () {
             $('#example').DataTable({
                 
-                 responsive: {
+                responsive: {
                     details: {
                         type: 'column',
                         target: 'tr'
                     }
                 },
-                columnDefs: [ {
-                    className: 'control',
-                    orderable: false,
-                    targets: 0
-                } ],                             
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
                 "processing": true,
                 "serverSide": true,
                 "paginationType": "full_numbers",
@@ -1016,16 +1042,20 @@ $this->load->view('_partials/front/allnotify');
                     'type': 'POST',
                     'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/employee_students.php' ?>",
                     'data': {
-                        rmsa_school_id: <?php if (isset($_SESSION['emp_rmsa_school_id'])) {
+                        rmsa_school_id: <?php
+    if (isset($_SESSION['emp_rmsa_school_id'])) {
         echo $_SESSION['emp_rmsa_school_id'];
-    } ?>,
+    }
+    ?>,
                         // etc..
                     }
                 },
-                    "columns": [
+                "columns": [
                     {"data": "index"},
                     {"data": "rmsa_user_id"},
                     {"data": "rmsa_user_first_name"},
+                    {"data": "rmsa_school_title"},
+                    {"data": "rmsa_district_name"},
                     {"data": "rmsa_user_gender"},
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
@@ -1035,21 +1065,20 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
+                var token=$('#token').val();               
                 var status = self.attr('data-status');
-
-
-
                 var user_status = 'ACTIVE';
-
-                if(status == 1)
+                if (status == 1)
                     user_status = 'REMOVED';
 
-                if(!confirm('Are you sure want to '+user_status.toLocaleLowerCase()+' student?')) return;
-                self.attr('disabled','disabled');
+                if (!confirm('Are you sure want to ' + user_status.toLocaleLowerCase() + ' student?'))
+                    return;
+                self.attr('disabled', 'disabled');
 
                 var data = {
-                    'rmsa_user_id' : self.data('id'),
-                    'user_status'  : user_status
+                    'rmsa_user_id': self.data('id'),
+                    'user_status': user_status,
+                    'token':token
                 };
 
                 $.ajax({
@@ -1065,20 +1094,21 @@ $this->load->view('_partials/front/allnotify');
                             var text = 'Active';
                             var isactive = 1;
 
-                            if(status == 1){
+                            if (status == 1) {
                                 title = 'Click to active student';
                                 class_ = 'btn_approve_reject btn btn-danger btn-xs';
-                                text  = 'Inactive';
+                                text = 'Inactive';
                                 isactive = 0;
                             }
 
                             self.removeClass().addClass(class_);
-                           self.attr({
-                               'data-status' :isactive,
-                               'title':title
-                           });
-                           self.removeAttr('disabled');
-                           self.html(text);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                            $('#token').val(res.token);               
                         }
                     }
                 });
@@ -1086,36 +1116,38 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>
-    
+
 <?php if ($title == RMSAE_STUDENT_LIST_TITLE) {
     ?>
-    <script>        
-        $(document).ready(function () {           
+    <script>
+        $(document).ready(function () {
             $('#example').DataTable({
-                
-                 responsive: {
+
+                responsive: {
                     details: {
                         type: 'column',
                         target: 'tr'
                     }
                 },
-                columnDefs: [ {
-                    className: 'control',
-                    orderable: false,
-                    targets: 0
-                } ],                                
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
                 "processing": true,
                 "serverSide": true,
                 "paginationType": "full_numbers",
                 "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                 "ajax": {
                     'type': 'POST',
-                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_students.php' ?>",               
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_students.php' ?>",
                 },
-                    "columns": [
+                "columns": [
                     {"data": "index"},
                     {"data": "rmsa_user_id"},
                     {"data": "rmsa_user_first_name"},
+                    {"data": "rmsa_school_title"},
+                    {"data": "rmsa_district_name"},
                     {"data": "rmsa_user_gender"},
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
@@ -1125,21 +1157,24 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
+                var token=$('#token').val();
                 var status = self.attr('data-status');
 
                 var user_status = 'ACTIVE';
 
-                if(status == 1){
+                if (status == 1) {
                     user_status = 'REMOVED';
                 }
 
-                if(!confirm('Are you sure want to '+user_status.toLocaleLowerCase()+' student?')) return;
+                if (!confirm('Are you sure want to ' + user_status.toLocaleLowerCase() + ' student?'))
+                    return;
 
-                self.attr('disabled','disabled');
+                self.attr('disabled', 'disabled');
 
                 var data = {
-                    'rmsa_user_id' : self.data('id'),
-                    'user_status'  : user_status
+                    'rmsa_user_id': self.data('id'),
+                    'user_status': user_status,
+                    'token':token
                 }
 
                 $.ajax({
@@ -1156,20 +1191,21 @@ $this->load->view('_partials/front/allnotify');
                             var text = 'Active';
                             var isactive = 1;
 
-                            if(status == 1){
+                            if (status == 1) {
                                 title = 'Click to active student';
                                 class_ = 'btn_approve_reject btn btn-danger btn-xs';
-                                text  = 'Inactive';
+                                text = 'Inactive';
                                 isactive = 0;
                             }
 
                             self.removeClass().addClass(class_);
-                           self.attr({
-                               'data-status' :isactive,
-                               'title':title
-                           });
-                           self.removeAttr('disabled');
-                           self.html(text);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                            $('#token').val(res.token);
                         }
                     }
                 });
@@ -1179,33 +1215,35 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == RMSAE_EMPLOYEE_LIST_TITLE) {
     ?>
-    <script>        
+    <script>
         $(document).ready(function () {
             $('#example').DataTable({
-                
-                 responsive: {
+
+                responsive: {
                     details: {
                         type: 'column',
                         target: 'tr'
                     }
                 },
-                columnDefs: [ {
-                    className: 'control',
-                    orderable: false,
-                    targets: 0
-                } ],                                
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
                 "processing": true,
                 "serverSide": true,
                 "paginationType": "full_numbers",
                 "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                 "ajax": {
                     'type': 'POST',
-                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_employee.php' ?>",               
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_employee.php' ?>",
                 },
-                    "columns": [
+                "columns": [
                     {"data": "index"},
                     {"data": "rmsa_user_id"},
                     {"data": "rmsa_user_first_name"},
+                    {"data": "rmsa_school_title"},
+                    {"data": "rmsa_district_name"},
                     {"data": "rmsa_user_gender"},
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
@@ -1216,20 +1254,22 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-
+                var token=$('#token').val();
 
                 var user_status = 'ACTIVE';
 
-                if(status == 1){
-                    user_status = 'REMOVED';   
+                if (status == 1) {
+                    user_status = 'REMOVED';
                 }
 
-                if(!confirm('Are you sure want to '+user_status.toLocaleLowerCase()+' employee?')) return;
-                self.attr('disabled','disabled');
+                if (!confirm('Are you sure want to ' + user_status.toLocaleLowerCase() + ' employee?'))
+                    return;
+                self.attr('disabled', 'disabled');
 
                 var data = {
-                    'rmsa_user_id' : self.data('id'),
-                    'user_status'  : user_status
+                    'rmsa_user_id': self.data('id'),
+                    'user_status': user_status,
+                    'token':token
                 };
 
                 $.ajax({
@@ -1243,19 +1283,20 @@ $this->load->view('_partials/front/allnotify');
                             var class_ = 'btn_approve_reject btn btn-success btn-xs';
                             var text = 'Active';
                             var isactive = 1;
-                            if(status == 1){
+                            if (status == 1) {
                                 title = 'Click to active student';
                                 class_ = 'btn_approve_reject btn btn-danger btn-xs';
-                                text  = 'Inactive';
+                                text = 'Inactive';
                                 isactive = 0;
                             }
-                           self.removeClass().addClass(class_);
-                           self.attr({
-                               'data-status' :isactive,
-                               'title':title
-                           });
-                           self.removeAttr('disabled');
-                           self.html(text);
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                            $('#token').val(res.token);
                         }
                     }
                 });
@@ -1311,9 +1352,9 @@ $this->load->view('_partials/front/allnotify');
                 var bv = $form.data('bootstrapValidator');
 
                 // Use Ajax to submit form data
-                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
-                    if(result['success']=="success"){                        
-                            location.href = "<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>";                                           
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] == "success") {
+                        location.href = "<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>";
                     }
                 }, 'json');
             });
@@ -1370,22 +1411,22 @@ $this->load->view('_partials/front/allnotify');
 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
-                    if(result['success']=="success"){                        
-                            location.href = "<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>";                                           
+                    if (result['success'] == "success") {
+                        location.href = "<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>";
                     }
-                    if(result['success']=="fail"){                    
+                    if (result['success'] == "fail") {
                         var d = new PNotify({
                             title: 'Old Password not match',
                             type: 'error',
                             styling: 'bootstrap3',
-                        });                          
+                        });
                     }
                 }, 'json');
             });
         });
     </script>
 <?php } ?>
-    
+
 <?php if ($title == EMPLOYEE_STUDENT_PROFILE_TITLE) {
     ?>
     <script>
@@ -1433,14 +1474,14 @@ $this->load->view('_partials/front/allnotify');
                 var bv = $form.data('bootstrapValidator');
 
                 // Use Ajax to submit form data
-                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
-                    if(result['success']==="success"){                        
-                            location.reload();                                        
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] === "success") {
+                        location.reload();
                     }
                 }, 'json');
             });
 
-            $('#frm_change_password').bootstrapValidator({               
+            $('#frm_change_password').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
                     valid: 'glyphicon glyphicon-ok',
@@ -1492,22 +1533,22 @@ $this->load->view('_partials/front/allnotify');
 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
-                    if(result['success']==="success"){                        
-                            location.reload();                                           
+                    if (result['success'] === "success") {
+                        location.reload();
                     }
-                    if(result['success']==="fail"){                    
+                    if (result['success'] === "fail") {
                         var d = new PNotify({
                             title: 'Old Password not match',
                             type: 'error',
                             styling: 'bootstrap3'
-                        });                          
+                        });
                     }
                 }, 'json');
             });
         });
     </script>
 <?php } ?>
-    <?php if ($title == RMSA_STUDENT_PROFILE_TITLE) {
+<?php if ($title == RMSA_STUDENT_PROFILE_TITLE) {
     ?>
     <script>
         $(document).ready(function () {
@@ -1618,14 +1659,14 @@ $this->load->view('_partials/front/allnotify');
                 var bv = $form.data('bootstrapValidator');
 
                 // Use Ajax to submit form data
-                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
-                    if(result['success']==="success"){                        
-                            location.reload();                                        
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] === "success") {
+                        location.reload();
                     }
                 }, 'json');
             });
 
-            $('#frm_change_password').bootstrapValidator({               
+            $('#frm_change_password').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
                     valid: 'glyphicon glyphicon-ok',
@@ -1677,22 +1718,22 @@ $this->load->view('_partials/front/allnotify');
 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
-                    if(result['success']==="success"){                        
-                            location.reload();                                           
+                    if (result['success'] === "success") {
+                        location.reload();
                     }
-                    if(result['success']==="fail"){                    
+                    if (result['success'] === "fail") {
                         var d = new PNotify({
                             title: 'Old Password not match',
                             type: 'error',
                             styling: 'bootstrap3'
-                        });                          
+                        });
                     }
                 }, 'json');
             });
         });
     </script>
 <?php } ?>
-    <?php if ($title == RMSA_EMPLOYEE_PROFILE_TITLE) {
+<?php if ($title == RMSA_EMPLOYEE_PROFILE_TITLE) {
     ?>
     <script>
         $(document).ready(function () {
@@ -1803,14 +1844,14 @@ $this->load->view('_partials/front/allnotify');
                 var bv = $form.data('bootstrapValidator');
 
                 // Use Ajax to submit form data
-                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
-                    if(result['success']==="success"){                        
-                            location.reload();                                        
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] === "success") {
+                        location.reload();
                     }
                 }, 'json');
             });
 
-            $('#frm_change_password').bootstrapValidator({               
+            $('#frm_change_password').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
                     valid: 'glyphicon glyphicon-ok',
@@ -1862,15 +1903,15 @@ $this->load->view('_partials/front/allnotify');
 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
-                    if(result['success']==="success"){                        
-                            location.reload();                                           
+                    if (result['success'] === "success") {
+                        location.reload();
                     }
-                    if(result['success']==="fail"){                    
+                    if (result['success'] === "fail") {
                         var d = new PNotify({
                             title: 'Old Password not match',
                             type: 'error',
                             styling: 'bootstrap3'
-                        });                          
+                        });
                     }
                 }, 'json');
             });
@@ -2028,18 +2069,21 @@ if ($title == FILE_REVIEWS_TITLE) {
                 // Get the BootstrapValidator instance
                 var bv = $form.data('bootstrapValidator');
                 // Use Ajax to submit form data
-                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
-                    if(result['success']=="success"){
-                        if('<?php if(isset($_SESSION['rm_rmsa_user_id'])){ echo '1'; }else{echo '0';} ?>' === '1'){
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] == "success") {
+                        if ('<?php if (isset($_SESSION['rm_rmsa_user_id'])) { echo '1';                        
+                        } else { 
+                            echo '0';                            
+                        } ?>' === '1') {
                             location.href = "<?php echo RMSA_EMPLOYEE_LIST_LINK ?>";
-                        }                   
+                        }
                     }
-                    if(result['success']=="fail"){                    
+                    if (result['success'] == "fail") {
                         var d = new PNotify({
                             title: 'Invalid Username & Password',
                             type: 'error',
                             styling: 'bootstrap3',
-                        });                          
+                        });
                     }
                 }, 'json');
             });
@@ -2065,7 +2109,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                 });
             });
             $('#sub_district').on('change', function () {
-                var subDistrictId = $(this).val();                
+                var subDistrictId = $(this).val();
                 $.ajax({
                     type: "POST",
                     url: "<?php echo LOAD_SCHOOL ?>",
@@ -2196,22 +2240,30 @@ if ($title == FILE_REVIEWS_TITLE) {
                 // Get the BootstrapValidator instance
                 var bv = $form.data('bootstrapValidator');
                 // Use Ajax to submit form data
-                $.post($form.attr('action'), $form.serialize(), function (result) {                                        
-                    if(result['success']=="success"){
-                        if('<?php if(isset($_SESSION['rm_rmsa_user_id'])){ echo '1'; }else{echo '0';} ?>' === '1'){
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] == "success") {
+                        if ('<?php if (isset($_SESSION['rm_rmsa_user_id'])) {
+        echo '1';
+    } else {
+        echo '0';
+    } ?>' === '1') {
                             location.href = "<?php echo RMSA_STUDENT_LIST_LINK; ?>";
                         }
-                        if('<?php if(isset($_SESSION['emp_rmsa_user_id'])){ echo '1'; }else{echo '0';} ?>' === '1'){
+                        if ('<?php if (isset($_SESSION['emp_rmsa_user_id'])) {
+        echo '1';
+    } else {
+        echo '0';
+    } ?>' === '1') {
                             location.href = "<?php echo EMPLOYEE_STUDENT_LIST_LINK ?>";
                         }
-                        location.href = "<?php echo HOME_LINK ?>";                    
+                        location.href = "<?php echo HOME_LINK ?>";
                     }
-                    if(result['success']=="fail"){                    
+                    if (result['success'] == "fail") {
                         var d = new PNotify({
                             title: 'Invalid Username & Password',
                             type: 'error',
                             styling: 'bootstrap3',
-                        });                          
+                        });
                     }
                 }, 'json');
             });
@@ -2315,6 +2367,14 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
     }
 }
 ?>
+        <script>
+            $(document).ready(function () {
+                $('a').each(function(){  
+                $(this).attr('onclick','window.location.href="'+$(this).attr('href')+'"');
+                $(this).attr('href','javascript:void(0)');
+                });
+            });
+            </script>
 <!--//this script will be run for all pages-->
 </body>
 </html>

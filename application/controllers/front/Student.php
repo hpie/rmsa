@@ -6,6 +6,17 @@ class Student extends MY_Controller{
         $this->session->sessionCheckStudent();
         parent::__construct();        
         $this->load->model('Student_model');
+        $this->load->model('Emp_Login');        
+        if (isset($_SESSION['username'])) {
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
+            if ($result) {                
+                $token = $result['token'];
+                if($_SESSION['token'] != $token) {
+                    session_destroy(); 
+                    redirect(HOME_LINK);
+                }
+            }
+        }
     }
     public function update_profile(){
         $result=array();               

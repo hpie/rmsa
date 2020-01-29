@@ -18,6 +18,8 @@
             <th>Index</th>
             <th>No</th>
             <th>Name</th>
+            <th>School Name</th>
+            <th>District</th>
             <th>Gender</th>
             <th>DOB</th>
             <th>Email</th>
@@ -30,6 +32,8 @@
             <th>Index</th>
             <th>No</th>
             <th>Name</th>
+            <th>School Name</th>
+            <th>District</th>
             <th>Gender</th>
             <th>DOB</th>
             <th>Email</th>

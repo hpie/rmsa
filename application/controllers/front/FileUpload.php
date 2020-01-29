@@ -8,6 +8,17 @@ class FileUpload extends MY_Controller {
         $this->session->sessionCheckEmployee();
         parent::__construct();      
         $this->load->model('File_upload');
+        $this->load->model('Emp_Login');        
+        if (isset($_SESSION['username'])) {
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
+            if ($result) {                
+                $token = $result['token'];
+                if($_SESSION['token'] != $token) {
+                    session_destroy(); 
+                    redirect(HOME_LINK);
+                }
+            }
+        }
     }
     public function index() {
         $_SESSION['filepage']='index.php';

@@ -4,6 +4,7 @@
         <h1 class="heading">RMSA: &nbsp;Student Login Screen</h1>
         <form method="post" class="form-horizontal border p-2" action="<?php echo STUDENT_LOGIN_LINK; ?>">
             <h2 class="second-heading text-center">Authorized login</h2>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="username">User Name:</label>
