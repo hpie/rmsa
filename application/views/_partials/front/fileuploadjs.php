@@ -1,3 +1,8 @@
+
+
+
+
+
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 <script src="<?php echo BASE_URL ?>/assets/front/fileupload/js/vendor/jquery.ui.widget.js"></script>
 <!-- The Templates plugin is included to render the upload/download listings -->
