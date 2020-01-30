@@ -445,8 +445,7 @@ class SSP {
                          ON rs.rmsa_school_id=reu.rmsa_school_id
                          INNER JOIN rmsa_districts rd
                          ON rd.rmsa_district_id=reu.rmsa_district_id 
-                         "    
-                          
+                         "                          
 		);
 		$recordsTotal = $resTotalLength[0][0];
 
