@@ -29,6 +29,7 @@ $primaryKey = 'rsu.rmsa_user_id';
 // indexes
 $columns = array(
     array('db' => 'rsu.rmsa_user_id', 'dt' =>'rmsa_user_id'),
+    array('db' => 'rsu.rmsa_school_id', 'dt' =>'rmsa_user_id'),
     array('db' => 'rsu.rmsa_user_first_name', 'dt' => 'rmsa_user_first_name'),
     array('db' => 'rsu.rmsa_user_gender', 'dt' =>'rmsa_user_gender'),
     array('db' => 'rsu.rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),
@@ -47,14 +48,15 @@ include 'conn.php';
 //    'host' => 'localhost'
 //);
 
-$where = 'rsu.rmsa_school_id = '.$_REQUEST['rmsa_school_id'];
+//print_r($_REQUEST);die;
+//$where='';
+$school_id=$_REQUEST['rmsa_school_id'];
+$where = " rsu.rmsa_school_id ='$school_id' ";
 
-
-
-if(!empty($_REQUEST['search']['value'])){
-    $value=$_REQUEST['search']['value'];
-    $where.=" AND (rsu.rmsa_user_first_name LIKE '%$value%' OR rsu.rmsa_user_gender LIKE '%$value%' OR rsu.rmsa_user_DOB LIKE '%$value%' OR rsu.rmsa_user_email_id LIKE '%$value%') ";
-}
+//if(!empty($_REQUEST['search']['value'])){
+//    $value=$_REQUEST['search']['value'];
+//    $where.=" AND (rsu.rmsa_user_first_name LIKE '%$value%' OR rsu.rmsa_user_gender LIKE '%$value%' OR rsu.rmsa_user_DOB LIKE '%$value%' OR rsu.rmsa_user_email_id LIKE '%$value%') ";
+//}
 //echo $where;die;
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

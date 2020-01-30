@@ -148,7 +148,7 @@ class SSP {
 					$dir = $request['order'][$i]['dir'] === 'asc' ?
 						'ASC' :
 						'DESC';
-					$orderBy[] = '`'.$column['db'].'` '.$dir;
+					$orderBy[] = ''.$column['db'].' '.$dir;
 				}
 			}
 			if ( count( $orderBy ) ) {
@@ -185,7 +185,7 @@ class SSP {
 				$column = $columns[ $columnIdx ];
 				if ( $requestColumn['searchable'] == 'true' ) {
 					$binding = self::bind( $bindings, '%'.$str.'%', PDO::PARAM_STR );
-					$globalSearch[] = "`".$column['db']."` LIKE ".$binding;
+					$globalSearch[] = "".$column['db']." LIKE ".$binding;
 				}
 			}
 		}
@@ -199,7 +199,7 @@ class SSP {
 				if ( $requestColumn['searchable'] == 'true' &&
 				 $str != '' ) {
 					$binding = self::bind( $bindings, '%'.$str.'%', PDO::PARAM_STR );
-					$columnSearch[] = "`".$column['db']."` LIKE ".$binding;
+					$columnSearch[] = "".$column['db']." LIKE ".$binding;
 				}
 			}
 		}
@@ -247,8 +247,7 @@ class SSP {
                 $where .= 'WHERE ' . $where_custom;
             }
         }   
-        
-        
+//        echo 'hi';die;
 		// Main query to actually get the data
 		$data = self::sql_exec( $db, $bindings,
 			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
@@ -445,7 +444,7 @@ class SSP {
                          ON rs.rmsa_school_id=reu.rmsa_school_id
                          INNER JOIN rmsa_districts rd
                          ON rd.rmsa_district_id=reu.rmsa_district_id 
-                         "                          
+                         "                        
 		);
 		$recordsTotal = $resTotalLength[0][0];
 
@@ -498,27 +497,27 @@ class SSP {
                     }
                 }                
                 $data = self::sql_exec( $db, $bindings,
-			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-			 FROM `$table`
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
 			 $where
 			 $order
 			 $limit"
 		); 
 		// Main query to actually get the data
 //		$data = self::sql_exec($db, $bindings,
-//			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."` FROM `$table` WHERE uploaded_file_volroot=0 AND rmsa_employee_users_id='$emp_rmsa_user_id'  $order $limit"
+//			"SELECT ".implode(", ", self::pluck($columns, 'db'))." FROM $table WHERE uploaded_file_volroot=0 AND rmsa_employee_users_id='$emp_rmsa_user_id'  $order $limit"
 //		);
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
 			 $where"
 		);
 		$recordsFiltered = $resFilterLength[0][0];
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`"
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table"
 		);
 		$recordsTotal = $resTotalLength[0][0];                
                 $result=self::data_output($columns,$data);
@@ -530,8 +529,8 @@ class SSP {
                                 $volrootid=$row['uploaded_file_volroot'];     
                                 
                                 $data = self::sql_exec( $db, $bindings,
-                                        "SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-                                         FROM `rmsa_uploaded_files`
+                                        "SELECT ".implode(", ", self::pluck($columns, 'db'))."
+                                         FROM rmsa_uploaded_files
                                          WHERE rmsa_uploaded_file_id = '$volrootid'
                                         "
                                 ); 
@@ -588,8 +587,8 @@ class SSP {
                         if($row['uploaded_file_hasvol']=="YES"){
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];                            
                             $dataChild = self::sql_exec( $db, $bindings,
-                                    "SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-                                     FROM `$table`
+                                    "SELECT ".implode(", ", self::pluck($columns, 'db'))."
+                                     FROM $table
                                      WHERE uploaded_file_volroot=".$row['rmsa_uploaded_file_id']." ORDER BY uploaded_file_volorder ASC"
                             );
                             $resultChild=self::data_output($columns,$dataChild);
@@ -683,27 +682,27 @@ class SSP {
                     }
                 }                
                 $data = self::sql_exec( $db, $bindings,
-			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-			 FROM `$table`
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
 			 $where
 			 $order
 			 $limit"
 		); 
 		// Main query to actually get the data
 //		$data = self::sql_exec($db, $bindings,
-//			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."` FROM `$table` WHERE uploaded_file_volroot=0 AND rmsa_employee_users_id='$emp_rmsa_user_id'  $order $limit"
+//			"SELECT ".implode(", ", self::pluck($columns, 'db'))." FROM $table WHERE uploaded_file_volroot=0 AND rmsa_employee_users_id='$emp_rmsa_user_id'  $order $limit"
 //		);
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
 			 $where"
 		);
 		$recordsFiltered = $resFilterLength[0][0];
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`"
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table"
 		);
 		$recordsTotal = $resTotalLength[0][0];                
                 $result=self::data_output($columns,$data);
@@ -715,8 +714,8 @@ class SSP {
                                 $volrootid=$row['uploaded_file_volroot'];     
                                 
                                 $data = self::sql_exec( $db, $bindings,
-                                        "SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-                                         FROM `rmsa_uploaded_files`
+                                        "SELECT ".implode(", ", self::pluck($columns, 'db'))."
+                                         FROM rmsa_uploaded_files
                                          WHERE rmsa_uploaded_file_id = '$volrootid'
                                         "
                                 ); 
@@ -774,8 +773,8 @@ class SSP {
                         if($row['uploaded_file_hasvol']=="YES"){
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
                             $dataChild = self::sql_exec( $db, $bindings,
-                                    "SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-                                     FROM `$table`
+                                    "SELECT ".implode(", ", self::pluck($columns, 'db'))."
+                                     FROM $table
                                      WHERE uploaded_file_volroot=".$row['rmsa_uploaded_file_id']." ORDER BY uploaded_file_volorder ASC"
                             );
                             $resultChild=self::data_output($columns,$dataChild);
@@ -863,26 +862,26 @@ class SSP {
         // Main query to actually get the data
                         
         $data = self::sql_exec( $db, $bindings,
-			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-			 FROM `$table`
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
 			 $where
 			 $order
 			 $limit"
 		); 
 //        $data = self::sql_exec($db, $bindings,
-//            "SELECT `".implode("`, `", self::pluck($columns, 'db'))."` FROM `$table` WHERE uploaded_file_volroot=0  $order $limit"
+//            "SELECT ".implode(", ", self::pluck($columns, 'db'))." FROM $table WHERE uploaded_file_volroot=0  $order $limit"
 //        );
         // Data set length after filtering
         $resFilterLength = self::sql_exec( $db, $bindings,
-            "SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`
+            "SELECT COUNT({$primaryKey})
+			 FROM   $table
 			 $where"
         );
         $recordsFiltered = $resFilterLength[0][0];
         // Total data set length
         $resTotalLength = self::sql_exec( $db,
-            "SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`"
+            "SELECT COUNT({$primaryKey})
+			 FROM   $table"
         );
         $recordsTotal = $resTotalLength[0][0];
         $result=self::data_output($columns,$data);
@@ -893,8 +892,8 @@ class SSP {
                         if(!empty($row['uploaded_file_volroot'])){                               
                             $volrootid=$row['uploaded_file_volroot'];     
                             $data = self::sql_exec( $db, $bindings,
-                                    "SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-                                     FROM `rmsa_uploaded_files`
+                                    "SELECT ".implode(", ", self::pluck($columns, 'db'))."
+                                     FROM rmsa_uploaded_files
                                      WHERE rmsa_uploaded_file_id = '$volrootid'
                                      AND uploaded_file_status='ACTIVE'"
                             ); 
@@ -939,8 +938,8 @@ class SSP {
                 if($row['uploaded_file_hasvol']=="YES"){
                     $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
                     $dataChild = self::sql_exec( $db, $bindings,
-                        "SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-                                     FROM `$table`
+                        "SELECT ".implode(", ", self::pluck($columns, 'db'))."
+                                     FROM $table
                                      WHERE uploaded_file_volroot=".$row['rmsa_uploaded_file_id']." AND uploaded_file_status='ACTIVE' ORDER BY uploaded_file_volorder ASC"
                     );
                     $resultChild=self::data_output($columns,$dataChild);
@@ -1008,8 +1007,8 @@ class SSP {
         );
     }
 	/**
-	 * The difference between this method and the `simple` one, is that you can
-	 * apply additional `where` conditions to the SQL queries. These can be in
+	 * The difference between this method and the simple one, is that you can
+	 * apply additional where conditions to the SQL queries. These can be in
 	 * one of two forms:
 	 *
 	 * * 'Result condition' - This is applied to the result set, but not the
@@ -1056,23 +1055,23 @@ class SSP {
 		}
 		// Main query to actually get the data
 		$data = self::sql_exec( $db, $bindings,
-			"SELECT `".implode("`, `", self::pluck($columns, 'db'))."`
-			 FROM `$table`
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
 			 $where
 			 $order
 			 $limit"
 		);
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
 			 $where"
 		);
 		$recordsFiltered = $resFilterLength[0][0];
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db, $bindings,
-			"SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table` ".
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table ".
 			$whereAllSql
 		);
 		$recordsTotal = $resTotalLength[0][0];

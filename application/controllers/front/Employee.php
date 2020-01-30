@@ -20,6 +20,7 @@ class Employee extends MY_Controller
         }
     }
     public function view_student(){
+//        print_r($_SESSION['emp_rmsa_school_id']);die;
         $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->mViewData['title']=EMPLOYEE_STUDENT_LIST_TITLE;
         $this->renderFront('front/employee_student');
