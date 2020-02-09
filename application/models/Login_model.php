@@ -40,17 +40,17 @@ class Login_model extends CI_Model{
                 for ($i = 0; $i < 10; $i++) {
                     $token .= $codeAlphabet[random_int(0, $max - 1)];
                 }               
-                $_SESSION['username'] =$row['rmsa_user_id'];
+                $_SESSION['rmsa_student_id'] =$row['rmsa_user_id'];
                 $_SESSION['tokencheck'] = $token;
-                $uname=$_SESSION['username'];
+                $uid=$_SESSION['rmsa_student_id'];
                                                 
-                $result_token = $this->db->query("select count(*) as allcount from user_token");
+                $result_token = $this->db->query("select count(*) as allcount from student_token");
                 $row_token = $result_token->row_array();                
                 if ($row_token['allcount'] > 0) {                    
-                    $this->db->query("update user_token set token='$token' where username='$uname'");
-//                    mysqli_query($con, "update user_token set token='" . $token . "' where username='" . $uname . "'");
+                    $this->db->query("update student_token set token='$token' where rmsa_user_id='$uid'");
+//                    mysqli_query($con, "update student_token set token='" . $token . "' where rmsa_user_id='" . $uid . "'");
                 } else {
-                    $this->db->query("insert into user_token(username,token) values('$uname','$token')");
+                    $this->db->query("insert into student_token(rmsa_user_id,token) values('$uid','$token')");
                 }
                 
                 
@@ -90,6 +90,16 @@ class Login_model extends CI_Model{
 
 
         }
+    }
+
+
+    public function getTokenAndCheck($rmsa_student_id) {
+        $result = $this->db->query("SELECT token FROM student_token where rmsa_user_id='$rmsa_student_id'");
+        $data = $result->row_array();
+        if($data){
+            return $data;
+        }
+        return false;
     }
   
 }

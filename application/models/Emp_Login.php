@@ -41,17 +41,17 @@ class Emp_Login extends CI_Model {
                 }
                 
 //                print_r($emp_data);die;
-                $_SESSION['username'] =$emp_data['rmsa_user_id'];
+                $_SESSION['rmsa_employee_id'] =$emp_data['rmsa_user_id'];
                 $_SESSION['tokencheck'] = $token;
-                $uname=$_SESSION['username'];
+                $uid=$_SESSION['rmsa_employee_id'];
                                                 
-                $result_token = $this->db->query("select count(*) as allcount from user_token");
+                $result_token = $this->db->query("select count(*) as allcount from employee_token");
                 $row_token = $result_token->row_array();                
                 if ($row_token['allcount'] > 0) {                    
-                    $this->db->query("update user_token set token='$token' where username='$uname'");
-//                    mysqli_query($con, "update user_token set token='" . $token . "' where username='" . $uname . "'");
+                    $this->db->query("update employee_token set token='$token' where rmsa_user_id='$uid'");
+//                    mysqli_query($con, "update employee_token set token='" . $token . "' where username='" . $uname . "'");
                 } else {
-                    $this->db->query("insert into user_token(username,token) values('$uname','$token')");
+                    $this->db->query("insert into employee_token(rmsa_user_id,token) values('$uid','$token')");
                 }
                 return true;
             }
@@ -104,8 +104,8 @@ class Emp_Login extends CI_Model {
             return true;
         }
     }
-    public function getTokenAndCheck($username) {
-        $result = $this->db->query("SELECT token FROM user_token where username='$username'");
+    public function getTokenAndCheck($rmsa_employee_id) {
+        $result = $this->db->query("SELECT token FROM employee_token where rmsa_user_id='$rmsa_employee_id'");
         $data = $result->row_array();        
         if($data){
             return $data;

@@ -32,16 +32,16 @@ class Rmsa_Login extends CI_Model{
                     $token .= $codeAlphabet[random_int(0, $max - 1)];
                 }                
 //                print_r($emp_data);die;
-                $_SESSION['username'] =$rmsa_data['rmsa_user_id'];
+                $_SESSION['rmsa_admin_id'] =$rmsa_data['rmsa_user_id'];
                 $_SESSION['tokencheck'] = $token;
-                $uname=$_SESSION['username'];                                                
-                $result_token = $this->db->query("select count(*) as allcount from user_token");
+                $uid=$_SESSION['rmsa_admin_id'];
+                $result_token = $this->db->query("select count(*) as allcount from rmsa_token");
                 $row_token = $result_token->row_array();                
                 if ($row_token['allcount'] > 0) {                    
-                    $this->db->query("update user_token set token='$token' where username='$uname'");
-//                    mysqli_query($con, "update user_token set token='" . $token . "' where username='" . $uname . "'");
+                    $this->db->query("update rmsa_token set token='$token' where rmsa_user_id='$uid'");
+//                    mysqli_query($con, "update rmsa_token set token='" . $token . "' where rmsa_user_id='" . $uid . "'");
                 } else {
-                    $this->db->query("insert into user_token(username,token) values('$uname','$token')");
+                    $this->db->query("insert into rmsa_token(rmsa_user_id,token) values('$uid','$token')");
                 }
                 
                 
@@ -86,6 +86,15 @@ class Rmsa_Login extends CI_Model{
             if($query_res){
                 return true;
             }
+    }
+
+    public function getTokenAndCheck($rmsa_admin_id) {
+        $result = $this->db->query("SELECT token FROM rmsa_token where rmsa_user_id='$rmsa_admin_id'");
+        $data = $result->row_array();
+        if($data){
+            return $data;
+        }
+        return false;
     }
 }
 ?>
