@@ -10,8 +10,8 @@ class EmpLogin extends MY_Controller {
             redirect(HOME_LINK);
         }
         $this->load->model('Emp_Login');        
-        if (isset($_SESSION['username'])) {
-            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
+        if (isset($_SESSION['rmsa_employee_id'])) {
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['rmsa_employee_id']);
             if ($result) {                
                 $token = $result['token'];                
                 if($_SESSION['tokencheck'] != $token) {
