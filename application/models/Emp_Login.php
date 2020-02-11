@@ -104,8 +104,9 @@ class Emp_Login extends CI_Model {
             return true;
         }
     }
-    public function getTokenAndCheck($rmsa_employee_id) {
-        $result = $this->db->query("SELECT token FROM employee_token where rmsa_user_id='$rmsa_employee_id'");
+    public function getTokenAndCheck($table,$rmsa_employee_id) {
+        $table=$table.'_token';
+        $result = $this->db->query("SELECT token FROM $table where rmsa_user_id='$rmsa_employee_id'");
         $data = $result->row_array();        
         if($data){
             return $data;

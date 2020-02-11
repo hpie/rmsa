@@ -11,7 +11,7 @@ class Rmsa extends MY_Controller
         $this->load->model('Employee_model');
         $this->load->model('Emp_Login');        
         if (isset($_SESSION['username'])) {
-            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']);            
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username'],$_SESSION['user_id']);            
             if ($result) {                
                 $token = $result['token'];
                 if($_SESSION['tokencheck'] != $token) {

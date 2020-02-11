@@ -10,12 +10,10 @@ class FileDw extends MY_Controller {
         $this->load->model('File_upload');
         $this->load->model('Emp_Login');        
         if (isset($_SESSION['username'])) {
-            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username']); 
-//            print_r($_SESSION['tokencheck']);die;
-            if (!empty($result)) {                               
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username'],$_SESSION['user_id']);            
+            if ($result) {                
                 $token = $result['token'];
                 if($_SESSION['tokencheck'] != $token) {
-//                    echo 'hi';die;
                     session_destroy(); 
                     redirect(HOME_LINK);
                 }

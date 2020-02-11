@@ -662,20 +662,20 @@ class CI_Session {
         }
         $_SESSION[$data] = $value;
     }
-
     public function sessionStudent($row) {
         foreach ($row as $key => &$value) {
             $_SESSION['st_' . $key] = $value;
         }
+        $_SESSION['user_id']=$row['rmsa_user_id'];
+        $_SESSION['username']='student';
         return;
     }
-
     public function sessionEmployee($row) {
-
         foreach ($row as $key => &$value) {
             $_SESSION['emp_' . $key] = $value;
         }
-
+        $_SESSION['user_id']=$row['rmsa_user_id'];
+        $_SESSION['username']='employee';
         return;
     }
 
@@ -683,6 +683,8 @@ class CI_Session {
         foreach ($row as $key => &$value) {
             $_SESSION['rm_' . $key] = $value;
         }
+        $_SESSION['user_id']=$row['rmsa_user_id'];
+        $_SESSION['username']='rmsa';
         return;
     }
 
@@ -690,7 +692,7 @@ class CI_Session {
         if (!isset($_SESSION['st_rmsa_user_id'])) {
             redirect(STUDENT_LOGIN_LINK);
             return false;
-        }
+        }        
         return true;
     }
 

@@ -7,8 +7,9 @@ class RmsaLogin extends MY_Controller{
             redirect(HOME_LINK);
         }        
         $this->load->model('Rmsa_Login');
-        if (isset($_SESSION['rmsa_admin_id'])) {
-            $result = $this->Rmsa_Login->getTokenAndCheck($_SESSION['rmsa_admin_id']);
+         $this->load->model('Emp_Login');        
+        if (isset($_SESSION['username'])) {
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username'],$_SESSION['user_id']);            
             if ($result) {                
                 $token = $result['token'];
                 if($_SESSION['tokencheck'] != $token) {

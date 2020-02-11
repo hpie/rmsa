@@ -10,18 +10,16 @@ class EmpLogin extends MY_Controller {
             redirect(HOME_LINK);
         }
         $this->load->model('Emp_Login');        
-        if (isset($_SESSION['rmsa_employee_id'])) {
-            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['rmsa_employee_id']);
+        if (isset($_SESSION['username'])) {
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username'],$_SESSION['user_id']);            
             if ($result) {                
-                $token = $result['token'];                
+                $token = $result['token'];
                 if($_SESSION['tokencheck'] != $token) {
-//                    echo $_SESSION['tokencheck'];die;
                     session_destroy(); 
                     redirect(HOME_LINK);
                 }
             }
         }
-        
     }
     
     public function index() {
@@ -31,7 +29,7 @@ class EmpLogin extends MY_Controller {
             }
         }
         $_SESSION['invalid_login'] = 0;
-        if (isset($_POST['username']) && isset($_POST['password'])) {
+        if (isset($_POST['username']) && isset($_POST['password'])) {            
             $this->session->sessionCheckToken($_POST);
 //            print_r($_POST);die;
             $result = $this->Emp_Login->Emp_Login_select($_POST['username'], $_POST['password']);

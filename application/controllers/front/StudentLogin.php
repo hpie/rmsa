@@ -8,8 +8,9 @@ class StudentLogin extends MY_Controller{
         }
         parent::__construct();        
         $this->load->model('Login_model');
-        if (isset($_SESSION['rmsa_student_id'])) {
-            $result = $this->Login_model->getTokenAndCheck($_SESSION['rmsa_student_id']);
+        $this->load->model('Emp_Login');        
+        if (isset($_SESSION['username'])) {
+            $result = $this->Emp_Login->getTokenAndCheck($_SESSION['username'],$_SESSION['user_id']);            
             if ($result) {                
                 $token = $result['token'];
                 if($_SESSION['tokencheck'] != $token) {
