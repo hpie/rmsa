@@ -50,8 +50,8 @@
 
                         $all_comment .= '<div class="row">
                                             <div class="col-md-2">
-                                                <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
-                                                <p class="text-secondary text-center">'.$comment['time'].'</p>
+                                                <img src="'.BASE_URL.'/assets/uploads/def_face.jpg" width="50%" class="img img-rounded img-fluid"/>
+                                                <center><p class="text-secondary text-center">'.$comment['time'].'</p></center>
                                             </div>
                                             <div class="col-md-10">
                                                 <p>
@@ -70,7 +70,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                                                        <img src="'.BASE_URL.'/assets/uploads/def_face.jpg" class="img img-rounded img-fluid"/>
                                                         <p class="text-secondary text-center">'.$reply['time'].'</p>
                                                     </div>
                                                     <div class="col-md-10">

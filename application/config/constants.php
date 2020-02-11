@@ -153,7 +153,11 @@ define('STUDENT_APPROVE',BASE_URL."/student-approve");
 define('EMPLOYEE_FILE_ACTIVE',BASE_URL."/employee-file-active");
 define('EMPLOYEE_STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/employee-update-student-profile/");
 
-
+// teacher
+define('TEACHER_LOGIN_LINK',BASE_URL."/teacher-login");
+define('TEACHER_LOGOUT_LINK',BASE_URL."/teacher-logout");
+define('TEACHER_STUDENT_LIST_LINK',BASE_URL."/teacher-student");
+define('TEACHER_RESOURCES_LIST_LINK',BASE_URL."/teacher-resources");
 
 
 //other constant
@@ -188,8 +192,10 @@ define('CONTACT_US_TITLE',"Welcome to rmsahimachal.nic.in - Contact Us");
 define('ANNUAL_REPORTS_TITLE',"Welcome to rmsahimachal.nic.in - AnnualReports");
 define('CIRCULARS_TITLE',"Welcome to rmsahimachal.nic.in - Circulars");
 define('EMPLOYEE_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Employee Login");
+define('TEACHER_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Teacher Login");
 define('EMPLOYEE_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Employee Registration");
 define('EMPLOYEE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - EmployeeStudent");
+define('TEACHER_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - TeacherStudent");
 define('EMPLOYEE_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - FileDw");
 define('EMPLOYEE_FILE_UPLOAD_TITLE',"Welcome to rmsahimachal.nic.in - File Upload"); 
 define('EMPLOYEE_STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Employee Student Profile");
@@ -197,6 +203,7 @@ define('EMPLOYEE_STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Employ
 define('RMSAE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaStudent");
 define('RMSAE_EMPLOYEE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaEmployee");
 define('RMSA_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaResource");
+define('TEACHER_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - TeacherResource");
 define('RMSA_EMPLOYEE_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Employee Registration");
 define('RMSA_STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Student Profile");
 define('RMSA_EMPLOYEE_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Employee Profile");

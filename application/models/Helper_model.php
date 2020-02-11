@@ -19,11 +19,10 @@ class Helper_model extends CI_Model
         return $school->result_array();
     }
 
-    public function register_student($params){
-
+    public function register_student($params){        
         $email_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_email_id = '".$params['rmsa_user_email_id']."' ");
         $res = $email_exist->row_array();
-
+        
         if($res){
             return Array(
                 'success' => false,
@@ -41,6 +40,12 @@ class Helper_model extends CI_Model
             $params['rmsa_sub_district_id'] = $_SESSION['emp_rmsa_sub_district_id'];
             $params['rmsa_district_id'] = $_SESSION['emp_rmsa_district_id'];
         }
+        if(isset($_SESSION['tech_rmsa_user_id'])){
+            $params['user_create_by'] = $_SESSION['tech_rmsa_user_id'];
+            $params['rmsa_school_id'] = $_SESSION['tech_rmsa_school_id'];
+            $params['rmsa_sub_district_id'] = $_SESSION['tech_rmsa_sub_district_id'];
+            $params['rmsa_district_id'] = $_SESSION['tech_rmsa_district_id'];
+        }
         else{
             unset($params['user_create_by']);
         }
@@ -48,7 +53,6 @@ class Helper_model extends CI_Model
         $result = $this->db->insert('rmsa_student_users',$params);
         $insert_id = $this->db->insert_id();// get last insert id
         if(!empty($insert_id)){
-
             return Array(
                 'success' => true,
                 'email_exist' => false,

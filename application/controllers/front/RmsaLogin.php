@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class RmsaLogin extends MY_Controller{
     public function __construct(){
         parent::__construct();
-        if(isset($_SESSION['emp_rmsa_user_id']) OR isset($_SESSION['st_rmsa_user_id'])){
+        if(isset($_SESSION['emp_rmsa_user_id']) OR isset($_SESSION['st_rmsa_user_id']) OR isset($_SESSION['tech_rmsa_user_id'])){
             redirect(HOME_LINK);
         }        
         $this->load->model('Rmsa_Login');

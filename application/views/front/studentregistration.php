@@ -112,7 +112,7 @@
             </div>
 
             <?php
-            if(!isset($_SESSION['emp_rmsa_user_id'])){?>
+            if(!isset($_SESSION['emp_rmsa_user_id']) && !isset($_SESSION['tech_rmsa_user_id'])){?>
                  <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Distt:</label>
@@ -125,7 +125,7 @@
                                     ?>
             <option value="<?php echo $row['rmsa_district_id']; ?>"><?php echo $row['rmsa_district_name']; ?></option>
             <?php
-            }
+                }
             }
             ?>
             </select>

@@ -678,6 +678,14 @@ class CI_Session {
         $_SESSION['username']='employee';
         return;
     }
+    public function sessionTeacher($row) {
+        foreach ($row as $key => &$value) {
+            $_SESSION['tech_' . $key] = $value;
+        }
+        $_SESSION['user_id']=$row['rmsa_user_id'];
+        $_SESSION['username']='teacher';
+        return;
+    }
 
     public function sessionRmsa($row) {
         foreach ($row as $key => &$value) {
@@ -698,6 +706,13 @@ class CI_Session {
 
     public function sessionCheckEmployee() {
         if (!isset($_SESSION['emp_rmsa_user_id'])) {
+            redirect(EMPLOYEE_LOGIN_LINK);
+            return false;
+        }
+        return true;
+    }
+    public function sessionCheckTeacher() {
+        if (!isset($_SESSION['tech_rmsa_user_id'])) {
             redirect(EMPLOYEE_LOGIN_LINK);
             return false;
         }

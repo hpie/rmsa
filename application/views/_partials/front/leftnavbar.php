@@ -2,7 +2,7 @@
                     <div class="col-md-3 col-sm-3  collapse navbar-collapse" id="slide-navbar-collapse">
                         <div class="left-side-area">
                             <ul id="accordion" class="accordion">
-                                <?php if(!isset($_SESSION['st_rmsa_user_id']) AND !isset($_SESSION['rm_rmsa_user_id'])){ ?>
+                                <?php if(!isset($_SESSION['st_rmsa_user_id']) AND !isset($_SESSION['rm_rmsa_user_id']) AND !isset($_SESSION['tech_rmsa_user_id'])){ ?>
                                 <li>
                                     <div class="link"><i class="fa fa-database"></i>Employee’s Corner<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
@@ -20,7 +20,7 @@
                                     </ul>
                                 </li>
                                 <?php }?>
-                                <?php if(!isset($_SESSION['emp_rmsa_user_id']) AND !isset($_SESSION['rm_rmsa_user_id'])){ ?>
+                                <?php if(!isset($_SESSION['emp_rmsa_user_id']) AND !isset($_SESSION['rm_rmsa_user_id']) AND !isset($_SESSION['tech_rmsa_user_id'])){ ?>
                                 <li>
                                     <div class="link"><i class="fa fa-code"></i>Student's Corner<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
@@ -38,7 +38,7 @@
                                     </ul>
                                 </li>
                                 <?php }?>                               
-                                <?php if(!isset($_SESSION['emp_rmsa_user_id']) AND !isset($_SESSION['st_rmsa_user_id'])){ ?>
+                                <?php if(!isset($_SESSION['emp_rmsa_user_id']) AND !isset($_SESSION['st_rmsa_user_id']) AND !isset($_SESSION['tech_rmsa_user_id'])){ ?>
                                 <li>
                                     <div class="link"><i class="fa fa-user"></i>RMSA User’s Corner<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">                                        
@@ -47,7 +47,21 @@
                                         <?php } ?>                                                                                                                       
                                     </ul>
                                 </li>
-                                <?php }?>                                                                
+                                <?php }?>
+                                <?php if(!isset($_SESSION['emp_rmsa_user_id']) AND !isset($_SESSION['st_rmsa_user_id']) AND !isset($_SESSION['rm_rmsa_user_id'])){ ?>
+                                <li>
+                                    <div class="link"><i class="fa fa-user"></i>Teacher’s Corner<i class="fa fa-chevron-down"></i></div>
+                                    <ul class="submenu">                                        
+                                        <?php if(!isset($_SESSION['tech_rmsa_user_id'])){ ?>                                       
+                                        <li><a href="<?php echo TEACHER_LOGIN_LINK; ?>">Teacher Login</a></li>                                       
+                                        <?php } ?> 
+                                        <?php
+                                        if(isset($_SESSION['tech_rmsa_user_id'])){?>
+                                            <li><a href="<?php echo STUDENT_REGISTER_LINK; ?>">Create Student</a></li>
+                                        <?php } ?>
+                                    </ul>
+                                </li>
+                                <?php }?>                                                                                                                                                                
                                 <?php if(isset($_SESSION['st_rmsa_user_id'])){ ?>
                                 <li>
                                     <div class="link"><i class="fa fa-mobile"></i>Resource Material<i class="fa fa-chevron-down"></i></div>
@@ -74,7 +88,18 @@
                                         <li><a href="#">Online Exam</a></li>                                                                               
                                     </ul>
                                 </li>
-                                 <?php } ?>                                
+                                 <?php } ?>  
+                                <?php if(isset($_SESSION['tech_rmsa_user_id'])){ ?>
+                                <li>
+                                    <div class="link"><i class="fa fa-mobile"></i>Resource Material<i class="fa fa-chevron-down"></i></div>
+                                    <ul class="submenu">                                       
+                                        <li><a href="#">Teacher User Manual</a></li>
+                                        <li><a href="<?php echo TEACHER_STUDENT_LIST_LINK; ?>">Manage Students</a></li>                                        
+                                        <!--<li><a href="<?php //echo TEACHER_RESOURCES_LIST_LINK; ?>">View Resource Material</a></li>-->
+                                        <li><a href="<?php echo TEACHER_RESOURCES_LIST_LINK; ?>">Resource List</a></li> 
+                                    </ul>
+                                </li>
+                                 <?php } ?>
                                  <?php if(isset($_SESSION['rm_rmsa_user_id'])){ ?>
                                 <li>
                                     <div class="link"><i class="fa fa-mobile"></i>Resource Material<i class="fa fa-chevron-down"></i></div>

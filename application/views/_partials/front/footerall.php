@@ -527,7 +527,7 @@ $this->load->view('_partials/front/allnotify');
     </script>
 <?php } ?>
 
-<?php if ($title == RMSA_FILE_LIST_TITLE) {
+    <?php if ($title == RMSA_FILE_LIST_TITLE) {
     ?> 
     <script>
         $(document).ready(function () {
@@ -638,6 +638,96 @@ $this->load->view('_partials/front/allnotify');
                 });
             });
 
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $(document).on('click', '.viewFile', function (e) {
+                e.preventDefault();
+                var self = this;
+                window.open(self.href, 'documents', 'width=600,height=400');
+            });
+        });
+        function show_review_comments(file_id, e) {
+            e.preventDefault();
+            $('.show_comments').empty();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo DISPLAY_REVIEW ?>",
+                data: {'file_id': file_id, 'limit': 10},
+                success: function (res) {
+                    $('.show_comments').append(res);
+                }
+            });
+            $("#view-reviews").modal();
+        }
+    </script>
+<?php } ?>
+<?php if ($title == TEACHER_FILE_LIST_TITLE) {
+    ?> 
+    <script>
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1(uploaded_file_tag = '')
+            {
+                $('#example tfoot th').each(function () {
+                    var title = $('#example thead th').eq($(this).index()).text();
+                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
+                        $(this).html('<input type="text" placeholder="' + title + '" />');
+                    }
+                });
+                var table = $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/teacher_resource.php' ?>",
+                        'data': {
+                            uploaded_file_tag: uploaded_file_tag
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "uploaded_file_title"},
+                        {"data": "ext"},
+                        {"data": "uploaded_file_type"},
+                        {"data": "uploaded_file_group"},
+                        {"data": "uploaded_file_category"},
+                        {"data": "uploaded_file_status"},
+                        {"data": "ratting"},
+                        {"data": "uploaded_file_desc"}
+                    ]
+                });
+                table.columns().eq(0).each(function (colIdx) {
+                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
+                        table.column(colIdx).search(this.value).draw();
+                    });
+                });
+            }         
             $('#searchTag').click(function () {
                 var uploaded_file_tag = $('#uploaded_file_tag').val();
                 if (uploaded_file_tag != '')
@@ -1071,6 +1161,104 @@ $this->load->view('_partials/front/allnotify');
                 if (status == 1)
                     user_status = 'REMOVED';
 
+                if (!confirm('Are you sure want to ' + user_status.toLocaleLowerCase() + ' student?'))
+                    return;
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'rmsa_user_id': self.data('id'),
+                    'user_status': user_status,
+                    'token':token
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo STUDENT_APPROVE ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+
+                            var title = 'Click to deactivate student';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if (status == 1) {
+                                title = 'Click to active student';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
+                                text = 'Inactive';
+                                isactive = 0;
+                            }
+
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                            $('#token').val(res.token);               
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+<?php } ?> 
+    
+<?php if ($title == TEACHER_STUDENT_LIST_TITLE) {
+    ?>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({                
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/teacher_students.php' ?>",
+                    'data': {
+                        rmsa_school_id: <?php
+    if (isset($_SESSION['tech_rmsa_school_id'])) {
+        echo $_SESSION['tech_rmsa_school_id'];
+    }
+    ?>
+                        // etc..
+                    }
+                },
+                "columns": [
+                    {"data": "index"},
+                    {"data": "rmsa_user_id"},
+                    {"data": "rmsa_user_first_name"},
+                    {"data": "rmsa_school_title"},
+                    {"data": "rmsa_district_name"},
+                    {"data": "rmsa_user_gender"},
+                    {"data": "rmsa_user_DOB"},
+                    {"data": "rmsa_user_email_id"},
+                    {"data": "rmsa_user_status"},
+                    {"data": "rmsa_user_edit"}
+                ]
+            });
+            $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+                var token=$('#token').val();               
+                var status = self.attr('data-status');
+                var user_status = 'ACTIVE';
+                if (status == 1)
+                    user_status = 'REMOVED';
                 if (!confirm('Are you sure want to ' + user_status.toLocaleLowerCase() + ' student?'))
                     return;
                 self.attr('disabled', 'disabled');
@@ -2242,19 +2430,14 @@ if ($title == FILE_REVIEWS_TITLE) {
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result['success'] == "success") {
-                        if ('<?php if (isset($_SESSION['rm_rmsa_user_id'])) {
-        echo '1';
-    } else {
-        echo '0';
-    } ?>' === '1') {
+                        if ('<?php if (isset($_SESSION['rm_rmsa_user_id'])) { echo '1'; } else { echo '0'; } ?>' === '1') {
                             location.href = "<?php echo RMSA_STUDENT_LIST_LINK; ?>";
                         }
-                        if ('<?php if (isset($_SESSION['emp_rmsa_user_id'])) {
-        echo '1';
-    } else {
-        echo '0';
-    } ?>' === '1') {
+                        if ('<?php if (isset($_SESSION['emp_rmsa_user_id'])) { echo '1'; } else { echo '0';} ?>' === '1') {
                             location.href = "<?php echo EMPLOYEE_STUDENT_LIST_LINK ?>";
+                        }
+                        if ('<?php if (isset($_SESSION['tech_rmsa_user_id'])) { echo '1'; } else { echo '0';} ?>' === '1') {
+                            location.href = "<?php echo TEACHER_STUDENT_LIST_LINK ?>";
                         }
                         location.href = "<?php echo HOME_LINK ?>";
                     }
