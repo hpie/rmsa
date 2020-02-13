@@ -2,9 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Student extends MY_Controller{
-    public function __construct(){        
-        $this->session->sessionCheckStudent();
-        parent::__construct();        
+    public function __construct(){                
+        parent::__construct();  
+        $this->load->helper('functions'); 
+        sessionCheckStudent();
         $this->load->model('Student_model');
         $this->load->model('Emp_Login');        
         if (isset($_SESSION['user_id'])) {
@@ -51,7 +52,7 @@ class Student extends MY_Controller{
     }
     public function logout() {
         $res = $this->Student_model->update_logout_status($_SESSION['st_rmsa_user_id']);
-        $this->session->sessionDestroy();        
+        sessionDestroy();        
         if($res){
             redirect(STUDENT_LOGIN_LINK);
         }        

@@ -6,6 +6,7 @@ class EmpRegistration extends MY_Controller{
         if(isset($_SESSION['st_rmsa_user_id'])){
             redirect(HOME_LINK);
         }
+        $this->load->helper('functions');
         parent::__construct();
         $this->load->model('Emp_Login');        
         if (isset($_SESSION['user_id'])) {

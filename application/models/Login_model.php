@@ -2,6 +2,7 @@
 
 class Login_model extends CI_Model{
     function __construct(){
+        $this->load->helper('functions'); 
         parent::__construct();
     }
     public function login_select($username, $password) {
@@ -29,7 +30,7 @@ class Login_model extends CI_Model{
                     $this->db->query("INSERT INTO rmsa_student_users_log(rmsa_user_id,failed_password_attempt_count,is_logged_in)VALUES('".$row['rmsa_user_id']."',0,1) ");
                 }
                 $this->db->query("UPDATE rmsa_student_users SET rmsa_student_login_active = 1 WHERE rmsa_user_id='".$row['rmsa_user_id']."' ");
-                $this->session->sessionStudent($row);
+                sessionStudent($row);
                 
                 
                 $token = "";

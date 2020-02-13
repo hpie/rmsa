@@ -4,8 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Teacher extends MY_Controller
 {
     public function __construct(){
-        parent::__construct();        
-        $this->session->sessionCheckTeacher();
+        parent::__construct();
+        $this->load->helper('functions'); 
+        sessionCheckTeacher();
         $this->load->model('Employee_model');
         $this->load->model('Emp_Login');        
         if (isset($_SESSION['user_id'])) {
@@ -26,7 +27,7 @@ class Teacher extends MY_Controller
     }
     public function approve_student(){
         if(isset($_REQUEST['rmsa_user_id'])){
-            $this->session->sessionCheckToken($_POST);
+            sessionCheckToken($_POST);
             $res = $this->Employee_model->approve_student($_REQUEST);
             if($res){
                 $_SESSION['token'] = bin2hex(random_bytes(24));       
@@ -40,7 +41,7 @@ class Teacher extends MY_Controller
     }
     public function active_file(){
         if(isset($_REQUEST['rmsa_uploaded_file_id'])){
-            $this->session->sessionCheckToken($_POST);
+            sessionCheckToken($_POST);
             $res = $this->Employee_model->active_file($_REQUEST);
             if($res){
                 $_SESSION['token'] = bin2hex(random_bytes(24));       

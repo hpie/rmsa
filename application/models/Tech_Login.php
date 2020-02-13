@@ -3,6 +3,7 @@
 class Tech_Login extends CI_Model {
 
     function __construct() {
+        $this->load->helper('functions'); 
         parent::__construct();
     }
 
@@ -29,7 +30,7 @@ class Tech_Login extends CI_Model {
                     $this->db->query("INSERT INTO rmsa_teacher_users_log(rmsa_user_id,failed_password_attempt_count,is_logged_in)VALUES('" . $emp_data['rmsa_user_id'] . "',0,1) ");
                 }
                 $this->db->query("UPDATE rmsa_teacher_users SET rmsa_employee_login_active = 1 WHERE rmsa_user_id='" . $emp_data['rmsa_user_id'] . "' ");
-                $this->session->sessionTeacher($emp_data);
+                sessionTeacher($emp_data);
 
                 $token = "";
                 $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

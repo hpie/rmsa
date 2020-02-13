@@ -1,6 +1,7 @@
 <?php
 class Rmsa_Login extends CI_Model{
     function __construct(){
+        $this->load->helper('functions'); 
         parent::__construct();
     }
     public function Rmsa_Login_select($username, $password) {
@@ -21,7 +22,7 @@ class Rmsa_Login extends CI_Model{
                     $this->db->query("INSERT INTO rmsa_coordinators_log(rmsa_user_id,failed_password_attempt_count,is_logged_in)VALUES('".$rmsa_data['rmsa_user_id']."',0,1) ");
                 }
                 $this->db->query("UPDATE rmsa_employee_users SET rmsa_employee_login_active = 1 WHERE rmsa_user_id='".$rmsa_data['rmsa_user_id']."' ");
-                $this->session->sessionRmsa($rmsa_data);
+                sessionRmsa($rmsa_data);
                 
                 $token = "";
                 $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

@@ -5,6 +5,7 @@ class Resource extends MY_Controller{
     public function __construct(){
        // $this->session->sessionCheckStudent();
         parent::__construct();
+        $this->load->helper('functions');        
         $this->load->model('Resource_model');
         $this->load->model('Emp_Login');        
         if (isset($_SESSION['user_id'])) {

@@ -4,9 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TeacherResource extends MY_Controller {
 
-    public function __construct() {
-        $this->session->sessionCheckTeacher();
+    public function __construct() {        
         parent::__construct();
+        $this->load->helper('functions'); 
+        sessionCheckTeacher();
         $this->load->model('Emp_Login');               
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            

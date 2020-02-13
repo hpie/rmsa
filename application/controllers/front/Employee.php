@@ -5,7 +5,8 @@ class Employee extends MY_Controller
 {
     public function __construct(){
         parent::__construct();
-        $this->session->sessionCheckEmployee();
+        $this->load->helper('functions');
+        sessionCheckEmployee();
         $this->load->model('Employee_model');
         $this->load->model('Emp_Login');        
         if (isset($_SESSION['user_id'])) {
@@ -27,7 +28,7 @@ class Employee extends MY_Controller
     }
     public function approve_student(){
         if(isset($_REQUEST['rmsa_user_id'])){
-            $this->session->sessionCheckToken($_POST);
+            sessionCheckToken($_POST);
             $res = $this->Employee_model->approve_student($_REQUEST);
             if($res){
                 $_SESSION['token'] = bin2hex(random_bytes(24));       
@@ -41,7 +42,7 @@ class Employee extends MY_Controller
     }
     public function active_file(){
         if(isset($_REQUEST['rmsa_uploaded_file_id'])){
-            $this->session->sessionCheckToken($_POST);
+            sessionCheckToken($_POST);
             $res = $this->Employee_model->active_file($_REQUEST);
             if($res){
                 $_SESSION['token'] = bin2hex(random_bytes(24));       

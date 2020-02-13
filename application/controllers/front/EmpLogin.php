@@ -6,6 +6,7 @@ class EmpLogin extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->helper('functions');
         if (isset($_SESSION['st_rmsa_user_id']) OR isset($_SESSION['rm_rmsa_user_id']) OR isset($_SESSION['tech_rmsa_user_id'])) {
             redirect(HOME_LINK);
         }
@@ -30,7 +31,7 @@ class EmpLogin extends MY_Controller {
         }
         $_SESSION['invalid_login'] = 0;
         if (isset($_POST['username']) && isset($_POST['password'])) {            
-            $this->session->sessionCheckToken($_POST);
+            sessionCheckToken($_POST);
 //            print_r($_POST);die;
             $result = $this->Emp_Login->Emp_Login_select($_POST['username'], $_POST['password']);
 //           if($result == 2 ){
@@ -50,7 +51,7 @@ class EmpLogin extends MY_Controller {
 
     public function employeeLogout() {
         $res = $this->Emp_Login->update_logout_status($_SESSION['emp_rmsa_user_id']);
-        $this->session->sessionDestroy();
+        sessionDestroy();
         if ($res) {
             redirect(EMPLOYEE_LOGIN_LINK);
         }

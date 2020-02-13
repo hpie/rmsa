@@ -6,6 +6,7 @@ class Helper extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->helper('functions');        
         $this->load->model('Helper_model');
         $this->load->model('Emp_Login');        
         if (isset($_SESSION['user_id'])) {
@@ -35,7 +36,7 @@ class Helper extends MY_Controller {
     public function create_student(){
         $_SESSION['exist_email'] = 0;
         if(isset($_POST['rmsa_user_first_name'])){
-            $this->session->sessionCheckToken($_POST);
+            sessionCheckToken($_POST);
             $res =  $this->Helper_model->register_student($_POST);            
             $result=array();
             if($res['success'] == true){

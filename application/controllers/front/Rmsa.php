@@ -5,7 +5,8 @@ class Rmsa extends MY_Controller
 {
     public function __construct(){
         parent::__construct();
-        $this->session->sessionCheckRmsa();
+        $this->load->helper('functions');        
+        sessionCheckRmsa();
         $this->load->model('Rmsa_model');
         $this->load->model('Helper_model');
         $this->load->model('Employee_model');
@@ -75,7 +76,7 @@ class Rmsa extends MY_Controller
     }
     public function active_employee(){
         if(isset($_REQUEST['rmsa_user_id'])){
-            $this->session->sessionCheckToken($_POST);
+            sessionCheckToken($_POST);
             $res = $this->Rmsa_model->active_employee($_REQUEST);
             if($res){
                $_SESSION['token'] = bin2hex(random_bytes(24));       
@@ -97,7 +98,7 @@ class Rmsa extends MY_Controller
     }
     public function active_file(){
         if(isset($_REQUEST['rmsa_uploaded_file_id'])){
-            $this->session->sessionCheckToken($_POST);
+            sessionCheckToken($_POST);
             $res = $this->Rmsa_model->active_file($_REQUEST);
             if($res){
                $_SESSION['token'] = bin2hex(random_bytes(24));       
@@ -170,7 +171,7 @@ class Rmsa extends MY_Controller
     public function active_student(){
         if(isset($_REQUEST['rmsa_user_id'])){
             
-            $this->session->sessionCheckToken($_POST);
+            sessionCheckToken($_POST);
             $res = $this->Rmsa_model->active_student($_REQUEST);
             if($res){
                $_SESSION['token'] = bin2hex(random_bytes(24));       

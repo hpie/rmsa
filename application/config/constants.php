@@ -104,8 +104,8 @@ if (!(PHP_SAPI === 'cli' OR defined('STDIN')))
 	define('API_HOST', $_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']));
 }
 
-define('CI_BOOTSTRAP_REPO',			'https://github.com/waifung0207/ci_bootstrap_3');
-define('CI_BOOTSTRAP_VERSION',		'Build 20170324');	// will follow semantic version (e.g. v1.x.x) after first stable launch
+define('CI_BOOTSTRAP_REPO','https://github.com/waifung0207/ci_bootstrap_3');
+define('CI_BOOTSTRAP_VERSION','Build 20170324');	// will follow semantic version (e.g. v1.x.x) after first stable launch
 
 // Upload paths
 //define('UPLOAD_COVER_PHOTO',	'assets/uploads/cover_photos');
@@ -115,8 +115,6 @@ define('CI_BOOTSTRAP_VERSION',		'Build 20170324');	// will follow semantic versi
 
 //All uploaded file constant
 define('FILE_UPDATE_LINK',BASE_URL."/update-file");
-
-
 //All student constant
 define('STUDENT_LOGIN_LINK',BASE_URL."/student-login");
 define('STUDENT_LOGOUT_LINK',BASE_URL."/student-logout");
@@ -127,8 +125,6 @@ define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
 define('STUDENT_QUIZ_RESULTS_LINK',BASE_URL."/employee-resources");
 define('STUDENT_REPORTS',BASE_URL."/employee-reports");
 define('STUDENT_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
-
-
 
 //All Rmsa users constant
 define('RMSA_LOGIN_LINK',BASE_URL."/rmsa-login");
