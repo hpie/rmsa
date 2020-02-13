@@ -124,6 +124,10 @@ define('STUDENT_REGISTER_LINK',BASE_URL."/student-registration");
 define('STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/update-profile");
 define('STUDENT_RESOURCES_LINK',BASE_URL."/student-resources");
 define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
+define('STUDENT_QUIZ_RESULTS_LINK',BASE_URL."/employee-resources");
+define('STUDENT_REPORTS',BASE_URL."/employee-reports");
+define('STUDENT_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
+
 
 
 //All Rmsa users constant
@@ -139,7 +143,9 @@ define('RMSA_STUDENT_ACTIVE',BASE_URL."/rmsa-student-active");
 define('RMSA_STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-student-profile/");
 define('RMSA_EMPLOYEE_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-employee-profile/");
 define('RMSA_FILE_ACTIVE',BASE_URL."/rmsa-file-active");
-
+define('RMSA_REPORTS',BASE_URL."/employee-reports");
+define('RMSA_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
+define('RMSA_QUIZ_MCQ_LINK',BASE_URL."/employee-resources");
 
 //All employee constant
 define('EMPLOYEE_LOGIN_LINK',BASE_URL."/employee-login");
@@ -147,11 +153,15 @@ define('EMPLOYEE_LOGOUT_LINK',BASE_URL."/employee-logout");
 define('EMPLOYEE_UPLOAD_FILE_LINK',BASE_URL."/employee-uploadresource");
 define('EMPLOYEE_UPLOAD_CHILD_FILE_LINK',BASE_URL."/employee-uploadresource-child/");
 define('EMPLOYEE_RESOURCES_LIST_LINK',BASE_URL."/employee-resources");
+define('EMPLOYEE_CREATE_QUIZ_LINK',BASE_URL."/employee-resources");
+define('EMPLOYEE_QUIZ_MCQ_LINK',BASE_URL."/employee-resources");
+define('EMPLOYEE_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
 define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
 define('EMPLOYEE_STUDENT_LIST_LINK',BASE_URL."/employee-student");
 define('STUDENT_APPROVE',BASE_URL."/student-approve");
 define('EMPLOYEE_FILE_ACTIVE',BASE_URL."/employee-file-active");
 define('EMPLOYEE_STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/employee-update-student-profile/");
+define('EMPLOYEE_REPORTS',BASE_URL."/employee-reports");
 
 // teacher
 define('TEACHER_LOGIN_LINK',BASE_URL."/teacher-login");
@@ -199,6 +209,8 @@ define('TEACHER_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - TeacherStu
 define('EMPLOYEE_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - FileDw");
 define('EMPLOYEE_FILE_UPLOAD_TITLE',"Welcome to rmsahimachal.nic.in - File Upload"); 
 define('EMPLOYEE_STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Employee Student Profile");
+
+define('EMPLOYEE_CREATE_QUIZ_TITLE',"Welcome to rmsahimachal.nic.in - Create Quiz");
 
 define('RMSAE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaStudent");
 define('RMSAE_EMPLOYEE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaEmployee");
