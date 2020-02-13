@@ -667,7 +667,7 @@ class CI_Session {
             $_SESSION['st_' . $key] = $value;
         }
         $_SESSION['user_id']=$row['rmsa_user_id'];
-        $_SESSION['username']='student';
+        $_SESSION['usertype']='student';
         return;
     }
     public function sessionEmployee($row) {
@@ -675,7 +675,7 @@ class CI_Session {
             $_SESSION['emp_' . $key] = $value;
         }
         $_SESSION['user_id']=$row['rmsa_user_id'];
-        $_SESSION['username']='employee';
+        $_SESSION['usertype']='employee';
         return;
     }
     public function sessionTeacher($row) {
@@ -683,7 +683,7 @@ class CI_Session {
             $_SESSION['tech_' . $key] = $value;
         }
         $_SESSION['user_id']=$row['rmsa_user_id'];
-        $_SESSION['username']='teacher';
+        $_SESSION['usertype']='teacher';
         return;
     }
 
@@ -692,7 +692,7 @@ class CI_Session {
             $_SESSION['rm_' . $key] = $value;
         }
         $_SESSION['user_id']=$row['rmsa_user_id'];
-        $_SESSION['username']='rmsa';
+        $_SESSION['usertype']='rmsa';
         return;
     }
 
