@@ -1,7 +1,6 @@
 <select name="emp_reports_type" class="form-control emp_reports_type col-md-5">
         <option value="0">Select Report</option>
-        <option value="1">Uploaded content</option>
-        <option value="2">Active Student</option>        
+        <option value="1">Uploaded content</option>        
 </select>
 <select name="emp_reports_duration" class="form-control emp_reports_duration col-md-3 offset-1">
         <option value="0">Select Duration</option>
