@@ -254,11 +254,11 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true
+                                beginAtZero: true,                                
                             },
                             stacked: true
                         }],
-                    xAxes: [{
+                    xAxes: [{                            
                             stacked: true
                         }]
                 }
