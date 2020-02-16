@@ -165,7 +165,7 @@ $route['most-viewed-content']            = 'front/helper/most_viewed_content';
 $route['most-active-student']            = 'front/helper/most_active_student_by_content_read';
 
 $route['employee-reports/(:any)']     = 'front/helper/employee_reports/$1';
-
+$route['employee-reports-2/(:any)/(:any)']     = 'front/helper/employee_reports_2/$1/$2';
 
 
 //others routes

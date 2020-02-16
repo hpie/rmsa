@@ -18,7 +18,9 @@ $this->load->view('_partials/front/footer');
 //	include('_partials/footer.php'); // Includes Footer Script
 ?>
 <!-- End Import Navbar -->         
-<input type="hidden" id="token" value="<?php if(isset($_SESSION['token'])){echo $_SESSION['token'];} ?>">
+<input type="hidden" id="token" value="<?php if (isset($_SESSION['token'])) {
+    echo $_SESSION['token'];
+} ?>">
 </div>
 <!-- Start Import Scripts -->
 <?php
@@ -50,26 +52,26 @@ $this->load->view('_partials/front/scripts');
 //    }    
     $(document).ready(function () {
 //
-        document.onkeydown = function (e) {
-            if (e.keyCode == 123) {
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-                return false;
-            }
-             if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-                return false;
-            }
-        }
+//        document.onkeydown = function (e) {
+//            if (e.keyCode == 123) {
+//                return false;
+//            }
+//            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+//                return false;
+//            }
+//            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+//                return false;
+//            }
+//            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+//                return false;
+//            }
+//             if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+//                return false;
+//            }
+//            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+//                return false;
+//            }
+//        }
 
         $("#accordion a").each(function () {
             if (this.href == window.location.href) {
@@ -98,10 +100,10 @@ $this->load->view('_partials/front/scripts');
 //all notification include
 $this->load->view('_partials/front/allnotify');
 ?>
+
 <script>
     $(document).ready(function () {
         $(".emp_reports").on('change', function () {
-
             var type = $(this).val();
             if (type != 0) {
                 var link = '<?= EMPLOYEE_REPORTS ?>';
@@ -111,6 +113,139 @@ $this->load->view('_partials/front/allnotify');
     });
 </script>
 
+<script>
+    $(document).ready(function () {
+        $(".reports_go").on('click', function () {
+            var type = $('.emp_reports_type').find(":selected").val();
+            var month = $('.emp_reports_duration').find(":selected").val();
+            if (type != 0 && month != 0) {
+                var link = '<?= EMPLOYEE_REPORTS_2 ?>';
+                window.location.href = link + '/' + month + '/' + type;
+            }
+            if (type == 0) {
+                alert("Please select report type");
+            }
+            if (month == 0) {
+                alert("Please select report duation");
+            }
+        })
+    });
+</script>
+<?php if ($title == REPORTS_2_UPLOADED_CONTENT_TITLE) {
+    ?>
+    <script>
+        var month = [];
+        var count = [];
+        $(most_upload).each(function (key, data) {
+            month.push(data.month);
+            count.push(data.count);
+        });
+        var ctx = document.getElementById('upload_content_reports2');
+    
+        Chart.plugins.register({
+	beforeRender: function(chart) {
+		if (chart.config.options.showAllTooltips) {
+			// create an array of tooltips
+			// we can't use the chart tooltip because there is only one tooltip per chart
+			chart.pluginTooltips = [];
+			chart.config.data.datasets.forEach(function(dataset, i) {
+				chart.getDatasetMeta(i).data.forEach(function(sector, j) {
+					chart.pluginTooltips.push(
+						new Chart.Tooltip(
+							{
+								_chart: chart.chart,
+								_chartInstance: chart,
+								_data: chart.data,
+								_options: chart.options.tooltips,
+								_active: [sector]
+							},
+							chart
+						)
+					);
+				});
+			});
+
+			// turn off normal tooltips
+			chart.options.tooltips.enabled = false;
+		}
+	},
+	afterDraw: function(chart, easing) {
+		if (chart.config.options.showAllTooltips) {
+			// we don't want the permanent tooltips to animate, so don't do anything till the animation runs atleast once
+			if (!chart.allTooltipsOnce) {
+				if (easing !== 1) return;
+				chart.allTooltipsOnce = true;
+			}
+			// turn on tooltips
+			chart.options.tooltips.enabled = true;
+			Chart.helpers.each(chart.pluginTooltips, function(tooltip) {
+				tooltip.initialize();
+//				tooltip._options.bodyFontFamily = "'Lato', sans-serif";
+                                tooltip._options.bodyFontFamily = "'Lato', sans-serif";
+				tooltip._options.displayColors = true;
+                                tooltip._options.titleFontSize = 14;
+				tooltip._options.bodyFontSize =13;                                
+				tooltip._options.yPadding = 6;
+				tooltip._options.xPadding = 6;
+                                tooltip._options.cornerRadius = 0;
+				// tooltip._options.position = 'average';
+				// tooltip._options.caretSize = tooltip._options.bodyFontSize * 0.5;
+				//tooltip._options.cornerRadius = tooltip._options.bodyFontSize * 0.5;
+				tooltip.update();
+				// we don't actually need this since we are not animating tooltips
+				tooltip.pivot();
+				tooltip.transition(easing).draw();
+			});
+			chart.options.tooltips.enabled = false;
+		}
+	}
+});
+    
+        var myChart = new Chart(ctx, {
+    //            type: 'bar',
+            type: 'horizontalBar',
+            data: {
+                labels: month,
+                datasets: [{
+                        label: 'Total uploaded content',
+                        data: count,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 3
+                    }]
+            },
+            options: {
+                showAllTooltips: true, // call plugin we created
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            stacked:true
+                        }],
+                    xAxes: [{                            
+                            stacked:true
+                        }]
+                }
+            }
+        });
+    </script>
+<?php } ?>
 <?php if ($title == MOST_CONTENT_UPLOADED_EMPLOYEE_TITLE) {
     ?>
     <script>
@@ -121,7 +256,6 @@ $this->load->view('_partials/front/allnotify');
             employee_name.push(data.employee_name);
             overall_rating.push(data.uploaded_count);
         });
-
         var ctx = document.getElementById('most_content_upload_employee');
         var myChart = new Chart(ctx, {
             type: 'pie',
@@ -527,7 +661,7 @@ $this->load->view('_partials/front/allnotify');
     </script>
 <?php } ?>
 
-    <?php if ($title == RMSA_FILE_LIST_TITLE) {
+<?php if ($title == RMSA_FILE_LIST_TITLE) {
     ?> 
     <script>
         $(document).ready(function () {
@@ -585,7 +719,7 @@ $this->load->view('_partials/front/allnotify');
             }
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-                var token=$('#token').val();
+                var token = $('#token').val();
                 var status = self.attr('data-status');
 
                 var uploaded_file_status = 'ACTIVE';
@@ -602,7 +736,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'rmsa_uploaded_file_id': self.data('id'),
                     'uploaded_file_status': uploaded_file_status,
-                    'token':token
+                    'token': token
                 }
 
                 $.ajax({
@@ -727,7 +861,7 @@ $this->load->view('_partials/front/allnotify');
                         table.column(colIdx).search(this.value).draw();
                     });
                 });
-            }         
+            }
             $('#searchTag').click(function () {
                 var uploaded_file_tag = $('#uploaded_file_tag').val();
                 if (uploaded_file_tag != '')
@@ -798,9 +932,11 @@ $this->load->view('_partials/front/allnotify');
                         'type': 'POST',
                         'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list.php' ?>",
                         'data': {
-                            emp_rmsa_user_id: <?php if (isset($_SESSION['emp_rmsa_user_id'])) {
+                            emp_rmsa_user_id: <?php
+    if (isset($_SESSION['emp_rmsa_user_id'])) {
         echo $_SESSION['emp_rmsa_user_id'];
-    } ?>,
+    }
+    ?>,
                             uploaded_file_tag: uploaded_file_tag
                         }
                     },
@@ -825,10 +961,10 @@ $this->load->view('_partials/front/allnotify');
                 });
             }
 
-            $(document).on('click', '.btn_approve_reject', function () {            
+            $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-                var token=$('#token').val();
+                var token = $('#token').val();
                 var uploaded_file_status = 'ACTIVE';
 
                 if (status == 1) {
@@ -843,7 +979,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'rmsa_uploaded_file_id': self.data('id'),
                     'uploaded_file_status': uploaded_file_status,
-                    'token':token
+                    'token': token
                 }
 
                 $.ajax({
@@ -941,7 +1077,7 @@ $this->load->view('_partials/front/allnotify');
             });
         }
         function show_comments(file_id) {
-        $('.show_comments').empty();
+            $('.show_comments').empty();
             $.ajax({
                 type: "POST",
                 url: "<?php echo DISPLAY_REVIEW ?>",
@@ -1112,7 +1248,7 @@ $this->load->view('_partials/front/allnotify');
     <script>
         $(document).ready(function () {
             $('#example').DataTable({
-                
+
                 responsive: {
                     details: {
                         type: 'column',
@@ -1155,7 +1291,7 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-                var token=$('#token').val();               
+                var token = $('#token').val();
                 var status = self.attr('data-status');
                 var user_status = 'ACTIVE';
                 if (status == 1)
@@ -1168,7 +1304,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'rmsa_user_id': self.data('id'),
                     'user_status': user_status,
-                    'token':token
+                    'token': token
                 };
 
                 $.ajax({
@@ -1198,7 +1334,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            $('#token').val(res.token);               
+                            $('#token').val(res.token);
                         }
                     }
                 });
@@ -1206,12 +1342,12 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?> 
-    
+
 <?php if ($title == TEACHER_STUDENT_LIST_TITLE) {
     ?>
     <script>
         $(document).ready(function () {
-            $('#example').DataTable({                
+            $('#example').DataTable({
                 responsive: {
                     details: {
                         type: 'column',
@@ -1254,7 +1390,7 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-                var token=$('#token').val();               
+                var token = $('#token').val();
                 var status = self.attr('data-status');
                 var user_status = 'ACTIVE';
                 if (status == 1)
@@ -1266,7 +1402,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'rmsa_user_id': self.data('id'),
                     'user_status': user_status,
-                    'token':token
+                    'token': token
                 };
 
                 $.ajax({
@@ -1296,7 +1432,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            $('#token').val(res.token);               
+                            $('#token').val(res.token);
                         }
                     }
                 });
@@ -1345,7 +1481,7 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-                var token=$('#token').val();
+                var token = $('#token').val();
                 var status = self.attr('data-status');
 
                 var user_status = 'ACTIVE';
@@ -1362,7 +1498,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'rmsa_user_id': self.data('id'),
                     'user_status': user_status,
-                    'token':token
+                    'token': token
                 }
 
                 $.ajax({
@@ -1442,7 +1578,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-                var token=$('#token').val();
+                var token = $('#token').val();
 
                 var user_status = 'ACTIVE';
 
@@ -1457,7 +1593,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'rmsa_user_id': self.data('id'),
                     'user_status': user_status,
-                    'token':token
+                    'token': token
                 };
 
                 $.ajax({
@@ -2259,10 +2395,13 @@ if ($title == FILE_REVIEWS_TITLE) {
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result['success'] == "success") {
-                        if ('<?php if (isset($_SESSION['rm_rmsa_user_id'])) { echo '1';                        
-                        } else { 
-                            echo '0';                            
-                        } ?>' === '1') {
+                        if ('<?php
+    if (isset($_SESSION['rm_rmsa_user_id'])) {
+        echo '1';
+    } else {
+        echo '0';
+    }
+    ?>' === '1') {
                             location.href = "<?php echo RMSA_EMPLOYEE_LIST_LINK ?>";
                         }
                     }
@@ -2430,13 +2569,25 @@ if ($title == FILE_REVIEWS_TITLE) {
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result['success'] == "success") {
-                        if ('<?php if (isset($_SESSION['rm_rmsa_user_id'])) { echo '1'; } else { echo '0'; } ?>' === '1') {
+                        if ('<?php if (isset($_SESSION['rm_rmsa_user_id'])) {
+        echo '1';
+    } else {
+        echo '0';
+    } ?>' === '1') {
                             location.href = "<?php echo RMSA_STUDENT_LIST_LINK; ?>";
                         }
-                        if ('<?php if (isset($_SESSION['emp_rmsa_user_id'])) { echo '1'; } else { echo '0';} ?>' === '1') {
+                        if ('<?php if (isset($_SESSION['emp_rmsa_user_id'])) {
+        echo '1';
+    } else {
+        echo '0';
+    } ?>' === '1') {
                             location.href = "<?php echo EMPLOYEE_STUDENT_LIST_LINK ?>";
                         }
-                        if ('<?php if (isset($_SESSION['tech_rmsa_user_id'])) { echo '1'; } else { echo '0';} ?>' === '1') {
+                        if ('<?php if (isset($_SESSION['tech_rmsa_user_id'])) {
+        echo '1';
+    } else {
+        echo '0';
+    } ?>' === '1') {
                             location.href = "<?php echo TEACHER_STUDENT_LIST_LINK ?>";
                         }
                         location.href = "<?php echo HOME_LINK ?>";
@@ -2551,13 +2702,13 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
 }
 ?>
 <!--        <script>
-            $(document).ready(function () {
-                $('a').each(function(){  
-                $(this).attr('onclick','window.location.href="'+$(this).attr('href')+'"');
-                $(this).attr('href','javascript:void(0)');
-                });
-            });
-            </script>-->
+    $(document).ready(function () {
+        $('a').each(function(){  
+        $(this).attr('onclick','window.location.href="'+$(this).attr('href')+'"');
+        $(this).attr('href','javascript:void(0)');
+        });
+    });
+    </script>-->
 <!--//this script will be run for all pages-->
 </body>
 </html>

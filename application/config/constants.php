@@ -187,6 +187,7 @@ define('MOST_VIEWED_CONTENT',BASE_URL."/most-viewed-content");
 define('MOST_ACTIVE_STUDENT',BASE_URL."/most-active-student");
 
 define('EMPLOYEE_REPORTS',BASE_URL."/employee-reports");
+define('EMPLOYEE_REPORTS_2',BASE_URL."/employee-reports-2");
 
 
 
@@ -235,6 +236,9 @@ define('ORGANIZATION_TITLE',"Welcome to rmsahimachal.nic.in - Organization");
 define('FILE_REVIEWS_TITLE',"Welcome to rmsahimachal.nic.in - File Reviews");
 define('RMSA_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Login");
 define('STUDENT_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Student Login");
+
+define('REPORTS_2_TITLE',"Welcome to rmsahimachal.nic.in - Reports");
+define('REPORTS_2_UPLOADED_CONTENT_TITLE',"Welcome to rmsahimachal.nic.in - Uploaded content Reports");
 
 
 

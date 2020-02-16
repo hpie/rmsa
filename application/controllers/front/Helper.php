@@ -123,8 +123,8 @@ class Helper extends MY_Controller {
 
     public function most_rated_content(){
         $most_rated = $this->Helper_model->most_rated_content();
-
         $this->mViewData['data'] = $most_rated;
+//        echo '<pre>';print_r($most_rated);die;
         $this->mViewData['title']=MOST_RATED_CONTENT_TITLE;
         $this->renderFront('front/most_rated_content');
 
@@ -155,7 +155,6 @@ class Helper extends MY_Controller {
 
     public function top_district_with_most_content(){
         $top_most_content_district = $this->Helper_model->top_district_with_most_content();
-
         $this->mViewData['data'] = $top_most_content_district;
         $this->mViewData['title']= TOP_DISTRICT_WITH_MOST_CONTENT;
         $this->renderFront('front/top_district_with_most_content');
@@ -195,6 +194,40 @@ class Helper extends MY_Controller {
 
             default :
                 self::top_employee_with_most_uploaded_content();
+                break;
+        }
+    }
+            
+    public function uploaded_content_reports2($month){
+        $array=array();
+        
+//        for($i=1;$i<=$month;$i++){
+        for ($i = 1; $i <= (int)$month; $i++) {
+            $row=array();
+            $monthLabel = date("M-Y", strtotime("-$i months"));            
+            $monthYear = date("m-Y", strtotime("-$i months"));
+            $monthYear=explode('-', $monthYear);
+//            print_r($monthYear);die;
+//            $year=$monthYear[1];
+            $count = $this->Helper_model->uploaded_content_reports2($monthYear[0],$monthYear[1]);
+            $row['month']=$monthLabel;
+            $row['count']=$count;
+            array_push($array, $row); 
+//            echo $i;
+        }   
+//        echo $i;
+//        echo "<pre>";print_r($array);die;
+        $this->mViewData['data'] = $array;
+        $this->mViewData['title']=REPORTS_2_UPLOADED_CONTENT_TITLE;
+        $this->renderFront('front/upload_content_reports2');
+    }
+    public function employee_reports_2($month,$type){
+        switch ($type){
+            case 1 :
+                self::uploaded_content_reports2($month);
+                break;
+            default :
+                self::uploaded_content_reports2($month);
                 break;
         }
     }

@@ -100,8 +100,8 @@ class Helper_model extends CI_Model
                                       LIMIT 5");
         $most_rated_content = $most_rated->result_array();
         return $most_rated_content;
-    }
-
+    }           
+    
     public function top_employee_with_most_rated_content(){
         $most_rated_employee = $this->db->query("SELECT rst.rmsa_state_name,rd.rmsa_district_name,
                                                  rs.rmsa_school_title,rfr.rmsa_uploaded_file_id,
@@ -187,5 +187,13 @@ class Helper_model extends CI_Model
         return $districts;
     }
 
-
+    
+    
+    
+    
+    public function uploaded_content_reports2($month,$year){        
+        $active = $this->db->query("SELECT count(rmsa_uploaded_file_id) AS count_id FROM rmsa_uploaded_files WHERE MONTH(created_dt) = $month AND YEAR(created_dt) = $year");
+        $res = $active->result_array();        
+        return  $res[0]['count_id'];
+    }    
 }
