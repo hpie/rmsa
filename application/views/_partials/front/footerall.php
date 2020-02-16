@@ -18,9 +18,11 @@ $this->load->view('_partials/front/footer');
 //	include('_partials/footer.php'); // Includes Footer Script
 ?>
 <!-- End Import Navbar -->         
-<input type="hidden" id="token" value="<?php if (isset($_SESSION['token'])) {
-    echo $_SESSION['token'];
-} ?>">
+<input type="hidden" id="token" value="<?php
+       if (isset($_SESSION['token'])) {
+           echo $_SESSION['token'];
+       }
+       ?>">
 </div>
 <!-- Start Import Scripts -->
 <?php
@@ -128,7 +130,7 @@ $this->load->view('_partials/front/allnotify');
             if (month == 0) {
                 alert("Please select report duation");
             }
-        })
+        });
     });
 </script>
 <?php if ($title == REPORTS_2_UPLOADED_CONTENT_TITLE) {
@@ -141,66 +143,67 @@ $this->load->view('_partials/front/allnotify');
             count.push(data.count);
         });
         var ctx = document.getElementById('upload_content_reports2');
-    
+        var progress = document.getElementById('animationProgress');
         Chart.plugins.register({
-	beforeRender: function(chart) {
-		if (chart.config.options.showAllTooltips) {
-			// create an array of tooltips
-			// we can't use the chart tooltip because there is only one tooltip per chart
-			chart.pluginTooltips = [];
-			chart.config.data.datasets.forEach(function(dataset, i) {
-				chart.getDatasetMeta(i).data.forEach(function(sector, j) {
-					chart.pluginTooltips.push(
-						new Chart.Tooltip(
-							{
-								_chart: chart.chart,
-								_chartInstance: chart,
-								_data: chart.data,
-								_options: chart.options.tooltips,
-								_active: [sector]
-							},
-							chart
-						)
-					);
-				});
-			});
+            beforeRender: function (chart) {
+                if (chart.config.options.showAllTooltips) {
+                    // create an array of tooltips
+                    // we can't use the chart tooltip because there is only one tooltip per chart
+                    chart.pluginTooltips = [];
+                    chart.config.data.datasets.forEach(function (dataset, i) {
+                        chart.getDatasetMeta(i).data.forEach(function (sector, j) {
+                            chart.pluginTooltips.push(
+                                    new Chart.Tooltip(
+                                            {
+                                                _chart: chart.chart,
+                                                _chartInstance: chart,
+                                                _data: chart.data,
+                                                _options: chart.options.tooltips,
+                                                _active: [sector]
+                                            },
+                                            chart
+                                            )
+                                    );
+                        });
+                    });
 
-			// turn off normal tooltips
-			chart.options.tooltips.enabled = false;
-		}
-	},
-	afterDraw: function(chart, easing) {
-		if (chart.config.options.showAllTooltips) {
-			// we don't want the permanent tooltips to animate, so don't do anything till the animation runs atleast once
-			if (!chart.allTooltipsOnce) {
-				if (easing !== 1) return;
-				chart.allTooltipsOnce = true;
-			}
-			// turn on tooltips
-			chart.options.tooltips.enabled = true;
-			Chart.helpers.each(chart.pluginTooltips, function(tooltip) {
-				tooltip.initialize();
-//				tooltip._options.bodyFontFamily = "'Lato', sans-serif";
-                                tooltip._options.bodyFontFamily = "'Lato', sans-serif";
-				tooltip._options.displayColors = true;
-                                tooltip._options.titleFontSize = 14;
-				tooltip._options.bodyFontSize =13;                                
-				tooltip._options.yPadding = 6;
-				tooltip._options.xPadding = 6;
-                                tooltip._options.cornerRadius = 0;
-				// tooltip._options.position = 'average';
-				// tooltip._options.caretSize = tooltip._options.bodyFontSize * 0.5;
-				//tooltip._options.cornerRadius = tooltip._options.bodyFontSize * 0.5;
-				tooltip.update();
-				// we don't actually need this since we are not animating tooltips
-				tooltip.pivot();
-				tooltip.transition(easing).draw();
-			});
-			chart.options.tooltips.enabled = false;
-		}
-	}
-});
-    
+                    // turn off normal tooltips
+                    chart.options.tooltips.enabled = false;
+                }
+            },
+            afterDraw: function (chart, easing) {
+                if (chart.config.options.showAllTooltips) {
+                    // we don't want the permanent tooltips to animate, so don't do anything till the animation runs atleast once
+                    if (!chart.allTooltipsOnce) {
+                        if (easing !== 1)
+                            return;
+                        chart.allTooltipsOnce = true;
+                    }
+                    // turn on tooltips
+                    chart.options.tooltips.enabled = true;
+                    Chart.helpers.each(chart.pluginTooltips, function (tooltip) {
+                        tooltip.initialize();
+    //				tooltip._options.bodyFontFamily = "'Lato', sans-serif";
+                        tooltip._options.bodyFontFamily = "'Lato', sans-serif";
+                        tooltip._options.displayColors = true;
+                        tooltip._options.titleFontSize = 14;
+                        tooltip._options.bodyFontSize = 13;
+                        tooltip._options.yPadding = 6;
+                        tooltip._options.xPadding = 6;
+                        tooltip._options.cornerRadius = 0;
+                        // tooltip._options.position = 'average';
+                        // tooltip._options.caretSize = tooltip._options.bodyFontSize * 0.5;
+                        //tooltip._options.cornerRadius = tooltip._options.bodyFontSize * 0.5;
+                        tooltip.update();
+                        // we don't actually need this since we are not animating tooltips
+                        tooltip.pivot();
+                        tooltip.transition(easing).draw();
+                    });
+                    chart.options.tooltips.enabled = false;
+                }
+            }
+        });
+
         var myChart = new Chart(ctx, {
     //            type: 'bar',
             type: 'horizontalBar',
@@ -231,15 +234,32 @@ $this->load->view('_partials/front/allnotify');
             options: {
                 showAllTooltips: true, // call plugin we created
                 responsive: true,
+                title: {
+                    display: true,
+                    text: '<?php echo $label ?>',
+                    fontSize: 18
+                },
+                animation: {                    
+                    duration: 1500,
+                    onProgress: function (animation) {
+                        progress.value = animation.currentStep / animation.numSteps;
+                    }
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: 'rgb(255, 99, 132)',
+                    }
+                },
                 scales: {
                     yAxes: [{
                             ticks: {
                                 beginAtZero: true
                             },
-                            stacked:true
+                            stacked: true
                         }],
-                    xAxes: [{                            
-                            stacked:true
+                    xAxes: [{
+                            stacked: true
                         }]
                 }
             }
@@ -2569,25 +2589,31 @@ if ($title == FILE_REVIEWS_TITLE) {
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result['success'] == "success") {
-                        if ('<?php if (isset($_SESSION['rm_rmsa_user_id'])) {
+                        if ('<?php
+    if (isset($_SESSION['rm_rmsa_user_id'])) {
         echo '1';
     } else {
         echo '0';
-    } ?>' === '1') {
+    }
+    ?>' === '1') {
                             location.href = "<?php echo RMSA_STUDENT_LIST_LINK; ?>";
                         }
-                        if ('<?php if (isset($_SESSION['emp_rmsa_user_id'])) {
+                        if ('<?php
+    if (isset($_SESSION['emp_rmsa_user_id'])) {
         echo '1';
     } else {
         echo '0';
-    } ?>' === '1') {
+    }
+    ?>' === '1') {
                             location.href = "<?php echo EMPLOYEE_STUDENT_LIST_LINK ?>";
                         }
-                        if ('<?php if (isset($_SESSION['tech_rmsa_user_id'])) {
+                        if ('<?php
+    if (isset($_SESSION['tech_rmsa_user_id'])) {
         echo '1';
     } else {
         echo '0';
-    } ?>' === '1') {
+    }
+    ?>' === '1') {
                             location.href = "<?php echo TEACHER_STUDENT_LIST_LINK ?>";
                         }
                         location.href = "<?php echo HOME_LINK ?>";
@@ -2702,13 +2728,13 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
 }
 ?>
 <!--        <script>
-    $(document).ready(function () {
-        $('a').each(function(){  
-        $(this).attr('onclick','window.location.href="'+$(this).attr('href')+'"');
-        $(this).attr('href','javascript:void(0)');
-        });
-    });
-    </script>-->
+$(document).ready(function () {
+$('a').each(function(){  
+$(this).attr('onclick','window.location.href="'+$(this).attr('href')+'"');
+$(this).attr('href','javascript:void(0)');
+});
+});
+</script>-->
 <!--//this script will be run for all pages-->
 </body>
 </html>

@@ -144,7 +144,7 @@
                                         <li><a href="<?php echo STUDENT_QUIZ_RESULTS_LINK; ?>">Quiz Results</a></li>
                                         <li><a href="<?php echo STUDENT_ONLINE_EXAM_LINK; ?>">Online Exam</a></li>
                                         <li><a href="<?php echo STUDENT_REPORTS; ?>/1">Reports</a></li>
-                                        <li><a href="<?php echo EMPLOYEE_REPORTS_2; ?>/3/1">Reports graph</a></li>
+                                        <li><a href="<?php echo EMPLOYEE_REPORTS_2; ?>/6/1">Reports graph</a></li>
                                     </ul>
                                 </li>
                             <?php
@@ -171,7 +171,7 @@
                                         <li><a href="<?php echo STUDENT_QUIZ_RESULTS_LINK; ?>">Quiz Results</a></li>
                                         <li><a href="<?php echo STUDENT_ONLINE_EXAM_LINK; ?>">Online Exam</a></li>
                                         <li><a href="<?php echo STUDENT_REPORTS; ?>/1">Reports</a></li>
-                                        <li><a href="<?php echo EMPLOYEE_REPORTS_2; ?>/3/1">Reports graph</a></li>
+                                        <li><a href="<?php echo EMPLOYEE_REPORTS_2; ?>/6/1">Reports graph</a></li>
                                     </ul>
                                 </li>
 							<?php
@@ -199,7 +199,7 @@
                                     <ul class="submenu">
                                         <li><a href="<?php echo EMPLOYEE_ONLINE_EXAM_LINK; ?>">Online Exam</a></li>
                                         <li><a href="<?php echo EMPLOYEE_REPORTS; ?>/1">Reports</a></li>
-                                        <li><a href="<?php echo EMPLOYEE_REPORTS_2; ?>/3/1">Reports graph</a></li>
+                                        <li><a href="<?php echo EMPLOYEE_REPORTS_2; ?>/6/1">Reports graph</a></li>
                                     </ul>
                                 </li>
                             <?php
@@ -225,7 +225,7 @@
                                     <ul class="submenu">
                                         <li><a href="<?php echo RMSA_ONLINE_EXAM_LINK; ?>">Online Exam</a></li>
                                         <li><a href="<?php echo RMSA_REPORTS; ?>/1">Reports</a></li>
-                                        <li><a href="<?php echo EMPLOYEE_REPORTS_2; ?>/3/1">Reports graph</a></li>
+                                        <li><a href="<?php echo EMPLOYEE_REPORTS_2; ?>/6/1">Reports graph</a></li>
                                     </ul>
                                 </li>
                              <?php

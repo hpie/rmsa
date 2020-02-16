@@ -199,25 +199,19 @@ class Helper extends MY_Controller {
     }
             
     public function uploaded_content_reports2($month){
-        $array=array();
-        
-//        for($i=1;$i<=$month;$i++){
+        $array=array();        
         for ($i = 1; $i <= (int)$month; $i++) {
             $row=array();
             $monthLabel = date("M-Y", strtotime("-$i months"));            
             $monthYear = date("m-Y", strtotime("-$i months"));
             $monthYear=explode('-', $monthYear);
-//            print_r($monthYear);die;
-//            $year=$monthYear[1];
             $count = $this->Helper_model->uploaded_content_reports2($monthYear[0],$monthYear[1]);
             $row['month']=$monthLabel;
             $row['count']=$count;
             array_push($array, $row); 
-//            echo $i;
-        }   
-//        echo $i;
-//        echo "<pre>";print_r($array);die;
+        }
         $this->mViewData['data'] = $array;
+        $this->mViewData['label'] = "Last $month months Uploaded Cotent Reports";
         $this->mViewData['title']=REPORTS_2_UPLOADED_CONTENT_TITLE;
         $this->renderFront('front/upload_content_reports2');
     }
