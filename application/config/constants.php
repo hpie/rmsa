@@ -131,13 +131,17 @@ define('RMSA_LOGIN_LINK',BASE_URL."/rmsa-login");
 define('RMSA_LOGOUT_LINK',BASE_URL."/rmsa-logout");
 define('RMSA_STUDENT_LIST_LINK',BASE_URL."/rmsa-student");
 define('RMSA_EMPLOYEE_LIST_LINK',BASE_URL."/rmsa-employee");
+define('RMSA_TEACHERS_LIST_LINK',BASE_URL."/rmsa-teachers");
 define('RMSA_RESOURCES_LIST_LINK',BASE_URL."/rmsa-resources");
 define('RMSA_STUDENT_REGISTER_LINK',BASE_URL."/rmsa-student-registration");
 define('RMSA_EMPLOYEE_REGISTER_LINK',BASE_URL."/employee-registration");
+define('RMSA_TEACHERS_REGISTER_LINK',BASE_URL."/teacher-registration");
 define('RMSA_EMPLOYEE_ACTIVE',BASE_URL."/rmsa-employee-active");
 define('RMSA_STUDENT_ACTIVE',BASE_URL."/rmsa-student-active");
+define('RMSA_TEACHER_ACTIVE',BASE_URL."/rmsa-teacher-active");
 define('RMSA_STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-student-profile/");
 define('RMSA_EMPLOYEE_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-employee-profile/");
+define('RMSA_TEACGER_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-teacher-profile/");
 define('RMSA_FILE_ACTIVE',BASE_URL."/rmsa-file-active");
 define('RMSA_REPORTS',BASE_URL."/employee-reports");
 define('RMSA_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
@@ -176,9 +180,9 @@ define('DISPLAY_REVIEW',BASE_URL."/display-review");
 define('DISPLAY_RATING',BASE_URL."/display-rating");
 
 define('FILE_VIEW_COUNT',BASE_URL."/total-fileview");
-
 define('ACTIVE_STUDENTS',BASE_URL."/active-student");
 define('ACTIVE_EMPLOYEE',BASE_URL."/active-employee");
+define('ACTIVE_TEACHER',BASE_URL."/active-teacher");
 define('MOST_CONTENT_UPLOADED_EMPLOYEE',BASE_URL."/top-content-uploaded-employee");
 define('MOST_RATED_UPLOADED_EMPLOYEE',BASE_URL."/top-employee-most-rated");
 define('MOST_VIEW_CONTENT_EMPLOYEE',BASE_URL."/top-employee-most-viewed");
@@ -211,11 +215,14 @@ define('EMPLOYEE_CREATE_QUIZ_TITLE',"Welcome to rmsahimachal.nic.in - Create Qui
 
 define('RMSAE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaStudent");
 define('RMSAE_EMPLOYEE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaEmployee");
+define('RMSAE_TEACHERS_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaTeachers");
 define('RMSA_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaResource");
 define('TEACHER_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - TeacherResource");
 define('RMSA_EMPLOYEE_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Employee Registration");
+define('RMSA_TEACHER_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Teacher Registration");
 define('RMSA_STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Student Profile");
 define('RMSA_EMPLOYEE_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Employee Profile");
+define('RMSA_TEACHER_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Teacher Profile");
 
 define('STUDENT_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Student Registration");
 

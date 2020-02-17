@@ -215,6 +215,7 @@
                                     <ul class="submenu">
                                         <li><a href="<?php echo RMSA_STUDENT_LIST_LINK; ?>">Student List</a></li>
                                         <li><a href="<?php echo RMSA_EMPLOYEE_LIST_LINK; ?>">Employee List</a></li>
+                                        <li><a href="<?php echo RMSA_TEACHERS_LIST_LINK; ?>">Teachers List</a></li>
                                         <li><a href="<?php echo RMSA_RESOURCES_LIST_LINK; ?>">Resource List</a></li>
                                         <li><a href="<?php echo RMSA_QUIZ_MCQ_LINK; ?>">Quiz MCQ</a></li>
                                     </ul>

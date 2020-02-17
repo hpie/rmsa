@@ -186,8 +186,8 @@ $this->load->view('_partials/front/allnotify');
     //				tooltip._options.bodyFontFamily = "'Lato', sans-serif";
                         tooltip._options.bodyFontFamily = "'Lato', sans-serif";
                         tooltip._options.displayColors = true;
-                        tooltip._options.titleFontSize = 14;
-                        tooltip._options.bodyFontSize = 13;
+                        tooltip._options.titleFontSize = 12;
+                        tooltip._options.bodyFontSize = 12;
                         tooltip._options.yPadding = 6;
                         tooltip._options.xPadding = 6;
                         tooltip._options.cornerRadius = 0;
@@ -254,7 +254,7 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true,                                
+                                beginAtZero: true                              
                             },
                             stacked: true
                         }],
@@ -1557,7 +1557,7 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>
-<?php if ($title == RMSAE_EMPLOYEE_LIST_TITLE) {
+    <?php if ($title == RMSAE_EMPLOYEE_LIST_TITLE) {
     ?>
     <script>
         $(document).ready(function () {
@@ -1619,6 +1619,97 @@ $this->load->view('_partials/front/allnotify');
                 $.ajax({
                     type: "POST",
                     url: "<?php echo RMSA_EMPLOYEE_ACTIVE ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+                            var title = 'Click to deactivate student';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
+                            var text = 'Active';
+                            var isactive = 1;
+                            if (status == 1) {
+                                title = 'Click to active student';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
+                                text = 'Inactive';
+                                isactive = 0;
+                            }
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                            $('#token').val(res.token);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+<?php } ?>
+<?php if ($title == RMSAE_TEACHERS_LIST_TITLE) {
+    ?>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_teachers.php' ?>"
+                },
+                "columns": [
+                    {"data": "index"},
+                    {"data": "rmsa_user_id"},
+                    {"data": "rmsa_user_first_name"},
+                    {"data": "rmsa_school_title"},
+                    {"data": "rmsa_district_name"},
+                    {"data": "rmsa_user_gender"},
+                    {"data": "rmsa_user_DOB"},
+                    {"data": "rmsa_user_email_id"},
+                    {"data": "rmsa_user_status"},
+                    {"data": "rmsa_user_edit"}
+                ]
+            });
+            $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+                var status = self.attr('data-status');
+                var token = $('#token').val();
+
+                var user_status = 'ACTIVE';
+
+                if (status == 1) {
+                    user_status = 'REMOVED';
+                }
+
+                if (!confirm('Are you sure want to ' + user_status.toLocaleLowerCase() + ' employee?'))
+                    return;
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'rmsa_user_id': self.data('id'),
+                    'user_status': user_status,
+                    'token': token
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo RMSA_TEACHER_ACTIVE ?>",
                     data: data,
                     success: function (res) {
                         var res = $.parseJSON(res);
@@ -2077,7 +2168,192 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>
-<?php if ($title == RMSA_EMPLOYEE_PROFILE_TITLE) {
+    <?php if ($title == RMSA_EMPLOYEE_PROFILE_TITLE) {
+    ?>
+    <script>
+        $(document).ready(function () {
+
+            $('#rmsa_district').on('change', function () {
+                var districtId = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo LOAD_TEHSIL ?>",
+                    data: {'districtId': districtId},
+                    success: function (res) {
+                        var data = jQuery.parseJSON(res);
+                        $("#sub_district").empty();
+                        $("#rmsa_school").empty();
+
+                        $("#sub_district").append(new Option('---Select---', 0));
+                        $("#rmsa_school").append(new Option('---Select---', 0));
+                        $.each(data, function (index, value) {
+                            $("#sub_district").append(new Option(value.rmsa_sub_district_name, value.rmsa_sub_district_id));
+                        });
+                    }
+                });
+            });
+            $('#sub_district').on('change', function () {
+                var subDistrictId = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo LOAD_SCHOOL ?>",
+                    data: {'subDistrictId': subDistrictId},
+                    success: function (res) {
+                        var school = $.parseJSON(res);
+                        $("#rmsa_school").empty();
+                        $("#rmsa_school").append(new Option('---Select---', 0));
+                        $.each(school, function (index, value) {
+                            $("#rmsa_school").append(new Option(value.rmsa_school_title, value.rmsa_school_id));
+                        });
+                    }
+                });
+            });
+
+            $('#frm_general_info').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    rmsa_user_last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    },
+                    rmsa_user_employee_code: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your Employee code'
+                            }
+                        }
+                    },
+                    rmsa_user_email_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },
+                    rmsa_user_DOB: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your date of birth'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_general_info').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] === "success") {
+                        location.reload();
+                    }
+                }, 'json');
+            });
+
+            $('#frm_change_password').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_new_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6
+                            },
+                            identical: {
+                                field: 'rmsa_user_new_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_change_password').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] === "success") {
+                        location.reload();
+                    }
+                    if (result['success'] === "fail") {
+                        var d = new PNotify({
+                            title: 'Old Password not match',
+                            type: 'error',
+                            styling: 'bootstrap3'
+                        });
+                    }
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>
+<?php if ($title == RMSA_TEACHER_PROFILE_TITLE) {
     ?>
     <script>
         $(document).ready(function () {
@@ -2302,8 +2578,6 @@ if ($title == FILE_REVIEWS_TITLE) {
 
 <?php }
 ?>
-
-
 <?php if ($title == RMSA_EMPLOYEE_REGISTRATION_TITLE) {
     ?>
     <script>
@@ -2436,6 +2710,176 @@ if ($title == FILE_REVIEWS_TITLE) {
             });
 
 
+            $('#rmsa_district').on('change', function () {
+                var districtId = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo LOAD_TEHSIL ?>",
+                    data: {'districtId': districtId},
+                    success: function (res) {
+                        var data = jQuery.parseJSON(res);
+                        $("#sub_district").empty();
+                        $("#rmsa_school").empty();
+
+                        $("#sub_district").append(new Option('---Select---', 0));
+                        $("#rmsa_school").append(new Option('---Select---', 0));
+                        $.each(data, function (index, value) {
+                            $("#sub_district").append(new Option(value.rmsa_sub_district_name, value.rmsa_sub_district_id));
+                        });
+                    }
+                });
+            });
+            $('#sub_district').on('change', function () {
+                var subDistrictId = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo LOAD_SCHOOL ?>",
+                    data: {'subDistrictId': subDistrictId},
+                    success: function (res) {
+                        var school = $.parseJSON(res);
+                        $("#rmsa_school").empty();
+                        $("#rmsa_school").append(new Option('---Select---', 0));
+                        $.each(school, function (index, value) {
+                            $("#rmsa_school").append(new Option(value.rmsa_school_title, value.rmsa_school_id));
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+<?php }
+?>
+
+<?php if ($title == RMSA_TEACHER_REGISTRATION_TITLE) {
+    ?>
+    <script>
+        $(document).ready(function () {
+
+            $('#employee_register').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    rmsa_user_last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    },
+                    rmsa_user_employee_code: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your roll number'
+                            }
+                        }
+                    },
+                    rmsa_user_email_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },
+                    rmsa_user_email_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 6
+                            },
+                            identical: {
+                                field: 'rmsa_user_email_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    },
+                    rmsa_user_DOB: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your date of birth'
+                            }
+                        }
+                    },
+                    rmsa_user_father_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your father name'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#employee_register').data('bootstrapValidator').resetForm();
+                // Prevent form submission
+                e.preventDefault();
+                // Get the form instance
+                var $form = $(e.target);
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] == "success") {
+                        if ('<?php
+    if (isset($_SESSION['rm_rmsa_user_id'])) {
+        echo '1';
+    } else {
+        echo '0';
+    }
+    ?>' === '1') {
+                            location.href = "<?php echo RMSA_TEACHERS_LIST_LINK ?>";
+                        }
+                    }
+                    if (result['success'] == "fail") {
+                        var d = new PNotify({
+                            title: 'Invalid Username & Password',
+                            type: 'error',
+                            styling: 'bootstrap3'
+                        });
+                    }
+                }, 'json');
+            });
             $('#rmsa_district').on('change', function () {
                 var districtId = $(this).val();
                 $.ajax({

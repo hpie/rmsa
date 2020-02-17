@@ -102,14 +102,18 @@ $route['rmsa-login']           = 'front/RmsaLogin';
 $route['rmsa-logout']          = 'front/RmsaLogin/rmsaLogout';
 $route['rmsa-student']          ='front/Rmsa/view_student';
 $route['rmsa-employee']          ='front/Rmsa/view_employee';
+$route['rmsa-teachers']          ='front/Rmsa/view_teachers';
 $route['rmsa-resources']       = 'front/RmsaResource';
 $route['rmsa-student-registration']    = 'front/Helper/create_student';
 $route['rmsa-employee-active']          = 'front/Rmsa/active_employee';
 $route['rmsa-student-active']          = 'front/Rmsa/active_student';
+$route['rmsa-teacher-active']          = 'front/Rmsa/active_teacher';
 $route['rmsa-file-active']          = 'front/Rmsa/active_file';
 $route['rmsa-update-student-profile/(:any)'] = 'front/Rmsa/update_student_profile/$1';
 $route['rmsa-update-employee-profile/(:any)'] = 'front/Rmsa/update_employee_profile/$1';
+$route['rmsa-update-teacher-profile/(:any)'] = 'front/Rmsa/update_teacher_profile/$1';
 $route['employee-registration']    = 'front/Rmsa/create_employee';
+$route['teacher-registration']    = 'front/Rmsa/create_teacher';
 
 //all employee routes
 //$route['employee-registration']    = 'front/EmpRegistration';
