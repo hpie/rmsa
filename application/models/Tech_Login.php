@@ -10,11 +10,11 @@ class Tech_Login extends CI_Model {
     public function tech_login_select($username, $password) {
         $password = md5($password);
 //        echo $password;die;
-        $employee = $this->db->query("SELECT * FROM `rmsa_teacher_users` WHERE ( rmsa_user_email_id = '$username' OR rmsa_user_employee_code= '$username')
+        $employee = $this->db->query("SELECT * FROM `rmsa_teacher_users` WHERE ( rmsa_user_email_id = '$username' OR rmsa_user_teacher_code= '$username')
                                       AND rmsa_user_email_password = '$password' AND rmsa_user_status = 'ACTIVE' AND rmsa_user_locked_status=0");
         $emp_data = $employee->row_array();
         if (isset($emp_data)) {
-            if (($username == $emp_data['rmsa_user_email_id'] || $username == $emp_data['rmsa_user_employee_code']) && $password == $emp_data['rmsa_user_email_password']) {
+            if (($username == $emp_data['rmsa_user_email_id'] || $username == $emp_data['rmsa_user_teacher_code']) && $password == $emp_data['rmsa_user_email_password']) {
                 //Add or update Employee user log
                 $has_already_log = $this->db->query("SELECT * FROM  rmsa_teacher_users_log WHERE rmsa_user_id = '{$emp_data['rmsa_user_id']}'");
 
@@ -29,7 +29,7 @@ class Tech_Login extends CI_Model {
                     //insert new log for user
                     $this->db->query("INSERT INTO rmsa_teacher_users_log(rmsa_user_id,failed_password_attempt_count,is_logged_in)VALUES('" . $emp_data['rmsa_user_id'] . "',0,1) ");
                 }
-                $this->db->query("UPDATE rmsa_teacher_users SET rmsa_employee_login_active = 1 WHERE rmsa_user_id='" . $emp_data['rmsa_user_id'] . "' ");
+                $this->db->query("UPDATE rmsa_teacher_users SET rmsa_teacher_login_active = 1 WHERE rmsa_user_id='" . $emp_data['rmsa_user_id'] . "' ");
                 sessionTeacher($emp_data);
 
                 $token = "";
@@ -57,7 +57,7 @@ class Tech_Login extends CI_Model {
                 return true;
             }
         } else {
-            $get_user = $this->db->query("SELECT * FROM rmsa_teacher_users WHERE (rmsa_user_email_id = '$username' OR rmsa_user_employee_code= '$username') ");
+            $get_user = $this->db->query("SELECT * FROM rmsa_teacher_users WHERE (rmsa_user_email_id = '$username' OR rmsa_user_teacher_code= '$username') ");
             $check = $get_user->row_array();
             if (is_array($check)) {
 
@@ -69,11 +69,8 @@ class Tech_Login extends CI_Model {
                     $this->db->query("UPDATE rmsa_teacher_users SET rmsa_user_locked_status =1 WHERE rmsa_user_id = '{$check['rmsa_user_id']}'");
                     $_SESSION['invalidAttempt'] = 1;
                 }
-
                 $has_already_log = $this->db->query("SELECT * FROM rmsa_teacher_users_log WHERE rmsa_user_id = '{$check['rmsa_user_id']}'");
-
                 $log = $has_already_log->row_array();
-
                 if (is_array($log)) { //update
                     $this->db->query("UPDATE rmsa_teacher_users_log SET failed_password_attempt_count = failed_password_attempt_count + 1 WHERE rmsa_user_id = '{$check['rmsa_user_id']}'");
                 } else {
@@ -100,7 +97,7 @@ class Tech_Login extends CI_Model {
     }
 
     public function update_logout_status($rmsa_user_id) {
-        $query_res = $this->db->query("UPDATE rmsa_teacher_users SET rmsa_employee_login_active = 0 WHERE rmsa_user_id='" . $rmsa_user_id . "' ");
+        $query_res = $this->db->query("UPDATE rmsa_teacher_users SET rmsa_teacher_login_active = 0 WHERE rmsa_user_id='" . $rmsa_user_id . "' ");
         if ($query_res) {
             return true;
         }
