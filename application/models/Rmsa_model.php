@@ -74,8 +74,7 @@ class Rmsa_model extends CI_Model {
         }
         return FALSE;
         //it will be return boolean value (true/false)
-    }
-    
+    }    
     public function register_employee($params) {
         $email_exist = $this->db->query("SELECT * FROM rmsa_employee_users WHERE rmsa_user_email_id = '" . $params['rmsa_user_email_id'] . "' ");
         $res = $email_exist->row_array();

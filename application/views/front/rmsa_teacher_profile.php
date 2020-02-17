@@ -34,9 +34,9 @@
 
             <div class="form-group">
                 <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_employee_code">Employee Code: </label>
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_teacher_code">Teacher Code: </label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" value="<?=$student_data['rmsa_user_employee_code']?>" name="rmsa_user_employee_code" id="rmsa_user_employee_code" placeholder="Enter Employee Code">
+                        <input type="text" class="form-control" value="<?=$student_data['rmsa_user_teacher_code']?>" name="rmsa_user_teacher_code" id="rmsa_user_teacher_code" placeholder="Enter Employee Code">
                     </div>
                 </div>
             </div>

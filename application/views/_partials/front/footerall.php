@@ -2422,7 +2422,7 @@ $this->load->view('_partials/front/allnotify');
                             }
                         }
                     },
-                    rmsa_user_employee_code: {
+                    rmsa_user_teacher_code: {
                         validators: {
                             stringLength: {
                                 min: 2
@@ -2783,7 +2783,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                             }
                         }
                     },
-                    rmsa_user_employee_code: {
+                    rmsa_user_teacher_code: {
                         validators: {
                             stringLength: {
                                 min: 2
