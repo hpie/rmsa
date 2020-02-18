@@ -215,10 +215,50 @@ class Helper extends MY_Controller {
         $this->mViewData['title']=REPORTS_2_UPLOADED_CONTENT_TITLE;
         $this->renderFront('front/upload_content_reports2');
     }
+    public function student_registered_reports2($month){
+        $array=array();        
+        for ($i = 1; $i <= (int)$month; $i++) {
+            $row=array();
+            $monthLabel = date("M-Y", strtotime("-$i months"));            
+            $monthYear = date("m-Y", strtotime("-$i months"));
+            $monthYear=explode('-', $monthYear);
+            $count = $this->Helper_model->student_registered_reports2($monthYear[0],$monthYear[1]);
+            $row['month']=$monthLabel;
+            $row['count']=$count;
+            array_push($array, $row); 
+        }
+        $this->mViewData['data'] = $array;
+        $this->mViewData['label'] = "Last $month months Students Registered Reports";
+        $this->mViewData['title']=REPORTS_2_STUDENT_REGISTERED_TITLE;
+        $this->renderFront('front/student_registered_reports2');
+    }
+    public function teacher_registered_reports2($month){
+        $array=array();        
+        for ($i = 1; $i <= (int)$month; $i++) {
+            $row=array();
+            $monthLabel = date("M-Y", strtotime("-$i months"));            
+            $monthYear = date("m-Y", strtotime("-$i months"));
+            $monthYear=explode('-', $monthYear);
+            $count = $this->Helper_model->teacher_registered_reports2($monthYear[0],$monthYear[1]);
+            $row['month']=$monthLabel;
+            $row['count']=$count;
+            array_push($array, $row); 
+        }
+        $this->mViewData['data'] = $array;
+        $this->mViewData['label'] = "Last $month months Teachers Registered Reports";
+        $this->mViewData['title']=REPORTS_2_TEACHER_REGISTERED_TITLE;
+        $this->renderFront('front/teacher_registered_reports2');
+    }
     public function employee_reports_2($month,$type){
         switch ($type){
             case 1 :
                 self::uploaded_content_reports2($month);
+                break;
+            case 2 :
+                self::student_registered_reports2($month);
+                break;
+            case 3 :
+                self::teacher_registered_reports2($month);
                 break;
             default :
                 self::uploaded_content_reports2($month);

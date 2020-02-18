@@ -247,6 +247,9 @@ define('STUDENT_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Student Login");
 
 define('REPORTS_2_TITLE',"Welcome to rmsahimachal.nic.in - Reports");
 define('REPORTS_2_UPLOADED_CONTENT_TITLE',"Welcome to rmsahimachal.nic.in - Uploaded content Reports");
+define('REPORTS_2_STUDENT_REGISTERED_TITLE',"Welcome to rmsahimachal.nic.in - Student Registered Reports");
+define('REPORTS_2_TEACHER_REGISTERED_TITLE',"Welcome to rmsahimachal.nic.in - Teacher Registered Reports");
+
 
 
 

@@ -195,5 +195,16 @@ class Helper_model extends CI_Model
         $active = $this->db->query("SELECT count(rmsa_uploaded_file_id) AS count_id FROM rmsa_uploaded_files WHERE MONTH(created_dt) = $month AND YEAR(created_dt) = $year");
         $res = $active->result_array();        
         return  $res[0]['count_id'];
+    } 
+    
+    public function student_registered_reports2($month,$year){        
+        $active = $this->db->query("SELECT count(rmsa_user_id) AS count_id FROM rmsa_student_users WHERE MONTH(created_dt) = $month AND YEAR(created_dt) = $year");
+        $res = $active->result_array();        
+        return  $res[0]['count_id'];
+    }    
+    public function teacher_registered_reports2($month,$year){        
+        $active = $this->db->query("SELECT count(rmsa_user_id) AS count_id FROM rmsa_teacher_users WHERE MONTH(created_dt) = $month AND YEAR(created_dt) = $year");
+        $res = $active->result_array();        
+        return  $res[0]['count_id'];
     }    
 }

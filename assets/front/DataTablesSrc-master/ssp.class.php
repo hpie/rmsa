@@ -351,8 +351,7 @@ class SSP {
                         INNER JOIN rmsa_schools rs
                          ON rs.rmsa_school_id=rsu.rmsa_school_id
                          INNER JOIN rmsa_districts rd
-                         ON rd.rmsa_district_id=rsu.rmsa_district_id 
-                        
+                         ON rd.rmsa_district_id=rsu.rmsa_district_id                         
 			$where"
 		);
 		$recordsFiltered = $resFilterLength[0][0];

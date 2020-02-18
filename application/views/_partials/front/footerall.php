@@ -266,6 +266,273 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>
+<?php if ($title == REPORTS_2_STUDENT_REGISTERED_TITLE) {
+    ?>
+    <script>
+        var month = [];
+        var count = [];
+        $(most_upload).each(function (key, data) {
+            month.push(data.month);
+            count.push(data.count);
+        });
+        var ctx = document.getElementById('upload_content_reports2');
+        var progress = document.getElementById('animationProgress');
+        Chart.plugins.register({
+            beforeRender: function (chart) {
+                if (chart.config.options.showAllTooltips) {
+                    // create an array of tooltips
+                    // we can't use the chart tooltip because there is only one tooltip per chart
+                    chart.pluginTooltips = [];
+                    chart.config.data.datasets.forEach(function (dataset, i) {
+                        chart.getDatasetMeta(i).data.forEach(function (sector, j) {
+                            chart.pluginTooltips.push(
+                                    new Chart.Tooltip(
+                                            {
+                                                _chart: chart.chart,
+                                                _chartInstance: chart,
+                                                _data: chart.data,
+                                                _options: chart.options.tooltips,
+                                                _active: [sector]
+                                            },
+                                            chart
+                                            )
+                                    );
+                        });
+                    });
+
+                    // turn off normal tooltips
+                    chart.options.tooltips.enabled = false;
+                }
+            },
+            afterDraw: function (chart, easing) {
+                if (chart.config.options.showAllTooltips) {
+                    // we don't want the permanent tooltips to animate, so don't do anything till the animation runs atleast once
+                    if (!chart.allTooltipsOnce) {
+                        if (easing !== 1)
+                            return;
+                        chart.allTooltipsOnce = true;
+                    }
+                    // turn on tooltips
+                    chart.options.tooltips.enabled = true;
+                    Chart.helpers.each(chart.pluginTooltips, function (tooltip) {
+                        tooltip.initialize();
+    //				tooltip._options.bodyFontFamily = "'Lato', sans-serif";
+                        tooltip._options.bodyFontFamily = "'Lato', sans-serif";
+                        tooltip._options.displayColors = true;
+                        tooltip._options.titleFontSize = 12;
+                        tooltip._options.bodyFontSize = 12;
+                        tooltip._options.yPadding = 6;
+                        tooltip._options.xPadding = 6;
+                        tooltip._options.cornerRadius = 0;
+                        // tooltip._options.position = 'average';
+                        // tooltip._options.caretSize = tooltip._options.bodyFontSize * 0.5;
+                        //tooltip._options.cornerRadius = tooltip._options.bodyFontSize * 0.5;
+                        tooltip.update();
+                        // we don't actually need this since we are not animating tooltips
+                        tooltip.pivot();
+                        tooltip.transition(easing).draw();
+                    });
+                    chart.options.tooltips.enabled = false;
+                }
+            }
+        });
+
+        var myChart = new Chart(ctx, {
+    //            type: 'bar',
+            type: 'horizontalBar',
+            data: {
+                labels: month,
+                datasets: [{
+                        label: 'Total registered student',
+                        data: count,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 3
+                    }]
+            },
+            options: {
+                showAllTooltips: true, // call plugin we created
+                responsive: true,
+                title: {
+                    display: true,
+                    text: '<?php echo $label ?>',
+                    fontSize: 18
+                },
+                animation: {                    
+                    duration: 1500,
+                    onProgress: function (animation) {
+                        progress.value = animation.currentStep / animation.numSteps;
+                    }
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: 'rgb(255, 99, 132)',
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                            ticks: {
+                                beginAtZero: true                              
+                            },
+                            stacked: true
+                        }],
+                    xAxes: [{                            
+                            stacked: true
+                        }]
+                }
+            }
+        });
+    </script>
+<?php } ?>    
+    <?php if ($title == REPORTS_2_TEACHER_REGISTERED_TITLE) {
+    ?>
+    <script>
+        var month = [];
+        var count = [];
+        $(most_upload).each(function (key, data) {
+            month.push(data.month);
+            count.push(data.count);
+        });
+        var ctx = document.getElementById('upload_content_reports2');
+        var progress = document.getElementById('animationProgress');
+        Chart.plugins.register({
+            beforeRender: function (chart) {
+                if (chart.config.options.showAllTooltips) {
+                    // create an array of tooltips
+                    // we can't use the chart tooltip because there is only one tooltip per chart
+                    chart.pluginTooltips = [];
+                    chart.config.data.datasets.forEach(function (dataset, i) {
+                        chart.getDatasetMeta(i).data.forEach(function (sector, j) {
+                            chart.pluginTooltips.push(
+                                    new Chart.Tooltip(
+                                            {
+                                                _chart: chart.chart,
+                                                _chartInstance: chart,
+                                                _data: chart.data,
+                                                _options: chart.options.tooltips,
+                                                _active: [sector]
+                                            },
+                                            chart
+                                            )
+                                    );
+                        });
+                    });
+
+                    // turn off normal tooltips
+                    chart.options.tooltips.enabled = false;
+                }
+            },
+            afterDraw: function (chart, easing) {
+                if (chart.config.options.showAllTooltips) {
+                    // we don't want the permanent tooltips to animate, so don't do anything till the animation runs atleast once
+                    if (!chart.allTooltipsOnce) {
+                        if (easing !== 1)
+                            return;
+                        chart.allTooltipsOnce = true;
+                    }
+                    // turn on tooltips
+                    chart.options.tooltips.enabled = true;
+                    Chart.helpers.each(chart.pluginTooltips, function (tooltip) {
+                        tooltip.initialize();
+    //				tooltip._options.bodyFontFamily = "'Lato', sans-serif";
+                        tooltip._options.bodyFontFamily = "'Lato', sans-serif";
+                        tooltip._options.displayColors = true;
+                        tooltip._options.titleFontSize = 12;
+                        tooltip._options.bodyFontSize = 12;
+                        tooltip._options.yPadding = 6;
+                        tooltip._options.xPadding = 6;
+                        tooltip._options.cornerRadius = 0;
+                        // tooltip._options.position = 'average';
+                        // tooltip._options.caretSize = tooltip._options.bodyFontSize * 0.5;
+                        //tooltip._options.cornerRadius = tooltip._options.bodyFontSize * 0.5;
+                        tooltip.update();
+                        // we don't actually need this since we are not animating tooltips
+                        tooltip.pivot();
+                        tooltip.transition(easing).draw();
+                    });
+                    chart.options.tooltips.enabled = false;
+                }
+            }
+        });
+
+        var myChart = new Chart(ctx, {
+    //            type: 'bar',
+            type: 'horizontalBar',
+            data: {
+                labels: month,
+                datasets: [{
+                        label: 'Total registered teachers',
+                        data: count,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 3
+                    }]
+            },
+            options: {
+                showAllTooltips: true, // call plugin we created
+                responsive: true,
+                title: {
+                    display: true,
+                    text: '<?php echo $label ?>',
+                    fontSize: 18
+                },
+                animation: {                    
+                    duration: 1500,
+                    onProgress: function (animation) {
+                        progress.value = animation.currentStep / animation.numSteps;
+                    }
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: 'rgb(255, 99, 132)',
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                            ticks: {
+                                beginAtZero: true                              
+                            },
+                            stacked: true
+                        }],
+                    xAxes: [{                            
+                            stacked: true
+                        }]
+                }
+            }
+        });
+    </script>
+<?php } ?>    
+    
 <?php if ($title == MOST_CONTENT_UPLOADED_EMPLOYEE_TITLE) {
     ?>
     <script>
