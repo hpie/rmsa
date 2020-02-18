@@ -258,7 +258,10 @@ $this->load->view('_partials/front/allnotify');
                             },
                             stacked: true
                         }],
-                    xAxes: [{                            
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
                             stacked: true
                         }]
                 }
@@ -391,7 +394,10 @@ $this->load->view('_partials/front/allnotify');
                             },
                             stacked: true
                         }],
-                    xAxes: [{                            
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
                             stacked: true
                         }]
                 }
@@ -524,7 +530,10 @@ $this->load->view('_partials/front/allnotify');
                             },
                             stacked: true
                         }],
-                    xAxes: [{                            
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
                             stacked: true
                         }]
                 }
@@ -574,8 +583,15 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true
-                            }
+                                beginAtZero: true                              
+                            },
+                            stacked: true
+                        }],
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
+                            stacked: true
                         }]
                 }
             }
@@ -625,8 +641,15 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true
-                            }
+                                beginAtZero: true                              
+                            },
+                            stacked: true
+                        }],
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
+                            stacked: true
                         }]
                 }
             }
@@ -679,8 +702,15 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true
-                            }
+                                beginAtZero: true                              
+                            },
+                            stacked: true
+                        }],
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
+                            stacked: true
                         }]
                 }
             }
@@ -728,11 +758,18 @@ $this->load->view('_partials/front/allnotify');
                     }]
             },
             options: {
-                scales: {
+               scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true
-                            }
+                                beginAtZero: true                              
+                            },
+                            stacked: true
+                        }],
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
+                            stacked: true
                         }]
                 }
             }
@@ -783,8 +820,15 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true
-                            }
+                                beginAtZero: true                              
+                            },
+                            stacked: true
+                        }],
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
+                            stacked: true
                         }]
                 }
             }
@@ -835,8 +879,15 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true
-                            }
+                                beginAtZero: true                              
+                            },
+                            stacked: true
+                        }],
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
+                            stacked: true
                         }]
                 }
             }
@@ -887,8 +938,15 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true
-                            }
+                                beginAtZero: true                              
+                            },
+                            stacked: true
+                        }],
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
+                            stacked: true
                         }]
                 }
             }
@@ -939,8 +997,15 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true
-                            }
+                                beginAtZero: true                              
+                            },
+                            stacked: true
+                        }],
+                    xAxes: [{ 
+                            ticks: {
+                                beginAtZero: true                              
+                            },
+                            stacked: true
                         }]
                 }
             }
