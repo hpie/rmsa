@@ -21,6 +21,15 @@ class Rmsa_model extends CI_Model {
         }
     }
     
+    public function unblock_user($id,$table) {        
+        $query_res = $this->db->query("UPDATE  $table SET rmsa_user_locked_status=0, rmsa_user_attempt=0
+                                       WHERE rmsa_user_id='{$id}'");
+        if ($query_res) {
+            return true;
+        }
+    }
+    
+    
     public function active_employee($params) {
         $query_res = $this->db->query("UPDATE  rmsa_employee_users SET rmsa_user_status = '{$params['user_status']}'
                                        WHERE rmsa_user_id='{$params['rmsa_user_id']}'");

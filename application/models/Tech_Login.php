@@ -111,7 +111,5 @@ class Tech_Login extends CI_Model {
         }
         return false;
     }
-
 }
-
 ?>

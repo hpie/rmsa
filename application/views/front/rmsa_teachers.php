@@ -26,6 +26,7 @@
             <th>DOB</th>
             <th>Email</th>
             <th>Status</th>
+            <th>Block</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -40,6 +41,7 @@
             <th>DOB</th>
             <th>Email</th>
             <th>Status</th>
+            <th>Block</th>
              <th>Action</th>
         </tr>
         </tfoot>

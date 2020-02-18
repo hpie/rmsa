@@ -317,7 +317,7 @@ class SSP {
 			"data" => $resData
 		);
 	}  
-         static function rmsa_student_list ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+        static function rmsa_student_list ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{
 		$bindings = array();
 		$db = self::db( $conn );
@@ -386,6 +386,12 @@ class SSP {
                     $isactive = 0;
                 }                
                 $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
+                
+                $row['rmsa_user_block']="None";
+                if($row['rmsa_user_locked_status']==1 || $row['rmsa_user_attempt']>=3){
+                    $row['rmsa_user_block']="<button type='button' data-id='".$row['rmsa_user_id']."' data-status='rmsa_student_users' title='Click to unblock' class='btn_unblock btn btn-danger btn-xs'>Unblock</button>";
+                }
+                
                 $row['rmsa_user_edit'] = "<a href='".BASE_URL."/rmsa-update-student-profile/$stud_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";
                 $row['index']='';
                 array_push($resData, $row); 
@@ -467,6 +473,12 @@ class SSP {
                     $isactive = 0; 
                 }                
                 $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
+                
+                $row['rmsa_user_block']="None";
+                if($row['rmsa_user_locked_status']==1 || $row['rmsa_user_attempt']>=3){
+                    $row['rmsa_user_block']="<button type='button' data-id='".$row['rmsa_user_id']."' data-status='rmsa_employee_users' title='Click to unblock' class='btn_unblock btn btn-danger btn-xs'>Unblock</button>";
+                }
+                
                 $row['rmsa_user_edit'] = "<a href='".BASE_URL."/rmsa-update-employee-profile/$stud_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";
                 $row['index']='';
                 array_push($resData, $row); 
@@ -548,6 +560,13 @@ class SSP {
                     $isactive = 0; 
                 }                
                 $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
+                
+                $row['rmsa_user_block']="None";
+                if($row['rmsa_user_locked_status']==1 || $row['rmsa_user_attempt']>=3){
+                    $row['rmsa_user_block']="<button type='button' data-id='".$row['rmsa_user_id']."' data-status='rmsa_teacher_users' title='Click to unblock' class='btn_unblock btn btn-danger btn-xs'>Unblock</button>";
+                }
+                
+                
                 $row['rmsa_user_edit'] = "<a href='".BASE_URL."/rmsa-update-teacher-profile/$stud_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";
                 $row['index']='';
                 array_push($resData, $row); 

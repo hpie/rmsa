@@ -108,6 +108,7 @@ $route['rmsa-student-registration']    = 'front/Helper/create_student';
 $route['rmsa-employee-active']          = 'front/Rmsa/active_employee';
 $route['rmsa-student-active']          = 'front/Rmsa/active_student';
 $route['rmsa-teacher-active']          = 'front/Rmsa/active_teacher';
+$route['rmsa-unblock-user']          = 'front/Rmsa/unblock_user';
 $route['rmsa-file-active']          = 'front/Rmsa/active_file';
 $route['rmsa-update-student-profile/(:any)'] = 'front/Rmsa/update_student_profile/$1';
 $route['rmsa-update-employee-profile/(:any)'] = 'front/Rmsa/update_employee_profile/$1';

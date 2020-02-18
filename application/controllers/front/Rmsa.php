@@ -150,6 +150,25 @@ class Rmsa extends MY_Controller
             echo json_encode($data);
         }
     }
+    public function unblock_user(){
+        if(isset($_REQUEST['rmsa_user_id'])){
+            sessionCheckToken($_POST);
+            $res = $this->Rmsa_model->unblock_user($_REQUEST['rmsa_user_id'],$_REQUEST['table']);            
+            if($res){  
+                $_SESSION['token'] = bin2hex(random_bytes(24));       
+                $data = array(
+                    'token'=>$_SESSION['token'],
+                    'suceess' => true
+                );
+            }
+            else{
+                $data = array(                    
+                    'suceess' => false
+                );
+            }            
+            echo json_encode($data);
+        }
+    }
     public function active_teacher(){
         if(isset($_REQUEST['rmsa_user_id'])){
             sessionCheckToken($_POST);

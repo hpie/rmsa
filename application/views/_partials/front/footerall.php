@@ -1496,6 +1496,7 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
                     {"data": "rmsa_user_status"},
+                    {"data": "rmsa_user_block"},
                     {"data": "rmsa_user_edit"}
                 ]
             });
@@ -1554,6 +1555,39 @@ $this->load->view('_partials/front/allnotify');
                     }
                 });
             });
+            $(document).on('click', '.btn_unblock', function () {
+                var self = $(this);
+                var table = self.attr('data-status');
+                var token = $('#token').val();                
+                if (!confirm('Are you sure want to unblock user?'))
+                    return;
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'rmsa_user_id': self.data('id'),
+                    'table': table,
+                    'token': token
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo RMSA_UNBLOCK_USER ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+                            self.remove();                            
+                            $('#token').val(res.token);
+                            var d = new PNotify({
+                                title: 'Unblock succeessfully',
+                                type: 'success',
+                                styling: 'bootstrap3'
+                            });
+                            
+                        }
+                    }
+                });
+            });
         });
     </script>
 <?php } ?>
@@ -1592,6 +1626,7 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
                     {"data": "rmsa_user_status"},
+                    {"data": "rmsa_user_block"},
                     {"data": "rmsa_user_edit"}
                 ]
             });
@@ -1645,6 +1680,39 @@ $this->load->view('_partials/front/allnotify');
                     }
                 });
             });
+            $(document).on('click', '.btn_unblock', function () {
+                var self = $(this);
+                var table = self.attr('data-status');
+                var token = $('#token').val();                
+                if (!confirm('Are you sure want to unblock user?'))
+                    return;
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'rmsa_user_id': self.data('id'),
+                    'table': table,
+                    'token': token
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo RMSA_UNBLOCK_USER ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+                            self.remove();                            
+                            $('#token').val(res.token);
+                            var d = new PNotify({
+                                title: 'Unblock succeessfully',
+                                type: 'success',
+                                styling: 'bootstrap3'
+                            });
+                            
+                        }
+                    }
+                });
+            });
         });
     </script>
 <?php } ?>
@@ -1683,6 +1751,7 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
                     {"data": "rmsa_user_status"},
+                    {"data": "rmsa_user_block"},
                     {"data": "rmsa_user_edit"}
                 ]
             });
@@ -1732,6 +1801,39 @@ $this->load->view('_partials/front/allnotify');
                             self.removeAttr('disabled');
                             self.html(text);
                             $('#token').val(res.token);
+                        }
+                    }
+                });
+            });
+            $(document).on('click', '.btn_unblock', function () {
+                var self = $(this);
+                var table = self.attr('data-status');
+                var token = $('#token').val();                
+                if (!confirm('Are you sure want to unblock user?'))
+                    return;
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'rmsa_user_id': self.data('id'),
+                    'table': table,
+                    'token': token
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo RMSA_UNBLOCK_USER ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+                            self.remove();                            
+                            $('#token').val(res.token);
+                            var d = new PNotify({
+                                title: 'Unblock succeessfully',
+                                type: 'success',
+                                styling: 'bootstrap3'
+                            });
+                            
                         }
                     }
                 });
