@@ -2,7 +2,7 @@
         <option value="0">Select Report</option>
         <option value="1">Uploaded content</option>        
         <option value="2">Students registered</option>        
-        <option value="3">Teachers registered</option>        
+        <option value="3">Teachers registered</option>                
 </select>
 <select name="emp_reports_duration" class="form-control emp_reports_duration col-md-4 offset-1">
         <option value="0">Select Duration</option>

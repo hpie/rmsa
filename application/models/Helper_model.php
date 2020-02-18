@@ -207,4 +207,5 @@ class Helper_model extends CI_Model
         $res = $active->result_array();        
         return  $res[0]['count_id'];
     }    
+        
 }

@@ -249,6 +249,7 @@ class Helper extends MY_Controller {
         $this->mViewData['title']=REPORTS_2_TEACHER_REGISTERED_TITLE;
         $this->renderFront('front/teacher_registered_reports2');
     }
+  
     public function employee_reports_2($month,$type){
         switch ($type){
             case 1 :
@@ -259,7 +260,7 @@ class Helper extends MY_Controller {
                 break;
             case 3 :
                 self::teacher_registered_reports2($month);
-                break;
+                break;            
             default :
                 self::uploaded_content_reports2($month);
                 break;
