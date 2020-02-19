@@ -45,7 +45,25 @@ $this->load->view('_partials/front/scripts');
 
 
 
-
+<script type="text/javascript">
+    $(function () {
+        if($('form input[type=password]').length){
+            $( "form input[type=password]" ).after('<span id="lblError" style="color: red"></span>');
+        }
+        $('form input[type=password]').keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+            $("#lblError").html("");
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            var regex = /^[A-Za-z0-9]+$/;
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                $("#lblError").html("Only Alphabets and Numbers allowed.");
+            }
+            return isValid;
+        });
+    });
+</script>
 <script>
 //    function myFunction() {       
 //        myVar = setTimeout(showPage, 3000);
