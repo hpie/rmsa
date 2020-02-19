@@ -8,7 +8,12 @@ class Helper extends MY_Controller {
         parent::__construct();
         $this->load->helper('functions');        
         $this->load->model('Helper_model');
-        $this->load->model('Emp_Login');        
+        $this->load->model('Emp_Login');
+        
+        $_POST['token']=$_SESSION['tokenchekvalue'];
+        sessionCheckToken($_POST);
+        $_SESSION['token'] = bin2hex(random_bytes(24));
+        
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
             if ($result) {                
@@ -36,7 +41,7 @@ class Helper extends MY_Controller {
     public function create_student(){
         $_SESSION['exist_email'] = 0;
         if(isset($_POST['rmsa_user_first_name'])){
-            sessionCheckToken($_POST);
+//            sessionCheckToken($_POST);
             $res =  $this->Helper_model->register_student($_POST);            
             $result=array();
             if($res['success'] == true){
@@ -76,7 +81,7 @@ class Helper extends MY_Controller {
         }
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['title']=STUDENT_REGISTRATION_TITLE;
-        $_SESSION['token'] = bin2hex(random_bytes(24));       
+//        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->renderFront('front/studentregistration');
     }
     public function total_active_students(){

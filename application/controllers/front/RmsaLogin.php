@@ -8,7 +8,12 @@ class RmsaLogin extends MY_Controller{
         }  
         $this->load->helper('functions');        
         $this->load->model('Rmsa_Login');
-         $this->load->model('Emp_Login');        
+        $this->load->model('Emp_Login'); 
+         
+        $_POST['token']=$_SESSION['tokenchekvalue'];
+        sessionCheckToken($_POST);
+        $_SESSION['token'] = bin2hex(random_bytes(24));
+         
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
             if ($result) {                
@@ -28,7 +33,7 @@ class RmsaLogin extends MY_Controller{
         }
         $_SESSION['invalid_login'] = 0;
         if(isset($_POST['username']) && isset($_POST['password'])){
-            sessionCheckToken($_POST);
+//            sessionCheckToken($_POST);
            $result = $this->Rmsa_Login->Rmsa_Login_select($_POST['username'],$_POST['password']);
            if($result == true){              
                redirect(HOME_LINK);
@@ -38,7 +43,7 @@ class RmsaLogin extends MY_Controller{
            }           
         }
         $this->mViewData['title'] =RMSA_LOGIN_TITLE;
-        $_SESSION['token'] = bin2hex(random_bytes(24));       
+//        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->renderFront('front/rmsalogin');
     }
     public function rmsaLogout() {       

@@ -8,7 +8,12 @@ class Employee extends MY_Controller
         $this->load->helper('functions');
         sessionCheckEmployee();
         $this->load->model('Employee_model');
-        $this->load->model('Emp_Login');        
+        $this->load->model('Emp_Login');  
+        
+        $_POST['token']=$_SESSION['tokenchekvalue'];
+        sessionCheckToken($_POST);
+        $_SESSION['token'] = bin2hex(random_bytes(24));
+        
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
             if ($result) {                
@@ -22,16 +27,16 @@ class Employee extends MY_Controller
     }
     public function view_student(){
 //        print_r($_SESSION['emp_rmsa_school_id']);die;
-        $_SESSION['token'] = bin2hex(random_bytes(24));       
+//        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->mViewData['title']=EMPLOYEE_STUDENT_LIST_TITLE;
         $this->renderFront('front/employee_student');
     }
     public function approve_student(){
         if(isset($_REQUEST['rmsa_user_id'])){
-            sessionCheckToken($_POST);
+//            sessionCheckToken($_POST);
             $res = $this->Employee_model->approve_student($_REQUEST);
             if($res){
-                $_SESSION['token'] = bin2hex(random_bytes(24));       
+//                $_SESSION['token'] = bin2hex(random_bytes(24));       
                 $data = array(
                     'token'=>$_SESSION['token'],
                     'suceess' => true
@@ -42,10 +47,10 @@ class Employee extends MY_Controller
     }
     public function active_file(){
         if(isset($_REQUEST['rmsa_uploaded_file_id'])){
-            sessionCheckToken($_POST);
+//            sessionCheckToken($_POST);
             $res = $this->Employee_model->active_file($_REQUEST);
             if($res){
-                $_SESSION['token'] = bin2hex(random_bytes(24));       
+//                $_SESSION['token'] = bin2hex(random_bytes(24));       
                 $data = array(
                     'token'=>$_SESSION['token'],
                     'suceess' => true

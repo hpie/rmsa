@@ -21,8 +21,10 @@ $this->load->view('_partials/front/footer');
 <input type="hidden" id="token" value="<?php
        if (isset($_SESSION['token'])) {
            echo $_SESSION['token'];
+           $_SESSION['tokenchekvalue']=$_SESSION['token'];
        }
        ?>">
+
 </div>
 <!-- Start Import Scripts -->
 <?php
