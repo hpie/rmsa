@@ -43,23 +43,21 @@ $this->load->view('_partials/front/scripts');
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>-->
 
-
 <script type="text/javascript">
     $(function () {
         if($('form input[type=password]').length){
             $( "form input[type=password]" ).after('<span id="lblError" style="color: red"></span>');
         }
         $('form input[type=password]').keypress(function (e) {
-            var keyCode = e.keyCode || e.which;
-            $("#lblError").html("");
-            //Regex for Valid Characters i.e. Alphabets and Numbers.
-            var regex = /^[A-Za-z0-9]+$/;
-            //Validate TextBox value against the Regex.
-            var isValid = regex.test(String.fromCharCode(keyCode));
-            if (!isValid) {
-                $("#lblError").html("Only Alphabets and Numbers allowed.");
-            }
-            return isValid;
+//            var keyCode = e.keyCode || e.which;
+            $("#lblError").html("");            
+            var charCode = (e.which) ? e.which : e.keyCode;            
+            if (charCode == 60 || charCode == 96 || charCode == 126 || charCode == 33 || charCode == 35 || charCode == 36 || charCode == 37 || charCode == 94 || charCode == 96 || charCode == 38 || charCode == 42 || charCode == 40 || charCode == 41 || charCode == 61 || charCode == 43 || charCode == 123 || charCode == 125 || charCode == 91 || charCode == 93 || charCode == 124 || charCode == 92 || charCode == 58 || charCode == 59 || charCode == 34 || charCode == 39 || charCode == 44 || charCode == 63 || charCode == 47 || charCode == 62)
+            {                
+                $("#lblError").html("Not Allowed");
+                return false;
+            }                
+            return true;
         });
     });
 </script>
