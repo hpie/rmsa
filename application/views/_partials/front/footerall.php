@@ -44,23 +44,29 @@ $this->load->view('_partials/front/scripts');
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>-->
 
 <script type="text/javascript">
-    $(function () {
-        if($('form input[type=text], textarea').length){
-            $( "form input[type=text], textarea" ).after('<span id="lblError" style="color: red"></span>');
-        }
-        $('form input[type=text], textarea').keypress(function (e) {
-//            var keyCode = e.keyCode || e.which;
-            $("#lblError").html("");            
+    $(document).ready(function () {                
+        $('input[type=text]').keypress(function (e) {                 
+            var keyCode = e.keyCode || e.which;            
             var charCode = (e.which) ? e.which : e.keyCode;            
             if (charCode == 60 || charCode == 96 || charCode == 126 || charCode == 33 || charCode == 35 || charCode == 36 || charCode == 37 || charCode == 94 || charCode == 96 || charCode == 38 || charCode == 42 || charCode == 40 || charCode == 41 || charCode == 61 || charCode == 43 || charCode == 123 || charCode == 125 || charCode == 91 || charCode == 93 || charCode == 124 || charCode == 92 || charCode == 58 || charCode == 59 || charCode == 34 || charCode == 39 || charCode == 44 || charCode == 63 || charCode == 47 || charCode == 62)
             {                
-                $("#lblError").html("Not Allowed");
+                alert('Not allowed this character');
+                return false;
+            }                
+            return true;
+        });
+        $('textarea').keypress(function (e) {                 
+            var keyCode = e.keyCode || e.which;            
+            var charCode = (e.which) ? e.which : e.keyCode;            
+            if (charCode == 60 || charCode == 96 || charCode == 126 || charCode == 33 || charCode == 35 || charCode == 36 || charCode == 37 || charCode == 94 || charCode == 96 || charCode == 38 || charCode == 42 || charCode == 40 || charCode == 41 || charCode == 61 || charCode == 43 || charCode == 123 || charCode == 125 || charCode == 91 || charCode == 93 || charCode == 124 || charCode == 92 || charCode == 58 || charCode == 59 || charCode == 34 || charCode == 39 || charCode == 44 || charCode == 63 || charCode == 47 || charCode == 62)
+            {                
+                alert('Not allowed this character');
                 return false;
             }                
             return true;
         });
     });
-</script>
+</script>   
 <script>
 //    function myFunction() {       
 //        myVar = setTimeout(showPage, 3000);
