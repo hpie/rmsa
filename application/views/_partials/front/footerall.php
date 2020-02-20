@@ -45,10 +45,10 @@ $this->load->view('_partials/front/scripts');
 
 <script type="text/javascript">
     $(function () {
-        if($('form input[type=password]').length){
-            $( "form input[type=password]" ).after('<span id="lblError" style="color: red"></span>');
+        if($('form input[type=text], textarea').length){
+            $( "form input[type=text], textarea" ).after('<span id="lblError" style="color: red"></span>');
         }
-        $('form input[type=password]').keypress(function (e) {
+        $('form input[type=text], textarea').keypress(function (e) {
 //            var keyCode = e.keyCode || e.which;
             $("#lblError").html("");            
             var charCode = (e.which) ? e.which : e.keyCode;            
