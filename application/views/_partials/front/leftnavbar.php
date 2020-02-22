@@ -8,7 +8,7 @@
                                 {
                             ?>
                                 <li>
-                                    <div class="link"><i class="fa fa-user"></i>Students<i class="fa fa-chevron-down"></i></div>
+                                    <div class="link"><i class="fa fa-user"></i>For Students<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
                                         <li><a href="#">Instructions</a></li>
 
@@ -34,45 +34,12 @@
                             ?>
 
 
-							<?php
-								if(!isset($_SESSION['st_rmsa_user_id']) AND !isset($_SESSION['rm_rmsa_user_id']) AND !isset($_SESSION['tech_rmsa_user_id']))
-								{
-							?>
-								<li>
-									<div class="link"><i class="fa fa-user"></i>Employees<i class="fa fa-chevron-down"></i></div>
-									<ul class="submenu">
-										<li><a href="#">Instructions</a></li>
-
-										<?php
-											if(!isset($_SESSION['emp_rmsa_user_id']))
-											{
-										?>
-											<li><a href="#">New Registration</a></li>
-											<li><a href="<?php echo EMPLOYEE_LOGIN_LINK; ?>">Registered Login</a></li>
-										<?php
-											}
-										?>
-
-										<?php
-											if(isset($_SESSION['emp_rmsa_user_id'])){?>
-											<li><a href="<?php echo STUDENT_REGISTER_LINK; ?>">Create Student</a></li>
-										<?php
-											}
-										?>
-
-									</ul>
-								</li>
-                            <?php
-                                }
-                            ?>
-
-                        
                             <?php 
 								if(!isset($_SESSION['emp_rmsa_user_id']) AND !isset($_SESSION['st_rmsa_user_id']) AND !isset($_SESSION['rm_rmsa_user_id']))
 								{
 							?>
                                 <li>
-                                    <div class="link"><i class="fa fa-user"></i>Teacher’s Corner<i class="fa fa-chevron-down"></i></div>
+                                    <div class="link"><i class="fa fa-user"></i>For Teachers<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">        
 									<li><a href="#">Instructions</a></li>
 					                                
@@ -97,15 +64,48 @@
                                 </li>
 							<?php 
 								}
-							?> 
-                        
+							?>
 
-                            <?php
+
+                                <?php
+                                if(!isset($_SESSION['st_rmsa_user_id']) AND !isset($_SESSION['rm_rmsa_user_id']) AND !isset($_SESSION['tech_rmsa_user_id']))
+                                {
+                                    ?>
+                                    <li>
+                                        <div class="link"><i class="fa fa-user"></i>For RMSA Coordiators<i class="fa fa-chevron-down"></i></div>
+                                        <ul class="submenu">
+                                            <li><a href="#">Instructions</a></li>
+
+                                            <?php
+                                            if(!isset($_SESSION['emp_rmsa_user_id']))
+                                            {
+                                                ?>
+                                                <li><a href="#">New Registration</a></li>
+                                                <li><a href="<?php echo EMPLOYEE_LOGIN_LINK; ?>">Registered Login</a></li>
+                                                <?php
+                                            }
+                                            ?>
+
+                                            <?php
+                                            if(isset($_SESSION['emp_rmsa_user_id'])){?>
+                                                <li><a href="<?php echo STUDENT_REGISTER_LINK; ?>">Create Student</a></li>
+                                                <?php
+                                            }
+                                            ?>
+
+                                        </ul>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+
+
+                                <?php
                                 if(!isset($_SESSION['emp_rmsa_user_id']) AND !isset($_SESSION['st_rmsa_user_id']) AND !isset($_SESSION['tech_rmsa_user_id']))
                                 {
                             ?>
                                 <li>
-                                    <div class="link"><i class="fa fa-user"></i>RMSA User’s Corner<i class="fa fa-chevron-down"></i></div>
+                                    <div class="link"><i class="fa fa-user"></i>For RMSA Admins<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
                                         <li><a href="#">Instructions</a></li>
 
@@ -113,7 +113,7 @@
                                             if(!isset($_SESSION['rm_rmsa_user_id']))
                                             {
                                         ?>
-                                        <li><a href="<?php echo RMSA_LOGIN_LINK; ?>">Rmsa Login</a></li>
+                                        <li><a href="<?php echo RMSA_LOGIN_LINK; ?>">Rmsa Admin Login</a></li>
                                         <?php
                                             }
                                         ?>
@@ -156,7 +156,7 @@
 								{
 								?>
                                 <li>
-                                    <div class="link"><i class="fa fa-mobile"></i>Resource Material<i class="fa fa-chevron-down"></i></div>
+                                    <div class="link"><i class="fa fa-mobile"></i>Manage Resources<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">                                       
                                         <li><a href="#">Teacher User Manual</a></li>
                                         <li><a href="<?php echo TEACHER_STUDENT_LIST_LINK; ?>">Manage Students</a></li>                                        
@@ -234,6 +234,7 @@
                             ?>
 
                                 <!-- Open Links -->
+                                <!--
                                 <li>
                                     <div class="link"><i class="fa fa-mobile"></i>RMSA Coordinators<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
@@ -241,6 +242,7 @@
                                         <li><a href="#">Download Syllabus</a></li>
                                     </ul>
                                 </li>
+                                -->
 
                             </ul>
                         </div>
