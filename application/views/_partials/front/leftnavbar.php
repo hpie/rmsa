@@ -42,6 +42,16 @@
                                     <div class="link"><i class="fa fa-user"></i>For Teachers<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">        
 									<li><a href="#">Instructions</a></li>
+                                                                        
+                                                                        <?php
+                                            if(!isset($_SESSION['tech_rmsa_user_id']))
+                                            {
+                                        ?>
+                                        <li><a href="<?php echo RMSA_TEACHERS_REGISTER_LINK; ?>">New Registration</a></li>                                        
+                                        <?php
+                                            }                                           
+                                        ?>
+                                                                        
 					                                
                                         <?php 
 											if(!isset($_SESSION['tech_rmsa_user_id']))

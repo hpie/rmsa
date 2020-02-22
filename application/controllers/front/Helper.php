@@ -9,7 +9,7 @@ class Helper extends MY_Controller {
         $this->load->helper('functions');        
         $this->load->model('Helper_model');
         $this->load->model('Emp_Login');
-        
+        $this->load->model('Rmsa_model');
         $_POST['token']=$_SESSION['tokenchekvalue'];
         sessionCheckToken($_POST);
         $_SESSION['token'] = bin2hex(random_bytes(24));
@@ -38,6 +38,51 @@ class Helper extends MY_Controller {
             echo json_encode($school);
         }
     }
+    
+    public function create_teacher(){    
+        $_SESSION['exist_email'] = 0;
+        if(isset($_POST['rmsa_user_first_name'])){
+            unset($_POST['token']);
+            $res =  $this->Rmsa_model->register_teacher($_POST);            
+            $result=array();
+            if($res['success'] == true){
+                $_SESSION['registration'] = 1;
+                $result['success']='success';
+                $this->load->config('email');
+                $this->load->library('email');
+
+                $from = $this->config->item('smtp_user');
+                $to = $res['email'];                
+                $subject = 'Welcome RMSA';
+//                $message = 'Welcome to RMSA portal';
+
+                $this->email->set_newline("\r\n");
+                $this->email->from($from);
+                
+                $data = array(
+                    'userName'=> $res['email'],
+                    'password'=> $_POST['rmsa_user_email_password']
+                );                
+                $this->email->to($to);
+                $this->email->subject($subject);
+                $body = $this->load->view('front/mailtemplate.php',$data,TRUE);
+                $this->email->message($body);
+                if ($this->email->send()) {                   
+                } else {
+                    show_error($this->email->print_debugger());
+                }
+            }            
+            if($res['email_exist'] == true){                
+                $_SESSION['exist_email'] = 1;
+                $result['success']='fail';
+            }
+            echo json_encode($result);die;
+        }
+        $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
+        $this->mViewData['title']=RMSA_TEACHER_REGISTRATION_TITLE;
+        $this->renderFront('front/teacherregistration');
+    }
+    
     public function create_student(){
         $_SESSION['exist_email'] = 0;
         if(isset($_POST['rmsa_user_first_name'])){

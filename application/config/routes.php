@@ -114,7 +114,7 @@ $route['rmsa-update-student-profile/(:any)'] = 'front/Rmsa/update_student_profil
 $route['rmsa-update-employee-profile/(:any)'] = 'front/Rmsa/update_employee_profile/$1';
 $route['rmsa-update-teacher-profile/(:any)'] = 'front/Rmsa/update_teacher_profile/$1';
 $route['employee-registration']    = 'front/Rmsa/create_employee';
-$route['teacher-registration']    = 'front/Rmsa/create_teacher';
+$route['teacher-registration']    = 'front/Helper/create_teacher';
 
 //all employee routes
 //$route['employee-registration']    = 'front/EmpRegistration';
