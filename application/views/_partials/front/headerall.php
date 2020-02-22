@@ -38,7 +38,8 @@ $this->load->view('_partials/front/head');
 <!-- End Import Head -->
 <!--<body>-->
     <body oncontextmenu="return false">
-    
+       
+        
 <!--<body onload="myFunction()">-->
     <!--<div id="loader"></div>-->
     <!--<body onunload="ajaxFunction()">-->

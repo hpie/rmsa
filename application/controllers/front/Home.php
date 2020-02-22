@@ -20,7 +20,8 @@ class Home extends MY_Controller {
             }
         }
     }    
-    public function index() {
+    public function index() 
+    {         
         $this->mViewData['title']=HOME_TITLE;
         $this->renderFront('front/index');
     }

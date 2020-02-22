@@ -58,8 +58,8 @@ if (!defined('BASEPATH'))
         }
         return true;
     }
-     function sessionCheckToken($array) {
-        if (hash_equals($_SESSION['token'], $array['token'])) {
+     function sessionCheckToken($array) {                 
+        if (hash_equals($_SESSION['token'], $array['token'])) {            
             unset($_POST['token']);
         } else {
             redirect(HOME_LINK);
