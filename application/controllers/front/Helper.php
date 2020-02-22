@@ -165,6 +165,7 @@ class Helper extends MY_Controller {
         $this->renderFront('front/top_district_with_most_content');
     }
     public function employee_reports($type){
+        sessionCheckAll();        
         switch ($type){
             case 1 :
                 self::top_employee_with_most_uploaded_content();
@@ -256,6 +257,7 @@ class Helper extends MY_Controller {
     }
   
     public function employee_reports_2($month,$type){
+        sessionCheckAll();        
         switch ($type){
             case 1 :
                 self::uploaded_content_reports2($month);
