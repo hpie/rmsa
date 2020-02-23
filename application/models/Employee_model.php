@@ -179,5 +179,19 @@ class Employee_model extends CI_Model {
             return $student_data;
         }
     }
+    
+    
+     public function create_quiz($params){                       
+        if(isset($_SESSION['emp_rmsa_user_id'])){
+            $params['create_by'] = $_SESSION['emp_rmsa_user_id'];            
+        }                
+        $result = $this->db->insert('quiz',$params);
+        $insert_id = $this->db->insert_id();// get last insert id
+        if(!empty($insert_id)){
+            return $insert_id;
+        }
+        return FALSE;
+        //it will be return boolean value (true/false)
+    }
 
 }

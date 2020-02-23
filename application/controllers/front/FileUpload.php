@@ -10,10 +10,7 @@ class FileUpload extends MY_Controller {
         sessionCheckEmployee();
         $this->load->model('File_upload');
         $this->load->model('Emp_Login'); 
-        
-        $_POST['token']=$_SESSION['tokenchekvalue'];
-        sessionCheckToken($_POST);
-        $_SESSION['token'] = bin2hex(random_bytes(24));
+              
         
         
         if (isset($_SESSION['user_id'])) {

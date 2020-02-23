@@ -10,10 +10,7 @@ class FileDw extends MY_Controller {
         sessionCheckEmployee();
         $this->load->model('File_upload');
         $this->load->model('Emp_Login');  
-        
-        $_POST['token']=$_SESSION['tokenchekvalue'];
-        sessionCheckToken($_POST);
-        $_SESSION['token'] = bin2hex(random_bytes(24));
+              
         
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
@@ -30,6 +27,10 @@ class FileDw extends MY_Controller {
 //        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->mViewData['title']=EMPLOYEE_FILE_LIST_TITLE;
         $this->renderFront('front/filedw');
+    }
+    public function quiz_file_list() {       
+        $this->mViewData['title']=EMPLOYEE_FILE_LIST_QUIZ_TITLE;
+        $this->renderFront('front/quizfilelist');
     }
 
     public function view_file($fileId){

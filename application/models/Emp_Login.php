@@ -14,7 +14,9 @@ class Emp_Login extends CI_Model {
                                       AND rmsa_user_email_password = '$password' AND rmsa_user_status = 'ACTIVE' AND rmsa_user_locked_status=0");
         $emp_data = $employee->row_array();
         if (isset($emp_data)) {
-            if (($username == $emp_data['rmsa_user_email_id'] || $username == $emp_data['rmsa_user_employee_code']) && $password == $emp_data['rmsa_user_email_password']) {
+//            echo $password;die;
+//             echo $emp_data['rmsa_user_email_id'] ;die;                      
+           if ((($username == $emp_data['rmsa_user_email_id']) || ($username == $emp_data['rmsa_user_employee_code'])) && ($password == $emp_data['rmsa_user_email_password'])) {               
                 //Add or update Employee user log
                 $has_already_log = $this->db->query("SELECT * FROM  rmsa_employee_users_log WHERE rmsa_user_id = '{$emp_data['rmsa_user_id']}'");
 

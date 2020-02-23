@@ -15,36 +15,29 @@
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-               <tr>
                 <th>Index</th>
                 <th>Title</th>  
                 <th>File</th>
                 <th>Type</th>
                 <th>Group</th>
-                <th>Category</th>                                
-                <th>Child</th>
-                <th>Reviews</th> 
-                <th>Status</th>
+                <th>Category</th>                                                
+                <th>Reviews</th>                 
                 <th>Action</th>
                 <th>Description</th>
-            </tr>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <tr>
                 <th>Index</th>
-                <th>Title</th>  
-                <th>File</th>
+                <th>Title</th>   
+                 <th>File</th>
                 <th>Type</th>
                 <th>Group</th>
-                <th>Category</th>                                
-                <th>Child</th>
-                <th>Reviews</th> 
-                <th>Status</th>
+                <th>Category</th>                                               
+                <th>Reviews</th>  
+               
                 <th>Action</th>
                 <th>Description</th>
-            </tr>
             </tr>
         </tfoot>
     </table> 

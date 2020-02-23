@@ -125,12 +125,13 @@ $route['employee-uploadresource-child/(:any)'] = 'front/FileUpload/childFileUplo
 $route['update-file/(:any)'] = 'front/fileDw/update_file/$1';
 $route['view-file/(:any)'] = 'front/fileDw/view_file/$1';
 $route['employee-resources']       = 'front/FileDw';
+$route['employee-resources-quiz']       = 'front/FileDw/quiz_file_list';
 $route['is-employee-active']       = 'front/EmpLogin/isActiveEmployee';
 $route['employee-student']         = 'front/Employee/view_student';
 $route['student-approve']          = 'front/Employee/approve_student';
 $route['employee-file-active']          = 'front/Employee/active_file';
 $route['employee-update-student-profile/(:any)'] = 'front/Employee/update_student_profile/$1';
-$route['employee-create-quiz'] = 'front/Employee/createquiz';
+$route['employee-create-quiz/(:any)'] = 'front/Employee/create_quiz/$1';
 
 //all teacher routes
 $route['teacher-login']           = 'front/TechLogin';

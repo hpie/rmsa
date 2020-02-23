@@ -9,10 +9,7 @@ class Employee extends MY_Controller
         sessionCheckEmployee();
         $this->load->model('Employee_model');
         $this->load->model('Emp_Login');  
-                
-        $_POST['token']=$_SESSION['tokenchekvalue'];
-        sessionCheckToken($_POST);
-        $_SESSION['token'] = bin2hex(random_bytes(24));
+                       
         
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
@@ -24,7 +21,27 @@ class Employee extends MY_Controller
                 }
             }
         }
-    }
+    }    
+    public function create_quiz($rmsa_uploaded_file_id){
+        
+        if (isset($_POST['submit'])){
+        //Get Post variables
+        $params=array();
+        $params['rmsa_uploaded_file_id'] = $_POST['rmsa_uploaded_file_id'];
+        $params['quiz_title'] = $_POST['quiz_title'];      
+        $params['quiz_min_questions'] = $_POST['quiz_min_questions'];
+        $params['quiz_pass_score'] = $_POST['quiz_pass_score'];        
+        $res = $this->Employee_model->approve_student($params);
+        if($res){
+            $_SESSION['quizAdd']=1;
+            redirect(EMPLOYEE__QUIZ_RESOURCES_LIST_LINK);
+        }
+     }
+        
+        
+        $this->mViewData['rmsa_uploaded_file_id']=$rmsa_uploaded_file_id;
+        $this->renderFront('front/createquiz');
+    }    
     public function view_student(){
 //        print_r($_SESSION['emp_rmsa_school_id']);die;
 //        $_SESSION['token'] = bin2hex(random_bytes(24));       
@@ -37,8 +54,7 @@ class Employee extends MY_Controller
             $res = $this->Employee_model->approve_student($_REQUEST);
             if($res){
 //                $_SESSION['token'] = bin2hex(random_bytes(24));       
-                $data = array(
-                    'token'=>$_SESSION['token'],
+                $data = array(                    
                     'suceess' => true
                 );
             }            
@@ -51,8 +67,7 @@ class Employee extends MY_Controller
             $res = $this->Employee_model->active_file($_REQUEST);
             if($res){
 //                $_SESSION['token'] = bin2hex(random_bytes(24));       
-                $data = array(
-                    'token'=>$_SESSION['token'],
+                $data = array(                    
                     'suceess' => true
                 );
             }

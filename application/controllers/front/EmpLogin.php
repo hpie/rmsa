@@ -11,9 +11,7 @@ class EmpLogin extends MY_Controller {
             redirect(HOME_LINK);
         }
         
-        $_POST['token']=$_SESSION['tokenchekvalue'];
-        sessionCheckToken($_POST);
-        $_SESSION['token'] = bin2hex(random_bytes(24));
+     
                 
         
         $this->load->model('Emp_Login');        
@@ -40,10 +38,11 @@ class EmpLogin extends MY_Controller {
 //            sessionCheckToken($_POST);  
 //            print_r($_POST);die;
             $result = $this->Emp_Login->Emp_Login_select($_POST['username'], $_POST['password']);
+                                    
 //           if($result == 2 ){
 //               $_SESSION['another_login'] = 1;               
 //           }
-            if ($result == true) {
+            if ($result == true) {               
                 redirect(HOME_LINK);
             }
             if ($result == false) {

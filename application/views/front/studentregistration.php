@@ -11,7 +11,7 @@
         <h1 class="heading">Registration of Students in the RMSA Portal</h1>
         <form method="post" id="student_register" class="form-horizontal border p-2" action="<?php echo STUDENT_REGISTER_LINK; ?>">
             <h2 class="second-heading">General Information</h2>
-            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+           
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_first_name">First Name:</label>

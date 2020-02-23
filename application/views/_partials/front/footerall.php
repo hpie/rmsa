@@ -18,12 +18,6 @@ $this->load->view('_partials/front/footer');
 //	include('_partials/footer.php'); // Includes Footer Script
 ?>
 <!-- End Import Navbar -->         
-<input type="hidden" id="token" value="<?php
-       if (isset($_SESSION['token'])) {
-           echo $_SESSION['token'];
-           $_SESSION['tokenchekvalue']=$_SESSION['token'];
-       }
-       ?>">
 
 </div>
 <!-- Start Import Scripts -->
@@ -1093,8 +1087,7 @@ $this->load->view('_partials/front/allnotify');
                 });
             }
             $(document).on('click', '.btn_approve_reject', function () {
-                var self = $(this);
-                var token = $('#token').val();
+                var self = $(this);                
                 var status = self.attr('data-status');
 
                 var uploaded_file_status = 'ACTIVE';
@@ -1110,8 +1103,7 @@ $this->load->view('_partials/front/allnotify');
 
                 var data = {
                     'rmsa_uploaded_file_id': self.data('id'),
-                    'uploaded_file_status': uploaded_file_status,
-                    'token': token
+                    'uploaded_file_status': uploaded_file_status
                 }
 
                 $.ajax({
@@ -1141,7 +1133,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            $('#token').val(res.token);
+                            
                         }
                     }
                 });
@@ -1271,22 +1263,20 @@ $this->load->view('_partials/front/allnotify');
         }
     </script>
 <?php } ?>
-
 <?php if ($title == EMPLOYEE_FILE_LIST_TITLE) {
     ?> 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function () {            
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
-            {
+            {                
                 $('#example tfoot th').each(function () {
                     var title = $('#example thead th').eq($(this).index()).text();
                     if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
                         $(this).html('<input type="text" placeholder="' + title + '" />');
                     }
                 });
-                var table = $('#example').DataTable({
-
+                var table = $('#example').DataTable({                
                     responsive: {
                         details: {
                             type: 'column',
@@ -1334,12 +1324,11 @@ $this->load->view('_partials/front/allnotify');
                         table.column(colIdx).search(this.value).draw();
                     });
                 });
-            }
-
+            }           
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-                var token = $('#token').val();
+               
                 var uploaded_file_status = 'ACTIVE';
 
                 if (status == 1) {
@@ -1353,8 +1342,7 @@ $this->load->view('_partials/front/allnotify');
 
                 var data = {
                     'rmsa_uploaded_file_id': self.data('id'),
-                    'uploaded_file_status': uploaded_file_status,
-                    'token': token
+                    'uploaded_file_status': uploaded_file_status
                 }
 
                 $.ajax({
@@ -1384,7 +1372,157 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            $('#token').val(res.token);
+                            
+                        }
+                    }
+                });
+            });
+
+
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $(document).on('click', '.viewFile', function (e) {
+                e.preventDefault();
+                var self = this;
+                window.open(self.href, 'documents', 'width=600,height=400');
+            });
+        });
+        function show_review_comments(file_id, e) {
+            e.preventDefault();
+            $('.show_comments').empty();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo DISPLAY_REVIEW ?>",
+                data: {'file_id': file_id, 'limit': 10},
+                success: function (res) {
+                    $('.show_comments').append(res);
+                }
+            });
+            $("#view-reviews").modal();
+        }
+    </script>
+<?php } ?>
+<?php if ($title == EMPLOYEE_FILE_LIST_QUIZ_TITLE) {
+    ?> 
+    <script>
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1(uploaded_file_tag = '')
+            {
+                $('#example tfoot th').each(function () {
+                    var title = $('#example thead th').eq($(this).index()).text();
+                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
+                        $(this).html('<input type="text" placeholder="' + title + '" />');
+                    }
+                });
+                var table = $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/file_list_quiz.php' ?>",
+                        'data': {
+                            emp_rmsa_user_id: <?php
+    if (isset($_SESSION['emp_rmsa_user_id'])) {
+        echo $_SESSION['emp_rmsa_user_id'];
+    }
+    ?>,
+                            uploaded_file_tag: uploaded_file_tag
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "uploaded_file_title"},
+                        {"data": "ext"},
+                        {"data": "uploaded_file_type"},
+                        {"data": "uploaded_file_group"},
+                        {"data": "uploaded_file_category"},                      
+                        {"data": "ratting"},                       
+                        {"data": "action"},
+                        {"data": "uploaded_file_desc"}
+                    ]
+                });
+                table.columns().eq(0).each(function (colIdx) {
+                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
+                        table.column(colIdx).search(this.value).draw();
+                    });
+                });
+            }
+
+            $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+                var status = self.attr('data-status');
+                
+                var uploaded_file_status = 'ACTIVE';
+
+                if (status == 1) {
+                    uploaded_file_status = 'REMOVED';
+                }
+
+                if (!confirm('Are you sure want to ' + uploaded_file_status.toLocaleLowerCase() + ' file?'))
+                    return;
+
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'rmsa_uploaded_file_id': self.data('id'),
+                    'uploaded_file_status': uploaded_file_status
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo EMPLOYEE_FILE_ACTIVE ?>",
+                    data: data,
+                    success: function (res) {
+
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+
+                            var title = 'Click to deactivate file';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if (status == 1) {
+                                title = 'Click to active file';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
+                                text = 'Inactive';
+                                isactive = 0;
+                            }
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                            
                         }
                     }
                 });
@@ -1666,7 +1804,7 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-                var token = $('#token').val();
+               
                 var status = self.attr('data-status');
                 var user_status = 'ACTIVE';
                 if (status == 1)
@@ -1678,8 +1816,7 @@ $this->load->view('_partials/front/allnotify');
 
                 var data = {
                     'rmsa_user_id': self.data('id'),
-                    'user_status': user_status,
-                    'token': token
+                    'user_status': user_status
                 };
 
                 $.ajax({
@@ -1709,7 +1846,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            $('#token').val(res.token);
+                            
                         }
                     }
                 });
@@ -1765,7 +1902,7 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-                var token = $('#token').val();
+                
                 var status = self.attr('data-status');
                 var user_status = 'ACTIVE';
                 if (status == 1)
@@ -1776,8 +1913,7 @@ $this->load->view('_partials/front/allnotify');
 
                 var data = {
                     'rmsa_user_id': self.data('id'),
-                    'user_status': user_status,
-                    'token': token
+                    'user_status': user_status
                 };
 
                 $.ajax({
@@ -1807,7 +1943,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            $('#token').val(res.token);
+                           
                         }
                     }
                 });
@@ -1857,7 +1993,7 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-                var token = $('#token').val();
+              
                 var status = self.attr('data-status');
 
                 var user_status = 'ACTIVE';
@@ -1873,8 +2009,7 @@ $this->load->view('_partials/front/allnotify');
 
                 var data = {
                     'rmsa_user_id': self.data('id'),
-                    'user_status': user_status,
-                    'token': token
+                    'user_status': user_status
                 }
 
                 $.ajax({
@@ -1905,7 +2040,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            $('#token').val(res.token);
+                            
                         }
                     }
                 });
@@ -1913,15 +2048,14 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_unblock', function () {
                 var self = $(this);
                 var table = self.attr('data-status');
-                var token = $('#token').val();                
+                
                 if (!confirm('Are you sure want to unblock user?'))
                     return;
                 self.attr('disabled', 'disabled');
 
                 var data = {
                     'rmsa_user_id': self.data('id'),
-                    'table': table,
-                    'token': token
+                    'table': table
                 };
 
                 $.ajax({
@@ -1932,7 +2066,7 @@ $this->load->view('_partials/front/allnotify');
                         var res = $.parseJSON(res);
                         if (res.suceess) {
                             self.remove();                            
-                            $('#token').val(res.token);
+                            
                             var d = new PNotify({
                                 title: 'Unblock succeessfully',
                                 type: 'success',
@@ -1988,7 +2122,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-                var token = $('#token').val();
+                
 
                 var user_status = 'ACTIVE';
 
@@ -2002,8 +2136,7 @@ $this->load->view('_partials/front/allnotify');
 
                 var data = {
                     'rmsa_user_id': self.data('id'),
-                    'user_status': user_status,
-                    'token': token
+                    'user_status': user_status
                 };
 
                 $.ajax({
@@ -2030,7 +2163,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            $('#token').val(res.token);
+                           
                         }
                     }
                 });
@@ -2038,15 +2171,14 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_unblock', function () {
                 var self = $(this);
                 var table = self.attr('data-status');
-                var token = $('#token').val();                
+                
                 if (!confirm('Are you sure want to unblock user?'))
                     return;
                 self.attr('disabled', 'disabled');
 
                 var data = {
                     'rmsa_user_id': self.data('id'),
-                    'table': table,
-                    'token': token
+                    'table': table
                 };
 
                 $.ajax({
@@ -2057,7 +2189,7 @@ $this->load->view('_partials/front/allnotify');
                         var res = $.parseJSON(res);
                         if (res.suceess) {
                             self.remove();                            
-                            $('#token').val(res.token);
+                            
                             var d = new PNotify({
                                 title: 'Unblock succeessfully',
                                 type: 'success',
@@ -2113,7 +2245,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-                var token = $('#token').val();
+                
 
                 var user_status = 'ACTIVE';
 
@@ -2127,8 +2259,7 @@ $this->load->view('_partials/front/allnotify');
 
                 var data = {
                     'rmsa_user_id': self.data('id'),
-                    'user_status': user_status,
-                    'token': token
+                    'user_status': user_status
                 };
 
                 $.ajax({
@@ -2155,7 +2286,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            $('#token').val(res.token);
+                           
                         }
                     }
                 });
@@ -2163,15 +2294,14 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_unblock', function () {
                 var self = $(this);
                 var table = self.attr('data-status');
-                var token = $('#token').val();                
+               
                 if (!confirm('Are you sure want to unblock user?'))
                     return;
                 self.attr('disabled', 'disabled');
 
                 var data = {
                     'rmsa_user_id': self.data('id'),
-                    'table': table,
-                    'token': token
+                    'table': table
                 };
 
                 $.ajax({
@@ -2182,7 +2312,7 @@ $this->load->view('_partials/front/allnotify');
                         var res = $.parseJSON(res);
                         if (res.suceess) {
                             self.remove();                            
-                            $('#token').val(res.token);
+                            
                             var d = new PNotify({
                                 title: 'Unblock succeessfully',
                                 type: 'success',

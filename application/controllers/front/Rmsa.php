@@ -12,9 +12,7 @@ class Rmsa extends MY_Controller
         $this->load->model('Employee_model');
         $this->load->model('Emp_Login');
 
-        $_POST['token']=$_SESSION['tokenchekvalue'];
-        sessionCheckToken($_POST);
-        $_SESSION['token'] = bin2hex(random_bytes(24));
+     
         
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
@@ -46,8 +44,7 @@ class Rmsa extends MY_Controller
     
     public function create_employee(){
         $_SESSION['exist_email'] = 0;
-        if(isset($_POST['rmsa_user_first_name'])){
-            unset($_POST['token']);
+        if(isset($_POST['rmsa_user_first_name'])){            
             $res =  $this->Rmsa_model->register_employee($_POST);            
             $result=array();
             if($res['success'] == true){
@@ -93,8 +90,7 @@ class Rmsa extends MY_Controller
             $res = $this->Rmsa_model->active_employee($_REQUEST);
             if($res){
 //               $_SESSION['token'] = bin2hex(random_bytes(24));       
-                $data = array(
-                    'token'=>$_SESSION['token'],
+                $data = array(                   
                     'suceess' => true
                 );
             }
@@ -115,8 +111,7 @@ class Rmsa extends MY_Controller
             $res = $this->Rmsa_model->unblock_user($_REQUEST['rmsa_user_id'],$_REQUEST['table']);            
             if($res){  
 //                $_SESSION['token'] = bin2hex(random_bytes(24));       
-                $data = array(
-                    'token'=>$_SESSION['token'],
+                $data = array(                   
                     'suceess' => true
                 );
             }
@@ -134,8 +129,7 @@ class Rmsa extends MY_Controller
             $res = $this->Rmsa_model->active_teacher($_REQUEST);
             if($res){
 //               $_SESSION['token'] = bin2hex(random_bytes(24));       
-                $data = array(
-                    'token'=>$_SESSION['token'],
+                $data = array(                    
                     'suceess' => true
                 );
             }
@@ -157,8 +151,7 @@ class Rmsa extends MY_Controller
             $res = $this->Rmsa_model->active_file($_REQUEST);
             if($res){
 //               $_SESSION['token'] = bin2hex(random_bytes(24));       
-                $data = array(
-                    'token'=>$_SESSION['token'],
+                $data = array(                  
                     'suceess' => true
                 );
             }
@@ -257,8 +250,7 @@ class Rmsa extends MY_Controller
             $res = $this->Rmsa_model->active_student($_REQUEST);
             if($res){
 //               $_SESSION['token'] = bin2hex(random_bytes(24));       
-                $data = array(
-                    'token'=>$_SESSION['token'],
+                $data = array(                    
                     'suceess' => true
                 );
             }
