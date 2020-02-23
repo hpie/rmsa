@@ -132,13 +132,13 @@ $route['student-approve']          = 'front/Employee/approve_student';
 $route['employee-file-active']          = 'front/Employee/active_file';
 $route['employee-update-student-profile/(:any)'] = 'front/Employee/update_student_profile/$1';
 $route['employee-create-quiz/(:any)'] = 'front/Employee/create_quiz/$1';
+$route['employee-quiz-list/(:any)'] = 'front/fileDw/quiz_list/$1';
 
 //all teacher routes
 $route['teacher-login']           = 'front/TechLogin';
 $route['teacher-logout']          = 'front/TechLogin/teacherLogout';
 $route['teacher-student']         = 'front/Teacher/view_student';
 $route['teacher-resources']       = 'front/TeacherResource';
-
 
 //all student routes
 $route['student-registration']    = 'front/Helper/create_student';

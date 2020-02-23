@@ -1563,6 +1563,67 @@ $this->load->view('_partials/front/allnotify');
         }
     </script>
 <?php } ?>
+    <?php if ($title == EMPLOYEE_QUIZ_LIST_TITLE) {
+    ?> 
+    <script>
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1()
+            {
+                $('#example tfoot th').each(function () {
+                    var title = $('#example thead th').eq($(this).index()).text();
+                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
+                        $(this).html('<input type="text" placeholder="' + title + '" />');
+                    }
+                });
+                var table = $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/quiz_list.php' ?>",
+                        'data': {
+                            emp_rmsa_user_id: <?php
+    if (isset($_SESSION['emp_rmsa_user_id'])) {
+        echo $_SESSION['emp_rmsa_user_id'];
+    }
+    ?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "quiz_title"},
+                        {"data": "quiz_min_questions"},
+                        {"data": "quiz_pass_score"},
+                        {"data": "quiz_status"},                        
+                        {"data": "action"}                   
+                    ]
+                });
+                table.columns().eq(0).each(function (colIdx) {
+                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
+                        table.column(colIdx).search(this.value).draw();
+                    });
+                });
+            }
+            });
+           
+    </script>
+<?php } ?>
 
 <?php if ($title == STUDENT_RESOURCES_TITLE) {
     ?>

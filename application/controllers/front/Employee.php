@@ -22,16 +22,14 @@ class Employee extends MY_Controller
             }
         }
     }    
-    public function create_quiz($rmsa_uploaded_file_id){
-        
+    public function create_quiz($rmsa_uploaded_file_id){                
         if (isset($_POST['submit'])){
-        //Get Post variables
         $params=array();
         $params['rmsa_uploaded_file_id'] = $_POST['rmsa_uploaded_file_id'];
         $params['quiz_title'] = $_POST['quiz_title'];      
         $params['quiz_min_questions'] = $_POST['quiz_min_questions'];
         $params['quiz_pass_score'] = $_POST['quiz_pass_score'];        
-        $res = $this->Employee_model->approve_student($params);
+        $res = $this->Employee_model->create_quiz($params);
         if($res){
             $_SESSION['quizAdd']=1;
             redirect(EMPLOYEE__QUIZ_RESOURCES_LIST_LINK);

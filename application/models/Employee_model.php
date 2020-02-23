@@ -183,7 +183,8 @@ class Employee_model extends CI_Model {
     
      public function create_quiz($params){                       
         if(isset($_SESSION['emp_rmsa_user_id'])){
-            $params['create_by'] = $_SESSION['emp_rmsa_user_id'];            
+            $params['created_by'] = $_SESSION['emp_rmsa_user_id'];            
+            $params['rmsa_employee_users_id'] = (int)$_SESSION['emp_rmsa_user_id'];            
         }                
         $result = $this->db->insert('quiz',$params);
         $insert_id = $this->db->insert_id();// get last insert id

@@ -32,6 +32,10 @@ class FileDw extends MY_Controller {
         $this->mViewData['title']=EMPLOYEE_FILE_LIST_QUIZ_TITLE;
         $this->renderFront('front/quizfilelist');
     }
+    public function quiz_list() {       
+        $this->mViewData['title']=EMPLOYEE_QUIZ_LIST_TITLE;
+        $this->renderFront('front/quizlist');
+    }
 
     public function view_file($fileId){
         $this->mViewData['title']='- View File';

@@ -851,87 +851,77 @@ class SSP {
                         }
                         //get number of student view count
                         $rmsa_file_id = $row['rmsa_uploaded_file_id'];                                                 
-//                        $title = 'Click to deactivate file';
-//                        $class = 'btn_approve_reject btn btn-success btn-xs';
-//                        $text = 'Active';
-//                        $isactive = 1;
-//                        if($row['uploaded_file_status'] == 'REMOVED'){
-//                            $title = 'Click to active file';
-//                            $class = 'btn_approve_reject btn btn-danger btn-xs';
-//                            $text  = 'Inactive';
-//                            $isactive = 0; 
-//                        }                
-//                        $row['uploaded_file_status'] = "<button type='button' data-id='".$rmsa_file_id."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
-//                        
                         $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
                         $total_student_view = $student_view_count[0]['total_Student_views'];
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
                         $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         $row['ratting']="<td>$star</td>";
-//                        $i=0;
-//                        if($row['uploaded_file_hasvol']=="YES"){
-//                            $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];                            
-//                            $dataChild = self::sql_exec( $db, $bindings,
-//                                    "SELECT ".implode(", ", self::pluck($columns, 'db'))."
-//                                     FROM $table
-//                                     WHERE uploaded_file_volroot=".$row['rmsa_uploaded_file_id']." ORDER BY uploaded_file_volorder ASC"
-//                            );
-//                            $resultChild=self::data_output($columns,$dataChild);
-//                            $strTd='';
-//                            $strTdAmodel='';
-//                            $strModel=''; 
-//                            $str='';                             
-//                            foreach ($resultChild as $rowChild){
-//                                $student_view_count_child = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rowChild['rmsa_uploaded_file_id']}'");
-//                                $total_student_view_child = $student_view_count_child[0]['total_Student_views'];
-//                                $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true"; 
-//                                if($i<=1){                                
-//                                    $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
-//                                          <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
-//                                    }                                    
-//                                    $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
-//                                             <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";                                                                       
-//                                $i=$i+1;                               
-//                            }
-//                            $str.=$strTd."</tr></table>";
-//                            $strModel.=$strTdAmodel."</tr></table>";
-//
-//                            $row['extModel']=$row['ext'].$strModel;
-//                                                     
-//                            $row['ext'].=$str;
-////                            $resChild=self::data_output($columns,$dataChild);
-//                            $row['child']="<a class='btn btn-success btn_approve btn-xs' href=".IMG_URL.'/employee-uploadresource-child/'.$row['rmsa_uploaded_file_id'].">Upload Child</a>";
-//                        }
-//                        else{ 
-                            $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
-//                            $row['extModel']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";
-//                            $row['child']="-----No Hasvol-----";
-//                        }
-//                        if($i>1){
-//                        $row['ext'].='<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal'.$row['rmsa_uploaded_file_id'].'">View More</button>
-//                        <div class="modal" id="myModal'.$row['rmsa_uploaded_file_id'].'" tabindex="-1" role="dialog">
-//                                <div class="modal-dialog" role="document">
-//                                    <div class="modal-content">
-//                                        <div class="modal-header">
-//                                            <h5 class="modal-title">File List</h5>
-//                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//                                                <span aria-hidden="true">&times;</span>
-//                                            </button>
-//                                        </div>
-//                                        <div class="modal-body">
-//                                        '.$row['extModel'].'
-//                                        </div>
-//                                        <div class="modal-footer">                
-//                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-//                                        </div>            
-//                                    </div>
-//                                </div>
-//                            </div>';
-//                            }
+                        $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
                         $row['index']='';
                         $fileId = $row['rmsa_uploaded_file_id'];
-                        $row['action'] = "<a href='".BASE_URL."/employee-create-quiz/$fileId' class='btn btn-xs btn-warning'>Create Quiz <i class='fa fa-pencil'></i></a>";
+                        $row['action'] = "<a href='".BASE_URL."/employee-create-quiz/$fileId' class='btn btn-xs btn-warning'>Create Quiz <i class='fa fa-pencil'></i></a><br><a href='".BASE_URL."/employee-quiz-list/$fileId' class='btn btn-xs btn-info'>Quiz List <i class='fa fa-eye'></i></a>";
+                        $row['quizlist'] = "<a href='".BASE_URL."/employee-quiz-list/$fileId' class='btn btn-xs btn-warning'>Create Quiz <i class='fa fa-pencil'></i></a>";
+                        array_push($resData, $row);
+                    }  
+                }
+//                print_r($resData);die;
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+         static function emp_quiz_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$emp_rmsa_user_id)
+	{                         
+		$bindings = array();
+		$db = self::db( $conn );
+                
+		// Build the SQL query string from the request
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns );
+		$where = self::filter( $request, $columns, $bindings );
+                
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                }                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
+			 $where
+			 $order
+			 $limit"
+		); 
+		// Main query to actually get the data
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
+			 $where"
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table"
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){
+                        $quiz_id=$row['quiz_id'];
+                        $row['index']='';                        
+                        $row['action'] = "<a href='".BASE_URL."/employee-quiz-add-question/$quiz_id' class='btn btn-xs btn-warning'>Add Question<i class='fa fa-pencil'></i></a>";                        
                         array_push($resData, $row);
                     }  
                 }
