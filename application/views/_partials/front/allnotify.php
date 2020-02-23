@@ -7,8 +7,20 @@ if(isset($_SESSION['invalidAttempt'])){
     }
 }
 ?>
+        if (<?php
+if (isset($_SESSION['questionAdd'])) {
+    echo $_SESSION['questionAdd'];
+}else{echo 0;}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'Question added successfully',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+                <?php $_SESSION['questionAdd'] = 0; ?>
+            }
 if (<?php
-if (isset($_SESSION['quizAdd']) && isset($_SESSION['invalidAttempt'])) {
+if (isset($_SESSION['quizAdd'])) {
     echo $_SESSION['quizAdd'];
 }else{echo 0;}
 ?> == 1) {
@@ -21,7 +33,7 @@ if (isset($_SESSION['quizAdd']) && isset($_SESSION['invalidAttempt'])) {
             }        
         
 if (<?php
-if (isset($_SESSION['invalidAttempt']) && isset($_SESSION['invalidAttempt'])) {
+if (isset($_SESSION['invalidAttempt'])) {
     echo $_SESSION['invalidAttempt'];
 }else{echo 0;}
 ?> == 1) {
@@ -34,7 +46,7 @@ if (isset($_SESSION['invalidAttempt']) && isset($_SESSION['invalidAttempt'])) {
             }        
         
 if (<?php
-if (isset($_SESSION['invalid_login']) && isset($_SESSION['invalid_login'])) {
+if (isset($_SESSION['invalid_login'])) {
     echo $_SESSION['invalid_login'];
 }else{echo 0;}
 ?> == 1) {
@@ -48,7 +60,7 @@ if (isset($_SESSION['invalid_login']) && isset($_SESSION['invalid_login'])) {
             
             
             if (<?php
-if (isset($_SESSION['existParentFileHasvol']) && isset($_SESSION['existParentFileHasvol'])) {
+if (isset($_SESSION['existParentFileHasvol'])) {
     echo $_SESSION['existParentFileHasvol'];
 }else{echo 0;}
 ?> == 1) {
@@ -61,7 +73,7 @@ if (isset($_SESSION['existParentFileHasvol']) && isset($_SESSION['existParentFil
             }
             
                         if (<?php
-if (isset($_SESSION['registration']) && isset($_SESSION['registration'])) {
+if (isset($_SESSION['registration'])) {
     echo $_SESSION['registration'];
 }else{echo 0;}
 ?> == 1) {
@@ -74,7 +86,7 @@ if (isset($_SESSION['registration']) && isset($_SESSION['registration'])) {
             } 
             
              if (<?php
-if (isset($_SESSION['updatedata']) && isset($_SESSION['updatedata'])) {
+if (isset($_SESSION['updatedata'])) {
     echo $_SESSION['updatedata'];
 }else{echo 0;}
 ?> == 1) {
@@ -85,9 +97,8 @@ if (isset($_SESSION['updatedata']) && isset($_SESSION['updatedata'])) {
                 });
                 <?php $_SESSION['updatedata'] = 0; ?>
             }
-
     if (<?php
-        if (isset($_SESSION['update_file']) && isset($_SESSION['update_file'])) {
+        if (isset($_SESSION['update_file'])) {
             echo $_SESSION['update_file'];
         }else{echo 0;}
         ?> == 1) {

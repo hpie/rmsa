@@ -157,6 +157,7 @@ define('EMPLOYEE_RESOURCES_LIST_LINK',BASE_URL."/employee-resources");
 define('EMPLOYEE__QUIZ_RESOURCES_LIST_LINK',BASE_URL."/employee-resources-quiz");
 define('EMPLOYEE_CREATE_QUIZ_LINK',BASE_URL."/employee-create-quiz/");
 define('EMPLOYEE_QUIZ_MCQ_LINK',BASE_URL."/employee-resources");
+define('EMPLOYEE_ADD_QUISTIONS_LINK',BASE_URL."/employee-add-quistions/");
 define('EMPLOYEE_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
 define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
 define('EMPLOYEE_STUDENT_LIST_LINK',BASE_URL."/employee-student");
@@ -212,6 +213,7 @@ define('TEACHER_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - TeacherStu
 define('EMPLOYEE_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - FileDw");
 define('EMPLOYEE_FILE_LIST_QUIZ_TITLE',"Welcome to rmsahimachal.nic.in - Files for quiz");
 define('EMPLOYEE_QUIZ_LIST_TITLE',"Welcome to rmsahimachal.nic.in - Quiz list");
+define('EMPLOYEE_QUESTIONS_LIST_TITLE',"Welcome to rmsahimachal.nic.in - Questions list");
 define('EMPLOYEE_FILE_UPLOAD_TITLE',"Welcome to rmsahimachal.nic.in - File Upload"); 
 define('EMPLOYEE_STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Employee Student Profile");
 

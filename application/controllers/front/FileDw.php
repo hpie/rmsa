@@ -32,9 +32,15 @@ class FileDw extends MY_Controller {
         $this->mViewData['title']=EMPLOYEE_FILE_LIST_QUIZ_TITLE;
         $this->renderFront('front/quizfilelist');
     }
-    public function quiz_list() {       
+    public function quiz_list($rmsa_uploaded_file_id) {
+        $this->mViewData['rmsa_uploaded_file_id']=$rmsa_uploaded_file_id;
         $this->mViewData['title']=EMPLOYEE_QUIZ_LIST_TITLE;
         $this->renderFront('front/quizlist');
+    }
+    public function questions_list($quiz_id) { 
+        $this->mViewData['quiz_id']=$quiz_id;
+        $this->mViewData['title']=EMPLOYEE_QUESTIONS_LIST_TITLE;
+        $this->renderFront('front/questionslist');
     }
 
     public function view_file($fileId){

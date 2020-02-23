@@ -194,5 +194,39 @@ class Employee_model extends CI_Model {
         return FALSE;
         //it will be return boolean value (true/false)
     }
+    public function add_quistions($params){                                             
+        $result = $this->db->insert('questions',$params);
+        $insert_id = $this->db->insert_id();// get last insert id
+        if(!empty($insert_id)){
+            return $insert_id;
+        }
+        return FALSE;
+        //it will be return boolean value (true/false)
+    }
+    public function add_choice($params){                                             
+        $result = $this->db->insert('choices',$params);
+        $insert_id = $this->db->insert_id();// get last insert id
+        if(!empty($insert_id)){
+            return $insert_id;
+        }
+        return FALSE;
+        //it will be return boolean value (true/false)
+    }
+    public function get_quiz($quiz_id) {        
+        $data = $this->db->query("SELECT * FROM quiz WHERE quiz_id ='$quiz_id'");
+        $quiz_data = $data->row_array();
+        if (isset($quiz_data)) {
+            return $quiz_data;
+        }
+        return array();
+    }
+    public function count_quiz_questions($quiz_id) {        
+        $data = $this->db->query("SELECT COUNT(question_id) as question_count FROM questions WHERE quiz_id ='$quiz_id'");
+        $quiz_data = $data->row_array();
+        if (isset($quiz_data)) {
+            return $quiz_data['question_count'];
+        }
+        return array();
+    }
 
 }

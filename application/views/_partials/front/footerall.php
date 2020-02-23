@@ -1572,7 +1572,7 @@ $this->load->view('_partials/front/allnotify');
             {
                 $('#example tfoot th').each(function () {
                     var title = $('#example thead th').eq($(this).index()).text();
-                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
+                    if ((title === "Title")) {
                         $(this).html('<input type="text" placeholder="' + title + '" />');
                     }
                 });
@@ -1602,7 +1602,7 @@ $this->load->view('_partials/front/allnotify');
     if (isset($_SESSION['emp_rmsa_user_id'])) {
         echo $_SESSION['emp_rmsa_user_id'];
     }
-    ?>
+    ?>,rmsa_uploaded_file_id:<?php echo $rmsa_uploaded_file_id; ?>
                         }
                     },
                     "columns": [
@@ -1612,6 +1612,64 @@ $this->load->view('_partials/front/allnotify');
                         {"data": "quiz_pass_score"},
                         {"data": "quiz_status"},                        
                         {"data": "action"}                   
+                    ]
+                });
+                table.columns().eq(0).each(function (colIdx) {
+                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
+                        table.column(colIdx).search(this.value).draw();
+                    });
+                });
+            }
+            });
+           
+    </script>
+<?php } ?>
+     <?php if ($title == EMPLOYEE_QUESTIONS_LIST_TITLE) {
+    ?> 
+    <script>
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1()
+            {
+                $('#example tfoot th').each(function () {
+                    var title = $('#example thead th').eq($(this).index()).text();
+                    if ((title === "Question") || (title === "Status")) {
+                        $(this).html('<input type="text" placeholder="' + title + '" />');
+                    }
+                });
+                var table = $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/questions_list.php' ?>",
+                        'data': {
+                            emp_rmsa_user_id: <?php
+    if (isset($_SESSION['emp_rmsa_user_id'])) {
+        echo $_SESSION['emp_rmsa_user_id'];
+    }
+    ?>,quiz_id:<?php echo $quiz_id;?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "question"},
+                        {"data": "question_status"}                  
                     ]
                 });
                 table.columns().eq(0).each(function (colIdx) {

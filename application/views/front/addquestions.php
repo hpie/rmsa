@@ -29,7 +29,7 @@ if (isset($_POST['submit'])){
 	       }
               $query="insert into choices (question_number,is_correct,choice) 
    	          values('$question_number','$is_correct','$value')";
-              $insert_row=$mysqli->query($query) or die ($mysqli->error.__LINE__);
+                $insert_row=$mysqli->query($query) or die ($mysqli->error.__LINE__);
 	          if($insert_row){
 	            continue;
 	          }else {
@@ -42,7 +42,6 @@ if (isset($_POST['submit'])){
 }
 $numberofquestions = $_SESSION['quiz_min_questions'];
 $quiz_id = $_SESSION['quiz_id'];
-
 ?>
 
 <!DOCTYPE html>

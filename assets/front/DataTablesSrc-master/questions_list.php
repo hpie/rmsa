@@ -19,25 +19,22 @@
  */
 // DB table to use
 
-$table = 'quiz';
+$table = 'questions';
 // Table's primary key
-$primaryKey = 'quiz_id';
+$primaryKey = 'question_id';
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(      
     array('db' => 'quiz_id', 'dt' =>'quiz_id'),
-    array('db' => 'quiz_title', 'dt' =>'quiz_title'),
-    array('db' => 'quiz_min_questions', 'dt' =>'quiz_min_questions'),
-    array('db' => 'quiz_pass_score', 'dt' => 'quiz_pass_score'),
-    array('db' => 'quiz_status', 'dt' =>'quiz_status')
+    array('db' => 'question', 'dt' =>'question'),
+    array('db' => 'question_status', 'dt' =>'question_status')
 );
 include 'conn.php';
 
-$emp_rmsa_user_id = $_REQUEST['emp_rmsa_user_id'];
-$rmsa_uploaded_file_id=$_REQUEST['rmsa_uploaded_file_id'];
-$where=" rmsa_employee_users_id=$emp_rmsa_user_id AND rmsa_uploaded_file_id=$rmsa_uploaded_file_id ";
+$quiz_id = $_REQUEST['quiz_id'];
+$where=" quiz_id=$quiz_id ";
 
 
 //if(!empty($_REQUEST['search']['value'])){
@@ -51,7 +48,7 @@ $where=" rmsa_employee_users_id=$emp_rmsa_user_id AND rmsa_uploaded_file_id=$rms
  */
 require('ssp.class.php');
 echo json_encode(
-       SSP::emp_quiz_list($_REQUEST, $sql_details, $table, $primaryKey, $columns,$where,$emp_rmsa_user_id)
+       SSP::emp_questions_list($_REQUEST, $sql_details, $table, $primaryKey, $columns,$where)
 );
 
 

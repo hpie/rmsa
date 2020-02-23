@@ -921,11 +921,11 @@ class SSP {
                     foreach ($result as $row){
                         $quiz_id=$row['quiz_id'];
                         $row['index']='';                        
-                        $row['action'] = "<a href='".BASE_URL."/employee-quiz-add-question/$quiz_id' class='btn btn-xs btn-warning'>Add Question<i class='fa fa-pencil'></i></a>";                        
+                        $row['action'] = "<a href='".BASE_URL."/employee-add-quistions/$quiz_id' class='btn btn-xs btn-warning'>Add Question <i class='fa fa-pencil'></i></a><br><a href='".BASE_URL."/employee-quistions-list/$quiz_id' class='btn btn-xs btn-info'>Question List <i class='fa fa-eye'></i></a>";                        
                         array_push($resData, $row);
                     }  
                 }
-//                print_r($resData);die;
+//              print_r($resData);die;
 		/*
 		 * Output
 		 */
@@ -936,7 +936,67 @@ class SSP {
 			"data" => $resData
 		);
 	}
-       
+                static function emp_questions_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	{                         
+		$bindings = array();
+		$db = self::db( $conn );
+                
+		// Build the SQL query string from the request
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns );
+		$where = self::filter( $request, $columns, $bindings );
+                
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                }                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
+			 $where
+			 $order
+			 $limit"
+		); 
+		// Main query to actually get the data
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
+			 $where"
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table"
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){
+//                        $quiz_id=$row['quiz_id'];
+                        $row['index']='';                        
+//                        $row['action'] = "<a href='".BASE_URL."/employee-add-quistions/$quiz_id' class='btn btn-xs btn-warning'>Add Question <i class='fa fa-pencil'></i></a><br><a href='".BASE_URL."/employee-quistions-list/$quiz_id' class='btn btn-xs btn-info'>Question List <i class='fa fa-eye'></i></a>";                        
+                        array_push($resData, $row);
+                    }  
+                }
+//              print_r($resData);die;
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+
         
         static function rmsa_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{
