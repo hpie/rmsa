@@ -6,6 +6,29 @@ class Employee_model extends CI_Model {
         parent::__construct();
     }
 
+    public function get_file($fileId){
+        $title = $this->db->query("SELECT * FROM  rmsa_uploaded_files WHERE rmsa_uploaded_file_id = '".$fileId."'");
+        return $title->result_array();
+    }
+     public function get_quiz_details($fileId){
+        $title = $this->db->query("SELECT * FROM  quiz WHERE rmsa_uploaded_file_id = '".$fileId."'");
+        return $title->row_array();
+    }
+     public function get_quiz1_details($quiz_id){
+        $title = $this->db->query("SELECT * FROM  quiz WHERE quiz_id = '".$quiz_id."'");
+        return $title->row_array();
+    }
+    public function update_quiz($params,$fileId) {        
+        $query_res = $this->db->query("UPDATE quiz SET quiz_title = '{$params['quiz_title']}',
+                                                        quiz_min_questions = '{$params['quiz_min_questions']}',
+                                                        quiz_pass_score = '{$params['quiz_pass_score']}'    
+                                       WHERE rmsa_uploaded_file_id='{$fileId}'");        
+        if ($query_res) {
+            return true;
+        }
+        return false;
+    }
+    
     public function approve_student($params) {
         $query_res = $this->db->query("UPDATE  rmsa_student_users SET rmsa_user_status = '{$params['user_status']}'
                                        WHERE rmsa_user_id='{$params['rmsa_user_id']}'");

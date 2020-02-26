@@ -8,6 +8,19 @@ if(isset($_SESSION['invalidAttempt'])){
 }
 ?>
         if (<?php
+if (isset($_SESSION['quizEdit'])) {
+    echo $_SESSION['quizEdit'];
+}else{echo 0;}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'Quiz Updated successfully',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+                <?php $_SESSION['quizEdit'] = 0; ?>
+            }
+        
+        if (<?php
 if (isset($_SESSION['questionAdd'])) {
     echo $_SESSION['questionAdd'];
 }else{echo 0;}

@@ -155,6 +155,7 @@ define('EMPLOYEE_UPLOAD_FILE_LINK',BASE_URL."/employee-uploadresource");
 define('EMPLOYEE_UPLOAD_CHILD_FILE_LINK',BASE_URL."/employee-uploadresource-child/");
 define('EMPLOYEE_RESOURCES_LIST_LINK',BASE_URL."/employee-resources");
 define('EMPLOYEE__QUIZ_RESOURCES_LIST_LINK',BASE_URL."/employee-resources-quiz");
+define('EMPLOYEE_EDIT_QUIZ_LINK',BASE_URL."/employee-edit-quiz/");
 define('EMPLOYEE_CREATE_QUIZ_LINK',BASE_URL."/employee-create-quiz/");
 define('EMPLOYEE_QUIZ_MCQ_LINK',BASE_URL."/employee-resources");
 define('EMPLOYEE_ADD_QUISTIONS_LINK',BASE_URL."/employee-add-quistions/");

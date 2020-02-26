@@ -788,7 +788,7 @@ class SSP {
 			 $where
 			 $order
 			 $limit"
-		); 
+		);   
 		// Main query to actually get the data
 //		$data = self::sql_exec($db, $bindings,
 //			"SELECT ".implode(", ", self::pluck($columns, 'db'))." FROM $table WHERE uploaded_file_volroot=0 AND rmsa_employee_users_id='$emp_rmsa_user_id'  $order $limit"
@@ -809,22 +809,12 @@ class SSP {
                 $result=self::data_output($columns,$data);
                 $resData=array();
                 if(!empty($result)){                    
-                    foreach ($result as $row){                           
-//                        if(!empty($request['uploaded_file_tag'])){                           
-//                            if(!empty($row['uploaded_file_volroot'])){                               
-//                                $volrootid=$row['uploaded_file_volroot'];     
-//                                
-//                                $data = self::sql_exec( $db, $bindings,
-//                                        "SELECT ".implode(", ", self::pluck($columns, 'db'))."
-//                                         FROM rmsa_uploaded_files
-//                                         WHERE rmsa_uploaded_file_id = '$volrootid'
-//                                        "
-//                                ); 
-//                                $row=$data[0];                               
-//                            }
-//                        }
-                        
-                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];
+                    foreach ($result as $row){                                                                                                                                      
+                                $rmsa_file_id = $row['rmsa_uploaded_file_id'];                                     
+                                $data = self::sql_exec( $db, $bindings,"SELECT COUNT(quiz_id) as quizCount FROM quiz WHERE rmsa_uploaded_file_id = '$rmsa_file_id'");                                 
+                                $countQuiz=$data[0]['quizCount'];                                                                                           
+                                 
+                                
                         $reviews = self::sql_exec( $db,
                             "SELECT AVG(rmsa_file_rating) as overall_rating FROM rmsa_file_reviews
                                     WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}' AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");
@@ -860,8 +850,15 @@ class SSP {
                         $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
                         $row['index']='';
                         $fileId = $row['rmsa_uploaded_file_id'];
-                        $row['action'] = "<a href='".BASE_URL."/employee-create-quiz/$fileId' class='btn btn-xs btn-warning'>Create Quiz <i class='fa fa-pencil'></i></a><br><a href='".BASE_URL."/employee-quiz-list/$fileId' class='btn btn-xs btn-info'>Quiz List <i class='fa fa-eye'></i></a>";
-                        $row['quizlist'] = "<a href='".BASE_URL."/employee-quiz-list/$fileId' class='btn btn-xs btn-warning'>Create Quiz <i class='fa fa-pencil'></i></a>";
+                        
+                        if($countQuiz>0){                             
+                            $row['action']="<a href='".BASE_URL."/employee-edit-quiz/$fileId' class='btn btn-xs btn-success'>Edit Quiz <i class='fa fa-pencil'></i></a>";
+                        }
+                        else{
+                            $row['action'] = "<a href='".BASE_URL."/employee-create-quiz/$fileId' class='btn btn-xs btn-warning'>Create Quiz <i class='fa fa-pencil'></i></a>";
+                        }
+                        $row['action'].="<br><a href='".BASE_URL."/employee-quiz-list/$fileId' class='btn btn-xs btn-info'>View Quiz <i class='fa fa-eye'></i></a>";
+//                        $row['quizlist'] = "<a href='".BASE_URL."/employee-quiz-list/$fileId' class='btn btn-xs btn-warning'>Create Quiz sasas<i class='fa fa-pencil'></i></a>";
                         array_push($resData, $row);
                     }  
                 }

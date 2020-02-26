@@ -132,6 +132,7 @@ $route['student-approve']          = 'front/Employee/approve_student';
 $route['employee-file-active']          = 'front/Employee/active_file';
 $route['employee-update-student-profile/(:any)'] = 'front/Employee/update_student_profile/$1';
 $route['employee-create-quiz/(:any)'] = 'front/Employee/create_quiz/$1';
+$route['employee-edit-quiz/(:any)'] = 'front/Employee/edit_quiz/$1';
 $route['employee-quiz-list/(:any)'] = 'front/fileDw/quiz_list/$1';
 $route['employee-quistions-list/(:any)'] = 'front/fileDw/questions_list/$1';
 

@@ -10,7 +10,7 @@ class FileDw extends MY_Controller {
         sessionCheckEmployee();
         $this->load->model('File_upload');
         $this->load->model('Emp_Login');  
-              
+        $this->load->model('Employee_model');       
         
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
@@ -33,11 +33,14 @@ class FileDw extends MY_Controller {
         $this->renderFront('front/quizfilelist');
     }
     public function quiz_list($rmsa_uploaded_file_id) {
+        $this->mViewData['fileDetails']=$this->Employee_model->get_file($rmsa_uploaded_file_id);           
         $this->mViewData['rmsa_uploaded_file_id']=$rmsa_uploaded_file_id;
         $this->mViewData['title']=EMPLOYEE_QUIZ_LIST_TITLE;
         $this->renderFront('front/quizlist');
     }
-    public function questions_list($quiz_id) { 
+    public function questions_list($quiz_id) {        
+        $this->mViewData['quizDetails']=$this->Employee_model->get_quiz1_details($quiz_id);
+//        print_r($this->mViewData['quizDetails']);die;
         $this->mViewData['quiz_id']=$quiz_id;
         $this->mViewData['title']=EMPLOYEE_QUESTIONS_LIST_TITLE;
         $this->renderFront('front/questionslist');
