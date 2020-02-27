@@ -158,7 +158,10 @@ define('EMPLOYEE__QUIZ_RESOURCES_LIST_LINK',BASE_URL."/employee-resources-quiz")
 define('EMPLOYEE_EDIT_QUIZ_LINK',BASE_URL."/employee-edit-quiz/");
 define('EMPLOYEE_CREATE_QUIZ_LINK',BASE_URL."/employee-create-quiz/");
 define('EMPLOYEE_QUIZ_MCQ_LINK',BASE_URL."/employee-resources");
+define('EMPLOYEE_QUIZ_ACTIVE',BASE_URL."/employee-quiz-active");
+define('EMPLOYEE_QUESTION_ACTIVE',BASE_URL."/employee-question-active");
 define('EMPLOYEE_ADD_QUISTIONS_LINK',BASE_URL."/employee-add-quistions/");
+define('EMPLOYEE_EDIT_QUISTIONS_LINK',BASE_URL."/employee-edit-quistions/");
 define('EMPLOYEE_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
 define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
 define('EMPLOYEE_STUDENT_LIST_LINK',BASE_URL."/employee-student");

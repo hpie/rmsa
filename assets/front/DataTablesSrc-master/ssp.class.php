@@ -917,7 +917,23 @@ class SSP {
                 if(!empty($result)){                    
                     foreach ($result as $row){
                         $quiz_id=$row['quiz_id'];
-                        $row['index']='';                        
+                        $row['index']=''; 
+                        
+                        $title = 'Click to deactivate file';
+                        $class = 'btn_approve_reject btn btn-success btn-xs';
+                        $text = 'Active';
+                        $isactive = 1;
+                        if($row['quiz_status'] == 'REMOVED'){
+                            $title = 'Click to active file';
+                            $class = 'btn_approve_reject btn btn-danger btn-xs';
+                            $text  = 'Inactive';
+                            $isactive = 0; 
+                        }                
+                        $row['quiz_status'] = "<button type='button' data-id='".$quiz_id."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
+                        
+                        
+                        
+                        
                         $row['action'] = "<a href='".BASE_URL."/employee-add-quistions/$quiz_id' class='btn btn-xs btn-warning'>Add Question <i class='fa fa-pencil'></i></a><br><a href='".BASE_URL."/employee-quistions-list/$quiz_id' class='btn btn-xs btn-info'>Question List <i class='fa fa-eye'></i></a>";                        
                         array_push($resData, $row);
                     }  
@@ -976,9 +992,22 @@ class SSP {
                 $resData=array();
                 if(!empty($result)){                    
                     foreach ($result as $row){
-//                        $quiz_id=$row['quiz_id'];
-                        $row['index']='';                        
-//                        $row['action'] = "<a href='".BASE_URL."/employee-add-quistions/$quiz_id' class='btn btn-xs btn-warning'>Add Question <i class='fa fa-pencil'></i></a><br><a href='".BASE_URL."/employee-quistions-list/$quiz_id' class='btn btn-xs btn-info'>Question List <i class='fa fa-eye'></i></a>";                        
+//                        print_r($row);die;
+                        $questions_id=$row['question_id'];
+                        $row['index']='';
+                        $title = 'Click to deactivate file';
+                        $class = 'btn_approve_reject btn btn-success btn-xs';
+                        $text = 'Active';
+                        $isactive = 1;
+                        if($row['question_status'] == 'REMOVED'){
+                            $title = 'Click to active file';
+                            $class = 'btn_approve_reject btn btn-danger btn-xs';
+                            $text  = 'Inactive';
+                            $isactive = 0; 
+                        }                
+                        $row['question_status'] = "<button type='button' data-id='".$questions_id."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
+                        
+                        $row['action'] = "<a href='".BASE_URL."/employee-edit-quistions/$questions_id' class='btn btn-xs btn-warning'>Edit <i class='fa fa-pencil'></i></a>";
                         array_push($resData, $row);
                     }  
                 }

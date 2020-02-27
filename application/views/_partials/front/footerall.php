@@ -1620,6 +1620,58 @@ $this->load->view('_partials/front/allnotify');
                     });
                 });
             }
+            $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+                var status = self.attr('data-status');
+                
+                var quiz_status = 'ACTIVE';
+
+                if (status == 1) {
+                    quiz_status = 'REMOVED';
+                }
+
+                if (!confirm('Are you sure want to ' + quiz_status.toLocaleLowerCase() + ' quiz?'))
+                    return;
+
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'quiz_id': self.data('id'),
+                    'quiz_status': quiz_status
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo EMPLOYEE_QUIZ_ACTIVE ?>",
+                    data: data,
+                    success: function (res) {
+
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+
+                            var title = 'Click to deactivate file';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if (status == 1) {
+                                title = 'Click to active file';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
+                                text = 'Inactive';
+                                isactive = 0;
+                            }
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                            
+                        }
+                    }
+                });
+            });
             });
            
     </script>
@@ -1669,7 +1721,8 @@ $this->load->view('_partials/front/allnotify');
                     "columns": [
                         {"data": "index"},
                         {"data": "question"},
-                        {"data": "question_status"}                  
+                        {"data": "question_status"},                 
+                         {"data": "action"}                  
                     ]
                 });
                 table.columns().eq(0).each(function (colIdx) {
@@ -1678,6 +1731,58 @@ $this->load->view('_partials/front/allnotify');
                     });
                 });
             }
+            $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+                var status = self.attr('data-status');
+                
+                var question_status = 'ACTIVE';
+
+                if (status == 1) {
+                    question_status = 'REMOVED';
+                }
+
+                if (!confirm('Are you sure want to ' + question_status.toLocaleLowerCase() + ' question?'))
+                    return;
+
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'question_id': self.data('id'),
+                    'question_status': question_status
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo EMPLOYEE_QUESTION_ACTIVE ?>",
+                    data: data,
+                    success: function (res) {
+
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+
+                            var title = 'Click to deactivate file';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if (status == 1) {
+                                title = 'Click to active file';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
+                                text = 'Inactive';
+                                isactive = 0;
+                            }
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                            
+                        }
+                    }
+                });
+            });
             });
            
     </script>

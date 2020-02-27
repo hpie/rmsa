@@ -134,10 +134,13 @@ $route['employee-update-student-profile/(:any)'] = 'front/Employee/update_studen
 $route['employee-create-quiz/(:any)'] = 'front/Employee/create_quiz/$1';
 $route['employee-edit-quiz/(:any)'] = 'front/Employee/edit_quiz/$1';
 $route['employee-quiz-list/(:any)'] = 'front/fileDw/quiz_list/$1';
+$route['employee-quiz-active']          = 'front/Employee/active_quiz';
+$route['employee-question-active']          = 'front/Employee/active_question';
 $route['employee-quistions-list/(:any)'] = 'front/fileDw/questions_list/$1';
 
 
 $route['employee-add-quistions/(:any)'] = 'front/Employee/add_quistions/$1';
+$route['employee-edit-quistions/(:any)'] = 'front/Employee/edit_quistions/$1';
 
 //all teacher routes
 $route['teacher-login']           = 'front/TechLogin';

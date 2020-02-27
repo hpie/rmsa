@@ -18,13 +18,15 @@
                 <th>Index</th>
                 <th>Question</th>                  
                 <th>Status</th>                
+                <th>Action</th>                
             </tr>
         </thead>
         <tfoot>
             <tr>
                 <th>Index</th>
                 <th>Question</th>                  
-                <th>Status</th>                
+                <th>Status</th> 
+                <th>Action</th>                
             </tr>
         </tfoot>
     </table> 

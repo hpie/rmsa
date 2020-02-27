@@ -27,6 +27,7 @@ $primaryKey = 'question_id';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(      
+    array('db' => 'question_id', 'dt' =>'question_id'),
     array('db' => 'quiz_id', 'dt' =>'quiz_id'),
     array('db' => 'question', 'dt' =>'question'),
     array('db' => 'question_status', 'dt' =>'question_status')

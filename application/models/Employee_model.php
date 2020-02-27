@@ -36,6 +36,20 @@ class Employee_model extends CI_Model {
             return true;
         }
     }
+    public function active_question($params) {
+        $query_res = $this->db->query("UPDATE  questions SET question_status = '{$params['question_status']}'
+                                       WHERE question_id='{$params['question_id']}'");
+        if ($query_res) {
+            return true;
+        }
+    }
+    public function active_quiz($params) {
+        $query_res = $this->db->query("UPDATE  quiz SET quiz_status = '{$params['quiz_status']}'
+                                       WHERE quiz_id='{$params['quiz_id']}'");
+        if ($query_res) {
+            return true;
+        }
+    }
     public function active_file($params) {
         $query_res = $this->db->query("UPDATE  rmsa_uploaded_files SET uploaded_file_status = '{$params['uploaded_file_status']}'
                                        WHERE rmsa_uploaded_file_id='{$params['rmsa_uploaded_file_id']}'");
@@ -234,6 +248,26 @@ class Employee_model extends CI_Model {
         }
         return FALSE;
         //it will be return boolean value (true/false)
+    }
+    
+    public function get_question($question_id) {        
+        $data = $this->db->query("SELECT qs.question,qz.* FROM questions qs
+                                    LEFT JOIN quiz qz
+                                    ON qz.quiz_id=qs.quiz_id                                    
+                                    WHERE question_id ='$question_id'");
+        $quiz_data = $data->row_array();
+        if (isset($quiz_data)) {
+            return $quiz_data;
+        }
+        return array();
+    }
+    public function get_choices($question_id) {        
+        $data = $this->db->query("SELECT * FROM choices WHERE question_id ='$question_id'");
+        $choice_data = $data->result_array();
+        if (isset($choice_data)) {
+            return $choice_data;
+        }
+        return array();
     }
     public function get_quiz($quiz_id) {        
         $data = $this->db->query("SELECT * FROM quiz WHERE quiz_id ='$quiz_id'");

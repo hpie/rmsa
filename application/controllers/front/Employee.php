@@ -62,9 +62,47 @@ class Employee extends MY_Controller {
         $this->renderFront('front/createquiz');
     }
 
+    public function edit_quistions($question_id) {
+//        $this->mViewData['quizDetails']=$this->Employee_model->get_quiz1_details($question_id);
+//        $resQuizQuestionsCount = $this->Employee_model->count_quiz_questions($quiz_id);        
+        $resQuiz = $this->Employee_model->get_question($question_id);
+        $resChoice = $this->Employee_model->get_choices($question_id);
+//        print_r($resQuiz);die;
+        if (isset($_POST['submit'])) {
+//            if(!empty($resQuizQuestionsCount)){
+//                if($resQuiz['quiz_min_questions']==$resQuizQuestionsCount){
+//                    $_SESSION['maxQuestionLimit']=1;
+//                    redirect(EMPLOYEE__QUIZ_RESOURCES_LIST_LINK . $resQuiz['rmsa_uploaded_file_id']);
+//                }
+//            }
+            $params = array();
+            $params['question'] = $_POST['question'];
+            $params['quiz_id'] = $quiz_id;
+            $res = $this->Employee_model->add_quistions($params);
+            if ($res) {
+                foreach ($_POST['choice'] as $choice => $value) {                    
+                    $params = array();
+                    $params['choice'] = $value;
+                    $params['question_id'] = $res;
+                    if ($_POST['correct_choice'] == $choice+1) {
+                        $params['is_correct'] = 1;
+                    }
+                    $this->Employee_model->add_choice($params);
+                }
+                $_SESSION['questionAdd'] = 1;
+                redirect(EMPLOYEE__QUIZ_RESOURCES_LIST_LINK . $resQuiz['rmsa_uploaded_file_id']);
+            }
+        }
+//        print_r($resChoice);die;
+        $this->mViewData['choiceDetails']=$resChoice;
+        $this->mViewData['quizDetails']=$resQuiz;
+        $this->mViewData['question_id'] = $question_id;
+        $this->renderFront('front/editquestion');
+    }
+    
     public function add_quistions($quiz_id) {
-        $this->mViewData['quizDetails']=$this->Employee_model->get_quiz1_details($quiz_id);
-        $resQuizQuestionsCount = $this->Employee_model->count_quiz_questions($quiz_id);        
+//        $this->mViewData['quizDetails']=$this->Employee_model->get_quiz1_details($quiz_id);
+//        $resQuizQuestionsCount = $this->Employee_model->count_quiz_questions($quiz_id);        
         $resQuiz = $this->Employee_model->get_quiz($quiz_id);
         if (isset($_POST['submit'])) {
 //            if(!empty($resQuizQuestionsCount)){
@@ -91,6 +129,7 @@ class Employee extends MY_Controller {
                 redirect(EMPLOYEE__QUIZ_RESOURCES_LIST_LINK . $resQuiz['rmsa_uploaded_file_id']);
             }
         }
+        $this->mViewData['quizDetails']=$resQuiz;
         $this->mViewData['quiz_id'] = $quiz_id;
         $this->renderFront('front/addquestion');
     }
@@ -116,6 +155,34 @@ class Employee extends MY_Controller {
         }
     }
 
+    public function active_question() {
+        if (isset($_REQUEST['question_id'])) {
+//            sessionCheckToken($_POST);
+            $res = $this->Employee_model->active_question($_REQUEST);
+            if ($res) {
+//                $_SESSION['token'] = bin2hex(random_bytes(24));       
+                $data = array(
+                    'suceess' => true
+                );
+            }
+            echo json_encode($data);
+        }
+    }
+    
+    public function active_quiz() {
+        if (isset($_REQUEST['quiz_id'])) {
+//            sessionCheckToken($_POST);
+            $res = $this->Employee_model->active_quiz($_REQUEST);
+            if ($res) {
+//                $_SESSION['token'] = bin2hex(random_bytes(24));       
+                $data = array(
+                    'suceess' => true
+                );
+            }
+            echo json_encode($data);
+        }
+    }
+    
     public function active_file() {
         if (isset($_REQUEST['rmsa_uploaded_file_id'])) {
 //            sessionCheckToken($_POST);
