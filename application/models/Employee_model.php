@@ -36,9 +36,22 @@ class Employee_model extends CI_Model {
             return true;
         }
     }
+    public function edit_question($params) {
+        $query_res = $this->db->query("UPDATE  questions SET question = '{$params['question']}'
+                                       WHERE question_id='{$params['question_id']}'");
+        if ($query_res) {
+            return true;
+        }
+    }
     public function active_question($params) {
         $query_res = $this->db->query("UPDATE  questions SET question_status = '{$params['question_status']}'
                                        WHERE question_id='{$params['question_id']}'");
+        if ($query_res) {
+            return true;
+        }
+    }
+    public function delete_choice($question_id) {
+        $query_res = $this->db->query("DELETE  FROM choices WHERE question_id='{$question_id}'");
         if ($query_res) {
             return true;
         }

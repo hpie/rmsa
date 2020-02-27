@@ -55,7 +55,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="choice5">Choice #5:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" value="None of the Above" name="choice[]" id="choice5" placeholder="" readonly="" required="">
+                        <input type="text" class="form-control" value="None of the Above" name="choice[]" id="choice5" placeholder="" readonly="" required="" value="<?php echo $choiceDetails[3]['choice']; ?>">
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="correct_choice">Correct choice number:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" name="correct_choice" id="correct_choice" placeholder="" required="">
+                        <input type="text" class="form-control" name="correct_choice" id="correct_choice" placeholder="" required="" value="<?php foreach ($choiceDetails as $row){if ($row['is_correct']==1) { echo $row['choice'];}}?>">
                     </div>
                 </div>
             </div>            

@@ -62,13 +62,13 @@ class Employee extends MY_Controller {
         $this->renderFront('front/createquiz');
     }
 
-    public function edit_quistions($question_id) {
+    public function edit_quistions($question_id) {        
 //        $this->mViewData['quizDetails']=$this->Employee_model->get_quiz1_details($question_id);
 //        $resQuizQuestionsCount = $this->Employee_model->count_quiz_questions($quiz_id);        
         $resQuiz = $this->Employee_model->get_question($question_id);
         $resChoice = $this->Employee_model->get_choices($question_id);
 //        print_r($resQuiz);die;
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit'])) {           
 //            if(!empty($resQuizQuestionsCount)){
 //                if($resQuiz['quiz_min_questions']==$resQuizQuestionsCount){
 //                    $_SESSION['maxQuestionLimit']=1;
@@ -76,21 +76,26 @@ class Employee extends MY_Controller {
 //                }
 //            }
             $params = array();
-            $params['question'] = $_POST['question'];
-            $params['quiz_id'] = $quiz_id;
-            $res = $this->Employee_model->add_quistions($params);
-            if ($res) {
-                foreach ($_POST['choice'] as $choice => $value) {                    
+            $params['question'] = $_POST['question'];  
+            $params['question_id'] = $question_id;
+            $res = $this->Employee_model->edit_question($params);
+            $this->Employee_model->delete_choice($question_id);
+            if ($res) {                
+//                print_r($_POST);die;
+                foreach ($_POST['choice'] as $choice => $value) {                     
                     $params = array();
+                    if($value=="None of the Above"){
+                        $value=5;
+                    }
                     $params['choice'] = $value;
-                    $params['question_id'] = $res;
+                    $params['question_id'] = $question_id;
                     if ($_POST['correct_choice'] == $choice+1) {
                         $params['is_correct'] = 1;
                     }
                     $this->Employee_model->add_choice($params);
                 }
-                $_SESSION['questionAdd'] = 1;
-                redirect(EMPLOYEE__QUIZ_RESOURCES_LIST_LINK . $resQuiz['rmsa_uploaded_file_id']);
+                $_SESSION['questionEdit'] = 1;
+                redirect(EMPLOYEE_QUESTION_LIST_LINK.$resQuiz['quiz_id']);
             }
         }
 //        print_r($resChoice);die;
@@ -118,6 +123,9 @@ class Employee extends MY_Controller {
             if ($res) {
                 foreach ($_POST['choice'] as $choice => $value) {                    
                     $params = array();
+                    if($value=="None of the Above"){
+                        $value=5;
+                    }
                     $params['choice'] = $value;
                     $params['question_id'] = $res;
                     if ($_POST['correct_choice'] == $choice+1) {
@@ -126,7 +134,7 @@ class Employee extends MY_Controller {
                     $this->Employee_model->add_choice($params);
                 }
                 $_SESSION['questionAdd'] = 1;
-                redirect(EMPLOYEE__QUIZ_RESOURCES_LIST_LINK . $resQuiz['rmsa_uploaded_file_id']);
+                redirect(EMPLOYEE_QUESTION_LIST_LINK.$quiz_id);
             }
         }
         $this->mViewData['quizDetails']=$resQuiz;
