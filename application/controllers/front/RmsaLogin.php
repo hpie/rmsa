@@ -6,7 +6,12 @@ class RmsaLogin extends MY_Controller{
         if(isset($_SESSION['emp_rmsa_user_id']) OR isset($_SESSION['st_rmsa_user_id']) OR isset($_SESSION['tech_rmsa_user_id'])){
             redirect(HOME_LINK);
         }  
-        $this->load->helper('functions');        
+        $this->load->helper('functions');
+
+        $_SESSION['securityToken2']=$_SESSION['securityToken1'];
+        sessionCheckToken();
+        $_SESSION['securityToken1'] = bin2hex(random_bytes(24)); 
+        
         $this->load->model('Rmsa_Login');
         $this->load->model('Emp_Login'); 
          

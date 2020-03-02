@@ -1270,12 +1270,12 @@ $this->load->view('_partials/front/allnotify');
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
             {                
-                $('#example tfoot th').each(function () {
-                    var title = $('#example thead th').eq($(this).index()).text();
-                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
-                        $(this).html('<input type="text" placeholder="' + title + '" />');
-                    }
-                });
+//                $('#example tfoot th').each(function () {
+//                    var title = $('#example thead th').eq($(this).index()).text();
+//                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
+//                        $(this).html('<input type="text" placeholder="' + title + '" />');
+//                    }
+//                });
                 var table = $('#example').DataTable({                
                     responsive: {
                         details: {
@@ -1343,7 +1343,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'rmsa_uploaded_file_id': self.data('id'),
                     'uploaded_file_status': uploaded_file_status
-                }
+                };
 
                 $.ajax({
                     type: "POST",

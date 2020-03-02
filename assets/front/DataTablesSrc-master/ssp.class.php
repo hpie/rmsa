@@ -595,7 +595,8 @@ class SSP {
                     } else {
                         $where .= 'WHERE ' . $where_custom;
                     }
-                }                
+                }
+//                echo $where;die;
                 $data = self::sql_exec( $db, $bindings,
 			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
 			 FROM $table

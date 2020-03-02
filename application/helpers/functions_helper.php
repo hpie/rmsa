@@ -65,15 +65,16 @@ if (!defined('BASEPATH'))
             return false;
         }
         return true;
-    }
-     function sessionCheckToken($array) {                 
-        if (hash_equals($_SESSION['token'], $array['token'])) {            
-            unset($_POST['token']);
-        } else {
-            redirect(HOME_LINK);
-        }
+    }        
+    function sessionCheckToken($array) {
+    if (hash_equals($_SESSION['securityToken1'], $_SESSION['securityToken2'])) {
         return true;
+    } else {
+        session_destroy();
+        redirect(BASE_URL);
     }
+    return true;
+}
     
 
     function sessionCheckRmsa() {

@@ -9,7 +9,7 @@
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
         <h1 class="heading">Create Quiz  For <?php echo $fileDetails[0]['uploaded_file_title']; ?></h1>
-        <form method="post" id="create_quiz" class="form-horizontal border p-2" action="<?php echo EMPLOYEE_CREATE_QUIZ_LINK.$rmsa_uploaded_file_id; ?>">
+        <form method="post" id="create_quiz" class="form-horizontal border p-2" action="<?php echo EMPLOYEE_CREATE_QUIZ_LINK.$rmsa_uploaded_file_id; ?>">           
             <h2 class="second-heading"><a href="<?php echo 'https://docs.google.com/viewer?url='.BASE_URL.FILE_URL.'/'.$fileDetails[0]['uploaded_file_path'].'&embedded=true'; ?>">View file </a></h2>            
             <div class="form-group">
                 <div class="row">

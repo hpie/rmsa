@@ -42,6 +42,8 @@ $columns = array(
 );
 include 'conn.php';
 
+//print_r($_REQUEST);die;
+
 $emp_rmsa_user_id = $_REQUEST['emp_rmsa_user_id'];
 $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
 if(empty($uploaded_file_tag)){
@@ -61,7 +63,7 @@ else{
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.
  */
-require('ssp.class.php' );
+require('ssp.class.php');
 echo json_encode(
        SSP::emp_file_list($_REQUEST, $sql_details, $table, $primaryKey, $columns,$where,$emp_rmsa_user_id)
 );

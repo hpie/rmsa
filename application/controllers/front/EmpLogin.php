@@ -6,14 +6,18 @@ class EmpLogin extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
+                                
         $this->load->helper('functions');
+        
+        $_SESSION['securityToken2']=$_SESSION['securityToken1'];
+        sessionCheckToken();
+        $_SESSION['securityToken1'] = bin2hex(random_bytes(24)); 
+        
+        
+        
         if (isset($_SESSION['st_rmsa_user_id']) OR isset($_SESSION['rm_rmsa_user_id']) OR isset($_SESSION['tech_rmsa_user_id'])) {
             redirect(HOME_LINK);
-        }
-        
-     
-                
-        
+        }                                    
         $this->load->model('Emp_Login');        
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
@@ -35,13 +39,7 @@ class EmpLogin extends MY_Controller {
         }
         $_SESSION['invalid_login'] = 0;
         if (isset($_POST['username']) && isset($_POST['password'])) {            
-//            sessionCheckToken($_POST);  
-//            print_r($_POST);die;
             $result = $this->Emp_Login->Emp_Login_select($_POST['username'], $_POST['password']);
-                                    
-//           if($result == 2 ){
-//               $_SESSION['another_login'] = 1;               
-//           }
             if ($result == true) {               
                 redirect(HOME_LINK);
             }
@@ -50,7 +48,6 @@ class EmpLogin extends MY_Controller {
             }
         }
         $this->mViewData['title'] = EMPLOYEE_LOGIN_TITLE;
-//        $_SESSION['token'] = bin2hex(random_bytes(24));
         $this->renderFront('front/emplogin');
     }
 

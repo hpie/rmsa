@@ -3,6 +3,7 @@
     <div class="middle-area">
         <h1 class="heading">View Information of RMSA Coordinates</h1>
         <form class="form-horizontal border p-2" action="#">
+            
             <h2 class="second-heading">Registered Students</h2>
 
             <div class="form-group">

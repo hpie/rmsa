@@ -3,6 +3,7 @@
     <div class="middle-area">
         <h1 class="heading">Registration of Employee in the RMSA Portal</h1>
         <form class="form-horizontal border p-2" action="#">
+          
             <h2 class="second-heading text-center">GenPMIS Login
             </h2>
             <div class="form-group">

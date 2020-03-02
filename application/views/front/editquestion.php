@@ -10,6 +10,7 @@
     <div class="middle-area">
         <h1 class="heading">Add question for <?php echo $quizDetails['quiz_title']; ?></h1>
         <form method="post" id="create_quiz" class="form-horizontal border p-2" action="<?php echo EMPLOYEE_EDIT_QUISTIONS_LINK.$question_id; ?>">
+           
             <h2 class="second-heading">Quiz Title : <?php echo $quizDetails['quiz_title']; ?></h2>            
             <div class="form-group">
                 <div class="row">

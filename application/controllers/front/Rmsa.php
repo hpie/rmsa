@@ -5,7 +5,12 @@ class Rmsa extends MY_Controller
 {
     public function __construct(){
         parent::__construct();
-        $this->load->helper('functions');        
+        $this->load->helper('functions');
+
+        $_SESSION['securityToken2']=$_SESSION['securityToken1'];
+        sessionCheckToken();
+        $_SESSION['securityToken1'] = bin2hex(random_bytes(24)); 
+        
         sessionCheckRmsa();
         $this->load->model('Rmsa_model');
         $this->load->model('Helper_model');

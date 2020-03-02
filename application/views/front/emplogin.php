@@ -3,6 +3,7 @@
     <div class="middle-area">
         <h1 class="heading">RMSA: &nbsp;Employee Login Screen</h1>
         <form class="form-horizontal border p-2" method="post" action="<?php echo EMPLOYEE_LOGIN_LINK ?>">
+            
             <h2 class="second-heading text-center">Authorized login</h2>           
             <div class="form-group">
                 <div class="row">

@@ -5,7 +5,12 @@ class Resource extends MY_Controller{
     public function __construct(){
        // $this->session->sessionCheckStudent();
         parent::__construct();
-        $this->load->helper('functions');        
+        $this->load->helper('functions'); 
+        
+        $_SESSION['securityToken2']=$_SESSION['securityToken1'];
+        sessionCheckToken();
+        $_SESSION['securityToken1'] = bin2hex(random_bytes(24)); 
+        
         $this->load->model('Resource_model');
         $this->load->model('Emp_Login'); 
         

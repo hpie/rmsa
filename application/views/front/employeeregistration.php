@@ -10,6 +10,7 @@
     <div class="middle-area">
         <h1 class="heading">Registration of Students in the RMSA Portal</h1>
         <form method="post" id="employee_register" class="form-horizontal border p-2" action="<?php echo RMSA_EMPLOYEE_REGISTER_LINK; ?>">
+            
             <h2 class="second-heading">General Information</h2>
            
             <div class="form-group">

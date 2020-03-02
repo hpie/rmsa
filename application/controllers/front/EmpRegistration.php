@@ -3,11 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class EmpRegistration extends MY_Controller{
     public function __construct(){
+        parent::__construct();
         if(isset($_SESSION['st_rmsa_user_id'])){
             redirect(HOME_LINK);
         }
-        $this->load->helper('functions');
-        parent::__construct();
+        $this->load->helper('functions'); 
+        
+        $_SESSION['securityToken2']=$_SESSION['securityToken1'];
+        sessionCheckToken();
+        $_SESSION['securityToken1'] = bin2hex(random_bytes(24)); 
+        
         $this->load->model('Emp_Login');
       
         
