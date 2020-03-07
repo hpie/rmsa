@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta http-equiv="Content-Security-Policy" content="object-src 'none'; script-src 'nonce-S51U26wMQz';">
+    <meta http-equiv="Content-Security-Policy" content="object-src 'self'; script-src 'nonce-S51U26wMQz'">
     <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'nonce-<?php //echo $_SESSION['nonce']; ?>' https://www.google.com https://www.gstatic.com https://fonts.gstatic.com;">-->
 	
 <!--	<meta http-equiv="Content-Security-Policy" content="
