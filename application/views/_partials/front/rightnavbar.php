@@ -23,9 +23,7 @@
                                 </marquee>
                             </div>
                         </div>
-                </div>-->
-                
-                
+                </div>-->                                
 <!--                <div class="col-md-3 col-sm-4 col-12 ">-->
                         <div class="right-side-area">
                             <h1><a href="#">Message from Hon'ble Minister</a></h1>
