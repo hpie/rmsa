@@ -68,7 +68,7 @@
                     <script>function enableReview() { document.getElementById("btn_post_review").disabled = false; }</script>
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp"></label>
                     <div class="col-sm-8 col-xs-12">
-                        <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableReview"></div>
+                        <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableReview" nonce="<?php echo $_SESSION['nonce']; ?>"></div>
                     </div>
                 </div>
             </div>

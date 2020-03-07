@@ -11,7 +11,7 @@ if (!defined('BASEPATH'))
         $_SESSION['usertype']='student';
         return;
     }
-     function sessionEmployee($row) {
+    function sessionEmployee($row) {
          session_regenerate_id();
         foreach ($row as $key => &$value) {
             $_SESSION['emp_' . $key] = $value;
