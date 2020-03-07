@@ -30,7 +30,7 @@
                         <div class="right-side-area">
                             <h1><a href="#">Message from Hon'ble Minister</a></h1>
                             <div class="marque">
-                                <marquee style="height:150px;" direction="up" behaviour="scroll" scrollamount="4"
+                                <marquee nonce='S51U26wMQz' style="height:150px;" direction="up" behaviour="scroll" scrollamount="4"
                                     title="Holding your cursor over this stops the marquee" onmouseover="this.stop();"
                                     onmouseout="this.start();">
                                     <ul>

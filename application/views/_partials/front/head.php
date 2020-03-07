@@ -1,10 +1,9 @@
-<?php $_SESSION['nonce']=bin2hex(random_bytes(24)); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'nonce-<?php echo $_SESSION['nonce']; ?>';  https://www.google.com https://www.gstatic.com https://fonts.gstatic.com;">
+    <meta http-equiv="Content-Security-Policy" content="object-src 'none'; script-src 'nonce-S51U26wMQz';">
     <title><?php echo $title; ?></title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
     <link href="<?php echo BASE_URL ?>/assets/front/css/bootstrap1.min.css" rel="stylesheet" type="text/css"/>
@@ -14,8 +13,8 @@
     <link href="<?php echo BASE_URL ?>/assets/front/css/googlefont.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/front/css/font-awesome.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/front/css/main.css">    
-    <script src="<?php echo BASE_URL; ?>/assets/front/js/jquery.min.js"></script>
-    <script src="<?php echo BASE_URL; ?>/assets/front/js/bootstrap.min.js"></script>
+    <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.min.js"></script>
+    <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/bootstrap.min.js"></script>
     <link href="<?php echo BASE_URL; ?>/assets/pnotify/dist/pnotifiadmin.css" rel="stylesheet">    
     <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css">

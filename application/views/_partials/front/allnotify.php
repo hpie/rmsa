@@ -1,4 +1,4 @@
-<script>
+<script nonce='S51U26wMQz'  >
 $(document).ready(function () {
 <?php
 if(isset($_SESSION['invalidAttempt'])){

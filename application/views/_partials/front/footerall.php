@@ -26,18 +26,18 @@ $this->load->view('_partials/front/scripts');
 //	include('_partials/scripts.php'); // Includes Scripts Script
 ?>
 <!-- End Import Scripts -->
-<script src="<?php echo BASE_URL ?>/assets/front/js/bootstrapValidator.min.js" type="text/javascript"></script>
-<script src="<?php echo BASE_URL ?>/assets/front/js/Chart.bundle.js" type="text/javascript"></script>
-<script src="<?php echo BASE_URL ?>/assets/front/js/Chart.bundle.min.js" type="text/javascript"></script>
-<script src="<?php echo BASE_URL ?>/assets/front/js/Chart.js" type="text/javascript"></script>
-<script src="<?php echo BASE_URL ?>/assets/front/js/Chart.min.js" type="text/javascript"></script>
+<script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/bootstrapValidator.min.js" type="text/javascript"></script>
+<script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/Chart.bundle.js" type="text/javascript"></script>
+<script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/Chart.bundle.min.js" type="text/javascript"></script>
+<script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/Chart.js" type="text/javascript"></script>
+<script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/Chart.min.js" type="text/javascript"></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>-->
 
-<script type="text/javascript">
+<script nonce='S51U26wMQz' type="text/javascript">
     $(document).ready(function () {                
         $('input[type=text]').keypress(function (e) {                 
             var keyCode = e.keyCode || e.which;            
@@ -61,7 +61,7 @@ $this->load->view('_partials/front/scripts');
         });
     });
 </script>   
-<script>
+<script nonce='S51U26wMQz'>
 //    function myFunction() {       
 //        myVar = setTimeout(showPage, 3000);
 //    }
@@ -120,7 +120,7 @@ $this->load->view('_partials/front/scripts');
 $this->load->view('_partials/front/allnotify');
 ?>
 
-<script>
+<script nonce='S51U26wMQz'>
     $(document).ready(function () {
         $(".emp_reports").on('change', function () {
             var type = $(this).val();
@@ -132,7 +132,7 @@ $this->load->view('_partials/front/allnotify');
     });
 </script>
 
-<script>
+<script nonce='S51U26wMQz'>
     $(document).ready(function () {
         $(".reports_go").on('click', function () {
             var type = $('.emp_reports_type').find(":selected").val();
@@ -152,7 +152,7 @@ $this->load->view('_partials/front/allnotify');
 </script>
 <?php if ($title == REPORTS_2_UPLOADED_CONTENT_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var month = [];
         var count = [];
         $(most_upload).each(function (key, data) {
@@ -288,7 +288,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == REPORTS_2_STUDENT_REGISTERED_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var month = [];
         var count = [];
         $(most_upload).each(function (key, data) {
@@ -424,7 +424,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>    
     <?php if ($title == REPORTS_2_TEACHER_REGISTERED_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var month = [];
         var count = [];
         $(most_upload).each(function (key, data) {
@@ -561,7 +561,7 @@ $this->load->view('_partials/front/allnotify');
     
 <?php if ($title == MOST_CONTENT_UPLOADED_EMPLOYEE_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var employee_name = [];
         var overall_rating = [];
 
@@ -618,7 +618,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_CONTENT_RATED_EMPLOYEE_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var employee_name = [];
         var overall_rating = [];
 
@@ -676,7 +676,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_CONTENT_VIEW_EMPLOYEE_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var employee_name = [];
         var uploaded_file_viewcount = [];
 
@@ -737,7 +737,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_RATED_CONTENT_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var uploaded_file_title = [];
         var overall_rating = [];
 
@@ -796,7 +796,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_VIEWED_CONTENT_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var uploaded_file_title = [];
         var uploaded_file_viewcount = [];
 
@@ -855,7 +855,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_ACTIVE_STUDENT_BY_CONTENT_READ) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var student_name = [];
         var most_active = [];
 
@@ -914,7 +914,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_ACTIVE_STUDENT_ON_SCHOOL_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var school_name = [];
         var most_active = [];
 
@@ -973,7 +973,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == TOP_DISTRICT_WITH_MOST_CONTENT) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var district_name = [];
         var total_upload = [];
 
@@ -1032,7 +1032,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == RMSA_FILE_LIST_TITLE) {
     ?> 
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
@@ -1175,7 +1175,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == TEACHER_FILE_LIST_TITLE) {
     ?> 
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
@@ -1265,7 +1265,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == EMPLOYEE_FILE_LIST_TITLE) {
     ?> 
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {            
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
@@ -1415,7 +1415,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == EMPLOYEE_FILE_LIST_QUIZ_TITLE) {
     ?> 
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
@@ -1565,7 +1565,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
     <?php if ($title == EMPLOYEE_QUIZ_LIST_TITLE) {
     ?> 
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1()
@@ -1678,7 +1678,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
      <?php if ($title == EMPLOYEE_QUESTIONS_LIST_TITLE) {
     ?> 
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1()
@@ -1790,7 +1790,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == STUDENT_RESOURCES_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var uploaded_file_id;
         var review_modal = $("#review-modal");
         var view_reviews_modal = $("#view-reviews");
@@ -1982,7 +1982,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == EMPLOYEE_STUDENT_LIST_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             $('#example').DataTable({
 
@@ -2081,7 +2081,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == TEACHER_STUDENT_LIST_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             $('#example').DataTable({
                 responsive: {
@@ -2178,7 +2178,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == RMSAE_STUDENT_LIST_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             $('#example').DataTable({
 
@@ -2306,7 +2306,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
     <?php if ($title == RMSAE_EMPLOYEE_LIST_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             $('#example').DataTable({
 
@@ -2429,7 +2429,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == RMSAE_TEACHERS_LIST_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             $('#example').DataTable({
 
@@ -2553,7 +2553,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == STUDENT_PROFILE_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             $('#frm_general_info').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
@@ -2675,7 +2675,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == EMPLOYEE_STUDENT_PROFILE_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
             $('#frm_general_info').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
@@ -2796,7 +2796,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == RMSA_STUDENT_PROFILE_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
 
             $('#rmsa_district').on('change', function () {
@@ -2981,7 +2981,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
     <?php if ($title == RMSA_EMPLOYEE_PROFILE_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
 
             $('#rmsa_district').on('change', function () {
@@ -3166,7 +3166,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == RMSA_TEACHER_PROFILE_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
 
             $('#rmsa_district').on('change', function () {
@@ -3353,7 +3353,7 @@ $this->load->view('_partials/front/allnotify');
 <?php
 if ($title == FILE_REVIEWS_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         var reply_modal = $("#reply-modal");
         var fileId = "<?php echo $reviews['fileId']; ?>";
         var commentId;
@@ -3391,7 +3391,7 @@ if ($title == FILE_REVIEWS_TITLE) {
 ?>
 <?php if ($title == RMSA_EMPLOYEE_REGISTRATION_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
 
             $('#employee_register').bootstrapValidator({
@@ -3563,7 +3563,7 @@ if ($title == FILE_REVIEWS_TITLE) {
 
 <?php if ($title == RMSA_TEACHER_REGISTRATION_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
         $(document).ready(function () {
 
             $('#employee_register').bootstrapValidator({
@@ -3734,7 +3734,7 @@ if ($title == FILE_REVIEWS_TITLE) {
 
 <?php if ($title == STUDENT_REGISTRATION_TITLE) {
     ?>
-    <script>
+    <script nonce='S51U26wMQz'>
 
         $(document).ready(function () {
 
@@ -3934,7 +3934,7 @@ if (isset($_SESSION['st_rmsa_student_login_active'])) {
 //    please run this sql on backend
 //    ALTER TABLE `rmsa_student_users` ADD `rmsa_student_login_active` INT(1) NOT NULL AFTER `modified_dt`;
         ?>
-        <script>
+        <script nonce='S51U26wMQz'>
             $(document).ready(function () {
                 window.setInterval(function () {
                     $.ajax({
@@ -3962,7 +3962,7 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
 //    please run this sql on backend
 //     ALTER TABLE `rmsa_employee_users` ADD `rmsa_employee_login_active` INT(1) NOT NULL AFTER `modified_dt`;
         ?>
-        <script>
+        <script nonce='S51U26wMQz'>
             $(document).ready(function () {
                 window.setInterval(function () {
                     $.ajax({
@@ -3982,7 +3982,7 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
     }
 }
 ?>
-<!--        <script>
+<!--        <script nonce='S51U26wMQz'>
 $(document).ready(function () {
 $('a').each(function(){  
 $(this).attr('onclick','window.location.href="'+$(this).attr('href')+'"');
