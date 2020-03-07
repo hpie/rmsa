@@ -4,7 +4,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'nonce-<?php echo $_SESSION['nonce']; ?>';  https://www.google.com https://www.gstatic.com https://fonts.gstatic.com;">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'nonce-<?php echo $_SESSION['nonce']; ?>' https://www.google.com https://www.gstatic.com https://fonts.gstatic.com;">-->
+	
+	<meta http-equiv="Content-Security-Policy" content="
+		default-src 
+		'self'
+		https://fonts.gstatic.com 
+		https://www.google.com 
+		https://www.gstatic.com 
+		'sha256-1VX18TtkQra0JXkm20ZxU8P9eN+gxFcekelgWqCgX5I=' 
+		'sha256-P6Iu36KC7tFxS/wj7dgkcfQAQoXoe+ApdFEUSM3T2EY=' 
+		'sha256-oC3DkadKVgPxYscP9I1BG4vBZPDAGT6Wg2pS2dGqdRc=' 
+		'sha256-BMdb04w9Rq4FNOX+3UzJFvr3MgTl1oBoK4UCtVEySOM=' 
+		'sha256-0fzRu1gjnArU0ytOoAh/8KkXYJrdLn34PlqewZN1MUQ=' 
+		'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 
+		'sha256-BQ5eA/mw6jES31KSfh/A55TC7nzftLBWpZBzzDfwUrA=' 
+		'sha256-SBaHvXSyXks3TIXVKn9Gqy4o2PN421QsgkmlzfWsnug=' 
+		'sha256-XR83ERgx2TOvCF9lulgoxtjL3OhmjYcaD7TN+JASsmQ=' 
+		'sha256-hyovrCo3ga4q6P5biJq9L0R89UkUXtwbcE+7hPfrUTs=' 
+		'sha256-f68AwUhmWitDwx040iUVSjhDB9Mfa8Ce1wct4isA9Jc=' 
+		'sha256-NDdKrvB0I5NbaNI1qN5DeU6DhLFo44/LgMGOOHF4T+s='
+		'sha256-YwuGBWTr5CDQCtLZbzMgZ6u8jxN8Si0DHAp1JZcBt3Y='
+		'nonce-<?php echo $_SESSION['nonce']; ?>';
+		">
+	
     <title><?php echo $title; ?></title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
     <link href="<?php echo BASE_URL ?>/assets/front/css/bootstrap1.min.css" rel="stylesheet" type="text/css"/>
