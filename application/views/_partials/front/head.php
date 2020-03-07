@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <!--<meta http-equiv="Content-Security-Policy" content="object-src 'none'; script-src 'nonce-S51U26wMQz';">-->
-    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'nonce-<?php echo $_SESSION['nonce']; ?>' https://www.google.com https://www.gstatic.com https://fonts.gstatic.com;">-->
+    <meta http-equiv="Content-Security-Policy" content="object-src 'none'; script-src 'nonce-S51U26wMQz';">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'nonce-<?php //echo $_SESSION['nonce']; ?>' https://www.google.com https://www.gstatic.com https://fonts.gstatic.com;">-->
 	
-	<meta http-equiv="Content-Security-Policy" content="
+<!--	<meta http-equiv="Content-Security-Policy" content="
 		default-src 
 		'self'
 		https://fonts.gstatic.com 
@@ -27,7 +27,7 @@
 		'sha256-NDdKrvB0I5NbaNI1qN5DeU6DhLFo44/LgMGOOHF4T+s='
 		'sha256-YwuGBWTr5CDQCtLZbzMgZ6u8jxN8Si0DHAp1JZcBt3Y='
 		'nonce-S51U26wMQz;
-		">
+		">-->
     <title><?php echo $title; ?></title>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
     <link href="<?php echo BASE_URL ?>/assets/front/css/bootstrap1.min.css" rel="stylesheet" type="text/css"/>
