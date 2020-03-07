@@ -64,8 +64,8 @@
 
             <div class="form-group">
                 <div class="row">
-                    <script src="https://www.google.com/recaptcha/api.js" nonce="<?php echo $_SESSION['nonce']; ?>" async defer></script>
-                    <script>function enableReview() { document.getElementById("btn_post_review").disabled = false; }</script>
+                    <script nonce='S51U26wMQz' src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <script nonce='S51U26wMQz'>function enableReview() { document.getElementById("btn_post_review").disabled = false; }</script>
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp"></label>
                     <div class="col-sm-8 col-xs-12">
                         <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableReview"></div>
