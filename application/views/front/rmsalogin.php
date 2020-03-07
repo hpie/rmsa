@@ -25,13 +25,13 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <script src="https://www.google.com/recaptcha/api.js" nonce="<?php echo $_SESSION['nonce']; ?>" async defer></script>
                     <script>function enableLogin() {
                             document.getElementById("btnLogin").disabled = false;
                         }</script>
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp"></label>
                     <div class="col-sm-8 col-xs-12">
-                        <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableLogin" nonce="<?php echo $_SESSION['nonce']; ?>"></div>
+                        <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableLogin"></div>
                     </div>
                 </div>
             </div>

@@ -38,7 +38,7 @@
             <input type="hidden" name="rmsa_uploaded_file_id" value="<?php echo $rmsa_uploaded_file_id; ?>" />
             <div class="form-group">
                 <div class="row">
-                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <script src="https://www.google.com/recaptcha/api.js" nonce="<?php echo $_SESSION['nonce']; ?>" async defer></script>
                     <script>function enableRegister() {
                         $("#btnRegister").removeClass('btn_disabled');
                         document.getElementById("btnRegister").disabled = false;
@@ -51,7 +51,7 @@
             </div>
             <div class="form-group">
                 <div class="m-auto text-center">    
-                    <button type="submit" name="submit" class="btn primary_btn btn_disabled"  disabled="true" id="btnRegister" nonce="<?php echo $_SESSION['nonce']; ?>">Submit</button>
+                    <button type="submit" name="submit" class="btn primary_btn btn_disabled"  disabled="true" id="btnRegister">Submit</button>
                 </div>
             </div>
         </form>
