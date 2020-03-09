@@ -36,8 +36,8 @@ $this->load->view('_partials/front/head');
     }
 </style>
 <!-- End Import Head -->
-<!--<body>-->
-    <body oncontextmenu="return false">
+<body>
+    <!--<body oncontextmenu="return false">-->
        
         
 <!--<body onload="myFunction()">-->

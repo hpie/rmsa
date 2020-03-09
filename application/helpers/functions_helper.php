@@ -3,8 +3,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
  function sessionStudent($row) {
-        session_regenerate_id();
-        foreach ($row as $key => &$value) {
+//        session_regenerate_id();
+//        print_r($row);die;
+        foreach ($row as $key => &$value) {            
             $_SESSION['st_' . $key] = $value;
         }
         $_SESSION['user_id']=$row['rmsa_user_id'];
@@ -12,7 +13,7 @@ if (!defined('BASEPATH'))
         return;
     }
     function sessionEmployee($row) {
-         session_regenerate_id();
+//         session_regenerate_id();
         foreach ($row as $key => &$value) {
             $_SESSION['emp_' . $key] = $value;
         }
@@ -21,7 +22,7 @@ if (!defined('BASEPATH'))
         return;
     }
      function sessionTeacher($row) {
-         session_regenerate_id();
+//         session_regenerate_id();
         foreach ($row as $key => &$value) {
             $_SESSION['tech_' . $key] = $value;
         }
@@ -31,7 +32,7 @@ if (!defined('BASEPATH'))
     }
 
      function sessionRmsa($row) {
-        session_regenerate_id(); 
+//        session_regenerate_id(); 
         foreach ($row as $key => &$value) {
             $_SESSION['rm_' . $key] = $value;
         }
@@ -90,6 +91,6 @@ if (!defined('BASEPATH'))
     }
     
     function sessionDestroy() {
-        session_regenerate_id();
+//        session_regenerate_id();
         session_destroy();
     }

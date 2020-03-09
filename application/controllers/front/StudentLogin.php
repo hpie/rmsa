@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class StudentLogin extends MY_Controller{
-    public function __construct(){
+    public function __construct(){       
+        
         if(isset($_SESSION['emp_rmsa_user_id']) OR isset($_SESSION['rm_rmsa_user_id']) OR isset($_SESSION['tech_rmsa_user_id'])){
             redirect(HOME_LINK);
         }
@@ -20,7 +21,7 @@ class StudentLogin extends MY_Controller{
         
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
-            if ($result) {                
+            if ($result) {                    
                 $token = $result['token'];
                 if($_SESSION['tokencheck'] != $token) {
                     session_destroy(); 
@@ -39,7 +40,7 @@ class StudentLogin extends MY_Controller{
         if (isset($_POST['username']) && isset($_POST['password'])) {
 //            sessionCheckToken($_POST);
             $result = $this->Login_model->login_select($_POST['username'], $_POST['password']);           
-            if ($result == true) {
+            if ($result == true) {               
                 redirect(HOME_LINK);               
             }
             if ($result == false) {

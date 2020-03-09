@@ -12,9 +12,7 @@ class EmpLogin extends MY_Controller {
         $_SESSION['securityToken2']=$_SESSION['securityToken1'];
         sessionCheckToken();
         $_SESSION['securityToken1'] = bin2hex(random_bytes(24)); 
-        
-        
-        
+                        
         if (isset($_SESSION['st_rmsa_user_id']) OR isset($_SESSION['rm_rmsa_user_id']) OR isset($_SESSION['tech_rmsa_user_id'])) {
             redirect(HOME_LINK);
         }                                    
@@ -31,7 +29,7 @@ class EmpLogin extends MY_Controller {
         }
     }
     
-    public function index() {
+    public function index() {        
         if (isset($_SESSION['emp_rmsa_user_id'])) {
             if ($_SESSION['emp_rmsa_user_id'] > 0) {
                 redirect(HOME_LINK);
