@@ -2616,7 +2616,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_new_password: {
                         validators: {
                             stringLength: {
-                                min: 6,
+                                min: 8,
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -2630,7 +2630,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 6,
+                                min: 8,
                             },
                             identical: {
                                 field: 'rmsa_user_new_password',
@@ -2738,7 +2738,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_new_password: {
                         validators: {
                             stringLength: {
-                                min: 6
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -2752,7 +2752,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 6
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_new_password',
@@ -2923,7 +2923,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_new_password: {
                         validators: {
                             stringLength: {
-                                min: 6
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -2937,7 +2937,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 6
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_new_password',
@@ -3108,7 +3108,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_new_password: {
                         validators: {
                             stringLength: {
-                                min: 6
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -3122,7 +3122,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 6
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_new_password',
@@ -3293,7 +3293,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_new_password: {
                         validators: {
                             stringLength: {
-                                min: 6
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -3307,7 +3307,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 6
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_new_password',
@@ -3445,7 +3445,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_email_password: {
                         validators: {
                             stringLength: {
-                                min: 6,
+                                min: 8,
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -3459,7 +3459,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 6,
+                                min: 8,
                             },
                             identical: {
                                 field: 'rmsa_user_email_password',
@@ -3617,7 +3617,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_email_password: {
                         validators: {
                             stringLength: {
-                                min: 6
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -3631,7 +3631,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 6
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_email_password',
@@ -3789,7 +3789,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_email_password: {
                         validators: {
                             stringLength: {
-                                min: 6,
+                                min: 8,
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -3803,7 +3803,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 6,
+                                min: 8,
                             },
                             identical: {
                                 field: 'rmsa_user_email_password',
