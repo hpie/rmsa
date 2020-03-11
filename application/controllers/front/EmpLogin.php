@@ -70,7 +70,7 @@ class EmpLogin extends MY_Controller {
         $captcha_total = $num1 + $num2;
         $math = "$num1" . " + " . "$num2" . " =";
         $_SESSION['rand_code'] = $captcha_total;
-        $font = 'assets/Arial.ttf';
+        $font = 'assets/arial.ttf'; 
         $image = imagecreatetruecolor(120, 30); //Change the numbers to adjust the size of the image
         $black = imagecolorallocate($image, 0, 0, 0);
         $color = imagecolorallocate($image, 255, 255, 255);
