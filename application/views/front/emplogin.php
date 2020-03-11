@@ -25,19 +25,17 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <script nonce='S51U26wMQz' src="https://www.google.com/recaptcha/api.js" async defer></script>
-                    <script nonce='S51U26wMQz'>function enableLogin() {
-                            document.getElementById("btnLogin").disabled = false;
-                        }</script>
-                    <label class="control-label col-sm-4 col-xs-12" for="ptsp"></label>
+                    <label class="control-label col-sm-4 col-xs-12" for="password">reCaptcha:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableLogin"></div>
+                    <img src="<?php echo FRONT_CAPTCHA_LINK; ?>" />
+                    <input name="captcha_entered" style = "width: 100px !important;" type="text" id="captcha_entered" size="5" maxlength="2" placeholder = "Answer" required=""/>                    
+                    <!--<input type="hidden" name="captcha_total" id="captcha_total" value="<?php //echo $_SESSION['rand_code']; ?>" />-->
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="m-auto text-center">
-                    <button type="submit" class="btn primary_btn" disabled="true" id="btnLogin">Login</button>
+                    <button type="submit" class="btn primary_btn">Login</button>
                 </div>
             </div>            
         </form>

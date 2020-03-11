@@ -97,6 +97,7 @@ $route['api/v1/(:any)/(:any)']			= "api_v1/$1/$2";
 */
 
 
+$route['captcha']           = 'front/EmpLogin/recaptcha';
 //all rmsa users routes
 $route['rmsa-login']           = 'front/RmsaLogin';
 $route['rmsa-logout']          = 'front/RmsaLogin/rmsaLogout';

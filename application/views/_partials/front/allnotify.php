@@ -7,6 +7,18 @@ if(isset($_SESSION['invalidAttempt'])){
     }
 }
 ?>
+               if (<?php
+if (isset($_SESSION['captcha'])) {
+    echo $_SESSION['captcha'];
+}else{echo 0;}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'invalid captcha',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+                <?php $_SESSION['captcha'] = 0; ?>
+            }
         if (<?php
 if (isset($_SESSION['questionEdit'])) {
     echo $_SESSION['questionEdit'];
