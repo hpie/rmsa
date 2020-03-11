@@ -36,6 +36,7 @@ class RmsaLogin extends MY_Controller{
         }
         $_SESSION['invalid_login'] = 0;
         if(isset($_POST['username']) && isset($_POST['password'])){
+           reCaptchaResilt($_REQUEST['captcha_entered'],RMSA_LOGIN_LINK);
 //            sessionCheckToken($_POST);
            $result = $this->Rmsa_Login->Rmsa_Login_select($_POST['username'],$_POST['password']);
            if($result == true){              

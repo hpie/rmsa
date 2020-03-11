@@ -28,7 +28,6 @@ class EmpLogin extends MY_Controller {
             }
         }
     }
-
     public function index() {
         if (isset($_SESSION['emp_rmsa_user_id'])) {
             if ($_SESSION['emp_rmsa_user_id'] > 0) {
@@ -36,13 +35,8 @@ class EmpLogin extends MY_Controller {
             }
         }
         $_SESSION['invalid_login'] = 0;
-        if (isset($_POST['username']) && isset($_POST['password'])) {
-            
-            if ($_REQUEST['captcha_entered']!=$_SESSION['rand_code']) {
-                $_SESSION['captcha']=1;
-                redirect(EMPLOYEE_LOGIN_LINK);
-            }  
-            
+        if (isset($_POST['username']) && isset($_POST['password'])) {            
+            reCaptchaResilt($_REQUEST['captcha_entered'],EMPLOYEE_LOGIN_LINK);
             $result = $this->Emp_Login->Emp_Login_select($_POST['username'], $_POST['password']);
             if ($result == true) {
                 redirect(HOME_LINK);

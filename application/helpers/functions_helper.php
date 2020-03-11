@@ -2,6 +2,13 @@
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
+function reCaptchaResilt($captcha_entered,$redirect_url){
+            if ($captcha_entered!=$_SESSION['rand_code']) {
+                $_SESSION['captcha']=1;
+                redirect($redirect_url);
+            }
+            return true;
+}
  function sessionStudent($row) {
 //        session_regenerate_id();
 //        print_r($row);die;
