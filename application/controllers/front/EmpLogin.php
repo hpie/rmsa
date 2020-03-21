@@ -36,7 +36,7 @@ class EmpLogin extends MY_Controller {
         }
         $_SESSION['invalid_login'] = 0;
         if (isset($_POST['username']) && isset($_POST['password'])) {            
-            reCaptchaResilt($_REQUEST['captcha_entered'],EMPLOYEE_LOGIN_LINK);
+//            reCaptchaResilt($_REQUEST['captcha_entered'],EMPLOYEE_LOGIN_LINK);
             $result = $this->Emp_Login->Emp_Login_select($_POST['username'], $_POST['password']);
             if ($result == true) {
                 redirect(HOME_LINK);
