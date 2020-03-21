@@ -34,6 +34,6 @@
     </div>
     <canvas id="most_content_upload_employee" width="200" height="200"></canvas>
 </div>
-<script>
+<script nonce='S51U26wMQz'>
     window.most_upload = <?php echo json_encode($data) ?>
 </script>

@@ -29,6 +29,6 @@
         <canvas id="top_district_upload_content" width="200" height="200"></canvas>
     </div>
 </div>
-<script>
+<script nonce='S51U26wMQz'>
     window.top_district_upload_content = <?php echo json_encode($data) ?>
 </script>

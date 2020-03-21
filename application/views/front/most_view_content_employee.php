@@ -38,6 +38,6 @@
         <canvas id="most_content_view_employee" width="200" height="200"></canvas>
     </div>
 </div>
-<script>
+<script nonce='S51U26wMQz'>
     window.most_content_view_employee = <?php echo json_encode($data) ?>
 </script>

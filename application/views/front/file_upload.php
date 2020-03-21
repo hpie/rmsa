@@ -4,8 +4,7 @@
         <div class="">
             <h1>File Upload</h1>         
             <!-- The file upload form used as target for the file upload widget -->
-            <form id="fileupload" action="http://localhost/rmsa/assets/front/fileupload/server/php/index.php" method="POST" enctype="multipart/form-data">
-              
+            <form id="fileupload" action="http://localhost/rmsa/assets/front/fileupload/server/php/index.php" method="POST" enctype="multipart/form-data">              
                 <!-- Redirect browsers with JavaScript disabled to the origin page -->
                 <noscript><input type="hidden" name="redirect" value="https://blueimp.github.io/jQuery-File-Upload/" /></noscript>
                 <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -60,8 +59,7 @@
             <ol class="indicator"></ol>
         </div>-->
         <!-- The template to display files available for upload -->
-        <script id="template-upload" type="text/x-tmpl">
-            
+        <script nonce='S51U26wMQz' id="template-upload" type="text/x-tmpl">            
       {% for (var i=0, file; file=o.files[i]; i++) { %}
           <tr class="template-upload fade">
               <td>
@@ -147,7 +145,7 @@
       {% } %}
     </script>
         <!-- The template to display files available for download -->
-        <script id="template-download" type="text/x-tmpl">
+        <script nonce='S51U26wMQz' id="template-download" type="text/x-tmpl">
             {% for (var i=0, file; file=o.files[i]; i++) { %}
                 
             <tr class="template-download fade">
