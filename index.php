@@ -1,5 +1,8 @@
 <?php
+$lifetime=600;
+session_set_cookie_params($lifetime);
 session_start();
+setcookie(session_name(),session_id(),time()+$lifetime,'/',null,null,TRUE);
 if(!isset($_SESSION['securityToken1'])){
     $_SESSION['securityToken1']=bin2hex(random_bytes(24));
 }
@@ -7,7 +10,6 @@ header("X-XSS-Protection: 1; mode=block");
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: deny');
 header('X-Powered-By:');
-header('Set-Cookie:cross-site-cookie=bar; SameSite=None; Secure;HttpOnly');
 /**
  * CodeIgniter
  *
