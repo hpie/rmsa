@@ -49,6 +49,17 @@ $this->load->view('_partials/front/scripts');
             }                
             return true;
         });
+        $("#fileupload").delegate(".input", "keypress", function(e){
+//        $('.input').keypress(function (e) {                 
+            var keyCode = e.keyCode || e.which;            
+            var charCode = (e.which) ? e.which : e.keyCode;            
+            if (charCode == 60 || charCode == 96 || charCode == 126 || charCode == 33 || charCode == 35 || charCode == 36 || charCode == 37 || charCode == 94 || charCode == 96 || charCode == 38 || charCode == 42 || charCode == 40 || charCode == 41 || charCode == 61 || charCode == 43 || charCode == 123 || charCode == 125 || charCode == 91 || charCode == 93 || charCode == 124 || charCode == 92 || charCode == 58 || charCode == 59 || charCode == 34 || charCode == 39 || charCode == 44 || charCode == 63 || charCode == 47 || charCode == 62)
+            {                
+                alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
+                return false;
+            }                
+            return true;
+        });
         $('textarea').keypress(function (e) {                 
             var keyCode = e.keyCode || e.which;            
             var charCode = (e.which) ? e.which : e.keyCode;            

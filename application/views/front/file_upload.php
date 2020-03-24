@@ -59,7 +59,7 @@
             <ol class="indicator"></ol>
         </div>-->
         <!-- The template to display files available for upload -->
-        <script nonce='S51U26wMQz' id="template-upload" type="text/x-tmpl">            
+    <script nonce='S51U26wMQz' id="template-upload" type="text/x-tmpl">            
       {% for (var i=0, file; file=o.files[i]; i++) { %}
           <tr class="template-upload fade">
               <td>
@@ -94,11 +94,11 @@
               <td>
             <label class="title">
                 <span>Title:</span><br>
-                <input type="text" name="uploaded_file_title[]" class="form-control" required>
+                <input type="text" name="uploaded_file_title[]" class="form-control input" required>
             </label>           
             <label class="description">
                 <span>Description:</span><br>
-                <input type="text"  name="uploaded_file_desc[]" class="form-control">
+                <input type="text"  name="uploaded_file_desc[]" class="form-control input">
             </label>             
             <label class="description">
                 <span>Category Type:</span><br>
@@ -116,7 +116,7 @@
             </label>
             <label class="title">
                 <span>Tag:</span><br>
-                <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control" required>
+                <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control input" required>
             </label>
             <label class="description">
                 <span>File Group:</span><br>
@@ -142,7 +142,7 @@
             <input type="hidden" name="rmsa_employee_users_id[]" value="<?php echo $_SESSION['emp_rmsa_user_id']; ?>"> 
             </td>
           </tr>
-      {% } %}
+      {% } %}                               
     </script>
         <!-- The template to display files available for download -->
         <script nonce='S51U26wMQz' id="template-download" type="text/x-tmpl">

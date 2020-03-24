@@ -133,15 +133,15 @@
             <td>
             <label class="title">
                 <span>Title:</span><br>
-                <input name="uploaded_file_title[]" class="form-control input-sm">
+                <input type="text" name="uploaded_file_title[]" class="form-control input-sm input">
             </label>           
             <label class="description">
                 <span>Description:</span><br>
-                <input name="uploaded_file_desc[]" class="form-control input-sm">
+                <input type="text" name="uploaded_file_desc[]" class="form-control input-sm input">
             </label>             
             <label class="title">
                 <span>Tag:</span><br>
-                <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control" required>
+                <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control input" required>
             </label>
             <label class="description">
                 <span>File Order:</span><br>
