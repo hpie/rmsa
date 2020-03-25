@@ -8,6 +8,10 @@ class Helper_model extends CI_Model
         $distict = $this->db->query("SELECT * FROM rmsa_districts WHERE rmsa_district_status='ACTIVE'");
         return $distict->result_array();
     }
+    public function load_videos(){
+        $videos = $this->db->query("SELECT * FROM rmsa_youtube_video");
+        return $videos->result_array();
+    }
     public function load_tehsil($params){
         $districtId = $params['districtId'];
         $tehsil = $this->db->query("SELECT * FROM rmsa_sub_districts WHERE rmsa_district_id = {$districtId} AND rmsa_sub_district_status = 'ACTIVE'");

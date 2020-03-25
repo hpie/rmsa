@@ -28,9 +28,15 @@ class Helper extends MY_Controller {
             }
         }
     }
-
+    public function student_videos(){
+        $videos = $this->Helper_model->load_videos();
+        $this->mViewData['videos'] = $videos;
+        $this->mViewData['title']=STUDENT_VIDEOS_TITLE;
+        $this->renderFront('front/videos');
+    }
+    
     public function load_tehsil(){
-        if($_REQUEST['districtId']){
+        if($_REQUEST['districtId']){            
             $tehsil = $this->Helper_model->load_tehsil($_POST);
             echo json_encode($tehsil);
         }
@@ -138,7 +144,6 @@ class Helper extends MY_Controller {
         $this->mViewData['student'] = $active_student;
         $this->mViewData['title']=STUDENT_ACTIVE_TITLE;
         $this->renderFront('front/total_active_student');
-
         return $active_student;
     }
     public function total_active_employee(){
