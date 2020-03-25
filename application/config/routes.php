@@ -150,7 +150,7 @@ $route['teacher-student']         = 'front/Teacher/view_student';
 $route['teacher-resources']       = 'front/TeacherResource';
 
 //all student routes
-$route['student-videos']    = 'front/Helper/video_lessons';
+$route['video_lessons']    = 'front/Helper/student_videos';
 $route['student-registration']    = 'front/Helper/create_student';
 $route['update-profile']          = 'front/Student/update_profile';
 $route['student-login']           = 'front/StudentLogin';
