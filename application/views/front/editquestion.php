@@ -84,6 +84,7 @@
             <div class="form-group">
                 <div class="m-auto text-center">    
                     <button type="submit" name="submit" class="btn primary_btn btn_disabled"  disabled="true" id="btnRegister">Submit</button>
+                    <a class="btn btn-danger" href="<?php echo BASE_URL.'/employee-quiz-list/'.$quizDetails['rmsa_uploaded_file_id']; ?>">Cancel</a>
                 </div>
             </div>
         </form>

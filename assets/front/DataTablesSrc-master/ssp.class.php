@@ -766,7 +766,7 @@ class SSP {
         
         
          static function emp_quiz_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$emp_rmsa_user_id)
-	{                         
+	{                 
 		$bindings = array();
 		$db = self::db( $conn );
                 
@@ -789,11 +789,7 @@ class SSP {
 			 $where
 			 $order
 			 $limit"
-		);   
-		// Main query to actually get the data
-//		$data = self::sql_exec($db, $bindings,
-//			"SELECT ".implode(", ", self::pluck($columns, 'db'))." FROM $table WHERE uploaded_file_volroot=0 AND rmsa_employee_users_id='$emp_rmsa_user_id'  $order $limit"
-//		);
+		);   		
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
 			"SELECT COUNT({$primaryKey})
@@ -814,8 +810,7 @@ class SSP {
                                 $rmsa_file_id = $row['rmsa_uploaded_file_id'];                                     
                                 $data = self::sql_exec( $db, $bindings,"SELECT COUNT(quiz_id) as quizCount FROM quiz WHERE rmsa_uploaded_file_id = '$rmsa_file_id'");                                 
                                 $countQuiz=$data[0]['quizCount'];                                                                                           
-                                 
-                                
+                                                                 
                         $reviews = self::sql_exec( $db,
                             "SELECT AVG(rmsa_file_rating) as overall_rating FROM rmsa_file_reviews
                                     WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}' AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");
@@ -854,11 +849,11 @@ class SSP {
                         
                         if($countQuiz>0){                             
                             $row['action']="<a href='".BASE_URL."/employee-edit-quiz/$fileId' class='btn btn-xs btn-success'>Edit Quiz <i class='fa fa-pencil'></i></a>";
+                            $row['action'].="<br><a href='".BASE_URL."/employee-quiz-list/$fileId' class='btn btn-xs btn-info'>View Quiz <i class='fa fa-eye'></i></a>";
                         }
                         else{
                             $row['action'] = "<a href='".BASE_URL."/employee-create-quiz/$fileId' class='btn btn-xs btn-warning'>Create Quiz <i class='fa fa-pencil'></i></a>";
-                        }
-                        $row['action'].="<br><a href='".BASE_URL."/employee-quiz-list/$fileId' class='btn btn-xs btn-info'>View Quiz <i class='fa fa-eye'></i></a>";
+                        }                                                
 //                        $row['quizlist'] = "<a href='".BASE_URL."/employee-quiz-list/$fileId' class='btn btn-xs btn-warning'>Create Quiz sasas<i class='fa fa-pencil'></i></a>";
                         array_push($resData, $row);
                     }  
@@ -917,7 +912,10 @@ class SSP {
                 $resData=array();
                 if(!empty($result)){                    
                     foreach ($result as $row){
-                        $quiz_id=$row['quiz_id'];
+                        $quiz_id=$row['quiz_id'];                                 
+                        $data = self::sql_exec( $db, $bindings,"SELECT COUNT(question_id) as questionCount FROM questions WHERE quiz_id = '$quiz_id'");                                 
+                        $countQuestion=$data[0]['questionCount'];                                                                                           
+
                         $row['index']=''; 
                         
                         $title = 'Click to deactivate file';
@@ -930,12 +928,11 @@ class SSP {
                             $text  = 'Inactive';
                             $isactive = 0; 
                         }                
-                        $row['quiz_status'] = "<button type='button' data-id='".$quiz_id."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
-                        
-                        
-                        
-                        
-                        $row['action'] = "<a href='".BASE_URL."/employee-add-quistions/$quiz_id' class='btn btn-xs btn-warning'>Add Question <i class='fa fa-pencil'></i></a><br><a href='".BASE_URL."/employee-quistions-list/$quiz_id' class='btn btn-xs btn-info'>Question List <i class='fa fa-eye'></i></a>";                        
+                        $row['quiz_status'] = "<button type='button' data-id='".$quiz_id."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                                                                                                                        
+                        $row['action'] = "<a href='".BASE_URL."/employee-add-quistions/$quiz_id' class='btn btn-xs btn-warning'>Add Question <i class='fa fa-pencil'></i></a>";
+                         if($countQuestion>0){
+                             $row['action'].="<br><a href='".BASE_URL."/employee-quistions-list/$quiz_id' class='btn btn-xs btn-info'>Question List <i class='fa fa-eye'></i></a>";                        
+                         }                                
                         array_push($resData, $row);
                     }  
                 }
