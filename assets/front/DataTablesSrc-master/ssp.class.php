@@ -603,11 +603,7 @@ class SSP {
 			 $where
 			 $order
 			 $limit"
-		); 
-		// Main query to actually get the data
-//		$data = self::sql_exec($db, $bindings,
-//			"SELECT ".implode(", ", self::pluck($columns, 'db'))." FROM $table WHERE uploaded_file_volroot=0 AND rmsa_employee_users_id='$emp_rmsa_user_id'  $order $limit"
-//		);
+		); 		
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
 			"SELECT COUNT({$primaryKey})
@@ -683,7 +679,7 @@ class SSP {
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
                         $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
-                        $row['ratting']="<td>$star<br><a href='#' onclick='show_review_comments($rmsa_file_id,event)'>View Reviews</a></td>";
+                        $row['ratting']="<td>$star<br><button class='filereviewslink btn-xs btn btn-warning'  id='$rmsa_file_id'>View Reviews</button></td>";
                         $i=0;
                         if($row['uploaded_file_hasvol']=="YES"){
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];                            
@@ -1127,7 +1123,7 @@ class SSP {
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
                         $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
-                        $row['ratting']="<td>$star<br><a href='#' onclick='show_review_comments($rmsa_file_id,event)'>View Reviews</a></td>";
+                        $row['ratting']="<td>$star<br><button class='filereviewslink btn-xs btn btn-warning'  id='$rmsa_file_id'>View Reviews</button></td>";
                         $i=0;
                         if($row['uploaded_file_hasvol']=="YES"){
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
@@ -1306,7 +1302,7 @@ class SSP {
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
                         $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
-                        $row['ratting']="<td>$star<br><a href='#' onclick='show_review_comments($rmsa_file_id,event)'>View Reviews</a></td>";
+                        $row['ratting']="<td>$star<br><button class='filereviewslink btn-xs btn btn-warning'  id='$rmsa_file_id'>View Reviews</button></td>";
                         $i=0;
                         if($row['uploaded_file_hasvol']=="YES"){
                             $row['ext']="<table><tr style='background-color:transparent'>".$row['ext'];
@@ -1439,7 +1435,7 @@ class SSP {
                         }
                     }                
                 $rmsa_file_id = $row['rmsa_uploaded_file_id'];
-                $reviews = self::sql_exec( $db,
+                $reviews = self::sql_exec($db,
                     "SELECT AVG(rmsa_file_rating) as overall_rating FROM rmsa_file_reviews
                     WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}' AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");
                 $star = '';
@@ -1470,7 +1466,7 @@ class SSP {
                 $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
                         <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                 $row['review']="<td><center><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></center></td>";
-                $row['ratting']="<td>$star<br><a href='#'  onclick='display_comments($rmsa_file_id,event)'>View Reviews</a></td>";
+                $row['ratting']="<td>$star<br><button class='filereviewslink btn-xs btn btn-warning'  id='$rmsa_file_id'>View Reviews</button></td>";
 //                        . "<span class='open_review' onclick='openreview($rmsa_file_id)' style='cursor: pointer;'></span>";
                  $i=0;
                 if($row['uploaded_file_hasvol']=="YES"){

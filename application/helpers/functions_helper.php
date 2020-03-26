@@ -50,12 +50,12 @@ function reCaptchaResilt($captcha_entered,$redirect_url){
 
     function sessionCheckAll() {
         if (!isset($_SESSION['user_id'])) {
+            session_destroy();
             redirect(BASE_URL);
             return false;
         }        
         return true;
-    }
-    
+    }    
     function sessionCheckStudent() {
         if (!isset($_SESSION['st_rmsa_user_id'])) {
             redirect(STUDENT_LOGIN_LINK);

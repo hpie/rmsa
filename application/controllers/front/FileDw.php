@@ -15,8 +15,7 @@ class FileDw extends MY_Controller {
         sessionCheckEmployee();
         $this->load->model('File_upload');
         $this->load->model('Emp_Login');  
-        $this->load->model('Employee_model');       
-        
+        $this->load->model('Employee_model');               
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
             if ($result) {                

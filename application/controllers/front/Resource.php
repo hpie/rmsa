@@ -11,6 +11,7 @@ class Resource extends MY_Controller{
         sessionCheckToken();
         $_SESSION['securityToken1'] = bin2hex(random_bytes(24)); 
         
+        sessionCheckAll();
         $this->load->model('Resource_model');
         $this->load->model('Emp_Login'); 
         
@@ -26,8 +27,7 @@ class Resource extends MY_Controller{
                 }
             }
         }
-    }
-    
+    }    
     public function resources($uploaded_file_category){       
         $this->mViewData['uploaded_file_category'] = $uploaded_file_category;
         $this->mViewData['title']=STUDENT_RESOURCES_TITLE;

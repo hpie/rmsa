@@ -3993,6 +3993,16 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
     }
 }
 ?>
+        <script nonce='S51U26wMQz'>
+$(document).ready(function () {
+//        $('.filereviewslink').on('click', function () {   
+        $("table").delegate(".filereviewslink", "click", function(e){
+//                alert('hi');
+                var fileId = $(this).attr('id');
+                show_review_comments(fileId,e);
+        });
+});
+</script>
 <!--        <script nonce='S51U26wMQz'>
 $(document).ready(function () {
 $('a').each(function(){  
