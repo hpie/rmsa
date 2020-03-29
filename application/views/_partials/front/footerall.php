@@ -1951,7 +1951,8 @@ $this->load->view('_partials/front/allnotify');
                         'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/student_resources.php'; ?>",
                         'data': {
                             uploaded_file_category: "<?php echo $uploaded_file_category; ?>",
-                            uploaded_file_tag: uploaded_file_tag
+                            uploaded_file_tag: uploaded_file_tag,
+                            rmsa_user_id: "<?php echo $_SESSION['user_id']; ?>"
                                     // etc..
                         }
                     },
@@ -3999,8 +4000,18 @@ $(document).ready(function () {
         $("table").delegate(".filereviewslink", "click", function(e){
 //                alert('hi');
                 var fileId = $(this).attr('id');
-                show_review_comments(fileId,e);
+                <?php if ($title == STUDENT_RESOURCES_TITLE) {
+                ?>
+                display_comments(fileId,e);
+                <?php }else{ ?>
+                show_review_comments(fileId,e);   
+                <?php } ?>
         });
+//        $("table").delegate(".filereviewslink", "click", function(e){
+////                alert('hi');
+//                var fileId = $(this).attr('id');
+//                display_comments(fileId,e);
+//        });
 });
 </script>
 <!--        <script nonce='S51U26wMQz'>
