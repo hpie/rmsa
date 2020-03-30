@@ -1559,7 +1559,6 @@ class SSP {
                                 else{    
                                 $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
                                          <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
-
                                 }
                             }
                             if($attendStsChild == 0){                                

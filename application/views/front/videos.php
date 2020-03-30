@@ -1,9 +1,10 @@
 <style>
     .videoback{
-        background: #dddddd61;               
+        background: #dddddd;               
     }
     .middle-area div{
         margin-left:50px;
+        margin-bottom:30px;
     }
 </style>
 <!-- content -->
@@ -13,8 +14,7 @@
         <?php if(!empty($videos)){
             $i=0;
      foreach ($videos as $video){
-         if($i%2==0){
-             echo '<hr>';
+         if($i%2==0){             
              $offset='';             
          }else{
              $offset='offset-1';             
