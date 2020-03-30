@@ -1,23 +1,25 @@
 <style>
     .videoback{
-        background: #dddddd;               
-    }
-    .middle-area div{
+        background: #dddddd;    
         margin-left:50px;
         margin-bottom:30px;
     }
+/*    .middle-area div{
+        margin-left:50px;
+        margin-bottom:30px;
+    }*/
 </style>
 <!-- content -->
 <div class="col-md-9 col-sm-9 middle-area">
     <!--<div class="middle-area">-->
         <h2 class="heading">Youtube Videos</h2>
         <?php if(!empty($videos)){
-            $i=0;
+            $count_video=sizeof($videos);
+            $i=1;
      foreach ($videos as $video){
-         if($i%2==0){             
-             $offset='';             
-         }else{
-             $offset='offset-1';             
+         if($i%2==0){              
+         }else{ 
+             echo '<div class="row">';
          }
          ?>
         <div class="col-md-5 col-sm-5 videoback">
@@ -27,6 +29,10 @@
             <p><b>Description :</b><br> <?php echo $video['youtube_video_description']; ?></p>
         </div>
         <?php
+        if($i%2==0){
+            echo '</div>';
+         }else{                  
+         }
         $i=$i+1;
      }
         } ?>        
