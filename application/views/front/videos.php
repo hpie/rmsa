@@ -33,6 +33,9 @@
             echo '</div>';
          }else{                  
          }
+         if($i==$count_video && $i%2!=0){
+             echo '</div>';
+         }
         $i=$i+1;
      }
         } ?>        
