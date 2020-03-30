@@ -263,6 +263,9 @@ define('REPORTS_2_UPLOADED_CONTENT_TITLE',"Welcome to rmsahimachal.nic.in - Uplo
 define('REPORTS_2_STUDENT_REGISTERED_TITLE',"Welcome to rmsahimachal.nic.in - Student Registered Reports");
 define('REPORTS_2_TEACHER_REGISTERED_TITLE',"Welcome to rmsahimachal.nic.in - Teacher Registered Reports");
 
+define('STUDENT_EXAM_TITLE',"Welcome to rmsahimachal.nic.in - Student Exam");
+define('STUDENT_EXAM_START_TITLE',"Welcome to rmsahimachal.nic.in - Student Exam Start");
+
 
 
 

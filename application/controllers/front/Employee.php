@@ -67,18 +67,9 @@ class Employee extends MY_Controller {
     }
 
     public function edit_quistions($question_id) {        
-//        $this->mViewData['quizDetails']=$this->Employee_model->get_quiz1_details($question_id);
-//        $resQuizQuestionsCount = $this->Employee_model->count_quiz_questions($quiz_id);        
         $resQuiz = $this->Employee_model->get_question($question_id);
         $resChoice = $this->Employee_model->get_choices($question_id);
-//        print_r($resQuiz);die;
         if (isset($_POST['submit'])) {           
-//            if(!empty($resQuizQuestionsCount)){
-//                if($resQuiz['quiz_min_questions']==$resQuizQuestionsCount){
-//                    $_SESSION['maxQuestionLimit']=1;
-//                    redirect(EMPLOYEE__QUIZ_RESOURCES_LIST_LINK . $resQuiz['rmsa_uploaded_file_id']);
-//                }
-//            }
             $params = array();
             $params['question'] = $_POST['question'];  
             $params['question_id'] = $question_id;
@@ -102,7 +93,6 @@ class Employee extends MY_Controller {
                 redirect(EMPLOYEE_QUESTION_LIST_LINK.$resQuiz['quiz_id']);
             }
         }
-//        print_r($resChoice);die;
         $this->mViewData['choiceDetails']=$resChoice;
         $this->mViewData['quizDetails']=$resQuiz;
         $this->mViewData['question_id'] = $question_id;
@@ -110,16 +100,8 @@ class Employee extends MY_Controller {
     }
     
     public function add_quistions($quiz_id) {
-//        $this->mViewData['quizDetails']=$this->Employee_model->get_quiz1_details($quiz_id);
-//        $resQuizQuestionsCount = $this->Employee_model->count_quiz_questions($quiz_id);        
         $resQuiz = $this->Employee_model->get_quiz($quiz_id);
         if (isset($_POST['submit'])) {
-//            if(!empty($resQuizQuestionsCount)){
-//                if($resQuiz['quiz_min_questions']==$resQuizQuestionsCount){
-//                    $_SESSION['maxQuestionLimit']=1;
-//                    redirect(EMPLOYEE__QUIZ_RESOURCES_LIST_LINK . $resQuiz['rmsa_uploaded_file_id']);
-//                }
-//            }
             $params = array();
             $params['question'] = $_POST['question'];
             $params['quiz_id'] = $quiz_id;

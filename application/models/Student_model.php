@@ -11,6 +11,41 @@
                 return $student_data;
             }
         }
+        public function quiz_details($quiz_id){            
+            $data = $this->db->query("SELECT * FROM quiz WHERE quiz_id = '".$quiz_id."'");
+            $quiz_data = $data->row_array();
+            if(isset($quiz_data)){
+                return $quiz_data;
+            }
+        }
+        public function choice_details($question_id){            
+            $data = $this->db->query("SELECT * FROM choices WHERE question_id='".$question_id."' AND choice_status='ACTIVE'");
+            $choice_data = $data->result_array();
+            if(isset($choice_data)){
+                return $choice_data;
+            }
+        }
+        public function question_details($quiz_id,$question_id){ 
+            $data = $this->db->query("SELECT * FROM questions WHERE quiz_id =$quiz_id AND question_id=$question_id AND question_status='ACTIVE'");
+            $question_data = $data->row_array();
+//            print_r($question_data);die;
+            if(isset($question_data)){
+                return $question_data;
+            }
+        }
+        
+        public function file_details($file_id){            
+            $data = $this->db->query("SELECT ruf.*,qs.question_id,qz.quiz_id FROM rmsa_uploaded_files ruf
+                    INNER JOIN quiz qz
+                    ON qz.rmsa_uploaded_file_id=$file_id
+                    INNER JOIN questions qs
+                    ON qs.quiz_id=qz.quiz_id
+                    WHERE ruf.rmsa_uploaded_file_id =$file_id AND qs.question_status='ACTIVE'");
+            $file_data = $data->row_array();
+            if(isset($file_data)){
+                return $file_data;
+            }
+        }
         public function check_current_password($current_password){
             $current_password=md5($current_password);            
             $rmsa_user_id = $_SESSION['st_rmsa_user_id'];

@@ -26,7 +26,23 @@ class Student extends MY_Controller{
                 }
             }
         }
+    }    
+    public function exam($file_id){              
+        $this->mViewData['result'] =  $this->Student_model->file_details($file_id);
+        $this->mViewData['title']=STUDENT_EXAM_TITLE;        
+        $this->renderFront('front/exam');
     }
+    
+    public function studentExam($file_id,$quiz_id,$question_id){
+        $next=$question_id+1;
+        $this->mViewData['next']=$next;
+        $this->mViewData['quizdetails'] =  $this->Student_model->quiz_details($quiz_id);
+        $this->mViewData['questiondetails'] =  $this->Student_model->question_details($quiz_id,$question_id);
+        $this->mViewData['choicedetails'] =  $this->Student_model->choice_details($question_id);        
+        $this->mViewData['title']=STUDENT_EXAM_START_TITLE;        
+        $this->renderFront('front/examstart');
+    }
+    
     public function update_profile(){
         $result=array();               
         if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){            

@@ -157,7 +157,8 @@ $route['student-login']           = 'front/StudentLogin';
 $route['student-logout']          = 'front/Student/logout';
 $route['is-student-active']       = 'front/Student/is_active';
 $route['registered-students']     = 'front/RegisteredStudents';
-
+$route['exam/(:any)']       = 'front/Student/exam/$1';
+$route['student-exam/(:any)/(:any)/(:any)']       = 'front/Student/studentExam/$1/$2/$3';
 
 //All filr resources route
 $route['student-resources/(:any)']       = 'front/Resource/resources/$1';
