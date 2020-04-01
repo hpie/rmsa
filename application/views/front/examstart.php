@@ -14,7 +14,7 @@
             <div class="form-group">
                 <div class="row">                    
                     <div class="col-md-11 offset-1">
-                        <p><h4><b>Q1.</b> <?php echo $questiondetails['question']; ?></h4></p>
+                        <p><h4><b>Question: </b> <?php echo $questiondetails['question']; ?></h4></p>
                     </div>
                 </div>
             </div>
