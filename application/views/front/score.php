@@ -51,7 +51,7 @@
                 </table>                                 
                 <?php if($result['pass']==0){
                 ?>
-                <a class="btn btn-sm btn-warning" href="<?php echo BASE_URL.'/exam/'.$result['rmsa_uploaded_file_id']; ?>">Take Test Again</a>
+                <a class="btn btn-sm btn-warning" href="<?php echo BASE_URL.'/exam/'.$result['rmsa_uploaded_file_id']; ?>">Take Quiz Again</a>
                 <?php
                 } ?> 
                 <a class="btn btn-sm btn-danger" href="<?php echo BASE_URL; ?>/student-resources/NONE">Back To File</a>

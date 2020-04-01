@@ -29,7 +29,7 @@
                 <div class="row">
                     <?php if(!empty($result)){ ?>
                     <div class="col-sm-2">                        
-                        <a class="btn btn-sm btn-warning" href="<?php echo BASE_URL.'/student-exam/'.$result['rmsa_uploaded_file_id'].'/'.$result['quiz_id'].'/'.$result['question_id']; ?>">Attempt Exam</a>
+                        <a class="btn btn-sm btn-warning" href="<?php echo BASE_URL.'/student-exam/'.$result['rmsa_uploaded_file_id'].'/'.$result['quiz_id'].'/'.$result['question_id']; ?>">Attempt Quiz</a>
                     </div>
                     <?php } ?>
                     <div class="col-sm-2">                       
