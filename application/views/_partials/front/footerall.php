@@ -37,6 +37,11 @@ $this->load->view('_partials/front/scripts');
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>-->
 
+<?php
+if($title!=STUDENT_EXAM_START_TITLE){
+    $_SESSION['score']=0;
+}
+?>
 <script nonce='S51U26wMQz' type="text/javascript">
     $(document).ready(function () {                
         $('input[type=text]').keypress(function (e) {                 

@@ -128,6 +128,8 @@ define('STUDENT_QUIZ_RESULTS_LINK',BASE_URL."/employee-resources");
 define('STUDENT_REPORTS',BASE_URL."/employee-reports");
 define('STUDENT_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
 
+define('STUDENT_SCORE_LINK',BASE_URL."/student-score/");
+
 //All Rmsa users constant
 define('RMSA_LOGIN_LINK',BASE_URL."/rmsa-login");
 define('RMSA_LOGOUT_LINK',BASE_URL."/rmsa-logout");
@@ -265,6 +267,7 @@ define('REPORTS_2_TEACHER_REGISTERED_TITLE',"Welcome to rmsahimachal.nic.in - Te
 
 define('STUDENT_EXAM_TITLE',"Welcome to rmsahimachal.nic.in - Student Exam");
 define('STUDENT_EXAM_START_TITLE',"Welcome to rmsahimachal.nic.in - Student Exam Start");
+define('STUDENT_SCORE_TITLE',"Welcome to rmsahimachal.nic.in - Student Exam Score");
 
 
 
