@@ -72,9 +72,12 @@ class Student_model extends CI_Model {
         return  $insert_id;
     }
 
-    public function question_details_all($quiz_id) {
-        $data = $this->db->query("SELECT * FROM questions WHERE quiz_id =$quiz_id AND question_status='ACTIVE'");
-        $question_data = $data->result_array();
+    public function question_details_all($quiz_id,$limit) {
+        $data = $this->db->query("SELECT * FROM questions WHERE quiz_id =$quiz_id AND question_status='ACTIVE' ORDER BY RAND() LIMIT $limit");
+        $question_data = $data->result_array();   
+        
+//        echo '<pre>';        print_r($question_data);die;
+        
         if (isset($question_data)) {
             return $question_data;
         }

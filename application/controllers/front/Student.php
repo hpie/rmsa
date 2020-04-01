@@ -33,8 +33,14 @@ class Student extends MY_Controller{
         $this->renderFront('front/exam');
     }
     
-    public function studentExam($file_id,$quiz_id,$question_id){         
-        $question_details_all=$this->Student_model->question_details_all($quiz_id);
+    public function question_details_all($rmsa_uploaded_file_id,$quiz_id){
+        $quiz_details = $this->Student_model->quiz_details($quiz_id);
+        $_SESSION['questions']=$this->Student_model->question_details_all($quiz_id,$quiz_details['quiz_min_questions']);        
+        redirect(BASE_URL.'/student-exam/'.$rmsa_uploaded_file_id.'/'.$quiz_id.'/'.$_SESSION['questions'][0]['question_id']);
+    }
+    
+    public function studentExam($file_id,$quiz_id,$question_id){
+        $question_details_all=$_SESSION['questions'];
         $i=0;        
         foreach ($question_details_all as $row){
             if($row['question_id']==$question_id){
@@ -46,8 +52,7 @@ class Student extends MY_Controller{
                 }
                 $i=0;                
             }
-        }        
-        
+        }                
         $finish = 0;
         $total_question=sizeof($question_details_all);        
         if($question_id==$question_details_all[$total_question-1]['question_id']){

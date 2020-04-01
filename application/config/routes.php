@@ -158,8 +158,9 @@ $route['student-logout']          = 'front/Student/logout';
 $route['is-student-active']       = 'front/Student/is_active';
 $route['registered-students']     = 'front/RegisteredStudents';
 $route['exam/(:any)']       = 'front/Student/exam/$1';
-$route['student-exam/(:any)/(:any)/(:any)']       = 'front/Student/studentExam/$1/$2/$3';
+$route['student-exam/(:any)/(:any)/(:any)'] = 'front/Student/studentExam/$1/$2/$3';
 $route['student-score/(:any)']       = 'front/Student/studentScore/$1';
+$route['exam-questins/(:any)/(:any)']       = 'front/Student/question_details_all/$1/$2';
 
 //All filr resources route
 $route['student-resources/(:any)']       = 'front/Resource/resources/$1';
