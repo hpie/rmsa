@@ -30,11 +30,9 @@ class Helper extends MY_Controller {
         }
     }
     public function student_videos($offset){        
-//        include_once 'third_party/Pagination.class.php';
-        
+//        include_once 'third_party/Pagination.class.php';        
         $limit=4;
-        $offsets = !empty($offset)?(($offset-1)*$limit):0;
-        
+        $offsets = !empty($offset)?(($offset-1)*$limit):0;        
         $rowCount = $this->Helper_model->count_total_videos();
 //        echo $rowCount;die;
         // Initialize pagination class        

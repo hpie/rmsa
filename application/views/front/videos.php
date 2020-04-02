@@ -41,5 +41,7 @@
         } ?>        
     <!--</div>-->
     <hr>
+    <center>
     <?php echo $pagination->createLinks(); ?>
+    </center>
 </div>
