@@ -16,6 +16,7 @@ class Helper extends MY_Controller {
         $this->load->model('Emp_Login');
         $this->load->model('Rmsa_model');
        
+        include APPPATH.'third_party/Pagination.php';        
         
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
@@ -28,9 +29,25 @@ class Helper extends MY_Controller {
             }
         }
     }
-    public function student_videos(){
-        $videos = $this->Helper_model->load_videos();
+    public function student_videos($offset){        
+//        include_once 'third_party/Pagination.class.php';
+        
+        $limit=4;
+        $offsets = !empty($offset)?(($offset-1)*$limit):0;
+        
+        $rowCount = $this->Helper_model->count_total_videos();
+//        echo $rowCount;die;
+        // Initialize pagination class        
+        $pagConfig = array(
+            'pageUrl'=>STUDENT_VIDEO_LINK,
+            'totalRows'=>$rowCount,
+            'perPage'=>$limit,
+            'offset'=>$offset
+        );         
+        $pagination =  new Pagination($pagConfig); 
+        $videos = $this->Helper_model->load_videos($offsets,$limit);
         $this->mViewData['videos'] = $videos;
+        $this->mViewData['pagination'] = $pagination;
         $this->mViewData['title']=STUDENT_VIDEOS_TITLE;
         $this->renderFront('front/videos');
     }

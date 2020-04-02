@@ -343,7 +343,8 @@ class CI_URI {
 	 */
 	public function segment($n, $no_result = NULL)
 	{
-		return isset($this->segments[$n]) ? $this->segments[$n] : $no_result;
+                
+            return isset($this->segments[$n]) ? $this->segments[$n] : $no_result;
 	}
 
 	// --------------------------------------------------------------------

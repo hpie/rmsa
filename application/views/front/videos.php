@@ -40,4 +40,6 @@
      }
         } ?>        
     <!--</div>-->
+    <hr>
+    <?php echo $pagination->createLinks(); ?>
 </div>

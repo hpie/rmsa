@@ -8,10 +8,15 @@ class Helper_model extends CI_Model
         $distict = $this->db->query("SELECT * FROM rmsa_districts WHERE rmsa_district_status='ACTIVE'");
         return $distict->result_array();
     }
-    public function load_videos(){
-        $videos = $this->db->query("SELECT * FROM rmsa_youtube_video");
+    public function load_videos($offset,$limit){
+        $videos = $this->db->query("SELECT * FROM rmsa_youtube_video ORDER BY created_dt DESC LIMIT $offset,$limit");
         return $videos->result_array();
     }
+    public function count_total_videos(){
+        $total = $this->db->query("SELECT count(rmsa_youtube_video_id) AS count_data FROM rmsa_youtube_video");
+        $total_videos = $total->row_array();          
+        return $total_videos['count_data'];
+    }      
     public function load_tehsil($params){
         $districtId = $params['districtId'];
         $tehsil = $this->db->query("SELECT * FROM rmsa_sub_districts WHERE rmsa_district_id = {$districtId} AND rmsa_sub_district_status = 'ACTIVE'");

@@ -27,7 +27,7 @@
                                         <?php
                                             }
                                         ?>
-                                        <li><a href="<?php echo STUDENT_VIDEO_LINK; ?>">Video Lessons</a></li>
+                                        <li><a href="<?php echo STUDENT_VIDEO_LINK; ?>1">Video Lessons</a></li>
                                     </ul>
                                 </li>
                             <?php
