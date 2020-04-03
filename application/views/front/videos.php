@@ -41,7 +41,7 @@
                     <div class="col-sm-4 col-xs-4">
                         Class :
                         <select type="text" class="form-control" name="class" id="class_value">
-                            <option class="" value="" disabled selected>Select Class</option>
+                            <option class="" value="" selected>Select Class</option>
                             <option value="1" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==1){echo 'selected';}} ?>>1</option>
                             <option value="2" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==2){echo 'selected';}} ?>>2</option>
                             <option value="3" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==3){echo 'selected';}} ?>>3</option>
@@ -62,7 +62,7 @@
                     <div class="col-sm-4 col-xs-4">
                         Language :
                         <select type="text" class="form-control" name="language" id="language">
-                            <option class="" value="" disabled selected>Select</option>
+                            <option class="" value="" selected>Select</option>
                             <option value="hindi" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['language']=='hindi'){echo 'selected';}} ?>>Hindi</option>
                             <option value="english" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['language']=='english'){echo 'selected';}} ?>>English</option>
                         </select>
