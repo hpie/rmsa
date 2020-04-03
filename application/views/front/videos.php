@@ -41,14 +41,7 @@
                     <div class="col-sm-4 col-xs-4">
                         Class :
                         <select type="text" class="form-control" name="class" id="class_value">
-                            <option class="" value="" selected>Select Class</option>
-                            <option value="1" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==1){echo 'selected';}} ?>>1</option>
-                            <option value="2" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==2){echo 'selected';}} ?>>2</option>
-                            <option value="3" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==3){echo 'selected';}} ?>>3</option>
-                            <option value="4" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==4){echo 'selected';}} ?>>4</option>
-                            <option value="5" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==5){echo 'selected';}} ?>>5</option>
-                            <option value="6" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==6){echo 'selected';}} ?>>6</option>
-                            <option value="7" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==7){echo 'selected';}} ?>>7</option>
+                            <option class="" value="" selected>Select Class</option>                           
                             <option value="8" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==8){echo 'selected';}} ?>>8</option>
                             <option value="9" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==9){echo 'selected';}} ?>>9</option>
                             <option value="10" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==10){echo 'selected';}} ?>>10</option>
@@ -62,23 +55,24 @@
                     <div class="col-sm-4 col-xs-4">
                         Language :
                         <select type="text" class="form-control" name="language" id="language">
-                            <option class="" value="" selected>Select</option>
-                            <option value="hindi" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['language']=='hindi'){echo 'selected';}} ?>>Hindi</option>
+                            <option class="" value="" selected>Select</option>                            
                             <option value="english" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['language']=='english'){echo 'selected';}} ?>>English</option>
+                            <option value="hindi" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['language']=='hindi'){echo 'selected';}} ?>>Hindi</option>
                         </select>
                     </div>
                 <div class="col-sm-4 col-xs-4">
                         Instructor :
                         <input type="text" class="form-control" placeholder="Search by Recommendation" id="instructor" <?php if(isset($_SESSION['video_search'])){echo "value='".$_SESSION['video_search']['instructor']."'";} ?>>
+                    </div>
+                <div class="col-sm-2 col-xs-2">
+                        <br>
+                        <button class="btn btn-danger form-control" id="search_clear">Clear</button>
                     </div>                    
                     <div class="col-sm-2 col-xs-2">
                         <br>
                         <button class="btn btn-warning form-control" id="search_all">Search</button>
                     </div>                    
-                    <div class="col-sm-2 col-xs-2">
-                        <br>
-                        <button class="btn btn-danger form-control" id="search_clear">Clear</button>
-                    </div>                    
+                    
                 </div>
             </div>        
         <hr>
