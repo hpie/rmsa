@@ -30,6 +30,7 @@ class Helper extends MY_Controller {
         }
     }
     public function student_videos($offset){
+//        echo '<pre>';print_r($_SESSION);die;
         $params=array();
         $params['youtube_video_title']='';
         $params['youtube_video_description']='';
@@ -39,8 +40,8 @@ class Helper extends MY_Controller {
         $params['youtube_video_topic']='';
         $params['youtube_video_subtopic']='';
         $params['youtube_video_language']='';
-        $params['youtube_video_instructor']='';
-        if(isset($_SESSION['video_search'])){
+        $params['youtube_video_instructor']='';        
+        if(isset($_SESSION['video_search'])){            
             $params['youtube_video_title']=$_SESSION['video_search']['title'];
             $params['youtube_video_description']=$_SESSION['video_search']['title'];
             $params['youtube_video_recomendation']=$_SESSION['video_search']['recommendation'];
@@ -48,7 +49,7 @@ class Helper extends MY_Controller {
             $params['youtube_video_subject']=$_SESSION['video_search']['subject'];
             $params['youtube_video_topic']=$_SESSION['video_search']['topic'];
             $params['youtube_video_subtopic']=$_SESSION['video_search']['sub_topic'];
-            $params['youtube_video_language']=$_SESSION['video_search']['language'];
+            $params['youtube_video_language']=$_SESSION['video_search']['vide_language'];
             $params['youtube_video_instructor']=$_SESSION['video_search']['instructor'];
         }
 //        include_once 'third_party/Pagination.class.php';        
@@ -71,7 +72,12 @@ class Helper extends MY_Controller {
     }
     public function video_lessons_search(){
         $result=array();        
-        $_SESSION['video_search']=$_POST;
+        if(isset($_POST['clear_search'])){
+            unset($_SESSION['video_search']);
+        }
+        else{
+            $_SESSION['video_search']=$_POST;
+        }
         $result['success']='success';
         echo json_encode($result);      
     }

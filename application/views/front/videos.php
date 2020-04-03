@@ -40,7 +40,7 @@
                     </div>                    
                     <div class="col-sm-4 col-xs-4">
                         Class :
-                        <select type="text" class="form-control" name="class" id="class_value">
+                        <select type="text" class="form-control" id="class_value">
                             <option class="" value="" selected>Select Class</option>                           
                             <option value="8" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==8){echo 'selected';}} ?>>8</option>
                             <option value="9" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['class_value']==9){echo 'selected';}} ?>>9</option>
@@ -54,10 +54,10 @@
             <div class="row">
                     <div class="col-sm-4 col-xs-4">
                         Language :
-                        <select type="text" class="form-control" name="language" id="language">
-                            <option class="" value="" selected>Select</option>                            
-                            <option value="english" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['language']=='english'){echo 'selected';}} ?>>English</option>
-                            <option value="hindi" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['language']=='hindi'){echo 'selected';}} ?>>Hindi</option>
+                        <select type="text" class="form-control" id="vide_language">
+                            <option class="" value="">Select</option>                            
+                            <option value="english" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['vide_language']=='english'){echo 'selected';}} ?>>English</option>
+                            <option value="hindi" <?php if(isset($_SESSION['video_search'])){if($_SESSION['video_search']['vide_language']=='hindi'){echo 'selected';}} ?>>Hindi</option>
                         </select>
                     </div>
                 <div class="col-sm-4 col-xs-4">
@@ -75,8 +75,7 @@
                     
                 </div>
             </div>        
-        <hr>
-        
+        <hr>        
         <?php if(!empty($videos)){
             $count_video=sizeof($videos);
             $i=1;

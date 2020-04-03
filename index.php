@@ -1,5 +1,5 @@
 <?php
-$lifetime=600;
+$lifetime=1500;
 session_set_cookie_params($lifetime);
 session_start();
 setcookie(session_name(),session_id(),time()+$lifetime,'/',null,null,TRUE);

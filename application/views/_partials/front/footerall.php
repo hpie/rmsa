@@ -3942,16 +3942,27 @@ if ($title == FILE_REVIEWS_TITLE) {
     </script>
 <?php }
 ?>
-    <?php if($title!=STUDENT_VIDEOS_TITLE){
+    <?php 
+    if($title!=STUDENT_VIDEOS_TITLE){
         if(isset($_SESSION['video_search'])){
             unset($_SESSION['video_search']);
         }
-    } ?>
+    }
+    ?>
 <?php if($title==STUDENT_VIDEOS_TITLE){ ?>
 <script nonce='S51U26wMQz'>
-$('#search_clear').on('click', function () {
-    <?php if(isset($_SESSION['video_search'])){unset($_SESSION['video_search']);} ?>
-    window.location.href = "<?php echo STUDENT_VIDEO_LINK."1"; ?>";
+$('#search_clear').on('click', function () {        
+    $.ajax({
+            type: "POST",
+            url: "<?php echo STUDENT_VIDEO_SEARCH_LINK; ?>",
+            data: {clear_search:1},
+            success: function (res) {
+                var result = $.parseJSON(res);
+                if(result['success'] === "success"){                   
+                   window.location.href = "<?php echo STUDENT_VIDEO_LINK."1"; ?>";
+                }
+            }
+        });            
 });
     $('#search_all').on('click', function () {
         var title = $('#title').val();
@@ -3961,11 +3972,11 @@ $('#search_clear').on('click', function () {
         var subject = $('#subject').val();
         var instructor = $('#instructor').val();        
         var class_value = $('#class_value').children("option:selected").val();
-        var language = $('#language').children("option:selected").val();        
+        var vide_language = $('#vide_language').children("option:selected").val();        
         $.ajax({
             type: "POST",
             url: "<?php echo STUDENT_VIDEO_SEARCH_LINK; ?>",
-            data: {'title': title,topic:topic,sub_topic:sub_topic,recommendation:recommendation,subject:subject,instructor:instructor,class_value:class_value,language:language},
+            data: {title: title,topic:topic,sub_topic:sub_topic,recommendation:recommendation,subject:subject,instructor:instructor,class_value:class_value,vide_language:vide_language},
             success: function (res) {
                 var result = $.parseJSON(res);
                 if(result['success'] === "success"){                   
