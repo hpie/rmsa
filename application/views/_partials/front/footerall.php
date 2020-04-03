@@ -38,41 +38,41 @@ $this->load->view('_partials/front/scripts');
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>-->
 
 <?php
-if($title!=STUDENT_EXAM_START_TITLE){
-    $_SESSION['score']=0;
+if ($title != STUDENT_EXAM_START_TITLE) {
+    $_SESSION['score'] = 0;
 }
 ?>
 <script nonce='S51U26wMQz' type="text/javascript">
-    $(document).ready(function () {                
-        $('input[type=text]').keypress(function (e) {                 
-            var keyCode = e.keyCode || e.which;            
-            var charCode = (e.which) ? e.which : e.keyCode;            
+    $(document).ready(function () {
+        $('input[type=text]').keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+            var charCode = (e.which) ? e.which : e.keyCode;
             if (charCode == 60 || charCode == 96 || charCode == 126 || charCode == 33 || charCode == 35 || charCode == 36 || charCode == 37 || charCode == 94 || charCode == 96 || charCode == 38 || charCode == 42 || charCode == 40 || charCode == 41 || charCode == 61 || charCode == 43 || charCode == 123 || charCode == 125 || charCode == 91 || charCode == 93 || charCode == 124 || charCode == 92 || charCode == 58 || charCode == 59 || charCode == 34 || charCode == 39 || charCode == 44 || charCode == 63 || charCode == 47 || charCode == 62)
-            {                
+            {
                 alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
                 return false;
-            }                
+            }
             return true;
         });
-        $("#fileupload").delegate(".input", "keypress", function(e){
+        $("#fileupload").delegate(".input", "keypress", function (e) {
 //        $('.input').keypress(function (e) {                 
-            var keyCode = e.keyCode || e.which;            
-            var charCode = (e.which) ? e.which : e.keyCode;            
+            var keyCode = e.keyCode || e.which;
+            var charCode = (e.which) ? e.which : e.keyCode;
             if (charCode == 60 || charCode == 96 || charCode == 126 || charCode == 33 || charCode == 35 || charCode == 36 || charCode == 37 || charCode == 94 || charCode == 96 || charCode == 38 || charCode == 42 || charCode == 40 || charCode == 41 || charCode == 61 || charCode == 43 || charCode == 123 || charCode == 125 || charCode == 91 || charCode == 93 || charCode == 124 || charCode == 92 || charCode == 58 || charCode == 59 || charCode == 34 || charCode == 39 || charCode == 44 || charCode == 63 || charCode == 47 || charCode == 62)
-            {                
+            {
                 alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
                 return false;
-            }                
+            }
             return true;
         });
-        $('textarea').keypress(function (e) {                 
-            var keyCode = e.keyCode || e.which;            
-            var charCode = (e.which) ? e.which : e.keyCode;            
+        $('textarea').keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+            var charCode = (e.which) ? e.which : e.keyCode;
             if (charCode == 60 || charCode == 96 || charCode == 126 || charCode == 33 || charCode == 35 || charCode == 36 || charCode == 37 || charCode == 94 || charCode == 96 || charCode == 38 || charCode == 42 || charCode == 40 || charCode == 41 || charCode == 61 || charCode == 43 || charCode == 123 || charCode == 125 || charCode == 91 || charCode == 93 || charCode == 124 || charCode == 92 || charCode == 58 || charCode == 59 || charCode == 34 || charCode == 39 || charCode == 44 || charCode == 63 || charCode == 47 || charCode == 62)
-            {                
+            {
                 alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
                 return false;
-            }                
+            }
             return true;
         });
     });
@@ -272,7 +272,7 @@ $this->load->view('_partials/front/allnotify');
                     text: '<?php echo $label ?>',
                     fontSize: 18
                 },
-                animation: {                    
+                animation: {
                     duration: 1500,
                     onProgress: function (animation) {
                         progress.value = animation.currentStep / animation.numSteps;
@@ -287,13 +287,13 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -408,7 +408,7 @@ $this->load->view('_partials/front/allnotify');
                     text: '<?php echo $label ?>',
                     fontSize: 18
                 },
-                animation: {                    
+                animation: {
                     duration: 1500,
                     onProgress: function (animation) {
                         progress.value = animation.currentStep / animation.numSteps;
@@ -423,13 +423,13 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -438,7 +438,7 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>    
-    <?php if ($title == REPORTS_2_TEACHER_REGISTERED_TITLE) {
+<?php if ($title == REPORTS_2_TEACHER_REGISTERED_TITLE) {
     ?>
     <script nonce='S51U26wMQz'>
         var month = [];
@@ -544,7 +544,7 @@ $this->load->view('_partials/front/allnotify');
                     text: '<?php echo $label ?>',
                     fontSize: 18
                 },
-                animation: {                    
+                animation: {
                     duration: 1500,
                     onProgress: function (animation) {
                         progress.value = animation.currentStep / animation.numSteps;
@@ -559,13 +559,13 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -574,7 +574,7 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>    
-    
+
 <?php if ($title == MOST_CONTENT_UPLOADED_EMPLOYEE_TITLE) {
     ?>
     <script nonce='S51U26wMQz'>
@@ -616,13 +616,13 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -674,13 +674,13 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -735,13 +735,13 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -791,16 +791,16 @@ $this->load->view('_partials/front/allnotify');
                     }]
             },
             options: {
-               scales: {
+                scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -853,13 +853,13 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -912,13 +912,13 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -971,13 +971,13 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -1030,13 +1030,13 @@ $this->load->view('_partials/front/allnotify');
                 scales: {
                     yAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }],
-                    xAxes: [{ 
+                    xAxes: [{
                             ticks: {
-                                beginAtZero: true                              
+                                beginAtZero: true
                             },
                             stacked: true
                         }]
@@ -1103,7 +1103,7 @@ $this->load->view('_partials/front/allnotify');
                 });
             }
             $(document).on('click', '.btn_approve_reject', function () {
-                var self = $(this);                
+                var self = $(this);
                 var status = self.attr('data-status');
 
                 var uploaded_file_status = 'ACTIVE';
@@ -1149,7 +1149,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            
+
                         }
                     }
                 });
@@ -1282,17 +1282,17 @@ $this->load->view('_partials/front/allnotify');
 <?php if ($title == EMPLOYEE_FILE_LIST_TITLE) {
     ?> 
     <script nonce='S51U26wMQz'>
-        $(document).ready(function () {            
+        $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
-            {                
-//                $('#example tfoot th').each(function () {
-//                    var title = $('#example thead th').eq($(this).index()).text();
-//                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
-//                        $(this).html('<input type="text" placeholder="' + title + '" />');
-//                    }
-//                });
-                var table = $('#example').DataTable({                
+            {
+    //                $('#example tfoot th').each(function () {
+    //                    var title = $('#example thead th').eq($(this).index()).text();
+    //                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
+    //                        $(this).html('<input type="text" placeholder="' + title + '" />');
+    //                    }
+    //                });
+                var table = $('#example').DataTable({
                     responsive: {
                         details: {
                             type: 'column',
@@ -1340,11 +1340,11 @@ $this->load->view('_partials/front/allnotify');
                         table.column(colIdx).search(this.value).draw();
                     });
                 });
-            }           
+            }
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-               
+
                 var uploaded_file_status = 'ACTIVE';
 
                 if (status == 1) {
@@ -1388,7 +1388,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            
+
                         }
                     }
                 });
@@ -1478,8 +1478,8 @@ $this->load->view('_partials/front/allnotify');
                         {"data": "ext"},
                         {"data": "uploaded_file_type"},
                         {"data": "uploaded_file_group"},
-                        {"data": "uploaded_file_category"},                      
-                        {"data": "ratting"},                       
+                        {"data": "uploaded_file_category"},
+                        {"data": "ratting"},
                         {"data": "action"},
                         {"data": "uploaded_file_desc"}
                     ]
@@ -1494,7 +1494,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-                
+
                 var uploaded_file_status = 'ACTIVE';
 
                 if (status == 1) {
@@ -1538,7 +1538,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            
+
                         }
                     }
                 });
@@ -1579,7 +1579,7 @@ $this->load->view('_partials/front/allnotify');
         }
     </script>
 <?php } ?>
-    <?php if ($title == EMPLOYEE_QUIZ_LIST_TITLE) {
+<?php if ($title == EMPLOYEE_QUIZ_LIST_TITLE) {
     ?> 
     <script nonce='S51U26wMQz'>
         $(document).ready(function () {
@@ -1618,7 +1618,7 @@ $this->load->view('_partials/front/allnotify');
     if (isset($_SESSION['emp_rmsa_user_id'])) {
         echo $_SESSION['emp_rmsa_user_id'];
     }
-    ?>,rmsa_uploaded_file_id:<?php echo $rmsa_uploaded_file_id; ?>
+    ?>, rmsa_uploaded_file_id:<?php echo $rmsa_uploaded_file_id; ?>
                         }
                     },
                     "columns": [
@@ -1626,8 +1626,8 @@ $this->load->view('_partials/front/allnotify');
                         {"data": "quiz_title"},
                         {"data": "quiz_min_questions"},
                         {"data": "quiz_pass_score"},
-                        {"data": "quiz_status"},                        
-                        {"data": "action"}                   
+                        {"data": "quiz_status"},
+                        {"data": "action"}
                     ]
                 });
                 table.columns().eq(0).each(function (colIdx) {
@@ -1639,7 +1639,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-                
+
                 var quiz_status = 'ACTIVE';
 
                 if (status == 1) {
@@ -1683,16 +1683,16 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            
+
                         }
                     }
                 });
             });
-            });
-           
+        });
+
     </script>
 <?php } ?>
-     <?php if ($title == EMPLOYEE_QUESTIONS_LIST_TITLE) {
+<?php if ($title == EMPLOYEE_QUESTIONS_LIST_TITLE) {
     ?> 
     <script nonce='S51U26wMQz'>
         $(document).ready(function () {
@@ -1731,14 +1731,14 @@ $this->load->view('_partials/front/allnotify');
     if (isset($_SESSION['emp_rmsa_user_id'])) {
         echo $_SESSION['emp_rmsa_user_id'];
     }
-    ?>,quiz_id:<?php echo $quiz_id;?>
+    ?>, quiz_id:<?php echo $quiz_id; ?>
                         }
                     },
                     "columns": [
                         {"data": "index"},
                         {"data": "question"},
-                        {"data": "question_status"},                 
-                         {"data": "action"}                  
+                        {"data": "question_status"},
+                        {"data": "action"}
                     ]
                 });
                 table.columns().eq(0).each(function (colIdx) {
@@ -1750,7 +1750,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-                
+
                 var question_status = 'ACTIVE';
 
                 if (status == 1) {
@@ -1794,13 +1794,13 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            
+
                         }
                     }
                 });
             });
-            });
-           
+        });
+
     </script>
 <?php } ?>
 
@@ -2045,7 +2045,7 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-               
+
                 var status = self.attr('data-status');
                 var user_status = 'ACTIVE';
                 if (status == 1)
@@ -2087,7 +2087,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            
+
                         }
                     }
                 });
@@ -2143,7 +2143,7 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-                
+
                 var status = self.attr('data-status');
                 var user_status = 'ACTIVE';
                 if (status == 1)
@@ -2184,7 +2184,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                           
+
                         }
                     }
                 });
@@ -2234,7 +2234,7 @@ $this->load->view('_partials/front/allnotify');
             });
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
-              
+
                 var status = self.attr('data-status');
 
                 var user_status = 'ACTIVE';
@@ -2281,7 +2281,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                            
+
                         }
                     }
                 });
@@ -2289,7 +2289,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_unblock', function () {
                 var self = $(this);
                 var table = self.attr('data-status');
-                
+
                 if (!confirm('Are you sure want to unblock user?'))
                     return;
                 self.attr('disabled', 'disabled');
@@ -2306,14 +2306,14 @@ $this->load->view('_partials/front/allnotify');
                     success: function (res) {
                         var res = $.parseJSON(res);
                         if (res.suceess) {
-                            self.remove();                            
-                            
+                            self.remove();
+
                             var d = new PNotify({
                                 title: 'Unblock succeessfully',
                                 type: 'success',
                                 styling: 'bootstrap3'
                             });
-                            
+
                         }
                     }
                 });
@@ -2321,7 +2321,7 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>
-    <?php if ($title == RMSAE_EMPLOYEE_LIST_TITLE) {
+<?php if ($title == RMSAE_EMPLOYEE_LIST_TITLE) {
     ?>
     <script nonce='S51U26wMQz'>
         $(document).ready(function () {
@@ -2363,7 +2363,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-                
+
 
                 var user_status = 'ACTIVE';
 
@@ -2404,7 +2404,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                           
+
                         }
                     }
                 });
@@ -2412,7 +2412,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_unblock', function () {
                 var self = $(this);
                 var table = self.attr('data-status');
-                
+
                 if (!confirm('Are you sure want to unblock user?'))
                     return;
                 self.attr('disabled', 'disabled');
@@ -2429,14 +2429,14 @@ $this->load->view('_partials/front/allnotify');
                     success: function (res) {
                         var res = $.parseJSON(res);
                         if (res.suceess) {
-                            self.remove();                            
-                            
+                            self.remove();
+
                             var d = new PNotify({
                                 title: 'Unblock succeessfully',
                                 type: 'success',
                                 styling: 'bootstrap3'
                             });
-                            
+
                         }
                     }
                 });
@@ -2486,7 +2486,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
                 var status = self.attr('data-status');
-                
+
 
                 var user_status = 'ACTIVE';
 
@@ -2527,7 +2527,7 @@ $this->load->view('_partials/front/allnotify');
                             });
                             self.removeAttr('disabled');
                             self.html(text);
-                           
+
                         }
                     }
                 });
@@ -2535,7 +2535,7 @@ $this->load->view('_partials/front/allnotify');
             $(document).on('click', '.btn_unblock', function () {
                 var self = $(this);
                 var table = self.attr('data-status');
-               
+
                 if (!confirm('Are you sure want to unblock user?'))
                     return;
                 self.attr('disabled', 'disabled');
@@ -2552,14 +2552,14 @@ $this->load->view('_partials/front/allnotify');
                     success: function (res) {
                         var res = $.parseJSON(res);
                         if (res.suceess) {
-                            self.remove();                            
-                            
+                            self.remove();
+
                             var d = new PNotify({
                                 title: 'Unblock succeessfully',
                                 type: 'success',
                                 styling: 'bootstrap3'
                             });
-                            
+
                         }
                     }
                 });
@@ -2996,7 +2996,7 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>
-    <?php if ($title == RMSA_EMPLOYEE_PROFILE_TITLE) {
+<?php if ($title == RMSA_EMPLOYEE_PROFILE_TITLE) {
     ?>
     <script nonce='S51U26wMQz'>
         $(document).ready(function () {
@@ -3894,7 +3894,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                         var d = new PNotify({
                             title: 'Invalid Username & Password',
                             type: 'error',
-                            styling: 'bootstrap3',
+                            styling: 'bootstrap3'
                         });
                     }
                 }, 'json');
@@ -3942,7 +3942,40 @@ if ($title == FILE_REVIEWS_TITLE) {
     </script>
 <?php }
 ?>
-
+    <?php if($title!=STUDENT_VIDEOS_TITLE){
+        if(isset($_SESSION['video_search'])){
+            unset($_SESSION['video_search']);
+        }
+    } ?>
+<?php if($title==STUDENT_VIDEOS_TITLE){ ?>
+<script nonce='S51U26wMQz'>
+$('#search_clear').on('click', function () {
+    <?php if(isset($_SESSION['video_search'])){unset($_SESSION['video_search']);} ?>
+    window.location.href = "<?php echo STUDENT_VIDEO_LINK."1"; ?>";
+});
+    $('#search_all').on('click', function () {
+        var title = $('#title').val();
+        var topic = $('#topic').val();
+        var sub_topic = $('#sub_topic').val();
+        var recommendation = $('#recommendation').val();
+        var subject = $('#subject').val();
+        var instructor = $('#instructor').val();        
+        var class_value = $('#class_value').children("option:selected").val();
+        var language = $('#language').children("option:selected").val();        
+        $.ajax({
+            type: "POST",
+            url: "<?php echo STUDENT_VIDEO_SEARCH_LINK; ?>",
+            data: {'title': title,topic:topic,sub_topic:sub_topic,recommendation:recommendation,subject:subject,instructor:instructor,class_value:class_value,language:language},
+            success: function (res) {
+                var result = $.parseJSON(res);
+                if(result['success'] === "success"){                   
+                   window.location.href = "<?php echo STUDENT_VIDEO_LINK."1"; ?>";
+                }
+            }
+        });
+    });
+</script>  
+<?php } ?>  
 <?php
 if (isset($_SESSION['st_rmsa_student_login_active'])) {
     if ($_SESSION['st_rmsa_student_login_active'] == 1) {
@@ -3999,25 +4032,25 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
     }
 }
 ?>
-        <script nonce='S51U26wMQz'>
-$(document).ready(function () {
+<script nonce='S51U26wMQz'>
+    $(document).ready(function () {
 //        $('.filereviewslink').on('click', function () {   
-        $("table").delegate(".filereviewslink", "click", function(e){
+        $("table").delegate(".filereviewslink", "click", function (e) {
 //                alert('hi');
-                var fileId = $(this).attr('id');
-                <?php if ($title == STUDENT_RESOURCES_TITLE) {
-                ?>
-                display_comments(fileId,e);
-                <?php }else{ ?>
-                show_review_comments(fileId,e);   
-                <?php } ?>
+            var fileId = $(this).attr('id');
+<?php if ($title == STUDENT_RESOURCES_TITLE) {
+    ?>
+                display_comments(fileId, e);
+<?php } else { ?>
+                show_review_comments(fileId, e);
+<?php } ?>
         });
 //        $("table").delegate(".filereviewslink", "click", function(e){
 ////                alert('hi');
 //                var fileId = $(this).attr('id');
 //                display_comments(fileId,e);
 //        });
-});
+    });
 </script>
 <!--        <script nonce='S51U26wMQz'>
 $(document).ready(function () {

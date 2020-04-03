@@ -151,6 +151,8 @@ $route['teacher-resources']       = 'front/TeacherResource';
 
 //all student routes
 $route['video_lessons/(:any)']    = 'front/Helper/student_videos/$1';
+$route['video_lessons_search']    = 'front/Helper/video_lessons_search';
+//$route['video_lessons/(:any)/(:any)/(:any)/(:any)']    = 'front/Helper/student_videos/$1/$2/$3/$4';
 $route['student-registration']    = 'front/Helper/create_student';
 $route['update-profile']          = 'front/Student/update_profile';
 $route['student-login']           = 'front/StudentLogin';

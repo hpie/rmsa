@@ -29,12 +29,32 @@ class Helper extends MY_Controller {
             }
         }
     }
-    public function student_videos($offset){        
+    public function student_videos($offset){
+        $params=array();
+        $params['youtube_video_title']='';
+        $params['youtube_video_description']='';
+        $params['youtube_video_recomendation']='';
+        $params['youtube_video_class']='';
+        $params['youtube_video_subject']='';
+        $params['youtube_video_topic']='';
+        $params['youtube_video_subtopic']='';
+        $params['youtube_video_language']='';
+        $params['youtube_video_instructor']='';
+        if(isset($_SESSION['video_search'])){
+            $params['youtube_video_title']=$_SESSION['video_search']['title'];
+            $params['youtube_video_description']=$_SESSION['video_search']['title'];
+            $params['youtube_video_recomendation']=$_SESSION['video_search']['recommendation'];
+            $params['youtube_video_class']=$_SESSION['video_search']['class_value'];
+            $params['youtube_video_subject']=$_SESSION['video_search']['subject'];
+            $params['youtube_video_topic']=$_SESSION['video_search']['topic'];
+            $params['youtube_video_subtopic']=$_SESSION['video_search']['sub_topic'];
+            $params['youtube_video_language']=$_SESSION['video_search']['language'];
+            $params['youtube_video_instructor']=$_SESSION['video_search']['instructor'];
+        }
 //        include_once 'third_party/Pagination.class.php';        
         $limit=4;
         $offsets = !empty($offset)?(($offset-1)*$limit):0;        
-        $rowCount = $this->Helper_model->count_total_videos();
-//        echo $rowCount;die;
+        $rowCount = $this->Helper_model->count_total_videos($params);
         // Initialize pagination class        
         $pagConfig = array(
             'pageUrl'=>STUDENT_VIDEO_LINK,
@@ -43,12 +63,19 @@ class Helper extends MY_Controller {
             'offset'=>$offset
         );         
         $pagination =  new Pagination($pagConfig); 
-        $videos = $this->Helper_model->load_videos($offsets,$limit);
+        $videos = $this->Helper_model->load_videos($offsets,$limit,$params);
         $this->mViewData['videos'] = $videos;
         $this->mViewData['pagination'] = $pagination;
         $this->mViewData['title']=STUDENT_VIDEOS_TITLE;
         $this->renderFront('front/videos');
     }
+    public function video_lessons_search(){
+        $result=array();        
+        $_SESSION['video_search']=$_POST;
+        $result['success']='success';
+        echo json_encode($result);      
+    }
+    
     
     public function load_tehsil(){
         if($_REQUEST['districtId']){            
