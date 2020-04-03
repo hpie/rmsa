@@ -119,7 +119,7 @@ class Pagination{
         
         // Render the "First" link
         if($this->currentPage > $this->numLinks){
-            $firstPageURL = str_replace($query_string_sep,'',$this->baseURL);
+            $firstPageURL = $this->baseURL.'1';
             $output .= $this->firstTagOpen.'<a href="'.$firstPageURL.'">'.$this->firstLink.'</a>'.$this->firstTagClose;
         }
         // Render the "previous" link
