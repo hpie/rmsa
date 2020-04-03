@@ -24,7 +24,7 @@
          ?>
         <div class="col-md-5 col-sm-5 videoback">
             <h4><?php echo $video['youtube_video_title']; ?></h4>           
-            <iframe width="100%" height="215" src="<?php echo $video['youtube_video_url']; ?>?rel=0" frameborder="0"></iframe>
+            <iframe width="100%" height="215" allowfullscreen src="<?php echo $video['youtube_video_url']; ?>?rel=0" frameborder="0"></iframe>
             <h4>For : <?php echo $video['youtube_video_recomendation']; ?></h4>
             <p><b>Description :</b><br> <?php echo $video['youtube_video_description']; ?></p>
         </div>
