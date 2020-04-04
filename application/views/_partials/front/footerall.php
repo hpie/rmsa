@@ -3849,8 +3849,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                         }
                     }
                 }
-            }).on('success.form.bv', function (e) {
-                $("#btnRegister").attr('disabled', 'disabled');
+            }).on('success.form.bv', function (e) {                
                 $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
                 $('#student_register').data('bootstrapValidator').resetForm();
                 // Prevent form submission
@@ -3859,10 +3858,13 @@ if ($title == FILE_REVIEWS_TITLE) {
                 var $form = $(e.target);
                 // Get the BootstrapValidator instance
                 var bv = $form.data('bootstrapValidator');
+                                
+                $("#btnRegister").attr('disabled',true);
+                
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result['success'] == "success") {
-                        $("#btnRegister").removeAttr('disabled');
+//                        $("#btnRegister").removeAttr('disabled');
                         if ('<?php if (isset($_SESSION['rm_rmsa_user_id'])) {echo '1';} else {echo '0';}?>' === '1') {
                             location.href = "<?php echo RMSA_STUDENT_LIST_LINK; ?>";
                         }
@@ -3875,7 +3877,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                         location.href = "<?php echo HOME_LINK ?>";
                     }
                     if (result['success'] == "fail") {
-                        $("#btnRegister").removeAttr('disabled');
+                        $("#btnRegister").removeAttr('disabled',false);
                         var d = new PNotify({
                             title: 'Invalid Username & Password',
                             type: 'error',
