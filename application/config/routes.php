@@ -143,6 +143,11 @@ $route['employee-quistions-list/(:any)'] = 'front/fileDw/questions_list/$1';
 $route['employee-add-quistions/(:any)'] = 'front/Employee/add_quistions/$1';
 $route['employee-edit-quistions/(:any)'] = 'front/Employee/edit_quistions/$1';
 
+$route['employee-videos'] = 'front/Employee/view_videos';
+$route['employee-add-video'] = 'front/Employee/add_videos';
+$route['video-active']          = 'front/Employee/active_video';
+$route['employee-update-video/(:any)'] = 'front/Employee/update_video/$1';
+
 //all teacher routes
 $route['teacher-login']           = 'front/TechLogin';
 $route['teacher-logout']          = 'front/TechLogin/teacherLogout';

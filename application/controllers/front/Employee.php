@@ -149,6 +149,52 @@ class Employee extends MY_Controller {
         }
     }
 
+    public function view_videos() {     
+        $this->mViewData['title'] = EMPLOYEE_VIDEO_LIST_TITLE;
+        $this->renderFront('front/employee_videos');
+    }
+    public function active_video() {
+        if (isset($_REQUEST['rmsa_youtube_video_id'])) {
+            $res = $this->Employee_model->active_video($_REQUEST);
+            if ($res) {     
+                $data = array(
+                    'suceess' => true
+                );
+            }
+            echo json_encode($data);
+        }
+    }
+    public function add_videos() {        
+        if (isset($_POST['submit'])) {
+            unset($_POST['submit']);
+            unset($_POST['g-recaptcha-response']);
+            $res = $this->Employee_model->add_video($_POST);
+            if ($res) {
+                $_SESSION['videoAdd'] = 1;
+                redirect(EMPLOYEE_VIDEO_LIST_LINK);
+            }
+        }
+        $this->mViewData['title'] = EMPLOYEE_ADD_VIDEO_TITLE;
+        $this->renderFront('front/addvideo');
+    }
+    
+    public function update_video($video_id) {        
+        $result = $this->Employee_model->get_video($video_id);        
+        if (isset($_POST['submit'])) {
+            unset($_POST['submit']);
+            unset($_POST['g-recaptcha-response']);
+            $res = $this->Employee_model->edit_video($_POST,$video_id);            
+            if ($res) {                                
+                $_SESSION['videoEdit'] = 1;
+                redirect(EMPLOYEE_VIDEO_LIST_LINK);
+            }
+        }
+        $this->mViewData['result']=$result;
+        $this->mViewData['title'] = EMPLOYEE_EDIT_VIDEO_TITLE;
+        $this->renderFront('front/editvideo');
+    }
+    
+    
     public function active_question() {
         if (isset($_REQUEST['question_id'])) {
 //            sessionCheckToken($_POST);

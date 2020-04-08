@@ -201,6 +201,7 @@
                                         <li><a href="<?php echo EMPLOYEE_UPLOAD_FILE_LINK; ?>">Upload Resource Material</a></li>
                                         <li><a href="<?php echo EMPLOYEE_RESOURCES_LIST_LINK; ?>">Manage Resource Material</a></li>
                                         <li><a href="<?php echo EMPLOYEE__QUIZ_RESOURCES_LIST_LINK; ?>">Create Quiz For Resources</a></li>
+                                        <li><a href="<?php echo EMPLOYEE_VIDEO_LIST_LINK; ?>">Manage Videos</a></li>
                                         <li><a href="<?php echo EMPLOYEE_QUIZ_MCQ_LINK; ?>">Quiz MCQ</a></li>
                                     </ul>
                                 </li>

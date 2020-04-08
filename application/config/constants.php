@@ -174,6 +174,14 @@ define('EMPLOYEE_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
 define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
 define('EMPLOYEE_STUDENT_LIST_LINK',BASE_URL."/employee-student");
 define('STUDENT_APPROVE',BASE_URL."/student-approve");
+
+
+define('EMPLOYEE_ADD_VIDEO_LINK',BASE_URL."/employee-add-video");
+define('EMPLOYEE_EDIT_VIDEO_LINK',BASE_URL."/employee-update-video/");
+define('EMPLOYEE_VIDEO_LIST_LINK',BASE_URL."/employee-videos");
+define('EMPLOYEE_ACTIVE_VIDEO',BASE_URL."/video-active");
+
+
 define('EMPLOYEE_FILE_ACTIVE',BASE_URL."/employee-file-active");
 define('EMPLOYEE_STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/employee-update-student-profile/");
 define('EMPLOYEE_REPORTS',BASE_URL."/employee-reports");
@@ -222,6 +230,9 @@ define('EMPLOYEE_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Employee Login")
 define('TEACHER_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Teacher Login");
 define('EMPLOYEE_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Employee Registration");
 define('EMPLOYEE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - EmployeeStudent");
+define('EMPLOYEE_VIDEO_LIST_TITLE',"Welcome to rmsahimachal.nic.in - EmployeeVideos");
+define('EMPLOYEE_ADD_VIDEO_TITLE',"Welcome to rmsahimachal.nic.in - Employee Add Video");
+define('EMPLOYEE_EDIT_VIDEO_TITLE',"Welcome to rmsahimachal.nic.in - Employee Edit Video");
 define('TEACHER_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - TeacherStudent");
 define('EMPLOYEE_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - FileDw");
 define('EMPLOYEE_FILE_LIST_QUIZ_TITLE',"Welcome to rmsahimachal.nic.in - Files for quiz");

@@ -2096,6 +2096,103 @@ $this->load->view('_partials/front/allnotify');
     </script>
 <?php } ?> 
 
+    
+<?php if ($title == EMPLOYEE_VIDEO_LIST_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz'>
+        $(document).ready(function () {
+            $('#example').DataTable({
+
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/employee_videos.php' ?>",
+                    'data': {
+                        rmsa_user_id: "<?php echo $_SESSION['user_id']; ?>"
+                    }
+                },
+                "columns": [
+                    {"data": "index"},
+                    {"data": "youtube_video_title"},
+                    {"data": "youtube_video_description"},                    
+                    {"data": "youtube_video_recomendation"},
+                    {"data": "youtube_video_class"},
+                    {"data": "youtube_video_subject"},
+                    {"data": "youtube_video_topic"},
+                    {"data": "youtube_video_subtopic"},
+                    {"data": "youtube_video_language"},
+                    {"data": "youtube_video_instructor"},
+                    {"data": "youtube_video_url"},
+                    {"data": "youtube_video_status"},
+                    {"data": "rmsa_video_edit"}
+                ]
+            });
+            $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+
+                var status = self.attr('data-status');                
+                var youtube_video_status = 'ACTIVE';
+                if (status == 1)
+                    youtube_video_status = 'REMOVED';
+
+                if (!confirm('Are you sure want to ' + youtube_video_status.toLocaleLowerCase() + ' video?'))
+                    return;
+                self.attr('disabled', 'disabled');
+                var data = {
+                    'rmsa_youtube_video_id': self.data('id'),
+                    'youtube_video_status': youtube_video_status
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo EMPLOYEE_ACTIVE_VIDEO ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+
+                            var title = 'Click to deactivate student';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if (status == 1) {
+                                title = 'Click to active student';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
+                                text = 'Inactive';
+                                isactive = 0;
+                            }
+
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+<?php } ?>     
+    
 <?php if ($title == TEACHER_STUDENT_LIST_TITLE) {
     ?>
     <script nonce='S51U26wMQz'>

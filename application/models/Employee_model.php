@@ -230,6 +230,41 @@ class Employee_model extends CI_Model {
         }
     }
     
+    public function active_video($params) {
+        $query_res = $this->db->query("UPDATE  rmsa_youtube_video SET youtube_video_status = '{$params['youtube_video_status']}'
+                                       WHERE rmsa_youtube_video_id='{$params['rmsa_youtube_video_id']}'");
+        if ($query_res) {
+            return true;
+        }
+    }
+    
+    public function add_video($params){                                             
+        $result = $this->db->insert('rmsa_youtube_video',$params);
+        $insert_id = $this->db->insert_id();// get last insert id
+        if(!empty($insert_id)){
+            return $insert_id;
+        }
+        return FALSE;
+        //it will be return boolean value (true/false)
+    }
+     public function edit_video($params,$video_id) {
+        $this->db->where('rmsa_youtube_video_id', $video_id);
+        $res = $this->db->update('rmsa_youtube_video', $params);
+        if ($res) {
+            return true;
+        }
+        return false; 
+    }
+    
+    
+     public function get_video($video_id) {        
+        $query = $this->db->query("SELECT * FROM rmsa_youtube_video WHERE rmsa_youtube_video_id = '" . $video_id . "'");
+        $result = $query->row_array();
+        if (isset($result)) {
+            return $result;
+        }
+    }
+    
     
      public function create_quiz($params){                       
         if(isset($_SESSION['emp_rmsa_user_id'])){
