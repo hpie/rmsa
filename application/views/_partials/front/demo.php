@@ -1,4 +1,4 @@
-<script nonce='S51U26wMQz'>
+<script nonce='S51U26wMQz' type="text/javascript">
     /*
      * jQuery File Upload Demo
      * https://github.com/blueimp/jQuery-File-Upload

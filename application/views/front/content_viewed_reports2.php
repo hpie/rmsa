@@ -10,6 +10,6 @@
     <canvas id="upload_content_reports2" width="400" height="400"></canvas> 
     <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
 </div>
-<script nonce='S51U26wMQz'>
+<script nonce='S51U26wMQz' type="text/javascript">
     window.most_upload = <?php echo json_encode($data)?>
 </script>

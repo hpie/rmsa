@@ -10,9 +10,9 @@
     <link href="<?php echo BASE_URL ?>/assets/front/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <!--<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700" rel="stylesheet">-->
     <link href="<?php echo BASE_URL ?>/assets/front/css/googlefont.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/font-awesome.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/main.css">    
-    <script src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
-    <script src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/font-awesome.css" type='text/css'>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/main.css" type='text/css'>    
+    <script nonce='S51U26wMQz' type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
+    <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 <!-- Head Section End -->

@@ -38,6 +38,6 @@
     </div>
     <canvas id="employee_most_rated" width="200" height="200"></canvas>
 </div>
-<script nonce='S51U26wMQz'>
+<script nonce='S51U26wMQz' type="text/javascript">
     window.most_rated = <?php echo json_encode($data) ?>
 </script>

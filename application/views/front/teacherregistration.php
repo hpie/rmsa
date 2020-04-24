@@ -184,8 +184,8 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <script nonce='S51U26wMQz' src="https://www.google.com/recaptcha/api.js" async defer></script>
-                    <script nonce='S51U26wMQz'>function enableRegister() {
+                    <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <script nonce='S51U26wMQz' type="text/javascript">function enableRegister() {
                         $("#btnRegister").removeClass('btn_disabled');
                         document.getElementById("btnRegister").disabled = false;
                     }</script>

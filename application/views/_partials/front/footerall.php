@@ -44,40 +44,52 @@ if ($title != STUDENT_EXAM_START_TITLE) {
 ?>
 <script nonce='S51U26wMQz' type="text/javascript">
     $(document).ready(function () {
-        $('input[type=text]').keypress(function (e) {
-            var keyCode = e.keyCode || e.which;
-            var charCode = (e.which) ? e.which : e.keyCode;
-            if (charCode == 60 || charCode == 96 || charCode == 126 || charCode == 33 || charCode == 35 || charCode == 36 || charCode == 37 || charCode == 94 || charCode == 96 || charCode == 38 || charCode == 42 || charCode == 40 || charCode == 41 || charCode == 61 || charCode == 43 || charCode == 123 || charCode == 125 || charCode == 91 || charCode == 93 || charCode == 124 || charCode == 92 || charCode == 58 || charCode == 59 || charCode == 34 || charCode == 39 || charCode == 44 || charCode == 63 || charCode == 47 || charCode == 62)
-            {
-                alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
-                return false;
-            }
+        $('input[type=text]').keyup(function (e) {
+            var str=$(this).val();
+            for (var i = 0; i < str.length; i++) {
+                var charCode=str.charAt(i).charCodeAt(0);                  
+                if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
+                {                
+                    alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
+                    $(this).val('');
+                    return false;
+                }       
+                
+                
+            }               
             return true;
         });
-        $("#fileupload").delegate(".input", "keypress", function (e) {
-//        $('.input').keypress(function (e) {                 
-            var keyCode = e.keyCode || e.which;
-            var charCode = (e.which) ? e.which : e.keyCode;
-            if (charCode == 60 || charCode == 96 || charCode == 126 || charCode == 33 || charCode == 35 || charCode == 36 || charCode == 37 || charCode == 94 || charCode == 96 || charCode == 38 || charCode == 42 || charCode == 40 || charCode == 41 || charCode == 61 || charCode == 43 || charCode == 123 || charCode == 125 || charCode == 91 || charCode == 93 || charCode == 124 || charCode == 92 || charCode == 58 || charCode == 59 || charCode == 34 || charCode == 39 || charCode == 44 || charCode == 63 || charCode == 47 || charCode == 62)
-            {
-                alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
-                return false;
-            }
+        $("#fileupload").delegate(".input", "keyup", function (e) {
+            var str=$(this).val();
+            for (var i = 0; i < str.length; i++) {
+                var charCode=str.charAt(i).charCodeAt(0);                  
+                if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
+                {                
+                    alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
+                    $(this).val('');
+                    return false;
+                }                                       
+            }               
             return true;
         });
-        $('textarea').keypress(function (e) {
-            var keyCode = e.keyCode || e.which;
-            var charCode = (e.which) ? e.which : e.keyCode;
-            if (charCode == 60 || charCode == 96 || charCode == 126 || charCode == 33 || charCode == 35 || charCode == 36 || charCode == 37 || charCode == 94 || charCode == 96 || charCode == 38 || charCode == 42 || charCode == 40 || charCode == 41 || charCode == 61 || charCode == 43 || charCode == 123 || charCode == 125 || charCode == 91 || charCode == 93 || charCode == 124 || charCode == 92 || charCode == 58 || charCode == 59 || charCode == 34 || charCode == 39 || charCode == 44 || charCode == 63 || charCode == 47 || charCode == 62)
-            {
-                alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
-                return false;
-            }
+        $('textarea').keyup(function (e) {
+            var str=$(this).val();
+            for (var i = 0; i < str.length; i++) {
+                var charCode=str.charAt(i).charCodeAt(0);                  
+                if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
+                {                
+                    alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
+                    $(this).val('');
+                    return false;
+                }       
+                
+                
+            }               
             return true;
         });
     });
 </script>   
-<script nonce='S51U26wMQz'>
+<script nonce='S51U26wMQz' type="text/javascript">
 //    function myFunction() {       
 //        myVar = setTimeout(showPage, 3000);
 //    }
@@ -136,7 +148,7 @@ if ($title != STUDENT_EXAM_START_TITLE) {
 $this->load->view('_partials/front/allnotify');
 ?>
 
-<script nonce='S51U26wMQz'>
+<script nonce='S51U26wMQz' type="text/javascript">
     $(document).ready(function () {
         $(".emp_reports").on('change', function () {
             var type = $(this).val();
@@ -148,7 +160,7 @@ $this->load->view('_partials/front/allnotify');
     });
 </script>
 
-<script nonce='S51U26wMQz'>
+<script nonce='S51U26wMQz' type="text/javascript">
     $(document).ready(function () {
         $(".reports_go").on('click', function () {
             var type = $('.emp_reports_type').find(":selected").val();
@@ -168,7 +180,7 @@ $this->load->view('_partials/front/allnotify');
 </script>
 <?php if ($title == REPORTS_2_UPLOADED_CONTENT_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var month = [];
         var count = [];
         $(most_upload).each(function (key, data) {
@@ -304,7 +316,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == REPORTS_2_STUDENT_REGISTERED_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var month = [];
         var count = [];
         $(most_upload).each(function (key, data) {
@@ -440,7 +452,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>    
 <?php if ($title == REPORTS_2_TEACHER_REGISTERED_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var month = [];
         var count = [];
         $(most_upload).each(function (key, data) {
@@ -577,7 +589,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_CONTENT_UPLOADED_EMPLOYEE_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var employee_name = [];
         var overall_rating = [];
 
@@ -634,7 +646,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_CONTENT_RATED_EMPLOYEE_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var employee_name = [];
         var overall_rating = [];
 
@@ -692,7 +704,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_CONTENT_VIEW_EMPLOYEE_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var employee_name = [];
         var uploaded_file_viewcount = [];
 
@@ -753,7 +765,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_RATED_CONTENT_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var uploaded_file_title = [];
         var overall_rating = [];
 
@@ -812,7 +824,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_VIEWED_CONTENT_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var uploaded_file_title = [];
         var uploaded_file_viewcount = [];
 
@@ -871,7 +883,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_ACTIVE_STUDENT_BY_CONTENT_READ) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var student_name = [];
         var most_active = [];
 
@@ -930,7 +942,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == MOST_ACTIVE_STUDENT_ON_SCHOOL_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var school_name = [];
         var most_active = [];
 
@@ -989,7 +1001,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == TOP_DISTRICT_WITH_MOST_CONTENT) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var district_name = [];
         var total_upload = [];
 
@@ -1048,7 +1060,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == RMSA_FILE_LIST_TITLE) {
     ?> 
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
@@ -1191,7 +1203,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == TEACHER_FILE_LIST_TITLE) {
     ?> 
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
@@ -1281,7 +1293,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == EMPLOYEE_FILE_LIST_TITLE) {
     ?> 
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
@@ -1431,7 +1443,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == EMPLOYEE_FILE_LIST_QUIZ_TITLE) {
     ?> 
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
@@ -1581,7 +1593,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == EMPLOYEE_QUIZ_LIST_TITLE) {
     ?> 
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1()
@@ -1694,7 +1706,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == EMPLOYEE_QUESTIONS_LIST_TITLE) {
     ?> 
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1()
@@ -1806,7 +1818,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == STUDENT_RESOURCES_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var uploaded_file_id;
         var review_modal = $("#review-modal");
         var view_reviews_modal = $("#view-reviews");
@@ -1999,7 +2011,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == EMPLOYEE_STUDENT_LIST_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             $('#example').DataTable({
 
@@ -2099,7 +2111,7 @@ $this->load->view('_partials/front/allnotify');
     
 <?php if ($title == EMPLOYEE_VIDEO_LIST_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             $('#example').DataTable({
 
@@ -2195,7 +2207,7 @@ $this->load->view('_partials/front/allnotify');
     
 <?php if ($title == TEACHER_STUDENT_LIST_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             $('#example').DataTable({
                 responsive: {
@@ -2292,7 +2304,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == RMSAE_STUDENT_LIST_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             $('#example').DataTable({
 
@@ -2420,7 +2432,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == RMSAE_EMPLOYEE_LIST_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             $('#example').DataTable({
 
@@ -2543,7 +2555,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == RMSAE_TEACHERS_LIST_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             $('#example').DataTable({
 
@@ -2667,7 +2679,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == STUDENT_PROFILE_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             $('#frm_general_info').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
@@ -2789,7 +2801,7 @@ $this->load->view('_partials/front/allnotify');
 
 <?php if ($title == EMPLOYEE_STUDENT_PROFILE_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             $('#frm_general_info').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
@@ -2910,7 +2922,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == RMSA_STUDENT_PROFILE_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
 
             $('#rmsa_district').on('change', function () {
@@ -3095,7 +3107,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == RMSA_EMPLOYEE_PROFILE_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
 
             $('#rmsa_district').on('change', function () {
@@ -3280,7 +3292,7 @@ $this->load->view('_partials/front/allnotify');
 <?php } ?>
 <?php if ($title == RMSA_TEACHER_PROFILE_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
 
             $('#rmsa_district').on('change', function () {
@@ -3467,7 +3479,7 @@ $this->load->view('_partials/front/allnotify');
 <?php
 if ($title == FILE_REVIEWS_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         var reply_modal = $("#reply-modal");
         var fileId = "<?php echo $reviews['fileId']; ?>";
         var commentId;
@@ -3505,7 +3517,7 @@ if ($title == FILE_REVIEWS_TITLE) {
 ?>
 <?php if ($title == RMSA_EMPLOYEE_REGISTRATION_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
 
             $('#employee_register').bootstrapValidator({
@@ -3677,7 +3689,7 @@ if ($title == FILE_REVIEWS_TITLE) {
 
 <?php if ($title == RMSA_TEACHER_REGISTRATION_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
 
             $('#employee_register').bootstrapValidator({
@@ -3848,7 +3860,7 @@ if ($title == FILE_REVIEWS_TITLE) {
 
 <?php if ($title == STUDENT_REGISTRATION_TITLE) {
     ?>
-    <script nonce='S51U26wMQz'>
+    <script nonce='S51U26wMQz' type="text/javascript">
 
         $(document).ready(function () {
 
@@ -4034,7 +4046,7 @@ if ($title == FILE_REVIEWS_TITLE) {
     }
     ?>
 <?php if($title==STUDENT_VIDEOS_TITLE){ ?>
-<script nonce='S51U26wMQz'>
+<script nonce='S51U26wMQz' type="text/javascript">
 $('#search_clear').on('click', function () {        
     $.ajax({
             type: "POST",
@@ -4079,7 +4091,7 @@ if (isset($_SESSION['st_rmsa_student_login_active'])) {
 //    please run this sql on backend
 //    ALTER TABLE `rmsa_student_users` ADD `rmsa_student_login_active` INT(1) NOT NULL AFTER `modified_dt`;
         ?>
-        <script nonce='S51U26wMQz'>
+        <script nonce='S51U26wMQz' type="text/javascript">
             $(document).ready(function () {
                 window.setInterval(function () {
                     $.ajax({
@@ -4107,7 +4119,7 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
 //    please run this sql on backend
 //     ALTER TABLE `rmsa_employee_users` ADD `rmsa_employee_login_active` INT(1) NOT NULL AFTER `modified_dt`;
         ?>
-        <script nonce='S51U26wMQz'>
+        <script nonce='S51U26wMQz' type="text/javascript">
             $(document).ready(function () {
                 window.setInterval(function () {
                     $.ajax({
@@ -4127,7 +4139,7 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
     }
 }
 ?>
-<script nonce='S51U26wMQz'>
+<script nonce='S51U26wMQz' type="text/javascript">
     $(document).ready(function () {
 //        $('.filereviewslink').on('click', function () {   
         $("table").delegate(".filereviewslink", "click", function (e) {
@@ -4147,7 +4159,7 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
 //        });
     });
 </script>
-<!--        <script nonce='S51U26wMQz'>
+<!--        <script nonce='S51U26wMQz' type="text/javascript">
 $(document).ready(function () {
 $('a').each(function(){  
 $(this).attr('onclick','window.location.href="'+$(this).attr('href')+'"');

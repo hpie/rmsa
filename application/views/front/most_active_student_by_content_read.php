@@ -37,6 +37,6 @@
     </div>
     <canvas id="most_active_student" width="400" height="400"></canvas>
 </div>
-<script nonce='S51U26wMQz'>
+<script nonce='S51U26wMQz' type="text/javascript">
     window.most_active_student = <?php echo json_encode($data)?>
 </script>

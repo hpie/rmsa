@@ -27,6 +27,6 @@
     <canvas id="most_rated_content" width="400" height="400"></canvas>
 </div>
 
-<script nonce='S51U26wMQz'>
+<script nonce='S51U26wMQz' type="text/javascript">
     window.most_rated_content = <?php echo json_encode($data)?>
 </script>

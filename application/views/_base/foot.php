@@ -3,7 +3,7 @@
 		foreach ($scripts['foot'] as $file)
 		{
 			$url = starts_with($file, 'http') ? $file : base_url($file);
-			echo "<script src='$url'></script>".PHP_EOL;
+			echo "<script src='$url' type='text/javascript'></script>".PHP_EOL;
 		}
 	?>
 

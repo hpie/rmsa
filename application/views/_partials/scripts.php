@@ -1,1 +1,1 @@
-<script src="<?php echo BASE_URL; ?>assets/js/main.js"></script>
+<script nonce='S51U26wMQz' type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/main.js"></script>

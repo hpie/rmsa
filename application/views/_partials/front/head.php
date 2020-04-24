@@ -34,11 +34,11 @@
     <link href="<?php echo BASE_URL ?>/assets/front/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <!--<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700" rel="stylesheet">-->
     <link href="<?php echo BASE_URL ?>/assets/front/css/googlefont.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/front/css/font-awesome.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/front/css/main.css">    
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/front/css/font-awesome.css" type='text/css'>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/front/css/main.css" type='text/css'>    
     <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.min.js"></script>
     <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/bootstrap.min.js"></script>
-    <link href="<?php echo BASE_URL; ?>/assets/pnotify/dist/pnotifiadmin.css" rel="stylesheet">    
+    <link href="<?php echo BASE_URL; ?>/assets/pnotify/dist/pnotifiadmin.css" rel="stylesheet" type='text/css'>    
     <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css">
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />-->
@@ -50,11 +50,11 @@
         <link href="<?php echo BASE_URL ?>/assets/front/css/blueimp-gallery.min.css" rel="stylesheet" type="text/css"/>
         <!--<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css"/>-->
         <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
-        <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload.css" />
-        <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-ui.css" />
+        <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload.css" type='text/css' />
+        <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-ui.css" type='text/css' />
         <!-- CSS adjustments for browsers with JavaScript disabled -->
-        <noscript><link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-noscript.css"/></noscript>
-        <noscript><link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-ui-noscript.css"/></noscript> 
+        <noscript><link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-noscript.css" type='text/css' /></noscript>
+        <noscript><link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/front/fileupload/css/jquery.fileupload-ui-noscript.css" type='text/css' /></noscript> 
     <?php } ?>
     <style>
         .form-control {
