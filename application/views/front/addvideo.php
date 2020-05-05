@@ -23,7 +23,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="youtube_video_url">URL:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" name="youtube_video_url" id="youtube_video_url" placeholder=" Video URL" required="">
+                        <input type="url" class="form-control" name="youtube_video_url" id="youtube_video_url" placeholder=" Video URL" required="">
                     </div>
                 </div>
             </div>
