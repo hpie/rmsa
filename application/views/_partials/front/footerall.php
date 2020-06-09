@@ -3597,17 +3597,17 @@ if ($title == FILE_REVIEWS_TITLE) {
                                 message: 'Please supply your date of birth'
                             }
                         }
-                    },
-                    rmsa_user_father_name: {
-                        validators: {
-                            stringLength: {
-                                min: 2,
-                            },
-                            notEmpty: {
-                                message: 'Please supply your father name'
-                            }
-                        }
                     }
+//                    rmsa_user_father_name: {
+//                        validators: {
+//                            stringLength: {
+//                                min: 2,
+//                            },
+//                            notEmpty: {
+//                                message: 'Please supply your father name'
+//                            }
+//                        }
+//                    }
                 }
             }).on('success.form.bv', function (e) {
                 $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
@@ -3769,17 +3769,17 @@ if ($title == FILE_REVIEWS_TITLE) {
                                 message: 'Please supply your date of birth'
                             }
                         }
-                    },
-                    rmsa_user_father_name: {
-                        validators: {
-                            stringLength: {
-                                min: 2
-                            },
-                            notEmpty: {
-                                message: 'Please supply your father name'
-                            }
-                        }
                     }
+//                    rmsa_user_father_name: {
+//                        validators: {
+//                            stringLength: {
+//                                min: 2
+//                            },
+//                            notEmpty: {
+//                                message: 'Please supply your father name'
+//                            }
+//                        }
+//                    }
                 }
             }).on('success.form.bv', function (e) {
                 $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
@@ -3941,17 +3941,17 @@ if ($title == FILE_REVIEWS_TITLE) {
                                 message: 'Please supply your date of birth'
                             }
                         }
-                    },
-                    rmsa_user_father_name: {
-                        validators: {
-                            stringLength: {
-                                min: 2,
-                            },
-                            notEmpty: {
-                                message: 'Please supply your father name'
-                            }
-                        }
                     }
+//                    rmsa_user_father_name: {
+//                        validators: {
+//                            stringLength: {
+//                                min: 2,
+//                            },
+//                            notEmpty: {
+//                                message: 'Please supply your father name'
+//                            }
+//                        }
+//                    }
                 }
             }).on('success.form.bv', function (e) {                
                 $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
