@@ -26,7 +26,7 @@ $r = $_SERVER['SCRIPT_NAME'];
 $subdomain = explode('/', $r);
 array_pop($subdomain);
 $urllink=$protocol.'://'.$_SERVER['HTTP_HOST'];
-if($urllink=="https://localhost"){  
+if($urllink=="https://localhost" || $urllink=="http://localhost"){  
     $urllink.='/rmsa';
 }
 define('BASE_URL', $urllink);
