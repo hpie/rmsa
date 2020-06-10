@@ -37,7 +37,8 @@ $columns = array(
     array('db' => 'rs.rmsa_school_title', 'dt' =>'rmsa_school_title'),
     array('db' => 'rd.rmsa_district_name', 'dt' =>'rmsa_district_name'),
     array('db' => 'reu.rmsa_user_locked_status', 'dt' =>'rmsa_user_locked_status'),
-    array('db' => 'reu.rmsa_user_attempt', 'dt' =>'rmsa_user_attempt')
+    array('db' => 'reu.rmsa_user_attempt', 'dt' =>'rmsa_user_attempt'),
+    array('db' => 'reu.rmsa_user_email_verified_status', 'dt' =>'rmsa_user_email_verified_status')
 );
 
 include 'conn.php';

@@ -270,9 +270,9 @@ class Rmsa extends MY_Controller
             echo json_encode($data);
         }
     }
-       public function verify_student_email(){
+       public function verify_email(){
         if(isset($_REQUEST['rmsa_user_id'])){            
-            $res = $this->Rmsa_model->verify_student_email($_REQUEST);
+            $res = $this->Rmsa_model->verify_email($_REQUEST);
             if($res){      
                 $data = array(                    
                     'suceess' => true

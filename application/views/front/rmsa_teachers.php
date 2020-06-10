@@ -25,6 +25,7 @@
             <th>Gender</th>
             <th>DOB</th>
             <th>Email</th>
+            <th>Email Status</th>
             <th>Status</th>
             <th>Block</th>
             <th>Action</th>
@@ -40,6 +41,7 @@
             <th>Gender</th>
             <th>DOB</th>
             <th>Email</th>
+            <th>Email Status</th>
             <th>Status</th>
             <th>Block</th>
              <th>Action</th>

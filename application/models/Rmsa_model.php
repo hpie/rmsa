@@ -51,8 +51,8 @@ class Rmsa_model extends CI_Model {
             return true;
         }
     }
-    public function verify_student_email($params) {
-        $query_res = $this->db->query("UPDATE  rmsa_student_users SET rmsa_user_email_verified_status = '{$params['rmsa_user_email_verified_status']}'
+    public function verify_email($params) {       
+        $query_res = $this->db->query("UPDATE  {$params['table']} SET rmsa_user_email_verified_status = '{$params['rmsa_user_email_verified_status']}'
                                        WHERE rmsa_user_id='{$params['rmsa_user_id']}'");
         if ($query_res) {
             return true;
