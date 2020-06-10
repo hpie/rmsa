@@ -1,7 +1,7 @@
 <!-- content -->
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
-        <h1 class="heading">View Information of RMSA Coordinates</h1>
+        <h1 class="heading">Registered Students</h1>
         <form class="form-horizontal border p-2" action="#">
             
             <h2 class="second-heading">Registered Students</h2>

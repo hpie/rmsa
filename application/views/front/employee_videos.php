@@ -1,6 +1,6 @@
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
-    <h1 class="heading">View Information Student List on the Portal</h1>                             
+    <h1 class="heading">Video List</h1>                             
         <div class="form-group">                
                 <div class="row">                                        
                     <div class="col-sm-6 col-xs-6">

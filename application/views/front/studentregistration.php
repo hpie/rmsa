@@ -8,7 +8,7 @@
 </style>
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
-        <h1 class="heading">Registration of Students in the RMSA Portal</h1>
+        <h1 class="heading">Student Registration</h1>
         <form method="post" id="student_register" class="form-horizontal border p-2" action="<?php echo STUDENT_REGISTER_LINK; ?>">
             <h2 class="second-heading">General Information</h2>
            

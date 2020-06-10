@@ -8,7 +8,7 @@
 </style>
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
-        <h1 class="heading">Add video</h1>
+        <h1 class="heading">Edit video</h1>
         <form method="post" id="create_quiz" class="form-horizontal border p-2" action="<?php echo EMPLOYEE_EDIT_VIDEO_LINK.$result['rmsa_youtube_video_id']; ?>">                               
             <input type="hidden" name="rmsa_user_id" value="<?php echo $result['rmsa_user_id']; ?>">
             <div class="form-group">

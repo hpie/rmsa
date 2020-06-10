@@ -1,7 +1,7 @@
 <!-- content -->
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
-        <h1 class="heading">RMSA: &nbsp;Student Login Screen</h1>
+        <h1 class="heading">RMSA: Login Screen</h1>
         <form method="post" class="form-horizontal border p-2" action="<?php echo STUDENT_LOGIN_LINK; ?>">
             <h2 class="second-heading text-center">Authorized login</h2>
            

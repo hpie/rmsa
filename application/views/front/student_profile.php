@@ -2,7 +2,7 @@
 <!-- content -->
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
-        <h1 class="heading">Update Profile of Students in the RMSA Portal</h1>
+        <h1 class="heading">Update Student Profile</h1>
 
         <?php if(!isset($_SESSION['st_rmsa_user_id'])){ ?>
         <form method="post" id="frm_general_info" class="form-horizontal border p-2" action="<?php echo STUDENT_UPDATE_PROFILE_LINK ?>">

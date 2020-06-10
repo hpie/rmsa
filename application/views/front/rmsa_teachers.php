@@ -1,6 +1,6 @@
 <div class="col-md-9 col-sm-9">
     <div class="middle-area">
-    <h1 class="heading">View Information Employee List on the Portal</h1>     
+    <h1 class="heading">Teacher List</h1>     
     <a href="<?php  echo RMSA_TEACHERS_REGISTER_LINK;?>" class="btn btn-primary btn-sm"  id="searchTag" style="float: right;color:#fff"><i class="fa fa-plus"> </i> Add Teachers</a>
     <br>
 <!--        <div class="form-group">                
