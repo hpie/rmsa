@@ -51,6 +51,13 @@ class Rmsa_model extends CI_Model {
             return true;
         }
     }
+    public function verify_student_email($params) {
+        $query_res = $this->db->query("UPDATE  rmsa_student_users SET rmsa_user_email_verified_status = '{$params['rmsa_user_email_verified_status']}'
+                                       WHERE rmsa_user_id='{$params['rmsa_user_id']}'");
+        if ($query_res) {
+            return true;
+        }
+    }
 
     public function register_teacher($params) {
         $email_exist = $this->db->query("SELECT * FROM rmsa_teacher_users WHERE rmsa_user_email_id = '" . $params['rmsa_user_email_id'] . "' ");

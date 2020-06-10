@@ -2331,11 +2331,41 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_gender"},
                     {"data": "rmsa_user_DOB"},
                     {"data": "rmsa_user_email_id"},
+                    {"data": "rmsa_user_email_verified_status"},
                     {"data": "rmsa_user_status"},
                     {"data": "rmsa_user_block"},
                     {"data": "rmsa_user_edit"}
                 ]
             });
+            
+             $(document).on('click', '.btn_approve_email', function () {
+                var self = $(this);
+                if (!confirm('Are you sure want to verified Email?'))
+                    return;
+                
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'rmsa_user_id': self.data('id'),
+                    'rmsa_user_email_verified_status': 1
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo RMSA_STUDENT_VERIFY_EMAIL ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+                            self.after( "Email verified" );
+                            self.remove();                            
+                        }
+                    }
+                });
+            });
+            
+            
+            
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
 

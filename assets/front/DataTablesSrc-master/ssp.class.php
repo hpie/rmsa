@@ -463,6 +463,20 @@ class SSP {
                 }                
                 $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
                 
+                               
+                if($row['rmsa_user_email_verified_status'] == '0'){
+                    $title = 'Click to Verify Email';
+                    $class = 'btn_approve_email btn btn-danger btn-xs';
+                    $text  = 'Verify';
+                    $isactive = 0;
+                    $row['rmsa_user_email_verified_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
+                } 
+                else{
+                    $row['rmsa_user_email_verified_status'] = "Email verified";
+                }
+                
+                
+                
                 $row['rmsa_user_block']="None";
                 if($row['rmsa_user_locked_status']==1 || $row['rmsa_user_attempt']>=3){
                     $row['rmsa_user_block']="<button type='button' data-id='".$row['rmsa_user_id']."' data-status='rmsa_student_users' title='Click to unblock' class='btn_unblock btn btn-danger btn-xs'>Unblock</button>";

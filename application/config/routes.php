@@ -108,6 +108,8 @@ $route['rmsa-resources']       = 'front/RmsaResource';
 $route['rmsa-student-registration']    = 'front/Helper/create_student';
 $route['rmsa-employee-active']          = 'front/Rmsa/active_employee';
 $route['rmsa-student-active']          = 'front/Rmsa/active_student';
+$route['rmsa-student-verify-email']          = 'front/Rmsa/verify_student_email';
+
 $route['rmsa-teacher-active']          = 'front/Rmsa/active_teacher';
 $route['rmsa-unblock-user']          = 'front/Rmsa/unblock_user';
 $route['rmsa-file-active']          = 'front/Rmsa/active_file';

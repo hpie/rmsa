@@ -145,6 +145,7 @@ define('RMSA_EMPLOYEE_REGISTER_LINK',BASE_URL."/employee-registration");
 define('RMSA_TEACHERS_REGISTER_LINK',BASE_URL."/teacher-registration");
 define('RMSA_EMPLOYEE_ACTIVE',BASE_URL."/rmsa-employee-active");
 define('RMSA_STUDENT_ACTIVE',BASE_URL."/rmsa-student-active");
+define('RMSA_STUDENT_VERIFY_EMAIL',BASE_URL."/rmsa-student-verify-email");
 define('RMSA_TEACHER_ACTIVE',BASE_URL."/rmsa-teacher-active");
 define('RMSA_UNBLOCK_USER',BASE_URL."/rmsa-unblock-user");
 define('RMSA_STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-student-profile/");
