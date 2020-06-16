@@ -141,7 +141,7 @@
             </label>             
             <label class="title">
                 <span>Tag:</span><br>
-                <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control input" required>
+                <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control input novalidation" required>
             </label>
             <label class="description">
                 <span>File Order:</span><br>

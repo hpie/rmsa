@@ -40,47 +40,57 @@ if ($title != STUDENT_EXAM_START_TITLE) {
 <script nonce='S51U26wMQz' type="text/javascript">
     $(document).ready(function () {
         $('input[type=text]').keyup(function (e) {
-            var str=$(this).val();
-            for (var i = 0; i < str.length; i++) {
-                var charCode=str.charAt(i).charCodeAt(0);                  
-                if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
-                {                
-                    alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
-                    $(this).val('');
-                    return false;
-                }       
-                
-                
-            }               
-            return true;
+            if($(this).hasClass("novalidation")){}
+            else{
+                var str=$(this).val();
+                for (var i = 0; i < str.length; i++) {
+                    var charCode=str.charAt(i).charCodeAt(0);                  
+                    if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
+                    {                
+                        alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
+                        $(this).val('');
+                        return false;
+                    }       
+
+
+                }               
+                return true;
+            }
         });
+        
         $("#fileupload").delegate(".input", "keyup", function (e) {
-            var str=$(this).val();
-            for (var i = 0; i < str.length; i++) {
-                var charCode=str.charAt(i).charCodeAt(0);                  
-                if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
-                {                
-                    alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
-                    $(this).val('');
-                    return false;
-                }                                       
-            }               
-            return true;
+            if($(this).hasClass("novalidation")){}
+            else{
+                var str=$(this).val();
+                for (var i = 0; i < str.length; i++) {
+                    var charCode=str.charAt(i).charCodeAt(0);                  
+                    if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
+                    {                
+                        alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
+                        $(this).val('');
+                        return false;
+                    }                                       
+                }               
+                return true;
+            }
         });
         $('textarea').keyup(function (e) {
-            var str=$(this).val();
-            for (var i = 0; i < str.length; i++) {
-                var charCode=str.charAt(i).charCodeAt(0);                  
-                if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
-                {                
-                    alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
-                    $(this).val('');
-                    return false;
-                }       
-                
-                
-            }               
-            return true;
+            if($(this).hasClass("novalidation")){}
+            else{
+                var str=$(this).val();
+                for (var i = 0; i < str.length; i++) {
+                    var charCode=str.charAt(i).charCodeAt(0);                  
+                    if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
+                    {                
+                        alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
+                        $(this).val('');
+                        return false;
+                    }       
+
+
+                }               
+                return true;
+            }
         });
     });
 </script>   
