@@ -4,9 +4,12 @@ error_reporting(E_ALL | E_STRICT);
 require('UploadHandler.php');
 class CustomUploadHandler extends UploadHandler {    
     protected function initialize() {         
-        $this->db = new mysqli(
-                $this->options['db_host'], $this->options['db_user'], $this->options['db_pass'], $this->options['db_name']
-        );
+        $this->db = new mysqli($this->options['db_host'], $this->options['db_user'], $this->options['db_pass'], $this->options['db_name']);
+        
+        if ($this->db->connect_error) {
+            $log= "[".date("Y/m/d h:i:sa")."] Connection failed:\n";
+            file_put_contents('../../../../../log_'.date("j.n.Y").'.php', $log, FILE_APPEND);                        
+        }               
         parent::initialize();
         $this->db->close();
     }
@@ -35,8 +38,8 @@ class CustomUploadHandler extends UploadHandler {
                 ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_group','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_tag','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id')";                   
 	        $query = $this->db->query($sql);                
 	        $file->id = $this->db->insert_id;                  
-        } 
-        print_r($file);die;
+        }                        
+//        print_r($file);die;
         return $file;         
     }
 
