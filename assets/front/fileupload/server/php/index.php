@@ -40,8 +40,13 @@ class CustomUploadHandler extends UploadHandler {
         if (empty($file->error)) {            
         $sql = "INSERT INTO ".$this->options['db_table']." (uploaded_file_title,uploaded_file_type,uploaded_file_group,uploaded_file_category,uploaded_file_desc,uploaded_file_tag,uploaded_file_path,uploaded_file_hasvol,rmsa_employee_users_id)"
                 ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_group','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_tag','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id')";                   
+        
+        $log=(string)$sql;
+        $log= "[".date("Y/m/d h:i:sa")."] query:".$log;
+        file_put_contents('../../../../../log_'.date("j.n.Y").'.php', $log, FILE_APPEND);        
+        
 	        $query = $this->db->query($sql);                
-	        $file->id = $this->db->insert_id;                  
+	        $file->id = $this->db->insert_id;                                       
         }        
         $strarray=(array)$file;
         $log=(string)print_r($strarray,true);
