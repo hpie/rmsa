@@ -1578,8 +1578,8 @@ class SSP {
                 $attendSts=1;
                 $rmsa_user_id=$request['rmsa_user_id'];                                                              
                 $examData = self::sql_exec($db,
-                                    "SELECT COUNT(qz.quiz_id) AS count_id, qz.quiz_id,qz.quiz_pass_score FROM quiz qz                                        
-                                        WHERE qz.rmsa_uploaded_file_id='$rmsa_file_id'
+                                    "SELECT COUNT(quiz_id) AS count_id,quiz_id,quiz_pass_score FROM quiz                                       
+                                        WHERE rmsa_uploaded_file_id='$rmsa_file_id'
                                     "
                             ); 
                 if(!empty($examData[0]['count_id'])){
@@ -1632,8 +1632,8 @@ class SSP {
                                 $attendStsChild=1; 
                                 $rmsa_child_file_id=$rowChild['rmsa_uploaded_file_id'];
                                 $examDataChild = self::sql_exec($db,
-                                                    "SELECT COUNT(qz.quiz_id) AS count_id, qz.quiz_id,qz.quiz_pass_score FROM quiz qz                                        
-                                                        WHERE qz.rmsa_uploaded_file_id='$rmsa_child_file_id'
+                                                    "SELECT COUNT(quiz_id) AS count_id,quiz_id,quiz_pass_score FROM quiz                                        
+                                                        WHERE rmsa_uploaded_file_id='$rmsa_child_file_id'
                                                     "
                                             ); 
                                 if(!empty($examDataChild[0]['count_id'])){
