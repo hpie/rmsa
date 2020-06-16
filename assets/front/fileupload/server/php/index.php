@@ -9,7 +9,11 @@ class CustomUploadHandler extends UploadHandler {
         if ($this->db->connect_error) {
             $log= "[".date("Y/m/d h:i:sa")."] Connection failed:\n";
             file_put_contents('../../../../../log_'.date("j.n.Y").'.php', $log, FILE_APPEND);                        
-        }               
+        }
+        else{
+            $log= "[".date("Y/m/d h:i:sa")."] Connection success:\n";
+            file_put_contents('../../../../../log_'.date("j.n.Y").'.php', $log, FILE_APPEND); 
+        }
         parent::initialize();
         $this->db->close();
     }
