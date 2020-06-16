@@ -875,9 +875,7 @@ class SSP {
 		);
 	}
         
-        
-        
-         static function emp_quiz_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$emp_rmsa_user_id)
+        static function emp_quiz_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$emp_rmsa_user_id)
 	{                 
 		$bindings = array();
 		$db = self::db( $conn );
