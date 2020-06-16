@@ -35,7 +35,8 @@ class CustomUploadHandler extends UploadHandler {
                 ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_group','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_tag','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id')";                   
 	        $query = $this->db->query($sql);                
 	        $file->id = $this->db->insert_id;                  
-        }        
+        } 
+        print_r($file);die;
         return $file;         
     }
 

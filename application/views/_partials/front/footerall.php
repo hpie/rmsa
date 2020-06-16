@@ -154,7 +154,6 @@ $this->load->view('_partials/front/allnotify');
         })
     });
 </script>
-
 <script nonce='S51U26wMQz' type="text/javascript">
     $(document).ready(function () {
         $(".reports_go").on('click', function () {
@@ -4218,7 +4217,7 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
                             }
                         }
                     });
-                }, 5000);
+                }, 25000);
             });
         </script>
         <?php
