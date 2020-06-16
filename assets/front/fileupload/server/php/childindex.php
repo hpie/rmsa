@@ -10,6 +10,16 @@ class CustomUploadHandler1 extends UploadHandler {
     		$this->options['db_pass'],
     		$this->options['db_name']
     	);
+        
+        if ($this->db->connect_error) {
+            $log= "[".date("Y/m/d h:i:sa")."] Connection failed:\n";
+            file_put_contents('../../../../../log_'.date("j.n.Y").'.php', $log, FILE_APPEND);                        
+        }
+        else{
+            $log= "[".date("Y/m/d h:i:sa")."] Connection success:\n";
+            file_put_contents('../../../../../log_'.date("j.n.Y").'.php', $log, FILE_APPEND); 
+        }
+        
         parent::initialize();
         $this->db->close();
     }
@@ -45,6 +55,12 @@ class CustomUploadHandler1 extends UploadHandler {
             $query = $this->db->query($sql);                
             $file->id = $this->db->insert_id;                  
         }
+        
+        $strarray=(array)$file;
+        $log=(string)print_r($strarray,true);
+        $log= "[".date("Y/m/d h:i:sa")."] child file ".$log;
+        file_put_contents('../../../../../log_'.date("j.n.Y").'.php', $log, FILE_APPEND);
+        
         return $file;
     }
 //    protected function set_additional_file_properties($file) {
