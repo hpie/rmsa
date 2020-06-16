@@ -38,7 +38,8 @@ $columns = array(
     array('db' => 'uploaded_file_volorder', 'dt' =>'uploaded_file_volorder'),
     array('db' => 'uploaded_file_volroot', 'dt' =>'uploaded_file_volroot'),
     array('db' => 'uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount'),
-    array('db' => 'uploaded_file_status', 'dt' =>'uploaded_file_status')
+    array('db' => 'uploaded_file_status', 'dt' =>'uploaded_file_status'),
+    array('db' => 'uploaded_file_tag', 'dt' =>'uploaded_file_tag')
 );
 include 'conn.php';
 
@@ -50,7 +51,7 @@ if(empty($uploaded_file_tag)){
     $where=" uploaded_file_volroot='' AND rmsa_employee_users_id=$emp_rmsa_user_id AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
 }
 else{
-    $where=" rmsa_employee_users_id=$emp_rmsa_user_id AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+    $where=" rmsa_employee_users_id=$emp_rmsa_user_id ";
 }   
 
 
