@@ -27,6 +27,9 @@ class RmsaResource extends MY_Controller {
                 }
             }
         }
+        $userId=$_SESSION['user_id'];
+        $userType=$_SESSION['usertype']; 
+        log_message('info', "$userType id $userId logged into the system");
     }
     public function index() {
 //        $_SESSION['token'] = bin2hex(random_bytes(24));       

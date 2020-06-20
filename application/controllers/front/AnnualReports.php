@@ -6,10 +6,8 @@ class AnnualReports extends MY_Controller{
         parent::__construct();
         $this->load->helper('functions');
         $_SESSION['securityToken2']=$_SESSION['securityToken1'];
-        sessionCheckToken();
-        $_SESSION['securityToken1'] = bin2hex(random_bytes(24)); 
-        
-        
+        sessionCheckToken();        
+        $_SESSION['securityToken1'] = bin2hex(random_bytes(24));                 
         $this->load->model('Emp_Login');               
         
         if (isset($_SESSION['user_id'])) {
@@ -21,7 +19,7 @@ class AnnualReports extends MY_Controller{
                     redirect(HOME_LINK);
                 }
             }
-        }
+        }                
     }
     public function index(){
         $this->mViewData['title']=ANNUAL_REPORTS_TITLE;

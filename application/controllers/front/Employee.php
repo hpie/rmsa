@@ -26,6 +26,11 @@ class Employee extends MY_Controller {
                 }
             }
         }
+        
+        $userId=$_SESSION['user_id'];
+        $userType=$_SESSION['usertype']; 
+        log_message('info', "$userType id $userId logged into the system");
+        
     }
 
     public function edit_quiz($rmsa_uploaded_file_id) {

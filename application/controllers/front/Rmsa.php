@@ -29,6 +29,9 @@ class Rmsa extends MY_Controller
                 }
             }
         }
+        $userId=$_SESSION['user_id'];
+        $userType=$_SESSION['usertype']; 
+        log_message('info', "$userType id $userId logged into the system");
     }
     public function view_student(){    
 //        $_SESSION['token'] = bin2hex(random_bytes(24));       

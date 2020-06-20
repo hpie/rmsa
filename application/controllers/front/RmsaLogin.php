@@ -15,8 +15,6 @@ class RmsaLogin extends MY_Controller{
         $this->load->model('Rmsa_Login');
         $this->load->model('Emp_Login'); 
          
-    
-         
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
             if ($result) {                
@@ -36,10 +34,11 @@ class RmsaLogin extends MY_Controller{
         }
         $_SESSION['invalid_login'] = 0;
         if(isset($_POST['username']) && isset($_POST['password'])){
-//           reCaptchaResilt($_REQUEST['captcha_entered'],RMSA_LOGIN_LINK);
-//            sessionCheckToken($_POST);
            $result = $this->Rmsa_Login->Rmsa_Login_select($_POST['username'],$_POST['password']);
-           if($result == true){              
+           if($result == true){ 
+            $userId=$_SESSION['user_id'];
+            $userType=$_SESSION['usertype']; 
+            log_message('info', "$userType id $userId logged into the system");
                redirect(HOME_LINK);
            }
            if ($result == false) {
@@ -52,6 +51,11 @@ class RmsaLogin extends MY_Controller{
     }
     public function rmsaLogout() {       
 //        echo 'hi';die;
+        
+        $userId=$_SESSION['user_id'];
+        $userType=$_SESSION['usertype']; 
+        log_message('info', "$userType id $userId logged out");
+        
         $res = $this->Rmsa_Login->update_logout_status($_SESSION['rm_rmsa_user_id']);
         sessionDestroy();        
         if($res){

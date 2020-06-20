@@ -2,23 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class StudentLogin extends MY_Controller{
-    public function __construct(){       
-        
+    public function __construct(){               
         if(isset($_SESSION['emp_rmsa_user_id']) OR isset($_SESSION['rm_rmsa_user_id']) OR isset($_SESSION['tech_rmsa_user_id'])){
             redirect(HOME_LINK);
         }
         parent::__construct();  
-        $this->load->helper('functions'); 
-        
+        $this->load->helper('functions');         
         $_SESSION['securityToken2']=$_SESSION['securityToken1'];
         sessionCheckToken();
         $_SESSION['securityToken1'] = bin2hex(random_bytes(24)); 
         
         $this->load->model('Login_model');
         $this->load->model('Emp_Login'); 
-        
-    
-        
+
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
             if ($result) {                    
@@ -40,7 +36,10 @@ class StudentLogin extends MY_Controller{
         if (isset($_POST['username']) && isset($_POST['password'])) {
 //            reCaptchaResilt($_REQUEST['captcha_entered'],STUDENT_LOGIN_LINK);
             $result = $this->Login_model->login_select($_POST['username'], $_POST['password']);           
-            if ($result == true) {               
+            if ($result == true) { 
+                $userId=$_SESSION['user_id'];
+                $userType=$_SESSION['usertype']; 
+                log_message('info', "$userType id $userId logged into the system");
                 redirect(HOME_LINK);               
             }
             if ($result == false) {

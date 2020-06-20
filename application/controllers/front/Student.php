@@ -26,6 +26,9 @@ class Student extends MY_Controller{
                 }
             }
         }
+        $userId=$_SESSION['user_id'];
+        $userType=$_SESSION['usertype']; 
+        log_message('info', "$userType id $userId logged into the system");
     }    
     public function exam($file_id){              
         $this->mViewData['result'] =  $this->Student_model->file_details($file_id);
@@ -128,6 +131,11 @@ class Student extends MY_Controller{
         }
     }
     public function logout() {
+        
+        $userId=$_SESSION['user_id'];
+        $userType=$_SESSION['usertype']; 
+        log_message('info', "$userType id $userId logged out");
+        
         $res = $this->Student_model->update_logout_status($_SESSION['st_rmsa_user_id']);
         sessionDestroy();        
         if($res){

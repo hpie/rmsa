@@ -18,8 +18,6 @@ class TechLogin extends MY_Controller {
         $this->load->model('Tech_Login');        
         $this->load->model('Emp_Login');
 
-    
-        
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
             if ($result) {                
@@ -40,14 +38,11 @@ class TechLogin extends MY_Controller {
         }
         $_SESSION['invalid_login'] = 0;
         if (isset($_POST['username']) && isset($_POST['password'])) {     
-//             reCaptchaResilt($_REQUEST['captcha_entered'],TEACHER_LOGIN_LINK);
-//            sessionCheckToken($_POST);
-//            print_r($_POST);die;
             $result = $this->Tech_Login->tech_login_select($_POST['username'], $_POST['password']);
-//           if($result == 2 ){
-//               $_SESSION['another_login'] = 1;               
-//           }
             if ($result == true) {
+                $userId=$_SESSION['user_id'];
+                $userType=$_SESSION['usertype']; 
+                log_message('info', "$userType id $userId logged into the system");
                 redirect(HOME_LINK);
             }
             if ($result == false) {
@@ -60,6 +55,11 @@ class TechLogin extends MY_Controller {
     }
 
     public function teacherLogout() {
+        
+        $userId=$_SESSION['user_id'];
+        $userType=$_SESSION['usertype']; 
+        log_message('info', "$userType id $userId logged out");
+        
         $res = $this->Tech_Login->update_logout_status($_SESSION['tech_rmsa_user_id']);
         sessionDestroy();
         if ($res) {

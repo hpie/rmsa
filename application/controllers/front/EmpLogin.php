@@ -28,7 +28,7 @@ class EmpLogin extends MY_Controller {
             }
         }
     }
-    public function index() {
+    public function index() {                                            
         if (isset($_SESSION['emp_rmsa_user_id'])) {
             if ($_SESSION['emp_rmsa_user_id'] > 0) {
                 redirect(HOME_LINK);
@@ -39,6 +39,9 @@ class EmpLogin extends MY_Controller {
 //            reCaptchaResilt($_REQUEST['captcha_entered'],EMPLOYEE_LOGIN_LINK);
             $result = $this->Emp_Login->Emp_Login_select($_POST['username'], $_POST['password']);
             if ($result == true) {
+                $userId=$_SESSION['user_id'];
+                $userType=$_SESSION['usertype']; 
+                log_message('info', "$userType id $userId logged into the system");
                 redirect(HOME_LINK);
             }
             if ($result == false) {
@@ -49,8 +52,13 @@ class EmpLogin extends MY_Controller {
         $this->renderFront('front/emplogin');
     }
 
-    public function employeeLogout() {
+    public function employeeLogout() {        
         $res = $this->Emp_Login->update_logout_status($_SESSION['emp_rmsa_user_id']);
+        
+        $userId=$_SESSION['user_id'];
+        $userType=$_SESSION['usertype']; 
+        log_message('info', "$userType id $userId logged out");
+        
         sessionDestroy();
         if ($res) {
             redirect(EMPLOYEE_LOGIN_LINK);

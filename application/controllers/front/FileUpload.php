@@ -28,6 +28,10 @@ class FileUpload extends MY_Controller {
                 }
             }
         }
+        
+        $userId=$_SESSION['user_id'];
+        $userType=$_SESSION['usertype']; 
+        log_message('info', "$userType id $userId logged into the system");
     }
     public function index() {
         $_SESSION['filepage']='index.php';
