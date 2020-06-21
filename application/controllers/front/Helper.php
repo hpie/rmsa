@@ -28,6 +28,8 @@ class Helper extends MY_Controller {
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"Helper");
     }
     public function student_videos($offset){
 //        echo '<pre>';print_r($_SESSION);die;

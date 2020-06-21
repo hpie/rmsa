@@ -25,6 +25,8 @@ class RmsaLogin extends MY_Controller{
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"RmsaLogin");
     }
     public function index(){
         if(isset($_SESSION['rm_rmsa_user_id'])){

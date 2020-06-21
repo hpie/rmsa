@@ -9,6 +9,21 @@ function reCaptchaResilt($captcha_entered,$redirect_url){
             }
             return true;
 }
+
+function visitLog($method,$controller) {        
+        if($method!="isActiveEmployee"){
+            if(isset($_SESSION['user_id'])){            
+                $userId=$_SESSION['user_id'];
+                $userType=$_SESSION['usertype']; 
+                log_message('info', "$userType id $userId visit the $controller controller and method name is $method");                        
+            }
+            else{
+                log_message('info', "guest user visit the $controller controller and method name is $method");
+            }
+        }
+}
+
+
  function sessionStudent($row) {
 //        session_regenerate_id();
 //        print_r($row);die;

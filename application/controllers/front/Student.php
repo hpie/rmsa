@@ -14,7 +14,7 @@ class Student extends MY_Controller{
         $this->load->model('Student_model');
         $this->load->model('Emp_Login');
 
-    
+        
         
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
@@ -26,9 +26,8 @@ class Student extends MY_Controller{
                 }
             }
         }
-        $userId=$_SESSION['user_id'];
-        $userType=$_SESSION['usertype']; 
-        log_message('info', "$userType id $userId logged into the system");
+        $method=$this->router->fetch_method();
+        visitLog($method,"Student");
     }    
     public function exam($file_id){              
         $this->mViewData['result'] =  $this->Student_model->file_details($file_id);
@@ -130,8 +129,7 @@ class Student extends MY_Controller{
             echo json_encode($res);
         }
     }
-    public function logout() {
-        
+    public function logout() {        
         $userId=$_SESSION['user_id'];
         $userType=$_SESSION['usertype']; 
         log_message('info', "$userType id $userId logged out");

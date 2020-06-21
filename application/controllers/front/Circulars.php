@@ -24,6 +24,8 @@ class Circulars extends MY_Controller{
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"Circulars");
     }
     public function index(){
         $this->mViewData['title']=CIRCULARS_TITLE;

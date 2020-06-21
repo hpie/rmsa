@@ -22,6 +22,8 @@ class Home extends MY_Controller {
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"Home");
     }    
     public function index() 
     {                     

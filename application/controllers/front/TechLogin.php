@@ -28,6 +28,8 @@ class TechLogin extends MY_Controller {
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"TechLogin");        
     }
     
     public function index() {

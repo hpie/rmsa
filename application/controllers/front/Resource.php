@@ -27,9 +27,8 @@ class Resource extends MY_Controller{
                 }
             }
         }
-        $userId=$_SESSION['user_id'];
-        $userType=$_SESSION['usertype']; 
-        log_message('info', "$userType id $userId logged into the system");
+        $method=$this->router->fetch_method();
+        visitLog($method,"Resource");
     }    
     public function resources($uploaded_file_category){       
         $this->mViewData['uploaded_file_category'] = $uploaded_file_category;

@@ -28,10 +28,8 @@ class FileUpload extends MY_Controller {
                 }
             }
         }
-        
-        $userId=$_SESSION['user_id'];
-        $userType=$_SESSION['usertype']; 
-        log_message('info', "$userType id $userId logged into the system");
+        $method=$this->router->fetch_method();
+        visitLog($method,"FileUpload");
     }
     public function index() {
         $_SESSION['filepage']='index.php';

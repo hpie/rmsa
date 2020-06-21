@@ -24,6 +24,8 @@ class ContactUs extends MY_Controller{
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"ContactUs");
     }
     public function index(){
         $this->mViewData['title']=CONTACT_US_TITLE;

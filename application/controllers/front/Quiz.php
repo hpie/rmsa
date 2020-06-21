@@ -27,9 +27,8 @@ class Quiz extends MY_Controller
                 }
             }
         }
-        $userId=$_SESSION['user_id'];
-        $userType=$_SESSION['usertype']; 
-        log_message('info', "$userType id $userId logged into the system");
+        $method=$this->router->fetch_method();
+        visitLog($method,"Quiz");
     }
     public function create_quiz(){
 //        print_r($_SESSION['emp_rmsa_school_id']);die;       

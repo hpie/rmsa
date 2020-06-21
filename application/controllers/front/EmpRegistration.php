@@ -26,6 +26,8 @@ class EmpRegistration extends MY_Controller{
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"EmpRegistration");
     }
     public function index(){
 //        $_SESSION['token'] = bin2hex(random_bytes(24));       

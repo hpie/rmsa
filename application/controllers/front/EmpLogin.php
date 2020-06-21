@@ -7,8 +7,7 @@ class EmpLogin extends MY_Controller {
     public function __construct() {
         parent::__construct();
 
-        $this->load->helper('functions');
-
+        $this->load->helper('functions');        
         $_SESSION['securityToken2'] = $_SESSION['securityToken1'];
         sessionCheckToken();
         $_SESSION['securityToken1'] = bin2hex(random_bytes(24));
@@ -26,7 +25,9 @@ class EmpLogin extends MY_Controller {
                     redirect(HOME_LINK);
                 }
             }
-        }
+        }  
+        $method=$this->router->fetch_method();
+        visitLog($method,"EmpLogin");
     }
     public function index() {                                            
         if (isset($_SESSION['emp_rmsa_user_id'])) {
@@ -52,7 +53,7 @@ class EmpLogin extends MY_Controller {
         $this->renderFront('front/emplogin');
     }
 
-    public function employeeLogout() {        
+    public function employeeLogout() {         
         $res = $this->Emp_Login->update_logout_status($_SESSION['emp_rmsa_user_id']);
         
         $userId=$_SESSION['user_id'];

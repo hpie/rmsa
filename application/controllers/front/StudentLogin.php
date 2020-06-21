@@ -25,6 +25,8 @@ class StudentLogin extends MY_Controller{
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"StudentLogin");
     }
     public function index(){ 
         if(isset($_SESSION['st_rmsa_user_id'])){

@@ -14,8 +14,6 @@ class Employee extends MY_Controller {
         sessionCheckEmployee();
         $this->load->model('Employee_model');
         $this->load->model('Emp_Login');
-
-
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
             if ($result) {
@@ -26,11 +24,8 @@ class Employee extends MY_Controller {
                 }
             }
         }
-        
-        $userId=$_SESSION['user_id'];
-        $userType=$_SESSION['usertype']; 
-        log_message('info', "$userType id $userId logged into the system");
-        
+        $method=$this->router->fetch_method();
+        visitLog($method,"Employee");
     }
 
     public function edit_quiz($rmsa_uploaded_file_id) {

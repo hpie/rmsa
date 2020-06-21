@@ -24,6 +24,8 @@ class RegisteredStudents  extends MY_Controller{
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"RegisteredStudents");
     }
     public function index(){
         $this->mViewData['title']=REGISTERED_STUDENT_TITLE;

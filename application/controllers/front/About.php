@@ -21,6 +21,9 @@ class About extends MY_Controller{
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"About");
+        
     }
     public function index(){
         $this->mViewData['title']=ABOUT_TITLE;
