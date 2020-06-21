@@ -129,7 +129,7 @@ define('STUDENT_RESOURCES_LINK',BASE_URL."/student-resources");
 define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
 define('STUDENT_QUIZ_RESULTS_LINK',BASE_URL."/employee-resources");
 define('STUDENT_REPORTS',BASE_URL."/employee-reports");
-define('STUDENT_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
+define('STUDENT_ONLINE_EXAM_LINK',"http://gyanshala.hp.gov.in/pariksha/");
 
 define('STUDENT_SCORE_LINK',BASE_URL."/student-score/");
 
@@ -153,7 +153,7 @@ define('RMSA_EMPLOYEE_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-employee-profi
 define('RMSA_TEACGER_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-teacher-profile/");
 define('RMSA_FILE_ACTIVE',BASE_URL."/rmsa-file-active");
 define('RMSA_REPORTS',BASE_URL."/employee-reports");
-define('RMSA_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
+define('RMSA_ONLINE_EXAM_LINK',"http://gyanshala.hp.gov.in/pariksha");
 define('RMSA_QUIZ_MCQ_LINK',BASE_URL."/employee-resources");
 
 //All employee constant
@@ -171,7 +171,7 @@ define('EMPLOYEE_QUESTION_ACTIVE',BASE_URL."/employee-question-active");
 define('EMPLOYEE_QUESTION_LIST_LINK',BASE_URL."/employee-quistions-list/");
 define('EMPLOYEE_ADD_QUISTIONS_LINK',BASE_URL."/employee-add-quistions/");
 define('EMPLOYEE_EDIT_QUISTIONS_LINK',BASE_URL."/employee-edit-quistions/");
-define('EMPLOYEE_ONLINE_EXAM_LINK',"http://tcexam.hpie.in");
+define('EMPLOYEE_ONLINE_EXAM_LINK',"http://gyanshala.hp.gov.in/pariksha");
 define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
 define('EMPLOYEE_STUDENT_LIST_LINK',BASE_URL."/employee-student");
 define('STUDENT_APPROVE',BASE_URL."/student-approve");
@@ -221,68 +221,68 @@ define('EMPLOYEE_REPORTS_2',BASE_URL."/employee-reports-2");
 
 
 //define all title heare for page
-define('HOME_TITLE',"Welcome to rmsahimachal.nic.in - Home");
-define('ABOUT_TITLE',"Welcome to rmsahimachal.nic.in - About");
-define('STUDENT_VIDEOS_TITLE',"Welcome to rmsahimachal.nic.in - Videos");
-define('CONTACT_US_TITLE',"Welcome to rmsahimachal.nic.in - Contact Us");
-define('ANNUAL_REPORTS_TITLE',"Welcome to rmsahimachal.nic.in - AnnualReports");
-define('CIRCULARS_TITLE',"Welcome to rmsahimachal.nic.in - Circulars");
-define('EMPLOYEE_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Employee Login");
-define('TEACHER_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Teacher Login");
-define('EMPLOYEE_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Employee Registration");
-define('EMPLOYEE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - EmployeeStudent");
-define('EMPLOYEE_VIDEO_LIST_TITLE',"Welcome to rmsahimachal.nic.in - EmployeeVideos");
-define('EMPLOYEE_ADD_VIDEO_TITLE',"Welcome to rmsahimachal.nic.in - Employee Add Video");
-define('EMPLOYEE_EDIT_VIDEO_TITLE',"Welcome to rmsahimachal.nic.in - Employee Edit Video");
-define('TEACHER_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - TeacherStudent");
-define('EMPLOYEE_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - FileDw");
-define('EMPLOYEE_FILE_LIST_QUIZ_TITLE',"Welcome to rmsahimachal.nic.in - Files for quiz");
-define('EMPLOYEE_QUIZ_LIST_TITLE',"Welcome to rmsahimachal.nic.in - Quiz list");
-define('EMPLOYEE_QUESTIONS_LIST_TITLE',"Welcome to rmsahimachal.nic.in - Questions list");
-define('EMPLOYEE_FILE_UPLOAD_TITLE',"Welcome to rmsahimachal.nic.in - File Upload"); 
-define('EMPLOYEE_STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Employee Student Profile");
+define('HOME_TITLE',"Welcome to gyanshala.hp.gov.in - Home");
+define('ABOUT_TITLE',"Welcome to gyanshala.hp.gov.in - About");
+define('STUDENT_VIDEOS_TITLE',"Welcome to gyanshala.hp.gov.in - Videos");
+define('CONTACT_US_TITLE',"Welcome to gyanshala.hp.gov.in - Contact Us");
+define('ANNUAL_REPORTS_TITLE',"Welcome to gyanshala.hp.gov.in - AnnualReports");
+define('CIRCULARS_TITLE',"Welcome to gyanshala.hp.gov.in - Circulars");
+define('EMPLOYEE_LOGIN_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Login");
+define('TEACHER_LOGIN_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher Login");
+define('EMPLOYEE_REGISTRATION_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Registration");
+define('EMPLOYEE_STUDENT_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - EmployeeStudent");
+define('EMPLOYEE_VIDEO_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - EmployeeVideos");
+define('EMPLOYEE_ADD_VIDEO_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Add Video");
+define('EMPLOYEE_EDIT_VIDEO_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Edit Video");
+define('TEACHER_STUDENT_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - TeacherStudent");
+define('EMPLOYEE_FILE_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - FileDw");
+define('EMPLOYEE_FILE_LIST_QUIZ_TITLE',"Welcome to gyanshala.hp.gov.in - Files for quiz");
+define('EMPLOYEE_QUIZ_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - Quiz list");
+define('EMPLOYEE_QUESTIONS_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - Questions list");
+define('EMPLOYEE_FILE_UPLOAD_TITLE',"Welcome to gyanshala.hp.gov.in - File Upload");
+define('EMPLOYEE_STUDENT_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Student Profile");
 
-define('EMPLOYEE_CREATE_QUIZ_TITLE',"Welcome to rmsahimachal.nic.in - Create Quiz");
+define('EMPLOYEE_CREATE_QUIZ_TITLE',"Welcome to gyanshala.hp.gov.in - Create Quiz");
 
-define('RMSAE_STUDENT_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaStudent");
-define('RMSAE_EMPLOYEE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaEmployee");
-define('RMSAE_TEACHERS_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaTeachers");
-define('RMSA_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - RmsaResource");
-define('TEACHER_FILE_LIST_TITLE',"Welcome to rmsahimachal.nic.in - TeacherResource");
-define('RMSA_EMPLOYEE_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Employee Registration");
-define('RMSA_TEACHER_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Teacher Registration");
-define('RMSA_STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Student Profile");
-define('RMSA_EMPLOYEE_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Employee Profile");
-define('RMSA_TEACHER_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Teacher Profile");
+define('RMSAE_STUDENT_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - RmsaStudent");
+define('RMSAE_EMPLOYEE_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - RmsaEmployee");
+define('RMSAE_TEACHERS_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - RmsaTeachers");
+define('RMSA_FILE_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - RmsaResource");
+define('TEACHER_FILE_LIST_TITLE',"Welcome to gyanshala.hp.gov.in - TeacherResource");
+define('RMSA_EMPLOYEE_REGISTRATION_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Registration");
+define('RMSA_TEACHER_REGISTRATION_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher Registration");
+define('RMSA_STUDENT_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa Student Profile");
+define('RMSA_EMPLOYEE_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa Employee Profile");
+define('RMSA_TEACHER_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa Teacher Profile");
 
-define('STUDENT_REGISTRATION_TITLE',"Welcome to rmsahimachal.nic.in - Student Registration");
+define('STUDENT_REGISTRATION_TITLE',"Welcome to gyanshala.hp.gov.in - Student Registration");
 
-define('REGISTERED_STUDENT_TITLE',"Welcome to rmsahimachal.nic.in - Registered Students");
-define('STUDENT_RESOURCES_TITLE',"Welcome to rmsahimachal.nic.in - Student Resources");
-define('STUDENT_ACTIVE_TITLE',"Welcome to rmsahimachal.nic.in - Student Active");
-define('EMPLOYEE_ACTIVE_TITLE',"Welcome to rmsahimachal.nic.in - Employee Active");
-define('MOST_CONTENT_UPLOADED_EMPLOYEE_TITLE',"Welcome to rmsahimachal.nic.in - Most Content Uploaded Employee");
-define('MOST_CONTENT_RATED_EMPLOYEE_TITLE',"Welcome to rmsahimachal.nic.in - Most Content Rated Employee");
-define('MOST_CONTENT_VIEW_EMPLOYEE_TITLE',"Welcome to rmsahimachal.nic.in - Most Content View Employee");
-define('MOST_RATED_CONTENT_TITLE',"Welcome to rmsahimachal.nic.in - Most Rated Content");
-define('MOST_VIEWED_CONTENT_TITLE',"Welcome to rmsahimachal.nic.in - Most Viewed Content");
-define('MOST_ACTIVE_STUDENT_BY_CONTENT_READ',"Welcome to rmsahimachal.nic.in - Most Active Student");
-define('MOST_ACTIVE_STUDENT_ON_SCHOOL_TITLE',"Welcome to rmsahimachal.nic.in - Most Active Student On School");
-define('TOP_DISTRICT_WITH_MOST_CONTENT',"Welcome to rmsahimachal.nic.in - Top District With Most Content");
-define('STUDENT_PROFILE_TITLE',"Welcome to rmsahimachal.nic.in - Student Profile");
-define('ORGANIZATION_TITLE',"Welcome to rmsahimachal.nic.in - Organization");
-define('FILE_REVIEWS_TITLE',"Welcome to rmsahimachal.nic.in - File Reviews");
-define('RMSA_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Rmsa Login");
-define('STUDENT_LOGIN_TITLE',"Welcome to rmsahimachal.nic.in - Student Login");
+define('REGISTERED_STUDENT_TITLE',"Welcome to gyanshala.hp.gov.in - Registered Students");
+define('STUDENT_RESOURCES_TITLE',"Welcome to gyanshala.hp.gov.in - Student Resources");
+define('STUDENT_ACTIVE_TITLE',"Welcome to gyanshala.hp.gov.in - Student Active");
+define('EMPLOYEE_ACTIVE_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Active");
+define('MOST_CONTENT_UPLOADED_EMPLOYEE_TITLE',"Welcome to gyanshala.hp.gov.in - Most Content Uploaded Employee");
+define('MOST_CONTENT_RATED_EMPLOYEE_TITLE',"Welcome to gyanshala.hp.gov.in - Most Content Rated Employee");
+define('MOST_CONTENT_VIEW_EMPLOYEE_TITLE',"Welcome to gyanshala.hp.gov.in - Most Content View Employee");
+define('MOST_RATED_CONTENT_TITLE',"Welcome to gyanshala.hp.gov.in - Most Rated Content");
+define('MOST_VIEWED_CONTENT_TITLE',"Welcome to gyanshala.hp.gov.in - Most Viewed Content");
+define('MOST_ACTIVE_STUDENT_BY_CONTENT_READ',"Welcome to gyanshala.hp.gov.in - Most Active Student");
+define('MOST_ACTIVE_STUDENT_ON_SCHOOL_TITLE',"Welcome to gyanshala.hp.gov.in - Most Active Student On School");
+define('TOP_DISTRICT_WITH_MOST_CONTENT',"Welcome to gyanshala.hp.gov.in - Top District With Most Content");
+define('STUDENT_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Student Profile");
+define('ORGANIZATION_TITLE',"Welcome to gyanshala.hp.gov.in - Organization");
+define('FILE_REVIEWS_TITLE',"Welcome to gyanshala.hp.gov.in - File Reviews");
+define('RMSA_LOGIN_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa Login");
+define('STUDENT_LOGIN_TITLE',"Welcome to gyanshala.hp.gov.in - Student Login");
 
-define('REPORTS_2_TITLE',"Welcome to rmsahimachal.nic.in - Reports");
-define('REPORTS_2_UPLOADED_CONTENT_TITLE',"Welcome to rmsahimachal.nic.in - Uploaded content Reports");
-define('REPORTS_2_STUDENT_REGISTERED_TITLE',"Welcome to rmsahimachal.nic.in - Student Registered Reports");
-define('REPORTS_2_TEACHER_REGISTERED_TITLE',"Welcome to rmsahimachal.nic.in - Teacher Registered Reports");
+define('REPORTS_2_TITLE',"Welcome to gyanshala.hp.gov.in - Reports");
+define('REPORTS_2_UPLOADED_CONTENT_TITLE',"Welcome to gyanshala.hp.gov.in - Uploaded content Reports");
+define('REPORTS_2_STUDENT_REGISTERED_TITLE',"Welcome to gyanshala.hp.gov.in - Student Registered Reports");
+define('REPORTS_2_TEACHER_REGISTERED_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher Registered Reports");
 
-define('STUDENT_EXAM_TITLE',"Welcome to rmsahimachal.nic.in - Student Exam");
-define('STUDENT_EXAM_START_TITLE',"Welcome to rmsahimachal.nic.in - Student Exam Start");
-define('STUDENT_SCORE_TITLE',"Welcome to rmsahimachal.nic.in - Student Exam Score");
+define('STUDENT_EXAM_TITLE',"Welcome to gyanshala.hp.gov.in - Student Exam");
+define('STUDENT_EXAM_START_TITLE',"Welcome to gyanshala.hp.gov.in - Student Exam Start");
+define('STUDENT_SCORE_TITLE',"Welcome to gyanshala.hp.gov.in - Student Exam Score");
 
 
 
