@@ -268,7 +268,7 @@ class SSP {
                          ON rs.rmsa_school_id=rsu.rmsa_school_id
                          INNER JOIN rmsa_districts rd
                          ON rd.rmsa_district_id=rsu.rmsa_district_id                         
-			 $where"
+			 $where "
 		);
 		$recordsFiltered = $resFilterLength[0][0];
 		// Total data set length
@@ -279,7 +279,7 @@ class SSP {
                          ON rs.rmsa_school_id=rsu.rmsa_school_id
                          INNER JOIN rmsa_districts rd
                          ON rd.rmsa_district_id=rsu.rmsa_district_id
-                         "
+                         $where "
 		);
 		$recordsTotal = $resTotalLength[0][0];
 
@@ -353,8 +353,9 @@ class SSP {
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
-			 FROM   $table
-                         "
+			FROM   $table
+                        $where     
+                        "
 		);
 		$recordsTotal = $resTotalLength[0][0];
 
@@ -440,7 +441,7 @@ class SSP {
                          ON rs.rmsa_school_id=rsu.rmsa_school_id
                          INNER JOIN rmsa_districts rd
                          ON rd.rmsa_district_id=rsu.rmsa_district_id 
-                        "
+                        $where "
 		);
 		$recordsTotal = $resTotalLength[0][0];
 
@@ -526,7 +527,7 @@ class SSP {
 		$resFilterLength = self::sql_exec( $db, $bindings,
 			"SELECT COUNT({$primaryKey})
 			 FROM   $table
-                             INNER JOIN rmsa_schools rs
+                         INNER JOIN rmsa_schools rs
                          ON rs.rmsa_school_id=reu.rmsa_school_id
                          INNER JOIN rmsa_districts rd
                          ON rd.rmsa_district_id=reu.rmsa_district_id 
@@ -541,7 +542,7 @@ class SSP {
                          ON rs.rmsa_school_id=reu.rmsa_school_id
                          INNER JOIN rmsa_districts rd
                          ON rd.rmsa_district_id=reu.rmsa_district_id 
-                         "                        
+                         $where "                        
 		);
 		$recordsTotal = $resTotalLength[0][0];
 
@@ -641,7 +642,7 @@ class SSP {
                          ON rs.rmsa_school_id=reu.rmsa_school_id
                          INNER JOIN rmsa_districts rd
                          ON rd.rmsa_district_id=reu.rmsa_district_id 
-                         "                        
+                         $where "                        
 		);
 		$recordsTotal = $resTotalLength[0][0];
 
@@ -730,7 +731,9 @@ class SSP {
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
-			 FROM   $table"
+			FROM   $table
+                        $where    
+                        "
 		);
 		$recordsTotal = $resTotalLength[0][0];                
                 $result=self::data_output($columns,$data);
@@ -910,7 +913,7 @@ class SSP {
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
-			 FROM   $table"
+			 FROM   $table $where "
 		);
 		$recordsTotal = $resTotalLength[0][0];                
                 $result=self::data_output($columns,$data);
@@ -1015,7 +1018,7 @@ class SSP {
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
-			 FROM   $table"
+			 FROM   $table $where"
 		);
 		$recordsTotal = $resTotalLength[0][0];                
                 $result=self::data_output($columns,$data);
@@ -1093,7 +1096,7 @@ class SSP {
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
-			 FROM   $table"
+			 FROM   $table $where "
 		);
 		$recordsTotal = $resTotalLength[0][0];                
                 $result=self::data_output($columns,$data);
@@ -1171,7 +1174,7 @@ class SSP {
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
-			 FROM   $table"
+			 FROM   $table $where "
 		);
 		$recordsTotal = $resTotalLength[0][0];                
                 $result=self::data_output($columns,$data);
@@ -1352,7 +1355,7 @@ class SSP {
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
-			 FROM   $table"
+			 FROM   $table $where "
 		);
 		$recordsTotal = $resTotalLength[0][0];                
                 $result=self::data_output($columns,$data);
@@ -1529,7 +1532,7 @@ class SSP {
         // Total data set length
         $resTotalLength = self::sql_exec( $db,
             "SELECT COUNT({$primaryKey})
-			 FROM   $table"
+			 FROM   $table $where "
         );
         $recordsTotal = $resTotalLength[0][0];
         $result=self::data_output($columns,$data);
