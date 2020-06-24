@@ -316,9 +316,7 @@ class SSP {
 			"recordsFiltered" => intval( $recordsFiltered ),
 			"data" => $resData
 		);
-	}  
-        
-        
+	}          
         static function employee_videos ( $request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{
 		$bindings = array();
@@ -510,7 +508,18 @@ class SSP {
                     } else {
                         $where .= 'WHERE ' . $where_custom;
                     }
-                }       
+                }
+                
+//                $sql="SELECT ".implode(", ", self::pluck($columns, 'db'))."
+//			 FROM $table
+//                         INNER JOIN rmsa_schools rs
+//                         ON rs.rmsa_school_id=reu.rmsa_school_id
+//                         INNER JOIN rmsa_districts rd
+//                         ON rd.rmsa_district_id=reu.rmsa_district_id 
+//			 $where
+//			 $order
+//			 $limit";
+//                echo $sql;die;
 		// Main query to actually get the data
 		$data = self::sql_exec( $db, $bindings,
 			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
