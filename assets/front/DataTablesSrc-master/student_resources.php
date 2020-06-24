@@ -43,10 +43,11 @@ include 'conn.php';
 $uploaded_file_category=$_REQUEST['uploaded_file_category'];
 $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
 
+//print_r($_REQUEST);die;
 
 if(empty($uploaded_file_tag)){   
     $where =" uploaded_file_status='ACTIVE' AND uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot is null ";    
-    if($uploaded_file_category == 'NONE'){
+    if($uploaded_file_category == 'NONE'){        
         $where =" uploaded_file_status='ACTIVE' AND uploaded_file_volroot is null ";    
     }
 }
