@@ -34,6 +34,7 @@ class FileUpload extends MY_Controller {
     public function index() {
         $_SESSION['filepage']='index.php';
         $this->mViewData['result'] = $this->File_upload->getCategory(); 
+        $this->mViewData['subject'] = $this->File_upload->getSubject(); 
         $this->mViewData['title'] =EMPLOYEE_FILE_UPLOAD_TITLE;
         $this->renderFront('front/file_upload');
     }

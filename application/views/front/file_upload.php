@@ -92,15 +92,39 @@
                   {% } %}
               </td>
               <td>
-            <label class="title">
+            <label class="title col-md-6">
                 <span>Title:</span><br>
                 <input type="text" name="uploaded_file_title[]" class="form-control input" required>
             </label>           
-            <label class="description">
+            <label class="description col-md-6">
                 <span>Description:</span><br>
                 <input type="text"  name="uploaded_file_desc[]" class="form-control input">
-            </label>             
-            <label class="description">
+            </label> 
+            
+            <label class="description col-md-6">
+                <span>Class:</span><br>
+                <select class="form-control" name="uploaded_file_class[]" required>               
+                    <option value="ix">Class IX</option>
+                    <option value="x">Class X</option>
+                    <option value="xi">Class XI</option>
+                    <option value="xii">Class XII</option>                   
+              </select>
+            </label>
+            
+            <label class="description col-md-6">
+                <span>Subject:</span><br>
+                <select class="form-control" name="uploaded_file_subject[]" required>               
+                   <?php if(!empty($subject)){
+                foreach ($subject as $row){                                        
+                    ?>                                       
+                    <option value="<?php echo $row['subject_id']; ?>"><?php echo $row['subject_name']; ?></option>
+                    <?php                
+                    }
+                }?>                 
+              </select>
+            </label>
+            
+            <label class="description col-md-6">
                 <span>Category Type:</span><br>
                 <select class="form-control" name="uploaded_file_category[]" required>
                 <?php if(!empty($result)){
@@ -114,11 +138,11 @@
                 }?>
               </select>
             </label>
-            <label class="title">
+            <label class="title col-md-6">
                 <span>Tag:</span><br>
                 <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control input novalidation" required>
             </label>
-            <label class="description">
+            <label class="description col-md-6">
                 <span>File Group:</span><br>
                 <select class="form-control" name="uploaded_file_group[]" required>
                 <?php if(!empty($result)){
@@ -132,7 +156,7 @@
                 }?>
               </select>
             </label>
-            <label class="description">
+            <label class="description col-md-6">
                 <span>Have child:</span><br>
                 <select class="form-control" name="uploaded_file_hasvol[]" required>
                     <option value="NO">NO</option>

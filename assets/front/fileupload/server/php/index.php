@@ -16,6 +16,8 @@ class CustomUploadHandler extends UploadHandler {
         $file->rmsa_employee_users_id = @$_REQUEST['rmsa_employee_users_id'][$index]; 
         $file->uploaded_file_tag = @$_REQUEST['uploaded_file_tag'][$index];
         $file->uploaded_file_group = @$_REQUEST['uploaded_file_group'][$index];
+        $file->uploaded_file_class = @$_REQUEST['uploaded_file_class'][$index];
+        $file->uploaded_file_subject = @$_REQUEST['uploaded_file_subject'][$index];
     }
     protected function handle_file_upload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null) {        
         $file = parent::handle_file_upload($uploaded_file, $name, $size, $type, $error, $index, $content_range);        
@@ -27,11 +29,12 @@ class CustomUploadHandler extends UploadHandler {
         $uploaded_file_hasvol=$file->uploaded_file_hasvol;
         $uploaded_file_tag=$file->uploaded_file_tag;
         $uploaded_file_group=$file->uploaded_file_group;
-        $rmsa_employee_users_id=$file->rmsa_employee_users_id;        
+        $rmsa_employee_users_id=$file->rmsa_employee_users_id;  
+        $uploaded_file_class=$file->uploaded_file_class;  
+        $uploaded_file_subject=$file->uploaded_file_subject;  
         if (empty($file->error)) {            
-        $sql = "INSERT INTO ".$this->options['db_table']." (uploaded_file_title,uploaded_file_type,uploaded_file_group,uploaded_file_category,uploaded_file_desc,uploaded_file_tag,uploaded_file_path,uploaded_file_hasvol,rmsa_employee_users_id)"
-                ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_group','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_tag','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id')";                   
-                            
+        $sql = "INSERT INTO ".$this->options['db_table']." (uploaded_file_title,uploaded_file_type,uploaded_file_group,uploaded_file_category,uploaded_file_desc,uploaded_file_tag,uploaded_file_path,uploaded_file_hasvol,rmsa_employee_users_id,uploaded_file_class,uploaded_file_subject)"
+                ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_group','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_tag','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id','$uploaded_file_class','$uploaded_file_subject')";                                               
 	        $query = $this->db->query($sql);                                                  
 	        $file->id = $this->db->insert_id;                                       
         }                

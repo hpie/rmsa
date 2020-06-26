@@ -43,10 +43,12 @@ class CustomUploadHandler1 extends UploadHandler {
             $query = $this->db->query($sql);
             while ($row = $query->fetch_assoc()) {                    
                 $uploaded_file_category = $row['uploaded_file_category'];
-                $uploaded_file_group = $row['uploaded_file_group'];        		
+                $uploaded_file_group = $row['uploaded_file_group'];
+                $uploaded_file_class = $row['uploaded_file_class'];
+                $uploaded_file_subject = $row['uploaded_file_subject'];
             }                                                
-            $sql = "INSERT INTO ".$this->options['db_table']." (uploaded_file_title,uploaded_file_type,uploaded_file_group,uploaded_file_category,uploaded_file_desc,uploaded_file_tag,uploaded_file_path,uploaded_file_hasvol,rmsa_employee_users_id,uploaded_file_volroot,uploaded_file_volorder)"
-                    ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_group','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_tag','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id','$uploaded_file_volroot','$uploaded_file_volorder')";                   
+            $sql = "INSERT INTO ".$this->options['db_table']." (uploaded_file_title,uploaded_file_type,uploaded_file_group,uploaded_file_category,uploaded_file_desc,uploaded_file_tag,uploaded_file_path,uploaded_file_hasvol,rmsa_employee_users_id,uploaded_file_volroot,uploaded_file_volorder,uploaded_file_class,uploaded_file_subject)"
+                    ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_group','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_tag','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id','$uploaded_file_volroot','$uploaded_file_volorder','$uploaded_file_class','$uploaded_file_subject')";                   
             $query = $this->db->query($sql);                
             $file->id = $this->db->insert_id;                  
         }                        

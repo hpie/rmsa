@@ -131,19 +131,19 @@
                   {% } %}
               </td>                                    
             <td>
-            <label class="title">
+            <label class="title col-md-6">
                 <span>Title:</span><br>
                 <input type="text" name="uploaded_file_title[]" class="form-control input-sm input">
             </label>           
-            <label class="description">
+            <label class="description col-md-6">
                 <span>Description:</span><br>
                 <input type="text" name="uploaded_file_desc[]" class="form-control input-sm input">
             </label>             
-            <label class="title">
+            <label class="title col-md-6">
                 <span>Tag:</span><br>
                 <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control input novalidation" required>
             </label>
-            <label class="description">
+            <label class="description col-md-6">
                 <span>File Order:</span><br>
                 <select class="form-control input-sm" name="uploaded_file_volorder[]">
                 <?php
