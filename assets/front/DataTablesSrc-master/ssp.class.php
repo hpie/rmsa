@@ -324,7 +324,7 @@ class SSP {
 		// Build the SQL query string from the request
 		$limit = self::limit( $request, $columns );
 		$order = self::order( $request, $columns );
-		$where = self::filter( $request, $columns, $bindings );
+		$where = self::filter( $request, $columns, $bindings );                
         if ($where_custom) {
             if ($where) {
                 $where .= ' AND ' . $where_custom;
@@ -712,8 +712,8 @@ class SSP {
                 
 		$limit = self::limit( $request, $columns );                                               
 		$order = self::order( $request, $columns );
-		$where = self::filter( $request, $columns, $bindings );
-                
+//		$where = self::filter( $request, $columns, $bindings );
+                $where="";
                 if ($where_custom) {
                     if ($where) {
                         $where .= ' AND ' . $where_custom;
@@ -721,7 +721,11 @@ class SSP {
                         $where .= 'WHERE ' . $where_custom;
                     }
                 }
-//                echo $where;die;
+//                echo "SELECT ".implode(", ", self::pluck($columns, 'db'))."
+//			 FROM $table
+//			 $where
+//			 $order
+//			 $limit";die;
                 $data = self::sql_exec( $db, $bindings,
 			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
 			 FROM $table
@@ -733,15 +737,13 @@ class SSP {
 		$resFilterLength = self::sql_exec( $db, $bindings,
 			"SELECT COUNT({$primaryKey})
 			 FROM   $table
-			 $where"
+			 $where "
 		);
 		$recordsFiltered = $resFilterLength[0][0];
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
-			FROM   $table
-                            
-                        "
+			FROM   $table "
 		);
 		$recordsTotal = $resTotalLength[0][0];                
                 $result=self::data_output($columns,$data);

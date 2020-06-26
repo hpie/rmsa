@@ -48,17 +48,17 @@ include 'conn.php';
 $emp_rmsa_user_id = $_REQUEST['emp_rmsa_user_id'];
 $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
 if(empty($uploaded_file_tag)){
-    $where="uploaded_file_volroot is null AND rmsa_employee_users_id=$emp_rmsa_user_id AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+    $where=" uploaded_file_volroot is null AND rmsa_employee_users_id=$emp_rmsa_user_id ";
 }
 else{
-    $where=" rmsa_employee_users_id=$emp_rmsa_user_id ";
+    $where=" rmsa_employee_users_id=$emp_rmsa_user_id AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
 }   
 
 
-//if(!empty($_REQUEST['search']['value'])){
-//    $value=$_REQUEST['search']['value'];
-//    $where.=" AND (uploaded_file_title LIKE '%$value%' OR uploaded_file_type LIKE '%$value%' OR uploaded_file_category LIKE '%$value%' OR uploaded_file_desc LIKE '%$value%' OR uploaded_file_group LIKE '%$value%') ";
-//}
+if(!empty($_REQUEST['search']['value'])){
+    $value=$_REQUEST['search']['value'];
+    $where.=" AND (uploaded_file_title LIKE '%$value%' OR uploaded_file_type LIKE '%$value%' OR uploaded_file_category LIKE '%$value%' OR uploaded_file_desc LIKE '%$value%' OR uploaded_file_group LIKE '%$value%') ";
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP

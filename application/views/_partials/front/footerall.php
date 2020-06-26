@@ -1069,30 +1069,29 @@ $this->load->view('_partials/front/allnotify');
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
             {
-                $('#example tfoot th').each(function () {
-                    var title = $('#example thead th').eq($(this).index()).text();
-                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
-                        $(this).html('<input type="text" placeholder="' + title + '" />');
-                    }
-                });
-                var table = $('#example').DataTable({
+//                $('#example tfoot th').each(function () {
+//                    var title = $('#example thead th').eq($(this).index()).text();
+//                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
+//                        $(this).html('<input type="text" placeholder="' + title + '" />');
+//                    }
+//                });
+                $('#example').DataTable({
 
                     responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    },
-                    columnDefs: [{
-                            className: 'control',
-                            orderable: false,
-                            targets: 0
-                        }],
-                    "processing": true,
-                    "serverSide": true,
-                    "pageLength": 10,
-                    "paginationType": "full_numbers",
-                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                     "ajax": {
                         'type': 'POST',
                         'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_resource.php' ?>",
@@ -1112,11 +1111,11 @@ $this->load->view('_partials/front/allnotify');
                         {"data": "uploaded_file_desc"}
                     ]
                 });
-                table.columns().eq(0).each(function (colIdx) {
-                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
-                        table.column(colIdx).search(this.value).draw();
-                    });
-                });
+//                table.columns().eq(0).each(function (colIdx) {
+//                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
+//                        table.column(colIdx).search(this.value).draw();
+//                    });
+//                });
             }
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
@@ -1170,7 +1169,6 @@ $this->load->view('_partials/front/allnotify');
                     }
                 });
             });
-
             $('#searchTag').click(function () {
                 var uploaded_file_tag = $('#uploaded_file_tag').val();
                 if (uploaded_file_tag != '')
@@ -1212,14 +1210,7 @@ $this->load->view('_partials/front/allnotify');
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
             {
-                $('#example tfoot th').each(function () {
-                    var title = $('#example thead th').eq($(this).index()).text();
-                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
-                        $(this).html('<input type="text" placeholder="' + title + '" />');
-                    }
-                });
-                var table = $('#example').DataTable({
-
+                $('#example').DataTable({
                     responsive: {
                         details: {
                             type: 'column',
@@ -1254,12 +1245,7 @@ $this->load->view('_partials/front/allnotify');
                         {"data": "ratting"},
                         {"data": "uploaded_file_desc"}
                     ]
-                });
-                table.columns().eq(0).each(function (colIdx) {
-                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
-                        table.column(colIdx).search(this.value).draw();
-                    });
-                });
+                });              
             }
             $('#searchTag').click(function () {
                 var uploaded_file_tag = $('#uploaded_file_tag').val();
@@ -1302,13 +1288,7 @@ $this->load->view('_partials/front/allnotify');
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
             {
-    //                $('#example tfoot th').each(function () {
-    //                    var title = $('#example thead th').eq($(this).index()).text();
-    //                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
-    //                        $(this).html('<input type="text" placeholder="' + title + '" />');
-    //                    }
-    //                });
-                var table = $('#example').DataTable({
+                $('#example').DataTable({
                     responsive: {
                         details: {
                             type: 'column',
@@ -1350,12 +1330,7 @@ $this->load->view('_partials/front/allnotify');
                         {"data": "action"},
                         {"data": "uploaded_file_desc"}
                     ]
-                });
-                table.columns().eq(0).each(function (colIdx) {
-                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
-                        table.column(colIdx).search(this.value).draw();
-                    });
-                });
+                });             
             }
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
@@ -1451,14 +1426,8 @@ $this->load->view('_partials/front/allnotify');
         $(document).ready(function () {
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '')
-            {
-                $('#example tfoot th').each(function () {
-                    var title = $('#example thead th').eq($(this).index()).text();
-                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
-                        $(this).html('<input type="text" placeholder="' + title + '" />');
-                    }
-                });
-                var table = $('#example').DataTable({
+            {                
+                $('#example').DataTable({
 
                     responsive: {
                         details: {
@@ -1499,12 +1468,7 @@ $this->load->view('_partials/front/allnotify');
                         {"data": "action"},
                         {"data": "uploaded_file_desc"}
                     ]
-                });
-                table.columns().eq(0).each(function (colIdx) {
-                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
-                        table.column(colIdx).search(this.value).draw();
-                    });
-                });
+                });            
             }
 
             $(document).on('click', '.btn_approve_reject', function () {
@@ -1602,13 +1566,7 @@ $this->load->view('_partials/front/allnotify');
             fill_datatable1();
             function fill_datatable1()
             {
-                $('#example tfoot th').each(function () {
-                    var title = $('#example thead th').eq($(this).index()).text();
-                    if ((title === "Title")) {
-                        $(this).html('<input type="text" placeholder="' + title + '" />');
-                    }
-                });
-                var table = $('#example').DataTable({
+                $('#example').DataTable({
 
                     responsive: {
                         details: {
@@ -1645,12 +1603,7 @@ $this->load->view('_partials/front/allnotify');
                         {"data": "quiz_status"},
                         {"data": "action"}
                     ]
-                });
-                table.columns().eq(0).each(function (colIdx) {
-                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
-                        table.column(colIdx).search(this.value).draw();
-                    });
-                });
+                });              
             }
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
@@ -1670,7 +1623,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'quiz_id': self.data('id'),
                     'quiz_status': quiz_status
-                }
+                };
 
                 $.ajax({
                     type: "POST",
@@ -1715,13 +1668,7 @@ $this->load->view('_partials/front/allnotify');
             fill_datatable1();
             function fill_datatable1()
             {
-                $('#example tfoot th').each(function () {
-                    var title = $('#example thead th').eq($(this).index()).text();
-                    if ((title === "Question") || (title === "Status")) {
-                        $(this).html('<input type="text" placeholder="' + title + '" />');
-                    }
-                });
-                var table = $('#example').DataTable({
+                $('#example').DataTable({
 
                     responsive: {
                         details: {
@@ -1756,12 +1703,7 @@ $this->load->view('_partials/front/allnotify');
                         {"data": "question_status"},
                         {"data": "action"}
                     ]
-                });
-                table.columns().eq(0).each(function (colIdx) {
-                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
-                        table.column(colIdx).search(this.value).draw();
-                    });
-                });
+                });               
             }
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
@@ -1781,7 +1723,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'question_id': self.data('id'),
                     'question_status': question_status
-                }
+                };
 
                 $.ajax({
                     type: "POST",
@@ -1944,13 +1886,7 @@ $this->load->view('_partials/front/allnotify');
             fill_datatable();
             function fill_datatable(uploaded_file_tag = '')
             {
-                $('#example tfoot th').each(function () {
-                    var title = $('#example thead th').eq($(this).index()).text();
-                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
-                        $(this).html('<input type="text" placeholder="' + title + '" />');
-                    }
-                });
-                var table = $('#example').DataTable({
+                $('#example').DataTable({
 
                     responsive: {
                         details: {
@@ -1989,12 +1925,7 @@ $this->load->view('_partials/front/allnotify');
                         {"data": "uploaded_file_desc"}
 
                     ]
-                });
-                table.columns().eq(0).each(function (colIdx) {
-                    $('input', table.column(colIdx).footer()).on('keyup change', function () {
-                        table.column(colIdx).search(this.value).draw();
-                    });
-                });
+                });              
             }
             $('#searchTag').click(function () {
                 var uploaded_file_tag = $('#uploaded_file_tag').val();
@@ -2118,7 +2049,6 @@ $this->load->view('_partials/front/allnotify');
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             $('#example').DataTable({
-
                 responsive: {
                     details: {
                         type: 'column',
@@ -2488,7 +2418,7 @@ $this->load->view('_partials/front/allnotify');
                 "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                 "ajax": {
                     'type': 'POST',
-                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_employee.php' ?>",
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_employee.php' ?>"
                 },
                 "columns": [
                     {"data": "index"},
