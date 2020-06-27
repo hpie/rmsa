@@ -9,6 +9,51 @@
       $('#fileupload').fileupload({
             url: 'server/php/'
         }).on('fileuploadsubmit', function (e, data) {
+            var title=0;
+            var description=0;
+            var tag=0;
+            if($(".file_title").length){                
+                if($(".file_title").val()==''){
+                    title=0;
+//                    alert('Title is required');                
+//                    $( ".start" ).prop( "disabled", false );                   
+                }else{
+                    title=1;
+                }
+            }
+            if($(".file_desc").length){                
+                if($(".file_desc").val()==''){
+                    description=0;
+//                    alert('Title is required');                
+//                    $( ".start" ).prop( "disabled", false );                   
+                }else{
+                    description=1;
+                }
+            }
+            if($(".file_tag").length){                
+                if($(".file_tag").val()==''){
+                    tag=0;
+//                    alert('Title is required');                
+//                    $( ".start" ).prop( "disabled", false );                   
+                }else{
+                    tag=1;
+                }
+            }
+            if(title==0 || description==0 || tag==0){
+                var msg='';
+                if(title==0){
+                    msg="Title required"+"\n";
+                }
+                if(description==0){
+                    msg=msg+"Description required"+"\n";
+                }
+                if(tag==0){
+                    msg=msg+"Tag required";
+                }
+                alert(msg);
+                $( ".start" ).prop( "disabled", false );
+                return false;
+            }            
             data.formData = data.context.find(':input').serializeArray();
         });
     </script>

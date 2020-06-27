@@ -94,11 +94,11 @@
               <td>
             <label class="title col-md-6">
                 <span>Title:</span><br>
-                <input type="text" name="uploaded_file_title[]" class="form-control input" required>
+                <input type="text" name="uploaded_file_title[]" class="form-control input file_title" required>
             </label>           
             <label class="description col-md-6">
                 <span>Description:</span><br>
-                <input type="text"  name="uploaded_file_desc[]" class="form-control input">
+                <input type="text"  name="uploaded_file_desc[]" class="form-control input file_desc" required>
             </label> 
             
             <label class="description col-md-6">
@@ -140,7 +140,7 @@
             </label>
             <label class="title col-md-6">
                 <span>Tag:</span><br>
-                <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control input novalidation" required>
+                <input type="text" placeholder="add tag by comma seprated" name="uploaded_file_tag[]" class="form-control input novalidation file_tag" required>
             </label>
             <label class="description col-md-6">
                 <span>File Group:</span><br>

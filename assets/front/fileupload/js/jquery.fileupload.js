@@ -1563,7 +1563,7 @@
     // must have a files or fileInput property and can contain additional options:
     // .fileupload('send', {files: filesList});
     // The method returns a Promise object for the file upload call.
-    send: function(data) {
+    send: function(data) {        
       if (data && !this.options.disabled) {
         if (data.fileInput && !data.files) {
           var that = this,
