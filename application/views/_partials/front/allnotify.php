@@ -18,7 +18,7 @@ if (isset($_SESSION['captcha'])) {
                     styling: 'bootstrap3'
                 });
                 <?php $_SESSION['captcha'] = 0; ?>
-            }
+            }          
         if (<?php
 if (isset($_SESSION['questionEdit'])) {
     echo $_SESSION['questionEdit'];

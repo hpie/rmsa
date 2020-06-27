@@ -192,7 +192,15 @@
             {% } %}
             {% if (file.error) { %}
             <div><span class="label label-danger">Error</span> {%=file.error%}</div>
-            {% } %}
+            {% }else{
+                $(document).ready(function () {
+                        var d = new PNotify({
+                            title: 'File Uploaded successfully',
+                            type: 'success',
+                            styling: 'bootstrap3'
+                        });
+                });
+            } %}
             </td>
             <td>
             <span class="size">{%=o.formatFileSize(file.size)%}</span>
@@ -204,7 +212,7 @@
             <p class="title"><strong>{%=file.title||''%}</strong></p>
             <p class="description">{%=file.description||''%}</p>
             </td>
-            </tr>
+            </tr>            
             {% } %}
         </script>
     </div>
