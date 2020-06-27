@@ -15,7 +15,8 @@ class FileDw extends MY_Controller {
         sessionCheckEmployee();
         $this->load->model('File_upload');
         $this->load->model('Emp_Login');  
-        $this->load->model('Employee_model');               
+        $this->load->model('Employee_model');    
+        $this->load->model('File_upload'); 
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
             if ($result) {                
@@ -30,7 +31,8 @@ class FileDw extends MY_Controller {
         visitLog($method,"FileDw");
     }
     public function index() {  
-//        $_SESSION['token'] = bin2hex(random_bytes(24));       
+//        $_SESSION['token'] = bin2hex(random_bytes(24));    
+        $this->mViewData['subject'] = $this->File_upload->getSubject(); 
         $this->mViewData['title']=EMPLOYEE_FILE_LIST_TITLE;
         $this->renderFront('front/filedw');
     }

@@ -39,7 +39,9 @@ $columns = array(
     array('db' => 'uploaded_file_volroot', 'dt' =>'uploaded_file_volroot'),
     array('db' => 'uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount'),
     array('db' => 'uploaded_file_status', 'dt' =>'uploaded_file_status'),
-    array('db' => 'uploaded_file_tag', 'dt' =>'uploaded_file_tag')
+    array('db' => 'uploaded_file_tag', 'dt' =>'uploaded_file_tag'),
+     array('db' => 'uploaded_file_class', 'dt' =>'uploaded_file_class'),
+    array('db' => 'uploaded_file_subject', 'dt' =>'uploaded_file_subject')
 );
 include 'conn.php';
 
@@ -47,13 +49,20 @@ include 'conn.php';
 
 $emp_rmsa_user_id = $_REQUEST['emp_rmsa_user_id'];
 $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
-if(empty($uploaded_file_tag)){
-    $where=" uploaded_file_volroot is null AND rmsa_employee_users_id=$emp_rmsa_user_id ";
-}
-else{
-    $where=" rmsa_employee_users_id=$emp_rmsa_user_id AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
-}   
+$uploaded_file_class=$_REQUEST['uploaded_file_class'];
+$uploaded_file_subject=$_REQUEST['uploaded_file_subject'];
 
+$where=" uploaded_file_volroot is null AND rmsa_employee_users_id=$emp_rmsa_user_id ";
+
+if(!empty($uploaded_file_tag)){
+        $where .=" AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+}
+if(!empty($uploaded_file_class)){
+    $where.=" AND uploaded_file_class = '$uploaded_file_class' ";
+}
+if(!empty($uploaded_file_subject)){
+    $where.=" AND uploaded_file_subject = '$uploaded_file_subject' ";
+}
 
 if(!empty($_REQUEST['search']['value'])){
     $value=$_REQUEST['search']['value'];

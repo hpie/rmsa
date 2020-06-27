@@ -36,26 +36,39 @@ $columns = array(
     array('db' => 'uploaded_file_hasvol', 'dt' =>'uploaded_file_hasvol'),
     array('db' => 'uploaded_file_volorder', 'dt' =>'uploaded_file_volorder'),
     array('db' => 'uploaded_file_volroot', 'dt' =>'uploaded_file_volroot'),
-    array('db' => 'uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount')
+    array('db' => 'uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount'),
+    array('db' => 'uploaded_file_class', 'dt' =>'uploaded_file_class'),
+    array('db' => 'uploaded_file_subject', 'dt' =>'uploaded_file_subject')
 );
 include 'conn.php';
 //echo $_REQUEST['uploaded_file_tag'];die;
 $uploaded_file_category=$_REQUEST['uploaded_file_category'];
 $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
+$uploaded_file_class=$_REQUEST['uploaded_file_class'];
+$uploaded_file_subject=$_REQUEST['uploaded_file_subject'];
 
 //print_r($_REQUEST);die;
-
-if(empty($uploaded_file_tag)){   
-    $where =" uploaded_file_status='ACTIVE' AND uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot is null ";    
-    if($uploaded_file_category == 'NONE'){        
+$where="uploaded_file_status='ACTIVE' AND uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot is null ";
+if($uploaded_file_category == 'NONE'){        
         $where =" uploaded_file_status='ACTIVE' AND uploaded_file_volroot is null ";    
     }
+//if(empty($uploaded_file_tag)){   
+//    $where =" uploaded_file_status='ACTIVE' AND uploaded_file_category = '$uploaded_file_category' AND uploaded_file_volroot is null ";    
+//    if($uploaded_file_category == 'NONE'){        
+//        $where =" uploaded_file_status='ACTIVE' AND uploaded_file_volroot is null ";    
+//    }
+//}
+if(!empty($uploaded_file_tag)){
+//    $where =" uploaded_file_status='ACTIVE' AND uploaded_file_volroot is null AND uploaded_file_category = '$uploaded_file_category' AND uploaded_file_tag LIKE '%$uploaded_file_tag%' AND uploaded_file_class LIKE '%$uploaded_file_class%' AND uploaded_file_subject LIKE '%$uploaded_file_subject%' ";
+//    if($uploaded_file_category == 'NONE'){
+        $where .=" AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+//    }
 }
-else{
-    $where =" uploaded_file_status='ACTIVE' AND uploaded_file_category = '$uploaded_file_category' AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
-    if($uploaded_file_category == 'NONE'){
-        $where =" uploaded_file_status='ACTIVE' AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
-    }
+if(!empty($uploaded_file_class)){
+    $where.=" AND uploaded_file_class = '$uploaded_file_class' ";
+}
+if(!empty($uploaded_file_subject)){
+    $where.=" AND uploaded_file_subject = '$uploaded_file_subject' ";
 }
 
 

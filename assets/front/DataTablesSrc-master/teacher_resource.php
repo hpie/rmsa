@@ -46,13 +46,20 @@ include 'conn.php';
 //$uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
 
 $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
-if(empty($uploaded_file_tag)){
-    $where=" uploaded_file_volroot is null AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
-}
-else{
-    $where=" uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
-} 
+$uploaded_file_class=$_REQUEST['uploaded_file_class'];
+$uploaded_file_subject=$_REQUEST['uploaded_file_subject'];
 
+$where=" uploaded_file_volroot is null ";
+
+if(!empty($uploaded_file_tag)){
+        $where .=" AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+}
+if(!empty($uploaded_file_class)){
+    $where.=" AND uploaded_file_class = '$uploaded_file_class' ";
+}
+if(!empty($uploaded_file_subject)){
+    $where.=" AND uploaded_file_subject = '$uploaded_file_subject' ";
+}
 
 
 

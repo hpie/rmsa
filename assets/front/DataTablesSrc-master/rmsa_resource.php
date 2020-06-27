@@ -38,21 +38,35 @@ $columns = array(
     array('db' => 'uploaded_file_volorder', 'dt' =>'uploaded_file_volorder'),
     array('db' => 'uploaded_file_volroot', 'dt' =>'uploaded_file_volroot'),
     array('db' => 'uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount'),
-    array('db' => 'uploaded_file_status', 'dt' =>'uploaded_file_status')
+    array('db' => 'uploaded_file_status', 'dt' =>'uploaded_file_status'),
+    array('db' => 'uploaded_file_class', 'dt' =>'uploaded_file_class'),
+    array('db' => 'uploaded_file_subject', 'dt' =>'uploaded_file_subject')
 );
 include 'conn.php';
 
 $uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
+$uploaded_file_class=$_REQUEST['uploaded_file_class'];
+$uploaded_file_subject=$_REQUEST['uploaded_file_subject'];
 
 
-$uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
-if(empty($uploaded_file_tag)){
-    $where=" uploaded_file_volroot is null AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+$where=" uploaded_file_volroot is null ";
+//if(empty($uploaded_file_tag)){
+//    $where=" uploaded_file_volroot is null AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+//}
+//else{
+//    $where=" uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
+//} 
+
+
+if(!empty($uploaded_file_tag)){
+        $where .=" AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
 }
-else{
-    $where=" uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
-} 
-
+if(!empty($uploaded_file_class)){
+    $where.=" AND uploaded_file_class = '$uploaded_file_class' ";
+}
+if(!empty($uploaded_file_subject)){
+    $where.=" AND uploaded_file_subject = '$uploaded_file_subject' ";
+}
 
 
 

@@ -14,7 +14,7 @@ class TeacherResource extends MY_Controller {
         
         sessionCheckTeacher();
         $this->load->model('Emp_Login'); 
-        
+        $this->load->model('File_upload'); 
     
         
         if (isset($_SESSION['user_id'])) {
@@ -31,9 +31,10 @@ class TeacherResource extends MY_Controller {
         visitLog($method,"TeacherResource");        
     }
     public function index() {
-//        $_SESSION['token'] = bin2hex(random_bytes(24));       
+//        $_SESSION['token'] = bin2hex(random_bytes(24)); 
+        $this->mViewData['subject'] = $this->File_upload->getSubject(); 
         $this->mViewData['title']=TEACHER_FILE_LIST_TITLE;
-        $this->renderFront('front/rmsa_resource');
+        $this->renderFront('front/teacher_resource');
     }    
 }
 ?>

@@ -14,6 +14,7 @@ class Resource extends MY_Controller{
         sessionCheckAll();
         $this->load->model('Resource_model');
         $this->load->model('Emp_Login'); 
+        $this->load->model('File_upload'); 
         
    
         
@@ -32,6 +33,7 @@ class Resource extends MY_Controller{
     }    
     public function resources($uploaded_file_category){       
         $this->mViewData['uploaded_file_category'] = $uploaded_file_category;
+        $this->mViewData['subject'] = $this->File_upload->getSubject(); 
         $this->mViewData['title']=STUDENT_RESOURCES_TITLE;
         $this->renderFront('front/student_resources.php');
     }

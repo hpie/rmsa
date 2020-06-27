@@ -56,8 +56,7 @@ if ($title != STUDENT_EXAM_START_TITLE) {
                 }               
                 return true;
             }
-        });
-        
+        });        
         $("#fileupload").delegate(".input", "keyup", function (e) {
             if($(this).hasClass("novalidation")){}
             else{
@@ -1067,7 +1066,7 @@ $this->load->view('_partials/front/allnotify');
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             fill_datatable1();
-            function fill_datatable1(uploaded_file_tag = '')
+            function fill_datatable1(uploaded_file_tag = '', uploaded_file_subject = '', uploaded_file_class = '')
             {
 //                $('#example tfoot th').each(function () {
 //                    var title = $('#example thead th').eq($(this).index()).text();
@@ -1095,8 +1094,10 @@ $this->load->view('_partials/front/allnotify');
                     "ajax": {
                         'type': 'POST',
                         'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_resource.php' ?>",
-                        'data': {
-                            uploaded_file_tag: uploaded_file_tag
+                        'data': {                            
+                            uploaded_file_tag: uploaded_file_tag,
+                            uploaded_file_subject: uploaded_file_subject,
+                            uploaded_file_class: uploaded_file_class
                         }
                     },
                     "columns": [
@@ -1135,7 +1136,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'rmsa_uploaded_file_id': self.data('id'),
                     'uploaded_file_status': uploaded_file_status
-                }
+                };
 
                 $.ajax({
                     type: "POST",
@@ -1171,10 +1172,12 @@ $this->load->view('_partials/front/allnotify');
             });
             $('#searchTag').click(function () {
                 var uploaded_file_tag = $('#uploaded_file_tag').val();
-                if (uploaded_file_tag != '')
+                var subject_val = $('#subject').val();
+                var class_val = $('#class').val(); 
+                if (uploaded_file_tag != '' ||  subject_val!='' || class_val!='')
                 {
                     $('#example').DataTable().destroy();
-                    fill_datatable1(uploaded_file_tag);
+                    fill_datatable1(uploaded_file_tag,subject_val,class_val);
                 } else
                 {
                     alert('Enter tag in textbox');
@@ -1182,6 +1185,50 @@ $this->load->view('_partials/front/allnotify');
                     fill_datatable1();
                 }
             });
+            $('#searchTagClear').click(function () {
+                $('#uploaded_file_tag').val('');
+                $('#subject').val('');
+                $('#class').val(''); 
+                $('#example').DataTable().destroy();
+                fill_datatable1();
+            });
+//            $('#searchSubject').click(function () {
+//                var subject_val = $('#subject').val();               
+//                if (subject_val != '')
+//                {
+//                    $('#example').DataTable().destroy();
+//                    fill_datatable1('',subject_val,'');
+//                } else
+//                {
+//                    alert('Enter tag in textbox');
+//                    $('#example').DataTable().destroy();
+//                    fill_datatable1();
+//                }
+//            });
+//            $('#searchSubjectClear').click(function () {
+//                $('#subject option:eq(0)').prop('selected', true);
+//                $('#example').DataTable().destroy();
+//                fill_datatable1();
+//            });
+//             $('#searchClass').click(function () {
+//                var class_val = $('#class').val(); 
+////                alert(class_val);
+//                if (class_val != '')
+//                {
+//                    $('#example').DataTable().destroy();
+//                    fill_datatable1('','',class_val);
+//                } else
+//                {
+//                    alert('Enter tag in textbox');
+//                    $('#example').DataTable().destroy();
+//                    fill_datatable1();
+//                }
+//            });
+//            $('#searchClassClear').click(function () {
+//                $('#class option:eq(0)').prop('selected', true);
+//                $('#example').DataTable().destroy();
+//                fill_datatable1();
+//            });
             $(document).on('click', '.viewFile', function (e) {
                 e.preventDefault();
                 var self = this;
@@ -1208,7 +1255,7 @@ $this->load->view('_partials/front/allnotify');
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             fill_datatable1();
-            function fill_datatable1(uploaded_file_tag = '')
+            function fill_datatable1(uploaded_file_tag = '', uploaded_file_subject = '', uploaded_file_class = '')
             {
                 $('#example').DataTable({
                     responsive: {
@@ -1231,7 +1278,9 @@ $this->load->view('_partials/front/allnotify');
                         'type': 'POST',
                         'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/teacher_resource.php' ?>",
                         'data': {
-                            uploaded_file_tag: uploaded_file_tag
+                            uploaded_file_tag: uploaded_file_tag,
+                            uploaded_file_subject: uploaded_file_subject,
+                            uploaded_file_class: uploaded_file_class
                         }
                     },
                     "columns": [
@@ -1247,18 +1296,27 @@ $this->load->view('_partials/front/allnotify');
                     ]
                 });              
             }
-            $('#searchTag').click(function () {
+             $('#searchTag').click(function () {
                 var uploaded_file_tag = $('#uploaded_file_tag').val();
-                if (uploaded_file_tag != '')
+                var subject_val = $('#subject').val();
+                var class_val = $('#class').val(); 
+                if (uploaded_file_tag != '' ||  subject_val!='' || class_val!='')
                 {
                     $('#example').DataTable().destroy();
-                    fill_datatable1(uploaded_file_tag);
+                    fill_datatable1(uploaded_file_tag,subject_val,class_val);
                 } else
                 {
                     alert('Enter tag in textbox');
                     $('#example').DataTable().destroy();
                     fill_datatable1();
                 }
+            });
+            $('#searchTagClear').click(function () {
+                $('#uploaded_file_tag').val('');
+                $('#subject').val('');
+                $('#class').val(''); 
+                $('#example').DataTable().destroy();
+                fill_datatable1();
             });
             $(document).on('click', '.viewFile', function (e) {
                 e.preventDefault();
@@ -1286,7 +1344,7 @@ $this->load->view('_partials/front/allnotify');
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             fill_datatable1();
-            function fill_datatable1(uploaded_file_tag = '')
+             function fill_datatable1(uploaded_file_tag = '', uploaded_file_subject = '', uploaded_file_class = '')
             {
                 $('#example').DataTable({
                     responsive: {
@@ -1314,7 +1372,9 @@ $this->load->view('_partials/front/allnotify');
         echo $_SESSION['emp_rmsa_user_id'];
     }
     ?>,
-                            uploaded_file_tag: uploaded_file_tag
+                            uploaded_file_tag: uploaded_file_tag,
+                            uploaded_file_subject: uploaded_file_subject,
+                            uploaded_file_class: uploaded_file_class
                         }
                     },
                     "columns": [
@@ -1386,18 +1446,27 @@ $this->load->view('_partials/front/allnotify');
             });
 
 
-            $('#searchTag').click(function () {
+              $('#searchTag').click(function () {
                 var uploaded_file_tag = $('#uploaded_file_tag').val();
-                if (uploaded_file_tag != '')
+                var subject_val = $('#subject').val();
+                var class_val = $('#class').val(); 
+                if (uploaded_file_tag != '' ||  subject_val!='' || class_val!='')
                 {
                     $('#example').DataTable().destroy();
-                    fill_datatable1(uploaded_file_tag);
+                    fill_datatable1(uploaded_file_tag,subject_val,class_val);
                 } else
                 {
                     alert('Enter tag in textbox');
                     $('#example').DataTable().destroy();
                     fill_datatable1();
                 }
+            });
+            $('#searchTagClear').click(function () {
+                $('#uploaded_file_tag').val('');
+                $('#subject').val('');
+                $('#class').val(''); 
+                $('#example').DataTable().destroy();
+                fill_datatable1();
             });
             $(document).on('click', '.viewFile', function (e) {
                 e.preventDefault();
@@ -1883,11 +1952,10 @@ $this->load->view('_partials/front/allnotify');
             });
         });
         $(document).ready(function () {
-            fill_datatable();
-            function fill_datatable(uploaded_file_tag = '')
+            fill_datatable1('','','<?php if(isset($_SESSION['st_rmsa_user_class'])){echo $_SESSION['st_rmsa_user_class'];}else{echo '';} ?>');
+            function fill_datatable1(uploaded_file_tag = '', uploaded_file_subject = '', uploaded_file_class = '')
             {
                 $('#example').DataTable({
-
                     responsive: {
                         details: {
                             type: 'column',
@@ -1909,6 +1977,8 @@ $this->load->view('_partials/front/allnotify');
                         'data': {
                             uploaded_file_category: "<?php echo $uploaded_file_category; ?>",
                             uploaded_file_tag: uploaded_file_tag,
+                            uploaded_file_subject: uploaded_file_subject,
+                            uploaded_file_class: uploaded_file_class,
                             rmsa_user_id: "<?php echo $_SESSION['user_id']; ?>"
                                     // etc..
                         }
@@ -1929,16 +1999,25 @@ $this->load->view('_partials/front/allnotify');
             }
             $('#searchTag').click(function () {
                 var uploaded_file_tag = $('#uploaded_file_tag').val();
-                if (uploaded_file_tag != '')
+                var subject_val = $('#subject').val();
+                var class_val = $('#class').val(); 
+                if (uploaded_file_tag != '' ||  subject_val!='' || class_val!='')
                 {
                     $('#example').DataTable().destroy();
-                    fill_datatable(uploaded_file_tag);
+                    fill_datatable1(uploaded_file_tag,subject_val,class_val);
                 } else
                 {
                     alert('Enter tag in textbox');
                     $('#example').DataTable().destroy();
-                    fill_datatable();
+                    fill_datatable1();
                 }
+            });
+            $('#searchTagClear').click(function () {
+                $('#uploaded_file_tag').val('');
+                $('#subject').val('');
+                $('#class').val(''); 
+                $('#example').DataTable().destroy();
+                fill_datatable1('','','<?php if(isset($_SESSION['st_rmsa_user_class'])){echo $_SESSION['st_rmsa_user_class'];}else{echo '';} ?>');
             });
         });
     </script>
