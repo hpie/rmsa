@@ -127,11 +127,11 @@ define('STUDENT_VIDEO_SEARCH_LINK',BASE_URL."/video_lessons_search");
 define('STUDENT_UPDATE_PROFILE_LINK',BASE_URL."/update-profile");
 define('STUDENT_RESOURCES_LINK',BASE_URL."/student-resources");
 define('IS_STUDENT_ACTIVE',BASE_URL."/is-student-active");
-define('STUDENT_QUIZ_RESULTS_LINK',BASE_URL."/employee-resources");
 define('STUDENT_REPORTS',BASE_URL."/employee-reports");
 define('STUDENT_ONLINE_EXAM_LINK',"http://gyanshala.hp.gov.in/pariksha/");
 
 define('STUDENT_SCORE_LINK',BASE_URL."/student-score/");
+define('STUDENT_QUIZ_RESULTS_LINK',BASE_URL."/student-attempted-quiz-list");
 
 //All Rmsa users constant
 define('RMSA_LOGIN_LINK',BASE_URL."/rmsa-login");
@@ -283,6 +283,12 @@ define('REPORTS_2_TEACHER_REGISTERED_TITLE',"Welcome to gyanshala.hp.gov.in - Te
 define('STUDENT_EXAM_TITLE',"Welcome to gyanshala.hp.gov.in - Student Exam");
 define('STUDENT_EXAM_START_TITLE',"Welcome to gyanshala.hp.gov.in - Student Exam Start");
 define('STUDENT_SCORE_TITLE',"Welcome to gyanshala.hp.gov.in - Student Exam Score");
+
+define('STUDENT_ATTEMPTED_EXAM_TITLE',"Welcome to gyanshala.hp.gov.in - Student Quiz List");
+define('STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE',"Welcome to gyanshala.hp.gov.in - Student My Quiz Attempt Result");
+
+define('EMPLOYEE_STUDENT_ATTEMPTED_EXAM_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Student Quiz List");
+define('EMPLOYEE_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Student My Quiz Attempt Result");
 
 
 

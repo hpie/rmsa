@@ -34,8 +34,24 @@
                             <td><?php echo $result['quiz_pass_score']; ?></td>                            
                         </tr>
                         <tr>
-                            <th>Your Score</th>
-                            <td><?php echo $result['quiz_student_score']; ?></td>                            
+<!--                            <th>Your Score</th>-->
+                            <th><?php if($result['pass']==1){?>
+                                <b class="pass">
+                            <?php  }
+                            else{ ?>
+                                    <b class="fail">
+                                    <?php                                
+                            }                            
+                            ?>Your Score</b></th>
+                            <td><?php if($result['pass']==1){?>
+                                <b class="pass">
+                            <?php  }
+                            else{ ?>
+                                    <b class="fail">
+                                    <?php                                
+                            }
+                            echo $result['quiz_student_score'];
+                            ?></b></td>                                                        
                         </tr>
                         <tr>
                             <th><b class="pass">Pass</b> / <b class="fail">Fail</b></th>

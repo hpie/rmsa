@@ -97,7 +97,16 @@ class Student extends MY_Controller{
         $this->mViewData['title']=STUDENT_SCORE_TITLE;        
         $this->renderFront('front/score');
     }
-    
+    public function attempted_quiz_list(){  
+        $this->mViewData['title']=STUDENT_ATTEMPTED_EXAM_TITLE;        
+        $this->renderFront('front/attempted_quizlist');
+    }
+    public function my_quiz_attempt_result($quiz_id){
+        $this->mViewData['result'] =  $this->Student_model->quiz_file_details($quiz_id);
+        $this->mViewData['quiz_id']=$quiz_id;
+        $this->mViewData['title']=STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE;        
+        $this->renderFront('front/my_quiz_result');
+    }
     public function update_profile(){
         $result=array();               
         if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){            

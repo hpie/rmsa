@@ -171,6 +171,13 @@ $route['student-exam/(:any)/(:any)/(:any)'] = 'front/Student/studentExam/$1/$2/$
 $route['student-score/(:any)']       = 'front/Student/studentScore/$1';
 $route['exam-questins/(:any)/(:any)']       = 'front/Student/question_details_all/$1/$2';
 
+$route['student-attempted-quiz-list']       = 'front/Student/attempted_quiz_list';
+$route['my-quiz-attempt-result/(:any)']       = 'front/Student/my_quiz_attempt_result/$1';
+
+$route['employee-student-attempted-quiz-list/(:any)']       = 'front/Employee/attempted_quiz_list/$1';
+$route['emp-my-quiz-attempt-result/(:any)/(:any)']       = 'front/Employee/my_quiz_attempt_result/$1/$2';
+
+
 //All filr resources route
 $route['student-resources/(:any)']       = 'front/Resource/resources/$1';
 $route['total-fileview']          = 'front/Resource/file_viewcount';

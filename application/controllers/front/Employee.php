@@ -13,6 +13,7 @@ class Employee extends MY_Controller {
         
         sessionCheckEmployee();
         $this->load->model('Employee_model');
+        $this->load->model('Student_model');
         $this->load->model('Emp_Login');
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
@@ -260,6 +261,20 @@ class Employee extends MY_Controller {
         $this->mViewData['student_data'] = $this->Employee_model->student_details($stud_id);
         $this->mViewData['title'] = EMPLOYEE_STUDENT_PROFILE_TITLE;
         $this->renderFront('front/employee_student_profile');
+    }
+    
+    
+    public function attempted_quiz_list($student_id){
+        $this->mViewData['student_id']=$student_id;
+        $this->mViewData['title']=EMPLOYEE_STUDENT_ATTEMPTED_EXAM_TITLE;        
+        $this->renderFront('front/emp_attempted_quizlis');
+    }
+    public function my_quiz_attempt_result($quiz_id,$student_id){
+        $this->mViewData['student_id']=$student_id;
+        $this->mViewData['result'] =  $this->Student_model->quiz_file_details($quiz_id);
+        $this->mViewData['quiz_id']=$quiz_id;
+        $this->mViewData['title']=EMPLOYEE_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE;        
+        $this->renderFront('front/emp_my_quiz_result');
     }
 
 }

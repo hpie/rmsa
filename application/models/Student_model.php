@@ -40,6 +40,20 @@ class Student_model extends CI_Model {
         }
     }
 
+    
+        public function quiz_file_details($quiz_id) {
+        $data = $this->db->query("  SELECT qz.*,ruf.* FROM quiz qz
+                                    INNER JOIN rmsa_uploaded_files ruf
+                                    ON qz.rmsa_uploaded_file_id=ruf.rmsa_uploaded_file_id
+                                    WHERE qz.quiz_id=$quiz_id
+                                    ");
+        $question_data = $data->row_array();
+        if (isset($question_data)) {
+            return $question_data;
+        }
+    }
+    
+    
      public function score_details($rmsa_quiz_student_mapping_id) {
         $data = $this->db->query("SELECT rqsm.*,ruf.*,qz.quiz_pass_score FROM rmsa_quiz_student_mapping rqsm
                 INNER JOIN quiz qz

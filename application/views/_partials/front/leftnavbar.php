@@ -146,13 +146,13 @@
                                         <li><a href="<?php echo STUDENT_RESOURCES_LINK.'/EBOOKS'; ?>">Download EBooks</a></li>
                                         <li><a href="<?php echo STUDENT_RESOURCES_LINK.'/Q-PAPERS'; ?>">Download Question Papers</a></li>
                                         <li><a href="<?php echo STUDENT_RESOURCES_LINK.'/SYLLABUS'; ?>">Download Syllabus</a></li>
+                                        <li><a href="<?php echo STUDENT_QUIZ_RESULTS_LINK; ?>">Quiz Results</a></li>
                                     </ul>
                                 </li>
 
                                 <li>
                                     <div class="link"><i class="fa fa-mobile"></i>Other Links<i class="fa fa-chevron-down"></i></div>
-                                    <ul class="submenu">
-                                        <li><a href="<?php echo STUDENT_QUIZ_RESULTS_LINK; ?>">Quiz Results</a></li>
+                                    <ul class="submenu">                                        
                                         <li><a href="<?php echo STUDENT_ONLINE_EXAM_LINK; ?>">Online Exam</a></li>
                                         <li><a href="<?php echo STUDENT_REPORTS; ?>/1">Reports</a></li>
                                         <li><a href="<?php echo EMPLOYEE_REPORTS_2; ?>/9/1">Reports graph</a></li>

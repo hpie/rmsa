@@ -45,7 +45,7 @@ if ($title != STUDENT_EXAM_START_TITLE) {
                 var str=$(this).val();
                 for (var i = 0; i < str.length; i++) {
                     var charCode=str.charAt(i).charCodeAt(0);                  
-                    if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
+                     if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
                     {                
                         alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
                         $(this).val('');
@@ -296,7 +296,7 @@ $this->load->view('_partials/front/allnotify');
                 legend: {
                     display: true,
                     labels: {
-                        fontColor: 'rgb(255, 99, 132)',
+                        fontColor: 'rgb(255, 99, 132)'
                     }
                 },
                 scales: {
@@ -432,7 +432,7 @@ $this->load->view('_partials/front/allnotify');
                 legend: {
                     display: true,
                     labels: {
-                        fontColor: 'rgb(255, 99, 132)',
+                        fontColor: 'rgb(255, 99, 132)'
                     }
                 },
                 scales: {
@@ -568,7 +568,7 @@ $this->load->view('_partials/front/allnotify');
                 legend: {
                     display: true,
                     labels: {
-                        fontColor: 'rgb(255, 99, 132)',
+                        fontColor: 'rgb(255, 99, 132)'
                     }
                 },
                 scales: {
@@ -1012,8 +1012,6 @@ $this->load->view('_partials/front/allnotify');
             district_name.push(data.rmsa_district_name);
             total_upload.push(data.uploaded_content);
         });
-
-
         var ctx = document.getElementById('top_district_upload_content');
         var myChart = new Chart(ctx, {
             type: 'pie',
@@ -1068,12 +1066,6 @@ $this->load->view('_partials/front/allnotify');
             fill_datatable1();
             function fill_datatable1(uploaded_file_tag = '', uploaded_file_subject = '', uploaded_file_class = '')
             {
-//                $('#example tfoot th').each(function () {
-//                    var title = $('#example thead th').eq($(this).index()).text();
-//                    if ((title === "Title") || (title === "Type") || (title === "Group") || (title === "Category") || (title === "Description")) {
-//                        $(this).html('<input type="text" placeholder="' + title + '" />');
-//                    }
-//                });
                 $('#example').DataTable({
 
                     responsive: {
@@ -1192,43 +1184,6 @@ $this->load->view('_partials/front/allnotify');
                 $('#example').DataTable().destroy();
                 fill_datatable1();
             });
-//            $('#searchSubject').click(function () {
-//                var subject_val = $('#subject').val();               
-//                if (subject_val != '')
-//                {
-//                    $('#example').DataTable().destroy();
-//                    fill_datatable1('',subject_val,'');
-//                } else
-//                {
-//                    alert('Enter tag in textbox');
-//                    $('#example').DataTable().destroy();
-//                    fill_datatable1();
-//                }
-//            });
-//            $('#searchSubjectClear').click(function () {
-//                $('#subject option:eq(0)').prop('selected', true);
-//                $('#example').DataTable().destroy();
-//                fill_datatable1();
-//            });
-//             $('#searchClass').click(function () {
-//                var class_val = $('#class').val(); 
-////                alert(class_val);
-//                if (class_val != '')
-//                {
-//                    $('#example').DataTable().destroy();
-//                    fill_datatable1('','',class_val);
-//                } else
-//                {
-//                    alert('Enter tag in textbox');
-//                    $('#example').DataTable().destroy();
-//                    fill_datatable1();
-//                }
-//            });
-//            $('#searchClassClear').click(function () {
-//                $('#class option:eq(0)').prop('selected', true);
-//                $('#example').DataTable().destroy();
-//                fill_datatable1();
-//            });
             $(document).on('click', '.viewFile', function (e) {
                 e.preventDefault();
                 var self = this;
@@ -1467,6 +1422,333 @@ $this->load->view('_partials/front/allnotify');
                 $('#class').val(''); 
                 $('#example').DataTable().destroy();
                 fill_datatable1();
+            });
+            $(document).on('click', '.viewFile', function (e) {
+                e.preventDefault();
+                var self = this;
+                window.open(self.href, 'documents', 'width=600,height=400');
+            });
+        });
+        function show_review_comments(file_id, e) {
+            e.preventDefault();
+            $('.show_comments').empty();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo DISPLAY_REVIEW ?>",
+                data: {'file_id': file_id, 'limit': 10},
+                success: function (res) {
+                    $('.show_comments').append(res);
+                }
+            });
+            $("#view-reviews").modal();
+        }
+    </script>
+<?php } ?>
+
+ <?php if ($title == EMPLOYEE_STUDENT_ATTEMPTED_EXAM_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1(uploaded_file_tag = '')
+            {                
+                $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "bInfo" : false,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/emp_student_attempted_quiz_list.php' ?>",
+                        'data': {
+                            st_rmsa_user_id: <?php echo $student_id; ?>,
+                            uploaded_file_tag: uploaded_file_tag
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "uploaded_file_title"},
+                        {"data": "ext"},
+                        {"data": "uploaded_file_type"},
+                        {"data": "uploaded_file_group"},
+                        {"data": "uploaded_file_category"},
+                        {"data": "ratting"},
+                        {"data": "action"},
+                        {"data": "uploaded_file_desc"}
+                    ]
+                });            
+            }            
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $(document).on('click', '.viewFile', function (e) {
+                e.preventDefault();
+                var self = this;
+                window.open(self.href, 'documents', 'width=600,height=400');
+            });
+        });
+        function show_review_comments(file_id, e) {
+            e.preventDefault();
+            $('.show_comments').empty();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo DISPLAY_REVIEW ?>",
+                data: {'file_id': file_id, 'limit': 10},
+                success: function (res) {
+                    $('.show_comments').append(res);
+                }
+            });
+            $("#view-reviews").modal();
+        }
+    </script>
+<?php } ?>        
+    <?php if ($title == STUDENT_ATTEMPTED_EXAM_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1(uploaded_file_tag = '')
+            {                
+                $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "bInfo" : false,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/student_attempted_quiz_list.php' ?>",
+                        'data': {
+                            st_rmsa_user_id: <?php
+    if (isset($_SESSION['st_rmsa_user_id'])) {
+        echo $_SESSION['st_rmsa_user_id'];
+    }
+    ?>,
+                            uploaded_file_tag: uploaded_file_tag
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "uploaded_file_title"},
+                        {"data": "ext"},
+                        {"data": "uploaded_file_type"},
+                        {"data": "uploaded_file_group"},
+                        {"data": "uploaded_file_category"},
+                        {"data": "ratting"},
+                        {"data": "action"},
+                        {"data": "uploaded_file_desc"}
+                    ]
+                });            
+            }            
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $(document).on('click', '.viewFile', function (e) {
+                e.preventDefault();
+                var self = this;
+                window.open(self.href, 'documents', 'width=600,height=400');
+            });
+        });
+        function show_review_comments(file_id, e) {
+            e.preventDefault();
+            $('.show_comments').empty();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo DISPLAY_REVIEW ?>",
+                data: {'file_id': file_id, 'limit': 10},
+                success: function (res) {
+                    $('.show_comments').append(res);
+                }
+            });
+            $("#view-reviews").modal();
+        }
+    </script>
+<?php } ?>       
+<?php if ($title == STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1()
+            {                
+                $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "bInfo" : false,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/my_quiz_result.php' ?>",
+                        'data': {
+                            st_rmsa_user_id: <?php
+    if (isset($_SESSION['st_rmsa_user_id'])) {
+        echo $_SESSION['st_rmsa_user_id'];
+    }
+    ?>,
+                            quiz_id: <?php echo $quiz_id; ?>,
+                            quiz_pass_score:<?php echo $result['quiz_pass_score']; ?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "quiz_student_score"},
+                        {"data": "attempt_date"},
+                        {"data": "pass_fail"}
+                        
+                    ]
+                });            
+            }            
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $(document).on('click', '.viewFile', function (e) {
+                e.preventDefault();
+                var self = this;
+                window.open(self.href, 'documents', 'width=600,height=400');
+            });
+        });
+        function show_review_comments(file_id, e) {
+            e.preventDefault();
+            $('.show_comments').empty();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo DISPLAY_REVIEW ?>",
+                data: {'file_id': file_id, 'limit': 10},
+                success: function (res) {
+                    $('.show_comments').append(res);
+                }
+            });
+            $("#view-reviews").modal();
+        }
+    </script>
+<?php } ?>
+    <?php if ($title == EMPLOYEE_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1()
+            {                
+                $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "bInfo" : false,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/emp_my_quiz_result.php' ?>",
+                        'data': {
+                            st_rmsa_user_id: <?php echo $student_id; ?>,
+                            quiz_id: <?php echo $quiz_id; ?>,
+                            quiz_pass_score:<?php echo $result['quiz_pass_score']; ?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "quiz_student_score"},
+                        {"data": "attempt_date"},
+                        {"data": "pass_fail"}
+                        
+                    ]
+                });            
+            }            
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
             });
             $(document).on('click', '.viewFile', function (e) {
                 e.preventDefault();
@@ -1870,35 +2152,35 @@ $this->load->view('_partials/front/allnotify');
         function resetRating() {
             if ($('#review_rating').val() != 0) {
                 $('.review i').each(function (index) {
-                    $(this).attr('class', 'fa fa-star')
+                    $(this).attr('class', 'fa fa-star');
                     if (index + 1 == $('#review_rating').val()) {
-                        return false
+                        return false;
                     }
-                })
+                });
             }
         }
         function highlightStar(obj) {
-            removeHighlight()
+            removeHighlight();
             $('.review i').each(function (index) {
-                $(this).attr('class', 'fa fa-star')
+                $(this).attr('class', 'fa fa-star');
                 if (index == $('.review i').index(obj)) {
-                    return false
+                    return false;
                 }
-            })
+            });
         }
 
         function removeHighlight() {
-            $('.review i').attr('class', 'fa fa-star-o')
+            $('.review i').attr('class', 'fa fa-star-o');
         }
 
         function addRating(obj) {
             $('.review i').each(function (index) {
-                $(this).attr('class', 'fa fa-star')
+                $(this).attr('class', 'fa fa-star');
                 $('#review_rating').val(index + 1)
                 if (index == $('.review i').index(obj)) {
-                    return false
+                    return false;
                 }
-            })
+            });
         }
 
         function display_comments(fileId, e) {
@@ -1912,14 +2194,14 @@ $this->load->view('_partials/front/allnotify');
             var review_rating = $("#review_rating");
             var comment = $(".review-comment");
             if (review_rating.val() == '') {
-                return alert('Please enter at least one rating.')
+                return alert('Please enter at least one rating.');
             }
 
             var data = {
                 'file_id': uploaded_file_id,
                 'rating': review_rating.val(),
                 'comment': comment.val()
-            }
+            };
 
             $.ajax({
                 type: "POST",
@@ -1933,7 +2215,7 @@ $this->load->view('_partials/front/allnotify');
                     }
                 }
             });
-        })
+        });
 
         $(document).on('click', '.view_count', function (e) {
             e.preventDefault();
@@ -2338,7 +2620,7 @@ $this->load->view('_partials/front/allnotify');
                 "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                 "ajax": {
                     'type': 'POST',
-                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_students.php' ?>",
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_students.php' ?>"
                 },
                 "columns": [
                     {"data": "index"},
@@ -2404,7 +2686,7 @@ $this->load->view('_partials/front/allnotify');
                 var data = {
                     'rmsa_user_id': self.data('id'),
                     'user_status': user_status
-                }
+                };
 
                 $.ajax({
                     type: "POST",
@@ -2796,7 +3078,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_first_name: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your first name'
@@ -2806,7 +3088,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_last_name: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your last name'
@@ -2815,7 +3097,7 @@ $this->load->view('_partials/front/allnotify');
                     }
                 }
             }).on('success.form.bv', function (e) {
-                $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
                 $('#frm_general_info').data('bootstrapValidator').resetForm();
 
                 // Prevent form submission
@@ -2846,7 +3128,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_new_password: {
                         validators: {
                             stringLength: {
-                                min: 8,
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -2860,7 +3142,7 @@ $this->load->view('_partials/front/allnotify');
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 8,
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_new_password',
@@ -2873,7 +3155,7 @@ $this->load->view('_partials/front/allnotify');
                     }
                 }
             }).on('success.form.bv', function (e) {
-                $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
                 $('#frm_change_password').data('bootstrapValidator').resetForm();
 
                 // Prevent form submission
@@ -2894,7 +3176,7 @@ $this->load->view('_partials/front/allnotify');
                         var d = new PNotify({
                             title: 'Old Password not match',
                             type: 'error',
-                            styling: 'bootstrap3',
+                            styling: 'bootstrap3'
                         });
                     }
                 }, 'json');
@@ -3598,7 +3880,7 @@ if ($title == FILE_REVIEWS_TITLE) {
             var data = {
                 'file_id': fileId,
                 'comment_id': commentId,
-                'reply': reply.val(),
+                'reply': reply.val()
             };
 
             $.ajax({
@@ -3608,12 +3890,12 @@ if ($title == FILE_REVIEWS_TITLE) {
                 success: function (res) {
                     var res = $.parseJSON(res);
                     if (res.success) {
-                        alert('Thank you, your reply has been submitted for review.')
+                        alert('Thank you, your reply has been submitted for review.');
                         reply_modal.modal('toggle');
                     }
                 }
             });
-        })
+        });
 
     </script>
 
@@ -3635,7 +3917,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_first_name: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your first name'
@@ -3645,7 +3927,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_last_name: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your last name'
@@ -3655,7 +3937,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_employee_code: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your roll number'
@@ -3675,7 +3957,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_email_password: {
                         validators: {
                             stringLength: {
-                                min: 8,
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -3689,7 +3971,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 8,
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_email_password',
@@ -3719,7 +4001,7 @@ if ($title == FILE_REVIEWS_TITLE) {
 //                    }
                 }
             }).on('success.form.bv', function (e) {
-                $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
                 $('#employee_register').data('bootstrapValidator').resetForm();
                 // Prevent form submission
                 e.preventDefault();
@@ -3744,7 +4026,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                         var d = new PNotify({
                             title: 'Invalid Username & Password',
                             type: 'error',
-                            styling: 'bootstrap3',
+                            styling: 'bootstrap3'
                         });
                     }
                 }, 'json');
@@ -3979,7 +4261,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_first_name: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your first name'
@@ -3989,7 +4271,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_last_name: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your last name'
@@ -3999,7 +4281,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_roll_number: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your roll number'
@@ -4019,7 +4301,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_email_password: {
                         validators: {
                             stringLength: {
-                                min: 8,
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_confirm_password',
@@ -4033,7 +4315,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     rmsa_user_confirm_password: {
                         validators: {
                             stringLength: {
-                                min: 8,
+                                min: 8
                             },
                             identical: {
                                 field: 'rmsa_user_email_password',
@@ -4063,7 +4345,7 @@ if ($title == FILE_REVIEWS_TITLE) {
 //                    }
                 }
             }).on('success.form.bv', function (e) {                
-                $('#success_message').slideDown({opacity: "show"}, "slow") // Do something ...
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
                 $('#student_register').data('bootstrapValidator').resetForm();
                 // Prevent form submission
                 e.preventDefault();
@@ -4118,7 +4400,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                             $("#sub_district").append(new Option(value.rmsa_sub_district_name, value.rmsa_sub_district_id));
                         });
                     }
-                })
+                });
             });
 
             $('#sub_district').on('change', function () {
@@ -4204,7 +4486,7 @@ if (isset($_SESSION['st_rmsa_student_login_active'])) {
                         success: function (res) {
                             var check = $.parseJSON(res);
                             if (!check.isactive) {
-                                location.href = "<?php echo STUDENT_LOGOUT_LINK ?>"
+                                location.href = "<?php echo STUDENT_LOGOUT_LINK ?>";
                             }
                         }
                     });
@@ -4232,7 +4514,7 @@ if (isset($_SESSION['emp_rmsa_employee_login_active'])) {
                         success: function (res) {
                             var check = $.parseJSON(res);
                             if (!check.isactive) {
-                                location.href = "<?php echo EMPLOYEE_LOGOUT_LINK ?>"
+                                location.href = "<?php echo EMPLOYEE_LOGOUT_LINK ?>";
                             }
                         }
                     });

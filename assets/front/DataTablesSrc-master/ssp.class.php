@@ -302,7 +302,8 @@ class SSP {
                     $isactive = 0;
                 }                
                 $row['rmsa_user_status'] = "<button type='button' data-id='".$row['rmsa_user_id']."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";
-                $row['rmsa_user_edit'] = "<a href='".BASE_URL."/employee-update-student-profile/$stud_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";
+                $row['rmsa_user_edit'] = "<a href='".BASE_URL."/employee-update-student-profile/$stud_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";                
+                $row['rmsa_user_edit'] .= "<br><a href='".BASE_URL."/employee-student-attempted-quiz-list/$stud_id' class='btn btn-xs btn-warning'>Quiz Result<i class='fa fa-eye'></i></a>";
                 $row['index']='';
                 array_push($resData, $row); 
             }
@@ -887,7 +888,7 @@ class SSP {
 			"data" => $resData
 		);
 	}
-        
+       
         static function emp_quiz_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$emp_rmsa_user_id)
 	{                 
 		$bindings = array();
@@ -978,6 +979,295 @@ class SSP {
                             $row['action'] = "<a href='".BASE_URL."/employee-create-quiz/$fileId' class='btn btn-xs btn-warning'>Create Quiz <i class='fa fa-pencil'></i></a>";
                         }                                                
 //                        $row['quizlist'] = "<a href='".BASE_URL."/employee-quiz-list/$fileId' class='btn btn-xs btn-warning'>Create Quiz sasas<i class='fa fa-pencil'></i></a>";
+                        array_push($resData, $row);
+                    }  
+                }
+//                print_r($resData);die;
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+        
+         static function stud_attempted_quiz_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$st_rmsa_user_id)
+	{                 
+		$bindings = array();
+		$db = self::db( $conn );
+                
+		// Build the SQL query string from the request
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns );
+		$where = self::filter( $request, $columns, $bindings );
+                
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                }                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
+                         INNER JOIN quiz qz
+                         ON qz.rmsa_uploaded_file_id=ruf.rmsa_uploaded_file_id
+                         INNER JOIN rmsa_quiz_student_mapping rqsm 
+                         ON rqsm.quiz_id=qz.quiz_id                         
+			 $where GROUP BY rqsm.quiz_id
+			 $order
+			 $limit"
+		);   		
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT(rqsm.quiz_id)
+			 FROM   $table
+                         INNER JOIN quiz qz
+                         ON qz.rmsa_uploaded_file_id=ruf.rmsa_uploaded_file_id
+                         INNER JOIN rmsa_quiz_student_mapping rqsm
+                         ON rqsm.quiz_id=qz.quiz_id     
+			 $where "
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
+                         INNER JOIN quiz qz
+                         ON qz.rmsa_uploaded_file_id=ruf.rmsa_uploaded_file_id
+                         INNER JOIN rmsa_quiz_student_mapping rqsm
+                         ON rqsm.quiz_id=qz.quiz_id 
+                         "                            
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){                                                                                                                                      
+                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];                                                                                                                                                                                                                               
+                        $reviews = self::sql_exec( $db,
+                            "SELECT AVG(rmsa_file_rating) as overall_rating FROM rmsa_file_reviews
+                            WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}' AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");
+                        $star = '';
+                        if(count($reviews)){
+                            $rating = $reviews[0]['overall_rating'];
+                            $starNumber = rtrim(rtrim(number_format($rating, 1, ".", ""), '0'), '.');
+                            for ($x = 0; $x < 5; $x++) {
+                                if (floor($starNumber)-$x >= 1) {
+                                    $star.= '<i class="fa fa-star" style="color:#ffc000;"></i>';
+                                }
+                                elseif ($starNumber-$x > 0) {
+                                    $star.= '<i class="fa fa-star-half-o" style="color:#ffc000;"></i>';
+                                }
+                                else {
+                                    $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
+                                }
+                            }
+                        }
+                        else{
+                            for ($x = 0; $x < 5; $x++) {
+                                $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
+                            }
+                        }
+                        
+                        
+                        /***************exam****************/
+                        $examResult=0;
+                        $attendSts=1;
+                        $rmsa_user_id=$st_rmsa_user_id;                                                              
+                        $examData = self::sql_exec($db,
+                                            "SELECT COUNT(quiz_id) AS count_id,quiz_id,quiz_pass_score FROM quiz                                       
+                                                WHERE rmsa_uploaded_file_id='$rmsa_file_id'
+                                            "
+                                    ); 
+                        if(!empty($examData[0]['count_id'])){
+                            $examResult=$examData[0]['count_id'];
+                            $quiz_id=$examData[0]['quiz_id'];
+                            $quiz_pass_score=$examData[0]['quiz_pass_score'];
+                            $quizAttendStatus = self::sql_exec($db,
+                                            "SELECT COUNT(rmsa_quiz_student_mapping_id) AS count_attend FROM rmsa_quiz_student_mapping                                        
+                                                WHERE rmsa_user_id='$rmsa_user_id' AND quiz_id='$quiz_id' AND quiz_student_score >= '$quiz_pass_score'
+                                            "
+                                    );                     
+                            $attendSts=$quizAttendStatus[0]['count_attend'];                        
+                        } 
+                        //***********************end exam****************//
+                        
+                        //get number of student view count
+                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];                                                 
+                        $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
+                        $total_student_view = $student_view_count[0]['total_Student_views'];
+                        
+                        $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
+                        
+                        if($attendSts == 0){
+                            $link_str=BASE_URL.'/exam/'.$rmsa_file_id;
+                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                                <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
+                        }
+                        else{
+                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                                    <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
+                        }
+                        
+//                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+//                                     <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
+                        $row['ratting']="<td>$star</td>";
+                        $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
+                        $row['index']='';
+                        $fileId = $row['rmsa_uploaded_file_id'];                                                                                                                             
+                                                
+                        $row['action'] = "<a href='".BASE_URL."/my-quiz-attempt-result/$quiz_id' class='btn btn-xs btn-warning'>Quiz Score<i class='fa fa-eye'></i></a>";
+                                                                        
+                        array_push($resData, $row);
+                    }  
+                }
+//                print_r($resData);die;
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+        static function emp_stud_attempted_quiz_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$st_rmsa_user_id)
+	{                 
+		$bindings = array();
+		$db = self::db( $conn );
+                
+		// Build the SQL query string from the request
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns );
+		$where = self::filter( $request, $columns, $bindings );
+                
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                }                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
+                         INNER JOIN quiz qz
+                         ON qz.rmsa_uploaded_file_id=ruf.rmsa_uploaded_file_id
+                         INNER JOIN rmsa_quiz_student_mapping rqsm 
+                         ON rqsm.quiz_id=qz.quiz_id                         
+			 $where GROUP BY rqsm.quiz_id
+			 $order
+			 $limit"
+		);   		
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT(rqsm.quiz_id)
+			 FROM   $table
+                         INNER JOIN quiz qz
+                         ON qz.rmsa_uploaded_file_id=ruf.rmsa_uploaded_file_id
+                         INNER JOIN rmsa_quiz_student_mapping rqsm
+                         ON rqsm.quiz_id=qz.quiz_id     
+			 $where "
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
+                         INNER JOIN quiz qz
+                         ON qz.rmsa_uploaded_file_id=ruf.rmsa_uploaded_file_id
+                         INNER JOIN rmsa_quiz_student_mapping rqsm
+                         ON rqsm.quiz_id=qz.quiz_id 
+                         "                            
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){                                                                                                                                      
+                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];                                                                                                                                                                                                                               
+                        $reviews = self::sql_exec( $db,
+                            "SELECT AVG(rmsa_file_rating) as overall_rating FROM rmsa_file_reviews
+                            WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}' AND rmsa_review_status = 1 GROUP BY rmsa_uploaded_file_id");
+                        $star = '';
+                        if(count($reviews)){
+                            $rating = $reviews[0]['overall_rating'];
+                            $starNumber = rtrim(rtrim(number_format($rating, 1, ".", ""), '0'), '.');
+                            for ($x = 0; $x < 5; $x++) {
+                                if (floor($starNumber)-$x >= 1) {
+                                    $star.= '<i class="fa fa-star" style="color:#ffc000;"></i>';
+                                }
+                                elseif ($starNumber-$x > 0) {
+                                    $star.= '<i class="fa fa-star-half-o" style="color:#ffc000;"></i>';
+                                }
+                                else {
+                                    $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
+                                }
+                            }
+                        }
+                        else{
+                            for ($x = 0; $x < 5; $x++) {
+                                $star.= '<i class="fa fa-star-o" style="color:#ffc000;"></i>';
+                            }
+                        }
+                        
+                        
+                        /***************exam****************/
+                        $examResult=0;
+                        $attendSts=1;
+                        $rmsa_user_id=$st_rmsa_user_id;                                                              
+                        $examData = self::sql_exec($db,
+                                            "SELECT COUNT(quiz_id) AS count_id,quiz_id,quiz_pass_score FROM quiz                                       
+                                                WHERE rmsa_uploaded_file_id='$rmsa_file_id'
+                                            "
+                                    ); 
+                        if(!empty($examData[0]['count_id'])){
+                            $examResult=$examData[0]['count_id'];
+                            $quiz_id=$examData[0]['quiz_id'];
+                            $quiz_pass_score=$examData[0]['quiz_pass_score'];
+                            $quizAttendStatus = self::sql_exec($db,
+                                            "SELECT COUNT(rmsa_quiz_student_mapping_id) AS count_attend FROM rmsa_quiz_student_mapping                                        
+                                                WHERE rmsa_user_id='$rmsa_user_id' AND quiz_id='$quiz_id' AND quiz_student_score >= '$quiz_pass_score'
+                                            "
+                                    );                     
+                            $attendSts=$quizAttendStatus[0]['count_attend'];                        
+                        } 
+                        //***********************end exam****************//
+                        
+                        //get number of student view count
+                        $rmsa_file_id = $row['rmsa_uploaded_file_id'];                                                 
+                        $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
+                        $total_student_view = $student_view_count[0]['total_Student_views'];
+                        
+                        $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
+                        
+                        if($attendSts == 0){
+                            $link_str=BASE_URL.'/exam/'.$rmsa_file_id;
+                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                                <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
+                        }
+                        else{
+                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                                    <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
+                        }
+                        
+//                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+//                                     <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
+                        $row['ratting']="<td>$star</td>";
+                        $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
+                        $row['index']='';
+                        $fileId = $row['rmsa_uploaded_file_id'];                                                                                                                             
+                                                
+                        $row['action'] = "<a href='".BASE_URL."/emp-my-quiz-attempt-result/$quiz_id/$st_rmsa_user_id' class='btn btn-xs btn-warning'>Quiz Score<i class='fa fa-eye'></i></a>";
+                                                                        
                         array_push($resData, $row);
                     }  
                 }
@@ -1144,6 +1434,143 @@ class SSP {
 		);
 	}
 
+        
+        static function  my_quiz_result($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$quiz_pass_score)
+	{                         
+		$bindings = array();
+		$db = self::db( $conn );
+                
+		// Build the SQL query string from the request
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns );
+		$where = self::filter( $request, $columns, $bindings );
+                
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                }                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
+			 $where
+			 $order
+			 $limit"
+		); 
+		// Main query to actually get the data
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
+			 $where"
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table "
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){
+//                        print_r($row);die;                        
+                        $row['index']='';
+                        if($row['quiz_student_score']>=$quiz_pass_score){
+                            $row['pass_fail']='<b class="pass">PASS</b>';
+                        }else{
+                            $row['pass_fail']='<b class="fail">FAIL</b>';
+                        }
+                        
+                        $create_date=$row['created_dt'];
+                        $date=date_create("$create_date");
+                        $row['attempt_date']=date_format($date,"Y/m/d h:i:s");
+                        array_push($resData, $row);
+                    }  
+                }
+//              print_r($resData);die;
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+         static function  emp_my_quiz_result($request, $conn, $table, $primaryKey, $columns,$where_custom = '',$quiz_pass_score)
+	{                         
+		$bindings = array();
+		$db = self::db( $conn );
+                
+		// Build the SQL query string from the request
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns );
+		$where = self::filter( $request, $columns, $bindings );
+                
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                }                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			 FROM $table
+			 $where
+			 $order
+			 $limit"
+		); 
+		// Main query to actually get the data
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table
+			 $where"
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			 FROM   $table "
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){
+//                        print_r($row);die;                        
+                        $row['index']='';
+                        if($row['quiz_student_score']>=$quiz_pass_score){
+                            $row['pass_fail']='<b class="pass">PASS</b>';
+                        }else{
+                            $row['pass_fail']='<b class="fail">FAIL</b>';
+                        }
+                        
+                        $create_date=$row['created_dt'];
+                        $date=date_create("$create_date");
+                        $row['attempt_date']=date_format($date,"Y/m/d h:i:s");
+                        array_push($resData, $row);
+                    }  
+                }
+//              print_r($resData);die;
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
         
         static function rmsa_file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{
