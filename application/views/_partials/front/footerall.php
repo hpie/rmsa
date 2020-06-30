@@ -4024,7 +4024,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     }
                     if (result['success'] == "fail") {
                         var d = new PNotify({
-                            title: 'Invalid Username & Password',
+                            title: 'Email allready exist',
                             type: 'error',
                             styling: 'bootstrap3'
                         });
@@ -4196,7 +4196,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     }
                     if (result['success'] == "fail") {
                         var d = new PNotify({
-                            title: 'Invalid Username & Password',
+                            title: 'Email allready exist',
                             type: 'error',
                             styling: 'bootstrap3'
                         });
@@ -4374,7 +4374,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     if (result['success'] == "fail") {
                         $("#btnRegister").removeAttr('disabled',false);
                         var d = new PNotify({
-                            title: 'Invalid Username & Password',
+                            title: 'Email allready exist',
                             type: 'error',
                             styling: 'bootstrap3'
                         });
