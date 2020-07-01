@@ -175,14 +175,24 @@ class Helper extends MY_Controller {
                 } else {
                     show_error($this->email->print_debugger());
                 }
-            }            
-            if($res['email_exist'] == true){
-//                echo 'hi';die;
-                $_SESSION['exist_email'] = 1;
+            }else{
+                if(isset($res['email_exist'])){
+                    if($res['email_exist'] == true){   
+                        $_SESSION['exist_email'] = 1;
+                        $result['exist_email']=1;                        
+                    }                                    
+                }
+                if(isset($res['rollnumber_exist'])){
+                    if($res['rollnumber_exist'] == true){   
+                        $_SESSION['rollnumber_exist'] = 1; 
+                        $result['rollnumber_exist']=1; 
+                    }
+                }
                 $result['success']='fail';
             }
             echo json_encode($result);die;
         }
+        $this->mViewData['stream'] =  $this->Helper_model->load_stream();
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['title']=STUDENT_REGISTRATION_TITLE;
 //        $_SESSION['token'] = bin2hex(random_bytes(24));       

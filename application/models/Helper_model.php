@@ -8,6 +8,10 @@ class Helper_model extends CI_Model
         $distict = $this->db->query("SELECT * FROM rmsa_districts WHERE rmsa_district_status='ACTIVE'");
         return $distict->result_array();
     }
+    public function load_stream(){
+        $distict = $this->db->query("SELECT * FROM rmsa_categories WHERE category_type='STREAM_TYP' AND category_status='A' ");
+        return $distict->result_array();
+    }
     public function load_videos($offset,$limit,$params){
          $like_query='';
         foreach ($params as $key => $value){
@@ -44,10 +48,19 @@ class Helper_model extends CI_Model
         $email_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_email_id = '".$params['rmsa_user_email_id']."' ");
         $res = $email_exist->row_array();
         
+        $rolnumber_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_roll_number = '".$params['rmsa_user_roll_number']."' ");
+        $res1 = $rolnumber_exist->row_array();
+        
         if($res){
             return Array(
                 'success' => false,
                 'email_exist' => true
+            );
+        }
+        if($res1){
+            return Array(
+                'success' => false,
+                'rollnumber_exist' => true
             );
         }
 
@@ -77,6 +90,7 @@ class Helper_model extends CI_Model
             return Array(
                 'success' => true,
                 'email_exist' => false,
+                'rollnumber_exist' => false,
                 'email' => $params['rmsa_user_email_id'],
             );
 //                return $insert_id;

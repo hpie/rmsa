@@ -4354,7 +4354,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                 // Get the BootstrapValidator instance
                 var bv = $form.data('bootstrapValidator');
                                 
-                $("#btnRegister").attr('disabled',true);
+//                $("#btnRegister").attr('disabled',true);
                 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
@@ -4372,12 +4372,21 @@ if ($title == FILE_REVIEWS_TITLE) {
                         location.href = "<?php echo HOME_LINK ?>";
                     }
                     if (result['success'] == "fail") {
-                        $("#btnRegister").removeAttr('disabled',false);
-                        var d = new PNotify({
-                            title: 'Email allready exist',
-                            type: 'error',
-                            styling: 'bootstrap3'
-                        });
+//                        $("#btnRegister").removeAttr('disabled',false);
+                        if(result['exist_email'] == 1){
+                            var d = new PNotify({
+                                title: 'Email allready exist',
+                                type: 'error',
+                                styling: 'bootstrap3'
+                            });
+                        }
+                        if(result['rollnumber_exist'] == 1){
+                            var d = new PNotify({
+                                title: 'Roll number allready exist',
+                                type: 'error',
+                                styling: 'bootstrap3'
+                            });
+                        }
                     }
                 }, 'json');
             });
