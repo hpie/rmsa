@@ -170,9 +170,9 @@
             
              <div class="form-group">
                 <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_category_code">Stream:</label>
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_stream_code">Stream:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" name="rmsa_category_code" required=""> 
+                        <select class="form-control" name="rmsa_stream_code" required=""> 
                             <option class="" value="" disabled selected>------ Select ------</option>
                             <?php
                             if(!empty($stream)){
