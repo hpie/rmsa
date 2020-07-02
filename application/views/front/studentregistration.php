@@ -158,6 +158,7 @@
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_class">Class:</label>
                     <div class="col-sm-8 col-xs-12">
                         <select class="form-control" name="rmsa_user_class" required>
+                           <option class="" value="" disabled selected>------ Select ------</option>
                             <option value="ix">Class IX</option>
                             <option value="x">Class X</option>
                             <option value="xi">Class XI</option>
