@@ -1445,6 +1445,89 @@ $this->load->view('_partials/front/allnotify');
     </script>
 <?php } ?>
 
+<?php if ($title == TEACHER_STUDENT_ATTEMPTED_EXAM_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1(uploaded_file_tag = '')
+            {                
+                $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "bInfo" : false,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/tec_student_attempted_quiz_list.php' ?>",
+                        'data': {
+                            st_rmsa_user_id: <?php echo $student_id; ?>,
+                            uploaded_file_tag: uploaded_file_tag
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "uploaded_file_title"},
+                        {"data": "ext"},
+                        {"data": "uploaded_file_type"},
+                        {"data": "uploaded_file_group"},
+                        {"data": "uploaded_file_category"},
+                        {"data": "ratting"},
+                        {"data": "action"},
+                        {"data": "uploaded_file_desc"}
+                    ]
+                });            
+            }            
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $(document).on('click', '.viewFile', function (e) {
+                e.preventDefault();
+                var self = this;
+                window.open(self.href, 'documents', 'width=600,height=400');
+            });
+        });
+        function show_review_comments(file_id, e) {
+            e.preventDefault();
+            $('.show_comments').empty();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo DISPLAY_REVIEW ?>",
+                data: {'file_id': file_id, 'limit': 10},
+                success: function (res) {
+                    $('.show_comments').append(res);
+                }
+            });
+            $("#view-reviews").modal();
+        }
+    </script>
+<?php } ?>        
+    
+    
  <?php if ($title == EMPLOYEE_STUDENT_ATTEMPTED_EXAM_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
@@ -1693,7 +1776,85 @@ $this->load->view('_partials/front/allnotify');
         }
     </script>
 <?php } ?>
-    <?php if ($title == EMPLOYEE_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE) {
+    <?php if ($title == TEACHER_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1()
+            {                
+                $('#example').DataTable({
+
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "bInfo" : false,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/tec_my_quiz_result.php' ?>",
+                        'data': {
+                            st_rmsa_user_id: <?php echo $student_id; ?>,
+                            quiz_id: <?php echo $quiz_id; ?>,
+                            quiz_pass_score:<?php echo $result['quiz_pass_score']; ?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "quiz_student_score"},
+                        {"data": "attempt_date"},
+                        {"data": "pass_fail"}
+                        
+                    ]
+                });            
+            }            
+            $('#searchTag').click(function () {
+                var uploaded_file_tag = $('#uploaded_file_tag').val();
+                if (uploaded_file_tag != '')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(uploaded_file_tag);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $(document).on('click', '.viewFile', function (e) {
+                e.preventDefault();
+                var self = this;
+                window.open(self.href, 'documents', 'width=600,height=400');
+            });
+        });
+        function show_review_comments(file_id, e) {
+            e.preventDefault();
+            $('.show_comments').empty();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo DISPLAY_REVIEW ?>",
+                data: {'file_id': file_id, 'limit': 10},
+                success: function (res) {
+                    $('.show_comments').append(res);
+                }
+            });
+            $("#view-reviews").modal();
+        }
+    </script>
+<?php } ?>
+       <?php if ($title == EMPLOYEE_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
@@ -4248,8 +4409,8 @@ if ($title == FILE_REVIEWS_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
 
-        $(document).ready(function () {
-
+        $(document).ready(function () {            
+            
             $('#student_register').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -4353,11 +4514,14 @@ if ($title == FILE_REVIEWS_TITLE) {
                 var $form = $(e.target);
                 // Get the BootstrapValidator instance
                 var bv = $form.data('bootstrapValidator');
-                                
+                 
+//              $("#btnRegister").removeAttr('disabled',false); 
+                 
 //                $("#btnRegister").attr('disabled',true);
                 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
+                    
                     if (result['success'] == "success") {
 //                        $("#btnRegister").removeAttr('disabled');
                         if ('<?php if (isset($_SESSION['rm_rmsa_user_id'])) {echo '1';} else {echo '0';}?>' === '1') {
@@ -4372,7 +4536,8 @@ if ($title == FILE_REVIEWS_TITLE) {
                         location.href = "<?php echo HOME_LINK ?>";
                     }
                     if (result['success'] == "fail") {
-//                        $("#btnRegister").removeAttr('disabled',false);
+                       
+//                  $("#btnRegister").removeAttr('disabled',false);
                         if(result['exist_email'] == 1){
                             var d = new PNotify({
                                 title: 'Email allready exist',

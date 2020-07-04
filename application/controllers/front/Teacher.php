@@ -14,6 +14,7 @@ class Teacher extends MY_Controller
         sessionCheckTeacher();
         $this->load->model('Employee_model');
         $this->load->model('Emp_Login'); 
+         $this->load->model('Student_model'); 
         
     
         
@@ -85,5 +86,18 @@ class Teacher extends MY_Controller
         $this->mViewData['student_data'] = $this->Employee_model->student_details($stud_id);
         $this->mViewData['title']=EMPLOYEE_STUDENT_PROFILE_TITLE;        
         $this->renderFront('front/employee_student_profile');
+    }
+    
+    public function attempted_quiz_list($student_id){
+        $this->mViewData['student_id']=$student_id;
+        $this->mViewData['title']=TEACHER_STUDENT_ATTEMPTED_EXAM_TITLE;        
+        $this->renderFront('front/tec_attempted_quizlis');
+    }
+    public function my_quiz_attempt_result($quiz_id,$student_id){       
+        $this->mViewData['student_id']=$student_id;
+        $this->mViewData['result'] =  $this->Student_model->quiz_file_details($quiz_id);                        
+        $this->mViewData['quiz_id']=$quiz_id;
+        $this->mViewData['title']=TEACHER_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE;        
+        $this->renderFront('front/tec_my_quiz_result');
     }
 }

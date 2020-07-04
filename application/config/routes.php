@@ -177,6 +177,9 @@ $route['my-quiz-attempt-result/(:any)']       = 'front/Student/my_quiz_attempt_r
 $route['employee-student-attempted-quiz-list/(:any)']       = 'front/Employee/attempted_quiz_list/$1';
 $route['emp-my-quiz-attempt-result/(:any)/(:any)']       = 'front/Employee/my_quiz_attempt_result/$1/$2';
 
+$route['teacher-student-attempted-quiz-list/(:any)']       = 'front/Teacher/attempted_quiz_list/$1';
+$route['tec-my-quiz-attempt-result/(:any)/(:any)']       = 'front/Teacher/my_quiz_attempt_result/$1/$2';
+
 
 //All filr resources route
 $route['student-resources/(:any)']       = 'front/Resource/resources/$1';

@@ -290,6 +290,9 @@ define('STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE',"Welcome to gyanshala.hp.gov.in -
 define('EMPLOYEE_STUDENT_ATTEMPTED_EXAM_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Student Quiz List");
 define('EMPLOYEE_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Student My Quiz Attempt Result");
 
+define('TEACHER_STUDENT_ATTEMPTED_EXAM_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher Student Quiz List");
+define('TEACHER_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher Student My Quiz Attempt Result");
+
 
 
 

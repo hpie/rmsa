@@ -65,7 +65,7 @@ $where = " rsu.rmsa_school_id ='$school_id' ";
  */
 require( 'ssp.class.php' );
 echo json_encode(
-    SSP::simple($_REQUEST, $sql_details, $table, $primaryKey, $columns,$where)
+    SSP::teacher_student_list($_REQUEST, $sql_details, $table, $primaryKey, $columns,$where)
 );
 
 
