@@ -7,7 +7,7 @@
         <table class="table table-borderless table-responsive contact_us">
             <thead class="bg-gray">
             <tr>
-                <th scope="col">KWord</th>
+                <th scope="col">Name</th>
                 <th scope="col">Designation</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone Office</th>
@@ -17,12 +17,12 @@
             </thead>
             <tbody>
             <tr>
-                <th scope="row">Sh. Ghanshyam Chand</th>
+                <th scope="row">Sh. Ashish Kohli</th>
                 <td>State Project Director</td>
-                <td>gcshyam46@gmail.com </td>
-                <td>0177-2807105</td>
+                <td>spdssahp(at)gamil.com</td>
+                <td>+91 177 280 7105</td>
                 <td>300</td>
-                <td>9418002410</td>
+                <td>+91 941 808 5682</td>
             </tr>
 
             </tbody>
