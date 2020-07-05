@@ -90,7 +90,7 @@ if (isset($_SESSION['invalid_login'])) {
                 var d = new PNotify({
                     title: 'Invalid Username & Password',
                     type: 'error',
-                    styling: 'bootstrap3',
+                    styling: 'bootstrap3'
                 });
                 <?php $_SESSION['invalid_login'] = 0; ?>
             }
@@ -104,7 +104,7 @@ if (isset($_SESSION['existParentFileHasvol'])) {
                 var d = new PNotify({
                     title: 'This file hasvol not true',
                     type: 'error',
-                    styling: 'bootstrap3',
+                    styling: 'bootstrap3'
                 });
                 <?php $_SESSION['existParentFileHasvol'] = 0; ?>
             }
@@ -115,13 +115,34 @@ if (isset($_SESSION['registration'])) {
 }else{echo 0;}
 ?> == 1) {
                 var d = new PNotify({
-                    title: 'Registration successfully chek your mail',
+                    title: 'Registration successfully',
                     type: 'success',
-                    styling: 'bootstrap3',
+                    styling: 'bootstrap3'
                 });
+                
+                var d = new PNotify({
+                    title: 'Mail not delievered to user',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+                
+                
                 <?php $_SESSION['registration'] = 0; ?>
             } 
             
+            
+             if (<?php
+if (isset($_SESSION['registration'])) {
+    echo $_SESSION['registration'];
+}else{echo 0;}
+?> == 2) {
+                var d = new PNotify({
+                    title: 'Registration successfully check your mail',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+                <?php $_SESSION['registration'] = 0; ?>
+            }  
              if (<?php
 if (isset($_SESSION['updatedata'])) {
     echo $_SESSION['updatedata'];
@@ -130,7 +151,7 @@ if (isset($_SESSION['updatedata'])) {
                 var d = new PNotify({
                     title: 'Data updated successfully',
                     type: 'success',
-                    styling: 'bootstrap3',
+                    styling: 'bootstrap3'
                 });
                 <?php $_SESSION['updatedata'] = 0; ?>
             }
@@ -142,9 +163,9 @@ if (isset($_SESSION['updatedata'])) {
         var d = new PNotify({
             title: 'File updated successfully',
             type: 'success',
-            styling: 'bootstrap3',
+            styling: 'bootstrap3'
         });
         <?php $_SESSION['update_file'] = 0; ?>
-    }
+    }    
 });   
 </script>

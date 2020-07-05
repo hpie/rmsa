@@ -1505,7 +1505,7 @@ $this->load->view('_partials/front/allnotify');
                     fill_datatable1();
                 }
             });
-            $(document).on('click', '.viewFile', function (e) {
+            $(document).on('click', '.view_count', function (e) {
                 e.preventDefault();
                 var self = this;
                 window.open(self.href, 'documents', 'width=600,height=400');
@@ -1588,7 +1588,7 @@ $this->load->view('_partials/front/allnotify');
                     fill_datatable1();
                 }
             });
-            $(document).on('click', '.viewFile', function (e) {
+            $(document).on('click', '.view_count', function (e) {
                 e.preventDefault();
                 var self = this;
                 window.open(self.href, 'documents', 'width=600,height=400');
@@ -1673,11 +1673,15 @@ $this->load->view('_partials/front/allnotify');
                     fill_datatable1();
                 }
             });
-            $(document).on('click', '.viewFile', function (e) {
+            $(document).on('click', '.view_count', function (e) {
                 e.preventDefault();
                 var self = this;
                 window.open(self.href, 'documents', 'width=600,height=400');
             });
+            
+            
+            
+            
         });
         function show_review_comments(file_id, e) {
             e.preventDefault();
@@ -1755,7 +1759,7 @@ $this->load->view('_partials/front/allnotify');
                     fill_datatable1();
                 }
             });
-            $(document).on('click', '.viewFile', function (e) {
+            $(document).on('click', '.view_count', function (e) {
                 e.preventDefault();
                 var self = this;
                 window.open(self.href, 'documents', 'width=600,height=400');
@@ -1833,7 +1837,7 @@ $this->load->view('_partials/front/allnotify');
                     fill_datatable1();
                 }
             });
-            $(document).on('click', '.viewFile', function (e) {
+            $(document).on('click', '.view_count', function (e) {
                 e.preventDefault();
                 var self = this;
                 window.open(self.href, 'documents', 'width=600,height=400');
@@ -1911,7 +1915,7 @@ $this->load->view('_partials/front/allnotify');
                     fill_datatable1();
                 }
             });
-            $(document).on('click', '.viewFile', function (e) {
+            $(document).on('click', '.view_count', function (e) {
                 e.preventDefault();
                 var self = this;
                 window.open(self.href, 'documents', 'width=600,height=400');

@@ -54,6 +54,7 @@ class Rmsa extends MY_Controller
         if(isset($_POST['rmsa_user_first_name'])){            
             $res =  $this->Rmsa_model->register_employee($_POST);            
             $result=array();
+             $send_email_error=0;
             if($res['success'] == true){
                 $_SESSION['registration'] = 1;
                 $result['success']='success';
@@ -78,13 +79,21 @@ class Rmsa extends MY_Controller
                 $this->email->message($body);
                 if ($this->email->send()) {                   
                 } else {
-                    show_error($this->email->print_debugger());
+                    $_SESSION['send_email_error'] = 1;
+                    $send_email_error=1;
                 }
             }            
             if($res['email_exist'] == true){                
                 $_SESSION['exist_email'] = 1;
                 $result['success']='fail';
             }
+            
+            if($result['success']=='success' && $send_email_error==1){
+                $_SESSION['registration'] = 1;
+            }
+            if($result['success']=='success' && $send_email_error==0){
+                $_SESSION['registration'] = 2;
+            }            
             echo json_encode($result);die;
         }
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();

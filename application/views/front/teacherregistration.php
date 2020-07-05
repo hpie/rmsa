@@ -115,7 +115,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Distt:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="rmsa_district" name="rmsa_district_id">
+                        <select class="form-control" id="rmsa_district" name="rmsa_district_id" required>
                             <option class="" value="" disabled selected>------ Select ------</option>
                             <?php
                             if (!empty($distResult)) {
@@ -134,8 +134,8 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_sub_district_id">Tehsil:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
-                            <option value="0">---Select---</option>
+                        <select class="form-control" id="sub_district" name="rmsa_sub_district_id" required>
+                            <option class="" value="" disabled selected>------ Select ------</option>
                         </select>
                     </div>
                 </div>
@@ -144,8 +144,8 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="rmsa_school" name="rmsa_school_id">
-                            <option value="0">---Select---</option>
+                        <select class="form-control" id="rmsa_school" name="rmsa_school_id" required>
+                            <option class="" value="" disabled selected>------ Select ------</option>
                         </select>
                     </div>
                 </div>
@@ -154,7 +154,8 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_class">Class:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" name="rmsa_user_class">
+                        <select class="form-control" name="rmsa_user_class" required>
+                            <option class="" value="" disabled selected>------ Select ------</option>
                             <option value="ix">Class IX</option>
                             <option value="x">Class X</option>
                             <option value="xi">Class XI</option>

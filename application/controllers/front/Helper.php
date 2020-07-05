@@ -103,6 +103,7 @@ class Helper extends MY_Controller {
         if(isset($_POST['rmsa_user_first_name'])){            
             $res =  $this->Rmsa_model->register_teacher($_POST);            
             $result=array();
+            $send_email_error=0;
             if($res['success'] == true){
                 $_SESSION['registration'] = 1;
                 $result['success']='success';
@@ -127,13 +128,23 @@ class Helper extends MY_Controller {
                 $this->email->message($body);
                 if ($this->email->send()) {                   
                 } else {
-                    show_error($this->email->print_debugger());
+                    $_SESSION['send_email_error'] = 1;
+                    $send_email_error=1;
                 }
             }            
             if($res['email_exist'] == true){                
                 $_SESSION['exist_email'] = 1;
                 $result['success']='fail';
             }
+            
+            
+            if($result['success']=='success' && $send_email_error==1){
+                $_SESSION['registration'] = 1;
+            }
+            if($result['success']=='success' && $send_email_error==0){
+                $_SESSION['registration'] = 2;
+            }
+                        
             echo json_encode($result);die;
         }
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
@@ -148,8 +159,8 @@ class Helper extends MY_Controller {
 //            sessionCheckToken($_POST);
             $res =  $this->Helper_model->register_student($_POST);            
             $result=array();
-            if($res['success'] == true){
-                $_SESSION['registration'] = 1;
+            $send_email_error=0;
+            if($res['success'] == true){                
                 $result['success']='success';
                 $this->load->config('email');
                 $this->load->library('email');
@@ -173,7 +184,8 @@ class Helper extends MY_Controller {
                 $this->email->message($body);
                 if ($this->email->send()) {                   
                 } else {
-                    show_error($this->email->print_debugger());
+                    $_SESSION['send_email_error'] = 1;
+                    $send_email_error=1;
                 }
             }else{
                 if(isset($res['email_exist'])){
@@ -190,6 +202,14 @@ class Helper extends MY_Controller {
                 }
                 $result['success']='fail';
             }
+            
+            if($result['success']=='success' && $send_email_error==1){
+                $_SESSION['registration'] = 1;
+            }
+            if($result['success']=='success' && $send_email_error==0){
+                $_SESSION['registration'] = 2;
+            }
+            
             echo json_encode($result);die;
         }
         $this->mViewData['stream'] =  $this->Helper_model->load_stream();
