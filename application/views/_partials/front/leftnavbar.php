@@ -91,7 +91,6 @@
                                             if(!isset($_SESSION['emp_rmsa_user_id']))
                                             {
                                                 ?>
-                                                <li><a href="#">New Registration</a></li>
                                                 <li><a href="<?php echo EMPLOYEE_LOGIN_LINK; ?>">Registered Login</a></li>
                                                 <?php
                                             }
@@ -203,7 +202,6 @@
                                         <li><a href="<?php echo EMPLOYEE_RESOURCES_LIST_LINK; ?>">Manage Resource Material</a></li>
                                         <li><a href="<?php echo EMPLOYEE__QUIZ_RESOURCES_LIST_LINK; ?>">Create Quiz For Resources</a></li>
                                         <li><a href="<?php echo EMPLOYEE_VIDEO_LIST_LINK; ?>">Manage Videos</a></li>
-                                        <li><a href="<?php echo EMPLOYEE_QUIZ_MCQ_LINK; ?>">Quiz MCQ</a></li>
                                         <li><a href="<?php echo EMPLOYEE_STUDENT_LIST_LINK; ?>">Quiz Results</a></li>
                                     </ul>
                                 </li>
@@ -231,7 +229,6 @@
                                         <li><a href="<?php echo RMSA_EMPLOYEE_LIST_LINK; ?>">Employee List</a></li>
                                         <li><a href="<?php echo RMSA_TEACHERS_LIST_LINK; ?>">Teachers List</a></li>
                                         <li><a href="<?php echo RMSA_RESOURCES_LIST_LINK; ?>">Resource List</a></li>
-                                        <li><a href="<?php echo RMSA_QUIZ_MCQ_LINK; ?>">Quiz MCQ</a></li>
                                     </ul>
                                 </li>
 

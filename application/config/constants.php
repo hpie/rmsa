@@ -154,7 +154,7 @@ define('RMSA_TEACGER_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-teacher-profile
 define('RMSA_FILE_ACTIVE',BASE_URL."/rmsa-file-active");
 define('RMSA_REPORTS',BASE_URL."/employee-reports");
 define('RMSA_ONLINE_EXAM_LINK',"http://gyanshala.hp.gov.in/pariksha");
-define('RMSA_QUIZ_MCQ_LINK',BASE_URL."/employee-resources");
+
 
 //All employee constant
 define('EMPLOYEE_LOGIN_LINK',BASE_URL."/employee-login");
@@ -165,7 +165,6 @@ define('EMPLOYEE_RESOURCES_LIST_LINK',BASE_URL."/employee-resources");
 define('EMPLOYEE__QUIZ_RESOURCES_LIST_LINK',BASE_URL."/employee-resources-quiz/");
 define('EMPLOYEE_EDIT_QUIZ_LINK',BASE_URL."/employee-edit-quiz/");
 define('EMPLOYEE_CREATE_QUIZ_LINK',BASE_URL."/employee-create-quiz/");
-define('EMPLOYEE_QUIZ_MCQ_LINK',BASE_URL."/employee-resources");
 define('EMPLOYEE_QUIZ_ACTIVE',BASE_URL."/employee-quiz-active");
 define('EMPLOYEE_QUESTION_ACTIVE',BASE_URL."/employee-question-active");
 define('EMPLOYEE_QUESTION_LIST_LINK',BASE_URL."/employee-quistions-list/");
