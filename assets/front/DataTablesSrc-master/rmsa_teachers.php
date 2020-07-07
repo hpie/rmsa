@@ -29,6 +29,7 @@ $primaryKey = 'reu.rmsa_user_id';
 // indexes
 $columns = array(
     array('db' => 'reu.rmsa_user_id', 'dt' =>'rmsa_user_id'),
+     array('db' => 'reu.rmsa_user_teacher_code', 'dt' => 'rmsa_user_teacher_code'),
     array('db' => 'reu.rmsa_user_first_name', 'dt' => 'rmsa_user_first_name'),
     array('db' => 'reu.rmsa_user_gender', 'dt' =>'rmsa_user_gender'),
     array('db' => 'reu.rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),

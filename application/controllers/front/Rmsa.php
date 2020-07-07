@@ -32,6 +32,27 @@ class Rmsa extends MY_Controller
         $method=$this->router->fetch_method();
         visitLog($method,"Rmsa");
     }
+    
+    public function update_profile(){
+        $result=array();               
+        if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){            
+            if($this->Rmsa_model->check_current_password($_POST['rmsa_user_current_password'])){                
+                $res = $this->Rmsa_model->update_password($_POST);                    
+                if($res){
+                    $_SESSION['updatedata']=1;
+                    $result['success']="success";                   
+                }                
+            }
+            else{
+                $result['success']="fail";
+            }
+            echo json_encode($result);die;            
+        }        
+        $this->mViewData['title']=RMSA_PROFILE_TITLE;        
+        $this->renderFront('front/rmsa_profile');
+    }
+    
+    
     public function view_student(){    
 //        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->mViewData['title']= RMSAE_STUDENT_LIST_TITLE;

@@ -2789,7 +2789,7 @@ $this->load->view('_partials/front/allnotify');
                 },
                 "columns": [
                     {"data": "index"},
-                    {"data": "rmsa_user_id"},
+                    {"data": "rmsa_user_roll_number"},                    
                     {"data": "rmsa_user_first_name"},
                     {"data": "rmsa_school_title"},
                     {"data": "rmsa_district_name"},
@@ -2948,7 +2948,7 @@ $this->load->view('_partials/front/allnotify');
                 },
                 "columns": [
                     {"data": "index"},
-                    {"data": "rmsa_user_id"},
+                    {"data": "rmsa_user_employee_code"},                    
                     {"data": "rmsa_user_first_name"},
                     {"data": "rmsa_school_title"},
                     {"data": "rmsa_district_name"},
@@ -3101,7 +3101,7 @@ $this->load->view('_partials/front/allnotify');
                 },
                 "columns": [
                     {"data": "index"},
-                    {"data": "rmsa_user_id"},
+                    {"data": "rmsa_user_teacher_code"},                                       
                     {"data": "rmsa_user_first_name"},
                     {"data": "rmsa_school_title"},
                     {"data": "rmsa_district_name"},
@@ -3336,6 +3336,221 @@ $this->load->view('_partials/front/allnotify');
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result['success'] == "success") {
                         location.href = "<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>";
+                    }
+                    if (result['success'] == "fail") {
+                        var d = new PNotify({
+                            title: 'Old Password not match',
+                            type: 'error',
+                            styling: 'bootstrap3'
+                        });
+                    }
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>
+    
+    
+    <?php if ($title == TEACHER_PROFILE_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {           
+            $('#frm_change_password').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_new_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'rmsa_user_new_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_change_password').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] == "success") {
+                        location.href = "<?php echo TEACHER_UPDATE_PROFILE_LINK; ?>";
+                    }
+                    if (result['success'] == "fail") {
+                        var d = new PNotify({
+                            title: 'Old Password not match',
+                            type: 'error',
+                            styling: 'bootstrap3'
+                        });
+                    }
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>
+    <?php if ($title == RMSA_PROFILE_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {           
+            $('#frm_change_password').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_new_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'rmsa_user_new_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_change_password').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] == "success") {
+                        location.href = "<?php echo RMSA_UPDATE_PROFILE_LINK; ?>";
+                    }
+                    if (result['success'] == "fail") {
+                        var d = new PNotify({
+                            title: 'Old Password not match',
+                            type: 'error',
+                            styling: 'bootstrap3'
+                        });
+                    }
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>
+    <?php if ($title == EMPLOYEE_PROFILE_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {           
+            $('#frm_change_password').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_new_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'rmsa_user_new_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_change_password').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] == "success") {
+                        location.href = "<?php echo EMPLOYEE_UPDATE_PROFILE_LINK; ?>";
                     }
                     if (result['success'] == "fail") {
                         var d = new PNotify({

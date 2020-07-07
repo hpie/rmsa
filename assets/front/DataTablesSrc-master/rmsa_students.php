@@ -30,6 +30,7 @@ $primaryKey = 'rsu.rmsa_user_id';
 $columns = array(
     array('db' => 'rsu.rmsa_user_id', 'dt' =>'rmsa_user_id'),
     array('db' => 'rsu.rmsa_user_first_name', 'dt' => 'rmsa_user_first_name'),
+    array('db' => 'rsu.rmsa_user_roll_number', 'dt' => 'rmsa_user_roll_number'),
     array('db' => 'rsu.rmsa_user_gender', 'dt' =>'rmsa_user_gender'),
     array('db' => 'rsu.rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),
     array('db' => 'rsu.rmsa_user_email_id', 'dt' =>'rmsa_user_email_id'),

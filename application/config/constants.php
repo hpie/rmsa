@@ -154,6 +154,7 @@ define('RMSA_TEACGER_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-teacher-profile
 define('RMSA_FILE_ACTIVE',BASE_URL."/rmsa-file-active");
 define('RMSA_REPORTS',BASE_URL."/employee-reports");
 define('RMSA_ONLINE_EXAM_LINK',"http://gyanshala.hp.gov.in/pariksha");
+define('RMSA_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-profile");
 
 
 //All employee constant
@@ -174,6 +175,7 @@ define('EMPLOYEE_ONLINE_EXAM_LINK',"http://gyanshala.hp.gov.in/pariksha");
 define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
 define('EMPLOYEE_STUDENT_LIST_LINK',BASE_URL."/employee-student");
 define('STUDENT_APPROVE',BASE_URL."/student-approve");
+define('EMPLOYEE_UPDATE_PROFILE_LINK',BASE_URL."/employee-update-profile");
 
 
 define('EMPLOYEE_ADD_VIDEO_LINK',BASE_URL."/employee-add-video");
@@ -191,6 +193,7 @@ define('TEACHER_LOGIN_LINK',BASE_URL."/teacher-login");
 define('TEACHER_LOGOUT_LINK',BASE_URL."/teacher-logout");
 define('TEACHER_STUDENT_LIST_LINK',BASE_URL."/teacher-student");
 define('TEACHER_RESOURCES_LIST_LINK',BASE_URL."/teacher-resources");
+define('TEACHER_UPDATE_PROFILE_LINK',BASE_URL."/teacher-update-profile");
 
 
 //other constant
@@ -269,6 +272,9 @@ define('MOST_ACTIVE_STUDENT_BY_CONTENT_READ',"Welcome to gyanshala.hp.gov.in - M
 define('MOST_ACTIVE_STUDENT_ON_SCHOOL_TITLE',"Welcome to gyanshala.hp.gov.in - Most Active Student On School");
 define('TOP_DISTRICT_WITH_MOST_CONTENT',"Welcome to gyanshala.hp.gov.in - Top District With Most Content");
 define('STUDENT_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Student Profile");
+define('EMPLOYEE_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Profile");
+define('TEACHER_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher Profile");
+define('RMSA_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa Profile");
 define('ORGANIZATION_TITLE',"Welcome to gyanshala.hp.gov.in - Organization");
 define('FILE_REVIEWS_TITLE',"Welcome to gyanshala.hp.gov.in - File Reviews");
 define('RMSA_LOGIN_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa Login");

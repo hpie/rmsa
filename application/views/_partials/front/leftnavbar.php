@@ -68,6 +68,7 @@
 											{
 										?>
                                             	<li><a href="<?php echo STUDENT_REGISTER_LINK; ?>">Create Student</a></li>
+                                                <li><a href="<?php echo TEACHER_UPDATE_PROFILE_LINK; ?>">Change Password</a></li>
                                         <?php 
 											}
 										?>
@@ -99,6 +100,7 @@
                                             <?php
                                             if(isset($_SESSION['emp_rmsa_user_id'])){?>
                                                 <li><a href="<?php echo STUDENT_REGISTER_LINK; ?>">Create Student</a></li>
+                                                <li><a href="<?php echo EMPLOYEE_UPDATE_PROFILE_LINK; ?>">Change Password</a></li>
                                                 <?php
                                             }
                                             ?>
@@ -124,6 +126,11 @@
                                             {
                                         ?>
                                         <li><a href="<?php echo RMSA_LOGIN_LINK; ?>">Rmsa Admin Login</a></li>
+                                        <?php
+                                            }
+                                            if(isset($_SESSION['rm_rmsa_user_id'])){
+                                                ?>
+                                        <li><a href="<?php echo RMSA_UPDATE_PROFILE_LINK; ?>">Change Password</a></li>
                                         <?php
                                             }
                                         ?>

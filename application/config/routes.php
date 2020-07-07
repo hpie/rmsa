@@ -118,6 +118,7 @@ $route['rmsa-update-employee-profile/(:any)'] = 'front/Rmsa/update_employee_prof
 $route['rmsa-update-teacher-profile/(:any)'] = 'front/Rmsa/update_teacher_profile/$1';
 $route['employee-registration']    = 'front/Rmsa/create_employee';
 $route['teacher-registration']    = 'front/Helper/create_teacher';
+$route['rmsa-update-profile']          = 'front/Rmsa/update_profile';
 
 //all employee routes
 //$route['employee-registration']    = 'front/EmpRegistration';
@@ -149,12 +150,14 @@ $route['employee-videos'] = 'front/Employee/view_videos';
 $route['employee-add-video'] = 'front/Employee/add_videos';
 $route['video-active']          = 'front/Employee/active_video';
 $route['employee-update-video/(:any)'] = 'front/Employee/update_video/$1';
+$route['employee-update-profile']          = 'front/Employee/update_profile';
 
 //all teacher routes
 $route['teacher-login']           = 'front/TechLogin';
 $route['teacher-logout']          = 'front/TechLogin/teacherLogout';
 $route['teacher-student']         = 'front/Teacher/view_student';
 $route['teacher-resources']       = 'front/TeacherResource';
+$route['teacher-update-profile']          = 'front/Teacher/update_profile';
 
 //all student routes
 $route['video_lessons/(:any)']    = 'front/Helper/student_videos/$1';

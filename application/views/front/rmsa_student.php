@@ -8,7 +8,7 @@
         <thead>
         <tr>
             <th>Index</th>
-            <th>No</th>
+            <th>Roll Number</th>            
             <th>Name</th>
             <th>School Name</th>
             <th>District</th>
@@ -24,7 +24,7 @@
         <tfoot>
         <tr>
             <th>Index</th>
-            <th>No</th>
+            <th>Roll Number</th>            
             <th>Name</th>
             <th>School Name</th>
             <th>District</th>

@@ -18,7 +18,8 @@
         <thead>
         <tr>
             <th>Index</th>
-            <th>No</th>
+            <th>Employee Code</th>
+            
             <th>Name</th>
             <th>School Name</th>
             <th>District</th>
@@ -34,7 +35,8 @@
         <tfoot>
         <tr>
             <th>Index</th>
-            <th>No</th>
+            <th>Employee Code</th>
+            
             <th>Name</th>
             <th>School Name</th>
             <th>District</th>

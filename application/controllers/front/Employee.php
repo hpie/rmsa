@@ -29,6 +29,25 @@ class Employee extends MY_Controller {
         visitLog($method,"Employee");
     }
 
+    public function update_profile(){
+        $result=array();               
+        if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){            
+            if($this->Employee_model->check_current_password_emp($_POST['rmsa_user_current_password'])){                
+                $res = $this->Employee_model->update_password_emp($_POST);                    
+                if($res){
+                    $_SESSION['updatedata']=1;
+                    $result['success']="success";                   
+                }                
+            }
+            else{
+                $result['success']="fail";
+            }
+            echo json_encode($result);die;            
+        }        
+        $this->mViewData['title']=EMPLOYEE_PROFILE_TITLE;        
+        $this->renderFront('front/employee_profile');
+    }
+    
     public function edit_quiz($rmsa_uploaded_file_id) {
         if (isset($_POST['submit'])) {
             $params = array();             

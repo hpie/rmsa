@@ -14,7 +14,8 @@ class Teacher extends MY_Controller
         sessionCheckTeacher();
         $this->load->model('Employee_model');
         $this->load->model('Emp_Login'); 
-         $this->load->model('Student_model'); 
+        $this->load->model('Student_model');
+        $this->load->model('Tech_Login'); 
         
     
         
@@ -31,6 +32,27 @@ class Teacher extends MY_Controller
         $method=$this->router->fetch_method();
         visitLog($method,"Teacher");        
     }
+    
+    public function update_profile(){
+        $result=array();               
+        if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){            
+            if($this->Tech_Login->check_current_password($_POST['rmsa_user_current_password'])){                
+                $res = $this->Tech_Login->update_password($_POST);                    
+                if($res){
+                    $_SESSION['updatedata']=1;
+                    $result['success']="success";                   
+                }                
+            }
+            else{
+                $result['success']="fail";
+            }
+            echo json_encode($result);die;            
+        }        
+        $this->mViewData['title']=TEACHER_PROFILE_TITLE;        
+        $this->renderFront('front/teacher_profile');
+    }
+    
+    
     public function view_student(){
 //        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->mViewData['title']=TEACHER_STUDENT_LIST_TITLE;

@@ -6,6 +6,30 @@ class Employee_model extends CI_Model {
         parent::__construct();
     }
 
+    public function check_current_password_emp($current_password) {
+        $current_password = md5($current_password);
+        $rmsa_user_id = $_SESSION['emp_rmsa_user_id'];
+        $check = $this->db->query("SELECT * FROM rmsa_employee_users
+                                       WHERE rmsa_user_id = '" . $rmsa_user_id . "'
+                                       AND rmsa_user_email_password ='" . $current_password . "'");
+        $row = $check->row_array();
+        if (isset($row)) {
+            if ($current_password == $row['rmsa_user_email_password']) {
+                return true; //matched
+            }
+        }
+        return false; //not matched
+    }
+    public function update_password_emp($params) {
+        $new_password = md5($params['rmsa_user_new_password']);
+        $rmsa_user_id = $_SESSION['emp_rmsa_user_id'];
+        $result = $this->db->query("UPDATE rmsa_employee_users
+                              SET rmsa_user_email_password = '" . $new_password . "'
+                              WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
+        return $result; //return true/false
+    }
+    
+    
     public function get_file($fileId){
         $title = $this->db->query("SELECT * FROM  rmsa_uploaded_files WHERE rmsa_uploaded_file_id = '".$fileId."'");
         return $title->result_array();
@@ -73,7 +97,7 @@ class Employee_model extends CI_Model {
     public function check_current_password($current_password, $stud_id) {
         $current_password = md5($current_password);
         $rmsa_user_id = $stud_id;
-        $check = $this->db->query("SELECT * FROM rmsa_student_users
+        $check = $this->db->query("SELECT * FROM rmsa_employee_users
                                    WHERE rmsa_user_id = '" . $rmsa_user_id . "'
                                    AND rmsa_user_email_password ='" . $current_password . "'");
         $row = $check->row_array();
@@ -88,7 +112,7 @@ class Employee_model extends CI_Model {
     public function update_password($params, $stud_id) {
         $new_password = md5($params['rmsa_user_new_password']);
         $rmsa_user_id = $stud_id;
-        $result = $this->db->query("UPDATE rmsa_student_users
+        $result = $this->db->query("UPDATE rmsa_employee_users
                               SET rmsa_user_email_password = '" . $new_password . "'
                               WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
         return $result; //return true/false
