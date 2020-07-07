@@ -7,8 +7,8 @@
                         Education Department, who is responsible for updating website content. The content provided is informative
                         only. Neither Education Department nor H.P.I.E is responsible for any inadvertent errors. For any query 
                         related to this website, please contact the Web Information Manager, Ms. Anima Sharma, Ph. No.
-                        0177-2807105, animasharma3004@gmail.com.</p>
-                    <img src="<?php echo BASE_URL; ?>/assets/front/img/nic.png" alt="nic" title="nic">
+                        +91 177 280 7105, animasharma3004(at)gmail.com.</p>
+                    <a href="http://hpie.in"> <img src="assets/front/img/HPIElogo.png" alt="HPIE" title="HPIE"> </a>
                 </div>
             </div>
         </footer>
