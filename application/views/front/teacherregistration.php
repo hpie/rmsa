@@ -175,14 +175,14 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp">Verification:</label>
                     <div class="col-sm-8 col-xs-12">
                         Enter the code:
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="form-group">
                 <div class="row">
                     <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
