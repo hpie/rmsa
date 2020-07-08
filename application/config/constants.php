@@ -132,6 +132,8 @@ define('STUDENT_ONLINE_EXAM_LINK',"http://gyanshala.hp.gov.in/pariksha/");
 
 define('STUDENT_SCORE_LINK',BASE_URL."/student-score/");
 define('STUDENT_QUIZ_RESULTS_LINK',BASE_URL."/student-attempted-quiz-list");
+define('STUDENT_MY_PROFILE_LINK',BASE_URL."/student-my-profile");
+
 
 //All Rmsa users constant
 define('RMSA_LOGIN_LINK',BASE_URL."/rmsa-login");
@@ -155,6 +157,7 @@ define('RMSA_FILE_ACTIVE',BASE_URL."/rmsa-file-active");
 define('RMSA_REPORTS',BASE_URL."/employee-reports");
 define('RMSA_ONLINE_EXAM_LINK',"http://gyanshala.hp.gov.in/pariksha");
 define('RMSA_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-profile");
+define('RMSA_MY_PROFILE_LINK',BASE_URL."/rmsa-my-profile");
 
 
 //All employee constant
@@ -176,6 +179,7 @@ define('IS_EMPLOYEE_ACTIVE',BASE_URL."/is-employee-active");
 define('EMPLOYEE_STUDENT_LIST_LINK',BASE_URL."/employee-student");
 define('STUDENT_APPROVE',BASE_URL."/student-approve");
 define('EMPLOYEE_UPDATE_PROFILE_LINK',BASE_URL."/employee-update-profile");
+define('EMPLOYEE_MY_PROFILE_LINK',BASE_URL."/employee-my-profile");
 
 
 define('EMPLOYEE_ADD_VIDEO_LINK',BASE_URL."/employee-add-video");
@@ -194,6 +198,7 @@ define('TEACHER_LOGOUT_LINK',BASE_URL."/teacher-logout");
 define('TEACHER_STUDENT_LIST_LINK',BASE_URL."/teacher-student");
 define('TEACHER_RESOURCES_LIST_LINK',BASE_URL."/teacher-resources");
 define('TEACHER_UPDATE_PROFILE_LINK',BASE_URL."/teacher-update-profile");
+define('TEACHER_MY_PROFILE_LINK',BASE_URL."/teacher-my-profile");
 
 
 //other constant
@@ -256,6 +261,13 @@ define('RMSA_TEACHER_REGISTRATION_TITLE',"Welcome to gyanshala.hp.gov.in - Teach
 define('RMSA_STUDENT_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa Student Profile");
 define('RMSA_EMPLOYEE_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa Employee Profile");
 define('RMSA_TEACHER_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa Teacher Profile");
+
+
+
+define('RMSA_MY_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa My Profile");
+define('EMPLOYEE_MY_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Employee My Profile");
+define('TEACHER_MY_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher My Profile");
+define('STUDENT_MY_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Student My Profile");
 
 define('STUDENT_REGISTRATION_TITLE',"Welcome to gyanshala.hp.gov.in - Student Registration");
 

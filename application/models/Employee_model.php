@@ -6,6 +6,63 @@ class Employee_model extends CI_Model {
         parent::__construct();
     }
 
+    
+    public function rmsa_coordinators_details() {
+        $rmsa_user_id = $_SESSION['rm_rmsa_user_id'];       
+        $data = $this->db->query(" SELECT * FROM rmsa_coordinators WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
+        $student_data = $data->row_array();
+        if (isset($student_data)) {
+            return $student_data;
+        }
+    }
+    
+    public function rmsa_employee_details() {
+        $rmsa_user_id = $_SESSION['emp_rmsa_user_id'];       
+        $data = $this->db->query("  SELECT reu.*,rsc.rmsa_school_title,rd.rmsa_district_name,rsd.rmsa_sub_district_name FROM rmsa_employee_users reu
+                                    LEFT JOIN rmsa_schools rsc
+                                    ON rsc.rmsa_school_id = reu.rmsa_school_id                                    
+                                    LEFT JOIN rmsa_districts rd
+                                    ON rd.rmsa_district_id = reu.rmsa_district_id
+                                    LEFT JOIN rmsa_sub_districts rsd
+                                    ON rsd.rmsa_sub_district_id = reu.rmsa_sub_district_id 
+                                    WHERE reu.rmsa_user_id = '" . $rmsa_user_id . "'");
+        $student_data = $data->row_array();
+        if (isset($student_data)) {
+            return $student_data;
+        }
+    }
+    public function rmsa_student_details() {
+        $rmsa_user_id = $_SESSION['st_rmsa_user_id'];       
+        $data = $this->db->query("  SELECT reu.*,rsc.rmsa_school_title,rd.rmsa_district_name,rsd.rmsa_sub_district_name FROM rmsa_student_users reu
+                                    LEFT JOIN rmsa_schools rsc
+                                    ON rsc.rmsa_school_id = reu.rmsa_school_id                                    
+                                    LEFT JOIN rmsa_districts rd
+                                    ON rd.rmsa_district_id = reu.rmsa_district_id
+                                    LEFT JOIN rmsa_sub_districts rsd
+                                    ON rsd.rmsa_sub_district_id = reu.rmsa_sub_district_id 
+                                    WHERE reu.rmsa_user_id = '" . $rmsa_user_id . "'");
+        $student_data = $data->row_array();
+        if (isset($student_data)) {
+            return $student_data;
+        }
+    }
+    public function rmsa_teacher_details() {
+        $rmsa_user_id = $_SESSION['tech_rmsa_user_id'];       
+        $data = $this->db->query("  SELECT reu.*,rsc.rmsa_school_title,rd.rmsa_district_name,rsd.rmsa_sub_district_name FROM rmsa_teacher_users reu
+                                    LEFT JOIN rmsa_schools rsc
+                                    ON rsc.rmsa_school_id = reu.rmsa_school_id                                    
+                                    LEFT JOIN rmsa_districts rd
+                                    ON rd.rmsa_district_id = reu.rmsa_district_id
+                                    LEFT JOIN rmsa_sub_districts rsd
+                                    ON rsd.rmsa_sub_district_id = reu.rmsa_sub_district_id 
+                                    WHERE reu.rmsa_user_id = '" . $rmsa_user_id . "'");
+        $student_data = $data->row_array();
+        if (isset($student_data)) {
+            return $student_data;
+        }
+    }
+    
+    
     public function check_current_password_emp($current_password) {
         $current_password = md5($current_password);
         $rmsa_user_id = $_SESSION['emp_rmsa_user_id'];

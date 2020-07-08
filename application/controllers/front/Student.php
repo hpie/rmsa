@@ -13,6 +13,7 @@ class Student extends MY_Controller{
         sessionCheckStudent();
         $this->load->model('Student_model');
         $this->load->model('Emp_Login');
+        $this->load->model('Employee_model');
 
         
         
@@ -28,7 +29,15 @@ class Student extends MY_Controller{
         }
         $method=$this->router->fetch_method();
         visitLog($method,"Student");
-    }    
+    }  
+    
+    public function profile(){
+        $result =  $this->Employee_model->rmsa_student_details();
+        $this->mViewData['result']= $result;
+        $this->mViewData['title']= STUDENT_MY_PROFILE_TITLE;
+        $this->renderFront('front/st_my_profile');
+    }
+    
     public function exam($file_id){              
         $this->mViewData['result'] =  $this->Student_model->file_details($file_id);
         $this->mViewData['title']=STUDENT_EXAM_TITLE;        

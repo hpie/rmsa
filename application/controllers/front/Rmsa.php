@@ -17,8 +17,6 @@ class Rmsa extends MY_Controller
         $this->load->model('Employee_model');
         $this->load->model('Emp_Login');
 
-     
-        
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
             if ($result) {                
@@ -32,6 +30,15 @@ class Rmsa extends MY_Controller
         $method=$this->router->fetch_method();
         visitLog($method,"Rmsa");
     }
+    
+    
+    public function profile(){
+        $result =  $this->Employee_model->rmsa_coordinators_details();
+        $this->mViewData['result']= $result;
+        $this->mViewData['title']= RMSA_MY_PROFILE_TITLE;
+        $this->renderFront('front/rmsa_my_profile');
+    }
+    
     
     public function update_profile(){
         $result=array();               
@@ -50,8 +57,7 @@ class Rmsa extends MY_Controller
         }        
         $this->mViewData['title']=RMSA_PROFILE_TITLE;        
         $this->renderFront('front/rmsa_profile');
-    }
-    
+    }    
     
     public function view_student(){    
 //        $_SESSION['token'] = bin2hex(random_bytes(24));       

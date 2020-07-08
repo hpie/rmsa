@@ -23,7 +23,8 @@
                                             else
                                             {
                                         ?>
-                                        <li><a href="<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>">Change Password</a></li>
+                                        <li><a href="<?php echo STUDENT_UPDATE_PROFILE_LINK; ?>">Change Password</a></li> 
+                                        <li><a href="<?php echo STUDENT_MY_PROFILE_LINK; ?>">Profile</a></li>
                                         <?php
                                             }
                                         ?>
@@ -69,6 +70,7 @@
 										?>
                                             	<li><a href="<?php echo STUDENT_REGISTER_LINK; ?>">Create Student</a></li>
                                                 <li><a href="<?php echo TEACHER_UPDATE_PROFILE_LINK; ?>">Change Password</a></li>
+                                                <li><a href="<?php echo TEACHER_MY_PROFILE_LINK; ?>">Profile</a></li>
                                         <?php 
 											}
 										?>
@@ -101,6 +103,7 @@
                                             if(isset($_SESSION['emp_rmsa_user_id'])){?>
                                                 <li><a href="<?php echo STUDENT_REGISTER_LINK; ?>">Create Student</a></li>
                                                 <li><a href="<?php echo EMPLOYEE_UPDATE_PROFILE_LINK; ?>">Change Password</a></li>
+                                                <li><a href="<?php echo EMPLOYEE_MY_PROFILE_LINK; ?>">Profile</a></li>
                                                 <?php
                                             }
                                             ?>
@@ -131,6 +134,7 @@
                                             if(isset($_SESSION['rm_rmsa_user_id'])){
                                                 ?>
                                         <li><a href="<?php echo RMSA_UPDATE_PROFILE_LINK; ?>">Change Password</a></li>
+                                        <li><a href="<?php echo RMSA_MY_PROFILE_LINK; ?>">Profile</a></li>
                                         <?php
                                             }
                                         ?>

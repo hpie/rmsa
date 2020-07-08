@@ -29,6 +29,13 @@ class Employee extends MY_Controller {
         visitLog($method,"Employee");
     }
 
+    public function profile(){
+        $result =  $this->Employee_model->rmsa_employee_details();
+        $this->mViewData['result']= $result;
+        $this->mViewData['title']= EMPLOYEE_MY_PROFILE_TITLE;
+        $this->renderFront('front/emp_my_profile');
+    }
+    
     public function update_profile(){
         $result=array();               
         if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){            

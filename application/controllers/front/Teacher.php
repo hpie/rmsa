@@ -33,6 +33,13 @@ class Teacher extends MY_Controller
         visitLog($method,"Teacher");        
     }
     
+    public function profile(){
+        $result =  $this->Employee_model->rmsa_teacher_details();
+        $this->mViewData['result']= $result;
+        $this->mViewData['title']= TEACHER_MY_PROFILE_TITLE;
+        $this->renderFront('front/tech_my_profile');
+    }
+    
     public function update_profile(){
         $result=array();               
         if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){            
