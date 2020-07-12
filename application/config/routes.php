@@ -199,6 +199,7 @@ $route['file-reviews/(:any)']     = 'front/Resource/view_review/$1';
 $route['comment-reply']           = 'front/Resource/comment_reply';
 
 //helper routes
+$route['load-blocks']             = 'front/helper/load_blocks';
 $route['load-tehsil']             = 'front/helper/load_tehsil';
 $route['load-school']             = 'front/helper/load_school';
 $route['active-student']          = 'front/helper/total_active_students';

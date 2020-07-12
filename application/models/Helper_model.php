@@ -32,18 +32,30 @@ class Helper_model extends CI_Model
         $total = $this->db->query("SELECT count(rmsa_youtube_video_id) AS count_data FROM rmsa_youtube_video WHERE youtube_video_status='ACTIVE' $like_query");                      
         $total_videos = $total->row_array();          
         return $total_videos['count_data'];
-    }      
+    }
+    public function load_blocks($params){
+        $districtId = $params['districtId'];
+        $blocks = $this->db->query("SELECT * FROM rmsa_blocks WHERE rmsa_district_id = {$districtId} AND rmsa_block_status = 'ACTIVE'");
+        return $blocks->result_array();
+    }
     public function load_tehsil($params){
         $districtId = $params['districtId'];
         $tehsil = $this->db->query("SELECT * FROM rmsa_sub_districts WHERE rmsa_district_id = {$districtId} AND rmsa_sub_district_status = 'ACTIVE'");
         return $tehsil->result_array();
     }
+
     public function load_school($params){
         $subDistrictId = $params['subDistrictId'];
         $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_sub_district_id = {$subDistrictId} AND rmsa_school_status = 'ACTIVE'");
         return $school->result_array();
     }
 
+    // changed for getting by block id
+    public function load_school_byblock($params){
+        $rmsaBlockId = $params['rmsaBlockId'];
+        $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_block_id = {$rmsaBlockId} AND rmsa_school_status = 'ACTIVE'");
+        return $school->result_array();
+    }
     public function register_student($params){        
         $email_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_email_id = '".$params['rmsa_user_email_id']."' ");
         $res = $email_exist->row_array();

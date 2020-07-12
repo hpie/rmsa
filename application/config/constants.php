@@ -203,8 +203,10 @@ define('TEACHER_MY_PROFILE_LINK',BASE_URL."/teacher-my-profile");
 
 //other constant
 define('HOME_LINK',BASE_URL."/home");
+define('LOAD_BLOCKS',BASE_URL."/load-blocks");
 define('LOAD_TEHSIL',BASE_URL."/load-tehsil");
 define('LOAD_SCHOOL',BASE_URL."/load-school");
+define('LOAD_SCHOOL_BY_BLOCK',BASE_URL."/load-school-byblock");
 define('POST_REVIEW',BASE_URL."/post-review");
 define('COMMENT_REPLY',BASE_URL."/comment-reply");
 define('DISPLAY_REVIEW',BASE_URL."/display-review");

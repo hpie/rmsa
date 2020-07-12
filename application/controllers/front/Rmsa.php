@@ -223,6 +223,7 @@ class Rmsa extends MY_Controller
         $student_result =  $this->Employee_model->student_details($stud_id);
         $this->mViewData['student_data'] = $student_result;
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
+        $this->mViewData['blocksResult'] =  $this->Helper_model->load_blocks(array('districtId'=>$student_result['rmsa_district_id']));
         $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$student_result['rmsa_district_id']));
         $this->mViewData['schoolResult'] =  $this->Helper_model->load_school(array('subDistrictId'=>$student_result['rmsa_sub_district_id']));
         $this->mViewData['title']=RMSA_STUDENT_PROFILE_TITLE;        
@@ -252,6 +253,7 @@ class Rmsa extends MY_Controller
         $employee_result =  $this->Employee_model->teacher_details($emp_id);
         $this->mViewData['student_data'] = $employee_result;
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
+        $this->mViewData['blocksResult'] =  $this->Helper_model->load_blocks(array('districtId'=>$employee_result['rmsa_district_id']));
         $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$employee_result['rmsa_district_id']));
         $this->mViewData['schoolResult'] =  $this->Helper_model->load_school(array('subDistrictId'=>$employee_result['rmsa_sub_district_id']));
         $this->mViewData['title']=RMSA_TEACHER_PROFILE_TITLE;
@@ -280,6 +282,7 @@ class Rmsa extends MY_Controller
         $employee_result =  $this->Employee_model->employee_details($emp_id);
         $this->mViewData['student_data'] = $employee_result;
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
+        $this->mViewData['blocksResult'] =  $this->Helper_model->load_blocks(array('districtId'=>$employee_result['rmsa_district_id']));
         $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$employee_result['rmsa_district_id']));
         $this->mViewData['schoolResult'] =  $this->Helper_model->load_school(array('subDistrictId'=>$employee_result['rmsa_sub_district_id']));
         $this->mViewData['title']=RMSA_EMPLOYEE_PROFILE_TITLE;

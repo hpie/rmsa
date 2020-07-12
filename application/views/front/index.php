@@ -8,6 +8,7 @@
                                 Human Resource Development, Government of India, for the development of secondary
                                 schools in
                                 India. The principal aims are to increase and increase the total enrolment rate.</p>
+                            <h2 class="second-heading"><a href="student-registration">Students can register by clicking here</a></h2>
                             <p>14-16 years of age group in all
                                 children of quality and meaningful
                                 education for the state of Himachal Pradesh,
@@ -28,6 +29,6 @@
                                 <li>Drinking water provisions</li>
                             </ul>
 
-                            <h2 class="second-heading"><a href="student-registration">Students can register by clicking here</a></h2>
+
                         </div>
                     </div>

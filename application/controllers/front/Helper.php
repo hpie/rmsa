@@ -83,8 +83,13 @@ class Helper extends MY_Controller {
         $result['success']='success';
         echo json_encode($result);      
     }
-    
-    
+
+    public function load_blocks(){
+        if($_REQUEST['districtId']){
+            $blocks = $this->Helper_model->load_blocks($_POST);
+            echo json_encode($blocks);
+        }
+    }
     public function load_tehsil(){
         if($_REQUEST['districtId']){            
             $tehsil = $this->Helper_model->load_tehsil($_POST);
@@ -94,6 +99,12 @@ class Helper extends MY_Controller {
     public function load_school(){
         if($_REQUEST['subDistrictId']){
             $school = $this->Helper_model->load_school($_POST);
+            echo json_encode($school);
+        }
+    }
+    public function load_school_byblock(){
+        if($_REQUEST['rmsaBlockId']){
+            $school = $this->Helper_model->load_school_byblock($_POST);
             echo json_encode($school);
         }
     }
