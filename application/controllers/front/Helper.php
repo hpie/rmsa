@@ -181,18 +181,18 @@ class Helper extends MY_Controller {
             
             if(isset($_POST['rmsa_school_id'])){
                 $school = $this->Helper_model->load_school_code_byschool($_POST['rmsa_school_id']);
-                $_POST['rmsa_user_roll_number']=$_POST['rmsa_user_roll_number'].'-'.$school;
+                $_POST['rmsa_user_roll_number']=$school.'-'.$_POST['rmsa_user_roll_number'];
             }
             else{            
                 if(isset($_SESSION['emp_rmsa_user_id'])){            
                     $params['rmsa_school_id'] = $_SESSION['emp_rmsa_school_id'];
                     $school = $this->Helper_model->load_school_code_byschool($params['rmsa_school_id']);
-                    $_POST['rmsa_user_roll_number']=$_POST['rmsa_user_roll_number'].'-'.$school;
+                    $_POST['rmsa_user_roll_number']=$school.'-'.$_POST['rmsa_user_roll_number'];
                 }
                 if(isset($_SESSION['tech_rmsa_user_id'])){
                     $params['rmsa_school_id'] = $_SESSION['tech_rmsa_school_id'];
                     $school = $this->Helper_model->load_school_code_byschool($params['rmsa_school_id']);
-                    $_POST['rmsa_user_roll_number']=$_POST['rmsa_user_roll_number'].'-'.$school;
+                    $_POST['rmsa_user_roll_number']=$school.'-'.$_POST['rmsa_user_roll_number'];
                 }                
             }
             
