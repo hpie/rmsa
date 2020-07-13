@@ -93,7 +93,11 @@ class Helper extends MY_Controller {
     public function load_tehsil(){
         if($_REQUEST['districtId']){            
             $tehsil = $this->Helper_model->load_tehsil($_POST);
-            echo json_encode($tehsil);
+            $blocks = $this->Helper_model->load_blocks($_POST);
+            $result=array();
+            $result['tehsil']=$tehsil;
+            $result['blocks']=$blocks;
+            echo json_encode($result);
         }
     }
     public function load_school(){

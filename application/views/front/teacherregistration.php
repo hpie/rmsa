@@ -144,7 +144,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_sub_district_id">Tehsil:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="sub_district" name="rmsa_sub_district_id" required>
+                        <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
                             <option class="" value="" disabled selected>------ Select ------</option>
                         </select>
                     </div>

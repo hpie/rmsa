@@ -4784,25 +4784,30 @@ if ($title == FILE_REVIEWS_TITLE) {
                     data: {'districtId': districtId},
                     success: function (res) {
                         var data = jQuery.parseJSON(res);
+                        
                         $("#sub_district").empty();
                         $("#rmsa_school").empty();
-
+                        $("#rmsa_blocks").empty();
+                        
                         $("#sub_district").append(new Option('---Select---', 0));
+                        $("#rmsa_blocks").append(new Option('---Select---', 0));
                         $("#rmsa_school").append(new Option('---Select---', 0));
-                        $.each(data, function (index, value) {
+                        $.each(data.tehsil, function (index, value) {                            
                             $("#sub_district").append(new Option(value.rmsa_sub_district_name, value.rmsa_sub_district_id));
+                        });
+                        $.each(data.blocks, function (index, value) {
+                            $("#rmsa_blocks").append(new Option(value.rmsa_block_name, value.rmsa_block_id));
                         });
                     }
                 });
             });
 
-            $('#sub_district').on('change', function () {
-                var subDistrictId = $(this).val();
-
+            $('#rmsa_blocks').on('change', function () {
+                var rmsaBlockId = $(this).val();
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo LOAD_SCHOOL ?>",
-                    data: {'subDistrictId': subDistrictId},
+                    url: "<?php echo LOAD_SCHOOL_BY_BLOCK ?>",
+                    data: {'rmsaBlockId': rmsaBlockId},
                     success: function (res) {
                         var school = $.parseJSON(res);
                         $("#rmsa_school").empty();
