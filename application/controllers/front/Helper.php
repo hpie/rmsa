@@ -113,6 +113,14 @@ class Helper extends MY_Controller {
         }
     }
     
+    public function load_school_code_byschool(){
+        if($_REQUEST['schoolId']){
+            $school = $this->Helper_model->load_school_code_byschool($_POST);
+            echo json_encode($school);
+        }
+    }
+    
+    
     public function create_teacher(){    
         $_SESSION['exist_email'] = 0;
         if(isset($_POST['rmsa_user_first_name'])){            
@@ -170,6 +178,10 @@ class Helper extends MY_Controller {
     public function create_student(){
         $_SESSION['exist_email'] = 0;
         if(isset($_POST['rmsa_user_first_name'])){
+            
+            $_POST['rmsa_user_roll_number']=$_POST['rmsa_user_roll_number'].'-'.$_POST['rmsa_school_udise_code'];
+            unset($_POST['rmsa_school_udise_code']);
+            
             reCaptchaResilt($_REQUEST['captcha_entered'],STUDENT_REGISTER_LINK);
 //            sessionCheckToken($_POST);
             $res =  $this->Helper_model->register_student($_POST);            

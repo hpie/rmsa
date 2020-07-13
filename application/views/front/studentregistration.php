@@ -199,7 +199,7 @@
                     </div>
                 </div>
             </div>
-            
+            <input type="hidden" id="rmsa_school_udise_code" name="rmsa_school_udise_code" required="">
             
             <div class="form-group">
                 <div class="row">
@@ -211,7 +211,7 @@
                         <span>Check if Required </span>
                     </div>
                 </div>
-            </div>
+            </div>            
             <!--<div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp">Verification:</label>
@@ -233,6 +233,11 @@
                     </div>
                 </div>
             </div>
+            
+            
+            
+            
+            
             <div class="form-group">
                 <div class="m-auto text-center">    
                     <button type="submit" class="btn primary_btn btn_disabled"  disabled="true" id="btnRegister">Register</button>

@@ -56,6 +56,14 @@ class Helper_model extends CI_Model
         $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_block_id = {$rmsaBlockId} AND rmsa_school_status = 'ACTIVE'");
         return $school->result_array();
     }
+    
+     public function load_school_code_byschool($params){
+        $rmsaSchoolId = $params['schoolId'];
+        $school = $this->db->query("SELECT rmsa_school_udise_code  FROM rmsa_schools WHERE rmsa_school_id  = {$rmsaSchoolId} AND rmsa_school_status = 'ACTIVE'");
+        $res=$school->row_array();
+        return $res['rmsa_school_udise_code'];
+    }
+    
     public function register_student($params){        
         $email_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_email_id = '".$params['rmsa_user_email_id']."' ");
         $res = $email_exist->row_array();

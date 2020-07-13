@@ -4818,6 +4818,21 @@ if ($title == FILE_REVIEWS_TITLE) {
                     }
                 });
             });
+            
+            $('#rmsa_school').on('change', function () {
+                var schoolId = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo LOAD_SCHOOL_CODE_BY_SCHOOL ?>",
+                    data: {'schoolId': schoolId},
+                    success: function (res) {
+                        var school = $.parseJSON(res);
+                        alert(school);
+                        $("#rmsa_school_udise_code").val(school);                                                
+                    }
+                });
+            });
+            
         });
     </script>
 <?php }

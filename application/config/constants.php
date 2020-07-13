@@ -207,6 +207,7 @@ define('LOAD_BLOCKS',BASE_URL."/load-blocks");
 define('LOAD_TEHSIL',BASE_URL."/load-tehsil");
 define('LOAD_SCHOOL',BASE_URL."/load-school");
 define('LOAD_SCHOOL_BY_BLOCK',BASE_URL."/load-school-byblock");
+define('LOAD_SCHOOL_CODE_BY_SCHOOL',BASE_URL."/load-school-code-byschool");
 define('POST_REVIEW',BASE_URL."/post-review");
 define('COMMENT_REPLY',BASE_URL."/comment-reply");
 define('DISPLAY_REVIEW',BASE_URL."/display-review");
