@@ -199,8 +199,7 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" id="rmsa_school_udise_code" name="rmsa_school_udise_code" required="">
-            
+<!--            <input type="hidden" id="rmsa_school_udise_code" name="rmsa_school_udise_code" required="">            -->
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp">Permission to Submit

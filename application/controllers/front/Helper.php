@@ -179,8 +179,22 @@ class Helper extends MY_Controller {
         $_SESSION['exist_email'] = 0;
         if(isset($_POST['rmsa_user_first_name'])){
             
-            $_POST['rmsa_user_roll_number']=$_POST['rmsa_user_roll_number'].'-'.$_POST['rmsa_school_udise_code'];
-            unset($_POST['rmsa_school_udise_code']);
+            if(isset($_POST['rmsa_school_id'])){
+                $school = $this->Helper_model->load_school_code_byschool($_POST['rmsa_school_id']);
+                $_POST['rmsa_user_roll_number']=$_POST['rmsa_user_roll_number'].'-'.$school;
+            }
+            else{            
+                if(isset($_SESSION['emp_rmsa_user_id'])){            
+                    $params['rmsa_school_id'] = $_SESSION['emp_rmsa_school_id'];
+                    $school = $this->Helper_model->load_school_code_byschool($params['rmsa_school_id']);
+                    $_POST['rmsa_user_roll_number']=$_POST['rmsa_user_roll_number'].'-'.$school;
+                }
+                if(isset($_SESSION['tech_rmsa_user_id'])){
+                    $params['rmsa_school_id'] = $_SESSION['tech_rmsa_school_id'];
+                    $school = $this->Helper_model->load_school_code_byschool($params['rmsa_school_id']);
+                    $_POST['rmsa_user_roll_number']=$_POST['rmsa_user_roll_number'].'-'.$school;
+                }                
+            }
             
             reCaptchaResilt($_REQUEST['captcha_entered'],STUDENT_REGISTER_LINK);
 //            sessionCheckToken($_POST);
