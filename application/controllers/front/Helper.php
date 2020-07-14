@@ -181,7 +181,7 @@ class Helper extends MY_Controller {
             if(isset($_POST['rmsa_school_id'])){
                 $resCode = $this->Helper_model->load_school_code_byschool($_POST['rmsa_school_id']);
                 $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];                
-                log_message('info',print_r($resCode,TRUE));                
+//                log_message('info',print_r($resCode,TRUE));                
             }
             else{            
                 if(isset($_SESSION['emp_rmsa_user_id'])){            
