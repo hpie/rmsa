@@ -56,7 +56,7 @@ class Helper_model extends CI_Model
         $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_block_id =$rmsaBlockId AND rmsa_school_status = 'ACTIVE'");
         return $school->result_array();
     }
-    
+        
      public function load_school_code_byschool($params){
         $rmsaSchoolId = $params['schoolId'];
         $school = $this->db->query("SELECT rmsa_school_udise_code,rmsa_block_id  FROM rmsa_schools WHERE rmsa_school_id  = $rmsaSchoolId AND rmsa_school_status = 'ACTIVE'");
