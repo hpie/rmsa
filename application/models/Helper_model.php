@@ -66,6 +66,7 @@ class Helper_model extends CI_Model
 
         log_message('info',$str);
         log_message('info',print_r($res,TRUE)); 
+        
         return $res;
     }
     
