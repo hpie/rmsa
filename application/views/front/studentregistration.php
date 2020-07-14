@@ -180,7 +180,7 @@
             </div>
             
             
-             <div class="form-group">
+            <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_stream_code">Stream:</label>
                     <div class="col-sm-8 col-xs-12">
