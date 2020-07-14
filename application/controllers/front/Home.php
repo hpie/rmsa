@@ -26,33 +26,7 @@ class Home extends MY_Controller {
         visitLog($method,"Home");
     }    
     public function index() 
-    {  
-        
-        
-                $this->load->config('email');
-                $this->load->library('email');
-
-                $from = $this->config->item('smtp_user');
-                $to = "sunil@hpie.in";                
-                $subject = 'Welcome RMSA';
-//                $message = 'Welcome to RMSA portal';
-
-                $this->email->set_newline("\r\n");
-                $this->email->from($from);
-                
-                $data = array(
-                    'userName'=> "sunil@hpie.in",
-                    'password'=> "test@123"
-                );                
-                $this->email->to($to);
-                $this->email->subject($subject);
-                $body = $this->load->view('front/mailtemplate.php',$data,TRUE);
-                $this->email->message($body);
-                if ($this->email->send()) {                   
-                } else {
-                    $_SESSION['send_email_error'] = 1;
-                    $send_email_error=1;
-                }                
+    {                     
         $this->mViewData['title']=HOME_TITLE;
         $this->renderFront('front/index');
     }
