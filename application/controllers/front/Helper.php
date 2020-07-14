@@ -252,9 +252,9 @@ class Helper extends MY_Controller {
             if($result['success']=='success' && $send_email_error==0){
                 $_SESSION['registration'] = 2;
             }
-            
+            log_message('info',print_r($_POST,TRUE));
             echo json_encode($result);die;
-        }
+        }        
         $this->mViewData['stream'] =  $this->Helper_model->load_stream();
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['title']=STUDENT_REGISTRATION_TITLE;
