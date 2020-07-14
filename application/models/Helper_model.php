@@ -35,31 +35,31 @@ class Helper_model extends CI_Model
     }
     public function load_blocks($params){
         $districtId = $params['districtId'];
-        $blocks = $this->db->query("SELECT * FROM rmsa_blocks WHERE rmsa_district_id =$districtId AND rmsa_block_status = 'ACTIVE'");
+        $blocks = $this->db->query("SELECT * FROM rmsa_blocks WHERE rmsa_district_id=$districtId AND rmsa_block_status='ACTIVE'");
         return $blocks->result_array();
     }
     public function load_tehsil($params){
         $districtId = $params['districtId'];
-        $tehsil = $this->db->query("SELECT * FROM rmsa_sub_districts WHERE rmsa_district_id =$districtId AND rmsa_sub_district_status = 'ACTIVE'");
+        $tehsil = $this->db->query("SELECT * FROM rmsa_sub_districts WHERE rmsa_district_id=$districtId AND rmsa_sub_district_status='ACTIVE'");
         return $tehsil->result_array();
     }
 
     public function load_school($params){
         $subDistrictId = $params['subDistrictId'];
-        $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_sub_district_id = $subDistrictId AND rmsa_school_status = 'ACTIVE'");
+        $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_sub_district_id=$subDistrictId AND rmsa_school_status='ACTIVE'");
         return $school->result_array();
     }
 
     // changed for getting by block id
     public function load_school_byblock($params){
         $rmsaBlockId = $params['rmsaBlockId'];
-        $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_block_id =$rmsaBlockId AND rmsa_school_status = 'ACTIVE'");
+        $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_block_id=$rmsaBlockId AND rmsa_school_status='ACTIVE'");
         return $school->result_array();
     }
         
      public function load_school_code_byschool($params){
         $rmsaSchoolId = $params['schoolId'];
-        $school = $this->db->query("SELECT rmsa_school_udise_code,rmsa_block_id  FROM rmsa_schools WHERE rmsa_school_id  = $rmsaSchoolId AND rmsa_school_status = 'ACTIVE'");
+        $school = $this->db->query("SELECT rmsa_school_udise_code,rmsa_block_id  FROM rmsa_schools WHERE rmsa_school_id=$rmsaSchoolId AND rmsa_school_status='ACTIVE'");
         $res=$school->row_array();
         
         $str = $this->db->last_query();
@@ -71,10 +71,10 @@ class Helper_model extends CI_Model
     }
     
     public function register_student($params){        
-        $email_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_email_id = '".$params['rmsa_user_email_id']."' ");
+        $email_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_email_id='".$params['rmsa_user_email_id']."' ");
         $res = $email_exist->row_array();
         
-        $rolnumber_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_roll_number = '".$params['rmsa_user_roll_number']."' ");
+        $rolnumber_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_roll_number='".$params['rmsa_user_roll_number']."' ");
         $res1 = $rolnumber_exist->row_array();
         
         if($res){
@@ -126,13 +126,13 @@ class Helper_model extends CI_Model
     }
 
     public function total_active_students(){
-        $active = $this->db->query("SELECT count(*) AS online_student FROM  rmsa_student_users WHERE rmsa_student_login_active = 1");
+        $active = $this->db->query("SELECT count(*) AS online_student FROM  rmsa_student_users WHERE rmsa_student_login_active=1");
         $online = $active->result_array();
         return current($online);
     }
 
     public function total_active_employee(){
-        $active = $this->db->query("SELECT count(*) AS online_employee FROM  rmsa_employee_users WHERE rmsa_employee_login_active = 1");
+        $active = $this->db->query("SELECT count(*) AS online_employee FROM  rmsa_employee_users WHERE rmsa_employee_login_active=1");
         $online = $active->result_array();
         return current($online);
     }
@@ -142,10 +142,10 @@ class Helper_model extends CI_Model
                                           eu.rmsa_user_employee_code,eu.rmsa_user_email_id,
                                           CONCAT(eu.rmsa_user_first_name,' ',eu.rmsa_user_last_name) AS employee_name
                                           FROM `rmsa_uploaded_files`  ruf
-                                          INNER JOIN rmsa_employee_users eu ON eu.rmsa_user_id = ruf.rmsa_employee_users_id
-                                          LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id = eu.rmsa_school_id
-                                          LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id = rs.rmsa_district_id
-                                          LEFT JOIN rmsa_states rst ON rst.rmsa_state_id =  rd.rmsa_state_id
+                                          INNER JOIN rmsa_employee_users eu ON eu.rmsa_user_id=ruf.rmsa_employee_users_id
+                                          LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id=eu.rmsa_school_id
+                                          LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id=rs.rmsa_district_id
+                                          LEFT JOIN rmsa_states rst ON rst.rmsa_state_id=rd.rmsa_state_id
                                           GROUP BY rmsa_employee_users_id ORDER BY uploaded_count DESC LIMIT 10");
         $top_employee = $employee->result_array();
         return $top_employee;
@@ -154,8 +154,8 @@ class Helper_model extends CI_Model
     public function most_rated_content(){
         $most_rated = $this->db->query("SELECT rfr.rmsa_uploaded_file_id, ruf.uploaded_file_title, AVG(rfr.rmsa_file_rating) AS overall_rating
                                       FROM rmsa_file_reviews rfr
-                                      INNER JOIN rmsa_uploaded_files ruf ON ruf.rmsa_uploaded_file_id = rfr.rmsa_uploaded_file_id
-                                      WHERE  rmsa_review_status = 1
+                                      INNER JOIN rmsa_uploaded_files ruf ON ruf.rmsa_uploaded_file_id=rfr.rmsa_uploaded_file_id
+                                      WHERE  rmsa_review_status=1
                                       GROUP BY rmsa_uploaded_file_id
                                       ORDER BY overall_rating DESC
                                       LIMIT 5");
@@ -171,12 +171,12 @@ class Helper_model extends CI_Model
                                                  CONCAT(rmu.rmsa_user_first_name,' ',rmu.rmsa_user_last_name) AS employee_name,
                                                  AVG(rfr.rmsa_file_rating) AS overall_rating
                                                 FROM rmsa_file_reviews rfr
-                                                INNER JOIN rmsa_uploaded_files ruf ON ruf.rmsa_uploaded_file_id = rfr.rmsa_uploaded_file_id
-                                                LEFT JOIN rmsa_employee_users rmu ON rmu.rmsa_user_id = ruf.rmsa_employee_users_id
-                                                LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id = rmu.rmsa_school_id
-                                                LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id = rs.rmsa_district_id
-                                                LEFT JOIN rmsa_states rst ON rst.rmsa_state_id =  rd.rmsa_state_id
-                                                WHERE  rmsa_review_status = 1
+                                                INNER JOIN rmsa_uploaded_files ruf ON ruf.rmsa_uploaded_file_id=rfr.rmsa_uploaded_file_id
+                                                LEFT JOIN rmsa_employee_users rmu ON rmu.rmsa_user_id=ruf.rmsa_employee_users_id
+                                                LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id=rmu.rmsa_school_id
+                                                LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id=rs.rmsa_district_id
+                                                LEFT JOIN rmsa_states rst ON rst.rmsa_state_id=rd.rmsa_state_id
+                                                WHERE  rmsa_review_status=1
                                                 GROUP BY rmsa_uploaded_file_id
                                                 ORDER BY overall_rating DESC
                                                 LIMIT 5");
@@ -189,10 +189,10 @@ class Helper_model extends CI_Model
                                                  rs.rmsa_school_title, uploaded_file_title,uploaded_file_viewcount,
                                                  rmu.rmsa_user_employee_code,rmu.rmsa_user_email_id,CONCAT(rmu.rmsa_user_first_name,' ',rmu.rmsa_user_last_name) AS employee_name
                                                  FROM rmsa_uploaded_files ruf
-                                                 LEFT JOIN rmsa_employee_users rmu ON rmu.rmsa_user_id = ruf.rmsa_employee_users_id
-                                                 LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id = rmu.rmsa_school_id
-                                                 LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id = rs.rmsa_district_id
-                                                 LEFT JOIN rmsa_states rst ON rst.rmsa_state_id =  rd.rmsa_state_id
+                                                 LEFT JOIN rmsa_employee_users rmu ON rmu.rmsa_user_id=ruf.rmsa_employee_users_id
+                                                 LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id=rmu.rmsa_school_id
+                                                 LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id=rs.rmsa_district_id
+                                                 LEFT JOIN rmsa_states rst ON rst.rmsa_state_id= rd.rmsa_state_id
                                                  ORDER BY uploaded_file_viewcount DESC
                                                  LIMIT 5");
         $most_viewed_employee_ = $most_viewed_employee->result_array();
@@ -211,10 +211,10 @@ class Helper_model extends CI_Model
         $most_active = $this->db->query("SELECT ru.	rmsa_user_roll_number,ru.rmsa_user_email_id,rst.rmsa_state_name,rd.rmsa_district_name,rs.rmsa_school_title,
                                          CONCAT(ru.rmsa_user_first_name,' ',ru.rmsa_user_last_name) AS student_name,COUNT(*) most_active 
                                          FROM rmsa_user_file_views rf
-                                         LEFT JOIN rmsa_student_users ru ON ru.rmsa_user_id = rf.rmsa_user_id
-                                         LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id = ru.rmsa_school_id
-                                         LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id = ru.rmsa_district_id
-                                         LEFT JOIN rmsa_states rst ON rst.rmsa_state_id =  rd.rmsa_state_id
+                                         LEFT JOIN rmsa_student_users ru ON ru.rmsa_user_id=rf.rmsa_user_id
+                                         LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id=ru.rmsa_school_id
+                                         LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id=ru.rmsa_district_id
+                                         LEFT JOIN rmsa_states rst ON rst.rmsa_state_id=rd.rmsa_state_id
                                          GROUP BY rf.rmsa_user_id
                                          ORDER BY most_active DESC
                                          LIMIT 5");
@@ -226,10 +226,10 @@ class Helper_model extends CI_Model
         $most_active_on_school = $this->db->query("SELECT rst.rmsa_state_name,rd.rmsa_district_name,
                                                    rs.rmsa_school_id,rs.rmsa_school_title,count(*) AS school_has_most_active
                                                    FROM rmsa_student_users ru
-                                                   LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id = ru.rmsa_school_id
-                                                   LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id = rs.rmsa_district_id
-                                                   LEFT JOIN rmsa_states rst ON rst.rmsa_state_id =  rd.rmsa_state_id
-                                                   WHERE ru.rmsa_student_login_active = 1
+                                                   LEFT JOIN rmsa_schools rs ON rs.rmsa_school_id=ru.rmsa_school_id
+                                                   LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id=rs.rmsa_district_id
+                                                   LEFT JOIN rmsa_states rst ON rst.rmsa_state_id=rd.rmsa_state_id
+                                                   WHERE ru.rmsa_student_login_active=1
                                                    GROUP BY rs.rmsa_school_id
                                                    ORDER BY school_has_most_active DESC LIMIT 5");
         $most_active_student = $most_active_on_school->result_array();
@@ -239,9 +239,9 @@ class Helper_model extends CI_Model
     public function top_district_with_most_content(){
         $top_most_content_district = $this->db->query("SELECT rst.rmsa_state_name,rd.rmsa_district_name,count(*) as uploaded_content 
                                                        FROM rmsa_uploaded_files ruf
-                                                       LEFT JOIN rmsa_employee_users ru ON ru.rmsa_user_id = ruf.rmsa_employee_users_id
-                                                       LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id = ru.rmsa_district_id
-                                                       LEFT JOIN rmsa_states rst ON rst.rmsa_state_id =  rd.rmsa_state_id
+                                                       LEFT JOIN rmsa_employee_users ru ON ru.rmsa_user_id=ruf.rmsa_employee_users_id
+                                                       LEFT JOIN rmsa_districts rd ON rd.rmsa_district_id=ru.rmsa_district_id
+                                                       LEFT JOIN rmsa_states rst ON rst.rmsa_state_id=rd.rmsa_state_id
                                                        GROUP BY rd.rmsa_district_id
                                                        ORDER BY uploaded_content DESC LIMIT 5");
         $districts = $top_most_content_district->result_array();
@@ -253,18 +253,18 @@ class Helper_model extends CI_Model
     
     
     public function uploaded_content_reports2($month,$year){        
-        $active = $this->db->query("SELECT count(rmsa_uploaded_file_id) AS count_id FROM rmsa_uploaded_files WHERE MONTH(created_dt) = $month AND YEAR(created_dt) = $year");
+        $active = $this->db->query("SELECT count(rmsa_uploaded_file_id) AS count_id FROM rmsa_uploaded_files WHERE MONTH(created_dt)=$month AND YEAR(created_dt)=$year");
         $res = $active->result_array();        
         return  $res[0]['count_id'];
     } 
     
     public function student_registered_reports2($month,$year){        
-        $active = $this->db->query("SELECT count(rmsa_user_id) AS count_id FROM rmsa_student_users WHERE MONTH(created_dt) = $month AND YEAR(created_dt) = $year");
+        $active = $this->db->query("SELECT count(rmsa_user_id) AS count_id FROM rmsa_student_users WHERE MONTH(created_dt)=$month AND YEAR(created_dt)=$year");
         $res = $active->result_array();        
         return  $res[0]['count_id'];
     }    
     public function teacher_registered_reports2($month,$year){        
-        $active = $this->db->query("SELECT count(rmsa_user_id) AS count_id FROM rmsa_teacher_users WHERE MONTH(created_dt) = $month AND YEAR(created_dt) = $year");
+        $active = $this->db->query("SELECT count(rmsa_user_id) AS count_id FROM rmsa_teacher_users WHERE MONTH(created_dt)=$month AND YEAR(created_dt)=$year");
         $res = $active->result_array();        
         return  $res[0]['count_id'];
     }    
