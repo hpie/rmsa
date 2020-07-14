@@ -316,6 +316,7 @@ $this->load->view('_partials/front/allnotify');
             }
         });
     </script>
+    
 <?php } ?>
 <?php if ($title == REPORTS_2_STUDENT_REGISTERED_TITLE) {
     ?>
