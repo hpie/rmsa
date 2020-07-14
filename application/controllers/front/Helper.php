@@ -177,24 +177,26 @@ class Helper extends MY_Controller {
     
     public function create_student(){
         $_SESSION['exist_email'] = 0;
-        if(isset($_POST['rmsa_user_first_name'])){
-            
+        if(isset($_POST['rmsa_user_first_name'])){            
             if(isset($_POST['rmsa_school_id'])){
                 $resCode = $this->Helper_model->load_school_code_byschool($_POST['rmsa_school_id']);
-                $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];
+                $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];                
+                log_message('info',print_r($resCode,TRUE));                
             }
             else{            
                 if(isset($_SESSION['emp_rmsa_user_id'])){            
                     $params['rmsa_school_id'] = $_SESSION['emp_rmsa_school_id'];
                     $resCode = $this->Helper_model->load_school_code_byschool($params['rmsa_school_id']);
                     $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];
-                    $_POST['rmsa_block_id']=$resCode['rmsa_block_id'];
+                    $_POST['rmsa_block_id']=$resCode['rmsa_block_id'];                    
+//                    log_message('info',print_r($resCode,TRUE));
                 }
                 if(isset($_SESSION['tech_rmsa_user_id'])){
                     $params['rmsa_school_id'] = $_SESSION['tech_rmsa_school_id'];
                     $resCode = $this->Helper_model->load_school_code_byschool($params['rmsa_school_id']);
                     $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];
                     $_POST['rmsa_block_id']=$resCode['rmsa_block_id'];
+//                    log_message('info',print_r($resCode,TRUE));
                 }                
             }
             

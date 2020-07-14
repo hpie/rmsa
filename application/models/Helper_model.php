@@ -35,31 +35,31 @@ class Helper_model extends CI_Model
     }
     public function load_blocks($params){
         $districtId = $params['districtId'];
-        $blocks = $this->db->query("SELECT * FROM rmsa_blocks WHERE rmsa_district_id = {$districtId} AND rmsa_block_status = 'ACTIVE'");
+        $blocks = $this->db->query("SELECT * FROM rmsa_blocks WHERE rmsa_district_id =$districtId AND rmsa_block_status = 'ACTIVE'");
         return $blocks->result_array();
     }
     public function load_tehsil($params){
         $districtId = $params['districtId'];
-        $tehsil = $this->db->query("SELECT * FROM rmsa_sub_districts WHERE rmsa_district_id = {$districtId} AND rmsa_sub_district_status = 'ACTIVE'");
+        $tehsil = $this->db->query("SELECT * FROM rmsa_sub_districts WHERE rmsa_district_id =$districtId AND rmsa_sub_district_status = 'ACTIVE'");
         return $tehsil->result_array();
     }
 
     public function load_school($params){
         $subDistrictId = $params['subDistrictId'];
-        $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_sub_district_id = {$subDistrictId} AND rmsa_school_status = 'ACTIVE'");
+        $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_sub_district_id = $subDistrictId AND rmsa_school_status = 'ACTIVE'");
         return $school->result_array();
     }
 
     // changed for getting by block id
     public function load_school_byblock($params){
         $rmsaBlockId = $params['rmsaBlockId'];
-        $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_block_id = {$rmsaBlockId} AND rmsa_school_status = 'ACTIVE'");
+        $school = $this->db->query("SELECT * FROM rmsa_schools WHERE rmsa_block_id =$rmsaBlockId AND rmsa_school_status = 'ACTIVE'");
         return $school->result_array();
     }
     
      public function load_school_code_byschool($params){
         $rmsaSchoolId = $params['schoolId'];
-        $school = $this->db->query("SELECT rmsa_school_udise_code,rmsa_block_id  FROM rmsa_schools WHERE rmsa_school_id  = {$rmsaSchoolId} AND rmsa_school_status = 'ACTIVE'");
+        $school = $this->db->query("SELECT rmsa_school_udise_code,rmsa_block_id  FROM rmsa_schools WHERE rmsa_school_id  = $rmsaSchoolId AND rmsa_school_status = 'ACTIVE'");
         $res=$school->row_array();
         return $res;
     }
