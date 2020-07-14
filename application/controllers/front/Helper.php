@@ -119,8 +119,7 @@ class Helper extends MY_Controller {
             echo json_encode($school);
         }
     }
-    
-    
+
     public function create_teacher(){    
         $_SESSION['exist_email'] = 0;
         if(isset($_POST['rmsa_user_first_name'])){            
@@ -198,8 +197,7 @@ class Helper extends MY_Controller {
                     $_POST['rmsa_block_id']=$resCode['rmsa_block_id'];
 //                    log_message('info',print_r($resCode,TRUE));
                 }                
-            }
-            
+            }            
             reCaptchaResilt($_REQUEST['captcha_entered'],STUDENT_REGISTER_LINK);
 //            sessionCheckToken($_POST);
             $res =  $this->Helper_model->register_student($_POST);            

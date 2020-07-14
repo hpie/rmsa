@@ -193,7 +193,6 @@
                                         $selected = 'selected';
                                     }
                                     ?>
-
                                     <option value="<?php echo $row['rmsa_school_id']; ?>" <?=$selected ?>><?php echo $row['rmsa_school_title']; ?></option>
                                     <?php
                                 }

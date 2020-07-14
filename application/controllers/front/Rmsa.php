@@ -225,7 +225,7 @@ class Rmsa extends MY_Controller
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['blocksResult'] =  $this->Helper_model->load_blocks(array('districtId'=>$student_result['rmsa_district_id']));
         $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$student_result['rmsa_district_id']));
-        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school(array('subDistrictId'=>$student_result['rmsa_sub_district_id']));
+        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school_byblock(array('rmsaBlockId'=>$student_result['rmsa_sub_district_id']));
         $this->mViewData['title']=RMSA_STUDENT_PROFILE_TITLE;        
         $this->renderFront('front/rmsa_student_profile');
     }
