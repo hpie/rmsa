@@ -15,6 +15,7 @@ class Employee extends MY_Controller {
         $this->load->model('Employee_model');
         $this->load->model('Student_model');
         $this->load->model('Emp_Login');
+        $this->load->model('Helper_model');
         if (isset($_SESSION['user_id'])) {
             $result = $this->Emp_Login->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
             if ($result) {
@@ -271,20 +272,59 @@ class Employee extends MY_Controller {
             if ($res) {
                 $_SESSION['updatedata'] = 1;
                 $result['success'] = "success";
-            } else {
-                $result['success'] = "fail";
+            }else{
+                $result['success']="notmatch";
             }
             echo json_encode($result);
             die;
         }
         if (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name'] != '') {
-            $this->Employee_model->update_profile($_POST, $stud_id);
-            $_SESSION['updatedata'] = 1;
-            $result['success'] = "success";
-            echo json_encode($result);
-            die;
+            
+             if(isset($_POST['rmsa_school_id'])){               
+                $resCode = $this->Helper_model->load_school_code_byschoolid($_POST['rmsa_school_id']);
+                $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];                               
+            }
+            else{            
+                if(isset($_SESSION['emp_rmsa_user_id'])){            
+                    $params['rmsa_school_id'] = $_SESSION['emp_rmsa_school_id'];
+                    $resCode = $this->Helper_model->load_school_code_byschoolid($params['rmsa_school_id']);
+                    $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];
+                    $_POST['rmsa_block_id']=$resCode['rmsa_block_id'];                    
+                }
+                if(isset($_SESSION['tech_rmsa_user_id'])){
+                    $params['rmsa_school_id'] = $_SESSION['tech_rmsa_school_id'];
+                    $resCode = $this->Helper_model->load_school_code_byschoolid($params['rmsa_school_id']);
+                    $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];
+                    $_POST['rmsa_block_id']=$resCode['rmsa_block_id'];
+                }                
+            } 
+            
+            $res=$this->Employee_model->update_profile($_POST,$stud_id);
+            if(isset($res['success'])){   
+                if($res['success'] == false){                
+                    if(isset($res['email_exist'])){                           
+                        $result['exist_email']=1;                                                                                   
+                    }
+                    if(isset($res['rollnumber_exist'])){                         
+                        $result['rollnumber_exist']=1;                        
+                    }
+                    $result['success']="fail";                    
+                }
+            }
+            if(!isset($res['success']) && $res){
+                    $_SESSION['updatedata']=1;
+                    $result['success']="success";
+            }
+            echo json_encode($result);die;
         }
-        $this->mViewData['student_data'] = $this->Employee_model->student_details($stud_id);
+
+        
+        $student_result =  $this->Employee_model->student_details($stud_id);        
+        $resCode = $this->Helper_model->load_school_code_byschoolid($student_result['rmsa_school_id']);
+        $replaceStr=$resCode['rmsa_school_udise_code'].'-';
+        $student_result['rmsa_user_roll_number']=str_replace($replaceStr,"",$student_result['rmsa_user_roll_number']);  
+                
+        $this->mViewData['student_data'] = $student_result; 
         $this->mViewData['title'] = EMPLOYEE_STUDENT_PROFILE_TITLE;
         $this->renderFront('front/employee_student_profile');
     }

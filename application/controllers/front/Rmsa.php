@@ -202,7 +202,7 @@ class Rmsa extends MY_Controller
         }
     }    
     public function update_student_profile($stud_id){
-        $result=array();               
+        $result=array();        
         if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
             $res = $this->Employee_model->update_password($_POST,$stud_id);                    
             if($res){
@@ -210,22 +210,58 @@ class Rmsa extends MY_Controller
                 $result['success']="success";                   
             }                            
             else{
-                $result['success']="fail";
+                $result['success']="notmatch";
             }
             echo json_encode($result);die;            
         }        
-        if (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){            
-            $this->Employee_model->update_profile($_POST,$stud_id);
-            $_SESSION['updatedata']=1;
-            $result['success']="success";
+        if (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){
+
+            if(isset($_POST['rmsa_school_id'])){               
+                $resCode = $this->Helper_model->load_school_code_byschoolid($_POST['rmsa_school_id']);
+                $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];                               
+            }
+            else{            
+                if(isset($_SESSION['emp_rmsa_user_id'])){            
+                    $params['rmsa_school_id'] = $_SESSION['emp_rmsa_school_id'];
+                    $resCode = $this->Helper_model->load_school_code_byschoolid($params['rmsa_school_id']);
+                    $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];
+                    $_POST['rmsa_block_id']=$resCode['rmsa_block_id'];                    
+                }
+                if(isset($_SESSION['tech_rmsa_user_id'])){
+                    $params['rmsa_school_id'] = $_SESSION['tech_rmsa_school_id'];
+                    $resCode = $this->Helper_model->load_school_code_byschoolid($params['rmsa_school_id']);
+                    $_POST['rmsa_user_roll_number']=$resCode['rmsa_school_udise_code'].'-'.$_POST['rmsa_user_roll_number'];
+                    $_POST['rmsa_block_id']=$resCode['rmsa_block_id'];
+                }                
+            }             
+            $res=$this->Employee_model->update_profile($_POST,$stud_id);
+            if(isset($res['success'])){   
+                if($res['success'] == false){                
+                    if(isset($res['email_exist'])){                           
+                        $result['exist_email']=1;                                                                                   
+                    }
+                    if(isset($res['rollnumber_exist'])){                         
+                        $result['rollnumber_exist']=1;                        
+                    }
+                    $result['success']="fail";                    
+                }
+            }
+            if(!isset($res['success']) && $res){
+                    $_SESSION['updatedata']=1;
+                    $result['success']="success";
+            }
             echo json_encode($result);die;
         }
-        $student_result =  $this->Employee_model->student_details($stud_id);
+        $student_result =  $this->Employee_model->student_details($stud_id);        
+        $resCode = $this->Helper_model->load_school_code_byschoolid($student_result['rmsa_school_id']);
+        $replaceStr=$resCode['rmsa_school_udise_code'].'-';
+        $student_result['rmsa_user_roll_number']=str_replace($replaceStr,"",$student_result['rmsa_user_roll_number']);               
+        
         $this->mViewData['student_data'] = $student_result;
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['blocksResult'] =  $this->Helper_model->load_blocks(array('districtId'=>$student_result['rmsa_district_id']));
         $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$student_result['rmsa_district_id']));
-        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school_byblock(array('rmsaBlockId'=>$student_result['rmsa_sub_district_id']));
+        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school_byblock(array('rmsaBlockId'=>$student_result['rmsa_block_id']));
         $this->mViewData['title']=RMSA_STUDENT_PROFILE_TITLE;        
         $this->renderFront('front/rmsa_student_profile');
     }
