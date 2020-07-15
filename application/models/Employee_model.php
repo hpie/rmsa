@@ -259,7 +259,29 @@ class Employee_model extends CI_Model {
     }
     public function update_profile_teacher($params, $emp_id) {
         
-        $rmsa_user_id = $emp_id;
+         $rmsa_user_id = $emp_id;
+         
+        $email_exist = $this->db->query("SELECT * FROM rmsa_teacher_users WHERE rmsa_user_email_id='".$params['rmsa_user_email_id']."' AND rmsa_user_id != $rmsa_user_id ");
+        $res = $email_exist->row_array();
+        
+        $rolnumber_exist = $this->db->query("SELECT * FROM rmsa_teacher_users WHERE rmsa_user_teacher_code='".$params['rmsa_user_teacher_code']."' AND rmsa_user_id != $rmsa_user_id ");
+        $res1 = $rolnumber_exist->row_array();
+                        
+        if($res){
+            return Array(
+                'success' => false,
+                'email_exist' => true
+            );
+        }
+        if($res1){
+            return Array(
+                'success' => false,
+                'rollnumber_exist' => true
+            );
+        }
+        
+        
+       
         $first_name = $params['rmsa_user_first_name'];
         $middle_name = $params['rmsa_user_middle_name'];
         $last_name = $params['rmsa_user_last_name'];
@@ -304,7 +326,31 @@ class Employee_model extends CI_Model {
         return $result; //return true/false
     }
     public function update_profile_employee($params, $emp_id) {
-        $rmsa_user_id = $emp_id;
+        
+        
+         $rmsa_user_id = $emp_id;
+         
+        $email_exist = $this->db->query("SELECT * FROM rmsa_employee_users WHERE rmsa_user_email_id='".$params['rmsa_user_email_id']."' AND rmsa_user_id != $rmsa_user_id ");
+        $res = $email_exist->row_array();
+        
+        $rolnumber_exist = $this->db->query("SELECT * FROM rmsa_employee_users WHERE rmsa_user_employee_code='".$params['rmsa_user_teacher_code']."' AND rmsa_user_id != $rmsa_user_id ");
+        $res1 = $rolnumber_exist->row_array();
+                        
+        if($res){
+            return Array(
+                'success' => false,
+                'email_exist' => true
+            );
+        }
+        if($res1){
+            return Array(
+                'success' => false,
+                'rollnumber_exist' => true
+            );
+        }
+        
+        
+        
         $first_name = $params['rmsa_user_first_name'];
         $middle_name = $params['rmsa_user_middle_name'];
         $last_name = $params['rmsa_user_last_name'];

@@ -3930,7 +3930,7 @@ $this->load->view('_partials/front/allnotify');
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
 
-                       $('#rmsa_district').on('change', function () {
+               $('#rmsa_district').on('change', function () {
                 var districtId = $(this).val();
                 $.ajax({
                     type: "POST",
@@ -4044,8 +4044,31 @@ $this->load->view('_partials/front/allnotify');
 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
-                    if (result['success'] === "success") {
+                     if (result['success'] === "success") {                        
                         location.reload();
+                    }                    
+                    if (result['success'] === "fail") {                       
+                        if(result['exist_email'] === 1){                          
+                            new PNotify({
+                                title: 'Email allready exist',
+                                type: 'error',
+                                styling: 'bootstrap3'
+                            });
+                        }
+                        if(result['rollnumber_exist'] === 1){
+                            new PNotify({
+                                title: 'Roll number allready exist',
+                                type: 'error',
+                                styling: 'bootstrap3'
+                            });
+                        }
+                        if((result['exist_email'] !== 1) && (result['rollnumber_exist'] !== 1)){
+                            var d = new PNotify({
+                                title: 'No any changes',
+                                type: 'error',
+                                styling: 'bootstrap3'
+                            });
+                        }
                     }
                 }, 'json');
             });
@@ -4236,8 +4259,31 @@ $this->load->view('_partials/front/allnotify');
 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
-                    if (result['success'] === "success") {
+                     if (result['success'] === "success") {                        
                         location.reload();
+                    }                    
+                    if (result['success'] === "fail") {                       
+                        if(result['exist_email'] === 1){                          
+                            new PNotify({
+                                title: 'Email allready exist',
+                                type: 'error',
+                                styling: 'bootstrap3'
+                            });
+                        }
+                        if(result['rollnumber_exist'] === 1){
+                            new PNotify({
+                                title: 'Roll number allready exist',
+                                type: 'error',
+                                styling: 'bootstrap3'
+                            });
+                        }
+                        if((result['exist_email'] !== 1) && (result['rollnumber_exist'] !== 1)){
+                            var d = new PNotify({
+                                title: 'No any changes',
+                                type: 'error',
+                                styling: 'bootstrap3'
+                            });
+                        }
                     }
                 }, 'json');
             });
@@ -4900,20 +4946,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     }
                 });
             });
-            
-//            $('#rmsa_school').on('change', function () {
-//                var schoolId = $(this).val();
-//                $.ajax({
-//                    type: "POST",
-//                    url: "<?php //echo LOAD_SCHOOL_CODE_BY_SCHOOL ?>",
-//                    data: {'schoolId': schoolId},
-//                    success: function (res) {
-//                        var school = $.parseJSON(res);
-//                        alert(school);
-//                        $("#rmsa_school_udise_code").val(school);                                                
-//                    }
-//                });
-//            });
+
             
         });
     </script>

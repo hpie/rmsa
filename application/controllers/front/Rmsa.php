@@ -281,17 +281,24 @@ class Rmsa extends MY_Controller
             echo json_encode($result);die;            
         }        
         if (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){               
-            $this->Employee_model->update_profile_teacher($_POST,$emp_id);
-            $_SESSION['updatedata']=1;
-            $result['success']="success";
+            $res=$this->Employee_model->update_profile_teacher($_POST,$emp_id);
+             if(isset($res['success'])){   
+                if($res['success'] == false){                
+                    if(isset($res['email_exist'])){                           
+                        $result['exist_email']=1;                                                                                   
+                    }
+                    if(isset($res['rollnumber_exist'])){                         
+                        $result['rollnumber_exist']=1;                        
+                    }
+                    $result['success']="fail";                    
+                }
+            }
+            if(!isset($res['success']) && $res){
+                    $_SESSION['updatedata']=1;
+                    $result['success']="success";
+            }
             echo json_encode($result);die;
         }        
-//        $employee_result =  $this->Employee_model->teacher_details($emp_id);
-//        $this->mViewData['student_data'] = $employee_result;
-//        $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
-//        $this->mViewData['blocksResult'] =  $this->Helper_model->load_blocks(array('districtId'=>$employee_result['rmsa_district_id']));
-//        $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$employee_result['rmsa_district_id']));
-//        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school_byblock(array('rmsaBlockId'=>$employee_result['rmsa_block_id']));
         
         $employee_result =  $this->Employee_model->teacher_details($emp_id);        
         $this->mViewData['student_data'] = $employee_result;
@@ -316,9 +323,22 @@ class Rmsa extends MY_Controller
             echo json_encode($result);die;            
         }        
         if (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){            
-            $this->Employee_model->update_profile_employee($_POST,$emp_id);
-            $_SESSION['updatedata']=1;
-            $result['success']="success";
+            $res=$this->Employee_model->update_profile_employee($_POST,$emp_id);
+            if(isset($res['success'])){   
+                if($res['success'] == false){                
+                    if(isset($res['email_exist'])){                           
+                        $result['exist_email']=1;                                                                                   
+                    }
+                    if(isset($res['rollnumber_exist'])){                         
+                        $result['rollnumber_exist']=1;                        
+                    }
+                    $result['success']="fail";                    
+                }
+            }
+            if(!isset($res['success']) && $res){
+                    $_SESSION['updatedata']=1;
+                    $result['success']="success";
+            }
             echo json_encode($result);die;
         }
 
