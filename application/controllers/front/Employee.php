@@ -317,7 +317,6 @@ class Employee extends MY_Controller {
             }
             echo json_encode($result);die;
         }
-
         
         $student_result =  $this->Employee_model->student_details($stud_id);        
         $resCode = $this->Helper_model->load_school_code_byschoolid($student_result['rmsa_school_id']);

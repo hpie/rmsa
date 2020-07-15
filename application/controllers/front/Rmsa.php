@@ -206,7 +206,7 @@ class Rmsa extends MY_Controller
         if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
             $res = $this->Employee_model->update_password($_POST,$stud_id);                    
             if($res){
-                $_SESSION['updatedata']=1;
+                $_SESSION['updatedata']=1; 
                 $result['success']="success";                   
             }                            
             else{
@@ -267,6 +267,7 @@ class Rmsa extends MY_Controller
     }
     
      public function update_teacher_profile($emp_id){
+//        echo $emp_id;die;
         $result=array();               
         if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
             $res = $this->Employee_model->update_password_teacher($_POST,$emp_id);                    
@@ -279,24 +280,30 @@ class Rmsa extends MY_Controller
             }
             echo json_encode($result);die;            
         }        
-        if (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){            
+        if (isset($_POST['rmsa_user_first_name']) && $_POST['rmsa_user_first_name']!=''){               
             $this->Employee_model->update_profile_teacher($_POST,$emp_id);
             $_SESSION['updatedata']=1;
             $result['success']="success";
             echo json_encode($result);die;
-        }
-
-        $employee_result =  $this->Employee_model->teacher_details($emp_id);
+        }        
+//        $employee_result =  $this->Employee_model->teacher_details($emp_id);
+//        $this->mViewData['student_data'] = $employee_result;
+//        $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
+//        $this->mViewData['blocksResult'] =  $this->Helper_model->load_blocks(array('districtId'=>$employee_result['rmsa_district_id']));
+//        $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$employee_result['rmsa_district_id']));
+//        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school_byblock(array('rmsaBlockId'=>$employee_result['rmsa_block_id']));
+        
+        $employee_result =  $this->Employee_model->teacher_details($emp_id);        
         $this->mViewData['student_data'] = $employee_result;
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['blocksResult'] =  $this->Helper_model->load_blocks(array('districtId'=>$employee_result['rmsa_district_id']));
         $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$employee_result['rmsa_district_id']));
-        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school(array('subDistrictId'=>$employee_result['rmsa_sub_district_id']));
+        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school_byblock(array('rmsaBlockId'=>$employee_result['rmsa_block_id']));
         $this->mViewData['title']=RMSA_TEACHER_PROFILE_TITLE;
         $this->renderFront('front/rmsa_teacher_profile');
     }
     public function update_employee_profile($emp_id){
-        $result=array();               
+        $result=array();                                     
         if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
             $res = $this->Employee_model->update_password_employee($_POST,$emp_id);                    
             if($res){
@@ -320,7 +327,7 @@ class Rmsa extends MY_Controller
         $this->mViewData['distResult'] =  $this->Helper_model->load_distict();
         $this->mViewData['blocksResult'] =  $this->Helper_model->load_blocks(array('districtId'=>$employee_result['rmsa_district_id']));
         $this->mViewData['tehsilResult'] =  $this->Helper_model->load_tehsil(array('districtId'=>$employee_result['rmsa_district_id']));
-        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school(array('subDistrictId'=>$employee_result['rmsa_sub_district_id']));
+        $this->mViewData['schoolResult'] =  $this->Helper_model->load_school_byblock(array('rmsaBlockId'=>$employee_result['rmsa_block_id']));
         $this->mViewData['title']=RMSA_EMPLOYEE_PROFILE_TITLE;
         $this->renderFront('front/rmsa_employee_profile');
     }

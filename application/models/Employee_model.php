@@ -184,7 +184,7 @@ class Employee_model extends CI_Model {
         
         $rolnumber_exist = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_roll_number='".$params['rmsa_user_roll_number']."' AND rmsa_user_id != $rmsa_user_id ");
         $res1 = $rolnumber_exist->row_array();
-        
+                        
         if($res){
             return Array(
                 'success' => false,
@@ -212,6 +212,7 @@ class Employee_model extends CI_Model {
         $rmsa_district_id = $params['rmsa_district_id'];
         $rmsa_sub_district_id = $params['rmsa_sub_district_id'];
         $rmsa_school_id = $params['rmsa_school_id'];
+        $rmsa_block_id = $params['rmsa_block_id'];
 
         if(isset($_SESSION['emp_rmsa_user_id'])){
             $rmsa_district_id = $_SESSION['emp_rmsa_district_id'];
@@ -231,7 +232,8 @@ class Employee_model extends CI_Model {
                                   rmsa_user_class   = '" . $rmsa_user_class . "',                                  
                                   rmsa_district_id   = '" . $rmsa_district_id . "' , 
                                   rmsa_sub_district_id   = '" . $rmsa_sub_district_id . "', 
-                                  rmsa_school_id   = '" . $rmsa_school_id . "'
+                                  rmsa_school_id   = '" . $rmsa_school_id . "',
+                                  rmsa_block_id   = '" . $rmsa_block_id . "'     
                               WHERE rmsa_user_id = '" . $rmsa_user_id . "'");        
         return $result; //return true/false
         
@@ -256,27 +258,30 @@ class Employee_model extends CI_Model {
         return $result; //return true/false
     }
     public function update_profile_teacher($params, $emp_id) {
+        
         $rmsa_user_id = $emp_id;
         $first_name = $params['rmsa_user_first_name'];
         $middle_name = $params['rmsa_user_middle_name'];
         $last_name = $params['rmsa_user_last_name'];
-        $rmsa_user_employee_code = $params['rmsa_user_employee_code'];
+        $rmsa_user_teacher_code = $params['rmsa_user_teacher_code'];
         $rmsa_user_email_id = $params['rmsa_user_email_id'];
         $rmsa_user_DOB = $params['rmsa_user_DOB'];
         $rmsa_district_id = $params['rmsa_district_id'];
         $rmsa_sub_district_id = $params['rmsa_sub_district_id'];
         $rmsa_school_id = $params['rmsa_school_id'];
+        $rmsa_block_id = $params['rmsa_block_id'];
         $result = $this->db->query("UPDATE rmsa_teacher_users
                               SET rmsa_user_first_name  = '" . $first_name . "',
                                   rmsa_user_middle_name = '" . $middle_name . "',  
                                   rmsa_user_last_name   = '" . $last_name . "',  
-                                  rmsa_user_employee_code   = '" . $rmsa_user_employee_code . "' , 
+                                  rmsa_user_teacher_code   = '" . $rmsa_user_teacher_code . "' , 
                                   rmsa_user_email_id   = '" . $rmsa_user_email_id . "', 
                                   rmsa_user_DOB   = '" . $rmsa_user_DOB . "', 
                                   rmsa_district_id   = '" . $rmsa_district_id . "', 
                                   rmsa_sub_district_id   = '" . $rmsa_sub_district_id . "', 
-                                  rmsa_school_id   = '" . $rmsa_school_id . "' 
-                              WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
+                                  rmsa_school_id   = '" . $rmsa_school_id . "',
+                                  rmsa_block_id   = '" . $rmsa_block_id . "'     
+                              WHERE rmsa_user_id = '" . $rmsa_user_id . "'");       
         return $result; //return true/false
     }
     public function teacher_details($stud_id) {
@@ -309,7 +314,7 @@ class Employee_model extends CI_Model {
         $rmsa_district_id = $params['rmsa_district_id'];
         $rmsa_sub_district_id = $params['rmsa_sub_district_id'];
         $rmsa_school_id = $params['rmsa_school_id'];
-
+        $rmsa_block_id = $params['rmsa_block_id'];
         $result = $this->db->query("UPDATE rmsa_employee_users
                               SET rmsa_user_first_name  = '" . $first_name . "',
                                   rmsa_user_middle_name = '" . $middle_name . "',  
@@ -319,7 +324,8 @@ class Employee_model extends CI_Model {
                                   rmsa_user_DOB   = '" . $rmsa_user_DOB . "', 
                                   rmsa_district_id   = '" . $rmsa_district_id . "', 
                                   rmsa_sub_district_id   = '" . $rmsa_sub_district_id . "', 
-                                  rmsa_school_id   = '" . $rmsa_school_id . "' 
+                                  rmsa_school_id   = '" . $rmsa_school_id . "',
+                                  rmsa_block_id   = '" . $rmsa_block_id . "' 
                               WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
         return $result; //return true/false
     }

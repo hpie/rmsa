@@ -130,36 +130,36 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_block_id">Block:</label>
-                    <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="rmsa_blocks" name="rmsa_block_id" required>
-                            <option class="" value="" disabled selected>------ Select ------</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_sub_district_id">Tehsil:</label>
-                    <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
-                            <option class="" value="" disabled selected>------ Select ------</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
-                    <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="rmsa_school" name="rmsa_school_id" required>
-                            <option class="" value="" disabled selected>------ Select ------</option>
-                        </select>
-                    </div>
-                </div>
-            </div>          
+         <div class="form-group">
+    <div class="row">
+        <label class="control-label col-sm-4 col-xs-12" for="rmsa_block_id">Block:</label>
+        <div class="col-sm-8 col-xs-12">
+            <select class="form-control" id="rmsa_blocks" name="rmsa_block_id" required="">
+                <option class="" value="" disabled selected>------ Select ------</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <label class="control-label col-sm-4 col-xs-12" for="rmsa_sub_district_id">Tehsil:</label>
+        <div class="col-sm-8 col-xs-12">
+            <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
+                <option class="" value="" disabled selected>------ Select ------</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
+        <div class="col-sm-8 col-xs-12">
+            <select class="form-control" id="rmsa_school" name="rmsa_school_id" required="">
+                <option class="" value="" disabled selected>------ Select ------</option>
+            </select>
+        </div>
+    </div>
+</div>        
             <div class="form-group">
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_class">Class:</label>

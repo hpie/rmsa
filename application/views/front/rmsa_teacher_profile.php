@@ -63,7 +63,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Distt:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="rmsa_district" name="rmsa_district_id">
+                        <select class="form-control" id="rmsa_district" name="rmsa_district_id" required="">
                             <option class="" value="" disabled selected>------ Select ------</option>
                             <?php
                             if(!empty($distResult)){
@@ -88,8 +88,8 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_block_id">Block:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="rmsa_blocks" name="rmsa_block_id">
-                            <option value="0">---Select---</option>
+                        <select class="form-control" id="rmsa_blocks" name="rmsa_block_id" required="">
+                           <option class="" value="" disabled selected>------ Select ------</option>
                             <?php
                             if(!empty($blocksResult)){
                                 foreach ($blocksResult as $row){
@@ -114,7 +114,7 @@
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_district_id">Tehsil:</label>
                     <div class="col-sm-8 col-xs-12">
                         <select class="form-control" id="sub_district" name="rmsa_sub_district_id">
-                            <option value="0">---Select---</option>
+                            <option class="" value="" disabled selected>------ Select ------</option>
                             <?php
                             if(!empty($tehsilResult)){
                                 foreach ($tehsilResult as $row){
@@ -139,8 +139,8 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="rmsa_school_id">School:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <select class="form-control" id="rmsa_school" name="rmsa_school_id">
-                            <option value="0">---Select---</option>
+                        <select class="form-control" id="rmsa_school" name="rmsa_school_id" required="">
+                            <option class="" value="" disabled selected>------ Select ------</option>
                             <?php
                             if(!empty($schoolResult)){
                                 foreach ($schoolResult as $row){
