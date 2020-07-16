@@ -286,6 +286,10 @@ define('MOST_VIEWED_CONTENT_TITLE',"Welcome to gyanshala.hp.gov.in - Most Viewed
 define('MOST_ACTIVE_STUDENT_BY_CONTENT_READ',"Welcome to gyanshala.hp.gov.in - Most Active Student");
 define('MOST_ACTIVE_STUDENT_ON_SCHOOL_TITLE',"Welcome to gyanshala.hp.gov.in - Most Active Student On School");
 define('TOP_DISTRICT_WITH_MOST_CONTENT',"Welcome to gyanshala.hp.gov.in - Top District With Most Content");
+define('COUNT_STUDENT_BYSCHOOL',"Welcome to gyanshala.hp.gov.in - School wise student count");
+define('COUNT_STUDENT_BYDIST',"Welcome to gyanshala.hp.gov.in - Dist wise student count");
+define('COUNT_STUDENT_BYBLOCK',"Welcome to gyanshala.hp.gov.in - Block wise student count");
+
 define('STUDENT_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Student Profile");
 define('EMPLOYEE_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Employee Profile");
 define('TEACHER_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher Profile");

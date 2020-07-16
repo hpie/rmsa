@@ -340,6 +340,20 @@ class Helper extends MY_Controller {
         $this->mViewData['title']= TOP_DISTRICT_WITH_MOST_CONTENT;
         $this->renderFront('front/top_district_with_most_content');
     }
+    
+    public function count_student_byschool(){               
+        $this->mViewData['title']= COUNT_STUDENT_BYSCHOOL;
+        $this->renderFront('front/schoolwise_total_student');
+    }
+    public function count_student_bydistrict(){               
+        $this->mViewData['title']= COUNT_STUDENT_BYDIST;
+        $this->renderFront('front/districtlwise_total_student');
+    }
+    public function count_student_byblock(){               
+        $this->mViewData['title']= COUNT_STUDENT_BYBLOCK;
+        $this->renderFront('front/blockwise_total_student');
+    }
+    
     public function employee_reports($type){
         sessionCheckAll();        
         switch ($type){
@@ -372,6 +386,15 @@ class Helper extends MY_Controller {
                 break;
             case 10 :
                 self::total_active_employee();
+                break;
+            case 11 :
+                self::count_student_byschool();
+                break;
+            case 12 :
+                self::count_student_bydistrict();
+                break;
+            case 13 :
+                self::count_student_byblock();
                 break;
 
             default :

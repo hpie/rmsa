@@ -4356,6 +4356,106 @@ $this->load->view('_partials/front/allnotify');
     </script>
 <?php } ?>
 
+    <?php if ($title == COUNT_STUDENT_BYSCHOOL) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable({
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/school_wise_total_student.php' ?>"
+                },
+                "columns": [
+                    {"data": "index"},
+                    {"data": "rmsa_school_title"},                                       
+                    {"data": "total_Student"}               
+                ]
+            });      
+        });
+    </script>
+<?php } ?>
+     <?php if ($title == COUNT_STUDENT_BYDIST) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable({
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/district_wise_total_student.php' ?>"
+                },
+                "columns": [
+                    {"data": "index"},
+                    {"data": "rmsa_district_name"},                                       
+                    {"data": "total_Student"}               
+                ]
+            });      
+        });
+    </script>
+<?php } ?>
+     <?php if ($title == COUNT_STUDENT_BYBLOCK) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable({
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/block_wise_total_student.php' ?>"
+                },
+                "columns": [
+                    {"data": "index"},
+                    {"data": "rmsa_block_name"},                                       
+                    {"data": "total_Student"}               
+                ]
+            });      
+        });
+    </script>
+<?php } ?>
+    
 <?php
 if ($title == FILE_REVIEWS_TITLE) {
     ?>

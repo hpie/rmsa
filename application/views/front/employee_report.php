@@ -11,6 +11,9 @@
         <option value="8">Most Active Students By Content Read</option>
         <option value="9">Total Active Student</option>
         <option value="10">Total Active Employee</option>
+        <option value="11">School Wise Total Student Count</option>
+        <option value="12">District Wise Total Student Count</option>
+        <option value="13">Block Wise Total Student Count</option>
     </select>
 
 
