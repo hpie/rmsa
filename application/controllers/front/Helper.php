@@ -6,6 +6,9 @@ class Helper extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
+        
+        include APPPATH . 'third_party/smtp_mail/smtp_send.php'; 
+        
         $this->load->helper('functions');
 
         $_SESSION['securityToken2']=$_SESSION['securityToken1'];
@@ -129,26 +132,14 @@ class Helper extends MY_Controller {
             if($res['success'] == true){
                 $_SESSION['registration'] = 1;
                 $result['success']='success';
-                $this->load->config('email');
-                $this->load->library('email');
-
-                $from = $this->config->item('smtp_user');
-                $to = $res['email'];                
-                $subject = 'Welcome RMSA';
-//                $message = 'Welcome to RMSA portal';
-
-                $this->email->set_newline("\r\n");
-                $this->email->from($from);
                 
                 $data = array(
                     'userName'=> $res['email'],
                     'password'=> $_POST['rmsa_user_email_password']
-                );                
-                $this->email->to($to);
-                $this->email->subject($subject);
-                $body = $this->load->view('front/mailtemplate.php',$data,TRUE);
-                $this->email->message($body);
-                if ($this->email->send()) {                   
+                );
+                $sendmail = new SMTP_mail();
+                $resMail = $sendmail->sendDetails($res['email'],$data); 
+                 if ($resMail) {                      
                 } else {
                     $_SESSION['send_email_error'] = 1;
                     $send_email_error=1;
@@ -199,33 +190,18 @@ class Helper extends MY_Controller {
                 }                
             }            
             reCaptchaResilt($_REQUEST['captcha_entered'],STUDENT_REGISTER_LINK);
-//            sessionCheckToken($_POST);
             $res =  $this->Helper_model->register_student($_POST);            
             $result=array();
             $send_email_error=0;
             if($res['success'] == true){                
-                $result['success']='success';
-                $this->load->config('email');
-                $this->load->library('email');
-
-                $from = $this->config->item('smtp_user');
-                $to = $res['email'];                
-                $subject = 'Welcome RMSA';
-//                $message = 'Welcome to RMSA portal';
-
-                $this->email->set_newline("\r\n");
-                $this->email->from($from);
-                
+                $result['success']='success';                
                 $data = array(
                     'userName'=> $res['email'],
                     'password'=> $_POST['rmsa_user_email_password']
                 );
-                
-                $this->email->to($to);
-                $this->email->subject($subject);
-                $body = $this->load->view('front/mailtemplate.php',$data,TRUE);
-                $this->email->message($body);
-                if ($this->email->send()) {                   
+                $sendmail = new SMTP_mail();
+                $resMail = $sendmail->sendDetails($res['email'],$data); 
+                if ($resMail) {                      
                 } else {
                     $_SESSION['send_email_error'] = 1;
                     $send_email_error=1;
@@ -250,9 +226,8 @@ class Helper extends MY_Controller {
                 $_SESSION['registration'] = 1;
             }
             if($result['success']=='success' && $send_email_error==0){
-                $_SESSION['registration'] = 2;
-            }            
-            log_message('info',print_r($_POST,TRUE));
+                $_SESSION['registration'] = 2;                 
+            }                        
             echo json_encode($result);die;
         }        
         $this->mViewData['stream'] =  $this->Helper_model->load_stream();

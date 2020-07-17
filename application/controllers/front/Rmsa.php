@@ -81,30 +81,17 @@ class Rmsa extends MY_Controller
         if(isset($_POST['rmsa_user_first_name'])){            
             $res =  $this->Rmsa_model->register_employee($_POST);            
             $result=array();
-             $send_email_error=0;
+            $send_email_error=0;
             if($res['success'] == true){
                 $_SESSION['registration'] = 1;
                 $result['success']='success';
-                $this->load->config('email');
-                $this->load->library('email');
-
-                $from = $this->config->item('smtp_user');
-                $to = $res['email'];                
-                $subject = 'Welcome RMSA';
-//                $message = 'Welcome to RMSA portal';
-
-                $this->email->set_newline("\r\n");
-                $this->email->from($from);
-                
                 $data = array(
                     'userName'=> $res['email'],
                     'password'=> $_POST['rmsa_user_email_password']
-                );                
-                $this->email->to($to);
-                $this->email->subject($subject);
-                $body = $this->load->view('front/mailtemplate.php',$data,TRUE);
-                $this->email->message($body);
-                if ($this->email->send()) {                   
+                );
+                $sendmail = new SMTP_mail();
+                $resMail = $sendmail->sendDetails($res['email'],$data); 
+                 if ($resMail) {                      
                 } else {
                     $_SESSION['send_email_error'] = 1;
                     $send_email_error=1;

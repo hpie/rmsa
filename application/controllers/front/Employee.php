@@ -69,12 +69,10 @@ class Employee extends MY_Controller {
             }
         }        
         $this->mViewData['quizDetails']=$this->Employee_model->get_quiz_details($rmsa_uploaded_file_id);  
-//        print_r($this->mViewData['quizDetails']);die;
         $this->mViewData['fileDetails']=$this->Employee_model->get_file($rmsa_uploaded_file_id);           
         $this->mViewData['rmsa_uploaded_file_id'] = $rmsa_uploaded_file_id;
         $this->renderFront('front/editquiz');
-    }
-    
+    }    
     
     public function create_quiz($rmsa_uploaded_file_id) {
         if (isset($_POST['submit'])) {

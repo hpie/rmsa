@@ -114,24 +114,19 @@ if (isset($_SESSION['registration'])) {
     echo $_SESSION['registration'];
 }else{echo 0;}
 ?> == 1) {
-                var d = new PNotify({
+                new PNotify({
                     title: 'Registration successfully',
                     type: 'success',
                     styling: 'bootstrap3'
                 });
                 
-                var d = new PNotify({
+                new PNotify({
                     title: 'Mail not delievered to user',
                     type: 'error',
                     styling: 'bootstrap3'
-                });
-                
-                
-                <?php $_SESSION['registration'] = 0; ?>
+                });                                                
             } 
-            
-            
-             if (<?php
+            if (<?php
 if (isset($_SESSION['registration'])) {
     echo $_SESSION['registration'];
 }else{echo 0;}
