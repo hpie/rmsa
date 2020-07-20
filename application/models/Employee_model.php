@@ -169,7 +169,7 @@ class Employee_model extends CI_Model {
     public function update_password($params, $stud_id) {
         $new_password = md5($params['rmsa_user_new_password']);
         $rmsa_user_id = $stud_id;
-        $result = $this->db->query("UPDATE rmsa_employee_users
+        $result = $this->db->query("UPDATE rmsa_student_users
                               SET rmsa_user_email_password = '" . $new_password . "'
                               WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
         return $result; //return true/false
