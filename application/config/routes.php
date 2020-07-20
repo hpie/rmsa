@@ -120,6 +120,7 @@ $route['employee-registration']    = 'front/Rmsa/create_employee';
 $route['teacher-registration']    = 'front/Helper/create_teacher';
 $route['rmsa-update-profile']          = 'front/Rmsa/update_profile';
 $route['rmsa-my-profile']          = 'front/Rmsa/profile';
+$route['rmsa-wrong-login-log']       = 'front/Rmsa/wrong_login_list';
 
 //all employee routes
 //$route['employee-registration']    = 'front/EmpRegistration';

@@ -38,6 +38,10 @@ class Rmsa extends MY_Controller
         $this->mViewData['title']= RMSA_MY_PROFILE_TITLE;
         $this->renderFront('front/rmsa_my_profile');
     }
+     public function wrong_login_list(){     
+        $this->mViewData['title']= RMSA_WRONG_LOGIN_LOG_TITLE;
+        $this->renderFront('front/rmsa_wrong_login_log');
+    }
     
     
     public function update_profile(){

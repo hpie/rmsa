@@ -1059,7 +1059,45 @@ $this->load->view('_partials/front/allnotify');
         });
     </script>
 <?php } ?>
+<?php if ($title == RMSA_WRONG_LOGIN_LOG_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable({
 
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }],
+                "processing": true,
+                "serverSide": true,
+                "paginationType": "full_numbers",
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                "ajax": {
+                    'type': 'POST',
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/wrong_login_log.php' ?>"
+                },
+                "columns": [
+                    {"data": "index"},
+                    {"data": "username"},                    
+                    {"data": "password"},
+                    {"data": "ip_address"},
+                    {"data": "user_type"},
+                    {"data": "created_dt"}
+                ]
+            });                      
+        });
+    </script>
+<?php } ?>
+    
+    
 <?php if ($title == RMSA_FILE_LIST_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">

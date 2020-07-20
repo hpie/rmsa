@@ -61,7 +61,10 @@ class Login_model extends CI_Model{
            return false;
         }
         else{
-
+            
+            $ipaddress=get_client_ip();
+            $this->db->query("INSERT INTO wrong_login_log(username,password,ip_address,created_dt,user_type)VALUES('" . $username . "','" . $password . "','" . $ipaddress . "',now(),'Student') ");
+            
             $get_user = $this->db->query("SELECT * FROM rmsa_student_users WHERE rmsa_user_email_id = '$username' ");
 
             $check = $get_user->row_array();

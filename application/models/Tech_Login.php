@@ -83,6 +83,8 @@ class Tech_Login extends CI_Model {
                 return true;
             }
         } else {
+            $ipaddress=get_client_ip();
+            $this->db->query("INSERT INTO wrong_login_log(username,password,ip_address,created_dt,user_type)VALUES('" . $username . "','" . $password . "','" . $ipaddress . "',now(),'Teacher') ");
             $get_user = $this->db->query("SELECT * FROM rmsa_teacher_users WHERE (rmsa_user_email_id = '$username' OR rmsa_user_teacher_code= '$username') ");
             $check = $get_user->row_array();
             if (is_array($check)) {

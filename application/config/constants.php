@@ -158,7 +158,7 @@ define('RMSA_REPORTS',BASE_URL."/employee-reports");
 define('RMSA_ONLINE_EXAM_LINK',"http://gyanshala.hp.gov.in/pariksha");
 define('RMSA_UPDATE_PROFILE_LINK',BASE_URL."/rmsa-update-profile");
 define('RMSA_MY_PROFILE_LINK',BASE_URL."/rmsa-my-profile");
-
+define('RMSA_WRONG_LOGIN_LOG_LINK',BASE_URL."/rmsa-wrong-login-log");
 
 //All employee constant
 define('EMPLOYEE_LOGIN_LINK',BASE_URL."/employee-login");
@@ -271,6 +271,7 @@ define('RMSA_MY_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa My Profile
 define('EMPLOYEE_MY_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Employee My Profile");
 define('TEACHER_MY_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher My Profile");
 define('STUDENT_MY_PROFILE_TITLE',"Welcome to gyanshala.hp.gov.in - Student My Profile");
+define('RMSA_WRONG_LOGIN_LOG_TITLE',"Welcome to gyanshala.hp.gov.in - Rmsa Wrong Login Log");
 
 define('STUDENT_REGISTRATION_TITLE',"Welcome to gyanshala.hp.gov.in - Student Registration");
 
