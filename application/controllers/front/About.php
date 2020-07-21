@@ -32,7 +32,7 @@ class About extends MY_Controller{
         $data = array(
             'Description'=> "This is a test email from Gyanshala"
         );
-        $resMail = $sendmail->sendTestEmail("vasimlook@gmail.com",$data);        
+        $resMail = $sendmail->sendTestEmail("sunil@hpie.in",$data);        
         log_message('info',print_r($resMail,TRUE));
         if ($resMail==true) {
             $this->mViewData['title']="Email Success";
