@@ -32,16 +32,16 @@ class About extends MY_Controller{
         $data = array(
             'Description'=> "This is a test email from Gyanshala"
         );
-        $resMail = $sendmail->sendTestEmail("sunil@hpie.in",$data);        
-        log_message('info',print_r($resMail,TRUE));
-        if ($resMail==true) {
-            $this->mViewData['title']="Email Success";
+        $resMail = $sendmail->sendTestEmail("vasimlook@gmail.com",$data);         
+        log_message('info',print_r($resMail,TRUE));        
+        if ($resMail['success']==1) {            
+            $this->mViewData['title']="Email Success";            
         } else {
             $this->mViewData['title']="Email Failed";
             $_SESSION['send_email_error'] = 1;
             $send_email_error=1;
         }
-
+        
        // $this->mViewData['title']=ABOUT_TITLE;
         $this->renderFront('front/about');
     }

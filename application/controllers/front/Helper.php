@@ -139,8 +139,8 @@ class Helper extends MY_Controller {
                 );
                 $sendmail = new SMTP_mail();
                 $resMail = $sendmail->sendDetails($res['email'],$data); 
-                log_message('info',print_r($resMail,TRUE));
-                if ($resMail==true) {                      
+                log_message('info',print_r($resMail,TRUE));        
+                if ($resMail['success']==1) {                      
                 } else {
                     $_SESSION['send_email_error'] = 1;
                     $send_email_error=1;
@@ -202,8 +202,8 @@ class Helper extends MY_Controller {
                 );
                 $sendmail = new SMTP_mail();
                 $resMail = $sendmail->sendDetails($res['email'],$data); 
-                log_message('info',print_r($resMail,TRUE));
-                if ($resMail==true) {                      
+                log_message('info',print_r($resMail,TRUE));        
+                if ($resMail['success']==1) {                    
                 } else {
                     $_SESSION['send_email_error'] = 1;
                     $send_email_error=1;
