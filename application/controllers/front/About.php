@@ -5,7 +5,8 @@ class About extends MY_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->helper('functions');
-        
+        include APPPATH . 'third_party/smtp_mail/smtp_send.php';
+
         $_SESSION['securityToken2']=$_SESSION['securityToken1'];
         sessionCheckToken();
         $_SESSION['securityToken1'] = bin2hex(random_bytes(24)); 
@@ -26,7 +27,23 @@ class About extends MY_Controller{
         
     }
     public function index(){
-        $this->mViewData['title']=ABOUT_TITLE;
+
+        $sendmail = new SMTP_mail();
+        $data = array(
+            'Description'=> "This is a test email from Gyanshala"
+        );
+
+        $resMail = $sendmail->sendTestEmail("sunil@hpie.in",$data);
+
+        if ($resMail) {
+            $this->mViewData['title']="Email Success";
+        } else {
+            $this->mViewData['title']="Email Failed";
+            $_SESSION['send_email_error'] = 1;
+            $send_email_error=1;
+        }
+
+       // $this->mViewData['title']=ABOUT_TITLE;
         $this->renderFront('front/about');
     }
 }
