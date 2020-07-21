@@ -23,16 +23,15 @@ class About extends MY_Controller{
             }
         }
         $method=$this->router->fetch_method();
-        visitLog($method,"About");
-        
+        visitLog($method,"About");        
     }
     public function index(){
-
-        $sendmail = new SMTP_mail();
+        
+        $sendmail = new SMTP_mail();        
         $data = array(
             'Description'=> "This is a test email from Gyanshala"
         );
-        $resMail = $sendmail->sendTestEmail("vasimlook@gmail.com",$data);         
+        $resMail = $sendmail->sendTestEmail("vasimlook@gmail.com",$data);                        
         log_message('info',print_r($resMail,TRUE));        
         if ($resMail['success']==1) {            
             $this->mViewData['title']="Email Success";            
