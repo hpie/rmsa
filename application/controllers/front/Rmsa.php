@@ -5,6 +5,8 @@ class Rmsa extends MY_Controller
 {
     public function __construct(){
         parent::__construct();
+        
+        include APPPATH . 'third_party/smtp_mail/smtp_send.php'; 
         $this->load->helper('functions');
 
         $_SESSION['securityToken2']=$_SESSION['securityToken1'];
