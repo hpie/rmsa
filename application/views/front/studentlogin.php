@@ -41,10 +41,11 @@
             </div>
         </form>
         <div class="form-group">
-            <a href="#">New Registration</a>
+            <a href="student-login">New Registration</a>
         </div>
-        <p class="bg-light-blue  p-2">Please enter your Registration No. as your User Name and your
-            Date of Birth in YYYYMMDD format as your Password.
+        <p class="bg-light-blue  p-2">Please enter your Registered email as your User Name and your
+            password set by you as your Password. The account will be locked after 3 unsuccesful attempts
+            and you'll have to contact the administrator to have it unlocked.
         </p>
 
     </div>
