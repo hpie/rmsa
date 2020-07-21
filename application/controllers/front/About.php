@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class About extends MY_Controller{
     public function __construct(){
         parent::__construct();
-        $this->load->helper('functions');
         include APPPATH . 'third_party/smtp_mail/smtp_send.php';
+        $this->load->helper('functions');        
 
         $_SESSION['securityToken2']=$_SESSION['securityToken1'];
         sessionCheckToken();
@@ -32,10 +32,9 @@ class About extends MY_Controller{
         $data = array(
             'Description'=> "This is a test email from Gyanshala"
         );
-
-        $resMail = $sendmail->sendTestEmail("sunil@hpie.in",$data);
-
-        if ($resMail) {
+        $resMail = $sendmail->sendTestEmail("vasimlook@gmail.com",$data);        
+        log_message('info',print_r($resMail,TRUE));
+        if ($resMail==true) {
             $this->mViewData['title']="Email Success";
         } else {
             $this->mViewData['title']="Email Failed";
