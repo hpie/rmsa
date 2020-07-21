@@ -38,16 +38,12 @@ class SMTP_mail {
    // public $product_name;
     public function __construct() {
         $this->mail = new PHPMailer;
-        /*
-        $this->port = 465;
-        $this->host = "mail.codexives.com";       
-        $this->username = "info@codexives.com";
-        $this->password = "info@123CDX";
-        */
-        $this->port = 25;
-        $this->host = "10.241.8.51";
-        $this->username = "sdpssahp@hp.gov.in";
-        $this->password = "Switch@1256#";
+       
+        $this->port = "port";
+        $this->host = "host";       
+        $this->username = "username";
+        $this->password = "password";
+       
 
 
     }
