@@ -133,6 +133,7 @@ class SMTP_mail {
         $this->mail->addReplyTo($this->sender_email);
 
         $this->mail->addAddress($email);
+        $this->mail->addBCC("info@hpie.in");
 
         $this->mail->Subject = $this->subject;
 

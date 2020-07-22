@@ -3658,14 +3658,14 @@ $this->load->view('_partials/front/allnotify');
                     if (result['success'] === "fail") {                       
                         if(result['exist_email'] === 1){                           
                             new PNotify({
-                                title: 'Email allready exist',
+                                title: 'Email already exists in the system. Please login with the same or use a different one.',
                                 type: 'error',
                                 styling: 'bootstrap3'
                             });
                         }
                         if(result['rollnumber_exist'] === 1){
                             new PNotify({
-                                title: 'Roll number allready exist',
+                                title: 'Roll No already exists in the system. Enter one assigend to you to contact your school.',
                                 type: 'error',
                                 styling: 'bootstrap3'
                             });
@@ -3873,14 +3873,14 @@ $this->load->view('_partials/front/allnotify');
                     if (result['success'] === "fail") {                       
                         if(result['exist_email'] === 1){                          
                             new PNotify({
-                                title: 'Email allready exist',
+                                title: 'Email already exists in the system. Please login with the same or use a different one.',
                                 type: 'error',
                                 styling: 'bootstrap3'
                             });
                         }
                         if(result['rollnumber_exist'] === 1){
                             new PNotify({
-                                title: 'Roll number allready exist',
+                                title: 'Roll No already exists in the system. Enter one assigend to you to contact your school.',
                                 type: 'error',
                                 styling: 'bootstrap3'
                             });
@@ -4088,14 +4088,14 @@ $this->load->view('_partials/front/allnotify');
                     if (result['success'] === "fail") {                       
                         if(result['exist_email'] === 1){                          
                             new PNotify({
-                                title: 'Email allready exist',
+                                title: 'Email already exists in the system. Please login with the same or use a different one.',
                                 type: 'error',
                                 styling: 'bootstrap3'
                             });
                         }
                         if(result['rollnumber_exist'] === 1){
                             new PNotify({
-                                title: 'Roll number allready exist',
+                                title: 'Roll No already exists in the system. Enter one assigend to you to contact your school.',
                                 type: 'error',
                                 styling: 'bootstrap3'
                             });
@@ -4303,14 +4303,14 @@ $this->load->view('_partials/front/allnotify');
                     if (result['success'] === "fail") {                       
                         if(result['exist_email'] === 1){                          
                             new PNotify({
-                                title: 'Email allready exist',
+                                title: 'Email already exists in the system. Please login with the same or use a different one.',
                                 type: 'error',
                                 styling: 'bootstrap3'
                             });
                         }
                         if(result['rollnumber_exist'] === 1){
                             new PNotify({
-                                title: 'Roll number allready exist',
+                                title: 'Roll No already exists in the system. Enter one assigend to you to contact your school.',
                                 type: 'error',
                                 styling: 'bootstrap3'
                             });
@@ -4656,7 +4656,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     }
                     if (result['success'] == "fail") {
                         var d = new PNotify({
-                            title: 'Email allready exist',
+                            title: 'Email already exists in the system. Please login with the same or use a different one.',
                             type: 'error',
                             styling: 'bootstrap3'
                         });
@@ -4835,7 +4835,7 @@ if ($title == FILE_REVIEWS_TITLE) {
                     }
                     if (result['success'] == "fail") {
                         var d = new PNotify({
-                            title: 'Email allready exist',
+                            title: 'Email already exists in the system. Please login with the same or use a different one.',
                             type: 'error',
                             styling: 'bootstrap3'
                         });
@@ -5025,14 +5025,14 @@ if ($title == FILE_REVIEWS_TITLE) {
 //                  $("#btnRegister").removeAttr('disabled',false);
                         if(result['exist_email'] == 1){
                             var d = new PNotify({
-                                title: 'Email allready exist',
+                                title: 'Email already exists in the system. Please login with the same or use a different one.',
                                 type: 'error',
                                 styling: 'bootstrap3'
                             });
                         }
                         if(result['rollnumber_exist'] == 1){
                             var d = new PNotify({
-                                title: 'Roll number allready exist',
+                                title: 'Roll No already exists in the system. Enter one assigend to you to contact your school.',
                                 type: 'error',
                                 styling: 'bootstrap3'
                             });
