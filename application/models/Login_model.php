@@ -20,6 +20,7 @@ class Login_model extends CI_Model{
         return false;
     }
     
+    
     public function login_select($username, $password) {
         $password= md5($password);      
         $q = "SELECT * FROM rmsa_student_users WHERE (rmsa_user_email_id='$username' OR rmsa_user_roll_number='$username') and rmsa_user_email_password='$password' AND rmsa_user_status='ACTIVE' AND rmsa_user_locked_status=0";
