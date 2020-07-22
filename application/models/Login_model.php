@@ -13,7 +13,7 @@ class Login_model extends CI_Model{
         if (isset($row))
         {
             $table="rmsa_".$user_type."_users";
-            $this->db->query("UPDATE $table SET rmsa_user_attempt=0,rmsa_user_locked_status=0,rmsa_user_email_verified_status=1 WHERE rmsa_user_id =$user_id");
+            $this->db->query("UPDATE $table SET rmsa_user_status='ACTIVE',rmsa_user_attempt=0,rmsa_user_locked_status=0,rmsa_user_email_verified_status=1 WHERE rmsa_user_id =$user_id");
             $this->db->query("DELETE FROM user_email_link WHERE rmsa_user_id=$user_id AND user_type='$user_type' AND link_code='$link_code'");
             return true;
         }
