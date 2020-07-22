@@ -5,6 +5,21 @@ class Login_model extends CI_Model{
         $this->load->helper('functions'); 
         parent::__construct();
     }
+    
+    public function chek_code_exist($user_id,$link_code,$user_type) {       
+        $q = "SELECT * FROM user_email_link WHERE rmsa_user_id=$user_id AND user_type='$user_type' AND link_code='$link_code' ";
+        $query = $this->db->query($q);
+        $row = $query->row_array(); 
+        if (isset($row))
+        {
+            $table="rmsa_".$user_type."_users";
+            $this->db->query("UPDATE $table SET rmsa_user_attempt=0,rmsa_user_locked_status=0,rmsa_user_email_verified_status=1 WHERE rmsa_user_id =$user_id");
+            $this->db->query("DELETE FROM user_email_link WHERE rmsa_user_id=$user_id AND user_type='$user_type' AND link_code='$link_code'");
+            return true;
+        }
+        return false;
+    }
+    
     public function login_select($username, $password) {
         $password= md5($password);      
         $q = "SELECT * FROM rmsa_student_users WHERE (rmsa_user_email_id='$username' OR rmsa_user_roll_number='$username') and rmsa_user_email_password='$password' AND rmsa_user_status='ACTIVE' AND rmsa_user_locked_status=0";

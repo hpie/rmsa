@@ -4645,12 +4645,12 @@ if ($title == FILE_REVIEWS_TITLE) {
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result['success'] == "success") {
                         if ('<?php
-    if (isset($_SESSION['rm_rmsa_user_id'])) {
-        echo '1';
-    } else {
-        echo '0';
-    }
-    ?>' === '1') {
+                            if (isset($_SESSION['rm_rmsa_user_id'])) {
+                                echo '1';
+                            } else {
+                                echo '0';
+                            }
+                            ?>' === '1') {
                             location.href = "<?php echo RMSA_EMPLOYEE_LIST_LINK ?>";
                         }
                     }
@@ -4665,22 +4665,22 @@ if ($title == FILE_REVIEWS_TITLE) {
             });
 
 
-            $('#rmsa_district').on('change', function () {
+            $('#rmsa_district').on('change', function () {            
                 var districtId = $(this).val();
                 $.ajax({
                     type: "POST",
                     url: "<?php echo LOAD_TEHSIL ?>",
                     data: {'districtId': districtId},
-                    success: function (res) {
-                        var data = jQuery.parseJSON(res);
-                        
+                    success: function (res) { 
+                      
+                        var data = jQuery.parseJSON(res);                       
                         $("#sub_district").empty();
                         $("#rmsa_school").empty();
                         $("#rmsa_blocks").empty();
                         
                         $("#sub_district").append(new Option('---Select---', 0));
                         $("#rmsa_blocks").append(new Option('---Select---', 0));
-                        $("#rmsa_school").append(new Option('---Select---', 0));
+                        $("#rmsa_school").append(new Option('---Select---', 0));                       
                         $.each(data.tehsil, function (index, value) {                            
                             $("#sub_district").append(new Option(value.rmsa_sub_district_name, value.rmsa_sub_district_id));
                         });
@@ -5220,5 +5220,3 @@ $(this).attr('href','javascript:void(0)');
 });
 </script>-->
 <!--//this script will be run for all pages-->
-</body>
-</html>

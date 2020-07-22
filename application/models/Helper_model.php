@@ -129,6 +129,7 @@ class Helper_model extends CI_Model
                 'email_exist' => false,
                 'rollnumber_exist' => false,
                 'email' => $params['rmsa_user_email_id'],
+                'rmsa_user_id'=>$insert_id
             );
 //                return $insert_id;
         }

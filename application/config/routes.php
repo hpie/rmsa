@@ -172,6 +172,7 @@ $route['update-profile']          = 'front/Student/update_profile';
 $route['student-my-profile']          = 'front/Student/profile';
 
 $route['student-login']           = 'front/StudentLogin';
+$route['email-verify/(:any)/(:any)']           = 'front/StudentLogin/verify_email/$1/$2';
 $route['student-logout']          = 'front/Student/logout';
 $route['is-student-active']       = 'front/Student/is_active';
 $route['registered-students']     = 'front/RegisteredStudents';

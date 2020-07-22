@@ -246,6 +246,63 @@ class MY_Controller extends MX_Controller {
 
 		$this->load->view('_partials/front/footerall', $this->mViewData);
 	}
+        protected function  renderSinglePage($view_file, $layout = 'default')
+	{
+		// automatically generate page title
+		if ( empty($this->mPageTitle) )
+		{
+			if ($this->mAction=='index')
+				$this->mPageTitle = humanize($this->mCtrler);
+			else
+				$this->mPageTitle = humanize($this->mAction);
+		}
+		$this->mViewData['module'] = $this->mModule;
+		$this->mViewData['ctrler'] = $this->mCtrler;
+		$this->mViewData['action'] = $this->mAction;
+
+		$this->mViewData['site_name'] = $this->mSiteName;
+		$this->mViewData['page_title'] = $this->mPageTitlePrefix.$this->mPageTitle;
+		$this->mViewData['current_uri'] = empty($this->mModule) ? uri_string(): str_replace($this->mModule.'/', '', uri_string());
+		$this->mViewData['meta_data'] = $this->mMetaData;
+//		$this->mViewData['scripts'] = $this->mScripts;
+//		$this->mViewData['stylesheets'] = $this->mStylesheets;
+		$this->mViewData['page_auth'] = $this->mPageAuth;
+
+		$this->mViewData['base_url'] = $this->mBaseUrl;
+		$this->mViewData['menu'] = $this->mMenu;
+		$this->mViewData['user'] = $this->mUser;
+		$this->mViewData['ga_id'] = empty($this->mConfig['ga_id']) ? '' : $this->mConfig['ga_id'];
+		$this->mViewData['body_class'] = $this->mBodyClass;
+
+		// automatically push current page to last record of breadcrumb
+		$this->push_breadcrumb($this->mPageTitle);
+		$this->mViewData['breadcrumb'] = $this->mBreadcrumb;
+
+		// multilingual
+		$this->mViewData['multilingual'] = $this->mMultilingual;
+		if ($this->mMultilingual)
+		{
+			$this->mViewData['available_languages'] = $this->mAvailableLanguages;
+			$this->mViewData['language'] = $this->mLanguage;
+		}
+
+		// debug tools - CodeIgniter profiler
+		$debug_config = $this->mConfig['debug'];
+//		if (ENVIRONMENT==='development' && !empty($debug_config))
+//		{
+//			$this->output->enable_profiler($debug_config['profiler']);
+//		}
+
+		$this->mViewData['inner_view'] = $view_file;
+		
+		$this->load->view($view_file, $this->mViewData);
+
+		// debug tools - display view data
+		if (ENVIRONMENT==='development' && !empty($debug_config) && !empty($debug_config['view_data']))
+		{
+			$this->output->append_output('<hr/>'.print_r($this->mViewData, TRUE));
+		}
+	}
         
 	// Render template
 	protected function  render($view_file, $layout = 'default')

@@ -1,4 +1,4 @@
-+<?php
+<?php
 /**
 
  * This example shows making an SMTP connection with authentication.
@@ -37,17 +37,17 @@ class SMTP_mail {
 
    // public $product_name;
     public function __construct() {
-        $this->mail = new PHPMailer;
-        
+        $this->mail = new PHPMailer;        
         $this->port = 465;
         $this->host = "mail.codexives.com";       
         $this->username = "info@codexives.com";
         $this->password = "info@123CDX";
     }
 
-    public function sendDetails($email,$data) {                               
+    public function sendRegistrationDetails($email,$data) {
+        $template=$data['template'];
         
-        $this->sender_email ='admin@gyanshala.hp.gov.in';
+        $this->sender_email ='info@codexives.com';
 
         $this->sender_name ='Gyanshala';
 
@@ -75,20 +75,20 @@ class SMTP_mail {
 
         $this->mail->addReplyTo($this->sender_email);
 
-        $this->mail->addAddress($email);           
+        $this->mail->addAddress($email);
 
-        $this->mail->Subject = $this->subject; 
+        $this->mail->Subject = $this->subject;
 
-        $html = file_get_contents(APPPATH.'third_party/smtp_mail/mailtemplate.html');        
-//        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password']; 
+        $html = file_get_contents(APPPATH."third_party/smtp_mail/$template");
+//        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password'];
 
-        $word = array('{{username}}','{{password}}');
-        $replace = array($data['userName'],$data['password']);
-        
+        $word = array('{{username}}','{{password}}','{{activationlink}}');
+        $replace = array($data['username'],$data['password'],$data['activationlink']);
+
         $html = str_replace($word, $replace, $html);
         $this->mail->msgHTML($html, dirname(__FILE__));
 
-        $this->mail->AltBody = "";  
+        $this->mail->AltBody = "";
 
         $resultMail=array();
         $resultMail['success']=0;
@@ -101,15 +101,14 @@ class SMTP_mail {
             return $resultMail;
         }
     }
-
-
-    public function sendTestEmail($email,$data) {
-
-        $this->sender_email ='admin@gyanshala.hp.gov.in';
+    public function sendTestMail($email,$data) {
+        $template=$data['template'];
+        
+        $this->sender_email ='info@codexives.com';
 
         $this->sender_name ='Gyanshala';
 
-        $this->subject ='Test Email';
+        $this->subject ='User Details';
 
         $this->mail->isSMTP();
 
@@ -137,11 +136,11 @@ class SMTP_mail {
 
         $this->mail->Subject = $this->subject;
 
-        $html = file_get_contents(APPPATH.'third_party/smtp_mail/testtemplate.html');
+        $html = file_get_contents(APPPATH."third_party/smtp_mail/$template");
 //        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password'];
 
-        $word = array('{{Description}}');
-        $replace = array($data['Description']);
+        $word = array('{{username}}','{{password}}','{{activationlink}}');
+        $replace = array($data['username'],$data['password'],$data['activationlink']);
 
         $html = str_replace($word, $replace, $html);
         $this->mail->msgHTML($html, dirname(__FILE__));

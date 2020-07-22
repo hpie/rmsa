@@ -99,7 +99,7 @@ class Helper extends MY_Controller {
             $blocks = $this->Helper_model->load_blocks($_POST);
             $result=array();
             $result['tehsil']=$tehsil;
-            $result['blocks']=$blocks;
+            $result['blocks']=$blocks;              
             echo json_encode($result);
         }
     }
@@ -131,16 +131,25 @@ class Helper extends MY_Controller {
             $send_email_error=0;
             if($res['success'] == true){
                 $_SESSION['registration'] = 1;
+                $result['success']='success';  
+                $link_code=gen_uuid($res['rmsa_user_id'],'e');               
+                $email_active_link=STUDENT_ACTIVE_EMAIL_LINK.'teacher/'.$link_code;                               
                 $result['success']='success';
-                
                 $data = array(
-                    'userName'=> $res['email'],
-                    'password'=> $_POST['rmsa_user_email_password']
+                    'username'=> $res['email'],
+                    'password'=> $_POST['rmsa_user_email_password'],
+                    'template'=> 'teacherRegistrationTemplate.html',
+                    'activationlink'=>$email_active_link
                 );
                 $sendmail = new SMTP_mail();
-                $resMail = $sendmail->sendDetails($res['email'],$data); 
+                $resMail = $sendmail->sendRegistrationDetails($res['email'],$data); 
                 log_message('info',print_r($resMail,TRUE));        
-                if ($resMail['success']==1) {                      
+                if ($resMail['success']==1) {   
+                    $params=array();
+                    $params['rmsa_user_id']=$res['rmsa_user_id'];
+                    $params['link_code']=$link_code;
+                    $params['user_type']='teacher';                   
+                    $this->Rmsa_model->user_email_link($params);
                 } else {
                     $_SESSION['send_email_error'] = 1;
                     $send_email_error=1;
@@ -195,15 +204,25 @@ class Helper extends MY_Controller {
             $result=array();
             $send_email_error=0;
             if($res['success'] == true){                
-                $result['success']='success';                
+                $result['success']='success'; 
+                $link_code=gen_uuid($res['rmsa_user_id'],'e');  
+                $email_active_link=STUDENT_ACTIVE_EMAIL_LINK.'student/'.$link_code;                               
+                $result['success']='success';
                 $data = array(
-                    'userName'=> $res['email'],
-                    'password'=> $_POST['rmsa_user_email_password']
+                    'username'=> $res['email'],
+                    'password'=> $_POST['rmsa_user_email_password'],
+                    'template'=> 'studentRegistrationTemplate.html',
+                    'activationlink'=>$email_active_link
                 );
                 $sendmail = new SMTP_mail();
-                $resMail = $sendmail->sendDetails($res['email'],$data); 
+                $resMail = $sendmail->sendRegistrationDetails($res['email'],$data); 
                 log_message('info',print_r($resMail,TRUE));        
-                if ($resMail['success']==1) {                    
+                if ($resMail['success']==1) {  
+                    $params=array();
+                    $params['rmsa_user_id']=$res['rmsa_user_id'];
+                    $params['link_code']=$link_code;
+                    $params['user_type']='student';                   
+                    $this->Rmsa_model->user_email_link($params);
                 } else {
                     $_SESSION['send_email_error'] = 1;
                     $send_email_error=1;

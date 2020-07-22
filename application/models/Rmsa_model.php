@@ -110,12 +110,22 @@ class Rmsa_model extends CI_Model {
                 'success' => true,
                 'email_exist' => false,
                 'email' => $params['rmsa_user_email_id'],
+                'rmsa_user_id'=>$insert_id
             );
 //                return $insert_id;
         }
         return FALSE;
         //it will be return boolean value (true/false)
-    }    
+    }
+    public function user_email_link($params) {
+        $result = $this->db->insert('user_email_link', $params);
+        $insert_id = $this->db->insert_id();
+        if (!empty($insert_id)) {
+            return true;
+        }
+        return false;
+     }
+    
     public function register_employee($params) {
         $email_exist = $this->db->query("SELECT * FROM rmsa_employee_users WHERE rmsa_user_email_id = '" . $params['rmsa_user_email_id'] . "' ");
         $res = $email_exist->row_array();
@@ -145,6 +155,7 @@ class Rmsa_model extends CI_Model {
                 'success' => true,
                 'email_exist' => false,
                 'email' => $params['rmsa_user_email_id'],
+                'rmsa_user_id'=>$insert_id
             );
 //                return $insert_id;
         }

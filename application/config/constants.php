@@ -121,6 +121,7 @@ define('STUDENT_LOGIN_LINK',BASE_URL."/student-login");
 define('STUDENT_LOGOUT_LINK',BASE_URL."/student-logout");
 define('STUDENT_REGISTER_LINK',BASE_URL."/student-registration");
 define('STUDENT_VIDEO_LINK',BASE_URL."/video_lessons/");
+define('STUDENT_ACTIVE_EMAIL_LINK',BASE_URL."/email-verify/");
 
 define('STUDENT_VIDEO_SEARCH_LINK',BASE_URL."/video_lessons_search");
 

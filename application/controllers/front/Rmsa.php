@@ -88,16 +88,26 @@ class Rmsa extends MY_Controller
             $result=array();
             $send_email_error=0;
             if($res['success'] == true){
+                $link_code=gen_uuid($res['rmsa_user_id'],'e');
+                $email_active_link=STUDENT_ACTIVE_EMAIL_LINK.'employee/'.$link_code;
+//                echo gen_uuid("c0500f9481b7bc0746ea2beaca9e8581-M3JKK3pNdHF1SjZlZEdBSHlOTzZBdz09",'d');die;
                 $_SESSION['registration'] = 1;
                 $result['success']='success';
                 $data = array(
-                    'userName'=> $res['email'],
-                    'password'=> $_POST['rmsa_user_email_password']
+                    'username'=> $res['email'],
+                    'password'=> $_POST['rmsa_user_email_password'],
+                    'template'=> 'employeeRegistrationTemplate.html',
+                    'activationlink'=>$email_active_link
                 );
                 $sendmail = new SMTP_mail();
-                $resMail = $sendmail->sendDetails($res['email'],$data); 
+                $resMail = $sendmail->sendRegistrationDetails($res['email'],$data); 
                 log_message('info',print_r($resMail,TRUE));        
-                if ($resMail['success']==1) {                    
+                if ($resMail['success']==1) {
+                    $params=array();
+                    $params['rmsa_user_id']=$res['rmsa_user_id'];
+                    $params['link_code']=$link_code;
+                    $params['user_type']='employee';                   
+                    $this->Rmsa_model->user_email_link($params);  
                 } else {
                     $_SESSION['send_email_error'] = 1;
                     $send_email_error=1;

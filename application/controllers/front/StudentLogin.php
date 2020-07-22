@@ -52,6 +52,14 @@ class StudentLogin extends MY_Controller{
 //        $_SESSION['token'] = bin2hex(random_bytes(24));       
         $this->renderFront('front/studentlogin');       
     }
-
+    public function verify_email($user_type,$link_code){        
+        $user_id=gen_uuid($link_code,'d');      
+        $res=$this->Login_model->chek_code_exist($user_id,$link_code,$user_type);        
+        $this->mViewData['success']=0;
+        if($res){
+            $this->mViewData['success']=1;
+        }       
+        $this->renderSinglePage('front/thankyou');           
+    }
 }
 ?>
