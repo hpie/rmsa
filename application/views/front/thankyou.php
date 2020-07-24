@@ -60,6 +60,9 @@
                 <!-- The underline makes a border on the top and on the bottom of the text -->
             </h1>
             <center>
+            <h3>
+                Your email is verified and account activated. Please use your emailid and password to login.
+            </h3>
             <h3>                
                 Click here to go home page <a href="<?php echo BASE_URL; ?>">Home</a>
             </h3>
@@ -74,8 +77,11 @@
                 <!-- The underline makes a border on the top and on the bottom of the text -->
             </h1>
             <center>
-            <h3>                
-                Please contact to RMSA Admin
+            <h3>
+                You have used an old activation link. Please use your emailid and password to login.
+            </h3>
+            <h3>
+                If you are still facing login issues, please contact your School Principal.
             </h3>
             </center>
             <?php } ?>

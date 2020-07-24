@@ -75,7 +75,7 @@ if (isset($_SESSION['invalidAttempt'])) {
 }else{echo 0;}
 ?> == 1) {
                 var d = new PNotify({
-                    title: 'Your account is locked',
+                    title: 'Your account is locked after consecutive failure attempts. Please contact your school with your email id to unlock',
                     type: 'error',
                     styling: 'bootstrap3'
                 });
@@ -88,7 +88,7 @@ if (isset($_SESSION['invalid_login'])) {
 }else{echo 0;}
 ?> == 1) {
                 var d = new PNotify({
-                    title: 'Invalid Username & Password',
+                        title: 'Invalid Username & Password. Account will be locked after 3 unsuccessful attempts',
                     type: 'error',
                     styling: 'bootstrap3'
                 });
@@ -115,13 +115,13 @@ if (isset($_SESSION['registration'])) {
 }else{echo 0;}
 ?> == 1) {
                 new PNotify({
-                    title: 'Registration successfully',
+                    title: 'Registration success. Your account will be activated by the admin.',
                     type: 'success',
                     styling: 'bootstrap3'
                 });
                 
                 new PNotify({
-                    title: 'Mail not delievered to user',
+                    title: 'Failed to deliver email. Please contact your school and share your email id.',
                     type: 'error',
                     styling: 'bootstrap3'
                 });                                                
@@ -132,7 +132,7 @@ if (isset($_SESSION['registration'])) {
 }else{echo 0;}
 ?> == 2) {
                 var d = new PNotify({
-                    title: 'Registration successfully check your mail',
+                    title: 'Registration success. A verification email and login details have been sent. Check your email',
                     type: 'success',
                     styling: 'bootstrap3'
                 });
