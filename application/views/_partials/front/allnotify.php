@@ -13,7 +13,7 @@ if (isset($_SESSION['email_notverify'])) {
 }else{echo 0;}
 ?> == 1) {
                 var d = new PNotify({
-                    title: 'Your email is not verified!',
+                    title: 'Account Inactive! email is not verified. Please check the email sent and click activation link.',
                     type: 'error',
                     styling: 'bootstrap3'
                 });

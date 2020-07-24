@@ -51,7 +51,7 @@ class SMTP_mail {
 
         $this->sender_name ='Gyanshala';
 
-        $this->subject ='User Details';
+        $this->subject ='Gyanshala Support: User Registration Details';
 
         $this->mail->isSMTP();
 
@@ -106,9 +106,9 @@ class SMTP_mail {
         
         $this->sender_email ='info@codexives.com';
 
-        $this->sender_name ='Gyanshala';
+        $this->sender_name ='Gyanshala Support';
 
-        $this->subject ='Password reset details';
+        $this->subject ='Gyanshala Support: Password Reset Notification';
 
         $this->mail->isSMTP();
 
