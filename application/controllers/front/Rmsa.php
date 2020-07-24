@@ -209,6 +209,18 @@ class Rmsa extends MY_Controller
         if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
             $res = $this->Employee_model->update_password($_POST,$stud_id);                    
             if($res){
+                $email=$this->Employee_model->get_user_details($stud_id,'rmsa_student_users');                
+                $data = array(
+                    'username'=> $email['rmsa_user_email_id'],
+                    'password'=> $_POST['rmsa_user_new_password'],
+                    'template'=> 'studentPassResetTemplate.html'
+                );
+                $sendmail = new SMTP_mail();
+                $resMail = $sendmail->sendResetPasswordDetails($email['rmsa_user_email_id'],$data);                 
+                log_message('info',print_r($resMail,TRUE));      
+                
+                
+                
                 $_SESSION['updatedata']=1; 
                 $result['success']="success";                   
             }                            
@@ -269,12 +281,21 @@ class Rmsa extends MY_Controller
         $this->renderFront('front/rmsa_student_profile');
     }
     
-     public function update_teacher_profile($emp_id){
-//        echo $emp_id;die;
+     public function update_teacher_profile($emp_id){       
         $result=array();               
         if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
             $res = $this->Employee_model->update_password_teacher($_POST,$emp_id);                    
-            if($res){
+            if($res){                
+                $email=$this->Employee_model->get_user_details($emp_id,'rmsa_teacher_users');
+                $data = array(
+                    'username'=> $email['rmsa_user_email_id'],
+                    'password'=> $_POST['rmsa_user_new_password'],
+                    'template'=> 'teacherPassResetTemplate.html'
+                );
+                $sendmail = new SMTP_mail();
+                $resMail = $sendmail->sendResetPasswordDetails($email['rmsa_user_email_id'],$data);                
+                log_message('info',print_r($resMail,TRUE));
+                
                 $_SESSION['updatedata']=1;
                 $result['success']="success";                   
             }                            
@@ -317,6 +338,17 @@ class Rmsa extends MY_Controller
         if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
             $res = $this->Employee_model->update_password_employee($_POST,$emp_id);                    
             if($res){
+                
+                $email=$this->Employee_model->get_user_details($emp_id,'rmsa_employee_users');
+                $data = array(
+                    'username'=> $email['rmsa_user_email_id'],
+                    'password'=> $_POST['rmsa_user_new_password'],
+                    'template'=> 'employeePassResetTemplate.html'
+                );
+                $sendmail = new SMTP_mail();
+                $resMail = $sendmail->sendResetPasswordDetails($email['rmsa_user_email_id'],$data);                 
+                log_message('info',print_r($resMail,TRUE));
+                
                 $_SESSION['updatedata']=1;
                 $result['success']="success";                   
             }                            

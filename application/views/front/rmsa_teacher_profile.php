@@ -170,7 +170,7 @@
         </form>
 
 
-        <form method="post" id="frm_change_password" class="form-horizontal border p-2" action="<?php echo RMSA_EMPLOYEE_UPDATE_PROFILE_LINK.$student_data['rmsa_user_id']; ?>">
+        <form method="post" id="frm_change_password" class="form-horizontal border p-2" action="<?php echo RMSA_TEACGER_UPDATE_PROFILE_LINK.$student_data['rmsa_user_id']; ?>">
             <h2 class="second-heading">Change password</h2>
 <!--            <div class="form-group">
                 <div class="row">

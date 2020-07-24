@@ -7,6 +7,15 @@ class Employee_model extends CI_Model {
     }
 
     
+    public function get_user_details($rmsa_user_id,$table) {            
+        $data = $this->db->query(" SELECT * FROM $table WHERE rmsa_user_id = '" . $rmsa_user_id . "'");
+        $student_data = $data->row_array();
+        if (isset($student_data)) {
+            return $student_data;
+        }
+        return false;
+    }
+    
     public function rmsa_coordinators_details() {
         $rmsa_user_id = $_SESSION['rm_rmsa_user_id'];       
         $data = $this->db->query(" SELECT * FROM rmsa_coordinators WHERE rmsa_user_id = '" . $rmsa_user_id . "'");

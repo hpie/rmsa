@@ -126,7 +126,7 @@ class Student_model extends CI_Model {
     }
 
     public function update_password($params) {
-        $new_password = md5($params['rmsa_user_new_password']);
+        $new_password = md5($params['rmsa_user_new_password']);        
         $rmsa_user_id = $_SESSION['st_rmsa_user_id'];
         $result = $this->db->query("UPDATE rmsa_student_users
                               SET rmsa_user_email_password = '" . $new_password . "'

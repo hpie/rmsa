@@ -5,6 +5,7 @@ class Teacher extends MY_Controller
 {
     public function __construct(){
         parent::__construct();
+         include APPPATH . 'third_party/smtp_mail/smtp_send.php'; 
         $this->load->helper('functions'); 
         
         $_SESSION['securityToken2']=$_SESSION['securityToken1'];
@@ -46,6 +47,17 @@ class Teacher extends MY_Controller
             if($this->Tech_Login->check_current_password($_POST['rmsa_user_current_password'])){                
                 $res = $this->Tech_Login->update_password($_POST);                    
                 if($res){
+                    
+                    $email=$_SESSION['tech_rmsa_user_email_id'];                    
+                    $data = array(
+                        'username'=> $email,
+                        'password'=> $_POST['rmsa_user_new_password'],
+                        'template'=> 'teacherPassResetTemplate.html'
+                    );
+                    $sendmail = new SMTP_mail();
+                    $resMail = $sendmail->sendResetPasswordDetails($email,$data);                     
+                    log_message('info',print_r($resMail,TRUE)); 
+                    
                     $_SESSION['updatedata']=1;
                     $result['success']="success";                   
                 }                
@@ -98,6 +110,18 @@ class Teacher extends MY_Controller
         if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
             $res = $this->Employee_model->update_password($_POST,$stud_id);                    
             if($res){
+                
+                $email=$this->Employee_model->get_user_details($stud_id,'rmsa_student_users');                
+                $data = array(
+                    'username'=> $email['rmsa_user_email_id'],
+                    'password'=> $_POST['rmsa_user_new_password'],
+                    'template'=> 'studentPassResetTemplate.html'
+                );
+                $sendmail = new SMTP_mail();
+                $resMail = $sendmail->sendResetPasswordDetails($email['rmsa_user_email_id'],$data);                 
+                log_message('info',print_r($resMail,TRUE)); 
+                
+                
                 $_SESSION['updatedata']=1;
                 $result['success']="success";                   
             }                            

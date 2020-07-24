@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Student extends MY_Controller{
     public function __construct(){                
-        parent::__construct();  
+        parent::__construct(); 
+        include APPPATH . 'third_party/smtp_mail/smtp_send.php'; 
         $this->load->helper('functions');
         
         $_SESSION['securityToken2']=$_SESSION['securityToken1'];
@@ -120,8 +121,18 @@ class Student extends MY_Controller{
         $result=array();               
         if(isset($_POST['rmsa_user_current_password']) && $_POST['rmsa_user_current_password']!=''){            
             if($this->Student_model->check_current_password($_POST['rmsa_user_current_password'])){                
-                $res = $this->Student_model->update_password($_POST);                    
-                if($res){
+                $res = $this->Student_model->update_password($_POST);                 
+                if($res){                                        
+                    $email=$_SESSION['st_rmsa_user_email_id'];                    
+                    $data = array(
+                        'username'=> $email,
+                        'password'=> $_POST['rmsa_user_new_password'],
+                        'template'=> 'studentPassResetTemplate.html'
+                    );
+                    $sendmail = new SMTP_mail();
+                    $resMail = $sendmail->sendResetPasswordDetails($email,$data);                     
+                    log_message('info',print_r($resMail,TRUE)); 
+                    
                     $_SESSION['updatedata']=1;
                     $result['success']="success";                   
                 }                
