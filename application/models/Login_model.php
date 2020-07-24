@@ -21,6 +21,16 @@ class Login_model extends CI_Model{
     }
         
     public function login_select($username, $password) {
+        
+        $emailVerify = $this->db->query("SELECT * FROM `rmsa_student_users` WHERE ( rmsa_user_email_id = '$username' OR rmsa_user_roll_number= '$username') AND rmsa_user_email_verified_status = 0 ");
+        $emailVerify_data = $emailVerify->row_array();
+        if (isset($emailVerify_data)) {
+            $result_email=array();
+            $result_email['success']=1;
+            return $result_email;
+        }
+        
+        
         $password= md5($password);      
         $q = "SELECT * FROM rmsa_student_users WHERE (rmsa_user_email_id='$username' OR rmsa_user_roll_number='$username') and rmsa_user_email_password='$password' AND rmsa_user_status='ACTIVE' AND rmsa_user_locked_status=0";
         $query = $this->db->query($q);

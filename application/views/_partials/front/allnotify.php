@@ -1,5 +1,5 @@
 <script nonce='S51U26wMQz' type="text/javascript">
-$(document).ready(function () {
+$(document).ready(function () {        
 <?php
 if(isset($_SESSION['invalidAttempt'])){
     if($_SESSION['invalidAttempt']==1){
@@ -7,6 +7,20 @@ if(isset($_SESSION['invalidAttempt'])){
     }
 }
 ?>
+                       if (<?php
+if (isset($_SESSION['email_notverify'])) {
+    echo $_SESSION['email_notverify'];
+}else{echo 0;}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'Your email is not verified!',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+                <?php $_SESSION['email_notverify'] = 0; ?>
+            } 
+        
+        
                if (<?php
 if (isset($_SESSION['captcha'])) {
     echo $_SESSION['captcha'];

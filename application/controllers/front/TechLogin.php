@@ -41,7 +41,13 @@ class TechLogin extends MY_Controller {
         $_SESSION['invalid_login'] = 0;
         if (isset($_POST['username']) && isset($_POST['password'])) {     
             $result = $this->Tech_Login->tech_login_select($_POST['username'], $_POST['password']);
-            if ($result == true) {
+            if(isset($result['success'])){
+                if($result['success']==1){
+                    $_SESSION['email_notverify']=1;
+                }
+            }
+            
+            if ($result == true && !isset($result['success'])) {
                 $userId=$_SESSION['user_id'];
                 $userType=$_SESSION['usertype']; 
                 log_message('info', "$userType id $userId logged into the system");

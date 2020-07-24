@@ -8,6 +8,15 @@ class Emp_Login extends CI_Model {
     }
 
     public function emp_login_select($username, $password) {
+        
+        $emailVerify = $this->db->query("SELECT * FROM `rmsa_employee_users` WHERE ( rmsa_user_email_id = '$username' OR rmsa_user_employee_code= '$username') AND rmsa_user_email_verified_status = 0 ");
+        $emailVerify_data = $emailVerify->row_array();
+        if (isset($emailVerify_data)) {
+            $result_email=array();
+            $result_email['success']=1;
+            return $result_email;
+        }
+        
         $password = md5($password);
 //        echo $password;die;
         $employee = $this->db->query("SELECT * FROM `rmsa_employee_users` WHERE ( rmsa_user_email_id = '$username' OR rmsa_user_employee_code= '$username')

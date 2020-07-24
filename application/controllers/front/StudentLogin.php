@@ -38,7 +38,14 @@ class StudentLogin extends MY_Controller{
         if (isset($_POST['username']) && isset($_POST['password'])) {
 //            reCaptchaResilt($_REQUEST['captcha_entered'],STUDENT_LOGIN_LINK);
             $result = $this->Login_model->login_select($_POST['username'], $_POST['password']);           
-            if ($result == true) { 
+            
+            if(isset($result['success'])){
+                if($result['success']==1){
+                    $_SESSION['email_notverify']=1;
+                }
+            }
+            
+            if ($result == true && !isset($result['success'])) {
                 $userId=$_SESSION['user_id'];
                 $userType=$_SESSION['usertype']; 
                 log_message('info', "$userType id $userId logged into the system");

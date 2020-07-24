@@ -7,7 +7,6 @@ class Tech_Login extends CI_Model {
         parent::__construct();
     }
 
-    
     public function check_current_password($current_password) {
         $current_password = md5($current_password);
         $rmsa_user_id = $_SESSION['tech_rmsa_user_id'];
@@ -36,6 +35,16 @@ class Tech_Login extends CI_Model {
     public function tech_login_select($username, $password) {
         $password = md5($password);
 //        echo $password;die;
+        
+        $emailVerify = $this->db->query("SELECT * FROM `rmsa_teacher_users` WHERE ( rmsa_user_email_id = '$username' OR rmsa_user_teacher_code= '$username') AND rmsa_user_email_verified_status = 0 ");
+        $emailVerify_data = $emailVerify->row_array();
+        if (isset($emailVerify_data)) {
+            $result_email=array();
+            $result_email['success']=1;
+            return $result_email;
+        }
+        
+        
         $employee = $this->db->query("SELECT * FROM `rmsa_teacher_users` WHERE ( rmsa_user_email_id = '$username' OR rmsa_user_teacher_code= '$username')
                                       AND rmsa_user_email_password = '$password' AND rmsa_user_status = 'ACTIVE' AND rmsa_user_locked_status=0");
         $emp_data = $employee->row_array();
