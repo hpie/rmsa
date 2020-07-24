@@ -1123,7 +1123,7 @@ class SSP {
                         $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
                         $total_student_view = $student_view_count[0]['total_Student_views'];
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png'><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         $row['ratting']="<td>$star<br><button class='filereviewslink btn-xs btn btn-warning'  id='$rmsa_file_id'>View Reviews</button></td>";
                         $i=0;
@@ -1144,10 +1144,10 @@ class SSP {
                                 $total_student_view_child = $student_view_count_child[0]['total_Student_views'];
                                 $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true"; 
                                 if($i<=1){                                
-                                    $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                    $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                           <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
                                     }                                    
-                                    $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                    $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                              <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";                                                                       
                                 $i=$i+1;                               
                             }
@@ -1280,7 +1280,7 @@ class SSP {
                         $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
                         $total_student_view = $student_view_count[0]['total_Student_views'];
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         $row['ratting']="<td>$star</td>";
                         $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
@@ -1423,15 +1423,15 @@ class SSP {
                         
                         if($attendSts == 0){
                             $link_str=BASE_URL.'/exam/'.$rmsa_file_id;
-                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                                 <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         }
                         else{
-                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                                     <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         }
                         
-//                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+//                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
 //                                     <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         $row['ratting']="<td>$star</td>";
                         $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
@@ -1567,15 +1567,15 @@ class SSP {
                         
                         if($attendSts == 0){
                             $link_str=BASE_URL.'/exam/'.$rmsa_file_id;
-                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                                 <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         }
                         else{
-                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                                     <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         }
                         
-//                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+//                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
 //                                     <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         $row['ratting']="<td>$star</td>";
                         $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
@@ -1789,15 +1789,15 @@ class SSP {
                         
                         if($attendSts == 0){
                             $link_str=BASE_URL.'/exam/'.$rmsa_file_id;
-                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                                 <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         }
                         else{
-                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                            $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                                     <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         }
                         
-//                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+//                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
 //                                     <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         $row['ratting']="<td>$star</td>";
                         $row['ext']="<table><tr style='background-color:transparent'>".$row['ext']."</tr></table>";                            
@@ -2203,7 +2203,7 @@ class SSP {
                         $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
                         $total_student_view = $student_view_count[0]['total_Student_views'];
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         $row['ratting']="<td>$star<br><button class='filereviewslink btn-xs btn btn-warning'  id='$rmsa_file_id'>View Reviews</button></td>";
                         $i=0;
@@ -2224,10 +2224,10 @@ class SSP {
                                 $total_student_view_child = $student_view_count_child[0]['total_Student_views'];
                                 $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true"; 
                                 if($i<=1){                                
-                                    $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                    $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                           <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
                                     }                                    
-                                    $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                    $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                              <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";                                                                       
                                 $i=$i+1;                               
                             }
@@ -2382,7 +2382,7 @@ class SSP {
                         $student_view_count = self::sql_exec($db,"SELECT COUNT(*) as total_Student_views FROM rmsa_user_file_views WHERE rmsa_uploaded_file_id = '{$rmsa_file_id}'");
                         $total_student_view = $student_view_count[0]['total_Student_views'];
                         $link_str="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$row['uploaded_file_path']."&embedded=true";
-                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                        $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                         $row['ratting']="<td>$star<br><button class='filereviewslink btn-xs btn btn-warning'  id='$rmsa_file_id'>View Reviews</button></td>";
                         $i=0;
@@ -2403,10 +2403,10 @@ class SSP {
                                 $total_student_view_child = $student_view_count_child[0]['total_Student_views'];
                                 $link_str_child="https://docs.google.com/viewer?url=".BASE_URL.FILE_URL.'/'.$rowChild['uploaded_file_path']."&embedded=true"; 
                                 if($i<=1){                                
-                                    $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                    $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                           <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
                                     }                                    
-                                    $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                    $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."' class='viewFile'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                              <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";                                                                       
                                 $i=$i+1;                               
                             }
@@ -2572,11 +2572,11 @@ class SSP {
                 
                 if($attendSts == 0){
                     $link_str=BASE_URL.'/exam/'.$rmsa_file_id;
-                    $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                    $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                         <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                 }
                 else{
-                $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' style='width:40%'><br>".$row['uploaded_file_title']."</a>
+                $row['ext']="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$row['rmsa_uploaded_file_id']."' href='".$link_str."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$row['uploaded_file_type'].".png' ><br>".$row['uploaded_file_title']."</a>
                         <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$row['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view."</span></center></td>";
                 }
                 $row['review']="<td><center><img src='".IMG_URL."/assets/front/DataTablesSrc-master/images/customer-review.png' style='width:20%;cursor: pointer;' class='open_review' onclick='openreview($rmsa_file_id)'></center></td>";
@@ -2626,10 +2626,10 @@ class SSP {
                         if($attendSts==0){
                                 $link_str_child=BASE_URL.'/exam/'.$rmsa_file_id;
                                 if($i<=1){                                                                
-                                        $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                        $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                              <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";                                    
                                 }
-                                $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                  <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
                         }else{                            
                             if($i<=1){                            
@@ -2637,11 +2637,11 @@ class SSP {
                                     array_push($exam_rmsa_child_file_id,$rmsa_child_file_id);
                                     $exam_file_id=$exam_rmsa_child_file_id[0];
                                     $link_str_child=BASE_URL.'/exam/'.$exam_file_id;
-                                    $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                    $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                          <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
                                 }   
                                 else{    
-                                $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                $strTd.="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                          <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
                                 }
                             }
@@ -2649,11 +2649,11 @@ class SSP {
                                 array_push($exam_rmsa_child_file_id,$rmsa_child_file_id);
                                 $exam_file_id=$exam_rmsa_child_file_id[0];
                                 $link_str_child=BASE_URL.'/exam/'.$exam_file_id;
-                                $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                                $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
                             }
                             else{
-                            $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' style='width:40%'><br>".$rowChild['uploaded_file_title']."</a>
+                            $strTdAmodel.="<td style='padding: 0px 0px;' class='tooltip1'><center><a class='view_count' data-id='".$rowChild['rmsa_uploaded_file_id']."' href='".$link_str_child."'><img src='".IMG_URL."/assets/front/fileupload/img/file-icon/icon/".$rowChild['uploaded_file_type'].".png' ><br>".$rowChild['uploaded_file_title']."</a>
                                      <br><span style='font-size:10px' class='tooltiptext'>Hit count <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$rowChild['uploaded_file_viewcount']."<br>Student view <i class=\"fa fa-eye\" aria-hidden=\"true\"></i> ".$total_student_view_child."</span></center></td>";
                             }
                         }
