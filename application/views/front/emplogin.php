@@ -10,7 +10,7 @@
                     <label class="control-label col-sm-4 col-xs-12" for="userName">User
                         Name:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="text" name="username" class="form-control" placeholder="User Name">
+                        <input type="text" name="username" class="form-control" placeholder="User Name" required>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="password">Password:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input type="password" name="password" class="form-control" placeholder="">
+                        <input type="password" name="password" class="form-control" placeholder="" required>
                     </div>
                 </div>
             </div>
@@ -39,9 +39,10 @@
             <div class="form-group">
                 <div class="m-auto text-center">
                     <button type="submit" class="btn primary_btn btn_disabled" disabled="true" id="btnLogin">Login</button>
+                    <a class="btn btn-primary" href="<?php echo FORGET_PASSWORD_LINK.'employee'; ?>">Forget password</a>
                 </div>
             </div>            
-        </form>
+        </form>        
         <div class="form-group">
             <a href="#">New Registration: Please contact the Portal Admin</a>
         </div>

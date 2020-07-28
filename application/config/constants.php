@@ -228,7 +228,9 @@ define('MOST_ACTIVE_STUDENT',BASE_URL."/most-active-student");
 define('EMPLOYEE_REPORTS',BASE_URL."/employee-reports");
 define('EMPLOYEE_REPORTS_2',BASE_URL."/employee-reports-2");
 
-
+define('FORGET_PASSWORD_LINK',BASE_URL."/forget-password/");
+define('CHANGE_FORGET_PASSWORD_LINK',BASE_URL."/change-forget-password/");
+define('UPDATE_FORGET_PASSWORD_LINK',BASE_URL."/update-forget-password");
 
 
 //define all title heare for page
@@ -318,6 +320,8 @@ define('EMPLOYEE_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE',"Welcome to gyanshala.hp
 
 define('TEACHER_STUDENT_ATTEMPTED_EXAM_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher Student Quiz List");
 define('TEACHER_STUDENT_MY_QUIZATTEMPTED_RESULT_TITLE',"Welcome to gyanshala.hp.gov.in - Teacher Student My Quiz Attempt Result");
+define('FORGET_PASSWORD_TITLE',"Welcome to gyanshala.hp.gov.in - Forget Password");
+define('CHANGE_FORGET_PASSWORD_TITLE',"Welcome to gyanshala.hp.gov.in - Change Forget Password");
 
 
 

@@ -7,6 +7,57 @@ if(isset($_SESSION['invalidAttempt'])){
     }
 }
 ?>
+                   if (<?php
+if (isset($_SESSION['forget_mail_sent'])) {
+    echo $_SESSION['forget_mail_sent'];
+}else{echo 0;}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'Password reset Link sent on your email.',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+                <?php $_SESSION['forget_mail_sent'] = 0; ?>
+            }        
+        
+                        if (<?php
+if (isset($_SESSION['update_forget_password'])) {
+    echo $_SESSION['update_forget_password'];
+}else{echo 0;}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'Password set successfully',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+                <?php $_SESSION['update_forget_password'] = 0; ?>
+            } 
+        
+                             if (<?php
+if (isset($_SESSION['forget_validity'])) {
+    echo $_SESSION['forget_validity'];
+}else{echo 0;}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'RMSA allowed per day only one request for forget password.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+                <?php $_SESSION['forget_validity'] = 0; ?>
+            }        
+                              if (<?php
+if (isset($_SESSION['email_not_exist'])) {
+    echo $_SESSION['email_not_exist'];
+}else{echo 0;}
+?> == 1) {
+                var d = new PNotify({
+                    title: 'This email address is not exist in RMSA!',
+                    type: 'warning',
+                    styling: 'bootstrap3'
+                });
+                <?php $_SESSION['email_not_exist'] = 0; ?>
+            } 
+        
                        if (<?php
 if (isset($_SESSION['email_notverify'])) {
     echo $_SESSION['email_notverify'];

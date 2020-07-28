@@ -125,6 +125,14 @@ class Rmsa_model extends CI_Model {
         }
         return false;
      }
+     public function user_forget_link($params) {
+        $result = $this->db->insert('user_forget_link', $params);
+        $insert_id = $this->db->insert_id();
+        if (!empty($insert_id)) {
+            return true;
+        }
+        return false;
+     }
     
     public function register_employee($params) {
         $email_exist = $this->db->query("SELECT * FROM rmsa_employee_users WHERE rmsa_user_email_id = '" . $params['rmsa_user_email_id'] . "' ");

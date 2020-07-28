@@ -128,7 +128,67 @@ class Emp_Login extends CI_Model {
         }
         return false;
     }
-
+    public function email_exist_check($email,$table) {
+        $email_exist = $this->db->query("SELECT * FROM $table WHERE rmsa_user_email_id = '" . $email . "' ");
+        $res = $email_exist->row_array();
+        if ($res) {
+            return Array(
+                'success' => true,
+                'email_exist' => true,
+                'data'=>$res
+            );
+        }
+        else{
+            return Array(
+                'success' => false
+            );
+        }
+    }
+    public function check_forget_validity($user_type,$rmsa_user_id,$date) {
+        $validity_res = $this->db->query("SELECT * FROM user_forget_link WHERE rmsa_user_id = '" . $rmsa_user_id . "' AND user_type = '" . $user_type . "' AND DATE(request_date) = '" . $date . "' ");
+        $res = $validity_res->row_array();       
+        if ($res) {
+            return FALSE;
+        }
+        else{
+            return TRUE;
+        }
+    }
+    public function chek_forget_code_exist($rmsa_user_id,$user_type,$link_code,$date) {       
+        $validity_res = $this->db->query("SELECT * FROM user_forget_link WHERE rmsa_user_id = '" . $rmsa_user_id . "' AND user_type = '" . $user_type . "' AND link_code = '" . $link_code . "' AND DATE(request_date) = '" . $date . "' ");
+        $res = $validity_res->row_array();       
+        if ($res) {
+            return TRUE;
+        }
+        else{
+            return FALSE;
+        }
+    }
+      public function update_forget_password($params) {
+        $table="";  
+        if($params['rmsa_user_type']=='rmsa'){
+            $table='rmsa_coordinators';
+        }
+        if($params['rmsa_user_type']=='employee'){
+            $table='rmsa_employee_users';
+        }
+        if($params['rmsa_user_type']=='teacher'){
+            $table='rmsa_teacher_users';
+        }
+        if($params['rmsa_user_type']=='student'){
+            $table='rmsa_student_users';
+        }
+        $new_password = md5($params['rmsa_user_new_password']);
+        $rmsa_user_id = $params['rmsa_user_id'];
+        $result = $this->db->query("UPDATE $table
+                              SET rmsa_user_email_password = '" . $new_password . "'
+                              WHERE rmsa_user_id = '" . $rmsa_user_id . "'");        
+        if($result){
+            $user_type=$params['rmsa_user_type'];
+            $this->db->query("DELETE  FROM user_forget_link WHERE rmsa_user_id='{$rmsa_user_id}' AND user_type='$user_type'");
+        }
+        return $result; //return true/false
+    }
 }
 
 ?>

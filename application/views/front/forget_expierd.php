@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
-        <title>RMSA Verify email</title>
+        <title>RMSA forget password expire</title>
         <link href="<?php echo BASE_URL; ?>/assets/front/css/animate.min.css" rel="stylesheet" type="text/css"/>
         <style>
             @mixin vertical-align($position: relative) {
@@ -50,24 +50,7 @@
     </head>
     <body>
         <div id="wrapper" class="animated zoomIn">
-            <!-- We make a wrap around all of the content so that we can simply animate all of the content at the same time. I wanted a zoomIn effect and instead of placing the same class on all tags, I wrapped them into one div! -->
-            <?php if ($success==1){ ?>
-            <h1>
-                <!-- The <h1> tag is the reason why the text is big! -->
-                
-                <underline>Email verified!</underline>
-                
-                <!-- The underline makes a border on the top and on the bottom of the text -->
-            </h1>
-            <center>
-            <h3>
-                Your email is verified and account activated. Please use your email id and password to login.
-            </h3>
-            <h3>                
-                Click here to go home page <a href="<?php echo BASE_URL; ?>">Home</a>
-            </h3>
-            </center>
-            <?php } ?>
+            <!-- We make a wrap around all of the content so that we can simply animate all of the content at the same time. I wanted a zoomIn effect and instead of placing the same class on all tags, I wrapped them into one div! -->          
             <?php if ($success==0){ ?>
             <h1 class="red">
                 <!-- The <h1> tag is the reason why the text is big! -->
@@ -78,10 +61,10 @@
             </h1>
             <center>
             <h3>
-                You have used an old activation link. Please use your email id and password to login.
+                You have used an old link. Please generate request again.
             </h3>
             <h3>
-                If you are still facing login issues, please contact your School Principal.
+                If you are still facing issues, please contact your admin.
             </h3>
             </center>
             <?php } ?>

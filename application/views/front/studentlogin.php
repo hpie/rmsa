@@ -9,7 +9,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="username">User Name:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input id="username" name="username" type="text" class="form-control" placeholder="User Name">
+                        <input id="username" name="username" type="text" class="form-control" placeholder="User Name" required>
                     </div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <div class="row">
                     <label class="control-label col-sm-4 col-xs-12" for="password">Password:</label>
                     <div class="col-sm-8 col-xs-12">
-                        <input id="password" name="password" type="password" class="form-control" placeholder="">
+                        <input id="password" name="password" type="password" class="form-control" placeholder="" required> 
                     </div>
                 </div>
             </div>
@@ -31,12 +31,14 @@
                     <label class="control-label col-sm-4 col-xs-12" for="ptsp"></label>
                     <div class="col-sm-8 col-xs-12">
                         <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableLogin"></div>
+                        
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="m-auto text-center">
                     <button type="submit" class="btn primary_btn btn_disabled" disabled="true" id="btnLogin">Login</button>
+                    <a class="btn btn-primary" href="<?php echo FORGET_PASSWORD_LINK.'student'; ?>">Forget password</a>
                 </div>
             </div>
         </form>

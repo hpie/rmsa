@@ -218,6 +218,10 @@ $route['most-active-student']            = 'front/helper/most_active_student_by_
 $route['employee-reports/(:any)']     = 'front/helper/employee_reports/$1';
 $route['employee-reports-2/(:any)/(:any)']     = 'front/helper/employee_reports_2/$1/$2';
 
+$route['forget-password/(:any)']           = 'front/EmpLogin/forget_password/$1';
+$route['change-forget-password/(:any)']           = 'front/EmpLogin/forget_password_change/$1';
+$route['update-forget-password']           = 'front/EmpLogin/update_forget_password';
+
 
 //others routes
 $route['circulars']              = 'front/Circulars';

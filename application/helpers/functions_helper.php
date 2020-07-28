@@ -156,3 +156,26 @@ function gen_uuid($rmsa_user_id,$action = 'e') {
     }     
     return $code.'-'.$output;
 }
+function forget_password_uuid($rmsa_user_id,$user_type='',$action = 'e') {   
+    $code = md5(sprintf('%04x%04x%04x%04x%04x%04x%04x%04x', mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000, mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)) . time() . uniqid(rand() . mt_rand(1, 10000000), true));    
+    $secret_key = 'my_simple_secret_key';
+    $secret_iv = 'my_simple_secret_iv';
+    $user_id_enc = false;
+    $user_type_enc = false;
+    $encrypt_method = "AES-256-CBC";
+    $key = hash('sha256', $secret_key);
+    $iv = substr(hash('sha256', $secret_iv), 0, 16);
+    if ($action == 'e') {
+        $user_id_enc = base64_encode(openssl_encrypt($rmsa_user_id, $encrypt_method, $key, 0, $iv));
+        $user_type_enc = base64_encode(openssl_encrypt($user_type, $encrypt_method, $key, 0, $iv));
+        return $code.'-'.$user_id_enc.'-'.$user_type_enc;
+    } else if ($action == 'd') {        
+        $splitStr=explode('-', $rmsa_user_id);
+        $rmsa_user_id_code=$splitStr[1];   
+        $rmsa_user_type_code=$splitStr[2];
+        $res=array();
+        $res['rmsa_user_id']=openssl_decrypt(base64_decode($rmsa_user_id_code), $encrypt_method, $key, 0, $iv);
+        $res['rmsa_user_type']=openssl_decrypt(base64_decode($rmsa_user_type_code), $encrypt_method, $key, 0, $iv);
+        return $res; 
+    }         
+}
