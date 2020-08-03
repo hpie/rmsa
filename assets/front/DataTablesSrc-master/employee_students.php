@@ -35,8 +35,10 @@ $columns = array(
     array('db' => 'rsu.rmsa_user_DOB', 'dt' =>'rmsa_user_DOB'),
     array('db' => 'rsu.rmsa_user_email_id', 'dt' =>'rmsa_user_email_id'),
     array('db' => 'rsu.rmsa_user_status', 'dt' =>'rmsa_user_status'),
+    array('db' => 'rsu.rmsa_block_id', 'dt' =>'rmsa_block_id'),
+    array('db' => 'rsu.rmsa_user_locked_status', 'dt' =>'rmsa_user_locked_status'),
     array('db' => 'rs.rmsa_school_title', 'dt' =>'rmsa_school_title'),
-    array('db' => 'rd.rmsa_district_name', 'dt' =>'rmsa_district_name')
+    array('db' => 'rd.rmsa_district_name', 'dt' =>'rmsa_district_name')    
 );
 
 include 'conn.php';
@@ -48,11 +50,17 @@ include 'conn.php';
 //    'host' => 'localhost'
 //);
 
-//print_r($_REQUEST);die;
+//echo '<pre>';print_r($_REQUEST);die;
 //$where='';
-$school_id=$_REQUEST['rmsa_school_id'];
-$where = " rsu.rmsa_school_id ='$school_id' ";
-
+$rmsa_block_id=$_REQUEST['rmsa_block_id'];
+$where = " rsu.rmsa_block_id ='$rmsa_block_id' ";
+if(!empty($_REQUEST['search']['value'])){
+    $value=$_REQUEST['search']['value'];
+    if($value=='locked'){        
+        $where.=" AND rsu.rmsa_user_locked_status=1 "; 
+        $_REQUEST['search']['value']='';
+    }    
+}
 //if(!empty($_REQUEST['search']['value'])){
 //    $value=$_REQUEST['search']['value'];
 //    $where.=" AND (rsu.rmsa_user_first_name LIKE '%$value%' OR rsu.rmsa_user_gender LIKE '%$value%' OR rsu.rmsa_user_DOB LIKE '%$value%' OR rsu.rmsa_user_email_id LIKE '%$value%') ";

@@ -43,6 +43,15 @@ $columns = array(
 );
 
 include 'conn.php';
+
+if(!empty($_REQUEST['search']['value'])){
+    $value=$_REQUEST['search']['value'];
+    if($value=='locked'){
+        $where.=" rsu.rmsa_user_locked_status=1 ";
+        $_REQUEST['search']['value']='';
+    }    
+}
+
 //// SQL server connection information
 //$sql_details = array(
 //    'user' => 'root',
@@ -64,7 +73,7 @@ include 'conn.php';
  */
 require( 'ssp.class.php' );
 echo json_encode(
-    SSP::rmsa_student_list($_REQUEST, $sql_details, $table, $primaryKey, $columns)
+    SSP::rmsa_student_list($_REQUEST, $sql_details, $table, $primaryKey, $columns,$where)
 );
 
 

@@ -2534,9 +2534,9 @@ $this->load->view('_partials/front/allnotify');
                     'type': 'POST',
                     'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/employee_students.php' ?>",
                     'data': {
-                        rmsa_school_id: <?php
-    if (isset($_SESSION['emp_rmsa_school_id'])) {
-        echo $_SESSION['emp_rmsa_school_id'];
+                        rmsa_block_id: <?php
+    if (isset($_SESSION['emp_rmsa_block_id'])) {
+        echo $_SESSION['emp_rmsa_block_id'];
     }
     ?>
                         // etc..
