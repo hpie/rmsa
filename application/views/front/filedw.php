@@ -3,11 +3,11 @@
         <h1 class="heading">File List</h1>
         <div class="form-group">                
                 <div class="row">                                        
-                    <div class="col-sm-3 col-xs-3">
+                    <div class="col-sm-3 col-xs-6">
                         Tag:
                         <input type="text" class="form-control novalidation" placeholder="Search data by tag" id="uploaded_file_tag">
                     </div>
-                    <div class="col-sm-2 col-xs-2">
+                    <div class="col-sm-2 col-xs-6">
                         Subject :
                         <select type="text" class="form-control" id="subject">
                             <option class="" value="">Select</option>                            
@@ -20,7 +20,7 @@
                                 }?> 
                         </select>
                     </div>
-                    <div class="col-sm-2 col-xs-2">
+                    <div class="col-sm-2 col-xs-12">
                         Class :
                         <select type="text" class="form-control" id="class">
                             <option class="" value="">Select</option>
@@ -30,11 +30,11 @@
                             <option value="xii">Class XII</option>
                         </select>
                     </div>
-                    <div class="col-sm-3 col-xs-3">
+                    <div class="col-sm-3 col-xs-6">
                         <br>                        
                         <button class="btn btn-primary col-xs-12" id="searchTag">Search</button>
                     </div>
-                    <div class="col-sm-2 col-xs-2">  
+                    <div class="col-sm-2 col-xs-6">  
                         <br>
                         <button class="btn btn-danger col-xs-12" id="searchTagClear">Clear</button>
                     </div>
