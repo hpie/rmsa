@@ -43,7 +43,7 @@ $columns = array(
 );
 
 include 'conn.php';
-
+$where="";
 if(!empty($_REQUEST['search']['value'])){
     $value=$_REQUEST['search']['value'];
     if($value=='locked'){
