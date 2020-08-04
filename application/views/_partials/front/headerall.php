@@ -34,6 +34,10 @@ $this->load->view('_partials/front/head');
         padding: 3px;
         box-sizing: border-box;
     }
+    .newrow{
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+    }
 </style>
 <!-- End Import Head -->
 <body>
@@ -55,7 +59,7 @@ $this->load->view('_partials/front/navbar');
 	 <!-- Body Start -->
         <section class="main">
         	<div class="wapper">
-                <div class="row mob-v-c-order">
+                <div class="row mob-v-c-order newrow">
 
 <!-- Start Import LeftNavbar -->   
 <?php

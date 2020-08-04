@@ -8,14 +8,10 @@
                     <nav class="navbar-expand-lg navbar  navbar-dark default-color">
                         <div class="navbar-header">
                             <div class="menu_btn_group">
-                                <button type="button" class="navbar-toggle collapsed" id="side-menu-btn"
-                                    data-toggle="slide-collapse" data-target="#slide-navbar-collapse"
-                                    aria-expanded="false">
-                                    <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i>
+                                <button type="button" class="navbar-toggle collapsed" id="side-menu-btn" data-toggle="slide-collapse" data-target="#slide-navbar-collapse" aria-expanded="false">
+                                    <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
                                 </button>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i>
                                     </span>
                                 </button>
