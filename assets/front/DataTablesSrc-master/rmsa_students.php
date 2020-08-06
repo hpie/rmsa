@@ -39,7 +39,9 @@ $columns = array(
     array('db' => 'rd.rmsa_district_name', 'dt' =>'rmsa_district_name'),
     array('db' => 'rsu.rmsa_user_locked_status', 'dt' =>'rmsa_user_locked_status'),
     array('db' => 'rsu.rmsa_user_attempt', 'dt' =>'rmsa_user_attempt'),
-    array('db' => 'rsu.rmsa_user_email_verified_status', 'dt' =>'rmsa_user_email_verified_status')
+    array('db' => 'rsu.rmsa_user_email_verified_status', 'dt' =>'rmsa_user_email_verified_status'),
+    array('db' => 'rsu.rmsa_stream_code', 'dt' =>'rmsa_stream_code'),
+    array('db' => 'rsu.rmsa_user_class', 'dt' =>'rmsa_user_class')
 );
 
 include 'conn.php';
@@ -52,6 +54,22 @@ if(!empty($_REQUEST['search']['value'])){
     }    
 }
 
+$rmsa_stream_code=$_REQUEST['rmsa_stream_code'];
+$rmsa_user_class=$_REQUEST['rmsa_user_class'];
+
+
+if(!empty($rmsa_user_class)){
+    if(!empty($where)){
+        $where.=" AND ";
+    }
+    $where.=" rsu.rmsa_user_class = '$rmsa_user_class' ";
+}
+if(!empty($rmsa_stream_code)){
+    if(!empty($where) || !empty($rmsa_user_class)){
+        $where.=" AND ";
+    }
+    $where.=" rsu.rmsa_stream_code = '$rmsa_stream_code' ";
+}
 //// SQL server connection information
 //$sql_details = array(
 //    'user' => 'root',

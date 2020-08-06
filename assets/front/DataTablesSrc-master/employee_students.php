@@ -38,7 +38,9 @@ $columns = array(
     array('db' => 'rsu.rmsa_block_id', 'dt' =>'rmsa_block_id'),
     array('db' => 'rsu.rmsa_user_locked_status', 'dt' =>'rmsa_user_locked_status'),
     array('db' => 'rs.rmsa_school_title', 'dt' =>'rmsa_school_title'),
-    array('db' => 'rd.rmsa_district_name', 'dt' =>'rmsa_district_name')    
+    array('db' => 'rd.rmsa_district_name', 'dt' =>'rmsa_district_name'),
+    array('db' => 'rsu.rmsa_stream_code', 'dt' =>'rmsa_stream_code'),
+    array('db' => 'rsu.rmsa_user_class', 'dt' =>'rmsa_user_class')    
 );
 
 include 'conn.php';
@@ -61,6 +63,17 @@ if(!empty($_REQUEST['search']['value'])){
         $_REQUEST['search']['value']='';
     }    
 }
+
+$rmsa_stream_code=$_REQUEST['rmsa_stream_code'];
+$rmsa_user_class=$_REQUEST['rmsa_user_class'];
+
+if(!empty($rmsa_user_class)){   
+    $where.=" AND rsu.rmsa_user_class = '$rmsa_user_class' ";
+}
+if(!empty($rmsa_stream_code)){
+    $where.=" AND rsu.rmsa_stream_code = '$rmsa_stream_code' ";
+}
+
 //if(!empty($_REQUEST['search']['value'])){
 //    $value=$_REQUEST['search']['value'];
 //    $where.=" AND (rsu.rmsa_user_first_name LIKE '%$value%' OR rsu.rmsa_user_gender LIKE '%$value%' OR rsu.rmsa_user_DOB LIKE '%$value%' OR rsu.rmsa_user_email_id LIKE '%$value%') ";

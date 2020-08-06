@@ -63,6 +63,16 @@ if(!empty($_REQUEST['search']['value'])){
     }    
 }
 
+$rmsa_stream_code=$_REQUEST['rmsa_stream_code'];
+$rmsa_user_class=$_REQUEST['rmsa_user_class'];
+
+if(!empty($rmsa_user_class)){   
+    $where.=" AND rsu.rmsa_user_class = '$rmsa_user_class' ";
+}
+if(!empty($rmsa_stream_code)){
+    $where.=" AND rsu.rmsa_stream_code = '$rmsa_stream_code' ";
+}
+
 //echo $where;die;
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

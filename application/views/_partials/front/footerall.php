@@ -2513,7 +2513,10 @@ $this->load->view('_partials/front/allnotify');
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
-            $('#example').DataTable({
+            fill_datatable1();
+            function fill_datatable1(rmsa_stream_code = '', rmsa_user_class = '')
+            {
+                $('#example').DataTable({
 
                 responsive: {
                     details: {
@@ -2538,7 +2541,9 @@ $this->load->view('_partials/front/allnotify');
     if (isset($_SESSION['emp_rmsa_block_id'])) {
         echo $_SESSION['emp_rmsa_block_id'];
     }
-    ?>
+    ?>,
+                       rmsa_stream_code:rmsa_stream_code,
+                       rmsa_user_class:rmsa_user_class
                         // etc..
                     }
                 },
@@ -2555,6 +2560,7 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_edit"}
                 ]
             });
+            }
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
 
@@ -2603,6 +2609,28 @@ $this->load->view('_partials/front/allnotify');
                         }
                     }
                 });
+            });
+            
+            
+                $('#searchTag').click(function () {
+                var rmsa_stream_code = $('#rmsa_stream_code').val();               
+                var class_val = $('#class').val(); 
+                if (rmsa_stream_code != '' || class_val!='')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(rmsa_stream_code,class_val);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $('#searchTagClear').click(function () {
+                $('#rmsa_stream_code').val('');               
+                $('#class').val(''); 
+                $('#example').DataTable().destroy();
+                fill_datatable1();
             });
         });
     </script>
@@ -2708,7 +2736,10 @@ $this->load->view('_partials/front/allnotify');
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
-            $('#example').DataTable({
+             fill_datatable1();
+            function fill_datatable1(rmsa_stream_code = '', rmsa_user_class = '')
+            {
+                $('#example').DataTable({
                 responsive: {
                     details: {
                         type: 'column',
@@ -2732,7 +2763,9 @@ $this->load->view('_partials/front/allnotify');
     if (isset($_SESSION['tech_rmsa_school_id'])) {
         echo $_SESSION['tech_rmsa_school_id'];
     }
-    ?>
+    ?>,
+                        rmsa_stream_code:rmsa_stream_code,
+                        rmsa_user_class:rmsa_user_class
                         // etc..
                     }
                 },
@@ -2749,6 +2782,7 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_edit"}
                 ]
             });
+            }
             $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
 
@@ -2797,6 +2831,28 @@ $this->load->view('_partials/front/allnotify');
                     }
                 });
             });
+            
+            
+              $('#searchTag').click(function () {
+                var rmsa_stream_code = $('#rmsa_stream_code').val();               
+                var class_val = $('#class').val(); 
+                if (rmsa_stream_code != '' || class_val!='')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(rmsa_stream_code,class_val);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $('#searchTagClear').click(function () {
+                $('#rmsa_stream_code').val('');               
+                $('#class').val(''); 
+                $('#example').DataTable().destroy();
+                fill_datatable1();
+            });
         });
     </script>
 <?php } ?>
@@ -2805,8 +2861,10 @@ $this->load->view('_partials/front/allnotify');
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
-            $('#example').DataTable({
-
+            fill_datatable1();
+            function fill_datatable1(rmsa_stream_code = '', rmsa_user_class = '')
+            {
+                $('#example').DataTable({
                 responsive: {
                     details: {
                         type: 'column',
@@ -2824,7 +2882,11 @@ $this->load->view('_partials/front/allnotify');
                 "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                 "ajax": {
                     'type': 'POST',
-                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_students.php' ?>"
+                    'url': "<?php echo BASE_URL . '/assets/front/DataTablesSrc-master/rmsa_students.php' ?>",
+                    'data': {                            
+                            rmsa_stream_code: rmsa_stream_code,
+                            rmsa_user_class: rmsa_user_class                            
+                        }
                 },
                 "columns": [
                     {"data": "index"},
@@ -2841,7 +2903,7 @@ $this->load->view('_partials/front/allnotify');
                     {"data": "rmsa_user_edit"}
                 ]
             });
-            
+            }
              $(document).on('click', '.btn_approve_email', function () {
                 var self = $(this);
                 if (!confirm('Are you sure want to verified Email?'))
@@ -2957,6 +3019,30 @@ $this->load->view('_partials/front/allnotify');
                     }
                 });
             });
+            
+            
+             $('#searchTag').click(function () {
+                var rmsa_stream_code = $('#rmsa_stream_code').val();               
+                var class_val = $('#class').val(); 
+                if (rmsa_stream_code != '' || class_val!='')
+                {
+                    $('#example').DataTable().destroy();
+                    fill_datatable1(rmsa_stream_code,class_val);
+                } else
+                {
+                    alert('Enter tag in textbox');
+                    $('#example').DataTable().destroy();
+                    fill_datatable1();
+                }
+            });
+            $('#searchTagClear').click(function () {
+                $('#rmsa_stream_code').val('');               
+                $('#class').val(''); 
+                $('#example').DataTable().destroy();
+                fill_datatable1();
+            });
+            
+            
         });
     </script>
 <?php } ?>
