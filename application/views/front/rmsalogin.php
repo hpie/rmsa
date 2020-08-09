@@ -38,8 +38,8 @@
             </div>
             <div class="form-group">
                 <div class="m-auto text-center">
-                    <button type="submit" class="btn primary_btn btn_disabled" disabled="true" id="btnLogin">Login</button>
                     <a class="btn btn-primary" href="<?php echo FORGET_PASSWORD_LINK.'rmsa'; ?>">Forget password</a>
+					<button type="submit" class="btn primary_btn btn_disabled" disabled="true" id="btnLogin">&nbsp; &nbsp; &nbsp; &nbsp; Login &nbsp; &nbsp; &nbsp; &nbsp;</button>
                 </div>
             </div>        
         </form>

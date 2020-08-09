@@ -2,7 +2,18 @@
     <div class="middle-area">
         <h1 class="heading">Student List</h1>                             
         <div class="form-group">                
-            <div class="row">                                                            
+            <div class="row">
+                <div class="col-sm-4 col-xs-6">
+                    <br>
+                    Class :
+                    <select type="text" class="form-control" id="class">
+                        <option class="" value="">------ Select ------</option>
+                        <option value="ix">Class IX</option>
+                        <option value="x">Class X</option>
+                        <option value="xi">Class XI</option>
+                        <option value="xii">Class XII</option>
+                    </select>
+                </div>
                 <div class="col-md-4 col-xs-6">
                     <br>
                     Stream :
@@ -14,17 +25,6 @@
                         <option value="COMMERCE">COMMERCE</option>
                         <option value="MED-NONMED">MED-NONMED</option>
                         <option value="NO-STREAM">NO-STREAM</option>
-                    </select>
-                </div>
-                <div class="col-sm-4 col-xs-6">
-                    <br>
-                    Class :
-                    <select type="text" class="form-control" id="class">
-                        <option class="" value="">Select</option>
-                        <option value="ix">Class IX</option>
-                        <option value="x">Class X</option>
-                        <option value="xi">Class XI</option>
-                        <option value="xii">Class XII</option>
                     </select>
                 </div>
                 <div class="col-sm-2 col-xs-6">
