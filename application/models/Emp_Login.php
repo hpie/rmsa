@@ -181,7 +181,7 @@ class Emp_Login extends CI_Model {
         $new_password = md5($params['rmsa_user_new_password']);
         $rmsa_user_id = $params['rmsa_user_id'];
         $result = $this->db->query("UPDATE $table
-                              SET rmsa_user_email_password = '" . $new_password . "'
+                              SET rmsa_user_email_password = '" . $new_password . "', rmsa_user_attempt =0,rmsa_user_locked_status=0
                               WHERE rmsa_user_id = '" . $rmsa_user_id . "'");        
         if($result){
             $user_type=$params['rmsa_user_type'];
