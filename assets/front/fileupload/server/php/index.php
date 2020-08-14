@@ -35,9 +35,13 @@ class CustomUploadHandler extends UploadHandler {
         if (empty($file->error)) {            
         $sql = "INSERT INTO ".$this->options['db_table']." (uploaded_file_title,uploaded_file_type,uploaded_file_group,uploaded_file_category,uploaded_file_desc,uploaded_file_tag,uploaded_file_path,uploaded_file_hasvol,rmsa_employee_users_id,uploaded_file_class,uploaded_file_subject)"
                 ." VALUES ('$uploaded_file_title','$uploaded_file_type','$uploaded_file_group','$uploaded_file_category','$uploaded_file_desc','$uploaded_file_tag','$uploaded_file_path','$uploaded_file_hasvol','$rmsa_employee_users_id','$uploaded_file_class','$uploaded_file_subject')";                                               
-	        $query = $this->db->query($sql);                                                  
+	        $query = $this->db->query($sql);
+                
+                $log  = "sql result for insert query $query".PHP_EOL;               
+                file_put_contents('../../../../../../../log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
+                
 	        $file->id = $this->db->insert_id;                
-        }                
+        }        
         return $file;         
     }
 
