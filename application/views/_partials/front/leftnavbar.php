@@ -10,7 +10,7 @@
                                 <li>
                                     <div class="link"><i class="fa fa-user"></i>For Students<i class="fa fa-chevron-down"></i></div>
                                     <ul class="submenu">
-                                        <li><a href="#">Instructions</a></li>
+                                        <li><a href="<?php echo BASE_URL ?>/assets/front/gyanshala-student-user-guide.pdf" rel="stylesheet" type="application/pdf" target="_blank">Instructions</a></li>
 
                                         <?php
                                             if(!isset($_SESSION['st_rmsa_user_id']))
@@ -88,7 +88,7 @@
                                     <li>
                                         <div class="link"><i class="fa fa-user"></i>For RMSA Coordiators<i class="fa fa-chevron-down"></i></div>
                                         <ul class="submenu">
-                                            <li><a href="#">Instructions</a></li>
+                                            <li><a href="<?php echo BASE_URL ?>/assets/front/gyanshala-coordinators-user-guide.pdf" rel="stylesheet" type="application/pdf" target="_blank">Instructions</a></li>
 
                                             <?php
                                             if(!isset($_SESSION['emp_rmsa_user_id']))
