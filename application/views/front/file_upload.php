@@ -94,11 +94,11 @@
               <td>
             <label class="title col-md-6">
                 <span>Title:</span><br>
-                <input type="text" name="uploaded_file_title[]" class="form-control input file_title" required>
+                <input type="text" name="uploaded_file_title[]" class="form-control input file_title novalidation" required>
             </label>           
             <label class="description col-md-6">
                 <span>Description:</span><br>
-                <input type="text"  name="uploaded_file_desc[]" class="form-control input file_desc" required>
+                <input type="text"  name="uploaded_file_desc[]" class="form-control input file_desc novalidation" required>
             </label> 
             
             <label class="description col-md-6">
