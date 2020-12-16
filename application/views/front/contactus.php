@@ -11,17 +11,17 @@
                 <th scope="col">Designation</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone Office</th>
-                <th scope="col">Pbx No.</th>
+                <th scope="col">FAX No.</th>
                 <th scope="col">Mobile No.</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <th scope="row">Sh. Ashish Kohli</th>
+                <th scope="row">Sh. Virender Sharma</th>
                 <td>State Project Director</td>
-                <td>spdssahp(at)gamil.com</td>
-                <td><!--+91 177 280 7105--></td>
-                <td><!--300--></td>
+                <td>spdssahp(at)gmail.com</td>
+                <td>+91 177 265 8668/td>
+                <td>+91 177 280 8684</td>
                 <td><!--+91 941 838 1384--></td>
             </tr>
 
