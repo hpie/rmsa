@@ -1,0 +1,16 @@
+sql = 'INSERT INTO rmsa_uploaded_files (uploaded_file_title,uploaded_file_type,uploaded_file_group,uploaded_file_category,uploaded_file_desc,uploaded_file_tag,uploaded_file_path,uploaded_file_hasvol,rmsa_employee_users_id,uploaded_file_class,uploaded_file_subject) VALUES ('notshow','pdf','BIOLOGY-GRP','SHORT-NOTES','notshow','notshow','2020-12-15/uploads-63098-1608039501-20201215-023821pm.pdf','NO','1','x','1')' 
+
+sql result for insert query 1 
+
+sql = 'INSERT INTO rmsa_uploaded_files (uploaded_file_title,uploaded_file_type,uploaded_file_group,uploaded_file_category,uploaded_file_desc,uploaded_file_tag,uploaded_file_path,uploaded_file_hasvol,rmsa_employee_users_id,uploaded_file_class,uploaded_file_subject) VALUES ('notshow ix','pdf','CHEMISTRY-GRP','NUMERICAL-PROBS','notshow ix','notshow ix','2020-12-15/uploads-73151-1608039571-20201215-023931pm.pdf','NO','1','xii','2')' 
+
+sql result for insert query 1 
+
+sql = 'INSERT INTO rmsa_uploaded_files (uploaded_file_title,uploaded_file_type,uploaded_file_group,uploaded_file_category,uploaded_file_desc,uploaded_file_tag,uploaded_file_path,uploaded_file_hasvol,rmsa_employee_users_id,uploaded_file_class,uploaded_file_subject) VALUES ('test for xii','pdf','PHYSICS-GRP','Q-PAPERS','test for xii','test for xii','2020-12-15/uploads-27857-1608040513-20201215-025513pm.pdf','NO','1','xii','5')' 
+
+sql result for insert query 1 
+
+sql = 'INSERT INTO rmsa_uploaded_files (uploaded_file_title,uploaded_file_type,uploaded_file_group,uploaded_file_category,uploaded_file_desc,uploaded_file_tag,uploaded_file_path,uploaded_file_hasvol,rmsa_employee_users_id,uploaded_file_class,uploaded_file_subject) VALUES ('test for ix','pdf','MATHS-GRP','PRACTICAL-EXAMPLES','test for ix','test for ix','2020-12-15/uploads-73620-1608040576-20201215-025616pm.pdf','NO','1','ix','3')' 
+
+sql result for insert query 1 
+

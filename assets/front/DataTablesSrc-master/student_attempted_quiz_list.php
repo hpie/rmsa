@@ -39,6 +39,7 @@ $columns = array(
     array('db' => 'ruf.uploaded_file_volroot', 'dt' =>'uploaded_file_volroot'),
     array('db' => 'ruf.uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount'),
     array('db' => 'ruf.uploaded_file_status', 'dt' =>'uploaded_file_status'),
+     array('db' => 'ruf.uploaded_file_class', 'dt' =>'uploaded_file_class'),
     array('db' => 'rqsm.quiz_id', 'dt' =>'quiz_id')
 );
 include 'conn.php';

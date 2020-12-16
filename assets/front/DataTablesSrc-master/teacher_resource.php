@@ -38,7 +38,8 @@ $columns = array(
     array('db' => 'uploaded_file_volorder', 'dt' =>'uploaded_file_volorder'),
     array('db' => 'uploaded_file_volroot', 'dt' =>'uploaded_file_volroot'),
     array('db' => 'uploaded_file_viewcount', 'dt' =>'uploaded_file_viewcount'),
-    array('db' => 'uploaded_file_status', 'dt' =>'uploaded_file_status')
+    array('db' => 'uploaded_file_status', 'dt' =>'uploaded_file_status'),
+    array('db' => 'uploaded_file_class', 'dt' =>'uploaded_file_class')
 );
 include 'conn.php';
 

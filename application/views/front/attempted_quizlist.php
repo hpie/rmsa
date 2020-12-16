@@ -20,6 +20,7 @@
                 <th>File</th>
                 <th>Type</th>
                 <th>Group</th>
+                <th>Class</th>
                 <th>Category</th>                                                
                 <th>Reviews</th>                 
                 <th>Action</th>
@@ -30,9 +31,10 @@
             <tr>
                 <th>Index</th>
                 <th>Title</th>   
-                 <th>File</th>
+                <th>File</th>
                 <th>Type</th>
                 <th>Group</th>
+                <th>Class</th>
                 <th>Category</th>                                               
                 <th>Reviews</th>                 
                 <th>Action</th>

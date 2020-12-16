@@ -50,6 +50,7 @@
             <th>File</th>
             <th>Type</th>
             <th>Group</th>
+            <th>Class</th>
             <th>Category</th>                       
             <th>Comment / Review</th>
             <th>Reviews</th>
@@ -63,6 +64,7 @@
             <th>File</th>
             <th>Type</th>
             <th>Group</th>
+            <th>Class</th>
             <th>Category</th>                    
             <th>Comment / Review</th>
             <th>Reviews</th>

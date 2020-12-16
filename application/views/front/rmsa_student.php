@@ -52,6 +52,7 @@
                     <th>Roll Number</th>            
                     <th>Name</th>
                     <th>School Name</th>
+                    <th>Class</th>
                     <th>District</th>
                     <th>Gender</th>
                     <th>DOB</th>
@@ -68,6 +69,7 @@
                     <th>Roll Number</th>            
                     <th>Name</th>
                     <th>School Name</th>
+                    <th>Class</th>
                     <th>District</th>
                     <th>Gender</th>
                     <th>DOB</th>
