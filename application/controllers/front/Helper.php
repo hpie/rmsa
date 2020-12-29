@@ -109,10 +109,12 @@ class Helper extends MY_Controller {
             echo json_encode($school);
         }
     }
-    public function load_school_byblock(){
+    public function load_school_byblock(){        
         if($_REQUEST['rmsaBlockId']){
             $school = $this->Helper_model->load_school_byblock($_POST);
             echo json_encode($school);
+        }else{
+            redirect(NOT_FOUND_404_LINK);
         }
     }
     

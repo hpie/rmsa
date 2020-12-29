@@ -203,6 +203,8 @@ define('TEACHER_MY_PROFILE_LINK',BASE_URL."/teacher-my-profile");
 
 
 //other constant
+
+define('NOT_FOUND_404_LINK',BASE_URL."/404_override");
 define('HOME_LINK',BASE_URL."/home");
 define('LOAD_BLOCKS',BASE_URL."/load-blocks");
 define('LOAD_TEHSIL',BASE_URL."/load-tehsil");

@@ -12,8 +12,8 @@
     <link href="<?php echo BASE_URL ?>/assets/front/css/googlefont.css?v=1.0" rel="stylesheet" type="text/css">
     <link href="<?php echo BASE_URL; ?>/assets/front/css/font-awesome.css?v=1.0" rel="stylesheet" type='text/css'>
     <link href="<?php echo BASE_URL; ?>/assets/front/css/main.css?v=1.0" rel="stylesheet" type='text/css'>
-    <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.min.js?v=1.0"></script>
-    <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/bootstrap.min.js?v=1.0"></script>
+    <script type="text/javascript" nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.min.js?v=1.0"></script>
+    <script type="text/javascript" nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/bootstrap.min.js?v=1.0"></script>
     <link href="<?php echo BASE_URL; ?>/assets/pnotify/dist/pnotifiadmin.css?v=1.0" rel="stylesheet" type='text/css'>
     <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css?v=1.0" rel="stylesheet" type="text/css">
     <link href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css?v=1.0" rel="stylesheet" type="text/css">

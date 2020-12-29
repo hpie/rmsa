@@ -9,7 +9,7 @@ if(!isset($_SESSION['securityToken1'])){
 }
 header("X-XSS-Protection: 1; mode=block");
 header('X-Content-Type-Options: nosniff');
-header('X-Frame-Options: deny');
+header('X-Frame-Options: Sameorigin');
 header('X-Powered-By:');
 /**
  * CodeIgniter
